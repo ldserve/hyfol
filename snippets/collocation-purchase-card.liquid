@@ -15,82 +15,42 @@
     <div class="product-block-wrapper" id="{{card_id}}">
         {%- form 'product', product, id: product_form_id, class: 'product-form' -%}
         {% if collocationLocation == "main-product-collocation"%}
-        <h4 class="product-meta__title heading h4 collocation-product-meta__title ">{{ product.title }}</h4>
+        <h1 class="product-meta__title heading h1  collocation-product-meta__title">{{ product.title }}</h1>
         {% endif %}
         <div class="exhibition d-flex {{collocationLocation}}">
             <div class="exhibition-left">
-                {%- if product.media.size > 0 -%}
-                {%- assign show_secondary_media = true -%}
-                {%- assign primary_media = product.featured_media -%}
+                {%- for variant in product.variants -%}
+                {%- if variant['option1'] == product.options_with_values[0].selected_value -%}
+                {%- assign variant_for_value = variant -%}
+                {%- break -%}
+                {%- endif -%}
+                {%- endfor -%}
+                {%- assign primary_media = variant_for_value.featured_media -%}
+                
                 <a href="{{ product.url }}"
-                    class="product-item__image-wrapper product-item_mktClick shence_commodityView {% if show_secondary_media %}product-item__image-wrapper--with-secondary{% endif %} "
+                    class="product-item__image-wrapper product-item_mktClick shence_commodityView  product-item__image-wrapper--with-secondary "
                     data-scenable="1" data-expenable="1" data-bindexp="1" data-sctype="mktClick"
                     data-scdata='{"mkt_type":"product","first_mkt_name":"{{ first_mkt_name }}","first_mkt_id":"{{ section.id }}","second_mkt_rank":"{{ forloop.index }}","third_mkt_rank":"","mkt_material_url":"","mkt_material_name":"{{ mkt_material_name }}","commodity_spuid":"{{ product.handle }}","commodity_skuid":"{{ product.selected_or_first_available_variant.sku }}","commodity_name":"{{ product.title| handleize }}","original_price":"{{ product.selected_or_first_available_variant.compare_at_price }}","current_price":"{{ product.selected_or_first_available_variant.price }}","currency_unit":"USD","mkt_tag":[]}'>
-
-                    {% if only_show_transparent and product.metafields.my_fields.transparentimg1 != blank or
-                    only_show_transparent and product.metafields.my_fields.transparencydrawing[0].path != blank %}
-
-                    {% if product.metafields.my_fields.transparentimg1 != blank%}
-                    {%- assign image_url = product.metafields.my_fields.transparentimg1 | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
-                    {% elsif product.metafields.my_fields.transparencydrawing[0].path != blank %}
-                    {%- assign image_url = product.metafields.my_fields.transparencydrawing[0].path | append:
-                    product.metafields.my_fields.transparencydrawing[0].imageMd5 -%}
-                    {% endif %}
-
-                    {%- capture supported_sizes -%}{%- render 'image-size', sizes: '200,300,400,500,600,700,800', image:
-                    primary_media.preview_image -%}{%- endcapture -%}
-                    <div class="aspect-ratio {% if settings.product_image_size != 'natural' %}aspect-ratio--{{ settings.product_image_size }}{% endif %}"
-                        style="padding-bottom: {{ 100.0 | divided_by: primary_media.preview_image.aspect_ratio }}%">
-                        <img class="product-item__primary-image lazyload image--fade-in "
-                            data-media-id="{{ primary_media.id }}" data-src="{{ image_url}}" data-sizes="auto"
-                            data-widths="[{{ supported_sizes }}]">
-                        {%- if show_secondary_media -%}
-                        {%- capture supported_sizes -%}
-                        {%- render 'image-size', sizes: '200,300,400,500,600,700,800', image:
-                        primary_media.preview_image  -%}{%- endcapture -%}
-                        {% if product.metafields.my_fields.transparentimg2 != blank%}
-                        {%- assign image_url = product.metafields.my_fields.transparentimg2 | img_url: '1x1' | replace:  '_1x1.', '_{width}x.' -%}
-                        {% elsif product.metafields.my_fields.transparencydrawing[1].path != blank %}
-                        {%- assign image_url = product.metafields.my_fields.transparencydrawing[1].path | append:
-                        product.metafields.my_fields.transparencydrawing[1].imageMd5 -%}
-                        {% endif %}
-                        <img class="product-item__secondary-image lazyload image--fade-in " data-src="{{ image_url }}"
-                            data-sizes="auto" data-widths="[{{ supported_sizes }}]">
-                        {%- endif -%}
-                        <noscript>
-                            <img src="{{ primary_media | img_url: '600x' }}" alt="{{ primary_media.alt | escape }}">
-                        </noscript>
-                    </div>
-                    {%- else -%}
-
-                    {%- capture supported_sizes -%}{%- render 'image-size', sizes: '200,300,400,500,600,700,800', image:
-                    primary_media.preview_image -%}{%- endcapture -%}
-                    {%- assign image_url = primary_media | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
-                    <div class="aspect-ratio {% if settings.product_image_size != 'natural' %}aspect-ratio--{{ settings.product_image_size }}{% endif %}"
+                    {%- capture supported_sizes -%}{%- render 'image-size', sizes: '200,300,400,500,600,700,800', 
+                    image: primary_media.preview_image -%}{%- endcapture -%}
+                    {%- assign image_url = primary_media | img_url: '1x1' | replace:  '_1x1.', '_{width}x.' -%}
+                    <div class="aspect-ratio "
                         style=" padding-bottom: {{ 100.0 | divided_by: primary_media.preview_image.aspect_ratio }}%; background-color: #fff;">
-                        <img class="product-item__primary-image lazyload image--fade-in  "
+                        <img class="product-item__primary-image lazyload image--fade-in "
                             data-media-id="{{ primary_media.id }}" data-src="{{ image_url }}" data-sizes="auto"
                             data-widths="[{{ supported_sizes }}]" alt="{{ primary_media.alt | escape }}">
-
-                        {%- if show_secondary_media -%}
                         {%- capture supported_sizes -%}{%- render 'image-size', sizes: '200,300,400,500,600,700,800',
                         image:  product.media[1].preview_image -%}{%- endcapture -%}
                         {%- assign image_url = product.media[1] | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
-
                         <img class="product-item__secondary-image lazyload image--fade-in  444"
                             data-src="{{ image_url }}" data-sizes="auto" data-widths="[{{ supported_sizes }}]"
                             alt="{{ product.media[1].alt | escape }}">
-                        {%- endif -%}
-
                         <noscript>
                             <img src="{{ primary_media | img_url: '600x' }}" alt="{{ primary_media.alt | escape }}">
                         </noscript>
                     </div>
-                    {% endif %}
                 </a>
-                {%- endif -%}
             </div>
-
             <div class="exhibition-right">
                 {% if collocationLocation == "mini-cart-collcation"%}
                 <h1 class="product-meta__title heading  collocation-product-meta__title">{{ product.title }}</h1>
@@ -132,15 +92,13 @@
                 <div class="product-form__variants ">
                     {%- for option in product.options_with_values -%}
                     {%- capture option_name -%}{{ section.id }}-{{ product.id }}-{{ forloop.index }}{%- endcapture -%}
-											{% assign downcase_option = option.name  | downcase  %}
-                    {%- if downcase_option   == "color" %}
+                    {%- assign name = option.name | downcase -%}
+                    {%- if  name== "color" -%}
                     <div class="product-wrapper_option" data-selector-type="color">
                         <div class="product-wrapper-scoll">
-                            {%- assign color_swatch_config = settings.color_swatch_config | newline_to_br | split:
-                            '<br />' -%}
+                            {%- assign color_swatch_config = settings.color_swatch_config | newline_to_br | split: '<br />' -%}
 
-                            <span class="product-form__option-name text--strong collocation-color-text">{{ option.name
-                                }}:  <span class="product-form__selected-value">{{ option.selected_value }}</span></span>
+                            <span class="product-form__option-name text--strong collocation-color-text">{{ option.name  }}:  <span class="product-form__selected-value">{{ option.selected_value }}</span></span>
                             <div class="exhibition-item block-swatch-box ">
                                 <div
                                     class="color-swatch-list color-swatch-list--large ld-variant-list d-flex margin-0 padding-0">
@@ -162,7 +120,6 @@
                                     {%- assign image_url = variant_for_value.featured_media | img_url: '1x1' | replace:
                                     '_1x1.', '_{width}x.' -%}
                                     {%- endif -%}
-
                                     <div class="color-swatch {% if downcased_value == 'white' or downcased_value == 'blanc' %}color-swatch--white{% endif %} ld-variant"
                                         data-scenable="1" data-sctype="valueChange" data-scdata='{"is_quick_view":1,
                                             "commodity_spuid": "{{product.handle}}",
@@ -179,8 +136,8 @@
                                             "original_price":"{{ product.selected_or_first_available_variant.compare_at_price }}",
                                       "current_price":"{{ product.selected_or_first_available_variant.price }}"}'>
                                         <input class="color-swatch__radio " type="radio" name="{{ option_name }}"
-                                            id="{{ color_id }}" value="{{ value | escape }}" {% if
-                                            option.selected_value==value %}checked{% endif %}
+                                            id="{{ color_id }}" value="{{ value | escape }}" 
+                                            {% if option.selected_value==value %}checked{% endif %}
                                             data-option-position="{{ option.position }}"
                                             data-variant-url="{{ variant_for_value.url }}"
                                             data-sku="{{ variant_for_value.sku }}" {% if  variant_for_value.featured_media %}data-media-id="{{ variant_for_value.featured_media.id }}"
@@ -196,13 +153,11 @@
                                     </div>
                                     {%- endfor -%}
                                 </div>
-
                             </div>
                         </div>
                     </div>
                     {%- endif -%}
-
-                    {%- if downcase_option == "size" -%}
+                    {%- if name == "size" -%}
                     <div class="product-wrapper_option" data-selector-type="block">
                         <div class="product-wrapper-scoll">
                             <span class="product-form__option-name text--strong  collocation-size-text">{{ option.name
@@ -252,7 +207,7 @@
                         data-action="add-to-cart">{{ 'product.form.pre_order' | t }}</button>
                     {%- else -%}
                     <button type="submit" class="button button--primary mini-cart-add__button" data-scenable="1"
-                        data-sctype="addCart" data-scdata='{"is_quick_view":0,
+                        data-sctype="addCart" data-scdata='{"is_quick_view":1,
                               "commodity_spuid": "{{product.handle}}",
                  "commodity_name": "{{product.title | handleize }}",
                               "currency_unit":"USD",
@@ -276,7 +231,6 @@
                     {%- else -%}
                     <button type="submit" class="product-form__add-button button button--disabled" disabled>{{ 'product.form.sold_out' | t }}</button>
                     {%- endif -%}
-
                     {%- else -%}
                     <a href="mailto:{{ shop.email }}" class="button button--primary">{{ 'product.form.contact_us' | t }}</a>
                     {%- endif -%}
