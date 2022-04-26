@@ -1,6 +1,7 @@
 {%- assign selected_variant = product.selected_or_first_available_variant -%}
 {%- capture card_id %}{{section.id}}-purchace-item-{{product.id}}-{{index}} {% endcapture %}
-{% assign collocationLocation = collocationLocation %}
+{% assign categoryList = product.metafields.my_fields.category %}
+
 {% for tag in product.tags %}
 {%- if forloop.index == 1 -%}
 {%- assign tags = tag | handleize -%}
@@ -9,10 +10,10 @@
 {%- assign tags = tags | append: "," | append: tagtitlie -%}
 {%- endif -%}
 {% endfor %}
-{%- assign product_form_classes = 'product-item__action-list button-stack margin-0' -%}
 {%- assign product_form_id = 'product_form_' | append: section.id | append: product.id -%}
 <collocation-purchase>
     <div class="product-block-wrapper" id="{{card_id}}">
+
         {%- form 'product', product, id: product_form_id, class: 'product-form' -%}
         {% if collocationLocation == "main-product-collocation"%}
         <h1 class="product-meta__title heading h1  collocation-product-meta__title">{{ product.title }}</h1>
@@ -26,7 +27,7 @@
                 {%- endif -%}
                 {%- endfor -%}
                 {%- assign primary_media = variant_for_value.featured_media -%}
-                
+
                 <a href="{{ product.url }}"
                     class="product-item__image-wrapper product-item_mktClick shence_commodityView  product-item__image-wrapper--with-secondary "
                     data-scenable="1" data-expenable="1" data-bindexp="1" data-sctype="mktClick"
@@ -121,20 +122,24 @@
                                     '_1x1.', '_{width}x.' -%}
                                     {%- endif -%}
                                     <div class="color-swatch {% if downcased_value == 'white' or downcased_value == 'blanc' %}color-swatch--white{% endif %} ld-variant"
-                                        data-scenable="1" data-sctype="valueChange" data-scdata='{"is_quick_view":1,
+                                        data-scenable="1" data-sctype="collcation-valueChange" data-scdata='{"is_quick_view":1,
                                             "commodity_spuid": "{{product.handle}}",
                                             "currency_unit":"USD",
-                              "commodity_name": "{{product.title | handleize }}",
+                                            "commodity_name": "{{product.title | handleize }}",
                                             "commodity_skuid":"{{ selected_variant.sku }}",
                                             "commodity_image_quantity":"{{product.images.size}}",
-                              "commodity_description_text":["{{product.description | handleize }}"],
-                                      "commodity_description_image":["{{ product.featured_image | image_url | split: "?" | first  }}"],
+                                            "commodity_description_text":["{{product.description | handleize }}"],
+                                            "commodity_description_image":["{{ product.featured_image | image_url | split: "?" | first  }}"],
                                             "commodity_size":"",
-                                      "commodity_color":"",
+                                            "commodity_color":"",
                                             "commodity_tag":"{{tags}}",
-                              "commodity_type":"{{product.type | handleize}}",
+                                            "commodity_type":"{{product.type | handleize}}",
+                                            "first_commodity":"{{ categoryList.first_commodity }}",
+                                            "second_commodity":"{{ categoryList.second_commodity }}",
+                                            "third_commodity":"{{ categoryList.third_commodity }}",
                                             "original_price":"{{ product.selected_or_first_available_variant.compare_at_price }}",
-                                      "current_price":"{{ product.selected_or_first_available_variant.price }}"}'>
+                                            "current_price":"{{ product.selected_or_first_available_variant.price }}"}'>
+
                                         <input class="color-swatch__radio " type="radio" name="{{ option_name }}"
                                             id="{{ color_id }}" value="{{ value | escape }}" 
                                             {% if option.selected_value==value %}checked{% endif %}
@@ -186,17 +191,15 @@
                     </div>
 
                     {%- endif -%}
-
                     {%- endfor -%}
 
                 </div>
-
                 <div class="margin-0 border-0 add-button">
                     {%- for line_item in cart.items -%}
                     {%- if forloop.index == 1 -%}
-                    {%- assign id = line_item.sku -%}
+                    {%- assign cartSkuId = line_item.sku -%}
                     {%- else -%}
-                    {%- assign id = id | append: "," | append: line_item.sku -%}
+                    {%- assign cartSkuId = cartSkuId | append: "," | append: line_item.sku -%}
                     {%- endif -%}
                     {%- endfor -%}
 
@@ -207,26 +210,28 @@
                         data-action="add-to-cart">{{ 'product.form.pre_order' | t }}</button>
                     {%- else -%}
                     <button type="submit" class="button button--primary mini-cart-add__button" data-scenable="1"
-                        data-sctype="addCart" data-scdata='{"is_quick_view":1,
-                              "commodity_spuid": "{{product.handle}}",
-                 "commodity_name": "{{product.title | handleize }}",
-                              "currency_unit":"USD",
-                              "commodity_skuid":"{{ product.selected_or_first_available_variant.sku }}",
-                "commodity_size":"",
+                        data-sctype="collcation-addCart" data-scdata='{"is_quick_view":1,
+                        "commodity_spuid": "{{product.handle}}",
+                        "commodity_name": "{{product.title | handleize }}",
+                        "currency_unit":"USD",
+                        "commodity_skuid":"{{ product.selected_or_first_available_variant.sku }}",
+                        "commodity_size":"",
                         "commodity_color":"",
-                              "commodity_image_quantity":"{{product.images.size}}",
-                "commodity_description_text":["{{product.description | handleize }}"],
+                        "commodity_image_quantity":"{{product.images.size}}",
+                        "commodity_description_text":["{{product.description | handleize }}"],
                         "commodity_description_image":["{{ product.featured_image | image_url | split: "?" | first  }}"],
-                              "commodity_tag":"{{ tags }}",
-                "commodity_type":"{{product.type | handleize}}",
-                              "original_price":"{{ product.selected_or_first_available_variant.compare_at_price }}",
+                        "commodity_tag":"{{ tags }}",
+                        "commodity_type":"{{product.type | handleize}}",
+                        "original_price":"{{ product.selected_or_first_available_variant.compare_at_price }}",
                         "current_price":"{{ product.selected_or_first_available_variant.price }}",
-                "discount_price":"",
-                "compliment_commodities":"{{ id }}",
-                "bonus_name":"",
-                "bonus_amount":0,
-                "entrance":"CommodityDetailPage_AddToCart"}' data-action="add-to-cart" data-purchase>{{
-                        'product.form.add_to_cart' | t }}</button>
+                        "discount_price":"",
+                        "compliment_commodities":{{ cartSkuId | split: ',' | json }},
+                        "bonus_name":"",
+                        "bonus_amount":0,
+                        "is_collocation_used":1,
+                        "collocation_spuid":"",
+                        "entrance":"CommodityDetailPage_AddToCart"}' 
+                data-action="add-to-cart" data-purchase>{{ 'product.form.add_to_cart' | t }}</button>
                     {%- endif -%}
                     {%- else -%}
                     <button type="submit" class="product-form__add-button button button--disabled" disabled>{{ 'product.form.sold_out' | t }}</button>

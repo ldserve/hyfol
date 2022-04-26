@@ -1,5 +1,6 @@
 {%- assign collocationLocation = collocationLocation -%}
 {%- assign variable = product.metafields.my_fields.collocation -%}
+
 {%- if variable !=blank -%}
 	{%- assign handles = variable | split:',' -%}
 	<div class="product-collocation">

@@ -535,5 +535,74 @@ let clickSearch= new sadhus_shence({
 });
 {%- endif -%}
 
+  let purchaseList = document.querySelectorAll('.card__section .exhibition-right')
+  purchaseList && purchaseList.forEach(purchase => {
+            new sadhus_shence({
+               container: purchase,
+               type: "collcation-addCart",
+               event: "click",
+               // debug: true,
+               sendType: "AddToCart",
+               customData: function (container, el) {
+                  let newData = {}
+                  const colorChecked = purchase.querySelector('[data-selector-type="color"] .product-form__selected-value');
+                  const sizeChecked = purchase.querySelector('[data-selector-type="block"] .product-form__selected-value')
+               if (!{{ product.handle | json }}) {
+               newData.collocation_spuid = ""
+               }else {
+               newData.collocation_spuid = "{{product.handle}}";
+               }
+            newData.commodity_color = colorChecked ? colorChecked.innerText : ""
+            newData.commodity_size = sizeChecked ? sizeChecked.innerText : ""
+            return newData
+         },
+            callback: (e,c) => {
 
+            }
+      })
+      new sadhus_shence({
+         container: purchase.querySelector('.ld-variant'),
+         type: "collcation-valueChange",
+         event: "load",
+         // debug: true,
+         sendType: "CommodityDetail",
+         customData: function (container, el) {
+            const newData = {}
+            const colorChecked = purchase.querySelector('[data-selector-type="color"] .product-form__selected-value');
+            const sizeChecked = purchase.querySelector('[data-selector-type="block"] .product-form__selected-value')
+            newData.commodity_color = colorChecked ? colorChecked.innerText : ""
+            newData.commodity_size = sizeChecked ? sizeChecked.innerText : ""
+            newData.site_category = getSiteCategory()
+            return newData
+         },
+         callback: () => {
+
+         }
+      })
+
+      new sadhus_shence({
+         container: purchase.querySelector('.ld-variant-list'),
+         type: "collcation-valueChange",
+         event: "click",
+         // debug: true,
+         sendType: "CommodityDetail",
+         customData: function (container, el) {
+            let newData = {}
+            const colorChecked = purchase.querySelector('[data-selector-type="color"] .product-form__selected-value');
+            const sizeChecked = purchase.querySelector('[data-selector-type="block"] .product-form__selected-value')
+            newData.commodity_color = colorChecked ? colorChecked.innerText : ""
+            newData.commodity_size = sizeChecked ? sizeChecked.innerText : ""
+            newData.site_category = getSiteCategory()
+            return newData
+         },
+         callback: () => {
+
+         }
+      })
+   })
+
+   let cartCollocationList = document.querySelectorAll("#mini-cart .exhibition-right")
+   cartCollocationList && cartCollocationList.forEach(purchase=>{
+      
+   })
 </script>
