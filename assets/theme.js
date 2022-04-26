@@ -14,12 +14,14 @@
         this.init()
         }
         init(){
+          
             for(let i=0 ; i <this.totalSize ; i++){
-               // console.log(container.getElementsByClassName("block-swatch__item")[i]);
-               var offsetWidth = this.container.getElementsByClassName("block-swatch__item")[i].offsetWidth
-                offsetWidth += 2
-                this.container.getElementsByClassName("block-swatch")[i].style.left = this.sum +"px"
-               this.sum +=  offsetWidth +5
+                if ( this.container != null){
+                    var offsetWidth = this.container.getElementsByClassName("block-swatch__item")[i].offsetWidth
+                    offsetWidth += 2
+                    this.container.getElementsByClassName("block-swatch")[i].style.left = this.sum +"px"
+                   this.sum +=  offsetWidth +5
+                }
                // console.log(sum);
            }
         }
@@ -89,8 +91,8 @@
            this.collocationList.addEventListener("transitionend", this.animationEnd)
 
            this.collocationList.addEventListener('touchstart',function(event){
-            if (event.target.closest('.block-swatch-box') == null && event.target.closest('.mini-cart-add__button' ) == null ){
-                if ( event.target.closest('.product-item__image-wrapper') == null) {
+            if (event.target.closest('.color-swatch') == null && event.target.closest('.block-swatch') == null  ){
+                if ( event.target.closest('.product-item__image-wrapper') == null  && event.target.closest('.mini-cart-add__button') == null) {
                     event.preventDefault();//阻止浏览器默认滚动事件
                  }
                 var touch = event.touches[0]   
@@ -100,8 +102,8 @@
             }
            });
            this.collocationList.addEventListener('touchend',function(event){
-            if (event.target.closest('.block-swatch-box') == null && event.target.closest('.mini-cart-add__button') == null){
-             if ( event.target.closest('.product-item__image-wrapper') == null) {
+            if (event.target.closest('.color-swatch') == null && event.target.closest('.block-swatch') == null){
+             if ( event.target.closest('.product-item__image-wrapper'  == null && event.target.closest('.mini-cart-add__button') == null)) {
                 event.preventDefault();//阻止浏览器默认滚动事件
              }
                       endx = Math.floor(event.changedTouches[0].pageX);//获取最后的坐标位置
@@ -306,7 +308,9 @@
                         this.currentVariant = productData.find(item => item.option1 === option1 && item.option2 === option2)
 
                         variantId.value = this.currentVariant.id
-                        selectedValueElement.innerHTML = target.value
+                        if( selectedValueElement != null ){
+                            selectedValueElement.innerHTML = target.value
+                        }
 
                         if (target.classList.contains('color-swatch__radio')) {
                             const productItem = target.closest('.exhibition')
