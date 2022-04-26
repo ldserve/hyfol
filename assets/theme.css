@@ -1224,6 +1224,7 @@ html {
    left: 46%;
    display: flex;
    z-index: 4;
+   display: none;
 }
 .scroll-dot__active-li{
   border: 4px solid black !important;
@@ -3239,7 +3240,7 @@ img.lazyload[data-sizes=auto] {
 .mini-cart__line-item {
   display: flex;
   align-items: flex-start;
-  padding: 10px 0;
+  padding: 5px 0;
 }
 
 .mini-cart__line-item-flex-layout{

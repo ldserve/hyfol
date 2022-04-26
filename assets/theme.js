@@ -2265,7 +2265,10 @@
         }, {
             key: "_openMiniCart",
             value: function _openMiniCart() {
-
+                if(document.querySelector('.product-form__payment-container') && document.body.clientWidth <= 640){
+                    document.querySelector('.product-form__payment-container').style.display = "none"
+                }
+              
                 this.miniCartToggleElement.setAttribute('aria-expanded', 'true'); // If we are on mobile phone we also set the aria-expanded attribute to true on the icon state holder
 
                 if (Responsive.getCurrentBreakpoint() === 'phone') {
@@ -2285,6 +2288,9 @@
         }, {
             key: "_closeMiniCart",
             value: function _closeMiniCart() {
+                if(document.querySelector('.product-form__payment-container') && document.body.clientWidth <= 640){
+                    document.querySelector('.product-form__payment-container').style.display = "block"
+                }
                 this.miniCartToggleElement.setAttribute('aria-expanded', 'false'); // If we are on mobile phone we also set the aria-expanded attribute to true on the icon state holder
 
                 if (Responsive.getCurrentBreakpoint() === 'phone') {
