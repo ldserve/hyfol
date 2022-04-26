@@ -3476,7 +3476,7 @@ display: none;
    max-height: 120px !important;
 }
 
-@media screen and (min-height: 750px) and (max-width: 639px) {
+@media screen and (min-height: 740px) {
   .mini-cart__line-item-list{
     max-height: 220px !important;
  }
@@ -3485,7 +3485,7 @@ display: none;
 
 @media screen  and (min-width: 640px) {
   .mini-cart__line-item-list{
-    max-height: 135px !important;
+    max-height: 135px
  }
  
 }
@@ -3500,7 +3500,7 @@ display: none;
    display: flex;
    align-items: center;
    font-weight: 700;
-   font-size: 12px;
+   font-size: 14px;
    color: #b40202;
 }
 
