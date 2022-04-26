@@ -2,46 +2,21 @@
   "sections": {
     "1650101273f11a55ef": {
       "type": "slideshow",
-      "disabled": true,
       "blocks": {
-        "1650101273ef0886ca-0": {
-          "type": "image",
-          "settings": {
-            "sensorsName": "轮播图",
-            "image": "shopify:\/\/shop_images\/hyfol_-pc_-_banner_b956edc0-d2ec-450b-add5-25aa28b77cb7.jpg",
-            "mobile_image": "shopify:\/\/shop_images\/hyfol_-_-_banner_3de28c91-3a2e-4b71-99df-ff9c082465b2.jpg",
-            "show_overlay": false,
-            "overlay_opacity": 30,
-            "text_color": "#b82928",
-            "title": "3213123",
-            "heading_text_font": "abril_fatface_n4",
-            "heading_text_font_size": 49,
-            "heading_text_color": "#eb0e0e",
-            "content": "124214",
-            "content_text_font": "dosis_n4",
-            "content_text_font_size": 25,
-            "content_text_color": "#ffffff",
-            "content_position": "top_center",
-            "button_background": "#ffffff",
-            "button_text_color": "#000000",
-            "button_text": "12321",
-            "link": "shopify:\/\/collections\/59-9"
-          }
-        },
         "1650101273ef0886ca-1": {
           "type": "image",
           "settings": {
             "sensorsName": "",
-            "image": "shopify:\/\/shop_images\/1_c06d4ad8-a37e-4694-a1d2-ea7295ddc82b.jpg",
-            "mobile_image": "shopify:\/\/shop_images\/hyfol_-_-_banner_3de28c91-3a2e-4b71-99df-ff9c082465b2.jpg",
+            "image": "shopify:\/\/shop_images\/hyfol_-pc_-_banner_235f85fc-57ff-4ca2-9c9a-8ddfe69611a5.jpg",
+            "mobile_image": "shopify:\/\/shop_images\/hyfol_-_-_banner_d78a7a6d-c991-4f43-afb6-7e6ded64bdef.jpg",
             "show_overlay": false,
             "overlay_opacity": 30,
             "text_color": "#ffffff",
-            "title": "Slide title",
+            "title": "",
             "heading_text_font": "helvetica_n4",
             "heading_text_font_size": 20,
             "heading_text_color": "#ffffff",
-            "content": "Tell your story",
+            "content": "",
             "content_text_font": "helvetica_n4",
             "content_text_font_size": 12,
             "content_text_color": "#ffffff",
@@ -49,11 +24,36 @@
             "button_background": "#ffffff",
             "button_text_color": "#000000",
             "button_text": "",
-            "link": "shopify:\/\/products\/sp220415gsql"
+            "link": "shopify:\/\/collections\/spring-sale"
+          }
+        },
+        "1650101273ef0886ca-0": {
+          "type": "image",
+          "settings": {
+            "sensorsName": "轮播图",
+            "image": "shopify:\/\/shop_images\/bbf6e24a2c2607ad05e9f300f20e4624.jpg",
+            "mobile_image": "shopify:\/\/shop_images\/9484b3d896b4e62ed92893caf274694a.jpg",
+            "show_overlay": false,
+            "overlay_opacity": 30,
+            "text_color": "#b82928",
+            "title": "",
+            "heading_text_font": "abril_fatface_n4",
+            "heading_text_font_size": 49,
+            "heading_text_color": "#eb0e0e",
+            "content": "",
+            "content_text_font": "dosis_n4",
+            "content_text_font_size": 25,
+            "content_text_color": "#ffffff",
+            "content_position": "top_center",
+            "button_background": "#ffffff",
+            "button_text_color": "#000000",
+            "button_text": "",
+            "link": "shopify:\/\/collections\/women"
           }
         },
         "28572d9f-8700-4893-990e-c3b4bf1e7821": {
           "type": "image",
+          "disabled": true,
           "settings": {
             "sensorsName": "",
             "show_overlay": false,
@@ -76,8 +76,8 @@
         }
       },
       "block_order": [
-        "1650101273ef0886ca-0",
         "1650101273ef0886ca-1",
+        "1650101273ef0886ca-0",
         "28572d9f-8700-4893-990e-c3b4bf1e7821"
       ],
       "settings": {
@@ -90,6 +90,7 @@
     },
     "16476930731e3b7419": {
       "type": "no_space_img",
+      "disabled": true,
       "settings": {
         "sensorsName": "banner",
         "bg_image": "shopify:\/\/shop_images\/hyfol_-pc_-_banner_0e2e3871-a078-4ed4-b794-3604be11c9e5.jpg",
