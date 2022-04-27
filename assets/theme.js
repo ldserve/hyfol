@@ -14,12 +14,14 @@
         this.init()
         }
         init(){
+          
             for(let i=0 ; i <this.totalSize ; i++){
-               // console.log(container.getElementsByClassName("block-swatch__item")[i]);
-               var offsetWidth = this.container.getElementsByClassName("block-swatch__item")[i].offsetWidth
-                offsetWidth += 2
-                this.container.getElementsByClassName("block-swatch")[i].style.left = this.sum +"px"
-               this.sum +=  offsetWidth +5
+                if ( this.container != null){
+                    var offsetWidth = this.container.getElementsByClassName("block-swatch__item")[i].offsetWidth
+                    offsetWidth += 2
+                    this.container.getElementsByClassName("block-swatch")[i].style.left = this.sum +"px"
+                   this.sum +=  offsetWidth +5
+                }
                // console.log(sum);
            }
         }
@@ -40,6 +42,7 @@
           this.nextButton = this.querySelector('.nextButton')
           this.animationsflag = true //是否阻止动画
           this.that = this
+          this.purchaseList = document.querySelectorAll('.exhibition-right')
           this.prevkeyframes = `
           @keyframes prevItem1{
                   0% { 
@@ -89,8 +92,8 @@
            this.collocationList.addEventListener("transitionend", this.animationEnd)
 
            this.collocationList.addEventListener('touchstart',function(event){
-            if (event.target.closest('.block-swatch-box') == null && event.target.closest('.mini-cart-add__button' ) == null ){
-                if ( event.target.closest('.product-item__image-wrapper') == null) {
+            if (event.target.closest('.color-swatch') == null && event.target.closest('.block-swatch') == null  ){
+                if ( event.target.closest('.product-item__image-wrapper') == null  && event.target.closest('.mini-cart-add__button') == null) {
                     event.preventDefault();//阻止浏览器默认滚动事件
                  }
                 var touch = event.touches[0]   
@@ -100,8 +103,8 @@
             }
            });
            this.collocationList.addEventListener('touchend',function(event){
-            if (event.target.closest('.block-swatch-box') == null && event.target.closest('.mini-cart-add__button') == null){
-             if ( event.target.closest('.product-item__image-wrapper') == null) {
+            if (event.target.closest('.color-swatch') == null && event.target.closest('.block-swatch') == null){
+             if ( event.target.closest('.product-item__image-wrapper'  == null && event.target.closest('.mini-cart-add__button') == null)) {
                 event.preventDefault();//阻止浏览器默认滚动事件
              }
                       endx = Math.floor(event.changedTouches[0].pageX);//获取最后的坐标位置
@@ -131,11 +134,13 @@
              if(this.prevButton){
                  this.prevButton.onclick = () =>{
                     this.prevItem()
+                    this.purchaseList[this.activeIndex]&&this.collocationShence(this.purchaseList[this.activeIndex])
                  }
              }
              if(this.nextButton){
                 this.nextButton.onclick = () =>{
                    this.nextItem()
+                   this.purchaseList[this.activeIndex]&&this.collocationShence(this.purchaseList[this.activeIndex])
                 }
             }
             if(this.lis){
@@ -243,8 +248,27 @@
            this.lis[this.activeIndex].className = "scroll-dot__active-li"
           }
       }
-
-      
+      collocationShence(contai){
+        contai.querySelector('.ld-variant')&& new sadhus_shence({
+            container: contai.querySelector('.ld-variant') ,
+            type: "collcation-valueChange",
+            event: "sync",
+            debug: true,
+            sendType: "CommodityDetail",
+            customData: function (container, el) {
+               const newData = {}
+               const colorChecked = contai.querySelector('.color-swatch__radio[checked]')
+               const sizeChecked = contai.querySelector('.block-swatch__radio[checked]')
+               newData.commodity_color = colorChecked ? colorChecked.value : ""
+               newData.commodity_size = sizeChecked ? sizeChecked.value : ""
+               newData.site_category = getSiteCategory()
+               return newData
+            },
+            callback: () => {
+   
+            }
+         })
+      }
     
       }
       customElements.define("slide-show", SliderShow);
@@ -260,9 +284,9 @@
             this.json = this.root.querySelector('[type="application/json"]')
             this.options = this.root.querySelectorAll('.product-wrapper_option')
             this.formElement = this.root.querySelector('form[action*="/cart/add"]');
-
+            this.miniCart = this.closest("#mini-cart")
             if (!this.formElement) {
-                // 在小购物车没有form表单动态插入进去
+                // 在小购物车没有form表单,动态插入进去
                 var formBox = document.createElement('form')
                 formBox.method = "post"
                 formBox.action = "/cart/add"
@@ -280,9 +304,51 @@
                 this.addEven(this.options, this.json, this.formElement)
             }
 
+            const purchase = this.root.querySelector('.add-button')
+            const root = this.root
+            this.miniCart && purchase && new sadhus_shence({
+                container: purchase,
+                type: "collcation-addCart",
+                event: "click",
+                // debug: true,
+                sendType: "AddToCart",
+                customData: function (container, el) {
+                    let newData = {}
+                    const colorChecked = root.querySelector('.color-swatch__radio[checked]');
+                    const sizeChecked = root.querySelector('.block-swatch__radio[checked]')
+                    newData.commodity_color = colorChecked ? colorChecked.value : ""
+                    newData.commodity_size = sizeChecked ? sizeChecked.value : ""
+                    newData.is_collocation_used = 0
+                    newData.entrance = "MiniCartPage_recommend_AddToCart"
+                    return newData
+                },
+                callback: (e, c) => {
 
+                }
+            })
+            const colorList = root.querySelector(".ld-variant-list")
+            colorList && new sadhus_shence({
+                container: colorList,
+                type: "collcation-valueChange",
+                event: "click",
+                // debug: true,
+                sendType: "CommodityDetail",
+                customData: function (container, el) {
+                    let newData = {}
+                    const colorChecked = root.querySelector('.color-swatch__radio[checked]');
+                    const sizeChecked = root.querySelector('.block-swatch__radio[checked]')
+                    newData.commodity_color = colorChecked ? colorChecked.value : ""
+                    newData.commodity_size = sizeChecked ? sizeChecked.value : ""
+                    newData.site_category = getSiteCategory()
+                    return newData
+                },
+                callback: () => {
+
+                }
+            })
 
         }
+
         addEven(options, json, formElement) {
             var productData = JSON.parse(json.innerHTML)
 
@@ -292,7 +358,10 @@
                         var target = ev.target
                         var variantId = this.root.querySelector('input[name="id"]')
                         var selectedValueElement = option.querySelector('.product-form__selected-value')
+                        var checkeds= option.querySelectorAll('input[type="radio"]')
                         var option1, option2
+                        checkeds.forEach(item=>item.removeAttribute("checked"))
+                        target.setAttribute('checked','')
                         for (var i = 0, len = formElement.elements.length; i < len; i++) {
                             var form = formElement.elements[i];
                             if (form.name === '' || form.disabled) {
@@ -304,9 +373,10 @@
                             }
                         }
                         this.currentVariant = productData.find(item => item.option1 === option1 && item.option2 === option2)
-
                         variantId.value = this.currentVariant.id
-                        selectedValueElement.innerHTML = target.value
+                        if( selectedValueElement != null ){
+                            selectedValueElement.innerHTML = target.value
+                        }
 
                         if (target.classList.contains('color-swatch__radio')) {
                             const productItem = target.closest('.exhibition')
@@ -2261,7 +2331,10 @@
         }, {
             key: "_openMiniCart",
             value: function _openMiniCart() {
-
+                if(document.querySelector('.product-form__payment-container') && document.body.clientWidth <= 640){
+                    document.querySelector('.product-form__payment-container').style.display = "none"
+                }
+              
                 this.miniCartToggleElement.setAttribute('aria-expanded', 'true'); // If we are on mobile phone we also set the aria-expanded attribute to true on the icon state holder
 
                 if (Responsive.getCurrentBreakpoint() === 'phone') {
@@ -2281,6 +2354,9 @@
         }, {
             key: "_closeMiniCart",
             value: function _closeMiniCart() {
+                if(document.querySelector('.product-form__payment-container') && document.body.clientWidth <= 640){
+                    document.querySelector('.product-form__payment-container').style.display = "block"
+                }
                 this.miniCartToggleElement.setAttribute('aria-expanded', 'false'); // If we are on mobile phone we also set the aria-expanded attribute to true on the icon state holder
 
                 if (Responsive.getCurrentBreakpoint() === 'phone') {

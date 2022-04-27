@@ -98,8 +98,9 @@
                     <div class="product-wrapper_option" data-selector-type="color">
                         <div class="product-wrapper-scoll">
                             {%- assign color_swatch_config = settings.color_swatch_config | newline_to_br | split: '<br />' -%}
-
+                            {% if collocationLocation != 'mini-cart-collcation' %}
                             <span class="product-form__option-name text--strong collocation-color-text">{{ option.name  }}:  <span class="product-form__selected-value">{{ option.selected_value }}</span></span>
+                            {% endif %}
                             <div class="exhibition-item block-swatch-box ">
                                 <div
                                     class="color-swatch-list color-swatch-list--large ld-variant-list d-flex margin-0 padding-0">
@@ -165,8 +166,10 @@
                     {%- if name == "size" -%}
                     <div class="product-wrapper_option" data-selector-type="block">
                         <div class="product-wrapper-scoll">
+                            {% if collocationLocation != 'mini-cart-collcation' %}
                             <span class="product-form__option-name text--strong  collocation-size-text">{{ option.name
                                 }}:  <span class="product-form__selected-value">{{ option.selected_value }}</span></span>
+                                {% endif %}
                             <div class="exhibition-item block-swatch-box">
                                 <div class="block-swatch-list d-flex block-layout">
                                     {%- for value in option.values -%}

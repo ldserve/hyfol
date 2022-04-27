@@ -1,8 +1,9 @@
 <form method="post" action="{{ routes.cart_url }}" id="mini-cart" class="mini-cart" aria-hidden="true"
   novalidate="novalidate" data-item-count="{{ cart.item_count }}">
+  {% assign cartNum = cart.item_count %}
   <input type="hidden" name="attributes[collection_products_per_page]" value="">
   <input type="hidden" name="attributes[collection_layout]" value="">
-
+  {% assign full_reduction = settings.full_reduction  %}
   {%- render 'icon', icon: 'nav-triangle-borderless' -%}
 
   {%- capture shipping_alert -%}
@@ -39,7 +40,38 @@
   </div>
   {%- else -%}
   <div class="mini-cart__inner">
+      {%- comment -%}包邮进度条{%- endcomment -%}
+      {% style %}
+        .progress-now{
+            width:calc( 100% *  {{cart.total_price}} /6000 );
+            max-width:100%
+        }
+      {% endstyle %}
+      <div class="shipping-bar">
+        <div class="shipping-bar-font-size">
+          {%- if settings.cart_show_free_shipping_threshold -%}
+          {%- assign threshold_in_cents = settings.cart_free_shipping_threshold | times: 100 -%}
+          {%- if cart.total_price >= threshold_in_cents -%}
+            <p class="page__description d-inline-block" style="margin: 0!important;">{{ 'cart.general.free_shipping' | t }}</p>
+          {%- else -%}
+            {%- capture remaining_amount -%}<span><span class="wh-original-cart-total"><span
+                  class='wh-original-price  mini-car-font'>{{ cart.total_price | minus: threshold_in_cents | abs | money }}</span></span><span
+                class="wh-cart-total"></span><div class="additional-notes d-inline-block"><span
+                  class="wh-minimums-note"></span><span class="wh-extra-note"></span></div></span>{%- endcapture -%}
+            <p
+              class="page__description d-inline-block">{{ 'cart.general.free_shipping_remaining_html' | t: remaining_amount: remaining_amount }}</p>
+          {%- endif -%}
+        {%- endif -%}
+        </div>
+        <div class="shipping-progress-bar">
+             <div class="progress-now"></div>
+        </div>
+     </div>
+
+     <div class="mini-car-title"> Your Cart </div>
     <div class="mini-cart__content">
+      
+ 
       {%- comment -%}
       {%- if shipping_alert != blank -%}
       <div class="mini-cart__alert-wrapper">
@@ -50,7 +82,7 @@
 
       <div class="mini-cart__line-item-list">
         {%- for line_item in cart.items -%}
-        <div class="mini-cart__line-item">
+        <div class="mini-cart__line-item mini-cart__line-item-flex-layout">
           <div class="mini-cart__image-wrapper">
             {%- comment -%}For vertical images we force to contain them on a square ratio to avoid growing too
             large{%- endcomment -%}
@@ -65,7 +97,7 @@
             </div>
             {%- endif -%}
           </div>
-          <div class="mini-cart__item-wrapper">
+          <div class="mini-cart__item-wrapper mini-cart__item-wrapper-flex-layout">
             <div class="mini-cart__product-info">
               {%- unless line_item.product.tags contains '__gift' -%}
               {%- if settings.show_vendor -%}
@@ -117,7 +149,7 @@
                 <span class="price price--highlight">{{ line_item.final_line_price | money }}</span>
                 {%- endif -%}
 
-                <span class="price price--compare"><span class='booster-cart-item-line-price'
+                <span class="price price--compare "><span class='booster-cart-item-line-price'
                     data-key='{{line_item.key}}'>{{ line_item.original_line_price | money }}</span></span>
                 {%- elsif line_item.variant.compare_at_price > line_item.variant.price -%}
                 <span class="price price--highlight">{{ line_item.final_line_price | money }}</span>
@@ -144,7 +176,7 @@
                 </div>
               </div>
               {%- endif -%}
-
+{%- comment -%}
               {%- if line_item.line_level_discount_allocations != blank -%}
               <ul class="mini-cart__discount-list" role="list">
                 {%- for discount_allocation in line_item.line_level_discount_allocations -%}
@@ -155,13 +187,14 @@
                 {%- endfor -%}
               </ul>
               {%- endif -%}
+{%- endcomment -%}
             </div>
 
             {%- comment -%}If the product has the tag "__gift", we remove the price{%- endcomment -%}
 
             {%- unless line_item.product.tags contains '__gift' -%}
-            <div class="mini-cart__quantity">
-              <div class="quantity-selector">
+            <div class="mini-cart__quantity mini-cart__quantity-flex-layout">
+              <div class="quantity-selector quantity-selector-height">
                 {%- assign allow_to_add_more = true -%}
 
                 {%- if line_item.variant.inventory_management and line_item.variant.inventory_policy == 'deny' and line_item.quantity == line_item.variant.inventory_quantity -%}
@@ -216,7 +249,7 @@
                   data-quantity="{{ line_item.quantity | minus: 1 }}" data-line="{{ forloop.index }}"
                   aria-label="{{ 'cart.items.decrease_quantity' | t }}"
                   title="{{ 'cart.items.decrease_quantity' | t }}">{% render 'icon', icon: 'minus' %}</button>
-                <input aria-label="{{ 'product.form.quantity' | t }}" class="quantity-selector__value" data-id="{{line_item.variant_id}}" data-scdata='{"is_quick_view":0,
+                <input aria-label="{{ 'product.form.quantity' | t }}" class="quantity-selector__value quantity-selector__value-width" data-id="{{line_item.variant_id}}" data-scdata='{"is_quick_view":0,
                       "commodity_spuid": "{{line_item.product.handle}}",
                        "commodity_name": "{{line_item.title | handleize }}",
                       "currency_unit":"USD",
@@ -289,7 +322,7 @@
                     "commodity_quantity":{{line_item.quantity}},
                     "bonus_name":"{{ bonus_name }}",
                     "bonus_amount":"{{ bonus_amount}}",
-                    "entrance":"MiniCartPage" }'>{{ 'cart.items.remove' | t }}</a>
+                    "entrance":"MiniCartPage" }'>{% render "icon" , icon:"remove" %}</a>
             </div>
             {%- endunless -%}
           </div>
@@ -298,7 +331,50 @@
       </div>
     </div>
 
+{%- comment -%}搭配购{%- endcomment -%}
+    <div class="mini-car-title">Before You Go</div>
+    <div class="mini-cart__collocation mini-cart__collocation-height">
+      {% render 'collocation-purchase' collocationLocation:"mini-cart-collcation"%}
+    </div>
+
     <div class="mini-cart__recap">
+      {% assign allTag = null %}
+      {%- for line_item in cart.items -%}
+          {% assign everyTag = allTag | concat: line_item.product.tags %}
+          {% assign allTag = everyTag  %}
+      {% endfor %}
+      {% assign everyTagString =  everyTag | join:" "%}
+    {% if  everyTagString contains "促销" or everyTagString contains "Nopromotion" %}
+      {%- comment -%}
+      <div>包含促销信息或不参加全场活动</div>
+      {%- endcomment -%}
+      {% else %}
+      {% assign  discountArr = full_reduction  | split: ',' %}
+      <div class="mini-car-discount-text">
+              {% assign lastdiscountItem = discountArr.last %}
+              {% assign lastcount = lastdiscountItem | split: ' ' %}
+              {% assign lastNum = lastcount[2] |abs %} 
+
+        {% for discountItem in discountArr %}
+              {% assign count = discountItem | split: ' ' %}
+              {% assign num = count[2] |abs %} 
+               {% if num > cart.item_count %}
+                <div class="mini-cart-get__discount"> {% render 'icon' , icon:"lightning" %}BUY  {{ num | minus: cartNum  }} MORE AND GET <span class="mini-car-discount-percentage">{{ count[0]}} {{ count[1]}}</span> </div>
+                {% break %}
+                <div></div>
+                {% endif %}
+       {% endfor %}
+                {% if cart.item_count >= lastNum %}
+              {%- comment -%}
+              <div class="mini-cart-get__discount"> {% render 'icon' , icon:"lightning" %} {{lastdiscountItem}} </div>
+              {%- endcomment -%}  
+              
+                {%endif%}
+      </div>
+    {%endif%}
+    
+      
+      {%- comment -%}
       {% render 'car-bar'%}
       {%- if cart.cart_level_discount_applications != blank -%}
       {%- for discount_application in cart.cart_level_discount_applications -%}
@@ -308,19 +384,13 @@
       </div>
       {%- endfor -%}
       {%- endif -%}
-
-      <div class="mini-cart__recap-price-line">
-        <span>{{ 'cart.general.total' | t }}</span>
-        <span><span class="wh-original-cart-total"><span
-              class='wh-original-price'>{{ cart.total_price | money_with_currency }}</span></span><span
-            class="wh-cart-total"></span>
-          <div class="additional-notes"><span class="wh-minimums-note"></span><span class="wh-extra-note"></span></div>
-        </span>
-      </div>
-
-      {%- comment -%}To calculate the total discount, we take both into account the Shopify Script (for Plus merchants),
-      but we also add the compare at price{%- endcomment -%}
-
+      {%- endcomment -%}
+      {%- comment -%}折扣前总价{%- endcomment -%}
+      
+  
+      <div class="mini-cart-cost-information"><span>Subtoal</span>  <span>{{cart.original_total_price | money}}</span> </div>
+ 
+      
       {%- assign total_discount = 0 -%}
 
       {%- for line_item in cart.items -%}
@@ -335,8 +405,22 @@
       {%- if total_discount > 0 -%}
       {%- capture amount_saved -%}<span>{{ total_discount | money }}</span>{%- endcapture -%}
       <span
-        class="mini-cart__amount-saved">{{ 'cart.general.amount_saved_html' | t: amount_saved: amount_saved }}</span>
+        class="mini-cart-cost-information"> <span>You Saved</span><span>{{ amount_saved }}</span></span> 
       {%- endif -%}
+
+      <div class="mini-cart__recap-price-line">
+        <span>{{ 'cart.general.total' | t }}</span>
+        <span><span class="wh-original-cart-total"><span
+              class='wh-original-price'>{{ cart.total_price | money_with_currency }}</span></span><span
+            class="wh-cart-total"></span>
+          <div class="additional-notes"><span class="wh-minimums-note"></span><span class="wh-extra-note"></span></div>
+        </span>
+      </div>
+
+      
+      {%- comment -%}To calculate the total discount, we take both into account the Shopify Script (for Plus merchants),
+      but we also add the compare at price{%- endcomment -%}
+
 
       <div class="mini-cart__button-container">
         <div class="button-group button-group--loose button-group--fit">
@@ -424,4 +508,6 @@
     border-bottom: 1px solid var(--border-color);
     margin-bottom: 10px;
   }
+  
+ 
 </style>
