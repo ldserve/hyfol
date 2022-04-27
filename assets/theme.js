@@ -20,7 +20,7 @@
                     var offsetWidth = this.container.getElementsByClassName("block-swatch__item")[i].offsetWidth
                     offsetWidth += 2
                     this.container.getElementsByClassName("block-swatch")[i].style.left = this.sum +"px"
-                   this.sum +=  offsetWidth +5
+                   this.sum +=  offsetWidth +2
                 }
                // console.log(sum);
            }

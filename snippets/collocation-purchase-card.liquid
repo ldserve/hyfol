@@ -27,7 +27,9 @@
                 {%- endif -%}
                 {%- endfor -%}
                 {%- assign primary_media = variant_for_value.featured_media -%}
-
+                {% if primary_media == blank %}
+                {%- assign primary_media = product.media[0] -%}
+                {% endif %}
                 <a href="{{ product.url }}"
                     class="product-item__image-wrapper product-item_mktClick shence_commodityView  product-item__image-wrapper--with-secondary "
                     data-scenable="1" data-expenable="1" data-bindexp="1" data-sctype="mktClick"
