@@ -3319,7 +3319,7 @@ img.lazyload[data-sizes=auto] {
 }
 .mini-cart-collcation{
    align-items: center;
-   
+   min-height: 180px;
 }
 .mini-cart-collcation .product-form__variants{
   margin-bottom: 5px;
@@ -15677,6 +15677,13 @@ justify-content: space-between;
 .product-block-wrapper {
   user-select: none;
 }
+
 .add-button{
   text-align: center;
+}
+
+.original-price-bottom{
+  margin-bottom: 0px;
+  top: 0px !important;
+
 }
