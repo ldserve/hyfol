@@ -332,11 +332,12 @@
     </div>
 
 {%- comment -%}搭配购{%- endcomment -%}
+{%- if settings.collocation_spus !=blank -%}
     <div class="mini-car-title">Before You Go</div>
     <div class="mini-cart__collocation mini-cart__collocation-height">
       {% render 'collocation-purchase' collocationLocation:"mini-cart-collcation"%}
     </div>
-
+{% endif %}
     <div class="mini-cart__recap">
       {% assign allTag = null %}
       {%- for line_item in cart.items -%}
