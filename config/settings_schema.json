@@ -13,7 +13,8 @@
       {
         "type": "richtext",
         "id": "full_reduction",
-        "label": "满减信息"
+        "label": "满减信息",
+        "info":"活动信息用逗号隔开 格式必须如： 5% OFF 2 PIECES,10% OFF 3 PIECES 第一位是折扣，第三位是数量" 
       }
     ]
   },
