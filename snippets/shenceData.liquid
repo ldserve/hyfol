@@ -535,81 +535,76 @@ let clickSearch= new sadhus_shence({
 });
 {%- endif -%}
 
-
-
-
    // 加购浏览
-   let purchaseList = document.querySelectorAll('.card__section .exhibition-right')
-   let purchase = purchaseList[0]
-   purchase && purchase.querySelector('.ld-variant') && new sadhus_shence({
-      container: purchase.querySelector('.ld-variant'),
-      type: "collcation-valueChange",
-      event: "load",
-      // debug: true,
-      sendType: "CommodityDetail",
-      customData: function (container, el) {
-         const newData = {}
-         const colorChecked = purchase.querySelector('.color-swatch__radio[checked]')
-         const sizeChecked = purchase.querySelector('.block-swatch__radio[checked]')
-         newData.commodity_color = colorChecked ? colorChecked.value : ""
-         newData.commodity_size = sizeChecked ? sizeChecked.value : ""
-         newData.site_category = getSiteCategory()
-         return newData
-      },
-      callback: () => {
-
-      }
-   })
-   purchaseList && purchaseList.forEach(purchase => {
-      purchase.querySelector('.add-button')  && new sadhus_shence({
-         container: purchase,
-         type: "collcation-addCart",
-         event: "click",
+      let purchaseList = document.querySelectorAll('.card__section .exhibition-right')
+      let purchase = purchaseList[0]
+      purchase && purchase.querySelector('.ld-variant') && new sadhus_shence({
+         container: purchase.querySelector('.ld-variant'),
+         type: "collcation-valueChange",
+         event: "load",
          // debug: true,
-         sendType: "AddToCart",
+         sendType: "CommodityDetail",
          customData: function (container, el) {
-            let newData = {}
+            const newData = {}
             const colorChecked = purchase.querySelector('.color-swatch__radio[checked]')
             const sizeChecked = purchase.querySelector('.block-swatch__radio[checked]')
-            const jsonData= purchase.closest('.exhibition').querySelector('[type="application/json"]')
-            const data = JSON.parse(jsonData.innerHTML)
-            const currentSku = data.find(i=>i.option1===colorChecked.value && i.option2===sizeChecked.value).sku
-            let spuId = "{{ product.handle }}"
-            newData.collocation_spuid = spuId ? spuId : "";
-            newData.commodity_skuid = currentSku ? currentSku : "";
             newData.commodity_color = colorChecked ? colorChecked.value : ""
             newData.commodity_size = sizeChecked ? sizeChecked.value : ""
+            newData.site_category = getSiteCategory()
             return newData
          },
-         callback: (e, c) => {
+         callback: () => {
 
          }
       })
+      purchaseList && purchaseList.forEach(purchase => {
+         purchase.querySelector('.add-button') && new sadhus_shence({
+            container: purchase,
+            type: "collcation-addCart",
+            event: "click",
+            // debug: true,
+            sendType: "AddToCart",
+            customData: function (container, el) {
+               let newData = {}
+               const colorChecked = purchase.querySelector('.color-swatch__radio[checked]')
+               const sizeChecked = purchase.querySelector('.block-swatch__radio[checked]')
+               const jsonData = purchase.closest('.exhibition').querySelector('[type="application/json"]')
+               const data = JSON.parse(jsonData.innerHTML)
+               const currentSku = data.find(i => i.option1 === colorChecked.value && i.option2 === sizeChecked.value).sku
+               let spuId = "{{ product.handle }}"
+               newData.collocation_spuid = spuId ? spuId : "";
+               newData.commodity_skuid = currentSku ? currentSku : "";
+               newData.commodity_color = colorChecked ? colorChecked.value : ""
+               newData.commodity_size = sizeChecked ? sizeChecked.value : ""
+               return newData
+            },
+            callback: (e, c) => {
 
-   })
+            }
+         })
+      })
 
+      //minicart 
+      let cartCollocationList = document.querySelectorAll("#mini-cart .exhibition-right")
+      let firstItem = cartCollocationList[0]
+      firstItem && firstItem.querySelector('.ld-variant') && new sadhus_shence({
+         container: firstItem.querySelector('.ld-variant'),
+         type: "collcation-valueChange",
+         event: "load",
+         // debug: true,
+         sendType: "CommodityDetail",
+         customData: function (container, el) {
+            const newData = {}
+            const colorChecked = firstItem.querySelector('.color-swatch__radio[checked]')
+            const sizeChecked = firstItem.querySelector('.block-swatch__radio[checked]')
+            newData.commodity_color = colorChecked ? colorChecked.value : ""
+            newData.commodity_size = sizeChecked ? sizeChecked.value : ""
+            newData.site_category = getSiteCategory()
+            return newData
+         },
+         callback: () => {
 
-   //minicart 
-   let cartCollocationList = document.querySelectorAll("#mini-cart .exhibition-right")
-   let firstItem = cartCollocationList[0]
-   firstItem && firstItem.querySelector('.ld-variant') && new sadhus_shence({
-      container: firstItem.querySelector('.ld-variant'),
-      type: "collcation-valueChange",
-      event: "load",
-      // debug: true,
-      sendType: "CommodityDetail",
-      customData: function (container, el) {
-         const newData = {}
-         const colorChecked = firstItem.querySelector('.color-swatch__radio[checked]')
-         const sizeChecked = firstItem.querySelector('.block-swatch__radio[checked]')
-         newData.commodity_color = colorChecked ? colorChecked.value : ""
-         newData.commodity_size = sizeChecked ? sizeChecked.value : ""
-         newData.site_category = getSiteCategory()
-         return newData
-      },
-      callback: () => {
-
-      }
-   })
+         }
+      })
 
 </script>

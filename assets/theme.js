@@ -298,14 +298,13 @@
                 }
                 this.root.append(formBox)
                 this.formElement = formBox
-                this.addEven(this.options, this.json, this.formElement)
-            } else {
-                this.addEven(this.options, this.json, this.formElement)
             }
+            this.addEven(this.options, this.json, this.formElement)
+            
             // 点击加购&点击预览
             const purchase = this.root.querySelector('.add-button')
             const root = this.root
-            const jsonData= JSON.parse(this.json.innerHTML)
+            const jsonData = JSON.parse(this.json.innerHTML)
             this.miniCart && purchase && new sadhus_shence({
                 container: purchase,
                 type: "collcation-addCart",
@@ -316,19 +315,16 @@
                     let newData = {}
                     const colorChecked = root.querySelector('.color-swatch__radio[checked]');
                     const sizeChecked = root.querySelector('.block-swatch__radio[checked]')
-                    const currentChecked = jsonData.find(item=>item.option1===colorChecked.value&&item.option2===sizeChecked.value)
+                    const currentChecked = jsonData.find(item => item.option1 === colorChecked.value && item.option2 === sizeChecked.value)
                     newData.commodity_skuid = currentChecked.sku
                     newData.commodity_color = colorChecked ? colorChecked.value : ""
                     newData.commodity_size = sizeChecked ? sizeChecked.value : ""
-                    newData.is_collocation_used = 0
-                    newData.entrance = "MiniCartPage_recommend_AddToCart"
                     return newData
                 },
                 callback: (e, c) => {
 
                 }
             })
-            
             const colorList = root.querySelector(".ld-variant-list")
             colorList && new sadhus_shence({
                 container: colorList,
@@ -336,13 +332,13 @@
                 event: "click",
                 // debug: true,
                 sendType: "CommodityDetail",
-                delayed:true,
-                delayTime:300,
+                delayed: true,
+                delayTime: 300,
                 customData: function (container, el) {
                     let newData = {}
                     const colorChecked = root.querySelector('.color-swatch__radio[checked]');
                     const sizeChecked = root.querySelector('.block-swatch__radio[checked]')
-                    const currentChecked = jsonData.find(item=>item.option1===colorChecked.value&&item.option2===sizeChecked.value)
+                    const currentChecked = jsonData.find(item => item.option1 === colorChecked.value && item.option2 === sizeChecked.value)
                     newData.commodity_skuid = currentChecked.sku
                     newData.commodity_color = colorChecked ? colorChecked.value : ""
                     newData.commodity_size = sizeChecked ? sizeChecked.value : ""
@@ -358,14 +354,14 @@
         addEven(options, json, formElement) {
             var productData = JSON.parse(json.innerHTML)
             options.forEach(option => {
-                var checkeds= option.querySelectorAll('input[type="radio"]')
+                var checkeds = option.querySelectorAll('input[type="radio"]')
                 option.addEventListener('click', (ev) => {
                     if (ev.target.tagName === "INPUT") {
                         const target = ev.target
                         const variantId = this.root.querySelector('input[name="id"]')
                         const selectedValueElement = option.querySelector('.product-form__selected-value')
-                        checkeds.forEach(item=>item.removeAttribute("checked"))
-                        target.setAttribute('checked','')
+                        checkeds.forEach(item => item.removeAttribute("checked"))
+                        target.setAttribute('checked', '')
                         let option1, option2
                         for (let i = 0, len = formElement.elements.length; i < len; i++) {
                             let form = formElement.elements[i];
@@ -399,32 +395,32 @@
                             }
                         }
 
-                        if(false){
+                        if (false) {
                             var scoll = (option.querySelector('.color-swatch-list') || option.querySelector('.block-swatch-list'))
-                            var contentScrollW =option.querySelector('.exhibition-item').offsetWidth
-                            var currentItem =(option.querySelectorAll('.color-swatch')|| option.querySelectorAll('.block-swatch'))
-                            var inputItem= [...option.querySelectorAll('[type="radio"]')]
+                            var contentScrollW = option.querySelector('.exhibition-item').offsetWidth
+                            var currentItem = (option.querySelectorAll('.color-swatch') || option.querySelectorAll('.block-swatch'))
+                            var inputItem = [...option.querySelectorAll('[type="radio"]')]
                             var index = inputItem.indexOf(target)
-                            var middle = contentScrollW/2
-                            var offsetLeft=0
+                            var middle = contentScrollW / 2
+                            var offsetLeft = 0
                             for (let i = 0; i < index; i++) {
-                                offsetLeft+=currentItem[i].offsetWidth
+                                offsetLeft += currentItem[i].offsetWidth
                                 var style = window.getComputedStyle(currentItem[i])
-                                offsetLeft += (style.marginLeft.replace('px','')*1+style.marginRight.replace('px','')*1)
+                                offsetLeft += (style.marginLeft.replace('px', '') * 1 + style.marginRight.replace('px', '') * 1)
                             }
 
-                            if(offsetLeft > middle){
-                                var style=window.getComputedStyle(currentItem[index])
-                                var width = (currentItem[index].offsetWidth)+(style.marginLeft.replace('px','')*1+style.marginRight.replace('px','')*1)
-                                var scrollLeft =Math.ceil(offsetLeft - middle + width / 2);
-                                scoll.style.transform=`translateX(-${scrollLeft}px)`
+                            if (offsetLeft > middle) {
+                                var style = window.getComputedStyle(currentItem[index])
+                                var width = (currentItem[index].offsetWidth) + (style.marginLeft.replace('px', '') * 1 + style.marginRight.replace('px', '') * 1)
+                                var scrollLeft = Math.ceil(offsetLeft - middle + width / 2);
+                                scoll.style.transform = `translateX(-${scrollLeft}px)`
 
                                 // console.log('scrollLeft',scrollLeft,'length',inputItem.length,'index',index);
                                 // console.log('contentScrollW',contentScrollW,'offsetLeft',offsetLeft);
                                 // var TouchBottom = 
 
-                            }else{
-                                scoll.style.transform=`translateX(0px)`
+                            } else {
+                                scoll.style.transform = `translateX(0px)`
                             }
                             console.log(scoll);
                         }
@@ -437,14 +433,12 @@
                 // 在小购物车手动提交表单
                 var button = this.root.querySelector('[data-action="add-to-cart"]')
                 button.addEventListener('click', (e) => {
+                    e.preventDefault();
                     var target = e.target
-                    e.preventDefault();  
-
                     target.setAttribute('disabled', 'disabled');
-                    document.dispatchEvent(new CustomEvent('theme:loading:start')); 
-
+                    document.dispatchEvent(new CustomEvent('theme:loading:start'));
                     var element = this.closest('section');
-                    var currentVariant =this.currentVariant 
+                    var currentVariant = this.currentVariant
                     fetch("".concat(window.routes.cartAddUrl, ".js"), {
                         body: JSON.stringify(Form.serialize(this.formElement)),
                         credentials: 'same-origin',
@@ -472,7 +466,7 @@
             }
         }
     }
-      customElements.define("collocation-purchase", CollocationPurchase);
+    customElements.define("collocation-purchase", CollocationPurchase);
 
     function _typeof(obj) {
         "@babel/helpers - typeof";
