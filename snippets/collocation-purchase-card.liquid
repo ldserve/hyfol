@@ -129,7 +129,7 @@
                                             "commodity_spuid": "{{product.handle}}",
                                             "currency_unit":"USD",
                                             "commodity_name": "{{product.title | handleize }}",
-                                            "commodity_skuid":"{{ selected_variant.sku }}",
+                                            "commodity_skuid":"{{ variant_for_value.sku }}",
                                             "commodity_image_quantity":"{{product.images.size}}",
                                             "commodity_description_text":["{{product.description | handleize }}"],
                                             "commodity_description_image":["{{ product.featured_image | image_url | split: "?" | first  }}"],
@@ -142,14 +142,14 @@
                                             "third_commodity":"{{ categoryList.third_commodity }}",
                                             "original_price":"{{ product.selected_or_first_available_variant.compare_at_price }}",
                                             "current_price":"{{ product.selected_or_first_available_variant.price }}"}'>
-
                                         <input class="color-swatch__radio " type="radio" name="{{ option_name }}"
                                             id="{{ color_id }}" value="{{ value | escape }}" 
                                             {% if option.selected_value==value %}checked{% endif %}
                                             data-option-position="{{ option.position }}"
                                             data-variant-url="{{ variant_for_value.url }}"
-                                            data-sku="{{ variant_for_value.sku }}" {% if  variant_for_value.featured_media %}data-media-id="{{ variant_for_value.featured_media.id }}"
-                                            data-image-url="{{ image_url }}" data-image-widths="[{{ supported_sizes }}]"
+                                            {% if  variant_for_value.featured_media %}data-media-id="{{ variant_for_value.featured_media.id }}"
+                                            data-image-url="{{ image_url }}" 
+                                            data-image-widths="[{{ supported_sizes }}]"
                                             data-image-aspect-ratio="{{ variant_for_value.featured_media.preview_image.aspect_ratio }}"
                                             {% endif %} aria-label="{{ value | escape }}">
                                         <label class="color-swatch__item" for="{{ color_id }}"
@@ -176,7 +176,6 @@
                                 <div class="block-swatch-list d-flex block-layout">
                                     {%- for value in option.values -%}
                                     {%- capture block_swatch_id -%}{{ option_name }}-{{ forloop.index }}{%- endcapture -%}
-
                                     <size-block data-cart_id="{{card_id}}" data-totalSize="{{option.values.size}}">
                                         <div class="block-swatch" style="position:absolute">
                                             <input class="block-swatch__radio " type="radio" name="{{ option_name }}"
@@ -232,6 +231,9 @@
                         "discount_price":"",
                         "compliment_commodities":{{ cartSkuId | split: ',' | json }},
                         "bonus_name":"",
+                        "first_commodity":"{{ categoryList.first_commodity }}",
+                        "second_commodity":"{{ categoryList.second_commodity }}",
+                        "third_commodity":"{{ categoryList.third_commodity }}",
                         "bonus_amount":0,
                         "is_collocation_used":1,
                         "collocation_spuid":"",

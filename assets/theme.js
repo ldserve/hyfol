@@ -71,7 +71,7 @@
         }
         init(){
             if(this.activeIndex == 0 ){
-                this.prevButton.style.display= "none"
+                this.prevButton && (this.prevButton.style.display= "none")
             }else{
                 this.prevButton.style.display= "block"
             }
@@ -162,10 +162,10 @@
                             }else{
                                 that.nextButton.style.display = "block"
                             }
-                          
                                    for( let i=0 ; i< that.lis.length ;i++){
                                     that.lis[i].className= ""
                                    }
+                                   that.purchaseList[that.activeIndex]&&that.collocationShence(that.purchaseList[that.activeIndex])
                                    that.lis[that.activeIndex].className = "scroll-dot__active-li"
                                    that.firstLi.style.left = "0%"
                                    that.lastLi.style.left = (that.scorllNum-1)*100+"%"
@@ -253,7 +253,7 @@
             container: contai.querySelector('.ld-variant') ,
             type: "collcation-valueChange",
             event: "sync",
-            debug: true,
+            // debug: true,
             sendType: "CommodityDetail",
             customData: function (container, el) {
                const newData = {}
@@ -293,7 +293,6 @@
                 formBox.className = "product-form"
                 formBox.enctype = "multipart/form-data"
                 var childList = this.root.children
-
                 for (let i = childList.length - 1; i >= 0; i--) {
                     formBox.prepend(childList[i])
                 }
@@ -303,9 +302,10 @@
             } else {
                 this.addEven(this.options, this.json, this.formElement)
             }
-
+            // 点击加购&点击预览
             const purchase = this.root.querySelector('.add-button')
             const root = this.root
+            const jsonData= JSON.parse(this.json.innerHTML)
             this.miniCart && purchase && new sadhus_shence({
                 container: purchase,
                 type: "collcation-addCart",
@@ -316,6 +316,8 @@
                     let newData = {}
                     const colorChecked = root.querySelector('.color-swatch__radio[checked]');
                     const sizeChecked = root.querySelector('.block-swatch__radio[checked]')
+                    const currentChecked = jsonData.find(item=>item.option1===colorChecked.value&&item.option2===sizeChecked.value)
+                    newData.commodity_skuid = currentChecked.sku
                     newData.commodity_color = colorChecked ? colorChecked.value : ""
                     newData.commodity_size = sizeChecked ? sizeChecked.value : ""
                     newData.is_collocation_used = 0
@@ -326,6 +328,7 @@
 
                 }
             })
+            
             const colorList = root.querySelector(".ld-variant-list")
             colorList && new sadhus_shence({
                 container: colorList,
@@ -333,10 +336,14 @@
                 event: "click",
                 // debug: true,
                 sendType: "CommodityDetail",
+                delayed:true,
+                delayTime:300,
                 customData: function (container, el) {
                     let newData = {}
                     const colorChecked = root.querySelector('.color-swatch__radio[checked]');
                     const sizeChecked = root.querySelector('.block-swatch__radio[checked]')
+                    const currentChecked = jsonData.find(item=>item.option1===colorChecked.value&&item.option2===sizeChecked.value)
+                    newData.commodity_skuid = currentChecked.sku
                     newData.commodity_color = colorChecked ? colorChecked.value : ""
                     newData.commodity_size = sizeChecked ? sizeChecked.value : ""
                     newData.site_category = getSiteCategory()
@@ -346,24 +353,22 @@
 
                 }
             })
-
         }
 
         addEven(options, json, formElement) {
             var productData = JSON.parse(json.innerHTML)
-
             options.forEach(option => {
+                var checkeds= option.querySelectorAll('input[type="radio"]')
                 option.addEventListener('click', (ev) => {
                     if (ev.target.tagName === "INPUT") {
-                        var target = ev.target
-                        var variantId = this.root.querySelector('input[name="id"]')
-                        var selectedValueElement = option.querySelector('.product-form__selected-value')
-                        var checkeds= option.querySelectorAll('input[type="radio"]')
-                        var option1, option2
+                        const target = ev.target
+                        const variantId = this.root.querySelector('input[name="id"]')
+                        const selectedValueElement = option.querySelector('.product-form__selected-value')
                         checkeds.forEach(item=>item.removeAttribute("checked"))
                         target.setAttribute('checked','')
-                        for (var i = 0, len = formElement.elements.length; i < len; i++) {
-                            var form = formElement.elements[i];
+                        let option1, option2
+                        for (let i = 0, len = formElement.elements.length; i < len; i++) {
+                            let form = formElement.elements[i];
                             if (form.name === '' || form.disabled) {
                                 continue;
                             }
@@ -373,14 +378,12 @@
                             }
                         }
                         this.currentVariant = productData.find(item => item.option1 === option1 && item.option2 === option2)
-                        variantId.value = this.currentVariant.id
-                        if( selectedValueElement != null ){
-                            selectedValueElement.innerHTML = target.value
-                        }
+                        variantId.value = this.currentVariant.id;
+                        selectedValueElement && (selectedValueElement.innerHTML = target.value)
 
                         if (target.classList.contains('color-swatch__radio')) {
                             const productItem = target.closest('.exhibition')
-                            var variantUrl = target.getAttribute('data-variant-url');
+                            const variantUrl = target.getAttribute('data-variant-url');
                             productItem.querySelector('.product-item__image-wrapper').setAttribute('href', variantUrl);
                             const originalImageElement = productItem.querySelector('.product-item__primary-image');
 
