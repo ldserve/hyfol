@@ -104,7 +104,7 @@
                             {% endif %}
                             <div class="exhibition-item block-swatch-box ">
                                 <div
-                                    class="color-swatch-list color-swatch-list--large ld-variant-list d-flex margin-0 padding-0">
+                                    class="color-swatch-list color-swatch-list--large ld-variant-list d-flex margin-0 padding-0 color-swatch-list-layout">
                                     {%- for value in option.values -%}
                                     {%- assign downcased_value = value | downcase -%}
                                     {%- capture color_id -%}{{ option_name }}-{{ forloop.index }}{%- endcapture -%}
@@ -230,8 +230,15 @@
                 "compliment_commodities":"{{ id }}",
                 "bonus_name":"",
                 "bonus_amount":0,
-                "entrance":"CommodityDetailPage_AddToCart"}' data-action="add-to-cart" data-purchase>{{
-                        'product.form.add_to_cart' | t }}</button>
+                "entrance":"CommodityDetailPage_AddToCart"}' data-action="add-to-cart" data-purchase>
+
+                {% if collocationLocation == "mini-cart-collcation" %}
+                 ADD
+                {% else %}
+                    
+                 {{'product.form.add_to_cart' | t }}
+                {%endif%}
+            </button>
                     {%- endif -%}
                     {%- else -%}
                     <button type="submit" class="product-form__add-button button button--disabled" disabled>{{ 'product.form.sold_out' | t }}</button>
