@@ -364,6 +364,20 @@
         "shadow": false
       }
     },
+    "1651218774b7bce676": {
+      "type": "transparent-collection",
+      "settings": {
+        "collection": "sport-shorts",
+        "sensorsName": "TRAINING SHORTS",
+        "title": "",
+        "products_count": 18,
+        "layout": "vertical",
+        "stack_products": false,
+        "show_quick_buy": false,
+        "link_title": "View all",
+        "link_url": ""
+      }
+    },
     "16501153969d7dc597": {
       "type": "no_space_img",
       "settings": {
@@ -699,6 +713,7 @@
     "164742631051d4db44",
     "16500210584c969cfe",
     "1650021168ea57a101",
+    "1651218774b7bce676",
     "16501153969d7dc597",
     "1647498064c408cfd6",
     "1648607115d95fb2d3",
