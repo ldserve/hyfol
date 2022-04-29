@@ -565,17 +565,18 @@ let clickSearch= new sadhus_shence({
             // debug: true,
             sendType: "AddToCart",
             customData: function (container, el) {
-               let newData = {}
+               const newData = {}
                const colorChecked = purchase.querySelector('.color-swatch__radio[checked]')
                const sizeChecked = purchase.querySelector('.block-swatch__radio[checked]')
                const jsonData = purchase.closest('.exhibition').querySelector('[type="application/json"]')
                const data = JSON.parse(jsonData.innerHTML)
-               const currentSku = data.find(i => i.option1 === colorChecked.value && i.option2 === sizeChecked.value).sku
-               let spuId = "{{ product.handle }}"
+               const spuId = "{{ product.handle }}"
                newData.collocation_spuid = spuId ? spuId : "";
-               newData.commodity_skuid = currentSku ? currentSku : "";
                newData.commodity_color = colorChecked ? colorChecked.value : ""
                newData.commodity_size = sizeChecked ? sizeChecked.value : ""
+               if(!colorChecked || !sizeChecked) return newData
+               const currentSku = data.find(i => i.option1 === colorChecked.value && i.option2 === sizeChecked.value).sku
+               newData.commodity_skuid = currentSku ? currentSku : "";
                return newData
             },
             callback: (e, c) => {

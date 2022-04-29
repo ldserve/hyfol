@@ -96,106 +96,138 @@
                     {%- for option in product.options_with_values -%}
                     {%- capture option_name -%}{{ section.id }}-{{ product.id }}-{{ forloop.index }}{%- endcapture -%}
                     {%- assign name = option.name | downcase -%}
-                    {%- if  name== "color" -%}
-                    <div class="product-wrapper_option" data-selector-type="color">
-                        <div class="product-wrapper-scoll">
-                            {%- assign color_swatch_config = settings.color_swatch_config | newline_to_br | split: '<br />' -%}
-                            {% if collocationLocation != 'mini-cart-collcation' %}
-                            <span class="product-form__option-name text--strong collocation-color-text">{{ option.name  }}:  <span class="product-form__selected-value">{{ option.selected_value }}</span></span>
-                            {% endif %}
-                            <div class="exhibition-item block-swatch-box ">
-                                <div
-                                    class="color-swatch-list color-swatch-list--large ld-variant-list d-flex margin-0 padding-0 color-swatch-list-layout">
-                                    {%- for value in option.values -%}
-                                    {%- assign downcased_value = value | downcase -%}
-                                    {%- capture color_id -%}{{ option_name }}-{{ forloop.index }}{%- endcapture -%}
-                                    {%- assign variant_option = 'option' | append: forloop.index -%}
-
-                                    {%- for variant in product.variants -%}
-                                    {%- if variant['option1'] == value -%}
-                                    {%- assign variant_for_value = variant -%}
-                                    {%- break -%}
-                                    {%- endif -%}
-                                    {%- endfor -%}
-
-                                    {%- if variant_for_value.featured_media -%}
-                                    {%- capture supported_sizes -%}{%- render 'image-size', sizes:
-                                    '200,300,400,500,600,700,800', image: variant_for_value.featured_media.preview_image
-                                    -%}{%- endcapture -%}
-                                    {%- assign image_url = variant_for_value.featured_media | img_url: '1x1' | replace:
-                                    '_1x1.', '_{width}x.' -%}
-                                    {%- endif -%}
-                                    <div class="color-swatch {% if downcased_value == 'white' or downcased_value == 'blanc' %}color-swatch--white{% endif %} ld-variant"
-                                        data-scenable="1" data-sctype="collcation-valueChange" data-scdata='{"is_quick_view":1,
-                                            "commodity_spuid": "{{product.handle}}",
-                                            "currency_unit":"USD",
-                                            "commodity_name": "{{product.title | handleize }}",
-                                            "commodity_skuid":"{{ variant_for_value.sku }}",
-                                            "commodity_image_quantity":"{{product.images.size}}",
-                                            "commodity_description_text":["{{product.description | handleize }}"],
-                                            "commodity_description_image":["{{ product.featured_image | image_url | split: "?" | first  }}"],
-                                            "commodity_size":"",
-                                            "commodity_color":"",
-                                            "commodity_tag":"{{tags}}",
-                                            "commodity_type":"{{product.type | handleize}}",
-                                            "first_commodity":"{{ categoryList.first_commodity }}",
-                                            "second_commodity":"{{ categoryList.second_commodity }}",
-                                            "third_commodity":"{{ categoryList.third_commodity }}",
-                                            "original_price":"{{ product.selected_or_first_available_variant.compare_at_price }}",
-                                            "current_price":"{{ product.selected_or_first_available_variant.price }}"}'>
-                                        <input class="color-swatch__radio " type="radio" name="{{ option_name }}"
-                                            id="{{ color_id }}" value="{{ value | escape }}" 
-                                            {% if option.selected_value==value %}checked{% endif %}
-                                            data-option-position="{{ option.position }}"
-                                            data-variant-url="{{ variant_for_value.url }}"
-                                            {% if  variant_for_value.featured_media %}data-media-id="{{ variant_for_value.featured_media.id }}"
-                                            data-image-url="{{ image_url }}" 
-                                            data-image-widths="[{{ supported_sizes }}]"
-                                            data-image-aspect-ratio="{{ variant_for_value.featured_media.preview_image.aspect_ratio }}"
-                                            {% endif %} aria-label="{{ value | escape }}">
-                                        <label class="color-swatch__item" for="{{ color_id }}"
-                                            style="{% render 'color-swatch-style', color_swatch_config: color_swatch_config, value: downcased_value %}"
-                                            title="{{ value | escape }}">
-                                            <span class="visually-hidden">{{ value }}</span>
-                                            {%- render 'icon', icon: 'cross-sold-out' -%}
-                                        </label>
-                                    </div>
-                                    {%- endfor -%}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    {%- endif -%}
-                    {%- if name == "size" -%}
-                    <div class="product-wrapper_option" data-selector-type="block">
-                        <div class="product-wrapper-scoll">
-                            {% if collocationLocation != 'mini-cart-collcation' %}
-                            <span class="product-form__option-name text--strong  collocation-size-text">{{ option.name
-                                }}:  <span class="product-form__selected-value">{{ option.selected_value }}</span></span>
+                    {%- case name -%}
+                        {%- when "color" -%}
+                        <div class="product-wrapper_option" data-selector-type="color">
+                            <div class="product-wrapper-scoll">
+                                {%- assign color_swatch_config = settings.color_swatch_config | newline_to_br | split: '<br />' -%}
+                                {% if collocationLocation != 'mini-cart-collcation' %}
+                                <span class="product-form__option-name text--strong collocation-color-text">{{ option.name  }}:  <span class="product-form__selected-value">{{ option.selected_value }}</span></span>
                                 {% endif %}
-                            <div class="exhibition-item block-swatch-box">
-                                <div class="block-swatch-list d-flex block-layout">
-                                    {%- for value in option.values -%}
-                                    {%- capture block_swatch_id -%}{{ option_name }}-{{ forloop.index }}{%- endcapture -%}
-                                    <size-block data-cart_id="{{card_id}}" data-totalSize="{{option.values.size}}">
-                                        <div class="block-swatch" style="position:absolute">
-                                            <input class="block-swatch__radio " type="radio" name="{{ option_name }}"
-                                                id="{{ block_swatch_id }}" value="{{ value | escape }}" {% if
-                                                option.selected_value==value %}checked{% endif %}
-                                                data-option-position="{{ option.position }}">
-                                            <label class="block-swatch__item" for="{{ block_swatch_id }}"
+                                <div class="exhibition-item block-swatch-box ">
+                                    <div
+                                        class="color-swatch-list color-swatch-list--large ld-variant-list d-flex margin-0 padding-0 color-swatch-list-layout">
+                                        {%- for value in option.values -%}
+                                        {%- assign downcased_value = value | downcase -%}
+                                        {%- capture color_id -%}{{ option_name }}-{{ forloop.index }}{%- endcapture -%}
+    
+                                        {%- for variant in product.variants -%}
+                                        {%- if variant['option1'] == value -%}
+                                        {%- assign variant_for_value = variant -%}
+                                        {%- break -%}
+                                        {%- endif -%}
+                                        {%- endfor -%}
+    
+                                        {%- if variant_for_value.featured_media -%}
+                                        {%- capture supported_sizes -%}{%- render 'image-size', sizes:
+                                        '200,300,400,500,600,700,800', image: variant_for_value.featured_media.preview_image
+                                        -%}{%- endcapture -%}
+                                        {%- assign image_url = variant_for_value.featured_media | img_url: '1x1' | replace:
+                                        '_1x1.', '_{width}x.' -%}
+                                        {%- endif -%}
+                                        <div class="color-swatch {% if downcased_value == 'white' or downcased_value == 'blanc' %}color-swatch--white{% endif %} ld-variant"
+                                            data-scenable="1" data-sctype="collcation-valueChange" data-scdata='{"is_quick_view":1,
+                                                "commodity_spuid": "{{product.handle}}",
+                                                "currency_unit":"USD",
+                                                "commodity_name": "{{product.title | handleize }}",
+                                                "commodity_skuid":"{{ variant_for_value.sku }}",
+                                                "commodity_image_quantity":"{{product.images.size}}",
+                                                "commodity_description_text":["{{product.description | handleize }}"],
+                                                "commodity_description_image":["{{ product.featured_image | image_url | split: "?" | first  }}"],
+                                                "commodity_size":"",
+                                                "commodity_color":"",
+                                                "commodity_tag":"{{tags}}",
+                                                "commodity_type":"{{product.type | handleize}}",
+                                                "first_commodity":"{{ categoryList.first_commodity }}",
+                                                "second_commodity":"{{ categoryList.second_commodity }}",
+                                                "third_commodity":"{{ categoryList.third_commodity }}",
+                                                "original_price":"{{ product.selected_or_first_available_variant.compare_at_price }}",
+                                                "current_price":"{{ product.selected_or_first_available_variant.price }}"}'>
+                                            <input class="color-swatch__radio " type="radio" name="{{ option_name }}"
+                                                id="{{ color_id }}" value="{{ value | escape }}" 
+                                                {% if option.selected_value==value %}checked{% endif %}
+                                                data-option-position="{{ option.position }}"
+                                                data-variant-url="{{ variant_for_value.url }}"
+                                                {% if  variant_for_value.featured_media %}data-media-id="{{ variant_for_value.featured_media.id }}"
+                                                data-image-url="{{ image_url }}" 
+                                                data-image-widths="[{{ supported_sizes }}]"
+                                                data-image-aspect-ratio="{{ variant_for_value.featured_media.preview_image.aspect_ratio }}"
+                                                {% endif %} aria-label="{{ value | escape }}">
+                                            <label class="color-swatch__item" for="{{ color_id }}"
+                                                style="{% render 'color-swatch-style', color_swatch_config: color_swatch_config, value: downcased_value %}"
                                                 title="{{ value | escape }}">
-                                                <span class="block-swatch__item-text">{{ value }}</span>
+                                                <span class="visually-hidden">{{ value }}</span>
+                                                {%- render 'icon', icon: 'cross-sold-out' -%}
                                             </label>
                                         </div>
-                                    </size-block>
-                                    {%- endfor -%}
+                                        {%- endfor -%}
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
+                        {%- when "size" -%}
+                        <div class="product-wrapper_option" data-selector-type="block">
+                            <div class="product-wrapper-scoll">
+                                {% if collocationLocation != 'mini-cart-collcation' %}
+                                <span class="product-form__option-name text--strong  collocation-size-text">{{ option.name
+                                    }}:  <span class="product-form__selected-value">{{ option.selected_value }}</span></span>
+                                    {% endif %}
+                                <div class="exhibition-item block-swatch-box">
+                                    <div class="block-swatch-list d-flex block-layout">
+                                        {%- for value in option.values -%}
+                                        {%- capture block_swatch_id -%}{{ option_name }}-{{ forloop.index }}{%- endcapture -%}
+                                        <size-block data-cart_id="{{card_id}}" data-totalSize="{{option.values.size}}">
+                                            <div class="block-swatch" style="position:absolute">
+                                                <input class="block-swatch__radio " type="radio" name="{{ option_name }}"
+                                                    id="{{ block_swatch_id }}" value="{{ value | escape }}" {% if
+                                                    option.selected_value==value %}checked{% endif %}
+                                                    data-option-position="{{ option.position }}">
+                                                <label class="block-swatch__item" for="{{ block_swatch_id }}"
+                                                    title="{{ value | escape }}">
+                                                    <span class="block-swatch__item-text">{{ value }}</span>
+                                                </label>
+                                            </div>
+                                        </size-block>
+                                        {%- endfor -%}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {%- else -%}
+                        <div class="product-wrapper_option" data-selector-type="color">
+                                <div class="exhibition-item block-swatch-box ">
+                                    <div class="color-swatch-list color-swatch-list--large ld-variant-list d-flex margin-0 padding-0 color-swatch-list-layout">
+                                        {%- for value in option.values -%}
+                                        {%- assign downcased_value = value | downcase -%}
+                                        {%- capture color_id -%}jewelry-{{ forloop.index }}{%- endcapture -%}
+                                        {%- assign variant_for_value = product.variants[0] -%}
+                                        <div class="color-swatch {% if downcased_value == 'white' or downcased_value == 'blanc' %}color-swatch--white{% endif %} ld-variant"
+                                            data-scenable="1" data-sctype="collcation-valueChange" data-scdata='{"is_quick_view":1,
+                                                "commodity_spuid": "{{product.handle}}",
+                                                "currency_unit":"USD",
+                                                "commodity_name": "{{product.title | handleize }}",
+                                                "commodity_skuid":"{{ variant_for_value.sku }}",
+                                                "commodity_image_quantity":"{{product.images.size}}",
+                                                "commodity_description_text":["{{product.description | handleize }}"],
+                                                "commodity_description_image":["{{ product.featured_image | image_url | split: "?" | first  }}"],
+                                                "commodity_size":"",
+                                                "commodity_color":"{{variant_for_value.option1}}",
+                                                "commodity_tag":"{{tags}}",
+                                                "commodity_type":"{{product.type | handleize}}",
+                                                "first_commodity":"{{ categoryList.first_commodity }}",
+                                                "second_commodity":"{{ categoryList.second_commodity }}",
+                                                "third_commodity":"{{ categoryList.third_commodity }}",
+                                                "original_price":"{{ product.compare_at_price }}",
+                                                "current_price":"{{ product.price }}"}'>
+                                            <input class="color-swatch__radio " type="hidden" name="{{ option_name }}"
+                                                id="{{ color_id }}" value="{{ value | escape }}"  checked  >
+                                        </div>
 
-                    {%- endif -%}
+                                        {%- endfor -%}
+                                    </div>
+                            </div>
+                        </div>
+                    {%- endcase -%}
                     {%- endfor -%}
 
                 </div>

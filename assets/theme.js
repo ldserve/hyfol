@@ -42,7 +42,8 @@
           this.nextButton = this.querySelector('.nextButton')
           this.animationsflag = true //是否阻止动画
           this.that = this
-          this.purchaseList = document.querySelectorAll('.exhibition-right')
+          this.purchaseList = this.querySelectorAll('.exhibition-right')
+          this.contains=[]
           this.prevkeyframes = `
           @keyframes prevItem1{
                   0% { 
@@ -128,7 +129,6 @@
         bind(){
             this.bindClick()
         }
-
        
         bindClick(){
              if(this.prevButton){
@@ -156,7 +156,6 @@
                             }else{
                                 that.prevButton.style.display = "block"
                             }
-
                             if( that.activeIndex == that.scorllNum-1 ){
                                 that.nextButton.style.display = "none"
                             }else{
@@ -249,6 +248,9 @@
           }
       }
       collocationShence(contai){
+          // 事件只绑定一次
+        if(this.contains.indexOf(contai)!==-1)return
+        this.contains.push(contai)
         contai.querySelector('.ld-variant')&& new sadhus_shence({
             container: contai.querySelector('.ld-variant') ,
             type: "collcation-valueChange",
@@ -278,7 +280,6 @@
             super()
             this.init()
         }
-
         init() {
             this.root = this.querySelector('.product-block-wrapper')
             this.json = this.root.querySelector('[type="application/json"]')
@@ -300,7 +301,6 @@
                 this.formElement = formBox
             }
             this.addEven(this.options, this.json, this.formElement)
-            
             // 点击加购&点击预览
             const purchase = this.root.querySelector('.add-button')
             const root = this.root
@@ -376,7 +376,6 @@
                         this.currentVariant = productData.find(item => item.option1 === option1 && item.option2 === option2)
                         variantId.value = this.currentVariant.id;
                         selectedValueElement && (selectedValueElement.innerHTML = target.value)
-
                         if (target.classList.contains('color-swatch__radio')) {
                             const productItem = target.closest('.exhibition')
                             const variantUrl = target.getAttribute('data-variant-url');
