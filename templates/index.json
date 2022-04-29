@@ -7,8 +7,8 @@
           "type": "image",
           "settings": {
             "sensorsName": "",
-            "image": "shopify:\/\/shop_images\/c4dacfe72578ad3c7fa5553ba07188c0.jpg",
-            "mobile_image": "shopify:\/\/shop_images\/c28475f5e01489e3c359cf56832e111c.jpg",
+            "image": "shopify:\/\/shop_images\/c4dacfe72578ad3c7fa5553ba07188c0_dde8c096-28b9-4397-800b-2f3bf23d9cea.jpg",
+            "mobile_image": "shopify:\/\/shop_images\/c28475f5e01489e3c359cf56832e111c_a8be7ecf-a223-4834-a763-d428a82b22fe.jpg",
             "show_overlay": false,
             "overlay_opacity": 30,
             "text_color": "#ffffff",
@@ -31,7 +31,7 @@
           "type": "image",
           "settings": {
             "sensorsName": "轮播图",
-            "image": "shopify:\/\/shop_images\/bbf6e24a2c2607ad05e9f300f20e4624_31e12b6a-0fde-43ce-b548-b025d9357519.jpg",
+            "image": "shopify:\/\/shop_images\/bbf6e24a2c2607ad05e9f300f20e4624_bb1b77a0-3c34-483a-8395-4ead792b4faf.jpg",
             "mobile_image": "shopify:\/\/shop_images\/banner_d06ccb73-0077-401f-abf1-a4a2431e9759.jpg",
             "show_overlay": false,
             "overlay_opacity": 30,
