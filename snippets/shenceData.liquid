@@ -535,5 +535,34 @@ let clickSearch= new sadhus_shence({
 });
 {%- endif -%}
 
+   // 加购浏览
+      let purchaseList = document.querySelectorAll('.card__section .exhibition-right')
+      purchaseList && purchaseList.forEach(purchase => {
+         purchase.querySelector('.add-button') && new sadhus_shence({
+            container: purchase,
+            type: "collcation-addCart",
+            event: "click",
+            // debug: true,
+            sendType: "AddToCart",
+            customData: function (container, el) {
+               const newData = {}
+               const colorChecked = purchase.querySelector('.color-swatch__radio[checked]')
+               const sizeChecked = purchase.querySelector('.block-swatch__radio[checked]')
+               const jsonData = purchase.closest('.exhibition').querySelector('[type="application/json"]')
+               const data = JSON.parse(jsonData.innerHTML)
+               const spuId = "{{ product.handle }}"
+               newData.collocation_spuid = spuId ? spuId : "";
+               newData.commodity_color = colorChecked ? colorChecked.value : ""
+               newData.commodity_size = sizeChecked ? sizeChecked.value : ""
+               if(!colorChecked || !sizeChecked) return newData
+               const currentSku = data.find(i => i.option1 === colorChecked.value && i.option2 === sizeChecked.value).sku
+               newData.commodity_skuid = currentSku ? currentSku : "";
+               return newData
+            },
+            callback: (e, c) => {
+
+            }
+         })
+      })
 
 </script>
