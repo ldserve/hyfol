@@ -7,8 +7,8 @@
           "type": "image",
           "settings": {
             "sensorsName": "",
-            "image": "shopify:\/\/shop_images\/hyfol_-pc_-_banner_235f85fc-57ff-4ca2-9c9a-8ddfe69611a5.jpg",
-            "mobile_image": "shopify:\/\/shop_images\/hyfol_-_-_banner_d78a7a6d-c991-4f43-afb6-7e6ded64bdef.jpg",
+            "image": "shopify:\/\/shop_images\/c4dacfe72578ad3c7fa5553ba07188c0.jpg",
+            "mobile_image": "shopify:\/\/shop_images\/c28475f5e01489e3c359cf56832e111c.jpg",
             "show_overlay": false,
             "overlay_opacity": 30,
             "text_color": "#ffffff",
@@ -32,7 +32,7 @@
           "settings": {
             "sensorsName": "轮播图",
             "image": "shopify:\/\/shop_images\/bbf6e24a2c2607ad05e9f300f20e4624_31e12b6a-0fde-43ce-b548-b025d9357519.jpg",
-            "mobile_image": "shopify:\/\/shop_images\/hyfol_-_-_banner_21bd6656-2e3c-4e55-b173-ad0d5b1ca846.jpg",
+            "mobile_image": "shopify:\/\/shop_images\/banner_d06ccb73-0077-401f-abf1-a4a2431e9759.jpg",
             "show_overlay": false,
             "overlay_opacity": 30,
             "text_color": "#b82928",
