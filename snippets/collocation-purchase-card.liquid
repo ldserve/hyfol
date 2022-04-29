@@ -13,7 +13,6 @@
 {%- assign product_form_id = 'product_form_' | append: section.id | append: product.id -%}
 <collocation-purchase>
     <div class="product-block-wrapper" id="{{card_id}}">
-
         {%- form 'product', product, id: product_form_id, class: 'product-form' -%}
         {% if collocationLocation == "main-product-collocation"%}
         <h1 class="product-meta__title heading h1  collocation-product-meta__title">{{ product.title }}</h1>
@@ -222,7 +221,6 @@
                                             <input class="color-swatch__radio " type="hidden" name="{{ option_name }}"
                                                 id="{{ color_id }}" value="{{ value | escape }}"  checked  >
                                         </div>
-
                                         {%- endfor -%}
                                     </div>
                             </div>
@@ -234,14 +232,13 @@
                 <div class="margin-0 border-0 add-button">
                     {%- assign bonus_amount = 0 -%}
                     {% assign bonus_name = '' %}
-                    
                     {%- for line_item in cart.items -%}
                     {%- if forloop.index == 1 -%}
                     {%- assign cartSkuId = line_item.sku -%}
                     {%- else -%}
                     {%- assign cartSkuId = cartSkuId | append: "," | append: line_item.sku -%}
                     {%- endif -%}
-                    
+                
                     {% if line_item.sku == product.selected_or_first_available_variant.sku %}
                     {%- for discount_allocation in line_item.line_level_discount_allocations -%}
                     {% assign bonus_amount = discount_allocation.amount %}
@@ -249,51 +246,37 @@
                     {%- endfor -%}
                     {% endif %}
                     {%- endfor -%}
-
-                    {%- if product.template_suffix != 'contact' -%}
                     {%- if product.selected_or_first_available_variant.available -%}
-                    {%- if product.template_suffix == 'pre-order' -%}
-                    <button type="submit" class="product-form__add-button button button--primary"
-                        data-action="add-to-cart">{{ 'product.form.pre_order' | t }}</button>
-                    {%- else -%}
                     <button type="submit" class="button button--primary mini-cart-add__button" data-scenable="1"
                         data-sctype="collcation-addCart" data-scdata='{"is_quick_view":1,
-                        "commodity_spuid": "{{product.handle}}",
-                        "commodity_skuid":"{{ product.selected_or_first_available_variant.sku }}",
-                        "commodity_name": "{{product.title | handleize }}",
-                        "currency_unit":"USD",
-                        "commodity_size":"",
-                        "commodity_color":"",
-                        "commodity_image_quantity":"{{product.images.size}}",
-                        "commodity_description_text":["{{product.description | handleize }}"],
-                        "commodity_description_image":["{{ product.featured_image | image_url | split: "?" | first  }}"],
-                        "commodity_tag":"{{ tags }}",
-                        "commodity_type":"{{product.type | handleize}}",
-                        "original_price":"{{ product.selected_or_first_available_variant.compare_at_price }}",
-                        "current_price":"{{ product.selected_or_first_available_variant.price }}",
-                        "discount_price":"{{variant_for_value.compare_at_price}}",
-                        "compliment_commodities":{{ cartSkuId | split: ',' | json }},
-                        "commodity_quantity":1,
-                        "bonus_name":"{{bonus_name}}",
-                        "bonus_amount":{{bonus_amount}},
-                        "first_commodity":"{{ categoryList.first_commodity }}",
-                        "second_commodity":"{{ categoryList.second_commodity }}",
-                        "third_commodity":"{{ categoryList.third_commodity }}",
-                        "is_collocation_used":{%- if collocationLocation =="mini-cart-collcation" -%}0{%- else -%}1{%- endif -%},
-                        "collocation_spuid":"",
-                        "entrance":{%- if collocationLocation =="mini-cart-collcation" -%} "MiniCartPage_recommend_AddToCart" {%- else -%}"CommodityDetailPage_AddToCart" {%- endif -%}}' 
-                        data-action="add-to-cart" 
-                        data-purchase>{{ 'product.form.add_to_cart' | t }}</button>
-                    {%- endif -%}
+                                        "commodity_spuid": "{{product.handle}}",
+                                        "commodity_skuid":"{{ product.selected_or_first_available_variant.sku }}",
+                                        "commodity_name": "{{product.title | handleize }}",
+                                        "currency_unit":"USD",
+                                        "commodity_size":"",
+                                        "commodity_color":"",
+                                        "commodity_image_quantity":"{{product.images.size}}",
+                                        "commodity_description_text":["{{product.description | handleize }}"],
+                                        "commodity_description_image":["{{ product.featured_image | image_url | split: "?" | first  }}"],
+                                        "commodity_tag":"{{ tags }}",
+                                        "commodity_type":"{{product.type | handleize}}",
+                                        "original_price":"{{ product.selected_or_first_available_variant.compare_at_price }}",
+                                        "current_price":"{{ product.selected_or_first_available_variant.price }}",
+                                        "discount_price":"{{variant_for_value.compare_at_price}}",
+                                        "compliment_commodities":{{ cartSkuId | split: ' ,' | json }}, 
+                                        "commodity_quantity":1,
+                                        "bonus_name" :"{{bonus_name}}", 
+                                        "bonus_amount" :{{bonus_amount}}, 
+                                        "first_commodity" :"{{categoryList.first_commodity }}", 
+                                        "second_commodity" :"{{ categoryList.second_commodity }}", 
+                                        "third_commodity":"{{ categoryList.third_commodity }}", 
+                                        "is_collocation_used" :{%- if collocationLocation=="mini-cart-collcation" -%}0{%- else -%}1{%- endif -%}, 
+                                        "collocation_spuid" :"", "entrance" :{%- if collocationLocation=="mini-cart-collcation" -%} "MiniCartPage_recommend_AddToCart" {%- else -%}"CommodityDetailPage_AddToCart" {%- endif -%}}' 
+                                        data-action="add-to-cart" data-purchase>{{'product.form.add_to_cart' | t }}</button>
                     {%- else -%}
-                    <button type="submit" class="product-form__add-button button button--disabled" disabled>{{ 'product.form.sold_out' | t }}</button>
+                    <button type="submit" class="product-form__add-button button button--disabled" disabled>{{ 'product.form.sold_out' |  t }}</button>
                     {%- endif -%}
-                    {%- else -%}
-                    <a href="mailto:{{ shop.email }}" class="button button--primary">{{ 'product.form.contact_us' | t }}</a>
-                    {%- endif -%}
-
-                    <input type="hidden" name="id" data-sku="{{ selected_variant.sku }}"
-                        value="{{ selected_variant.id }}">
+                    <input type="hidden" name="id" data-sku="{{ selected_variant.sku }}" value="{{ selected_variant.id }}">
                     <input type="hidden" name="quantity" value="1">
                 </div>
             </div>

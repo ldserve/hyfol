@@ -6,274 +6,297 @@
 
     class SizeBlock extends HTMLElement {
         constructor() {
-          super();
-        this.card_id = this.getAttribute("data-cart_id")
-        this.totalSize = this.getAttribute('data-totalSize')
-        this.container = document.getElementById(this.card_id)
-        this.sum = 0
-        this.init()
+            super();
+            this.card_id = this.getAttribute("data-cart_id")
+            this.totalSize = this.getAttribute('data-totalSize')
+            this.container = document.getElementById(this.card_id)
+            this.sum = 0
+            this.init()
         }
-        init(){
-          
-            for(let i=0 ; i <this.totalSize ; i++){
-                if ( this.container != null){
+        init() {
+
+            for (let i = 0; i < this.totalSize; i++) {
+                if (this.container != null) {
                     var offsetWidth = this.container.getElementsByClassName("block-swatch__item")[i].offsetWidth
                     offsetWidth += 2
-                    this.container.getElementsByClassName("block-swatch")[i].style.left = this.sum +"px"
-                   this.sum +=  offsetWidth +2
+                    this.container.getElementsByClassName("block-swatch")[i].style.left = this.sum + "px"
+                    this.sum += offsetWidth + 2
                 }
-               // console.log(sum);
-           }
+                // console.log(sum);
+            }
         }
-        }
-        customElements.define("size-block", SizeBlock);
+    }
+    customElements.define("size-block", SizeBlock);
     class SliderShow extends HTMLElement {
         constructor() {
-          super();
-          this.collocationList = this.querySelector('.collocation-list')    //ul
-          this.collocationListItem = this.querySelector('.collocation-list-item')  //li
-          this.activeIndex = 0 ;//当前活跃index
-          this.firstLi = this.collocationList.firstElementChild //首尾节点
-          this.lastLi = this.collocationList.lastElementChild
-          this.scrollDot = this.querySelector(".scroll-dot")//小点
-          this.lis = this.scrollDot.getElementsByTagName("li")
-          this.scorllNum = this.getAttribute("data-collocationNum") //商品数量
-          this.prevButton = this.querySelector('.prevButton')
-          this.nextButton = this.querySelector('.nextButton')
-          this.animationsflag = true //是否阻止动画
-          this.that = this
-          this.purchaseList = this.querySelectorAll('.exhibition-right')
-          this.contains=[]
-          this.prevkeyframes = `
+            super();
+            this.collocationList = this.querySelector('.collocation-list')    //ul
+            this.collocationListItem = this.querySelector('.collocation-list-item')  //li
+            this.activeIndex = 0;//当前活跃index
+            this.firstLi = this.collocationList.firstElementChild //首尾节点
+            this.lastLi = this.collocationList.lastElementChild
+            this.scrollDot = this.querySelector(".scroll-dot")//小点
+            this.lis = this.scrollDot.getElementsByTagName("li")
+            this.scorllNum = this.getAttribute("data-collocationNum") //商品数量
+            this.prevButton = this.querySelector('.prevButton')
+            this.nextButton = this.querySelector('.nextButton')
+            this.animationsflag = true //是否阻止动画
+            this.that = this
+            this.purchaseList = this.querySelectorAll('.exhibition-right')
+            this.contains = []
+            this.prevkeyframes = `
           @keyframes prevItem1{
                   0% { 
-                    -webkit-transform: translate(-${this.scorllNum*100}% ,0%);
-                      transform:  translate(-${this.scorllNum*100}% ,0%); 
+                    -webkit-transform: translate(-${this.scorllNum * 100}% ,0%);
+                      transform:  translate(-${this.scorllNum * 100}% ,0%); 
                     }
                   100% { 
-                    -webkit-transform: translate(-${(this.scorllNum-1)*100}%,0%);
-                      transform:  translate(-${(this.scorllNum-1)*100}%,0%);
+                    -webkit-transform: translate(-${(this.scorllNum - 1) * 100}%,0%);
+                      transform:  translate(-${(this.scorllNum - 1) * 100}%,0%);
                     }
               }
 
          @keyframes prevItem2{
                   0% {
-                    -webkit-translate(-${this.scorllNum*100}% ,0%);  
-                       transform:  translate(-${this.scorllNum*100}% ,0%);  
+                    -webkit-translate(-${this.scorllNum * 100}% ,0%);  
+                       transform:  translate(-${this.scorllNum * 100}% ,0%);  
                     }
                     
                   100% {
-                    -webkit-translate(-${(this.scorllNum-1)*100}%,0%); 
-                      transform:  translate(-${(this.scorllNum-1)*100}%,0%);
+                    -webkit-translate(-${(this.scorllNum - 1) * 100}%,0%); 
+                      transform:  translate(-${(this.scorllNum - 1) * 100}%,0%);
                 }
               }
           `
-          this.init()
+            this.init()
         }
-        init(){
-            if(this.activeIndex == 0 ){
-                this.prevButton && (this.prevButton.style.display= "none")
-            }else{
-                this.prevButton.style.display= "block"
+        init() {
+            if (this.activeIndex == 0) {
+                this.prevButton && (this.prevButton.style.display = "none")
+            } else {
+                this.prevButton.style.display = "block"
             }
 
-        var that = this
-          var startx,movex,endx,nx;
-          const style = document.createElement("style");
-          style.type = "text/css";
-          style.innerHTML = this.prevkeyframes;
-          document.getElementsByTagName('head')[0].appendChild(style)
-          this.bind()
-         
-           this.lis[this.activeIndex].className = "scroll-dot__active-li"
-           //监听动画开始和结束
-           this.collocationList.addEventListener("animationstart", this.animationStart)
-           this.collocationList.addEventListener("transitionstart", this.animationStart)
-           this.collocationList.addEventListener("animationend", this.animationEnd)
-           this.collocationList.addEventListener("transitionend", this.animationEnd)
+            var that = this
+            var startx, movex, endx, nx;
+            const style = document.createElement("style");
+            style.type = "text/css";
+            style.innerHTML = this.prevkeyframes;
+            document.getElementsByTagName('head')[0].appendChild(style)
+            this.bind()
 
-           this.collocationList.addEventListener('touchstart',function(event){
-            if (event.target.closest('.color-swatch') == null && event.target.closest('.block-swatch') == null  ){
-                if ( event.target.closest('.product-item__image-wrapper') == null  && event.target.closest('.mini-cart-add__button') == null) {
-                    event.preventDefault();//阻止浏览器默认滚动事件
-                 }
-                var touch = event.touches[0]   
-                startx = Math.floor(touch.pageX)
-                return startx
-              
-            }
-           });
-           this.collocationList.addEventListener('touchend',function(event){
-            if (event.target.closest('.color-swatch') == null && event.target.closest('.block-swatch') == null){
-             if ( event.target.closest('.product-item__image-wrapper'  == null && event.target.closest('.mini-cart-add__button') == null)) {
-                event.preventDefault();//阻止浏览器默认滚动事件
-             }
-                      endx = Math.floor(event.changedTouches[0].pageX);//获取最后的坐标位置
-                      nx = endx-startx;//获取开始位置和离开位置的距离
-                      console.log(nx , endx);
-                      //判断滑动方向
-                      if(nx > 0){
-                        if (that.activeIndex != 0){
-                           that.prevItem()
+            this.lis[this.activeIndex].className = "scroll-dot__active-li"
+            //监听动画开始和结束
+            this.collocationList.addEventListener("animationstart", this.animationStart)
+            this.collocationList.addEventListener("transitionstart", this.animationStart)
+            this.collocationList.addEventListener("animationend", this.animationEnd)
+            this.collocationList.addEventListener("transitionend", this.animationEnd)
+
+            this.collocationList.addEventListener('touchstart', function (event) {
+                if (event.target.closest('.color-swatch') == null && event.target.closest('.block-swatch') == null) {
+                    if (event.target.closest('.product-item__image-wrapper') == null && event.target.closest('.mini-cart-add__button') == null) {
+                        event.preventDefault();//阻止浏览器默认滚动事件
+                    }
+                    var touch = event.touches[0]
+                    startx = Math.floor(touch.pageX)
+                    return startx
+
+                }
+            });
+            this.collocationList.addEventListener('touchend', function (event) {
+                if (event.target.closest('.color-swatch') == null && event.target.closest('.block-swatch') == null) {
+                    if (event.target.closest('.product-item__image-wrapper' == null && event.target.closest('.mini-cart-add__button') == null)) {
+                        event.preventDefault();//阻止浏览器默认滚动事件
+                    }
+                    endx = Math.floor(event.changedTouches[0].pageX);//获取最后的坐标位置
+                    nx = endx - startx;//获取开始位置和离开位置的距离
+                    console.log(nx, endx);
+                    //判断滑动方向
+                    if (nx > 0) {
+                        if (that.activeIndex != 0) {
+                            that.prevItem()
                         }
-                       return false;
-                     }else if(nx <0){
-                       if (that.activeIndex != that.scorllNum-1){
-                        that.nextItem()
-                       }
-                     }
+                        return false;
+                    } else if (nx < 0) {
+                        if (that.activeIndex != that.scorllNum - 1) {
+                            that.nextItem()
+                        }
+                    }
 
-              }
-           });
+                }
+            });
+            this.bindShence()
         }
-        bind(){
+        bind() {
             this.bindClick()
         }
-       
-        bindClick(){
-             if(this.prevButton){
-                 this.prevButton.onclick = () =>{
+
+        bindClick() {
+            if (this.prevButton) {
+                this.prevButton.onclick = () => {
                     this.prevItem()
-                    this.purchaseList[this.activeIndex]&&this.collocationShence(this.purchaseList[this.activeIndex])
-                 }
-             }
-             if(this.nextButton){
-                this.nextButton.onclick = () =>{
-                   this.nextItem()
-                   this.purchaseList[this.activeIndex]&&this.collocationShence(this.purchaseList[this.activeIndex])
+                    this.purchaseList[this.activeIndex] && this.collocationShence(this.purchaseList[this.activeIndex])
                 }
             }
-            if(this.lis){
-                 const that = this
-                for(let i=0 ; i<this.lis.length ;i++){
+            if (this.nextButton) {
+                this.nextButton.onclick = () => {
+                    this.nextItem()
+                    this.purchaseList[this.activeIndex] && this.collocationShence(this.purchaseList[this.activeIndex])
+                }
+            }
+            if (this.lis) {
+                const that = this
+                for (let i = 0; i < this.lis.length; i++) {
                     this.lis[i].index = i
-                    this.lis[i].onclick = function(){
+                    this.lis[i].onclick = function () {
                         let index = this.index
-                        if(that.animationsflag){
+                        if (that.animationsflag) {
                             that.activeIndex = this.index
-                            if( that.activeIndex == 0 ){
+                            if (that.activeIndex == 0) {
                                 that.prevButton.style.display = "none"
-                            }else{
+                            } else {
                                 that.prevButton.style.display = "block"
                             }
-                            if( that.activeIndex == that.scorllNum-1 ){
+                            if (that.activeIndex == that.scorllNum - 1) {
                                 that.nextButton.style.display = "none"
-                            }else{
+                            } else {
                                 that.nextButton.style.display = "block"
                             }
-                                   for( let i=0 ; i< that.lis.length ;i++){
-                                    that.lis[i].className= ""
-                                   }
-                                   that.purchaseList[that.activeIndex]&&that.collocationShence(that.purchaseList[that.activeIndex])
-                                   that.lis[that.activeIndex].className = "scroll-dot__active-li"
-                                   that.firstLi.style.left = "0%"
-                                   that.lastLi.style.left = (that.scorllNum-1)*100+"%"
-                                   that.collocationList.style.transform = `translate( -${that.activeIndex*100}% , 0px )`;  
-                                  }
-                   }
-                   }
-              
+                            for (let i = 0; i < that.lis.length; i++) {
+                                that.lis[i].className = ""
+                            }
+                            that.purchaseList[that.activeIndex] && that.collocationShence(that.purchaseList[that.activeIndex])
+                            that.lis[that.activeIndex].className = "scroll-dot__active-li"
+                            that.firstLi.style.left = "0%"
+                            that.lastLi.style.left = (that.scorllNum - 1) * 100 + "%"
+                            that.collocationList.style.transform = `translate( -${that.activeIndex * 100}% , 0px )`;
+                        }
+                    }
+                }
+
             }
 
         }
-        animationStart = () =>{
+        animationStart = () => {
             this.animationsflag = false
         }
 
-        animationEnd = () =>{
-            this.animationsflag= true
+        animationEnd = () => {
+            this.animationsflag = true
         }
-        prevItem(){
+        prevItem() {
             this.nextButton.style.display = "block"
-             if(this.animationsflag){
-               if(this.activeIndex == 0){
-                this.activeIndex = this.scorllNum -1
-                // this.lastLi.style.left = (this.scorllNum-1)*100+"%"
-                // this. firstLi.style.left = this.scorllNum*100+"%"
-     
-                //  if(this.collocationList.className == "collocation-list prevItem1"){
-                //     this.collocationList.className = "collocation-list prevItem2"
-                //  }else{
-                //     this.collocationList.className = "collocation-list prevItem1"
-                //  }
-     
-               }else{
-                this.activeIndex -= 1
-                if( this.activeIndex == 0 ){
-                    this.prevButton.style.display = "none"
-                }else{
-                    this.prevButton.style.display = "block"
-                }
-                this.firstLi.style.left = "0%"
-                this.lastLi.style.left = (this.scorllNum-1)*100+"%"
-               }
-               this.collocationList.style.transform = `translate( -${this.activeIndex*100}% , 0px )`;
-               for(let i=0 ; i<this.lis.length ;i++){
-                this.lis[i].className= ""
-              }
-              this.lis[this.activeIndex].className = "scroll-dot__active-li"
-             }
-         }
+            if (this.animationsflag) {
+                if (this.activeIndex == 0) {
+                    this.activeIndex = this.scorllNum - 1
+                    // this.lastLi.style.left = (this.scorllNum-1)*100+"%"
+                    // this. firstLi.style.left = this.scorllNum*100+"%"
 
-         nextItem(){
-             this.prevButton.style.display = "block"
-            if(this.animationsflag){
-            if(this.activeIndex == this.scorllNum-1){
-                this.activeIndex = 0
-            //     this. firstLi.style.left = "0%"
-            //     this.lastLi.style.left = "-100%"
-  
-            // if(this.collocationList.className == "collocation-list nextItem1"){
-            //     this.collocationList.className = "collocation-list nextItem2"
-            // }else{
-            //     this.collocationList.className = "collocation-list nextItem1"
-            // }
-  
-            }else{
-                this.activeIndex += 1
-                if( this.activeIndex == this.scorllNum-1 ){
-                    this.nextButton.style.display = "none"
-                }else{
-                    this.nextButton.style.display = "block"
+                    //  if(this.collocationList.className == "collocation-list prevItem1"){
+                    //     this.collocationList.className = "collocation-list prevItem2"
+                    //  }else{
+                    //     this.collocationList.className = "collocation-list prevItem1"
+                    //  }
+
+                } else {
+                    this.activeIndex -= 1
+                    if (this.activeIndex == 0) {
+                        this.prevButton.style.display = "none"
+                    } else {
+                        this.prevButton.style.display = "block"
+                    }
+                    this.firstLi.style.left = "0%"
+                    this.lastLi.style.left = (this.scorllNum - 1) * 100 + "%"
+                }
+                this.collocationList.style.transform = `translate( -${this.activeIndex * 100}% , 0px )`;
+                for (let i = 0; i < this.lis.length; i++) {
+                    this.lis[i].className = ""
+                }
+                this.lis[this.activeIndex].className = "scroll-dot__active-li"
+            }
+        }
+
+        nextItem() {
+            this.prevButton.style.display = "block"
+            if (this.animationsflag) {
+                if (this.activeIndex == this.scorllNum - 1) {
+                    this.activeIndex = 0
+                    //     this. firstLi.style.left = "0%"
+                    //     this.lastLi.style.left = "-100%"
+
+                    // if(this.collocationList.className == "collocation-list nextItem1"){
+                    //     this.collocationList.className = "collocation-list nextItem2"
+                    // }else{
+                    //     this.collocationList.className = "collocation-list nextItem1"
+                    // }
+
+                } else {
+                    this.activeIndex += 1
+                    if (this.activeIndex == this.scorllNum - 1) {
+                        this.nextButton.style.display = "none"
+                    } else {
+                        this.nextButton.style.display = "block"
+
+                    }
+                    this.firstLi.style.left = "0%"
+                    this.lastLi.style.left = (this.scorllNum - 1) * 100 + "%"
+                }
+                this.collocationList.style.transform = `translate( -${this.activeIndex * 100}% , 0px )`;
+                for (let i = 0; i < this.lis.length; i++) {
+                    this.lis[i].className = ""
+                }
+                this.lis[this.activeIndex].className = "scroll-dot__active-li"
+            }
+        }
+        // 神策
+        collocationShence(contai) {
+            // 事件只绑定一次
+            if (this.contains.indexOf(contai) !== -1) return
+            this.contains.push(contai)
+            contai.querySelector('.ld-variant') && new sadhus_shence({
+                container: contai.querySelector('.ld-variant'),
+                type: "collcation-valueChange",
+                event: "sync",
+                // debug: true,
+                sendType: "CommodityDetail",
+                customData: function (container, el) {
+                    const newData = {}
+                    const colorChecked = contai.querySelector('.color-swatch__radio[checked]')
+                    const sizeChecked = contai.querySelector('.block-swatch__radio[checked]')
+                    newData.commodity_color = colorChecked ? colorChecked.value : ""
+                    newData.commodity_size = sizeChecked ? sizeChecked.value : ""
+                    newData.site_category = getSiteCategory()
+                    return newData
+                },
+                callback: () => {
 
                 }
-                this.firstLi.style.left = "0%"
-                this.lastLi.style.left = (this.scorllNum-1)*100+"%"
-            }
-            this.collocationList.style.transform = `translate( -${this.activeIndex*100}% , 0px )`;
-            for( let i=0 ; i<this.lis.length ;i++){
-                this.lis[i].className= ""
-           }
-           this.lis[this.activeIndex].className = "scroll-dot__active-li"
-          }
-      }
-      collocationShence(contai){
-          // 事件只绑定一次
-        if(this.contains.indexOf(contai)!==-1)return
-        this.contains.push(contai)
-        contai.querySelector('.ld-variant')&& new sadhus_shence({
-            container: contai.querySelector('.ld-variant') ,
-            type: "collcation-valueChange",
-            event: "sync",
-            // debug: true,
-            sendType: "CommodityDetail",
-            customData: function (container, el) {
-               const newData = {}
-               const colorChecked = contai.querySelector('.color-swatch__radio[checked]')
-               const sizeChecked = contai.querySelector('.block-swatch__radio[checked]')
-               newData.commodity_color = colorChecked ? colorChecked.value : ""
-               newData.commodity_size = sizeChecked ? sizeChecked.value : ""
-               newData.site_category = getSiteCategory()
-               return newData
-            },
-            callback: () => {
-   
-            }
-         })
-      }
-    
-      }
-      customElements.define("slide-show", SliderShow);
+            })
+        }
+        bindShence() {
+            let purchase = this.purchaseList[0]
+            purchase && purchase.querySelector('.ld-variant') && new sadhus_shence({
+                container: purchase.querySelector('.ld-variant'),
+                type: "collcation-valueChange",
+                event: "load",
+                // debug: true,
+                sendType: "CommodityDetail",
+                customData: function (container, el) {
+                    const newData = {}
+                    const colorChecked = purchase.querySelector('.color-swatch__radio[checked]')
+                    const sizeChecked = purchase.querySelector('.block-swatch__radio[checked]')
+                    newData.commodity_color = colorChecked ? colorChecked.value : ""
+                    newData.commodity_size = sizeChecked ? sizeChecked.value : ""
+                    newData.site_category = getSiteCategory()
+                    return newData
+                },
+                callback: () => {
+
+                }
+            })
+        }
+    }
+    customElements.define("slide-show", SliderShow);
 
     class CollocationPurchase extends HTMLElement {
         constructor() {
@@ -300,55 +323,9 @@
                 this.root.append(formBox)
                 this.formElement = formBox
             }
+
             this.addEven(this.options, this.json, this.formElement)
-            // 点击加购&点击预览
-            const purchase = this.root.querySelector('.add-button')
-            const root = this.root
-            const jsonData = JSON.parse(this.json.innerHTML)
-            this.miniCart && purchase && new sadhus_shence({
-                container: purchase,
-                type: "collcation-addCart",
-                event: "click",
-                // debug: true,
-                sendType: "AddToCart",
-                customData: function (container, el) {
-                    let newData = {}
-                    const colorChecked = root.querySelector('.color-swatch__radio[checked]');
-                    const sizeChecked = root.querySelector('.block-swatch__radio[checked]')
-                    const currentChecked = jsonData.find(item => item.option1 === colorChecked.value && item.option2 === sizeChecked.value)
-                    newData.commodity_skuid = currentChecked.sku
-                    newData.commodity_color = colorChecked ? colorChecked.value : ""
-                    newData.commodity_size = sizeChecked ? sizeChecked.value : ""
-                    return newData
-                },
-                callback: (e, c) => {
-
-                }
-            })
-            const colorList = root.querySelector(".ld-variant-list")
-            colorList && new sadhus_shence({
-                container: colorList,
-                type: "collcation-valueChange",
-                event: "click",
-                // debug: true,
-                sendType: "CommodityDetail",
-                delayed: true,
-                delayTime: 300,
-                customData: function (container, el) {
-                    let newData = {}
-                    const colorChecked = root.querySelector('.color-swatch__radio[checked]');
-                    const sizeChecked = root.querySelector('.block-swatch__radio[checked]')
-                    const currentChecked = jsonData.find(item => item.option1 === colorChecked.value && item.option2 === sizeChecked.value)
-                    newData.commodity_skuid = currentChecked.sku
-                    newData.commodity_color = colorChecked ? colorChecked.value : ""
-                    newData.commodity_size = sizeChecked ? sizeChecked.value : ""
-                    newData.site_category = getSiteCategory()
-                    return newData
-                },
-                callback: () => {
-
-                }
-            })
+            this.bindShence()
         }
 
         addEven(options, json, formElement) {
@@ -463,6 +440,56 @@
                     })
                 })
             }
+        }
+        bindShence() {
+            // 点击加购&点击预览
+            const purchase = this.root.querySelector('.add-button')
+            const root = this.root
+            const jsonData = JSON.parse(this.json.innerHTML)
+            this.miniCart && purchase && new sadhus_shence({
+                container: purchase,
+                type: "collcation-addCart",
+                event: "click",
+                // debug: true,
+                sendType: "AddToCart",
+                customData: function (container, el) {
+                    let newData = {}
+                    const colorChecked = root.querySelector('.color-swatch__radio[checked]');
+                    const sizeChecked = root.querySelector('.block-swatch__radio[checked]')
+                    const currentChecked = jsonData.find(item => item.option1 === colorChecked.value && item.option2 === sizeChecked.value)
+                    newData.commodity_skuid = currentChecked.sku
+                    newData.commodity_color = colorChecked ? colorChecked.value : ""
+                    newData.commodity_size = sizeChecked ? sizeChecked.value : ""
+                    return newData
+                },
+                callback: (e, c) => {
+
+                }
+            })
+            const colorList = root.querySelector(".ld-variant-list")
+            colorList && new sadhus_shence({
+                container: colorList,
+                type: "collcation-valueChange",
+                event: "click",
+                // debug: true,
+                sendType: "CommodityDetail",
+                delayed: true,
+                delayTime: 300,
+                customData: function (container, el) {
+                    let newData = {}
+                    const colorChecked = root.querySelector('.color-swatch__radio[checked]');
+                    const sizeChecked = root.querySelector('.block-swatch__radio[checked]')
+                    const currentChecked = jsonData.find(item => item.option1 === colorChecked.value && item.option2 === sizeChecked.value)
+                    newData.commodity_skuid = currentChecked.sku
+                    newData.commodity_color = colorChecked ? colorChecked.value : ""
+                    newData.commodity_size = sizeChecked ? sizeChecked.value : ""
+                    newData.site_category = getSiteCategory()
+                    return newData
+                },
+                callback: () => {
+
+                }
+            })
         }
     }
     customElements.define("collocation-purchase", CollocationPurchase);
