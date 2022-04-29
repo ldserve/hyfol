@@ -14,7 +14,7 @@
         "type": "text",
         "id": "collocation_spus",
         "label": "请输入搭配商品spu",
-        "info":"spu用逗号隔开 格式如：sp220420c1yo,sp211119ulk5,sp211204asg2" 
+        "info": "spu用逗号隔开 格式如：sp220420c1yo,sp211119ulk5,sp211204asg2"
       }
     ]
   },
@@ -25,7 +25,7 @@
         "type": "richtext",
         "id": "full_reduction",
         "label": "满减信息",
-        "info":"活动信息用逗号隔开 格式如： 5% OFF 2 PIECES,10% OFF 3 PIECES 第一位是折扣，第三位是数量" 
+        "info": "活动信息用逗号隔开 格式如： 5% OFF 2 PIECES,10% OFF 3 PIECES 第一位是折扣，第三位是数量"
       }
     ]
   },
