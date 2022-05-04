@@ -248,7 +248,6 @@
                 this.lis[this.activeIndex].className = "scroll-dot__active-li"
             }
         }
-        // 神策
         collocationShence(contai) {
             // 事件只绑定一次
             if (this.contains.indexOf(contai) !== -1) return
