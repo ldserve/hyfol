@@ -456,10 +456,11 @@
                     let newData = {}
                     const colorChecked = root.querySelector('.color-swatch__radio[checked]');
                     const sizeChecked = root.querySelector('.block-swatch__radio[checked]')
-                    const currentChecked = jsonData.find(item => item.option1 === colorChecked.value && item.option2 === sizeChecked.value)
-                    newData.commodity_skuid = currentChecked.sku
                     newData.commodity_color = colorChecked ? colorChecked.value : ""
                     newData.commodity_size = sizeChecked ? sizeChecked.value : ""
+                    if(!colorChecked || !sizeChecked)return newData
+                    const currentChecked = jsonData.find(item => item.option1 === colorChecked.value && item.option2 === sizeChecked.value)
+                    currentChecked && (newData.commodity_skuid = currentChecked.sku)
                     return newData
                 },
                 callback: (e, c) => {

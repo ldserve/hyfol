@@ -227,7 +227,39 @@
                         </div>
                     {%- endcase -%}
                     {%- endfor -%}
-
+                    {%- if product.options_with_values.size==1 and name=="size" -%}
+                    <div class="product-wrapper_option" data-selector-type="color">
+                        <div class="exhibition-item block-swatch-box ">
+                            <div class="color-swatch-list color-swatch-list--large ld-variant-list d-flex margin-0 padding-0 color-swatch-list-layout">
+                                {%- assign value = product.options_with_values[0].values[0] -%}
+                                {%- assign downcased_value = value | downcase -%}
+                                {%- capture color_id -%}jewelry-{{ forloop.index }}{%- endcapture -%}
+                                {%- assign variant_for_value = product.variants[0] -%}
+                                <div class="color-swatch {% if downcased_value == 'white' or downcased_value == 'blanc' %}color-swatch--white{% endif %} ld-variant"
+                                    data-scenable="1" data-sctype="collcation-valueChange" data-scdata='{"is_quick_view":1,
+                                        "commodity_spuid": "{{product.handle}}",
+                                        "currency_unit":"USD",
+                                        "commodity_name": "{{product.title | handleize }}",
+                                        "commodity_skuid":"{{ variant_for_value.sku }}",
+                                        "commodity_image_quantity":"{{product.images.size}}",
+                                        "commodity_description_text":["{{product.description | handleize }}"],
+                                        "commodity_description_image":["{{ product.featured_image | image_url | split: "?" | first  }}"],
+                                        "commodity_size":"",
+                                        "commodity_color":"",
+                                        "commodity_tag":"{{tags}}",
+                                        "commodity_type":"{{product.type | handleize}}",
+                                        "first_commodity":"{{ categoryList.first_commodity }}",
+                                        "second_commodity":"{{ categoryList.second_commodity }}",
+                                        "third_commodity":"{{ categoryList.third_commodity }}",
+                                        "original_price":"{{ product.compare_at_price }}",
+                                        "current_price":"{{ product.price }}"}'>
+                                    <input class="color-swatch__radio " type="hidden" name="{{ option_name }}"
+                                        id="{{ color_id }}" value=""  checked  >
+                                </div>
+                            </div>
+                    </div>
+                </div>
+                    {%- endif -%}
                 </div>
                 <div class="margin-0 border-0 add-button">
                     {%- assign bonus_amount = 0 -%}
