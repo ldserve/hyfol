@@ -3334,7 +3334,7 @@ img.lazyload[data-sizes=auto] {
 ,.mini-cart-collcation .money{
   height: 15px;
   font-size: 15px;
-  font-weight: 600;
+  font-weight: 500;
   margin-bottom: 0px;
 }
 .mini-cart-collcation .ks-chart-container.sizing-chart-container.ks-container-with-modal{
@@ -3372,6 +3372,7 @@ display: none;
 }
 .main-product-collocation .money {
   font-size: 20px;
+  font-weight: 500;
 }
 .main-product-collocation .nextButton{
   transform: translate(100%,-50%);
