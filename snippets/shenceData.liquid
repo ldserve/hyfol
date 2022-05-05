@@ -557,9 +557,6 @@ let clickSearch= new sadhus_shence({
                const currentSku = data.find(i => i.option1 === colorChecked.value && i.option2 === sizeChecked.value).sku
                newData.commodity_skuid = currentSku ? currentSku : "";
                return newData
-            },
-            callback: (e, c) => {
-
             }
          })
       })

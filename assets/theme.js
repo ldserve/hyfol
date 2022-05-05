@@ -266,9 +266,6 @@
                     newData.commodity_size = sizeChecked ? sizeChecked.value : ""
                     newData.site_category = getSiteCategory()
                     return newData
-                },
-                callback: () => {
-
                 }
             })
         }
@@ -288,9 +285,6 @@
                     newData.commodity_size = sizeChecked ? sizeChecked.value : ""
                     newData.site_category = getSiteCategory()
                     return newData
-                },
-                callback: () => {
-
                 }
             })
         }
@@ -328,9 +322,9 @@
         }
 
         addEven(options, json, formElement) {
-            var productData = JSON.parse(json.innerHTML)
+            const productData = JSON.parse(json.innerHTML)
             options.forEach(option => {
-                var checkeds = option.querySelectorAll('input[type="radio"]')
+                const checkeds = option.querySelectorAll('input[type="radio"]')
                 option.addEventListener('click', (ev) => {
                     if (ev.target.tagName === "INPUT") {
                         const target = ev.target
@@ -357,7 +351,6 @@
                             const variantUrl = target.getAttribute('data-variant-url');
                             productItem.querySelector('.product-item__image-wrapper').setAttribute('href', variantUrl);
                             const originalImageElement = productItem.querySelector('.product-item__primary-image');
-
                             if (target.hasAttribute('data-image-url') && target.getAttribute('data-media-id') !== originalImageElement.getAttribute('data-media-id')) {
                                 var newImageElement = document.createElement('img');
                                 newImageElement.className = 'product-item__primary-image lazyload image--fade-in';
@@ -370,35 +363,26 @@
                             }
                         }
 
-                        if (false) {
-                            var scoll = (option.querySelector('.color-swatch-list') || option.querySelector('.block-swatch-list'))
-                            var contentScrollW = option.querySelector('.exhibition-item').offsetWidth
-                            var currentItem = (option.querySelectorAll('.color-swatch') || option.querySelectorAll('.block-swatch'))
-                            var inputItem = [...option.querySelectorAll('[type="radio"]')]
-                            var index = inputItem.indexOf(target)
-                            var middle = contentScrollW / 2
-                            var offsetLeft = 0
+                        // if (true) {
+                            const scoll = option.querySelector('.block-swatch-box')
+                            const contentScrollW = option.querySelector('.exhibition-item').offsetWidth
+                            const currentItem = option.querySelectorAll('.scroll__item')
+                            const inputItem = [...option.querySelectorAll('[type="radio"]')]
+                            const index = inputItem.indexOf(target)
+                            const middle = contentScrollW / 2
+                            let offsetLeft = 0
+                            const scrollWidth = scoll.scrollWidth
                             for (let i = 0; i < index; i++) {
                                 offsetLeft += currentItem[i].offsetWidth
-                                var style = window.getComputedStyle(currentItem[i])
+                                let style = window.getComputedStyle(currentItem[i])
                                 offsetLeft += (style.marginLeft.replace('px', '') * 1 + style.marginRight.replace('px', '') * 1)
                             }
-
-                            if (offsetLeft > middle) {
-                                var style = window.getComputedStyle(currentItem[index])
-                                var width = (currentItem[index].offsetWidth) + (style.marginLeft.replace('px', '') * 1 + style.marginRight.replace('px', '') * 1)
-                                var scrollLeft = Math.ceil(offsetLeft - middle + width / 2);
-                                scoll.style.transform = `translateX(-${scrollLeft}px)`
-
-                                // console.log('scrollLeft',scrollLeft,'length',inputItem.length,'index',index);
-                                // console.log('contentScrollW',contentScrollW,'offsetLeft',offsetLeft);
-                                // var TouchBottom = 
-
-                            } else {
-                                scoll.style.transform = `translateX(0px)`
-                            }
-                            console.log(scoll);
-                        }
+                                let style = window.getComputedStyle(currentItem[index])
+                                let width = (currentItem[index].offsetWidth) + (style.marginLeft.replace('px', '') * 1 + style.marginRight.replace('px', '') * 1)
+                                let scrollLeft = Math.ceil(offsetLeft - middle + width / 2);
+                                const currentScrollX=scoll.scrollLeft
+                                scoll.scroll(scrollLeft, 0)
+                        // }
                     }
 
                 })
@@ -461,9 +445,6 @@
                     const currentChecked = jsonData.find(item => item.option1 === colorChecked.value && item.option2 === sizeChecked.value)
                     currentChecked && (newData.commodity_skuid = currentChecked.sku)
                     return newData
-                },
-                callback: (e, c) => {
-
                 }
             })
             const colorList = root.querySelector(".ld-variant-list")
@@ -485,9 +466,6 @@
                     newData.commodity_size = sizeChecked ? sizeChecked.value : ""
                     newData.site_category = getSiteCategory()
                     return newData
-                },
-                callback: () => {
-
                 }
             })
         }

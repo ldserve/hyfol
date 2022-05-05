@@ -124,7 +124,7 @@
                                         {%- assign image_url = variant_for_value.featured_media | img_url: '1x1' | replace:
                                         '_1x1.', '_{width}x.' -%}
                                         {%- endif -%}
-                                        <div class="color-swatch {% if downcased_value == 'white' or downcased_value == 'blanc' %}color-swatch--white{% endif %} ld-variant"
+                                        <div class="color-swatch {% if downcased_value == 'white' or downcased_value == 'blanc' %}color-swatch--white{% endif %} ld-variant scroll__item"
                                             data-scenable="1" data-sctype="collcation-valueChange" data-scdata='{"is_quick_view":1,
                                                 "commodity_spuid": "{{product.handle}}",
                                                 "currency_unit":"USD",
@@ -176,7 +176,7 @@
                                         {%- for value in option.values -%}
                                         {%- capture block_swatch_id -%}{{ option_name }}-{{ forloop.index }}{%- endcapture -%}
                                         <size-block data-cart_id="{{card_id}}" data-totalSize="{{option.values.size}}">
-                                            <div class="block-swatch" style="position:absolute">
+                                            <div class="block-swatch scroll__item" style="position:absolute">
                                                 <input class="block-swatch__radio " type="radio" name="{{ option_name }}"
                                                     id="{{ block_swatch_id }}" value="{{ value | escape }}" {% if
                                                     option.selected_value==value %}checked{% endif %}
