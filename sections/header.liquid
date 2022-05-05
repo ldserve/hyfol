@@ -380,20 +380,16 @@
 									<span class="icon-state__primary">{%- render 'icon', icon: 'account' -%}</span>
 									<span class="icon-state__secondary">{%- render 'icon', icon: 'close' -%}</span>
 								</a>
-
+					
 								<a href="{% if customer %}{{ routes.account_url }}{% else %}{{ routes.account_login_url }}{% endif %}"
 									 class="header__action-item-link hidden-pocket hidden-lap shence_commodityView"
 									 {% if customer %}aria-controls="account-popover" aria-expanded="false"
 									 data-action="toggle-popover"{% endif %} data-scenable="1" data-expenable="1" data-bindexp="1"
 									 data-sctype="mktClick"
 									 data-scdata='{"mkt_type":"bar","first_mkt_name":"顶部导航","first_mkt_id":"{{ section.id }}","second_mkt_rank":"","third_mkt_rank":"","mkt_material_url":"","mkt_material_name":"账号","commodity_spuid":"","commodity_skuid":"","commodity_name":"","original_price":"","current_price":"","currency_unit":"","mkt_tag":[]}'>
-									{%- if customer -%}
-										{{ 'header.general.account' | t }} {% render 'icon', icon: 'arrow-bottom' %}
-									{%- else -%}
-										{%- render 'icon', icon: 'account' -%}
-									{%- endif -%}
+								{%- render 'icon', icon: 'account' -%}
 								</a>
-
+								
 								<div id="account-popover"
 										 class="popover {% if customer %}popover--logged{% else %}popover--large popover--unlogged{% endif %}"
 										 aria-hidden="true">
