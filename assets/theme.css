@@ -3446,8 +3446,8 @@ display: none;
   font-weight: 600;
 }
 
-.shipping-bar-font-size{
-  font-size: 10px !important;
+.shipping-bar-top{
+  font-size: 14px !important;
 }
 
 .mini-cart__discount {
@@ -15690,4 +15690,8 @@ justify-content: space-between;
   margin-bottom: 0px;
   top: 0px !important;
 
+}
+
+.mini_cart_free_shipping{
+  font-weight: 500 ;
 }
