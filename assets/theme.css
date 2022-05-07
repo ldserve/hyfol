@@ -12020,9 +12020,12 @@ shopify-payment-terms {
 }
 
 .slideshow .flickity-page-dots {
-  bottom: -25px;
+  bottom: 12px;
 }
-
+.slideshow .flickity-page-dots .dot {
+  width: 10px;
+  height: 10px;
+}
 /** Overlay variation **/
 .slideshow__slide--overlay::before {
   position: absolute;
