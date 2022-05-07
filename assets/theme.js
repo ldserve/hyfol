@@ -1743,10 +1743,18 @@
                         }
                     });
                 }
-
-                var menuToOpen = Dom.getSiblings(target, '[aria-hidden]')[0];
-
+                var navItem=target.closest('.nav-bar__item')
+                var menuToOpen = navItem.querySelector('[aria-hidden]');
+                var navList=_this3.element.querySelectorAll('.nav-bar__item')
+                // var menuToOpen = Dom.getSiblings(target, '[aria-hidden]')[0];
                 var callback = function callback() {
+                    navList.forEach(item => {
+                        item.classList.remove('is-dropdown-open')
+                        var temp1 = item.querySelector('[aria-expanded="true"]')
+                        temp1 && temp1.setAttribute('aria-expanded', 'false')
+                        var temp2 = item.querySelector('[aria-hidden="false"]')
+                        temp2 && temp2.setAttribute('aria-hidden', 'true')
+                    })
                     target.setAttribute('aria-expanded', 'true');
                     target.parentNode.classList.add('is-dropdown-open');
                     menuToOpen.setAttribute('aria-hidden', 'false'); // If this menu was scheduled for deactivation, we remove the scheduling as it is now meant to open
@@ -1817,7 +1825,6 @@
                 if (this.openTrigger === 'hover' && target.contains(event.relatedTarget)) {
                     return;
                 }
-
                 var menuToClose = target.querySelector('[aria-hidden]');
 
                 var callback = function callback() {
@@ -2625,13 +2632,18 @@
                 } else {
                     // We need to restrict the height
                     this._calculateMaxHeight();
-
                     document.body.classList.add('no-mobile-scroll');
                 }
             }
         }, {
             key: "_openPanel",
             value: function _openPanel(event, target) {
+                if(target.getAttribute('aria-expanded')==='true'){
+                    var panelToClose = target.closest('.mobile-menu__nav-item')
+                    panelToClose.querySelector('#'.concat(target.getAttribute('aria-controls'))).classList.remove('is-open')
+                    target.setAttribute('aria-expanded', 'false');
+                    return
+                }
                 target.setAttribute('aria-expanded', 'true');
                 this.element.querySelector("#".concat(target.getAttribute('aria-controls'))).classList.add('is-open');
             }
