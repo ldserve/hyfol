@@ -48,23 +48,64 @@
         }
       {% endstyle %}
       <div class="shipping-bar">
-        <div class="shipping-bar-font-size">
+        <div class="shipping-bar-top">
           {%- if settings.cart_show_free_shipping_threshold -%}
           {%- assign threshold_in_cents = settings.cart_free_shipping_threshold | times: 100 -%}
           {%- if cart.total_price >= threshold_in_cents -%}
-            <p class="page__description d-inline-block" style="margin: 0!important;font-weight: 600;">{{ 'cart.general.free_shipping' | t }}</p>
+            <span class="page__description d-inline-block" style="margin: 0!important;font-weight: 500;">{{ 'cart.general.free_shipping' | t }}</span>
           {%- else -%}
             {%- capture remaining_amount -%}<span><span class="wh-original-cart-total"><span
                   class='wh-original-price  mini-car-font'>{{ cart.total_price | minus: threshold_in_cents | abs | money }}</span></span><span
                 class="wh-cart-total"></span><div class="additional-notes d-inline-block"><span
                   class="wh-minimums-note"></span><span class="wh-extra-note"></span></div></span>{%- endcapture -%}
-            <p
-              class="page__description d-inline-block">{{ 'cart.general.free_shipping_remaining_html' | t: remaining_amount: remaining_amount }}</p>
+            <span
+              class="page__description d-inline-block mini_cart_free_shipping">{{ 'cart.general.free_shipping_remaining_html' | t: remaining_amount: remaining_amount }}</span>
           {%- endif -%}
         {%- endif -%}
         </div>
+
+   
+
         <div class="shipping-progress-bar">
              <div class="progress-now"></div>
+        </div>
+
+        <div class="mini-cart-promotion-text">
+               {%- comment -%}活动信息展示{%- endcomment -%}
+        {% assign allTag = null %}
+        {%- for line_item in cart.items -%}
+            {% assign everyTag = allTag | concat: line_item.product.tags %}
+            {% assign allTag = everyTag  %}
+        {% endfor %}
+        {% assign everyTagString =  everyTag | join:" "%}
+      {% if  everyTagString contains "促销" or everyTagString contains "Nopromotion" %}
+        {%- comment -%}
+        <div>包含促销信息或不参加全场活动</div>
+        {%- endcomment -%}
+        {% else %}
+        {% assign  discountArr = full_reduction  | split: ',' %}
+        <div class="mini-car-discount-text">
+                {% assign lastdiscountItem = discountArr.last %}
+                {% assign lastcount = lastdiscountItem | split: ' ' %}
+                {% assign lastNum = lastcount[2] |abs %} 
+  
+          {% for discountItem in discountArr %}
+                {% assign count = discountItem | split: ' ' %}
+                {% assign num = count[2] |abs %} 
+                 {% if num > cart.item_count %}
+                  <div class="mini-cart-get__discount"> {% render 'icon' , icon:"lightning" %}BUY  {{ num | minus: cartNum  }} MORE AND GET <span class="mini-car-discount-percentage">{{ count[0]}} {{ count[1]}}</span> </div>
+                  {% break %}
+                  <div></div>
+                  {% endif %}
+         {% endfor %}
+                  {% if cart.item_count >= lastNum %}
+                {%- comment -%}
+                <div class="mini-cart-get__discount"> {% render 'icon' , icon:"lightning" %} {{lastdiscountItem}} </div>
+                {%- endcomment -%}  
+                
+                  {%endif%}
+        </div>
+      {%endif%}
         </div>
      </div>
 
@@ -339,42 +380,7 @@
     </div>
 {% endif %}
     <div class="mini-cart__recap">
-      {% assign allTag = null %}
-      {%- for line_item in cart.items -%}
-          {% assign everyTag = allTag | concat: line_item.product.tags %}
-          {% assign allTag = everyTag  %}
-      {% endfor %}
-      {% assign everyTagString =  everyTag | join:" "%}
-    {% if  everyTagString contains "促销" or everyTagString contains "Nopromotion" %}
-      {%- comment -%}
-      <div>包含促销信息或不参加全场活动</div>
-      {%- endcomment -%}
-      {% else %}
-      {% assign  discountArr = full_reduction  | split: ',' %}
-      <div class="mini-car-discount-text">
-              {% assign lastdiscountItem = discountArr.last %}
-              {% assign lastcount = lastdiscountItem | split: ' ' %}
-              {% assign lastNum = lastcount[2] |abs %} 
-
-        {% for discountItem in discountArr %}
-              {% assign count = discountItem | split: ' ' %}
-              {% assign num = count[2] |abs %} 
-               {% if num > cart.item_count %}
-                <div class="mini-cart-get__discount"> {% render 'icon' , icon:"lightning" %}BUY  {{ num | minus: cartNum  }} MORE AND GET <span class="mini-car-discount-percentage">{{ count[0]}} {{ count[1]}}</span> </div>
-                {% break %}
-                <div></div>
-                {% endif %}
-       {% endfor %}
-                {% if cart.item_count >= lastNum %}
-              {%- comment -%}
-              <div class="mini-cart-get__discount"> {% render 'icon' , icon:"lightning" %} {{lastdiscountItem}} </div>
-              {%- endcomment -%}  
-              
-                {%endif%}
-      </div>
-    {%endif%}
-    
-      
+  
       {%- comment -%}
       {% render 'car-bar'%}
       {%- if cart.cart_level_discount_applications != blank -%}

@@ -3,6 +3,30 @@
     "1650101273f11a55ef": {
       "type": "slideshow",
       "blocks": {
+        "1650101273ef0886ca-0": {
+          "type": "image",
+          "settings": {
+            "sensorsName": "轮播图",
+            "image": "shopify:\/\/shop_images\/banner_0d06747b-cc02-4c21-9c14-468a2c32d6a9.jpg",
+            "mobile_image": "shopify:\/\/shop_images\/banner_562d0bc4-a4ba-4c1d-81fb-66d58a5f9bb4.jpg",
+            "show_overlay": false,
+            "overlay_opacity": 30,
+            "text_color": "#b82928",
+            "title": "",
+            "heading_text_font": "abril_fatface_n4",
+            "heading_text_font_size": 49,
+            "heading_text_color": "#eb0e0e",
+            "content": "",
+            "content_text_font": "dosis_n4",
+            "content_text_font_size": 25,
+            "content_text_color": "#ffffff",
+            "content_position": "top_center",
+            "button_background": "#ffffff",
+            "button_text_color": "#000000",
+            "button_text": "",
+            "link": "shopify:\/\/collections\/促销-choose-2-for-35-9"
+          }
+        },
         "1650101273ef0886ca-1": {
           "type": "image",
           "settings": {
@@ -25,30 +49,6 @@
             "button_text_color": "#000000",
             "button_text": "",
             "link": "shopify:\/\/collections\/memorial-day-sale"
-          }
-        },
-        "1650101273ef0886ca-0": {
-          "type": "image",
-          "settings": {
-            "sensorsName": "轮播图",
-            "image": "shopify:\/\/shop_images\/bbf6e24a2c2607ad05e9f300f20e4624_bb1b77a0-3c34-483a-8395-4ead792b4faf.jpg",
-            "mobile_image": "shopify:\/\/shop_images\/banner_d06ccb73-0077-401f-abf1-a4a2431e9759.jpg",
-            "show_overlay": false,
-            "overlay_opacity": 30,
-            "text_color": "#b82928",
-            "title": "",
-            "heading_text_font": "abril_fatface_n4",
-            "heading_text_font_size": 49,
-            "heading_text_color": "#eb0e0e",
-            "content": "",
-            "content_text_font": "dosis_n4",
-            "content_text_font_size": 25,
-            "content_text_color": "#ffffff",
-            "content_position": "top_center",
-            "button_background": "#ffffff",
-            "button_text_color": "#000000",
-            "button_text": "",
-            "link": "shopify:\/\/collections\/women"
           }
         },
         "28572d9f-8700-4893-990e-c3b4bf1e7821": {
@@ -76,8 +76,8 @@
         }
       },
       "block_order": [
-        "1650101273ef0886ca-1",
         "1650101273ef0886ca-0",
+        "1650101273ef0886ca-1",
         "28572d9f-8700-4893-990e-c3b4bf1e7821"
       ],
       "settings": {
@@ -358,9 +358,9 @@
       "type": "no_space_img",
       "settings": {
         "sensorsName": "",
-        "bg_image": "shopify:\/\/shop_images\/2_88db9f20-af1e-47a4-ba92-eb953d62d7d1.jpg",
-        "web_bg_image": "shopify:\/\/shop_images\/3_0d3f91ce-b51d-4735-9b84-69c702c1fd01.jpg",
-        "link": "shopify:\/\/collections\/buy-1-get-2nd-50off-mens-shorts",
+        "bg_image": "shopify:\/\/shop_images\/ed5cb826d8e8739c768f6080bc88f97a.jpg",
+        "web_bg_image": "shopify:\/\/shop_images\/7e6c0994b597e0d1f2f64ddfb57015eb.jpg",
+        "link": "shopify:\/\/collections\/women",
         "shadow": false
       }
     },
