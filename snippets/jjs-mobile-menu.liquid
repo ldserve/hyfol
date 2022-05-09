@@ -11,11 +11,11 @@
             <li class="mobile-menu__nav-item">
               {%- if link.links != blank -%}
                 {%- capture panel_id -%}mobile-panel-{{ forloop.index0 }}{%- endcapture -%}
-                <button class="mobile-menu__nav-link" data-type="menuitem" aria-haspopup="true" aria-expanded="false" aria-controls="{{ panel_id }}" data-action="open-panel">
+                <button class="mobile-menu__nav-link  nav-bar-link__mobile data-type="menuitem" aria-haspopup="true" aria-expanded="false" aria-controls="{{ panel_id }}" data-action="open-panel">
                   {{- link.title -}} {%- render 'icon', icon: 'arrow-right' -%}
                 </button>
               {%- else -%}
-                <a href="{{ link.url }}" class="mobile-menu__nav-link shence_commodityView" 
+                <a href="{{ link.url }}" class="mobile-menu__nav-link shence_commodityView nav-bar-link__mobile 
                 data-type="menuitem"  data-scenable="1" data-expenable="1" data-bindexp="1" 
                 data-sctype="mktClick" data-scdata='{"mkt_type":"bar",
                 "first_mkt_name":"顶部导航",

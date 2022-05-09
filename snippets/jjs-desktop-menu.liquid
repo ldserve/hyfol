@@ -20,8 +20,8 @@
 {%- if is_floating == false and is_mega_menu -%}
 {%- render 'mega-menu', is_floating: is_floating, mega_menu: menu, index: index -%}
 {%- else -%}
+
 <div class="nav-exhibition " aria-hidden="true">
-  
   {%- for block in section.blocks -%}
   {%- if block.settings.link_name==menu.title -%}
   {%- assign config = block.settings -%}
@@ -34,7 +34,7 @@
     <a href="{{menu.url }}" class="nav-bar__imglink" style="width:100%;">
       <img class="" 
         alt="{{ config.image_url.alt | default: shop.name | escape }}"
-        src="{{ config.image_url | img_url: '300x' }}"
+        src="{{ config.image_url | img_url: '200x' }}"
         >
     </a>
   </div>

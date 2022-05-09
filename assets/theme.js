@@ -1748,23 +1748,25 @@
                 var navList=_this3.element.querySelectorAll('.nav-bar__item')
                 // var menuToOpen = Dom.getSiblings(target, '[aria-hidden]')[0];
                 var callback = function callback() {
-                    navList.forEach(item => {
-                        item.classList.remove('is-dropdown-open')
-                        var temp1 = item.querySelector('[aria-expanded="true"]')
-                        temp1 && temp1.setAttribute('aria-expanded', 'false')
-                        var temp2 = item.querySelector('[aria-hidden="false"]')
-                        temp2 && temp2.setAttribute('aria-hidden', 'true')
-                    })
-                    target.setAttribute('aria-expanded', 'true');
-                    target.parentNode.classList.add('is-dropdown-open');
-                    menuToOpen.setAttribute('aria-hidden', 'false'); // If this menu was scheduled for deactivation, we remove the scheduling as it is now meant to open
+                   if(!target.closest('.is-dropdown-open')){
+                       target.children[0].classList.add('nav-bar-item__top')
+                       navList.forEach(item => {
+                           item.classList.remove('is-dropdown-open')
+                           var temp1 = item.querySelector('[aria-expanded="true"]')
+                           temp1 && temp1.setAttribute('aria-expanded', 'false')
+                           var temp2 = item.querySelector('[aria-hidden="false"]')
+                           temp2 && temp2.setAttribute('aria-hidden', 'true')
+                       })
+                       target.setAttribute('aria-expanded', 'true');
+                       target.parentNode.classList.add('is-dropdown-open');
+                       menuToOpen.setAttribute('aria-hidden', 'false'); // If this menu was scheduled for deactivation, we remove the scheduling as it is now meant to open
+                   }
 
                     if (_this3.openTrigger === 'hover' && _this3.dropdownDeactivationTimeouts[menuToOpen.id]) {
                         clearTimeout(_this3.dropdownDeactivationTimeouts[menuToOpen.id]);
                         delete _this3.dropdownDeactivationTimeouts[menuToOpen.id];
                     } // If we are in inline navigation, we may be on the edge of the screen. If that's the case we check if any of the sub-sub-menu goes outside the screen. If
                     // this is the case, sub-sub-menu will be displayed on the left
-
 
                     if (_this3.useInlineNavigation) {
                         var windowWidth = window.innerWidth,
@@ -1820,17 +1822,19 @@
             key: "_deactivateDropdown",
             value: function _deactivateDropdown(event, target) {
                 var _this4 = this;
-
                 // event.relatedTarget is the new target. This allows to make sure to only close the dropdown if we leave the containing div
                 if (this.openTrigger === 'hover' && target.contains(event.relatedTarget)) {
                     return;
                 }
                 var menuToClose = target.querySelector('[aria-hidden]');
-
+                var svgItem =target.querySelector('.nav-bar-item__top')
+                svgItem&&svgItem.classList.remove('nav-bar-item__top')
+                
                 var callback = function callback() {
                     target.classList.remove('is-dropdown-open');
                     target.querySelector('[data-type="menuitem"]').setAttribute('aria-expanded', 'false');
                     var menuToClose = target.querySelector('[aria-hidden]');
+                   
                     menuToClose.setAttribute('aria-hidden', 'true');
                     target.closest('[data-type="menu"]').classList.remove('nav-dropdown--glued'); // If on click, we also close all sub-menus that may be open
 

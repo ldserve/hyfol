@@ -89,7 +89,7 @@
 
 				{%- comment -%}---------------导航菜单---------------{%- endcomment -%}
 				{%- if section.settings.desktop_navigation_layout == 'inline' and navigation_menu.links.size > 0 -%}
-					<nav class="nav-bar cjj-category clearposition" >
+					<nav class="nav-bar cjj-category clearposition jjs-nav-bar" >
 						{%- comment -%}---------------logo组件---------------{%- endcomment -%}
 						{%- capture header_logo -%}
 							<a href="{{ routes.root_url }}" class="header__logo-link shence_commodityView" data-scenable="1"
@@ -116,7 +116,7 @@
 							<div class="header__logo">{{ header_logo }}</div>
 						{%- endif -%}
 						<div class="nav-bar__inner clearposition">
-							<ul class="nav-bar__linklist list--unstyled clearposition" data-type="menu" role="list">
+							<ul class="nav-bar__linklist list--unstyled clearposition jjs-nav-bar" data-type="menu" role="list">
 								{%- for link in navigation_menu.links -%}
 									<li class="nav-bar__item clearposition">
 										{%- if link.links.size == 0 -%}
@@ -143,7 +143,9 @@
 											{%- render 'jjs-desktop-menu', menu: link, index: index, menuindex: forloop.index -%}
 										{%- endif -%}
 									</li>
-								
+								{% if forloop.last !=true %}
+									<span class="nav-bar_line"></span>
+								{% endif %}
 								{%- endfor -%}
 							</ul>
 						</div>
