@@ -31,8 +31,8 @@
           "type": "image",
           "settings": {
             "sensorsName": "",
-            "image": "shopify:\/\/shop_images\/c4dacfe72578ad3c7fa5553ba07188c0_dde8c096-28b9-4397-800b-2f3bf23d9cea.jpg",
-            "mobile_image": "shopify:\/\/shop_images\/c28475f5e01489e3c359cf56832e111c_ff0d29d8-e760-42bf-b35e-04eb71c31f7b.jpg",
+            "image": "shopify:\/\/shop_images\/78f533ba629a7a586b29aefc68f6195f.jpg",
+            "mobile_image": "shopify:\/\/shop_images\/78f533ba629a7a586b29aefc68f6195f_176cf0c8-3abc-43f2-82ac-7882c84203cd.jpg",
             "show_overlay": false,
             "overlay_opacity": 30,
             "text_color": "#ffffff",
@@ -356,6 +356,7 @@
     },
     "1650021168ea57a101": {
       "type": "no_space_img",
+      "disabled": true,
       "settings": {
         "sensorsName": "",
         "bg_image": "shopify:\/\/shop_images\/ed5cb826d8e8739c768f6080bc88f97a.jpg",
