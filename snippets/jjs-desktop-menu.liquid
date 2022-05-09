@@ -30,14 +30,11 @@
   {%- endfor -%}
 
   {%- if config.link_name == menu.title -%}
-  <div class="nav-bar__image" >
-    <a href="{{menu.url }}" class="nav-bar__imglink" style="width:100%;">
-      <img class="" 
-        alt="{{ config.image_url.alt | default: shop.name | escape }}"
-        src="{{ config.image_url | img_url: '200x' }}"
-        >
-    </a>
-  </div>
+  <div class="nav-bar__image" style="width:200px;">
+  {%- capture supported_sizes -%}{%- render 'image-size', sizes: '200,300,400,500', image: config.image_url -%}{%- endcapture -%}
+  {%- assign image_url = config.image_url | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+   <img class="lazyload " alt="{{ config.image_url.alt | escape }}" data-src="{{ image_url }}" data-widths="[{{ supported_sizes }}]" data-sizes="auto">
+  </div> 
 
   {%- endif -%}
   {%- comment -%}
