@@ -356,6 +356,7 @@
     },
     "1650021168ea57a101": {
       "type": "no_space_img",
+      "disabled": true,
       "settings": {
         "sensorsName": "",
         "bg_image": "shopify:\/\/shop_images\/ed5cb826d8e8739c768f6080bc88f97a.jpg",
