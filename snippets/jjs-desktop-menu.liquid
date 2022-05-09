@@ -30,15 +30,13 @@
   {%- endfor -%}
 
   {%- if config.link_name == menu.title -%}
-  <div class="nav-bar__image" style="width:200px;">
+  <div class="nav-bar__image" style="width: 15%;">
   {%- capture supported_sizes -%}{%- render 'image-size', sizes: '200,300,400,500', image: config.image_url -%}{%- endcapture -%}
   {%- assign image_url = config.image_url | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
    <img class="lazyload " alt="{{ config.image_url.alt | escape }}" data-src="{{ image_url }}" data-widths="[{{ supported_sizes }}]" data-sizes="auto">
   </div> 
 
   {%- endif -%}
-  {%- comment -%}
-  {%- endcomment -%}
   <ul id="{{ index }}"
     class="nav-dropdown clearborder {% if is_floating %}nav-dropdown--floating {% if mega_menus.size > 0 %}nav-dropdown--fixed {% endif %}{% elsif menu.levels == 1 %}nav-dropdown--restrict{% endif %} clearposition d-flex"
     data-type="menu" role="list" data-expenable="1">
