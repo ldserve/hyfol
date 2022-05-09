@@ -23,21 +23,19 @@
 <div class="nav-exhibition " aria-hidden="true">
   
   {%- for block in section.blocks -%}
-  {%- if block.type=="link_list" -%}
+  {%- if block.settings.link_name==menu.title -%}
   {%- assign config = block.settings -%}
   {%- break -%}
   {%- endif -%}
   {%- endfor -%}
+
   {%- if config.link_name == menu.title -%}
-  {%- capture supported_sizes -%}{%- render 'image-size', sizes: '200,300,400,500,600,700,800',
-  image: config.image_url -%}{%- endcapture -%}
   <div class="nav-bar__image" >
     <a href="{{menu.url }}" class="nav-bar__imglink" style="width:100%;">
       <img class="" 
-      width="200"
-      height="150"
-        src="{{ config.image_url | img_url: supported_sizes}}"
-        alt="{{ config.image_url.alt | default: shop.name | escape }}">
+        alt="{{ config.image_url.alt | default: shop.name | escape }}"
+        src="{{ config.image_url | img_url: '300x' }}"
+        >
     </a>
   </div>
 

@@ -80,16 +80,16 @@
 				{%- endcapture -%}
 				{%- comment -%}---------------logo渲染---------------{%- endcomment -%}
 				{%- if request.page_type == 'index' -%}
-					<h1 class="header__logo">{{ header_logo }}</h1>
+					<h1 class="header__logo" style="width:9.6%;">{{ header_logo }}</h1>
 				{%- else -%}
-					<div class="header__logo">{{ header_logo }}</div>
+					<div class="header__logo" style="width:9.6%;">{{ header_logo }}</div>
 				{%- endif -%}
 
 				{%- comment -%}---------------头部菜单---------------{%- endcomment -%}
 
 				{%- comment -%}---------------导航菜单---------------{%- endcomment -%}
 				{%- if section.settings.desktop_navigation_layout == 'inline' and navigation_menu.links.size > 0 -%}
-					<nav class="nav-bar cjj-category clearposition" style="transform: translateX(72px)">
+					<nav class="nav-bar cjj-category clearposition" >
 						{%- comment -%}---------------logo组件---------------{%- endcomment -%}
 						{%- capture header_logo -%}
 							<a href="{{ routes.root_url }}" class="header__logo-link shence_commodityView" data-scenable="1"
@@ -143,6 +143,7 @@
 											{%- render 'jjs-desktop-menu', menu: link, index: index, menuindex: forloop.index -%}
 										{%- endif -%}
 									</li>
+								
 								{%- endfor -%}
 							</ul>
 						</div>
