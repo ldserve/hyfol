@@ -93,6 +93,7 @@
         "blocks": {
           "e29a6dae-562e-4f7f-b60a-3d53dc58a1a1": {
             "type": "mega_menu",
+            "disabled": true,
             "settings": {
               "menu_item": "Thits",
               "image_1": "shopify:\/\/shop_images\/gxl_60a56557-6540-4aaf-a258-2723ac110003.jpg",
@@ -104,10 +105,66 @@
               "image_2_text": "Tell your story",
               "image_2_link": "shopify:\/\/collections\/bottoms"
             }
+          },
+          "26c0ffdb-23bf-4f51-ba05-101aa1495bbb": {
+            "type": "mega_menu",
+            "settings": {
+              "menu_item": "MEN",
+              "image_1": "shopify:\/\/shop_images\/man.jpg",
+              "image_1_heading": "Your image",
+              "image_1_text": "Tell your story",
+              "image_1_link": "",
+              "image_2_heading": "Your image",
+              "image_2_text": "Tell your story",
+              "image_2_link": ""
+            }
+          },
+          "4013f948-3a31-43a5-8d4d-7bb4e481d12b": {
+            "type": "mega_menu",
+            "settings": {
+              "menu_item": "WOMEN",
+              "image_1": "shopify:\/\/shop_images\/woman.jpg",
+              "image_1_heading": "Your image",
+              "image_1_text": "Tell your story",
+              "image_1_link": "",
+              "image_2_heading": "Your image",
+              "image_2_text": "Tell your story",
+              "image_2_link": ""
+            }
+          },
+          "9468c34e-2cac-40fc-9a22-6f6b687f193f": {
+            "type": "mega_menu",
+            "settings": {
+              "menu_item": "ACCESSORIES",
+              "image_1": "shopify:\/\/shop_images\/a3fc56de88e92fa768808e0770f582cf.jpg",
+              "image_1_heading": "Your image",
+              "image_1_text": "Tell your story",
+              "image_1_link": "",
+              "image_2_heading": "Your image",
+              "image_2_text": "Tell your story",
+              "image_2_link": ""
+            }
+          },
+          "b332b7e2-d82c-497f-b7ce-428ee928f16e": {
+            "type": "mega_menu",
+            "settings": {
+              "menu_item": "SALE",
+              "image_1": "shopify:\/\/shop_images\/SALE.jpg",
+              "image_1_heading": "Your image",
+              "image_1_text": "Tell your story",
+              "image_1_link": "",
+              "image_2_heading": "Your image",
+              "image_2_text": "Tell your story",
+              "image_2_link": ""
+            }
           }
         },
         "block_order": [
-          "e29a6dae-562e-4f7f-b60a-3d53dc58a1a1"
+          "e29a6dae-562e-4f7f-b60a-3d53dc58a1a1",
+          "26c0ffdb-23bf-4f51-ba05-101aa1495bbb",
+          "4013f948-3a31-43a5-8d4d-7bb4e481d12b",
+          "9468c34e-2cac-40fc-9a22-6f6b687f193f",
+          "b332b7e2-d82c-497f-b7ce-428ee928f16e"
         ],
         "settings": {
           "enable_sticky_header": true,
