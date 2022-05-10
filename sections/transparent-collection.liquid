@@ -13,20 +13,6 @@
     width: 0 !important
   }
 
-  #shopify-section-{{ section.id }} .point-item {
-    display: inline-block;
-    width: 6px;
-    height: 6px;
-    border: 1px solid #000;
-    border-radius: 50%;
-    margin: 0 3px;
-    background: #FFFFFF;
-  }
-
-  #shopify-section-{{ section.id }} .point-item--active {
-    background: #000;
-  }
-
 </style>
 <section class="section" data-section-id="{{ section.id }}" data-section-type="featured-collection"
 				 data-section-settings='{{ section_settings }}'>
@@ -119,9 +105,6 @@
 				<div class="scroller">
 					<div class="scroller__inner">
 						{{ product_list }}
-					</div>
-					<div class="page-point section--text-centered">
-
 					</div>
 				</div>
 			{%- else -%}
