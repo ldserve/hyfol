@@ -15766,7 +15766,7 @@ justify-content: space-between;
 .nav-bar_line {
   position: relative;
   display: inline-block;
-  height: 12px;
+  height: 14px;
   bottom: -2px;
   border-right: 1px solid #fff;
 }
