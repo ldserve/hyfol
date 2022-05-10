@@ -15751,7 +15751,9 @@ justify-content: space-between;
 .jjs-mobile-menu .mobile-menu__nav-item .is-open{
   height: auto;
 }
-
+.jjs-nav-bar{
+  font-size: 0;
+}
 .jjs-nav-bar .nav-bar-item__top{
   transform: rotate(180deg);
   transition: transform .3s;
