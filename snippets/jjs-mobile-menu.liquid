@@ -28,7 +28,7 @@
                 "current_price":"","currency_unit":"",
                 "mkt_tag":[]}'>{{ link.title }}</a>
               {%- endif -%}
-            <!-- ----------+++++++++---------- -->
+           {%- comment -%}{%- endcomment -%}
               {%- assign menuindex =  forloop.index -%}
                 {%- if link.links != blank -%}
                   {%- capture panel_id -%}mobile-panel-{{ forloop.index0 }}{%- endcapture -%}
@@ -207,12 +207,6 @@
                           <div id="{{ panel_id }}" class="mobile-menu__panel ">
                             <div class="mobile-menu__section open-view"  style="padding-bottom: 0;">
                               <ul class="mobile-menu__nav" data-type="menu" role="list">
-                                {%- comment -%}
-                                <li class="mobile-menu__nav-item">
-                                  <a href="{{ sub_link.url }}" class="mobile-menu__nav-link text--strong">{{ sub_link.title }}</a>
-                                </li>
-                                {%- endcomment -%}
-                          
                                 {%- for sub_sub_link in sub_link.links -%}
                                 <li class="mobile-menu__nav-item">
                                   <a href="{{ sub_sub_link.url }}" class="mobile-menu__nav-link" data-type="menuitem">{{ sub_sub_link.title }}</a>

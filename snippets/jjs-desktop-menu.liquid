@@ -1,4 +1,4 @@
-{%- assign mega_menus = section.blocks | map: 'settings' | map: 'menu_item' -%}
+
 {%- if section.settings.desktop_navigation_layout == 'condensed' -%}
 {%- assign is_floating = true -%}
 {%- else -%}
@@ -6,16 +6,6 @@
 {%- endif -%}
 
 {%- assign is_mega_menu = false -%}
-{%- assign downcase_title = menu.title | downcase | strip -%}
-
-{%- for mega_menu in mega_menus -%}
-{%- assign mega_menu_setting_downcase = mega_menu | downcase | strip -%}
-
-{%- if mega_menu_setting_downcase == downcase_title -%}
-{%- assign is_mega_menu = true -%}
-{%- break -%}
-{%- endif -%}
-{%- endfor -%}
 
 {%- if is_floating == false and is_mega_menu -%}
 {%- render 'mega-menu', is_floating: is_floating, mega_menu: menu, index: index -%}
@@ -23,43 +13,30 @@
 
 <div class="nav-exhibition " aria-hidden="true">
   {%- for block in section.blocks -%}
-  {%- if block.settings.link_name==menu.title -%}
+  {%- if block.settings.menu_item==menu.title -%}
   {%- assign config = block.settings -%}
   {%- break -%}
   {%- endif -%}
   {%- endfor -%}
+  
 
-  {%- if config.link_name == menu.title -%}
+  {%- if config.menu_item == menu.title -%}
   <div class="nav-bar__image" style="width: 15%;">
   {%- capture supported_sizes -%}{%- render 'image-size', sizes: '200,300,400,500', image: config.image_url -%}{%- endcapture -%}
-  {%- assign image_url = config.image_url | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
-   <img class="lazyload " alt="{{ config.image_url.alt | escape }}" data-src="{{ image_url }}" data-widths="[{{ supported_sizes }}]" data-sizes="auto">
+  {%- assign image_url = config.image_1 | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+   <img class="lazyload" alt="{{ config.image_1.alt | escape }}" data-src="{{ image_url }}" data-widths="[{{ supported_sizes }}]" data-sizes="auto">
   </div> 
-
   {%- endif -%}
+
   <ul id="{{ index }}"
-    class="nav-dropdown clearborder {% if is_floating %}nav-dropdown--floating {% if mega_menus.size > 0 %}nav-dropdown--fixed {% endif %}{% elsif menu.levels == 1 %}nav-dropdown--restrict{% endif %} clearposition d-flex"
+    class="nav-dropdown clearborder {% if is_floating %}nav-dropdown--floating {% elsif menu.levels == 1 %}nav-dropdown--restrict{% endif %} clearposition d-flex"
     data-type="menu" role="list" data-expenable="1">
     {%- if is_floating -%}
-    {%- comment -%}
-    {%- render 'icon', icon: 'nav-triangle-borderless' -%}
-    {%- endcomment -%}
     {%- endif -%}
 
     {%- for link in menu.links -%}
-    {%- assign is_mega_menu = false -%}
-    {%- assign downcase_title = link.title | downcase | strip -%}
 
-    {%- for mega_menu in mega_menus -%}
-    {%- assign mega_menu_setting_downcase = mega_menu | downcase | strip -%}
-
-    {%- if mega_menu_setting_downcase == downcase_title -%}
-    {%- assign is_mega_menu = true -%}
-    {%- break -%}
-    {%- endif -%}
-    {%- endfor -%}
-
-    <li class="nav-dropdown__item clearposition {% if is_mega_menu %}has-mega-menu{% endif %}">
+    <li class="nav-dropdown__item clearposition ">
       {%- if link.links.size == 0 -%}
       <a href="{{ link.url }}" class="nav-dropdown__link link shence_commodityView" data-type="menuitem"
         data-scenable="1" data-expenable="1" data-bindexp="1" data-sctype="mktClick"
@@ -69,18 +46,10 @@
       {%- capture index_nested -%}{{ index }}-{% increment nav_dropdown %}{%- endcapture -%}
       <a href="{{ link.url }}" class="nav-dropdown__link link" data-type="menuitem" aria-expanded="false"
         aria-controls="{{ index_nested }}" aria-haspopup="true">{{- link.title -}} 
- 
       </a>
-
-      {%- if is_mega_menu -%}
-      {%- render 'mega-menu', is_floating: is_floating, mega_menu: link, index: index_nested -%}
-      {%- else -%}
-
+ 
       <ul id="{{ index_nested }}" class="nav-dropdown clearposition clearborder padding-0 " data-type="menu" aria-hidden="true"
         role="list" data-expenable="1">
-        {%- comment -%}
-        {%- render 'icon', icon: 'nav-triangle-left' -%}
-        {%- endcomment -%}
 
         {%- for sub_link in link.links -%}
         <li class="nav-dropdown__item sub-item">
@@ -106,7 +75,6 @@
         </li>
         {%- endfor -%}
       </ul>
-      {%- endif -%}
       {%- endif -%}
     </li>
     {%- endfor -%}

@@ -17,7 +17,7 @@
 		class="header header--{{ section.settings.desktop_navigation_layout }} {% unless section.settings.show_condensed_search %}header--search-expanded{% endunless %}"
 		role="banner">
 		<div class="indexContainer clearposition">
-			<div class="header__inner clearposition">
+			<div class="header__inner clearposition jjs-header__inner">
 				{%- comment -%}--------------手机导航按钮----------------{%- endcomment -%}
 				{%- if navigation_menu.links.size > 0 -%}
 					<nav class="header__mobile-nav hidden-lap-and-up">
@@ -80,9 +80,9 @@
 				{%- endcapture -%}
 				{%- comment -%}---------------logo渲染---------------{%- endcomment -%}
 				{%- if request.page_type == 'index' -%}
-					<h1 class="header__logo" style="width:9.6%;">{{ header_logo }}</h1>
+					<h1 class="header__logo" >{{ header_logo }}</h1>
 				{%- else -%}
-					<div class="header__logo" style="width:9.6%;">{{ header_logo }}</div>
+					<div class="header__logo" >{{ header_logo }}</div>
 				{%- endif -%}
 
 				{%- comment -%}---------------头部菜单---------------{%- endcomment -%}
@@ -902,22 +902,6 @@
 	"id": "image_2_link",
 	"label": "Link"
 	}]
-	},{
-		"name":"Nav image",
-		"type":"link_list",
-		"settings":[{
-			"type": "text",
-			"id": "link_name",
-			"label": "导航名称"
-			},{
-			"type":"header",
-			"content":"展示的图片"
-			},
-			{
-			"type": "image_picker",
-			"id": "image_url",
-			"label": "Image"
-			}]
 	}]
 }
 {% endschema %} 
