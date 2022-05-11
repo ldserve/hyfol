@@ -4018,10 +4018,9 @@ scrollbar-width: none; /* firefox */
 }
 
 .filter_content_show{
-  width: 102%;
-  left: -1%;
+  width: 30%;
   position: absolute;
-  height: calc(100% - 100px);
+  /* height: calc(100% - 100px); */
   z-index: 3;
   visibility:visible;
   background-color: rgba(22, 22, 22, 0.6);
@@ -4036,9 +4035,7 @@ scrollbar-width: none; /* firefox */
 }
 .filter_content_show .filter_content_layout{
     width: 100%;
-    min-width: 500px;
     height: 100%;
-      position: absolute;
     display: flex;
 }
 #filter_content .filter_price{
@@ -15697,4 +15694,14 @@ justify-content: space-between;
 
 .mini_cart_free_shipping{
   font-weight: 500 ;
+}
+
+.filter_content_layout .layout__section_left{
+  margin: 0 !important;
+}
+.filter_card_layout{
+  margin: 0!important;
+  background-color: white;
+  border-radius: 0px ;
+  border: 1px solid;
 }
