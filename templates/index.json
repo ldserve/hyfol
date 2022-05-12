@@ -3,30 +3,6 @@
     "1650101273f11a55ef": {
       "type": "slideshow",
       "blocks": {
-        "1650101273ef0886ca-0": {
-          "type": "image",
-          "settings": {
-            "sensorsName": "轮播图",
-            "image": "shopify:\/\/shop_images\/banner_0d06747b-cc02-4c21-9c14-468a2c32d6a9.jpg",
-            "mobile_image": "shopify:\/\/shop_images\/banner_562d0bc4-a4ba-4c1d-81fb-66d58a5f9bb4.jpg",
-            "show_overlay": false,
-            "overlay_opacity": 30,
-            "text_color": "#b82928",
-            "title": "",
-            "heading_text_font": "abril_fatface_n4",
-            "heading_text_font_size": 49,
-            "heading_text_color": "#eb0e0e",
-            "content": "",
-            "content_text_font": "dosis_n4",
-            "content_text_font_size": 25,
-            "content_text_color": "#ffffff",
-            "content_position": "top_center",
-            "button_background": "#ffffff",
-            "button_text_color": "#000000",
-            "button_text": "",
-            "link": "shopify:\/\/collections\/summer-sale"
-          }
-        },
         "1650101273ef0886ca-1": {
           "type": "image",
           "settings": {
@@ -49,6 +25,30 @@
             "button_text_color": "#000000",
             "button_text": "",
             "link": "shopify:\/\/collections\/memorial-day-sale"
+          }
+        },
+        "1650101273ef0886ca-0": {
+          "type": "image",
+          "settings": {
+            "sensorsName": "轮播图",
+            "image": "shopify:\/\/shop_images\/banner_0d06747b-cc02-4c21-9c14-468a2c32d6a9.jpg",
+            "mobile_image": "shopify:\/\/shop_images\/banner_562d0bc4-a4ba-4c1d-81fb-66d58a5f9bb4.jpg",
+            "show_overlay": false,
+            "overlay_opacity": 30,
+            "text_color": "#b82928",
+            "title": "",
+            "heading_text_font": "abril_fatface_n4",
+            "heading_text_font_size": 49,
+            "heading_text_color": "#eb0e0e",
+            "content": "",
+            "content_text_font": "dosis_n4",
+            "content_text_font_size": 25,
+            "content_text_color": "#ffffff",
+            "content_position": "top_center",
+            "button_background": "#ffffff",
+            "button_text_color": "#000000",
+            "button_text": "",
+            "link": "shopify:\/\/collections\/summer-sale"
           }
         },
         "28572d9f-8700-4893-990e-c3b4bf1e7821": {
@@ -76,8 +76,8 @@
         }
       },
       "block_order": [
-        "1650101273ef0886ca-0",
         "1650101273ef0886ca-1",
+        "1650101273ef0886ca-0",
         "28572d9f-8700-4893-990e-c3b4bf1e7821"
       ],
       "settings": {
