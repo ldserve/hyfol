@@ -15705,3 +15705,9 @@ justify-content: space-between;
   border-radius: 0px ;
   border: 1px solid;
 }
+
+#filter_content .color-swatch-list{
+  max-height: 200px;
+  overflow-y: auto;
+  overflow-x:hidden;
+}
