@@ -16,8 +16,8 @@
 	<header
 		class="header header--{{ section.settings.desktop_navigation_layout }} {% unless section.settings.show_condensed_search %}header--search-expanded{% endunless %}"
 		role="banner">
-		<div class="indexContainer">
-			<div class="header__inner">
+		<div class="indexContainer clearposition">
+			<div class="header__inner clearposition jjs-header__inner">
 				{%- comment -%}--------------手机导航按钮----------------{%- endcomment -%}
 				{%- if navigation_menu.links.size > 0 -%}
 					<nav class="header__mobile-nav hidden-lap-and-up">
@@ -27,8 +27,10 @@
 							<span class="icon-state__primary">{%- render 'icon', icon: 'hamburger-mobile' -%}</span>
 							<span class="icon-state__secondary">{%- render 'icon', icon: 'close' -%}</span>
 						</button>
-
+						{%- comment -%}
 						{%- render 'mobile-menu', menu: navigation_mobile_menu -%}
+						{%- endcomment -%}
+						{%- render 'jjs-mobile-menu', menu: navigation_mobile_menu -%}
 					</nav>
 				{%- endif -%}
 
@@ -78,16 +80,16 @@
 				{%- endcapture -%}
 				{%- comment -%}---------------logo渲染---------------{%- endcomment -%}
 				{%- if request.page_type == 'index' -%}
-					<h1 class="header__logo">{{ header_logo }}</h1>
+					<h1 class="header__logo" >{{ header_logo }}</h1>
 				{%- else -%}
-					<div class="header__logo">{{ header_logo }}</div>
+					<div class="header__logo" >{{ header_logo }}</div>
 				{%- endif -%}
 
 				{%- comment -%}---------------头部菜单---------------{%- endcomment -%}
 
 				{%- comment -%}---------------导航菜单---------------{%- endcomment -%}
 				{%- if section.settings.desktop_navigation_layout == 'inline' and navigation_menu.links.size > 0 -%}
-					<nav class="nav-bar cjj-category" style="transform: translateX(72px)">
+					<nav class="nav-bar cjj-category clearposition jjs-nav-bar" >
 						{%- comment -%}---------------logo组件---------------{%- endcomment -%}
 						{%- capture header_logo -%}
 							<a href="{{ routes.root_url }}" class="header__logo-link shence_commodityView" data-scenable="1"
@@ -113,10 +115,10 @@
 						{%- else -%}
 							<div class="header__logo">{{ header_logo }}</div>
 						{%- endif -%}
-						<div class="nav-bar__inner">
-							<ul class="nav-bar__linklist list--unstyled" data-type="menu" role="list">
+						<div class="nav-bar__inner clearposition">
+							<ul class="nav-bar__linklist list--unstyled clearposition jjs-nav-bar" data-type="menu" role="list">
 								{%- for link in navigation_menu.links -%}
-									<li class="nav-bar__item">
+									<li class="nav-bar__item clearposition">
 										{%- if link.links.size == 0 -%}
 											<a href="{{ link.url }}" class="nav-bar__link link shence_commodityView" data-type="menuitem"
 												 data-scenable="1" data-expenable="1" data-bindexp="1" data-sctype="mktClick"
@@ -131,11 +133,19 @@
 												 data-scdata='{"mkt_type":"bar","first_mkt_name":"顶部导航","first_mkt_id":"{{ section.id }}","second_mkt_rank":"{{ forloop.index }}","third_mkt_rank":"","mkt_material_url":"","mkt_material_name":"{{ link.title | handleize }}","commodity_spuid":"","commodity_skuid":"","commodity_name":"","original_price":"","current_price":"","currency_unit":"","mkt_tag":[]}'>
 												{{- link.title -}}
 												{%- render 'icon', icon: 'arrow-bottom' -%}
+												{%- comment -%}
 												{%- render 'icon', icon: 'nav-triangle' -%}
+												{%- endcomment -%}
 											</a>
+											{%- comment -%}
 											{%- render 'desktop-menu', menu: link, index: index, menuindex: forloop.index -%}
+											{%- endcomment -%}
+											{%- render 'jjs-desktop-menu', menu: link, index: index, menuindex: forloop.index -%}
 										{%- endif -%}
 									</li>
+								{% if forloop.last !=true %}
+									<span class="nav-bar_line"></span>
+								{% endif %}
 								{%- endfor -%}
 							</ul>
 						</div>
@@ -828,14 +838,11 @@
 	"id": "show_search_menu_title",
 	"label": "显示快速链接标题",
 	"default": true
-	}
-	],
-	"blocks": [
-	{
+	}],
+	"blocks": [{
 	"type": "mega_menu",
 	"name": "Mega menu",
-	"settings": [
-	{
+	"settings": [{
 	"type": "text",
 	"id": "menu_item",
 	"label": "Menu item",
@@ -894,10 +901,8 @@
 	"type": "url",
 	"id": "image_2_link",
 	"label": "Link"
-	}
-	]
-	}
-	]
-	}
+	}]
+	}]
+}
 {% endschema %} 
  {% include 'alireviews_aggregateRating' %}

@@ -1969,7 +1969,9 @@ img.lazyload[data-sizes=auto] {
   .hidden-lap {
     display: none !important;
   }
-
+.nav-bar__image{
+  display: none !important;
+}
   .\31\/1--lap {
     width: 100%;
   }
@@ -2040,6 +2042,12 @@ img.lazyload[data-sizes=auto] {
   .\31\/6--lap-and-up {
     width: 16.666667%;
   }
+
+  .header .jjs-header__inner{
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+  }
+
 }
 
 @media screen and (min-width: 1280px) {
@@ -7991,7 +7999,7 @@ select option {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 2px 60px 2px 20px;
+  padding: 2px 60px 2px 10px;
   cursor: pointer;
 }
 
@@ -8297,7 +8305,7 @@ select option {
     margin-right: 0;
   }
 
-  .nav-bar__item:not(:last-child)::after {
+  /* .nav-bar__item:not(:last-child)::after {
     position: absolute;
     content: "";
     right: 0;
@@ -8305,7 +8313,7 @@ select option {
     background: #FFFFFF;
     height: 50%;
     width: 1px;
-  }
+  } */
 
   .nav-bar__item--static {
     position: static;
@@ -15692,8 +15700,87 @@ justify-content: space-between;
 
 }
 
-.mini_cart_free_shipping{
-  font-weight: 500 ;
+/* nav-bar */
+.nav-exhibition{
+  position: absolute;
+  left: 0;
+  visibility: hidden;
+  opacity: 0;
+  width: 100%;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  padding: 0 20px 100px;
+}
+.nav-exhibition[aria-hidden="false"],.nav-exhibition[aria-hidden="false"] .nav-dropdown{
+  opacity: 1;
+  visibility: visible;
+}
+
+ 
+.sub-bar{
+  font-size: 16px;
+}
+.sub-item{
+  font-weight: normal;
+  font-size: 13px;
+}
+.nav-bar__image{
+  padding: 26px 0;
+  margin-right: 60px;
+}
+.nav-bar__imglink{
+  display: block;
+  height: 100%;
+}
+.open-view{
+  padding: 0 0 0 20px;
+}
+.jjs-mobile-menu .mobile-menu__nav-item .mobile-menu__panel{
+  height: 0;
+  overflow: hidden;
+}
+.nav-line{
+  display: inline-block;
+  width: 1px;
+  height: 100%;
+  background-color: #fff;
+}
+.jjs-mobile-menu .mobile-menu__nav-item [aria-expanded="true"] svg{
+  transform: rotate(90deg);
+  transition: transform .2s;
+}
+
+.jjs-mobile-menu .mobile-menu__nav-item .is-open{
+  height: auto;
+}
+.jjs-nav-bar{
+  font-size: 0;
+}
+.jjs-nav-bar .nav-bar-item__top{
+  transform: rotate(180deg);
+  transition: transform .3s;
+}
+
+.nav-bar-link__mobile{
+  font-weight: 500;
+}
+
+.nav-bar_line {
+  position: relative;
+  display: inline-block;
+  height: 14px;
+  bottom: -2px;
+  border-right: 1px solid #fff;
+}
+
+
+
+.clearborder{
+  border: none !important;
+}
+.clearposition{
+  position: static !important;
 }
 
 .filter_content_layout .layout__section_left{

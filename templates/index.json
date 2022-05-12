@@ -24,7 +24,7 @@
             "button_background": "#ffffff",
             "button_text_color": "#000000",
             "button_text": "",
-            "link": "shopify:\/\/collections\/促销-choose-2-for-35-9"
+            "link": "shopify:\/\/collections\/summer-sale"
           }
         },
         "1650101273ef0886ca-1": {
@@ -356,6 +356,7 @@
     },
     "1650021168ea57a101": {
       "type": "no_space_img",
+      "disabled": true,
       "settings": {
         "sensorsName": "",
         "bg_image": "shopify:\/\/shop_images\/ed5cb826d8e8739c768f6080bc88f97a.jpg",
