@@ -1,6 +1,7 @@
 <style>
   #shopify-section-{{section.id}} .section {
-    background-color: #E0DAD1;
+    background-color: #770202;
+    color: white;
     margin: 0;
   }
 
@@ -54,7 +55,7 @@
 	<div class="container">
 		{%- for block in section.blocks -%}
 			<div class="text">
-				<h4 class="heading  h5">{{ block.settings.title }} </h4>
+				<h4 class="heading  h5" style=" color: white;">{{ block.settings.title }} </h4>
 				<div>{{ block.settings.content }}</div>
 			</div>
 			{%- if forloop.index < forloop.length -%}

@@ -131,7 +131,7 @@
 		</a>
 	{%- endif -%}
 
-	<div class="product-item__info" style="background-color: {% if only_show_transparent %} #efebe7 {% endif %}">
+	<div class="product-item__info" style="background-color: {% if only_show_transparent %} #000000 {% endif %}">
 		{%- if settings.show_color_swatch and template != 'blog' and only_show_transparent != true -%}
 			{%- capture color_swatch -%}
 				{%- capture color_name -%}{{ section.id }}-{{ product.id }}{%- endcapture -%}

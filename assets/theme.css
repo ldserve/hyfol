@@ -26,7 +26,7 @@ html {
 
 body {
   margin: 0;
-  background-color: #edece6;
+  background-color: #000000;
 }
 body::-webkit-scrollbar {
   display: none !important;
@@ -4740,10 +4740,13 @@ scrollbar-width: none; /* firefox */
 /*.product-list--scrollable .product-item {*/
 /*  border: 1px solid var(--border-color);*/
 /*}*/
-
+.product-list--scrollable .product-item{
+  background-color: #000000;
+}
 .product-list--scrollable .product-item+.product-item {
   border: none !important;
   border-color: var(--background);
+  
 }
 
 .product-list--scrollable .product-item:first-child {
@@ -6241,7 +6244,7 @@ select option {
 }
 
 .footer-top {
-  background-color: #1c1c1c;
+  background-color: #000000;
 }
 
 .footer__block-list {
@@ -6583,7 +6586,7 @@ select option {
 @media screen and (min-width: 1280px) {
   .header__logo {
     margin-right: 40px;
-    margin-bottom: 10px;
+    /* margin-bottom: 10px; */
 
   }
 
@@ -10237,7 +10240,7 @@ shopify-payment-terms {
 }
 
 .price--highlight {
-  color: var(--product-on-sale-accent);
+  color: var(--product-on-sale-accent) !important;
 }
 
 .price--compare {
@@ -10725,7 +10728,9 @@ shopify-payment-terms {
   display: block;
   line-height: 1.55;
 }
-
+.scroller__inner .product-item__info .product-item__title {
+  color:white;
+}
 .product-item__title {
   height: 2em;
   line-height: 2rem;
@@ -10757,9 +10762,17 @@ shopify-payment-terms {
   line-height: 1;
 }
 
-.product-item .price {
+.scroller__inner .price{
+  color: white;
+}
+.scroller__inner  .price--compare{
+  color: white;
+  text-decoration: line-through white;
+}
+.product-item  {
   font-size: calc(var(--base-text-font-size) - (var(--default-text-font-size) - 18px));
 }
+
 
 .product-item .price--compare {
   font-size: calc(var(--base-text-font-size) - (var(--default-text-font-size) - 14px));
@@ -11854,7 +11867,7 @@ shopify-payment-terms {
 
 .section__title {
   margin-bottom: 0;
-  color: #5d5e5f;
+  color: white;
     text-transform: uppercase;
     font-size: 22px;
 }
@@ -15797,4 +15810,17 @@ justify-content: space-between;
   max-height: 200px;
   overflow-y: auto;
   overflow-x:hidden;
+}
+
+.scroller__inner .product-list{
+  background:none;
+}
+
+.linkImg_text{
+   color: white;
+   font-size: 15px;
+   text-align: center;
+}
+.linkImg_title{
+  font-size: 20px;
 }
