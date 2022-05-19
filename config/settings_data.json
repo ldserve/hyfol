@@ -281,7 +281,7 @@
         ],
         "settings": {
           "show_announcement": true,
-          "background": "#820202",
+          "background": "#770202",
           "one_round": 8,
           "text_color": "#ffffff",
           "link": "",
