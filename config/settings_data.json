@@ -24,7 +24,7 @@
     "primary_button_text_color": "#ffffff",
     "secondary_button_background": "#222021",
     "secondary_button_text_color": "#ffffff",
-    "header_background": "#1b1b1b",
+    "header_background": "#000000",
     "header_text_color": "#ffffff",
     "header_light_text_color": "#ffffff",
     "header_accent_color": "#ffffff",
@@ -281,7 +281,7 @@
         ],
         "settings": {
           "show_announcement": true,
-          "background": "#820202",
+          "background": "#770202",
           "one_round": 8,
           "text_color": "#ffffff",
           "link": "",
