@@ -9,6 +9,14 @@
 	{%- endif -%}
 	<div class="card">
 		<div class="card__section card__section--tight">
+			<span class="product-gallery__carousel-prev-button hidden-phone">
+			    {%- render :'icon', icon:'arrow-left' -%}
+			</span>
+               
+			<span class="product-gallery__carousel-next-button hidden-phone">
+				{%- render :'icon', icon:'arrow-right' -%}
+			</span>
+			
 			<div class="product-gallery {% if show_thumbnails_if_one_media %}product-gallery--with-thumbnails{% endif %}">
 				{%- assign selected_media = product.selected_variant.featured_media | default: product.featured_media -%}
 				<div class="product-gallery__carousel-wrapper">
@@ -178,8 +186,48 @@
           {%- endif -%} -->
 				</div>
 
+				{%- if section.settings.enable_image_zoom -%}
+					{%- comment -%}This code is used to power the mobile zoom and must not be removed nor altered{%- endcomment -%}
+					<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+						<div class="pswp__bg"></div>
+						<div class="pswp__scroll-wrap">
+							<div class="pswp__container">
+								<div class="pswp__item"></div>
+								<div class="pswp__item"></div>
+								<div class="pswp__item"></div>
+							</div>
+
+							<div class="pswp__ui">
+								<button class="pswp__button pswp__button--close" aria-label="{{ 'general.accessibility.close' | t }}">
+									{% render 'icon', icon: 'close-2' %}
+								</button>
+
+								<div class="pswp__prev-next">
+									<button class="pswp__button pswp__button--arrow--left"
+													aria-label="{{ 'general.accessibility.previous' | t }}">
+										{% render 'icon', icon: 'arrow-left' %}
+									</button>
+
+									<button class="pswp__button pswp__button--arrow--right"
+													aria-label="{{ 'general.accessibility.next' | t }}">
+										{% render 'icon', icon: 'arrow-right' %}
+									</button>
+								</div>
+
+								<div class="pswp__pagination">
+									<span class="pswp__pagination-current"></span> / <span class="pswp__pagination-count"></span>
+								</div>
+							</div>
+						</div>
+					</div>
+				{%- endif -%}
+			</div>
+		</div>
+
 				{%- if show_thumbnails_if_one_media -%}
-					<div class="scroller">
+				{%- comment -%} 底侧展示图 {%- endcomment -%}
+				
+					<div class="scroller hidden-phone">
 						<div class="scroller__inner">
 							<div class="product-gallery__thumbnail-list">
 								{%- for media in product.media -%}
@@ -253,44 +301,11 @@
 							</div>
 						</div>
 					</div>
+
 				{%- endif -%}
-
-				{%- if section.settings.enable_image_zoom -%}
-					{%- comment -%}This code is used to power the mobile zoom and must not be removed nor altered{%- endcomment -%}
-					<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
-						<div class="pswp__bg"></div>
-						<div class="pswp__scroll-wrap">
-							<div class="pswp__container">
-								<div class="pswp__item"></div>
-								<div class="pswp__item"></div>
-								<div class="pswp__item"></div>
-							</div>
-
-							<div class="pswp__ui">
-								<button class="pswp__button pswp__button--close" aria-label="{{ 'general.accessibility.close' | t }}">
-									{% render 'icon', icon: 'close-2' %}
-								</button>
-
-								<div class="pswp__prev-next">
-									<button class="pswp__button pswp__button--arrow--left"
-													aria-label="{{ 'general.accessibility.previous' | t }}">
-										{% render 'icon', icon: 'arrow-left' %}
-									</button>
-
-									<button class="pswp__button pswp__button--arrow--right"
-													aria-label="{{ 'general.accessibility.next' | t }}">
-										{% render 'icon', icon: 'arrow-right' %}
-									</button>
-								</div>
-
-								<div class="pswp__pagination">
-									<span class="pswp__pagination-current"></span> / <span class="pswp__pagination-count"></span>
-								</div>
-							</div>
-						</div>
-					</div>
-				{%- endif -%}
-			</div>
-		</div>
 	</div>
 {%- endif -%}
+
+<script>
+	
+</script>
