@@ -12804,6 +12804,7 @@ shopify-payment-terms {
 .pagination__page-count {
   display: block;
   text-align: center;
+  color: #ffffff;
 }
 
 .pagination__nav {
@@ -15896,4 +15897,25 @@ justify-content: space-between;
 
 .openQuickView{
    background-color: #750201 !important;
+}
+.card--right{
+  background-color: #FFFFFF;
+}
+
+.recently-viewed-products-placeholder .scroller .product-list--scrollable .product-item ,.product-recommendations .scroller .product-list--scrollable .product-item{
+  background-color: #ffffff;
+}
+
+.recently-viewed-products-placeholder .scroller .product-item__info ,.product-recommendations  .scroller .product-item__info{
+  background-color: #ffffff;
+}
+.recently-viewed-products-placeholder .scroller .product-item__title ,.product-recommendations  .scroller .product-item__title {
+  color: #000000 !important;
+}
+.recently-viewed-products-placeholder  .scroller .price--compare,.product-recommendations  .scroller .price--compare{
+  color: #000000;
+  text-decoration: line-through black;
+}
+.recently-viewed-products-placeholder  .scroller .price,.product-recommendations .scroller .price{
+  color: #000000;
 }
