@@ -12768,6 +12768,7 @@ shopify-payment-terms {
 
 .pagination__prev,
 .pagination__next {
+  color: #ffffff;
   position: absolute;
   display: flex;
   align-items: center;
@@ -12777,6 +12778,7 @@ shopify-payment-terms {
 
 .pagination__prev svg,
 .pagination__next svg {
+  color: #ffffff;
   position: relative;
   width: 8px;
   height: 12px;
@@ -12815,9 +12817,18 @@ shopify-payment-terms {
   line-height: 1;
 }
 
-.pagination__nav-item.is-active {
+/* .pagination__nav-item.is-active {
   background: var(--primary-button-background);
   color: var(--primary-button-text-color);
+  border-radius: 3px;
+} */
+.pagination__nav-item{
+   color: #ffffff;
+}
+
+.pagination__nav-item.is-active {
+  background: #ffffff;
+  color: #000000;
   border-radius: 3px;
 }
 
