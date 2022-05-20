@@ -3423,7 +3423,7 @@ display: none;
 .progress-now{
    height: 100%;
     border-radius: 5px;
-    background-color: #beb38b;
+    background-color: #b40202;
 }
 
 .shipping-bar-text{
@@ -10431,7 +10431,7 @@ shopify-payment-terms {
   height: calc(100% + 11px);
   top: 0;
   left: 0px;
-  border-bottom: 4px solid #770202;
+  border-bottom: 4px solid #adabab;
 }
 
 .color-swatch__button.is-selected .color-swatch__label {
@@ -15920,10 +15920,10 @@ justify-content: space-between;
   color: #000000;
 }
 
-.mini_cart_free_shipping{
-  color: #b40202;
-}
-
 .rte p a{
   color: var(--product-on-sale-accent) !important
+}
+
+.content-text p{
+    line-height: 22px;
 }
