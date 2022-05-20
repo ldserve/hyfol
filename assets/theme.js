@@ -320,7 +320,8 @@
                 this.root.append(formBox)
                 this.formElement = formBox
             }
-
+            this.addEven(this.options,this.json,this.formElement)
+            this.bindShence()
         }
         addEven(options, json, formElement) {
             var productData = JSON.parse(json.innerHTML)
@@ -361,7 +362,7 @@
                             }
                         }
 
-                        // if (true) {
+                        if (false) {
                             const scoll = option.querySelector('.block-swatch-box')
                             const contentScrollW = option.querySelector('.exhibition-item').offsetWidth
                             const currentItem = option.querySelectorAll('.scroll__item')
@@ -380,7 +381,7 @@
                                 let scrollLeft = Math.ceil(offsetLeft - middle + width / 2);
                                 const currentScrollX=scoll.scrollLeft
                                 scoll.scroll(scrollLeft, 0)
-                        // }
+                        }
                     }
 
                 })
@@ -424,10 +425,11 @@
         }
         bindShence() {
             // 点击加购&点击预览
+            const miniCart=this.closest('.mini-cart')
             const purchase = this.root.querySelector('.add-button')
             const root = this.root
             const jsonData = JSON.parse(this.json.innerHTML)
-            this.miniCart && purchase && new sadhus_shence({
+            miniCart && purchase && new sadhus_shence({
                 container: purchase,
                 type: "collcation-addCart",
                 event: "click",
@@ -443,7 +445,11 @@
                     const currentChecked = jsonData.find(item => item.option1 === colorChecked.value && item.option2 === sizeChecked.value)
                     currentChecked && (newData.commodity_skuid = currentChecked.sku)
                     return newData
-                }
+                },
+                callback:function(){
+                 sensors.setProfile({last_addtocart_time:getFormatDate()})
+                 this.updateFn();
+             }
             })
             const colorList = root.querySelector(".ld-variant-list")
             colorList && new sadhus_shence({

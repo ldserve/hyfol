@@ -10,6 +10,9 @@
 {%- assign tags = tags | append: "," | append: tagtitlie -%}
 {%- endif -%}
 {% endfor %}
+
+{%- assign tags = tags | split: ',' -%}
+
 {%- assign product_form_id = 'product_form_' | append: section.id | append: product.id -%}
 <collocation-purchase>
     <div class="product-block-wrapper" id="{{card_id}}">
@@ -135,7 +138,7 @@
                                                 "commodity_description_image":["{{ product.featured_image | image_url | split: "?" | first  }}"],
                                                 "commodity_size":"",
                                                 "commodity_color":"",
-                                                "commodity_tag":"{{tags}}",
+                                                "commodity_tag":{{tags |json}},
                                                 "commodity_type":"{{product.type | handleize}}",
                                                 "first_commodity":"{{ categoryList.first_commodity }}",
                                                 "second_commodity":"{{ categoryList.second_commodity }}",
@@ -211,7 +214,7 @@
                                                 "commodity_description_image":["{{ product.featured_image | image_url | split: "?" | first  }}"],
                                                 "commodity_size":"",
                                                 "commodity_color":"{{variant_for_value.option1}}",
-                                                "commodity_tag":"{{tags}}",
+                                                "commodity_tag":{{tags |json}},
                                                 "commodity_type":"{{product.type | handleize}}",
                                                 "first_commodity":"{{ categoryList.first_commodity }}",
                                                 "second_commodity":"{{ categoryList.second_commodity }}",
@@ -246,7 +249,7 @@
                                         "commodity_description_image":["{{ product.featured_image | image_url | split: "?" | first  }}"],
                                         "commodity_size":"",
                                         "commodity_color":"",
-                                        "commodity_tag":"{{tags}}",
+                                        "commodity_tag":{{tags |json}},
                                         "commodity_type":"{{product.type | handleize}}",
                                         "first_commodity":"{{ categoryList.first_commodity }}",
                                         "second_commodity":"{{ categoryList.second_commodity }}",
@@ -280,7 +283,7 @@
                     {%- endfor -%}
                     {%- if product.selected_or_first_available_variant.available -%}
                     <button type="submit" class="button button--primary mini-cart-add__button" data-scenable="1"
-                        data-sctype="collcation-addCart" data-scdata='{"is_quick_view":1,
+                        data-sctype="collcation-addCart" data-scdata='{"is_quick_view":0,
                                         "commodity_spuid": "{{product.handle}}",
                                         "commodity_skuid":"{{ product.selected_or_first_available_variant.sku }}",
                                         "commodity_name": "{{product.title | handleize }}",
@@ -290,7 +293,7 @@
                                         "commodity_image_quantity":"{{product.images.size}}",
                                         "commodity_description_text":["{{product.description | handleize }}"],
                                         "commodity_description_image":["{{ product.featured_image | image_url | split: "?" | first  }}"],
-                                        "commodity_tag":"{{ tags }}",
+                                        "commodity_tag":{{ tags |json}},
                                         "commodity_type":"{{product.type | handleize}}",
                                         "original_price":"{{ product.selected_or_first_available_variant.compare_at_price }}",
                                         "current_price":"{{ product.selected_or_first_available_variant.price }}",
