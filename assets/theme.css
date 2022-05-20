@@ -3551,7 +3551,7 @@ display: none;
 .mini-cart__continue .continue-text {
   cursor: pointer;
   text-align: center;
-  color: var(--accent-color);
+  color: #c23333;
 }
 
 .mini-cart__continue .continue-text:hover {
@@ -15524,7 +15524,7 @@ shopify-payment-terms {
   float: right;
 }
 .slider-box.shipping-body {
-  background-color: #e1ddda;
+  background-color: #f2f1f1;
   /* padding-bottom: 15px; */
   font-size: 14px;
 }
@@ -15918,4 +15918,8 @@ justify-content: space-between;
 }
 .recently-viewed-products-placeholder  .scroller .price,.product-recommendations .scroller .price{
   color: #000000;
+}
+
+.mini_cart_free_shipping{
+  color: #b40202;
 }
