@@ -4012,7 +4012,7 @@ scrollbar-width: none; /* firefox */
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: 0 1px var(--border-color), 0 -1px var(--border-color);
+  /* box-shadow: 0 1px var(--border-color), 0 -1px var(--border-color); */
   background: var(--background);
   z-index: 3;
 }
@@ -4243,9 +4243,9 @@ scrollbar-width: none; /* firefox */
 }
 
 @media screen and (min-width: 1000px) {
-  .collection__toolbar:not(.collection__toolbar--bordered) {
+  /* .collection__toolbar:not(.collection__toolbar--bordered) {
     box-shadow: 0 1px var(--border-color);
-  }
+  } */
 
   .collection__brand-logo-wrapper {
     width: 110px;
@@ -15842,7 +15842,6 @@ justify-content: space-between;
   margin: 0!important;
   background-color: white;
   border-radius: 0px ;
-  border: 1px solid;
 }
 
 #filter_content .color-swatch-list{
