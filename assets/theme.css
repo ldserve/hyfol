@@ -15924,6 +15924,6 @@ justify-content: space-between;
   color: #b40202;
 }
 
-.rte a{
+.rte p a{
   color: var(--product-on-sale-accent) !important
 }
