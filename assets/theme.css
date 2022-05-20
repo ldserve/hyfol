@@ -4030,6 +4030,7 @@ scrollbar-width: none; /* firefox */
 
 .filter_content_show{
   width: 30%;
+  max-width: 400px;
   position: absolute;
   /* height: calc(100% - 100px); */
   z-index: 3;

@@ -494,7 +494,10 @@
 								ESTIMATE SHIPPING
 								--------------------------------------------------------------------------------------
 							{%- endcomment -%}
-
+                        {%- when 'image_discount' -%}
+						    <div>
+								123123
+							</div>
 						{%- when 'shipping_estimator' -%}
 							{%- if product.available -%}
 								<div class="product-block-list__item product-block-list__item--shipping" {{ block.shopify_attributes }}>
@@ -829,6 +832,18 @@
 	"default": true
 	}
 	]
+	},
+	{
+	    "type":"image_discount",
+		"name":"折扣图片",
+		"limit":1,
+	    "settings":[
+		{
+			"type":"image_picker",
+			"id":"image_discount",
+	        "label":"增加折扣图片"
+		}
+		]
 	},
 	{
       "type": "product_sellpoint",

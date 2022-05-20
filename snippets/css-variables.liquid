@@ -17,7 +17,7 @@
 {%- endunless -%}
 
 {% assign pageType = request.page_type | json %}
-{% if pageType contains "index" or pageType contains "collection" %}
+{% if pageType contains "index" or pageType contains "collection" or pageType contains "search" %}
 {% assign background  = "#000000" %}
 {%elsif pageType contains "product"%}
 {% assign background  = "#ffffff" %}
