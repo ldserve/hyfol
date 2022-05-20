@@ -59,6 +59,12 @@
 		</div>
 	{% endif %}
 
+  {% if block.settings.show_discount_image%}
+      <div>
+          图片坑位
+      </div>
+  {% endif %}
+
     <div class="product-form__price-info" style="display: {% if selected_variant.unit_price_measurement %}block{% else %}none{% endif %}">
       <div class="unit-price-measurement">
         <span class="unit-price-measurement__price">{{ selected_variant.unit_price | money }}</span>
