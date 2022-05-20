@@ -12,6 +12,11 @@
             "show_share_buttons": false
           }
         },
+        "3bbfb513-85d0-4c0e-963e-ac4ad636f07a": {
+          "type": "image_discount",
+          "settings": {
+          }
+        },
         "variant_selector": {
           "type": "variant_selector",
           "settings": {
@@ -30,12 +35,6 @@
             "notsale_tag": "Nopromotion",
             "sale_text_on_detail": "<p><strong>5% OFF 2 PIECES    <\/strong>|  <strong>10% OFF 3 PIECES <\/strong><\/p><p><strong>15% OFF 4 PIECES <\/strong>| <strong>20% OFF 5 PIECES <\/strong><\/p><p><strong>25% OFF 6 PIECES <\/strong>| <strong>30% OFF 7+ PIECES<\/strong><\/p><p><\/p>",
             "sale_text_on_img": "<p>BUY 1 MORE GET EXTRA 5% OFF<\/p>"
-          }
-        },
-        "da95ff8e-bc3c-473d-9e4e-75500476a90c": {
-          "type": "image_discount",
-          "settings": {
-            "image_discount": "shopify:\/\/shop_images\/be3d2e6638813747c788cc4248dddfaf.jpg"
           }
         },
         "buy_buttons": {
@@ -94,9 +93,9 @@
       },
       "block_order": [
         "product_meta",
+        "3bbfb513-85d0-4c0e-963e-ac4ad636f07a",
         "variant_selector",
         "78a65596-bd80-4353-82c9-7ede27334ff0",
-        "da95ff8e-bc3c-473d-9e4e-75500476a90c",
         "buy_buttons",
         "a64f893f-d76a-4d12-8e28-09587bb38b2b",
         "40401d43-e40a-46bd-b84a-7563498f1427",
