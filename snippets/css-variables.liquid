@@ -19,7 +19,7 @@
 {% assign pageType = request.page_type | json %}
 {% if pageType contains "index" or pageType contains "collection" or pageType contains "search" %}
 {% assign background  = "#000000" %}
-{%elsif pageType contains "product"%}
+{%elsif pageType contains "product" or pageType contains "cart"%}
 {% assign background  = "#ffffff" %}
 {% else %}
 {% assign background  =  "#edece6"%}
