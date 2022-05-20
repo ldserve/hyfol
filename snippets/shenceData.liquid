@@ -98,10 +98,11 @@ new sadhus_shence({
       if(valueSelected){
          id =  valueSelected.getAttribute('data-sku') || ""
       }
-      const colorChecked=document.querySelector('.ld-variant-list')
-      const sizeChecked=document.querySelector('.block-swatch-list')
-      newData.commodity_color=colorChecked?colorChecked.previousElementSibling.querySelector('.product-form__selected-value').innerText : ""
-      newData.commodity_size=sizeChecked?sizeChecked.parentElement.querySelector('.product-form__selected-value').innerText : ""
+      const formParent=el.closest('.product-form')
+      const colorChecked=formParent.querySelector('.product-form__option[data-selector-type="block"]')
+      const sizeChecked=formParent.querySelector('.product-form__option[data-selector-type="color"]')
+      newData.commodity_color=colorChecked?colorChecked.querySelector('.product-form__selected-value').innerText : ""
+      newData.commodity_size=sizeChecked?sizeChecked.querySelector('.product-form__selected-value').innerText : ""
       newData.commodity_skuid=id
       newData.commodity_tag=data.commodity_tag.split(',')
       return newData  /*返回值必须为{}*/

@@ -277,7 +277,7 @@
 							{% render 'product-gallery', zoomFactor:section.settings.zoomFactor %}
 						</div>
 					{%- endif -%}
-
+						
 					<div class="product-block-list__item product-block-list__item--info">
 						{%- render 'product-info' -%}
 					</div>
@@ -586,9 +586,13 @@
 		</div>
 	{%- else -%}
 		{%- comment -%}We display the quick view within the product template so we can re-use the same settings{%- endcomment -%}
+		 {% if template == 'product.quick-view' %}
+		{%- assign isQuickView=true -%}
+		{% else %}
+		{%- assign isQuickView=false -%}{% endif %}
 		<div class="featured-product">
 			{%- render 'product-gallery', zoomFactor:section.settings.zoomFactor -%}
-			{%- render 'product-info' -%}
+			{%- render 'product-info',isQuickView:isQuickView  -%}
 		</div>
 	{%- endif -%}
 	{%- comment -%} 尺码表弹窗 {%- endcomment -%}
