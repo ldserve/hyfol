@@ -12,6 +12,11 @@
             "show_share_buttons": false
           }
         },
+        "3bbfb513-85d0-4c0e-963e-ac4ad636f07a": {
+          "type": "image_discount",
+          "settings": {
+          }
+        },
         "variant_selector": {
           "type": "variant_selector",
           "settings": {
@@ -88,6 +93,7 @@
       },
       "block_order": [
         "product_meta",
+        "3bbfb513-85d0-4c0e-963e-ac4ad636f07a",
         "variant_selector",
         "78a65596-bd80-4353-82c9-7ede27334ff0",
         "buy_buttons",
@@ -149,7 +155,8 @@
       ],
       "settings": {
         "heading": "You may also like",
-        "show_quick_buy": true
+        "show_quick_buy": true,
+        "title_color": "#000000"
       }
     },
     "recently-viewed-products": {
