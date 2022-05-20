@@ -60,11 +60,14 @@
 	{% endif %}
 
   {% if block.settings.show_discount_image%}
+  {% if block.settings.discount_image !=blank %}
+  {%- capture supported_sizes -%}{%- render 'image-size', sizes: '300,400,500,600,700,800,900,1000,1100,1200,1300,1400,1500,1600,1700,1800,1900,2000', image: section.settings.image -%}{%- endcapture -%}
+  {%- assign image_url = block.settings.discount_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
       <div>
-          图片坑位
+        <img data-src="{{ image_url }}" data-widths="[{{ supported_sizes }}]" data-sizes="auto" alt="" class="lazyload" style="width: 100%">
       </div>
   {% endif %}
-
+  {% endif %}
     <div class="product-form__price-info" style="display: {% if selected_variant.unit_price_measurement %}block{% else %}none{% endif %}">
       <div class="unit-price-measurement">
         <span class="unit-price-measurement__price">{{ selected_variant.unit_price | money }}</span>
@@ -95,6 +98,8 @@
     {%- endif -%}
   </div>
 </div>
+
+
 {%- unless product.has_only_default_variant -%}
   <div class="product-form__variants" {{ block.shopify_attributes }}>
     {%- for option in product.options_with_values -%}
