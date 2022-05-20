@@ -6,67 +6,69 @@
 
     class SizeBlock extends HTMLElement {
         constructor() {
-          super();
-        this.card_id = this.getAttribute("data-cart_id")
-        this.totalSize = this.getAttribute('data-totalSize')
-        this.container = document.getElementById(this.card_id)
-        this.sum = 0
-        this.init()
+            super();
+            this.card_id = this.getAttribute("data-cart_id")
+            this.totalSize = this.getAttribute('data-totalSize')
+            this.container = document.getElementById(this.card_id)
+            this.sum = 0
+            this.init()
         }
-        init(){
-          
-            for(let i=0 ; i <this.totalSize ; i++){
-                if ( this.container != null){
+        init() {
+
+            for (let i = 0; i < this.totalSize; i++) {
+                if (this.container != null) {
                     var offsetWidth = this.container.getElementsByClassName("block-swatch__item")[i].offsetWidth
                     offsetWidth += 2
-                    this.container.getElementsByClassName("block-swatch")[i].style.left = this.sum +"px"
-                   this.sum +=  offsetWidth +2
+                    this.container.getElementsByClassName("block-swatch")[i].style.left = this.sum + "px"
+                    this.sum += offsetWidth + 2
                 }
-               // console.log(sum);
-           }
+                // console.log(sum);
+            }
         }
-        }
-        customElements.define("size-block", SizeBlock);
+    }
+    customElements.define("size-block", SizeBlock);
     class SliderShow extends HTMLElement {
         constructor() {
-          super();
-          this.collocationList = this.querySelector('.collocation-list')    //ul
-          this.collocationListItem = this.querySelector('.collocation-list-item')  //li
-          this.activeIndex = 0 ;//当前活跃index
-          this.firstLi = this.collocationList.firstElementChild //首尾节点
-          this.lastLi = this.collocationList.lastElementChild
-          this.scrollDot = this.querySelector(".scroll-dot")//小点
-          this.lis = this.scrollDot.getElementsByTagName("li")
-          this.scorllNum = this.getAttribute("data-collocationNum") //商品数量
-          this.prevButton = this.querySelector('.prevButton')
-          this.nextButton = this.querySelector('.nextButton')
-          this.animationsflag = true //是否阻止动画
-          this.that = this
-          this.prevkeyframes = `
+            super();
+            this.collocationList = this.querySelector('.collocation-list')    //ul
+            this.collocationListItem = this.querySelector('.collocation-list-item')  //li
+            this.activeIndex = 0;//当前活跃index
+            this.firstLi = this.collocationList.firstElementChild //首尾节点
+            this.lastLi = this.collocationList.lastElementChild
+            this.scrollDot = this.querySelector(".scroll-dot")//小点
+            this.lis = this.scrollDot.getElementsByTagName("li")
+            this.scorllNum = this.getAttribute("data-collocationNum") //商品数量
+            this.prevButton = this.querySelector('.prevButton')
+            this.nextButton = this.querySelector('.nextButton')
+            this.animationsflag = true //是否阻止动画
+            this.that = this
+            this.purchaseList = this.querySelectorAll('.exhibition-right')
+            this.contains = []
+            this.prevkeyframes = `
           @keyframes prevItem1{
                   0% { 
-                    -webkit-transform: translate(-${this.scorllNum*100}% ,0%);
-                      transform:  translate(-${this.scorllNum*100}% ,0%); 
+                    -webkit-transform: translate(-${this.scorllNum * 100}% ,0%);
+                      transform:  translate(-${this.scorllNum * 100}% ,0%); 
                     }
                   100% { 
-                    -webkit-transform: translate(-${(this.scorllNum-1)*100}%,0%);
-                      transform:  translate(-${(this.scorllNum-1)*100}%,0%);
+                    -webkit-transform: translate(-${(this.scorllNum - 1) * 100}%,0%);
+                      transform:  translate(-${(this.scorllNum - 1) * 100}%,0%);
                     }
               }
 
          @keyframes prevItem2{
                   0% {
-                    -webkit-translate(-${this.scorllNum*100}% ,0%);  
-                       transform:  translate(-${this.scorllNum*100}% ,0%);  
+                    -webkit-translate(-${this.scorllNum * 100}% ,0%);  
+                       transform:  translate(-${this.scorllNum * 100}% ,0%);  
                     }
                     
                   100% {
-                    -webkit-translate(-${(this.scorllNum-1)*100}%,0%); 
-                      transform:  translate(-${(this.scorllNum-1)*100}%,0%);
+                    -webkit-translate(-${(this.scorllNum - 1) * 100}%,0%); 
+                      transform:  translate(-${(this.scorllNum - 1) * 100}%,0%);
                 }
               }
           `
-          this.init()
+            this.init()
         }
         init(){
             if(this.activeIndex == 0 ){
@@ -114,149 +116,186 @@
                         if (that.activeIndex != 0){
                            that.prevItem()
                         }
-                       return false;
-                     }else if(nx <0){
-                       if (that.activeIndex != that.scorllNum-1){
-                        that.nextItem()
-                       }
-                     }
+                        return false;
+                    } else if (nx < 0) {
+                        if (that.activeIndex != that.scorllNum - 1) {
+                            that.nextItem()
+                        }
+                    }
 
-              }
-           });
+                }
+            });
+            this.bindShence()
         }
-        bind(){
+        bind() {
             this.bindClick()
         }
 
-       
-        bindClick(){
-             if(this.prevButton){
-                 this.prevButton.onclick = () =>{
+        bindClick() {
+            if (this.prevButton) {
+                this.prevButton.onclick = () => {
                     this.prevItem()
-                 }
-             }
-             if(this.nextButton){
-                this.nextButton.onclick = () =>{
-                   this.nextItem()
+                    this.purchaseList[this.activeIndex] && this.collocationShence(this.purchaseList[this.activeIndex])
                 }
             }
-            if(this.lis){
-                 const that = this
-                for(let i=0 ; i<this.lis.length ;i++){
+            if (this.nextButton) {
+                this.nextButton.onclick = () => {
+                    this.nextItem()
+                    this.purchaseList[this.activeIndex] && this.collocationShence(this.purchaseList[this.activeIndex])
+                }
+            }
+            if (this.lis) {
+                const that = this
+                for (let i = 0; i < this.lis.length; i++) {
                     this.lis[i].index = i
-                    this.lis[i].onclick = function(){
+                    this.lis[i].onclick = function () {
                         let index = this.index
-                        if(that.animationsflag){
+                        if (that.animationsflag) {
                             that.activeIndex = this.index
-                            if( that.activeIndex == 0 ){
+                            if (that.activeIndex == 0) {
                                 that.prevButton.style.display = "none"
-                            }else{
+                            } else {
                                 that.prevButton.style.display = "block"
                             }
-
-                            if( that.activeIndex == that.scorllNum-1 ){
+                            if (that.activeIndex == that.scorllNum - 1) {
                                 that.nextButton.style.display = "none"
-                            }else{
+                            } else {
                                 that.nextButton.style.display = "block"
                             }
-                          
-                                   for( let i=0 ; i< that.lis.length ;i++){
-                                    that.lis[i].className= ""
-                                   }
-                                   that.lis[that.activeIndex].className = "scroll-dot__active-li"
-                                   that.firstLi.style.left = "0%"
-                                   that.lastLi.style.left = (that.scorllNum-1)*100+"%"
-                                   that.collocationList.style.transform = `translate( -${that.activeIndex*100}% , 0px )`;  
-                                  }
-                   }
-                   }
-              
+                            for (let i = 0; i < that.lis.length; i++) {
+                                that.lis[i].className = ""
+                            }
+                            that.purchaseList[that.activeIndex] && that.collocationShence(that.purchaseList[that.activeIndex])
+                            that.lis[that.activeIndex].className = "scroll-dot__active-li"
+                            that.firstLi.style.left = "0%"
+                            that.lastLi.style.left = (that.scorllNum - 1) * 100 + "%"
+                            that.collocationList.style.transform = `translate( -${that.activeIndex * 100}% , 0px )`;
+                        }
+                    }
+                }
+
             }
 
         }
-        animationStart = () =>{
+        animationStart = () => {
             this.animationsflag = false
         }
 
-        animationEnd = () =>{
-            this.animationsflag= true
+        animationEnd = () => {
+            this.animationsflag = true
         }
-        prevItem(){
+        prevItem() {
             this.nextButton.style.display = "block"
-             if(this.animationsflag){
-               if(this.activeIndex == 0){
-                this.activeIndex = this.scorllNum -1
-                // this.lastLi.style.left = (this.scorllNum-1)*100+"%"
-                // this. firstLi.style.left = this.scorllNum*100+"%"
-     
-                //  if(this.collocationList.className == "collocation-list prevItem1"){
-                //     this.collocationList.className = "collocation-list prevItem2"
-                //  }else{
-                //     this.collocationList.className = "collocation-list prevItem1"
-                //  }
-     
-               }else{
-                this.activeIndex -= 1
-                if( this.activeIndex == 0 ){
-                    this.prevButton.style.display = "none"
-                }else{
-                    this.prevButton.style.display = "block"
-                }
-                this.firstLi.style.left = "0%"
-                this.lastLi.style.left = (this.scorllNum-1)*100+"%"
-               }
-               this.collocationList.style.transform = `translate( -${this.activeIndex*100}% , 0px )`;
-               for(let i=0 ; i<this.lis.length ;i++){
-                this.lis[i].className= ""
-              }
-              this.lis[this.activeIndex].className = "scroll-dot__active-li"
-             }
-         }
+            if (this.animationsflag) {
+                if (this.activeIndex == 0) {
+                    this.activeIndex = this.scorllNum - 1
+                    // this.lastLi.style.left = (this.scorllNum-1)*100+"%"
+                    // this. firstLi.style.left = this.scorllNum*100+"%"
 
-         nextItem(){
-             this.prevButton.style.display = "block"
-            if(this.animationsflag){
-            if(this.activeIndex == this.scorllNum-1){
-                this.activeIndex = 0
-            //     this. firstLi.style.left = "0%"
-            //     this.lastLi.style.left = "-100%"
-  
-            // if(this.collocationList.className == "collocation-list nextItem1"){
-            //     this.collocationList.className = "collocation-list nextItem2"
-            // }else{
-            //     this.collocationList.className = "collocation-list nextItem1"
-            // }
-  
-            }else{
-                this.activeIndex += 1
-                if( this.activeIndex == this.scorllNum-1 ){
-                    this.nextButton.style.display = "none"
-                }else{
-                    this.nextButton.style.display = "block"
+                    //  if(this.collocationList.className == "collocation-list prevItem1"){
+                    //     this.collocationList.className = "collocation-list prevItem2"
+                    //  }else{
+                    //     this.collocationList.className = "collocation-list prevItem1"
+                    //  }
 
+                } else {
+                    this.activeIndex -= 1
+                    if (this.activeIndex == 0) {
+                        this.prevButton.style.display = "none"
+                    } else {
+                        this.prevButton.style.display = "block"
+                    }
+                    this.firstLi.style.left = "0%"
+                    this.lastLi.style.left = (this.scorllNum - 1) * 100 + "%"
                 }
-                this.firstLi.style.left = "0%"
-                this.lastLi.style.left = (this.scorllNum-1)*100+"%"
+                this.collocationList.style.transform = `translate( -${this.activeIndex * 100}% , 0px )`;
+                for (let i = 0; i < this.lis.length; i++) {
+                    this.lis[i].className = ""
+                }
+                this.lis[this.activeIndex].className = "scroll-dot__active-li"
             }
-            this.collocationList.style.transform = `translate( -${this.activeIndex*100}% , 0px )`;
-            for( let i=0 ; i<this.lis.length ;i++){
-                this.lis[i].className= ""
-           }
-           this.lis[this.activeIndex].className = "scroll-dot__active-li"
-          }
-      }
+        }
 
-      
-    
-      }
-      customElements.define("slide-show", SliderShow);
+        nextItem() {
+            this.prevButton.style.display = "block"
+            if (this.animationsflag) {
+                if (this.activeIndex == this.scorllNum - 1) {
+                    this.activeIndex = 0
+                    //     this. firstLi.style.left = "0%"
+                    //     this.lastLi.style.left = "-100%"
+
+                    // if(this.collocationList.className == "collocation-list nextItem1"){
+                    //     this.collocationList.className = "collocation-list nextItem2"
+                    // }else{
+                    //     this.collocationList.className = "collocation-list nextItem1"
+                    // }
+
+                } else {
+                    this.activeIndex += 1
+                    if (this.activeIndex == this.scorllNum - 1) {
+                        this.nextButton.style.display = "none"
+                    } else {
+                        this.nextButton.style.display = "block"
+
+                    }
+                    this.firstLi.style.left = "0%"
+                    this.lastLi.style.left = (this.scorllNum - 1) * 100 + "%"
+                }
+                this.collocationList.style.transform = `translate( -${this.activeIndex * 100}% , 0px )`;
+                for (let i = 0; i < this.lis.length; i++) {
+                    this.lis[i].className = ""
+                }
+                this.lis[this.activeIndex].className = "scroll-dot__active-li"
+            }
+        }
+        collocationShence(contai) {
+            // 事件只绑定一次
+            if (this.contains.indexOf(contai) !== -1) return
+            this.contains.push(contai)
+            contai.querySelector('.ld-variant') && new sadhus_shence({
+                container: contai.querySelector('.ld-variant'),
+                type: "collcation-valueChange",
+                event: "sync",
+                // debug: true,
+                sendType: "CommodityDetail",
+                customData: function (container, el) {
+                    const newData = {}
+                    const colorChecked = contai.querySelector('.color-swatch__radio[checked]')
+                    const sizeChecked = contai.querySelector('.block-swatch__radio[checked]')
+                    newData.commodity_color = colorChecked ? colorChecked.value : ""
+                    newData.commodity_size = sizeChecked ? sizeChecked.value : ""
+                    newData.site_category = getSiteCategory()
+                    return newData
+                }
+            })
+        }
+        bindShence() {
+            let purchase = this.purchaseList[0]
+            purchase && purchase.querySelector('.ld-variant') && new sadhus_shence({
+                container: purchase.querySelector('.ld-variant'),
+                type: "collcation-valueChange",
+                event: "load",
+                // debug: true,
+                sendType: "CommodityDetail",
+                customData: function (container, el) {
+                    const newData = {}
+                    const colorChecked = purchase.querySelector('.color-swatch__radio[checked]')
+                    const sizeChecked = purchase.querySelector('.block-swatch__radio[checked]')
+                    newData.commodity_color = colorChecked ? colorChecked.value : ""
+                    newData.commodity_size = sizeChecked ? sizeChecked.value : ""
+                    newData.site_category = getSiteCategory()
+                    return newData
+                }
+            })
+        }
+    }
+    customElements.define("slide-show", SliderShow);
 
     class CollocationPurchase extends HTMLElement {
         constructor() {
             super()
             this.init()
         }
-
         init() {
             this.root = this.querySelector('.product-block-wrapper')
             this.json = this.root.querySelector('[type="application/json"]')
@@ -268,7 +307,7 @@
             this.option2 =size? size.value:''
 
             if (!this.formElement) {
-                // 在小购物车没有form表单动态插入进去
+                // 在小购物车没有form表单,动态插入进去
                 var formBox = document.createElement('form')
                 formBox.method = "post"
                 formBox.action = "/cart/add"
@@ -280,9 +319,6 @@
                 }
                 this.root.append(formBox)
                 this.formElement = formBox
-                this.addEven(this.options, this.json, this.formElement)
-            } else {
-                this.addEven(this.options, this.json, this.formElement)
             }
 
         }
@@ -290,6 +326,7 @@
             var productData = JSON.parse(json.innerHTML)
             var _this=this
             options.forEach(option => {
+                const checkeds = option.querySelectorAll('input[type="radio"]')
                 option.addEventListener('click', (ev) => {
                     if (ev.target.tagName === "INPUT") {
                         var target = ev.target
@@ -309,10 +346,9 @@
 
                         if (target.classList.contains('color-swatch__radio')) {
                             const productItem = target.closest('.exhibition')
-                            var variantUrl = target.getAttribute('data-variant-url');
+                            const variantUrl = target.getAttribute('data-variant-url');
                             productItem.querySelector('.product-item__image-wrapper').setAttribute('href', variantUrl);
                             const originalImageElement = productItem.querySelector('.product-item__primary-image');
-
                             if (target.hasAttribute('data-image-url') && target.getAttribute('data-media-id') !== originalImageElement.getAttribute('data-media-id')) {
                                 var newImageElement = document.createElement('img');
                                 newImageElement.className = 'product-item__primary-image lazyload image--fade-in';
@@ -325,35 +361,26 @@
                             }
                         }
 
-                        if(false){
-                            var scoll = (option.querySelector('.color-swatch-list') || option.querySelector('.block-swatch-list'))
-                            var contentScrollW =option.querySelector('.exhibition-item').offsetWidth
-                            var currentItem =(option.querySelectorAll('.color-swatch')|| option.querySelectorAll('.block-swatch'))
-                            var inputItem= [...option.querySelectorAll('[type="radio"]')]
-                            var index = inputItem.indexOf(target)
-                            var middle = contentScrollW/2
-                            var offsetLeft=0
+                        // if (true) {
+                            const scoll = option.querySelector('.block-swatch-box')
+                            const contentScrollW = option.querySelector('.exhibition-item').offsetWidth
+                            const currentItem = option.querySelectorAll('.scroll__item')
+                            const inputItem = [...option.querySelectorAll('[type="radio"]')]
+                            const index = inputItem.indexOf(target)
+                            const middle = contentScrollW / 2
+                            let offsetLeft = 0
+                            const scrollWidth = scoll.scrollWidth
                             for (let i = 0; i < index; i++) {
-                                offsetLeft+=currentItem[i].offsetWidth
-                                var style = window.getComputedStyle(currentItem[i])
-                                offsetLeft += (style.marginLeft.replace('px','')*1+style.marginRight.replace('px','')*1)
+                                offsetLeft += currentItem[i].offsetWidth
+                                let style = window.getComputedStyle(currentItem[i])
+                                offsetLeft += (style.marginLeft.replace('px', '') * 1 + style.marginRight.replace('px', '') * 1)
                             }
-
-                            if(offsetLeft > middle){
-                                var style=window.getComputedStyle(currentItem[index])
-                                var width = (currentItem[index].offsetWidth)+(style.marginLeft.replace('px','')*1+style.marginRight.replace('px','')*1)
-                                var scrollLeft =Math.ceil(offsetLeft - middle + width / 2);
-                                scoll.style.transform=`translateX(-${scrollLeft}px)`
-
-                                // console.log('scrollLeft',scrollLeft,'length',inputItem.length,'index',index);
-                                // console.log('contentScrollW',contentScrollW,'offsetLeft',offsetLeft);
-                                // var TouchBottom = 
-
-                            }else{
-                                scoll.style.transform=`translateX(0px)`
-                            }
-                            console.log(scoll);
-                        }
+                                let style = window.getComputedStyle(currentItem[index])
+                                let width = (currentItem[index].offsetWidth) + (style.marginLeft.replace('px', '') * 1 + style.marginRight.replace('px', '') * 1)
+                                let scrollLeft = Math.ceil(offsetLeft - middle + width / 2);
+                                const currentScrollX=scoll.scrollLeft
+                                scoll.scroll(scrollLeft, 0)
+                        // }
                     }
 
                 })
@@ -363,14 +390,12 @@
                 // 在小购物车手动提交表单
                 var button = this.root.querySelector('[data-action="add-to-cart"]')
                 button.addEventListener('click', (e) => {
+                    e.preventDefault();
                     var target = e.target
-                    e.preventDefault();  
-
                     target.setAttribute('disabled', 'disabled');
-                    document.dispatchEvent(new CustomEvent('theme:loading:start')); 
-
+                    document.dispatchEvent(new CustomEvent('theme:loading:start'));
                     var element = this.closest('section');
-                    var currentVariant =this.currentVariant 
+                    var currentVariant = this.currentVariant
                     fetch("".concat(window.routes.cartAddUrl, ".js"), {
                         body: JSON.stringify(Form.serialize(this.formElement)),
                         credentials: 'same-origin',
@@ -397,8 +422,53 @@
                 })
             }
         }
+        bindShence() {
+            // 点击加购&点击预览
+            const purchase = this.root.querySelector('.add-button')
+            const root = this.root
+            const jsonData = JSON.parse(this.json.innerHTML)
+            this.miniCart && purchase && new sadhus_shence({
+                container: purchase,
+                type: "collcation-addCart",
+                event: "click",
+                // debug: true,
+                sendType: "AddToCart",
+                customData: function (container, el) {
+                    let newData = {}
+                    const colorChecked = root.querySelector('.color-swatch__radio[checked]');
+                    const sizeChecked = root.querySelector('.block-swatch__radio[checked]')
+                    newData.commodity_color = colorChecked ? colorChecked.value : ""
+                    newData.commodity_size = sizeChecked ? sizeChecked.value : ""
+                    if(!colorChecked || !sizeChecked)return newData
+                    const currentChecked = jsonData.find(item => item.option1 === colorChecked.value && item.option2 === sizeChecked.value)
+                    currentChecked && (newData.commodity_skuid = currentChecked.sku)
+                    return newData
+                }
+            })
+            const colorList = root.querySelector(".ld-variant-list")
+            colorList && new sadhus_shence({
+                container: colorList,
+                type: "collcation-valueChange",
+                event: "click",
+                // debug: true,
+                sendType: "CommodityDetail",
+                delayed: true,
+                delayTime: 300,
+                customData: function (container, el) {
+                    let newData = {}
+                    const colorChecked = root.querySelector('.color-swatch__radio[checked]');
+                    const sizeChecked = root.querySelector('.block-swatch__radio[checked]')
+                    const currentChecked = jsonData.find(item => item.option1 === colorChecked.value && item.option2 === sizeChecked.value)
+                    newData.commodity_skuid = currentChecked.sku
+                    newData.commodity_color = colorChecked ? colorChecked.value : ""
+                    newData.commodity_size = sizeChecked ? sizeChecked.value : ""
+                    newData.site_category = getSiteCategory()
+                    return newData
+                }
+            })
+        }
     }
-      customElements.define("collocation-purchase", CollocationPurchase);
+    customElements.define("collocation-purchase", CollocationPurchase);
 
     function _typeof(obj) {
         "@babel/helpers - typeof";
