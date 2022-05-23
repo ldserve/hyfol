@@ -10973,7 +10973,7 @@ shopify-payment-terms {
   .product-item--horizontal,
   .product-item--list {
     width: 100% !important;
-    background-color: var(--secondary-background);
+    /* background-color: var(--secondary-background); */
     margin-bottom: 10px;
   }
 
