@@ -123,9 +123,9 @@
             "sensorsLinkName": "menbestsellers",
             "link": "shopify:\/\/collections",
             "left": 0,
-            "top": 1,
-            "width": 0,
-            "height": 0
+            "top": 7,
+            "width": 24,
+            "height": 84
           }
         },
         "342f71ba-d412-42c7-a286-e1b97c3dc993": {
@@ -134,10 +134,10 @@
             "heading": "womenbestsellers",
             "sensorsLinkName": "womenbestsellers",
             "link": "shopify:\/\/collections\/bottoms-12-13",
-            "left": 0,
-            "top": 1,
-            "width": 0,
-            "height": 0
+            "left": 25,
+            "top": 8,
+            "width": 25,
+            "height": 87
           }
         },
         "9ff77147-50cf-4ea6-a2e8-88372aa19d4a": {
@@ -191,9 +191,9 @@
         "6fc4375a-197b-4427-ad8b-2ae08a050333": {
           "type": "link",
           "settings": {
-            "heading": "(´థ౪థ）σ",
-            "sensorsLinkName": "",
-            "link": "",
+            "heading": "menbestsellers",
+            "sensorsLinkName": "menbestsellers",
+            "link": "shopify:\/\/collections",
             "left": 0,
             "top": 0,
             "width": 10,
@@ -246,7 +246,7 @@
       "settings": {
         "linkImg_title": "",
         "linkImg_content": "",
-        "hidDesk": false,
+        "hidDesk": true,
         "sensorsName": "",
         "hidWeb": false,
         "line": true,
