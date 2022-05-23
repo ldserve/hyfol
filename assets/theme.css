@@ -4653,7 +4653,7 @@ scrollbar-width: none; /* firefox */
   text-transform: uppercase;
   font-size: calc(var(--base-text-font-size) - (var(--default-text-font-size) - 12px));
   font-weight: var(--text-font-bolder-weight);
-  background: var(--background);
+  background: #ffffff;
   border-bottom: 1px solid var(--border-color);
 }
 

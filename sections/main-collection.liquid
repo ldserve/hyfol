@@ -736,7 +736,7 @@
           {%- endif -%}
 
           {%- if section.settings.show_filters and collection.filters != empty -%}
-          <p class="collection-drawer__section-title">{{ 'collection.filter.all' | t }}</p>
+          <p class="collection-drawer__section-title hidden-phone">{{ 'collection.filter.all' | t }}</p>
 
           {%- for filter in collection.filters -%}
           {%- assign filter_label_downcase = filter.label | downcase -%}
