@@ -120,9 +120,9 @@
         "dfe8b56d-ae26-4028-b754-ebc527247a99": {
           "type": "link",
           "settings": {
-            "heading": "tees",
-            "sensorsLinkName": "tees",
-            "link": "shopify:\/\/collections\/tees",
+            "heading": "menbestsellers",
+            "sensorsLinkName": "menbestsellers",
+            "link": "shopify:\/\/collections",
             "left": 0,
             "top": 5,
             "width": 24,
@@ -132,9 +132,9 @@
         "6c94ee37-e01c-4716-bc7e-67cc0981d68a": {
           "type": "link",
           "settings": {
-            "heading": "shirts",
-            "sensorsLinkName": "shirts",
-            "link": "shopify:\/\/collections\/shirts",
+            "heading": "womenbestsellers",
+            "sensorsLinkName": "womenbestsellers",
+            "link": "shopify:\/\/collections",
             "left": 25,
             "top": 5,
             "width": 24,
@@ -144,9 +144,9 @@
         "c9e8ee81-fa7f-4664-a2d9-be156e428c8d": {
           "type": "link",
           "settings": {
-            "heading": "toppacks",
-            "sensorsLinkName": "toppacks",
-            "link": "shopify:\/\/collections\/tops-packs-1",
+            "heading": "newarrivals",
+            "sensorsLinkName": "newarrivals",
+            "link": "shopify:\/\/collections",
             "left": 50,
             "top": 5,
             "width": 24,
@@ -156,9 +156,9 @@
         "1f197e6e-076a-4800-935a-1d35bc6020ce": {
           "type": "link",
           "settings": {
-            "heading": "bottoms",
-            "sensorsLinkName": "bottoms",
-            "link": "shopify:\/\/collections\/bottoms-12-13",
+            "heading": "sale",
+            "sensorsLinkName": "sale",
+            "link": "shopify:\/\/collections\/hyfol-sale",
             "left": 76,
             "top": 6,
             "width": 24,
@@ -177,7 +177,7 @@
         "sensorsName": "",
         "hidWeb": true,
         "line": false,
-        "image": "shopify:\/\/shop_images\/02_3a798e6c-12b2-451d-af34-6e9ffda9b0df.jpg",
+        "image": "shopify:\/\/shop_images\/02_669c4690-ca48-41d7-b48e-c5b4336b90a1.jpg",
         "tpadding": 0,
         "rpadding": 0,
         "bpadding": 0,
