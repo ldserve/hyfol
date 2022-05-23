@@ -226,9 +226,9 @@
         "e34c6701-d51d-4b6b-b3c3-dbdb091ce635": {
           "type": "link",
           "settings": {
-            "heading": "topspacks",
-            "sensorsLinkName": "topspacks",
-            "link": "shopify:\/\/collections\/tops-packs",
+            "heading": "sale",
+            "sensorsLinkName": "sale",
+            "link": "shopify:\/\/collections",
             "left": 52,
             "top": 51,
             "width": 50,
@@ -246,7 +246,7 @@
         "hidDesk": true,
         "sensorsName": "mobile分类导流区",
         "hidWeb": false,
-        "line": true,
+        "line": false,
         "image": "shopify:\/\/shop_images\/02_3d4b1221-1384-4b32-a7ea-526c7ee1df6e.jpg",
         "tpadding": 0,
         "rpadding": 0,
