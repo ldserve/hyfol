@@ -352,13 +352,13 @@
         "6defe89d-34bf-47d9-a1f2-91004d693ed8": {
           "type": "link",
           "settings": {
-            "heading": "topspacks",
-            "sensorsLinkName": "topspacks",
-            "link": "shopify:\/\/collections\/tops-packs-1",
-            "left": 0,
-            "top": 0,
-            "width": 0,
-            "height": 0
+            "heading": "accessories",
+            "sensorsLinkName": "accessories",
+            "link": "shopify:\/\/collections\/accessories-12-13",
+            "left": 76,
+            "top": 9,
+            "width": 41,
+            "height": 85
           }
         }
       },
@@ -372,7 +372,7 @@
         "hidDesk": false,
         "sensorsName": "pc分类导流区",
         "hidWeb": true,
-        "line": true,
+        "line": false,
         "image": "shopify:\/\/shop_images\/04_691fe7f1-90c5-4587-9ada-2e4d5e0db767.jpg",
         "tpadding": 0,
         "rpadding": 0,
