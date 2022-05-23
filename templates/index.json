@@ -148,7 +148,7 @@
             "link": "shopify:\/\/collections",
             "left": 51,
             "top": 9,
-            "width": 23,
+            "width": 24,
             "height": 85
           }
         },
@@ -158,10 +158,10 @@
             "heading": "sale",
             "sensorsLinkName": "sale",
             "link": "shopify:\/\/collections",
-            "left": 0,
-            "top": 0,
-            "width": 0,
-            "height": 0
+            "left": 76,
+            "top": 7,
+            "width": 57,
+            "height": 88
           }
         }
       },
@@ -177,7 +177,7 @@
         "hidDesk": false,
         "sensorsName": "pc分类导流区",
         "hidWeb": true,
-        "line": true,
+        "line": false,
         "image": "shopify:\/\/shop_images\/02_669c4690-ca48-41d7-b48e-c5b4336b90a1.jpg",
         "tpadding": 0,
         "rpadding": 0,
