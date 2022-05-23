@@ -186,14 +186,13 @@
     },
     "164742631051d4db44": {
       "type": "linkImg",
-      "disabled": true,
       "blocks": {
         "1b4a5d11-2c92-45bb-b788-8a362446a835": {
           "type": "link",
           "settings": {
-            "heading": "shirt",
-            "sensorsLinkName": "shirt",
-            "link": "shopify:\/\/collections\/shirts",
+            "heading": "menbestsellers",
+            "sensorsLinkName": "menbestsellers",
+            "link": "shopify:\/\/collections",
             "left": 0,
             "top": 2,
             "width": 48,
@@ -203,9 +202,9 @@
         "f25304d2-8088-49e0-837b-c140d87d31d8": {
           "type": "link",
           "settings": {
-            "heading": "bottoms",
-            "sensorsLinkName": "bottoms",
-            "link": "shopify:\/\/collections\/bottoms-12-13",
+            "heading": "womenbestsellers",
+            "sensorsLinkName": "womenbestsellers",
+            "link": "shopify:\/\/collections",
             "left": 50,
             "top": 2,
             "width": 53,
@@ -247,8 +246,8 @@
         "hidDesk": true,
         "sensorsName": "mobile分类导流区",
         "hidWeb": false,
-        "line": false,
-        "image": "shopify:\/\/shop_images\/02_9143ff5c-4eeb-4f4c-960f-d4f3c59db56a.jpg",
+        "line": true,
+        "image": "shopify:\/\/shop_images\/02_3d4b1221-1384-4b32-a7ea-526c7ee1df6e.jpg",
         "tpadding": 0,
         "rpadding": 0,
         "bpadding": 0,
