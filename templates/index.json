@@ -172,11 +172,85 @@
         "1f197e6e-076a-4800-935a-1d35bc6020ce"
       ],
       "settings": {
+        "linkImg_title": "",
+        "linkImg_content": "",
         "hidDesk": false,
         "sensorsName": "",
         "hidWeb": true,
         "line": false,
-        "image": "shopify:\/\/shop_images\/02_3a798e6c-12b2-451d-af34-6e9ffda9b0df.jpg",
+        "image": "shopify:\/\/shop_images\/04_691fe7f1-90c5-4587-9ada-2e4d5e0db767.jpg",
+        "tpadding": 0,
+        "rpadding": 0,
+        "bpadding": 0,
+        "lpadding": 0
+      }
+    },
+    "164742631051d4db44": {
+      "type": "linkImg",
+      "blocks": {
+        "1b4a5d11-2c92-45bb-b788-8a362446a835": {
+          "type": "link",
+          "settings": {
+            "heading": "shirt",
+            "sensorsLinkName": "shirt",
+            "link": "shopify:\/\/collections\/shirts",
+            "left": 0,
+            "top": 2,
+            "width": 48,
+            "height": 48
+          }
+        },
+        "f25304d2-8088-49e0-837b-c140d87d31d8": {
+          "type": "link",
+          "settings": {
+            "heading": "bottoms",
+            "sensorsLinkName": "bottoms",
+            "link": "shopify:\/\/collections\/bottoms-12-13",
+            "left": 50,
+            "top": 2,
+            "width": 53,
+            "height": 48
+          }
+        },
+        "312647ac-1ad0-4158-af07-2abbd19d8a97": {
+          "type": "link",
+          "settings": {
+            "heading": "tees",
+            "sensorsLinkName": "tees",
+            "link": "shopify:\/\/collections\/tees",
+            "left": 0,
+            "top": 51,
+            "width": 50,
+            "height": 46
+          }
+        },
+        "e34c6701-d51d-4b6b-b3c3-dbdb091ce635": {
+          "type": "link",
+          "settings": {
+            "heading": "topspacks",
+            "sensorsLinkName": "topspacks",
+            "link": "shopify:\/\/collections\/tops-packs",
+            "left": 52,
+            "top": 51,
+            "width": 50,
+            "height": 47
+          }
+        }
+      },
+      "block_order": [
+        "1b4a5d11-2c92-45bb-b788-8a362446a835",
+        "f25304d2-8088-49e0-837b-c140d87d31d8",
+        "312647ac-1ad0-4158-af07-2abbd19d8a97",
+        "e34c6701-d51d-4b6b-b3c3-dbdb091ce635"
+      ],
+      "settings": {
+        "linkImg_title": "",
+        "linkImg_content": "",
+        "hidDesk": true,
+        "sensorsName": "mobile分类导流区",
+        "hidWeb": false,
+        "line": false,
+        "image": "shopify:\/\/shop_images\/04_519b15b8-6334-484d-b985-1ea1e1ab96ca.jpg",
         "tpadding": 0,
         "rpadding": 0,
         "bpadding": 0,
@@ -243,81 +317,13 @@
         "6defe89d-34bf-47d9-a1f2-91004d693ed8"
       ],
       "settings": {
+        "linkImg_title": "",
+        "linkImg_content": "",
         "hidDesk": false,
         "sensorsName": "pc分类导流区",
         "hidWeb": true,
         "line": false,
         "image": "shopify:\/\/shop_images\/02_2e5a59e6-d04e-4c67-86d6-bf6b19f4f5ea.jpg",
-        "tpadding": 0,
-        "rpadding": 0,
-        "bpadding": 0,
-        "lpadding": 0
-      }
-    },
-    "164742631051d4db44": {
-      "type": "linkImg",
-      "blocks": {
-        "1b4a5d11-2c92-45bb-b788-8a362446a835": {
-          "type": "link",
-          "settings": {
-            "heading": "shirt",
-            "sensorsLinkName": "shirt",
-            "link": "shopify:\/\/collections\/shirts",
-            "left": 0,
-            "top": 2,
-            "width": 48,
-            "height": 48
-          }
-        },
-        "f25304d2-8088-49e0-837b-c140d87d31d8": {
-          "type": "link",
-          "settings": {
-            "heading": "bottoms",
-            "sensorsLinkName": "bottoms",
-            "link": "shopify:\/\/collections\/bottoms-12-13",
-            "left": 50,
-            "top": 2,
-            "width": 53,
-            "height": 48
-          }
-        },
-        "312647ac-1ad0-4158-af07-2abbd19d8a97": {
-          "type": "link",
-          "settings": {
-            "heading": "tees",
-            "sensorsLinkName": "tees",
-            "link": "shopify:\/\/collections\/tees",
-            "left": 0,
-            "top": 51,
-            "width": 50,
-            "height": 46
-          }
-        },
-        "e34c6701-d51d-4b6b-b3c3-dbdb091ce635": {
-          "type": "link",
-          "settings": {
-            "heading": "topspacks",
-            "sensorsLinkName": "topspacks",
-            "link": "shopify:\/\/collections\/tops-packs",
-            "left": 52,
-            "top": 51,
-            "width": 50,
-            "height": 47
-          }
-        }
-      },
-      "block_order": [
-        "1b4a5d11-2c92-45bb-b788-8a362446a835",
-        "f25304d2-8088-49e0-837b-c140d87d31d8",
-        "312647ac-1ad0-4158-af07-2abbd19d8a97",
-        "e34c6701-d51d-4b6b-b3c3-dbdb091ce635"
-      ],
-      "settings": {
-        "hidDesk": true,
-        "sensorsName": "mobile分类导流区",
-        "hidWeb": false,
-        "line": false,
-        "image": "shopify:\/\/shop_images\/02_9143ff5c-4eeb-4f4c-960f-d4f3c59db56a.jpg",
         "tpadding": 0,
         "rpadding": 0,
         "bpadding": 0,
@@ -710,8 +716,8 @@
     "16476930731e3b7419",
     "16474248460d0593be",
     "16500767332eb3ea11",
-    "16474250424edba623",
     "164742631051d4db44",
+    "16474250424edba623",
     "16500210584c969cfe",
     "1650021168ea57a101",
     "1651218774b7bce676",
