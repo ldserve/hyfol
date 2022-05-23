@@ -187,6 +187,62 @@
     },
     "16533013931d53b60a": {
       "type": "linkImg",
+      "blocks": {
+        "6fc4375a-197b-4427-ad8b-2ae08a050333": {
+          "type": "link",
+          "settings": {
+            "heading": "(´థ౪థ）σ",
+            "sensorsLinkName": "",
+            "link": "",
+            "left": 0,
+            "top": 0,
+            "width": 10,
+            "height": 10
+          }
+        },
+        "01f2aa28-6379-4b35-a321-5ba35218c44b": {
+          "type": "link",
+          "settings": {
+            "heading": "(´థ౪థ）σ",
+            "sensorsLinkName": "",
+            "link": "",
+            "left": 0,
+            "top": 0,
+            "width": 10,
+            "height": 10
+          }
+        },
+        "fd46c6c8-43a1-48a6-802d-71509d573a53": {
+          "type": "link",
+          "settings": {
+            "heading": "newarrivals",
+            "sensorsLinkName": "newarrivals",
+            "link": "shopify:\/\/collections",
+            "left": 0,
+            "top": 0,
+            "width": 10,
+            "height": 10
+          }
+        },
+        "da1e58ea-ff5d-4dfa-b6a1-1eb029ccc818": {
+          "type": "link",
+          "settings": {
+            "heading": "sale",
+            "sensorsLinkName": "sale",
+            "link": "shopify:\/\/collections",
+            "left": 0,
+            "top": 0,
+            "width": 10,
+            "height": 10
+          }
+        }
+      },
+      "block_order": [
+        "6fc4375a-197b-4427-ad8b-2ae08a050333",
+        "01f2aa28-6379-4b35-a321-5ba35218c44b",
+        "fd46c6c8-43a1-48a6-802d-71509d573a53",
+        "da1e58ea-ff5d-4dfa-b6a1-1eb029ccc818"
+      ],
       "settings": {
         "linkImg_title": "",
         "linkImg_content": "",
@@ -194,6 +250,7 @@
         "sensorsName": "",
         "hidWeb": false,
         "line": true,
+        "image": "shopify:\/\/shop_images\/02_3d4b1221-1384-4b32-a7ea-526c7ee1df6e.jpg",
         "tpadding": 0,
         "rpadding": 0,
         "bpadding": 0,
