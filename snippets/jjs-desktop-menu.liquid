@@ -44,7 +44,7 @@
         {{link.title }}</a>
       {%- else -%}
       {%- capture index_nested -%}{{ index }}-{% increment nav_dropdown %}{%- endcapture -%}
-      <a href="{{ link.url }}" class="nav-dropdown__link link" data-type="menuitem" aria-expanded="false"
+      <a href="#" class="nav-dropdown__link link" data-type="menuitem" aria-expanded="false"
         aria-controls="{{ index_nested }}" aria-haspopup="true">{{- link.title -}} 
       </a>
  
@@ -58,7 +58,7 @@
           {%- else -%}
           {%- capture index_nested_nested -%}{{ index_nested }}-{% increment nav_dropdown_nested %}{%- endcapture -%}
 
-          <a href="{{ sub_link.url }}" class="nav-dropdown__link link" data-type="menuitem" aria-expanded="false"
+          <a href="#" class="nav-dropdown__link link" data-type="menuitem" aria-expanded="false"
             aria-controls="{{ index_nested_nested }}" aria-haspopup="true">{{- sub_link.title -}} {%- render 'icon',
             icon: 'arrow-right' -%}</a>
 
