@@ -382,13 +382,69 @@
     },
     "1653297879b5b9419a": {
       "type": "linkImg",
-      "disabled": true,
+      "blocks": {
+        "0736ae2f-d8f9-4699-9348-1065c0a82879": {
+          "type": "link",
+          "settings": {
+            "heading": "tee",
+            "sensorsLinkName": "tee",
+            "link": "shopify:\/\/collections\/tees",
+            "left": 0,
+            "top": 0,
+            "width": 49,
+            "height": 49
+          }
+        },
+        "17a0b0e4-b0fd-421f-ae02-f40770d11416": {
+          "type": "link",
+          "settings": {
+            "heading": "shirts",
+            "sensorsLinkName": "shirts",
+            "link": "shopify:\/\/collections\/shirts",
+            "left": 51,
+            "top": 0,
+            "width": 53,
+            "height": 49
+          }
+        },
+        "1a56e24f-fd33-4441-a6c2-3cf03868b44a": {
+          "type": "link",
+          "settings": {
+            "heading": "bottoms",
+            "sensorsLinkName": "bottoms",
+            "link": "shopify:\/\/collections\/bottoms-12-13",
+            "left": 0,
+            "top": 50,
+            "width": 49,
+            "height": 45
+          }
+        },
+        "dbe8a9a1-2bdd-4552-82ae-15b0ebb1e9cf": {
+          "type": "link",
+          "settings": {
+            "heading": "accessories",
+            "sensorsLinkName": "accessories",
+            "link": "shopify:\/\/collections\/accessories-12-13",
+            "left": 51,
+            "top": 50,
+            "width": 60,
+            "height": 46
+          }
+        }
+      },
+      "block_order": [
+        "0736ae2f-d8f9-4699-9348-1065c0a82879",
+        "17a0b0e4-b0fd-421f-ae02-f40770d11416",
+        "1a56e24f-fd33-4441-a6c2-3cf03868b44a",
+        "dbe8a9a1-2bdd-4552-82ae-15b0ebb1e9cf"
+      ],
       "settings": {
-        "hidDesk": false,
+        "hidDesk": true,
         "sensorsName": "",
         "hidWeb": false,
-        "line": true,
-        "tpadding": 0,
+        "line": false,
+        "image": "shopify:\/\/shop_images\/04_519b15b8-6334-484d-b985-1ea1e1ab96ca.jpg",
+        "tpadding": 5,
         "rpadding": 0,
         "bpadding": 0,
         "lpadding": 0
