@@ -147,21 +147,21 @@
             "sensorsLinkName": "newarrivals",
             "link": "shopify:\/\/collections",
             "left": 0,
-            "top": 51,
-            "width": 49,
-            "height": 48
+            "top": 0,
+            "width": 0,
+            "height": 0
           }
         },
         "6defe89d-34bf-47d9-a1f2-91004d693ed8": {
           "type": "link",
           "settings": {
-            "heading": "topspacks",
-            "sensorsLinkName": "topspacks",
-            "link": "shopify:\/\/collections\/tops-packs-1",
-            "left": 50,
-            "top": 51,
-            "width": 57,
-            "height": 47
+            "heading": "sale",
+            "sensorsLinkName": "sale",
+            "link": "shopify:\/\/collections",
+            "left": 0,
+            "top": 0,
+            "width": 0,
+            "height": 0
           }
         }
       },
