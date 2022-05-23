@@ -122,7 +122,7 @@
           "settings": {
             "heading": "menbestsellers",
             "sensorsLinkName": "menbestsellers",
-            "link": "shopify:\/\/collections",
+            "link": "shopify:\/\/collections\/🔥-best-sellers-men-🔥",
             "left": 0,
             "top": 5,
             "width": 24,
@@ -134,7 +134,7 @@
           "settings": {
             "heading": "womenbestsellers",
             "sensorsLinkName": "womenbestsellers",
-            "link": "shopify:\/\/collections",
+            "link": "shopify:\/\/collections\/🔥-best-sellers-women-🔥",
             "left": 25,
             "top": 5,
             "width": 24,
@@ -216,7 +216,7 @@
           "settings": {
             "heading": "newarrivals",
             "sensorsLinkName": "newarrivals",
-            "link": "shopify:\/\/collections",
+            "link": "shopify:\/\/collections\/new-in-1",
             "left": 0,
             "top": 51,
             "width": 50,
@@ -228,7 +228,7 @@
           "settings": {
             "heading": "sale",
             "sensorsLinkName": "sale",
-            "link": "shopify:\/\/collections",
+            "link": "shopify:\/\/collections\/shop-by-deals",
             "left": 52,
             "top": 51,
             "width": 50,
