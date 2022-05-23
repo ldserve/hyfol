@@ -196,8 +196,8 @@
             "link": "shopify:\/\/collections",
             "left": 0,
             "top": 0,
-            "width": 10,
-            "height": 10
+            "width": 49,
+            "height": 48
           }
         },
         "01f2aa28-6379-4b35-a321-5ba35218c44b": {
@@ -206,10 +206,10 @@
             "heading": "womenbestsellers",
             "sensorsLinkName": "womenbestsellers",
             "link": "shopify:\/\/collections",
-            "left": 0,
-            "top": 0,
-            "width": 10,
-            "height": 10
+            "left": 51,
+            "top": 3,
+            "width": 50,
+            "height": 47
           }
         },
         "fd46c6c8-43a1-48a6-802d-71509d573a53": {
@@ -219,9 +219,9 @@
             "sensorsLinkName": "newarrivals",
             "link": "shopify:\/\/collections",
             "left": 0,
-            "top": 0,
-            "width": 10,
-            "height": 10
+            "top": 49,
+            "width": 50,
+            "height": 50
           }
         },
         "da1e58ea-ff5d-4dfa-b6a1-1eb029ccc818": {
@@ -230,10 +230,10 @@
             "heading": "sale",
             "sensorsLinkName": "sale",
             "link": "shopify:\/\/collections",
-            "left": 0,
-            "top": 0,
-            "width": 10,
-            "height": 10
+            "left": 51,
+            "top": 52,
+            "width": 65,
+            "height": 51
           }
         }
       },
@@ -249,7 +249,7 @@
         "hidDesk": true,
         "sensorsName": "",
         "hidWeb": false,
-        "line": true,
+        "line": false,
         "image": "shopify:\/\/shop_images\/02_3d4b1221-1384-4b32-a7ea-526c7ee1df6e.jpg",
         "tpadding": 0,
         "rpadding": 0,
