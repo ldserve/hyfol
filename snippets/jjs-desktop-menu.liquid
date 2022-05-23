@@ -31,8 +31,6 @@
   <ul id="{{ index }}"
     class="nav-dropdown clearborder {% if is_floating %}nav-dropdown--floating {% elsif menu.levels == 1 %}nav-dropdown--restrict{% endif %} clearposition d-flex"
     data-type="menu" role="list" data-expenable="1">
-    {%- if is_floating -%}
-    {%- endif -%}
 
     {%- for link in menu.links -%}
 
@@ -44,9 +42,9 @@
         {{link.title }}</a>
       {%- else -%}
       {%- capture index_nested -%}{{ index }}-{% increment nav_dropdown %}{%- endcapture -%}
-      <a href="#" class="nav-dropdown__link link" data-type="menuitem" aria-expanded="false"
+      <div  class="nav-dropdown__link link" data-type="menuitem" aria-expanded="false"
         aria-controls="{{ index_nested }}" aria-haspopup="true">{{- link.title -}} 
-      </a>
+      </div>
  
       <ul id="{{ index_nested }}" class="nav-dropdown clearposition clearborder padding-0 " data-type="menu" aria-hidden="true"
         role="list" data-expenable="1">
@@ -55,13 +53,11 @@
         <li class="nav-dropdown__item sub-item">
           {%- if sub_link.links.size == 0 -%}
           <a href="{{ sub_link.url }}" class="nav-dropdown__link link" data-type="menuitem">{{ sub_link.title }}</a>
+          
           {%- else -%}
           {%- capture index_nested_nested -%}{{ index_nested }}-{% increment nav_dropdown_nested %}{%- endcapture -%}
-
-          <a href="#" class="nav-dropdown__link link" data-type="menuitem" aria-expanded="false"
-            aria-controls="{{ index_nested_nested }}" aria-haspopup="true">{{- sub_link.title -}} {%- render 'icon',
-            icon: 'arrow-right' -%}</a>
-
+          <div  class="nav-dropdown__link link" data-type="menuitem" aria-expanded="false"
+            aria-controls="{{ index_nested_nested }}" aria-haspopup="true">{{- sub_link.title -}} </div>
           <ul id="{{ index_nested_nested }}" class="nav-dropdown clearborder clearposition  sub-bar padding-0" data-type="menu"
             aria-hidden="true" role="list" data-expenable="1">
             {%- for sub_sub_link in sub_link.links -%}
