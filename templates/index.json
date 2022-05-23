@@ -214,9 +214,9 @@
         "312647ac-1ad0-4158-af07-2abbd19d8a97": {
           "type": "link",
           "settings": {
-            "heading": "tees",
-            "sensorsLinkName": "tees",
-            "link": "shopify:\/\/collections\/tees",
+            "heading": "newarrivals",
+            "sensorsLinkName": "newarrivals",
+            "link": "shopify:\/\/collections",
             "left": 0,
             "top": 51,
             "width": 50,
