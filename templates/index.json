@@ -113,6 +113,148 @@
         "link_url": "shopify:\/\/collections\/best-sellers-1"
       }
     },
+    "16474250424edba623": {
+      "type": "linkImg",
+      "blocks": {
+        "ff6f97b8-1adb-4a65-93e8-533754b197fc": {
+          "type": "link",
+          "settings": {
+            "heading": "menbestsellers",
+            "sensorsLinkName": "menbestsellers",
+            "link": "shopify:\/\/collections",
+            "left": 0,
+            "top": 1,
+            "width": 0,
+            "height": 0
+          }
+        },
+        "342f71ba-d412-42c7-a286-e1b97c3dc993": {
+          "type": "link",
+          "settings": {
+            "heading": "womenbestsellers",
+            "sensorsLinkName": "womenbestsellers",
+            "link": "shopify:\/\/collections\/bottoms-12-13",
+            "left": 0,
+            "top": 1,
+            "width": 0,
+            "height": 0
+          }
+        },
+        "9ff77147-50cf-4ea6-a2e8-88372aa19d4a": {
+          "type": "link",
+          "settings": {
+            "heading": "newarrivals",
+            "sensorsLinkName": "newarrivals",
+            "link": "shopify:\/\/collections",
+            "left": 0,
+            "top": 51,
+            "width": 49,
+            "height": 48
+          }
+        },
+        "6defe89d-34bf-47d9-a1f2-91004d693ed8": {
+          "type": "link",
+          "settings": {
+            "heading": "topspacks",
+            "sensorsLinkName": "topspacks",
+            "link": "shopify:\/\/collections\/tops-packs-1",
+            "left": 50,
+            "top": 51,
+            "width": 57,
+            "height": 47
+          }
+        }
+      },
+      "block_order": [
+        "ff6f97b8-1adb-4a65-93e8-533754b197fc",
+        "342f71ba-d412-42c7-a286-e1b97c3dc993",
+        "9ff77147-50cf-4ea6-a2e8-88372aa19d4a",
+        "6defe89d-34bf-47d9-a1f2-91004d693ed8"
+      ],
+      "settings": {
+        "linkImg_title": "",
+        "linkImg_content": "",
+        "hidDesk": false,
+        "sensorsName": "pc分类导流区",
+        "hidWeb": true,
+        "line": true,
+        "image": "shopify:\/\/shop_images\/02_669c4690-ca48-41d7-b48e-c5b4336b90a1.jpg",
+        "tpadding": 0,
+        "rpadding": 0,
+        "bpadding": 0,
+        "lpadding": 0
+      }
+    },
+    "16533013931d53b60a": {
+      "type": "linkImg",
+      "settings": {
+        "linkImg_title": "",
+        "linkImg_content": "",
+        "hidDesk": false,
+        "sensorsName": "",
+        "hidWeb": false,
+        "line": true,
+        "tpadding": 0,
+        "rpadding": 0,
+        "bpadding": 0,
+        "lpadding": 0
+      }
+    },
+    "16500210584c969cfe": {
+      "type": "ld-imageText",
+      "disabled": true,
+      "settings": {
+        "noMargin": true,
+        "image": "shopify:\/\/shop_images\/98874da468f857bd057140596b570989.jpg",
+        "mobile_image": "shopify:\/\/shop_images\/ef25f4c651b92855092f6b4a7658b4bc.jpg",
+        "link": "",
+        "title_align": "row",
+        "title_tb": "column-reverse",
+        "title": "Text",
+        "subtitle": "Text block",
+        "button": "SHOP NOW",
+        "show": false,
+        "title_size": 4,
+        "sub_title_size": 1.5,
+        "m_title_size": 6,
+        "m_sub_title_size": 4,
+        "sub_title_top": 10,
+        "m_sub_title_top": 10,
+        "text_color": "#ffffff",
+        "text_style": "normal",
+        "s_text_style": "normal",
+        "text_align": "center",
+        "button_color": "#ed6123",
+        "button_text_color": "#ffffff",
+        "button_color_hover": "#ffffff",
+        "button_text_color_hover": "#000000"
+      }
+    },
+    "1650021168ea57a101": {
+      "type": "no_space_img",
+      "disabled": true,
+      "settings": {
+        "sensorsName": "",
+        "bg_image": "shopify:\/\/shop_images\/ed5cb826d8e8739c768f6080bc88f97a.jpg",
+        "web_bg_image": "shopify:\/\/shop_images\/7e6c0994b597e0d1f2f64ddfb57015eb.jpg",
+        "link": "shopify:\/\/collections\/women",
+        "shadow": false
+      }
+    },
+    "1651218774b7bce676": {
+      "type": "transparent-collection",
+      "settings": {
+        "collection": "sport-shorts",
+        "sensorsName": "TRAINING SHORTS",
+        "title": "",
+        "products_count": 12,
+        "layout": "vertical",
+        "stack_products": false,
+        "show_quick_buy": false,
+        "link_title": "View all",
+        "link_url": ""
+      }
+    },
     "16500767332eb3ea11": {
       "type": "linkImg",
       "blocks": {
@@ -255,134 +397,6 @@
         "rpadding": 0,
         "bpadding": 0,
         "lpadding": 0
-      }
-    },
-    "16474250424edba623": {
-      "type": "linkImg",
-      "disabled": true,
-      "blocks": {
-        "ff6f97b8-1adb-4a65-93e8-533754b197fc": {
-          "type": "link",
-          "settings": {
-            "heading": "shirt",
-            "sensorsLinkName": "shirt",
-            "link": "shopify:\/\/collections\/shirts",
-            "left": 0,
-            "top": 1,
-            "width": 49,
-            "height": 48
-          }
-        },
-        "342f71ba-d412-42c7-a286-e1b97c3dc993": {
-          "type": "link",
-          "settings": {
-            "heading": "bottoms",
-            "sensorsLinkName": "bottoms",
-            "link": "shopify:\/\/collections\/bottoms-12-13",
-            "left": 51,
-            "top": 1,
-            "width": 53,
-            "height": 45
-          }
-        },
-        "9ff77147-50cf-4ea6-a2e8-88372aa19d4a": {
-          "type": "link",
-          "settings": {
-            "heading": "tees",
-            "sensorsLinkName": "tees",
-            "link": "shopify:\/\/collections\/tees",
-            "left": 0,
-            "top": 51,
-            "width": 49,
-            "height": 48
-          }
-        },
-        "6defe89d-34bf-47d9-a1f2-91004d693ed8": {
-          "type": "link",
-          "settings": {
-            "heading": "topspacks",
-            "sensorsLinkName": "topspacks",
-            "link": "shopify:\/\/collections\/tops-packs-1",
-            "left": 50,
-            "top": 51,
-            "width": 57,
-            "height": 47
-          }
-        }
-      },
-      "block_order": [
-        "ff6f97b8-1adb-4a65-93e8-533754b197fc",
-        "342f71ba-d412-42c7-a286-e1b97c3dc993",
-        "9ff77147-50cf-4ea6-a2e8-88372aa19d4a",
-        "6defe89d-34bf-47d9-a1f2-91004d693ed8"
-      ],
-      "settings": {
-        "linkImg_title": "",
-        "linkImg_content": "",
-        "hidDesk": false,
-        "sensorsName": "pc分类导流区",
-        "hidWeb": true,
-        "line": false,
-        "image": "shopify:\/\/shop_images\/02_2e5a59e6-d04e-4c67-86d6-bf6b19f4f5ea.jpg",
-        "tpadding": 0,
-        "rpadding": 0,
-        "bpadding": 0,
-        "lpadding": 0
-      }
-    },
-    "16500210584c969cfe": {
-      "type": "ld-imageText",
-      "disabled": true,
-      "settings": {
-        "noMargin": true,
-        "image": "shopify:\/\/shop_images\/98874da468f857bd057140596b570989.jpg",
-        "mobile_image": "shopify:\/\/shop_images\/ef25f4c651b92855092f6b4a7658b4bc.jpg",
-        "link": "",
-        "title_align": "row",
-        "title_tb": "column-reverse",
-        "title": "Text",
-        "subtitle": "Text block",
-        "button": "SHOP NOW",
-        "show": false,
-        "title_size": 4,
-        "sub_title_size": 1.5,
-        "m_title_size": 6,
-        "m_sub_title_size": 4,
-        "sub_title_top": 10,
-        "m_sub_title_top": 10,
-        "text_color": "#ffffff",
-        "text_style": "normal",
-        "s_text_style": "normal",
-        "text_align": "center",
-        "button_color": "#ed6123",
-        "button_text_color": "#ffffff",
-        "button_color_hover": "#ffffff",
-        "button_text_color_hover": "#000000"
-      }
-    },
-    "1650021168ea57a101": {
-      "type": "no_space_img",
-      "disabled": true,
-      "settings": {
-        "sensorsName": "",
-        "bg_image": "shopify:\/\/shop_images\/ed5cb826d8e8739c768f6080bc88f97a.jpg",
-        "web_bg_image": "shopify:\/\/shop_images\/7e6c0994b597e0d1f2f64ddfb57015eb.jpg",
-        "link": "shopify:\/\/collections\/women",
-        "shadow": false
-      }
-    },
-    "1651218774b7bce676": {
-      "type": "transparent-collection",
-      "settings": {
-        "collection": "sport-shorts",
-        "sensorsName": "TRAINING SHORTS",
-        "title": "",
-        "products_count": 12,
-        "layout": "vertical",
-        "stack_products": false,
-        "show_quick_buy": false,
-        "link_title": "View all",
-        "link_url": ""
       }
     },
     "16501153969d7dc597": {
@@ -715,12 +729,13 @@
     "1650101273f11a55ef",
     "16476930731e3b7419",
     "16474248460d0593be",
-    "16500767332eb3ea11",
-    "164742631051d4db44",
     "16474250424edba623",
+    "16533013931d53b60a",
     "16500210584c969cfe",
     "1650021168ea57a101",
     "1651218774b7bce676",
+    "16500767332eb3ea11",
+    "164742631051d4db44",
     "16501153969d7dc597",
     "1647498064c408cfd6",
     "1648607115d95fb2d3",
