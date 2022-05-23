@@ -11030,7 +11030,7 @@ shopify-payment-terms {
     width: 100% !important;
     align-items: center;
     padding-right: 25px;
-    background:var(--secondary-background)
+    background:#000000
   }
 
   .product-item--list .product-item__title {
