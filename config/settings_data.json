@@ -236,13 +236,6 @@
       "announcement-bar": {
         "type": "announcement-bar",
         "blocks": {
-          "ccab5dcb-d3a7-4a2e-9c0e-6699c88abf2e": {
-            "type": "announcement",
-            "settings": {
-              "text": "FAMILY WEAR GET 5 FOR $59.9",
-              "link": ""
-            }
-          },
           "f7871216-4fbb-4392-b4a5-25a3e8dbe911": {
             "type": "announcement",
             "disabled": true,
@@ -271,14 +264,21 @@
               "text": "BEACH SHORTS GET 2 FOR $35.9",
               "link": ""
             }
+          },
+          "ccab5dcb-d3a7-4a2e-9c0e-6699c88abf2e": {
+            "type": "announcement",
+            "settings": {
+              "text": "FAMILY WEAR GET 5 FOR $59.9",
+              "link": ""
+            }
           }
         },
         "block_order": [
-          "ccab5dcb-d3a7-4a2e-9c0e-6699c88abf2e",
           "f7871216-4fbb-4392-b4a5-25a3e8dbe911",
           "2caf8430-4f46-405e-b569-d4957d1bde1c",
           "933aa31d-00c1-44a5-8b00-66ceefe87acd",
-          "ebf3f4ad-f1dc-464f-9e19-71c2a7fc4fc3"
+          "ebf3f4ad-f1dc-464f-9e19-71c2a7fc4fc3",
+          "ccab5dcb-d3a7-4a2e-9c0e-6699c88abf2e"
         ],
         "settings": {
           "show_announcement": true,
