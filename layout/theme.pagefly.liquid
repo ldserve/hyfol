@@ -282,7 +282,9 @@ line_items: [
 
 {% include 'orichi_multi_pixel' %}	{% render 'vitals-loader' %}
 
-{% include "omega_multi_pixel" %} </head>
+{% include "omega_multi_pixel" %} 
+{% render 'sca-aff-refer-customer' %}
+</head>
 
   <body class="warehouse--v1 {% if settings.animation_image_zoom %}features--animate-zoom{% endif%} template-{{ request.page_type | handle }} {% if request.page_type contains '/' %}template-{{ request.page_type | split: '/' | last | handle }}{% endif %}" data-instant-intensity="viewport"><div class="pagefly-container">{{ content_for_layout }}</div></body>
 </html>
