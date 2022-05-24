@@ -483,6 +483,7 @@
     },
     "1648607115d95fb2d3": {
       "type": "ld-imageText",
+      "disabled": true,
       "settings": {
         "noMargin": true,
         "image": "shopify:\/\/shop_images\/banner_01.jpg",
@@ -512,6 +513,7 @@
     },
     "1647497707f35ea4d8": {
       "type": "transparent-collection",
+      "disabled": true,
       "settings": {
         "collection": "skull",
         "sensorsName": "ROCK SKULL",
@@ -526,6 +528,7 @@
     },
     "1648191714c3e1b050": {
       "type": "ld-imageText",
+      "disabled": true,
       "settings": {
         "noMargin": true,
         "image": "shopify:\/\/shop_images\/02_0d425458-8123-4a0d-9e23-6414dd915332.jpg",
@@ -555,6 +558,7 @@
     },
     "1647424215f34c4fad": {
       "type": "transparent-collection",
+      "disabled": true,
       "settings": {
         "collection": "american-flag",
         "sensorsName": "AMERICAN REAPER",
