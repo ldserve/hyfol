@@ -463,8 +463,8 @@
         "32e0b187-986b-4f67-b102-e9f70e80109c": {
           "type": "link",
           "settings": {
-            "heading": "sale",
-            "sensorsLinkName": "sale",
+            "heading": "spingsale",
+            "sensorsLinkName": "spingsale",
             "link": "shopify:\/\/collections",
             "left": 0,
             "top": 0,
@@ -505,14 +505,31 @@
     },
     "1653378259d3835d10": {
       "type": "linkImg",
-      "disabled": true,
+      "blocks": {
+        "069983ac-ccc2-4e2c-bc85-4d93bd4fff06": {
+          "type": "link",
+          "settings": {
+            "heading": "spingsale",
+            "sensorsLinkName": "spingsale",
+            "link": "shopify:\/\/collections",
+            "left": 0,
+            "top": 0,
+            "width": 50,
+            "height": 100
+          }
+        }
+      },
+      "block_order": [
+        "069983ac-ccc2-4e2c-bc85-4d93bd4fff06"
+      ],
       "settings": {
         "linkImg_title": "",
         "linkImg_content": "",
         "hidDesk": true,
         "sensorsName": "mobile分类导流区",
         "hidWeb": false,
-        "line": false,
+        "line": true,
+        "image": "shopify:\/\/shop_images\/05_4fd1f28b-3f85-4983-81ae-89b150d0209e.jpg",
         "tpadding": 0,
         "rpadding": 0,
         "bpadding": 0,
