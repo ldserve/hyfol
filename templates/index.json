@@ -3,30 +3,6 @@
     "1650101273f11a55ef": {
       "type": "slideshow",
       "blocks": {
-        "1650101273ef0886ca-1": {
-          "type": "image",
-          "settings": {
-            "sensorsName": "",
-            "image": "shopify:\/\/shop_images\/78f533ba629a7a586b29aefc68f6195f.jpg",
-            "mobile_image": "shopify:\/\/shop_images\/78f533ba629a7a586b29aefc68f6195f_176cf0c8-3abc-43f2-82ac-7882c84203cd.jpg",
-            "show_overlay": false,
-            "overlay_opacity": 30,
-            "text_color": "#ffffff",
-            "title": "",
-            "heading_text_font": "helvetica_n4",
-            "heading_text_font_size": 20,
-            "heading_text_color": "#ffffff",
-            "content": "",
-            "content_text_font": "helvetica_n4",
-            "content_text_font_size": 12,
-            "content_text_color": "#ffffff",
-            "content_position": "middle_center",
-            "button_background": "#ffffff",
-            "button_text_color": "#000000",
-            "button_text": "",
-            "link": "shopify:\/\/collections\/memorial-day-sale"
-          }
-        },
         "28572d9f-8700-4893-990e-c3b4bf1e7821": {
           "type": "image",
           "settings": {
@@ -49,6 +25,30 @@
             "button_text_color": "#000000",
             "button_text": "",
             "link": "shopify:\/\/collections\/fathers-day"
+          }
+        },
+        "1650101273ef0886ca-1": {
+          "type": "image",
+          "settings": {
+            "sensorsName": "",
+            "image": "shopify:\/\/shop_images\/78f533ba629a7a586b29aefc68f6195f.jpg",
+            "mobile_image": "shopify:\/\/shop_images\/78f533ba629a7a586b29aefc68f6195f_176cf0c8-3abc-43f2-82ac-7882c84203cd.jpg",
+            "show_overlay": false,
+            "overlay_opacity": 30,
+            "text_color": "#ffffff",
+            "title": "",
+            "heading_text_font": "helvetica_n4",
+            "heading_text_font_size": 20,
+            "heading_text_color": "#ffffff",
+            "content": "",
+            "content_text_font": "helvetica_n4",
+            "content_text_font_size": 12,
+            "content_text_color": "#ffffff",
+            "content_position": "middle_center",
+            "button_background": "#ffffff",
+            "button_text_color": "#000000",
+            "button_text": "",
+            "link": "shopify:\/\/collections\/memorial-day-sale"
           }
         },
         "1650101273ef0886ca-0": {
@@ -77,8 +77,8 @@
         }
       },
       "block_order": [
-        "1650101273ef0886ca-1",
         "28572d9f-8700-4893-990e-c3b4bf1e7821",
+        "1650101273ef0886ca-1",
         "1650101273ef0886ca-0"
       ],
       "settings": {
@@ -476,6 +476,7 @@
     },
     "1648607115d95fb2d3": {
       "type": "ld-imageText",
+      "disabled": true,
       "settings": {
         "noMargin": true,
         "image": "shopify:\/\/shop_images\/banner_01.jpg",
@@ -505,6 +506,7 @@
     },
     "1647497707f35ea4d8": {
       "type": "transparent-collection",
+      "disabled": true,
       "settings": {
         "collection": "skull",
         "sensorsName": "ROCK SKULL",
@@ -519,6 +521,7 @@
     },
     "1648191714c3e1b050": {
       "type": "ld-imageText",
+      "disabled": true,
       "settings": {
         "noMargin": true,
         "image": "shopify:\/\/shop_images\/02_0d425458-8123-4a0d-9e23-6414dd915332.jpg",
@@ -548,6 +551,7 @@
     },
     "1647424215f34c4fad": {
       "type": "transparent-collection",
+      "disabled": true,
       "settings": {
         "collection": "american-flag",
         "sensorsName": "AMERICAN REAPER",
