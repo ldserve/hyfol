@@ -471,16 +471,6 @@
         "link_url": ""
       }
     },
-    "16501153969d7dc597": {
-      "type": "no_space_img",
-      "settings": {
-        "sensorsName": "",
-        "bg_image": "shopify:\/\/shop_images\/8_a0491898-a613-4306-b94d-98d3f8514ee7.jpg",
-        "web_bg_image": "shopify:\/\/shop_images\/7_04eedabc-41fc-4f21-bccd-e474262dad46.jpg",
-        "link": "shopify:\/\/collections\/winter-clearance",
-        "shadow": false
-      }
-    },
     "1653378249b2cd3761": {
       "type": "linkImg",
       "blocks": {
@@ -573,6 +563,31 @@
         "lpadding": 0
       }
     },
+    "1647497707f35ea4d8": {
+      "type": "transparent-collection",
+      "settings": {
+        "collection": "skull",
+        "sensorsName": "ROCK SKULL",
+        "title": "",
+        "products_count": 18,
+        "layout": "vertical",
+        "stack_products": false,
+        "show_quick_buy": false,
+        "link_title": "View all",
+        "link_url": ""
+      }
+    },
+    "16501153969d7dc597": {
+      "type": "no_space_img",
+      "disabled": true,
+      "settings": {
+        "sensorsName": "",
+        "bg_image": "shopify:\/\/shop_images\/8_a0491898-a613-4306-b94d-98d3f8514ee7.jpg",
+        "web_bg_image": "shopify:\/\/shop_images\/7_04eedabc-41fc-4f21-bccd-e474262dad46.jpg",
+        "link": "shopify:\/\/collections\/winter-clearance",
+        "shadow": false
+      }
+    },
     "1648607115d95fb2d3": {
       "type": "ld-imageText",
       "disabled": true,
@@ -601,21 +616,6 @@
         "button_text_color": "#ffffff",
         "button_color_hover": "#ffffff",
         "button_text_color_hover": "#000000"
-      }
-    },
-    "1647497707f35ea4d8": {
-      "type": "transparent-collection",
-      "disabled": true,
-      "settings": {
-        "collection": "skull",
-        "sensorsName": "ROCK SKULL",
-        "title": "",
-        "products_count": 18,
-        "layout": "vertical",
-        "stack_products": false,
-        "show_quick_buy": false,
-        "link_title": "View all",
-        "link_url": ""
       }
     },
     "1648191714c3e1b050": {
@@ -890,11 +890,11 @@
     "16500767332eb3ea11",
     "164742631051d4db44",
     "1647498064c408cfd6",
-    "16501153969d7dc597",
     "1653378249b2cd3761",
     "1653378259d3835d10",
-    "1648607115d95fb2d3",
     "1647497707f35ea4d8",
+    "16501153969d7dc597",
+    "1648607115d95fb2d3",
     "1648191714c3e1b050",
     "1647424215f34c4fad",
     "16486063216ada3a56",
