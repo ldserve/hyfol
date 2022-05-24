@@ -109,7 +109,7 @@
              }
                       endx = Math.floor(event.changedTouches[0].pageX);//获取最后的坐标位置
                       nx = endx-startx;//获取开始位置和离开位置的距离
-                      console.log(nx , endx);
+                    //   console.log(nx , endx);
                       //判断滑动方向
                       if(nx > 0){
                         if (that.activeIndex != 0){
@@ -263,6 +263,10 @@
             this.json = this.root.querySelector('[type="application/json"]')
             this.options = this.root.querySelectorAll('.product-wrapper_option')
             this.formElement = this.root.querySelector('form[action*="/cart/add"]');
+            var color = this.root.querySelector('.color-swatch__radio[checked]')
+            var size = this.root.querySelector('.block-swatch__radio[checked]')
+            this.option1 =color? color.value:''
+            this.option2 =size? size.value:''
 
             if (!this.formElement) {
                 // 在小购物车没有form表单动态插入进去
@@ -272,7 +276,6 @@
                 formBox.className = "product-form"
                 formBox.enctype = "multipart/form-data"
                 var childList = this.root.children
-
                 for (let i = childList.length - 1; i >= 0; i--) {
                     formBox.prepend(childList[i])
                 }
@@ -283,31 +286,23 @@
                 this.addEven(this.options, this.json, this.formElement)
             }
 
-
-
         }
         addEven(options, json, formElement) {
             var productData = JSON.parse(json.innerHTML)
-
+            var _this=this
             options.forEach(option => {
                 option.addEventListener('click', (ev) => {
                     if (ev.target.tagName === "INPUT") {
                         var target = ev.target
                         var variantId = this.root.querySelector('input[name="id"]')
                         var selectedValueElement = option.querySelector('.product-form__selected-value')
-                        var option1, option2
-                        for (var i = 0, len = formElement.elements.length; i < len; i++) {
-                            var form = formElement.elements[i];
-                            if (form.name === '' || form.disabled) {
-                                continue;
-                            }
-                            if (form.name && !form.disabled && form.checked) {
-                                if (form.classList.contains('color-swatch__radio')) option1 = form.value
-                                if (form.classList.contains('block-swatch__radio')) option2 = form.value
-                            }
+                        var selects=option.querySelectorAll('input[checked]')
+                        for (var i = 0, len = selects.length; i < len; i++) {
+                            selects[i].removeAttribute("checked")
                         }
-                        this.currentVariant = productData.find(item => item.option1 === option1 && item.option2 === option2)
-
+                        target.setAttribute('checked','')
+                        _this['option' + target.getAttribute('data-option-position')] = target.value;
+                        this.currentVariant = productData.find(item => item.option1 === _this.option1 && item.option2 === _this.option2)
                         variantId.value = this.currentVariant.id
                         if( selectedValueElement != null ){
                             selectedValueElement.innerHTML = target.value
@@ -3956,8 +3951,14 @@
             key: "_onOptionChanged",
             value: function _onOptionChanged(event, target) {
                 this['option' + target.getAttribute('data-option-position')] = target.value; // We update the selected value
+                var optionsBox=target.closest('.product-form__option')
+                var selectedValueElement = optionsBox.querySelector('.product-form__selected-value');
+                var selectList= optionsBox.querySelectorAll('input[checked]')
+                selectList.forEach(select=>{
+                    select.removeAttribute('checked')
+                })
 
-                var selectedValueElement = target.closest('.product-form__option').querySelector('.product-form__selected-value');
+                target.setAttribute('checked','')
 
                 if (selectedValueElement) {
                     selectedValueElement.innerHTML = target.value;
