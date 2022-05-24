@@ -483,6 +483,93 @@
         "lpadding": 0
       }
     },
+    "1653388002d179f0ac": {
+      "type": "linkImg",
+      "blocks": {
+        "4959d604-4115-4780-b211-f5ca30a9bd6b": {
+          "type": "link",
+          "settings": {
+            "heading": "patriot",
+            "sensorsLinkName": "patriot",
+            "link": "",
+            "left": 0,
+            "top": 0,
+            "width": 25,
+            "height": 100
+          }
+        },
+        "fff14ece-948e-4bff-898d-2a25945b1b67": {
+          "type": "link",
+          "settings": {
+            "heading": "skull",
+            "sensorsLinkName": "skull",
+            "link": "",
+            "left": 26,
+            "top": 0,
+            "width": 23,
+            "height": 100
+          }
+        },
+        "88aec2c3-8f89-4c77-9ad5-180d02f9e2fd": {
+          "type": "link",
+          "settings": {
+            "heading": "waterproof",
+            "sensorsLinkName": "waterproof",
+            "link": "",
+            "left": 50,
+            "top": 0,
+            "width": 24,
+            "height": 100
+          }
+        },
+        "8235f1d1-90d8-4ddf-a52e-d697b714d9ed": {
+          "type": "link",
+          "settings": {
+            "heading": "workwear",
+            "sensorsLinkName": "workwear",
+            "link": "",
+            "left": 75,
+            "top": 0,
+            "width": 28,
+            "height": 100
+          }
+        }
+      },
+      "block_order": [
+        "4959d604-4115-4780-b211-f5ca30a9bd6b",
+        "fff14ece-948e-4bff-898d-2a25945b1b67",
+        "88aec2c3-8f89-4c77-9ad5-180d02f9e2fd",
+        "8235f1d1-90d8-4ddf-a52e-d697b714d9ed"
+      ],
+      "settings": {
+        "linkImg_title": "",
+        "linkImg_content": "",
+        "hidDesk": false,
+        "sensorsName": "pc分类导流区",
+        "hidWeb": true,
+        "line": false,
+        "image": "shopify:\/\/shop_images\/05_425fe538-86ff-4920-b564-6fa30395b586.jpg",
+        "tpadding": 0,
+        "rpadding": 0,
+        "bpadding": 0,
+        "lpadding": 0
+      }
+    },
+    "16533880090303abbe": {
+      "type": "linkImg",
+      "settings": {
+        "linkImg_title": "",
+        "linkImg_content": "",
+        "hidDesk": true,
+        "sensorsName": "mobile分类导流区",
+        "hidWeb": false,
+        "line": true,
+        "tpadding": 0,
+        "rpadding": 0,
+        "bpadding": 0,
+        "lpadding": 0
+      }
+    },
     "1640334828c8a975c8": {
       "type": "celebrity-picture-rotation",
       "blocks": {
@@ -677,6 +764,8 @@
     "164742631051d4db44",
     "1653378249b2cd3761",
     "1653378259d3835d10",
+    "1653388002d179f0ac",
+    "16533880090303abbe",
     "1640334828c8a975c8",
     "16486080199c077c37",
     "164854339383efd708"
