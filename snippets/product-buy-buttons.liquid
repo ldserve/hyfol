@@ -15,11 +15,11 @@
     {%- assign id = id  | append: "," | append: line_item.sku  -%}
   {%- endif  -%}
  {%- endfor  -%}
- 
+
   {%- if product.template_suffix != 'contact' -%}
     {%- if product.selected_or_first_available_variant.available -%}
       {%- if product.template_suffix == 'pre-order' -%}
-        <button type="submit" class="product-form__add-button button button--primary" data-action="add-to-cart" onclick="return gtag_report_conversion();">{{ 'product.form.pre_order' | t }}</button>
+        <button type="submit" class="product-form__add-button button button--primary" data-action="add-to-cart" >{{ 'product.form.pre_order' | t }}</button>
       {%- else -%}
         <button type="submit" class="product-form__add-button button button--primary" 
          data-scenable="1" data-sctype="addCart"
@@ -42,7 +42,7 @@
               "bonus_name":"",
               "bonus_amount":0,
               "entrance":"CommodityDetailPage_AddToCart"}'
-         data-action="add-to-cart" onclick="return gtag_report_conversion();">{{ 'product.form.add_to_cart' | t }}</button>
+         data-action="add-to-cart" >{{ 'product.form.add_to_cart' | t }}</button>
       {%- endif -%}
     {%- else -%}
       <button type="submit" class="product-form__add-button button button--disabled" disabled>{{ 'product.form.sold_out' | t }}</button>

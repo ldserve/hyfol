@@ -126,21 +126,14 @@
 												 data-scdata='{"mkt_type":"bar","first_mkt_name":"顶部导航","first_mkt_id":"{{ section.id }}","second_mkt_rank":"{{ forloop.index }}","third_mkt_rank":"","mkt_material_url":"","mkt_material_name":"{{ link.title | handleize }}","commodity_spuid":"","commodity_skuid":"","commodity_name":"","original_price":"","current_price":"","currency_unit":"","mkt_tag":[]}'>{{ link.title }}</a>
 										{%- else -%}
 											{%- capture index -%}desktop-menu-0-{{ forloop.index }}{%- endcapture -%}
-
-											<a href="{{ link.url }}" class="nav-bar__link link shence_commodityView" data-type="menuitem"
+											<div  class="nav-bar__link link shence_commodityView" data-type="menuitem"
 												 aria-expanded="false"
 												 aria-controls="{{ index }}" aria-haspopup="true" data-scenable="1" data-expenable="1"
 												 data-bindexp="1" data-sctype="mktClick"
 												 data-scdata='{"mkt_type":"bar","first_mkt_name":"顶部导航","first_mkt_id":"{{ section.id }}","second_mkt_rank":"{{ forloop.index }}","third_mkt_rank":"","mkt_material_url":"","mkt_material_name":"{{ link.title | handleize }}","commodity_spuid":"","commodity_skuid":"","commodity_name":"","original_price":"","current_price":"","currency_unit":"","mkt_tag":[]}'>
 												{{- link.title -}}
 												{%- render 'icon', icon: 'arrow-bottom' -%}
-												{%- comment -%}
-												{%- render 'icon', icon: 'nav-triangle' -%}
-												{%- endcomment -%}
-											</a>
-											{%- comment -%}
-											{%- render 'desktop-menu', menu: link, index: index, menuindex: forloop.index -%}
-											{%- endcomment -%}
+											</div>
 											{%- render 'jjs-desktop-menu', menu: link, index: index, menuindex: forloop.index -%}
 										{%- endif -%}
 									</li>

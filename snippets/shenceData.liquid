@@ -31,11 +31,11 @@ let addQuickView=new sadhus_shence({
          sku =  valueSelected.getAttribute('data-sku') || ""
          id =  valueSelected.value || ""
       }
-      const colorChecked=document.querySelector('.ld-variant-list')
-      const sizeChecked=document.querySelector('.block-swatch-list')
-      console.log(sizeChecked.parentElement.querySelector('.product-form__selected-value'));
-      newData.commodity_color=colorChecked?colorChecked.previousElementSibling.querySelector('.product-form__selected-value').innerText : ""
-      newData.commodity_size=sizeChecked?sizeChecked.parentElement.querySelector('.product-form__selected-value').innerText : ""
+      const formParent=el.closest('.product-form')
+      const colorChecked=formParent.querySelector('.product-form__option[data-selector-type="block"]')
+      const sizeChecked=formParent.querySelector('.product-form__option[data-selector-type="color"]')
+      newData.commodity_color=colorChecked?colorChecked.querySelector('.product-form__selected-value').innerText : ""
+      newData.commodity_size=sizeChecked?sizeChecked.querySelector('.product-form__selected-value').innerText : ""
       newData.commodity_skuid=sku
       gtag("event","conversion",{"send_to":"AW-319309832/2I9aCIf48eYCEIiQoZgB","transaction_id":""});
       pintrk("track","addtocart",{value:data.current_price,order_quantity:1,currency:"USD",line_items:[{product_id:id}]});
@@ -106,17 +106,16 @@ new sadhus_shence({
       newData.commodity_tag=data.commodity_tag.split(',')
       return newData  /*返回值必须为{}*/
    },
-
 })
 
 }
 
 if ({{ request.page_type | json }} == 'product') {/*产品页*/
-   document.querySelector('.ld-variant-list')
-   if( document.querySelector('.ld-variant-list')){
+   document.querySelector('.shenceDetail .ld-variant-list')
+   if( document.querySelector('.shenceDetail .ld-variant-list')){
       new sadhus_shence({
    delayed:true,
-   container:".ld-variant-list",
+   container:".shenceDetail .ld-variant-list",
    type:"valueChange",
    event:'click',
    sendType:"CommodityDetail", 
@@ -140,10 +139,11 @@ if ({{ request.page_type | json }} == 'product') {/*产品页*/
       if(valueSelected){
          id =  valueSelected.getAttribute('data-sku') || ""
       }
-      const colorChecked=document.querySelector('.ld-variant-list')
-      const sizeChecked=document.querySelector('.block-swatch-list')
-      newData.commodity_color=colorChecked?colorChecked.previousElementSibling.querySelector('.product-form__selected-value').innerText : ""
-      newData.commodity_size=sizeChecked?sizeChecked.parentElement.querySelector('.product-form__selected-value').innerText : ""
+      const formParent=el.closest('.product-form')
+      const colorChecked=formParent.querySelector('.product-form__option[data-selector-type="block"]')
+      const sizeChecked=formParent.querySelector('.product-form__option[data-selector-type="color"]')
+      newData.commodity_color=colorChecked?colorChecked.querySelector('.product-form__selected-value').innerText : ""
+      newData.commodity_size=sizeChecked?sizeChecked.querySelector('.product-form__selected-value').innerText : ""
       newData.commodity_skuid=id
       newData.commodity_tag=data.commodity_tag.split(',')
       return newData  /*返回值必须为{}*/
@@ -171,23 +171,22 @@ new sadhus_shence({
       let data=  el.getAttribute('data-scdata')
       data=JSON.parse(data)
       newData.commodity_tag=data.commodity_tag.split(',')
-      const valueSelected=document.querySelector('.select-wrapper option[selected]')
+      const valueSelected=container.querySelector('.select-wrapper option[selected]')
       let id = ""
       if(valueSelected){
          id =  valueSelected.getAttribute('data-sku') || ""
       }
-      const colorChecked=document.querySelector('.ld-variant input[checked]')
-      const sizeChecked=document.querySelector('.block-swatch input[checked]')
+      const colorChecked=container.querySelector('.ld-variant input[checked]')
+      const sizeChecked=container.querySelector('.block-swatch input[checked]')
       newData.commodity_color=colorChecked?colorChecked.value : ""
       newData.commodity_size=sizeChecked?sizeChecked.value : ""
       newData.site_category = getSiteCategory()
       return newData  /*返回值必须为{}*/
    }
 })
-
 let addCart=new sadhus_shence({
    delayed:true,
-   container:".product-form",
+   container:".shenceDetail .product-form",
    event:"click",
    type:"addCart",
    sendType:"AddToCart", 
@@ -215,10 +214,11 @@ let addCart=new sadhus_shence({
          sku =  valueSelected.getAttribute('data-sku') || ""
          id =  valueSelected.value || ""
       }
-      const colorChecked=document.querySelector('.ld-variant-list')
-      const sizeChecked=document.querySelector('.block-swatch-list')
-      newData.commodity_color=colorChecked?colorChecked.previousElementSibling.querySelector('.product-form__selected-value').innerText : ""
-      newData.commodity_size=sizeChecked?sizeChecked.parentElement.querySelector('.product-form__selected-value').innerText : ""
+      const formParent=el.closest('.product-form')
+      const colorChecked=formParent.querySelector('.product-form__option[data-selector-type="block"]')
+      const sizeChecked=formParent.querySelector('.product-form__option[data-selector-type="color"]')
+      newData.commodity_color=colorChecked?colorChecked.querySelector('.product-form__selected-value').innerText : ""
+      newData.commodity_size=sizeChecked?sizeChecked.querySelector('.product-form__selected-value').innerText : ""
       newData.commodity_skuid=sku
       newData.site_category = getSiteCategory()
       gtag("event","conversion",{"send_to":"AW-319309832/2I9aCIf48eYCEIiQoZgB","transaction_id":""});
