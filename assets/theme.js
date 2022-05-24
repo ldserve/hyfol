@@ -1744,7 +1744,7 @@
                 // var menuToOpen = Dom.getSiblings(target, '[aria-hidden]')[0];
                 var callback = function callback() {
                    if(!target.closest('.is-dropdown-open')){
-                       target.children[0].classList.add('nav-bar-item__top')
+                    target.firstElementChild&&target.firstElementChild.classList.add('nav-bar-item__top')
                        navList.forEach(item => {
                            item.classList.remove('is-dropdown-open')
                            var temp1 = item.querySelector('[aria-expanded="true"]')
