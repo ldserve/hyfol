@@ -457,6 +457,16 @@
         "lpadding": 0
       }
     },
+    "16501153969d7dc597": {
+      "type": "no_space_img",
+      "settings": {
+        "sensorsName": "",
+        "bg_image": "shopify:\/\/shop_images\/8_a0491898-a613-4306-b94d-98d3f8514ee7.jpg",
+        "web_bg_image": "shopify:\/\/shop_images\/7_04eedabc-41fc-4f21-bccd-e474262dad46.jpg",
+        "link": "shopify:\/\/collections\/winter-clearance",
+        "shadow": false
+      }
+    },
     "1653378249b2cd3761": {
       "type": "linkImg",
       "blocks": {
@@ -517,10 +527,23 @@
             "width": 50,
             "height": 100
           }
+        },
+        "0417ee7f-c952-4c45-92e2-3fb9ee9f958b": {
+          "type": "link",
+          "settings": {
+            "heading": "winterclearance",
+            "sensorsLinkName": "winterclearance",
+            "link": "shopify:\/\/collections",
+            "left": 51,
+            "top": 0,
+            "width": 100,
+            "height": 100
+          }
         }
       },
       "block_order": [
-        "069983ac-ccc2-4e2c-bc85-4d93bd4fff06"
+        "069983ac-ccc2-4e2c-bc85-4d93bd4fff06",
+        "0417ee7f-c952-4c45-92e2-3fb9ee9f958b"
       ],
       "settings": {
         "linkImg_title": "",
@@ -528,22 +551,12 @@
         "hidDesk": true,
         "sensorsName": "mobile分类导流区",
         "hidWeb": false,
-        "line": true,
+        "line": false,
         "image": "shopify:\/\/shop_images\/05_4fd1f28b-3f85-4983-81ae-89b150d0209e.jpg",
         "tpadding": 0,
         "rpadding": 0,
         "bpadding": 0,
         "lpadding": 0
-      }
-    },
-    "16501153969d7dc597": {
-      "type": "no_space_img",
-      "settings": {
-        "sensorsName": "",
-        "bg_image": "shopify:\/\/shop_images\/8_a0491898-a613-4306-b94d-98d3f8514ee7.jpg",
-        "web_bg_image": "shopify:\/\/shop_images\/7_04eedabc-41fc-4f21-bccd-e474262dad46.jpg",
-        "link": "shopify:\/\/collections\/winter-clearance",
-        "shadow": false
       }
     },
     "1647498064c408cfd6": {
@@ -877,9 +890,9 @@
     "1651218774b7bce676",
     "16500767332eb3ea11",
     "164742631051d4db44",
+    "16501153969d7dc597",
     "1653378249b2cd3761",
     "1653378259d3835d10",
-    "16501153969d7dc597",
     "1647498064c408cfd6",
     "1648607115d95fb2d3",
     "1647497707f35ea4d8",
