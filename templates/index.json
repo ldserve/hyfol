@@ -301,6 +301,7 @@
     },
     "1651218774b7bce676": {
       "type": "transparent-collection",
+      "disabled": true,
       "settings": {
         "collection": "sport-shorts",
         "sensorsName": "TRAINING SHORTS",
@@ -459,6 +460,7 @@
     },
     "1647498064c408cfd6": {
       "type": "transparent-collection",
+      "disabled": true,
       "settings": {
         "collection": "camou",
         "sensorsName": "",
@@ -565,6 +567,7 @@
     },
     "1647497707f35ea4d8": {
       "type": "transparent-collection",
+      "disabled": true,
       "settings": {
         "collection": "skull",
         "sensorsName": "ROCK SKULL",
