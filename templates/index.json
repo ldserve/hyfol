@@ -199,7 +199,7 @@
             "left": 51,
             "top": 3,
             "width": 50,
-            "height": 47
+            "height": 45
           }
         },
         "fd46c6c8-43a1-48a6-802d-71509d573a53": {
@@ -209,9 +209,9 @@
             "sensorsLinkName": "newarrivals",
             "link": "shopify:\/\/collections\/new-in-1",
             "left": 0,
-            "top": 49,
+            "top": 52,
             "width": 50,
-            "height": 50
+            "height": 47
           }
         },
         "da1e58ea-ff5d-4dfa-b6a1-1eb029ccc818": {
@@ -223,7 +223,7 @@
             "left": 51,
             "top": 52,
             "width": 65,
-            "height": 51
+            "height": 47
           }
         }
       },
