@@ -457,6 +457,68 @@
         "lpadding": 0
       }
     },
+    "1653378249b2cd3761": {
+      "type": "linkImg",
+      "blocks": {
+        "32e0b187-986b-4f67-b102-e9f70e80109c": {
+          "type": "link",
+          "settings": {
+            "heading": "sale",
+            "sensorsLinkName": "sale",
+            "link": "shopify:\/\/collections",
+            "left": 0,
+            "top": 0,
+            "width": 49,
+            "height": 100
+          }
+        },
+        "238ffe93-5249-42a0-8fb9-484da7cf9b65": {
+          "type": "link",
+          "settings": {
+            "heading": "winterclearance",
+            "sensorsLinkName": "sale",
+            "link": "shopify:\/\/collections",
+            "left": 50,
+            "top": 0,
+            "width": 50,
+            "height": 100
+          }
+        }
+      },
+      "block_order": [
+        "32e0b187-986b-4f67-b102-e9f70e80109c",
+        "238ffe93-5249-42a0-8fb9-484da7cf9b65"
+      ],
+      "settings": {
+        "linkImg_title": "",
+        "linkImg_content": "",
+        "hidDesk": false,
+        "sensorsName": "pc分类导流区",
+        "hidWeb": true,
+        "line": false,
+        "image": "shopify:\/\/shop_images\/05_c3eae92a-3dce-42b8-b1d2-8cba19524f07.jpg",
+        "tpadding": 0,
+        "rpadding": 0,
+        "bpadding": 0,
+        "lpadding": 0
+      }
+    },
+    "1653378259d3835d10": {
+      "type": "linkImg",
+      "disabled": true,
+      "settings": {
+        "linkImg_title": "",
+        "linkImg_content": "",
+        "hidDesk": true,
+        "sensorsName": "mobile分类导流区",
+        "hidWeb": false,
+        "line": false,
+        "tpadding": 0,
+        "rpadding": 0,
+        "bpadding": 0,
+        "lpadding": 0
+      }
+    },
     "16501153969d7dc597": {
       "type": "no_space_img",
       "settings": {
@@ -798,6 +860,8 @@
     "1651218774b7bce676",
     "16500767332eb3ea11",
     "164742631051d4db44",
+    "1653378249b2cd3761",
+    "1653378259d3835d10",
     "16501153969d7dc597",
     "1647498064c408cfd6",
     "1648607115d95fb2d3",
