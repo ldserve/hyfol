@@ -15928,3 +15928,8 @@ justify-content: space-between;
 .content-text p{
     line-height: 22px;
 }
+
+.powr-form__button .button--primary{
+    background-color: #ffffff;
+    color: #000000;
+}
