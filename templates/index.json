@@ -121,7 +121,7 @@
           "settings": {
             "heading": "menbestsellers",
             "sensorsLinkName": "menbestsellers",
-            "link": "shopify:\/\/collections",
+            "link": "shopify:\/\/collections\/🔥-best-sellers-men-🔥",
             "left": 0,
             "top": 7,
             "width": 24,
@@ -133,7 +133,7 @@
           "settings": {
             "heading": "womenbestsellers",
             "sensorsLinkName": "womenbestsellers",
-            "link": "shopify:\/\/collections\/bottoms-12-13",
+            "link": "shopify:\/\/collections\/🔥-best-sellers-women-🔥",
             "left": 25,
             "top": 8,
             "width": 25,
@@ -145,7 +145,7 @@
           "settings": {
             "heading": "newarrivals",
             "sensorsLinkName": "newarrivals",
-            "link": "shopify:\/\/collections",
+            "link": "shopify:\/\/collections\/new-in-1",
             "left": 51,
             "top": 9,
             "width": 24,
@@ -157,7 +157,7 @@
           "settings": {
             "heading": "sale",
             "sensorsLinkName": "sale",
-            "link": "shopify:\/\/collections",
+            "link": "shopify:\/\/collections\/shop-by-deals",
             "left": 76,
             "top": 7,
             "width": 57,
@@ -193,7 +193,7 @@
           "settings": {
             "heading": "menbestsellers",
             "sensorsLinkName": "menbestsellers",
-            "link": "shopify:\/\/collections",
+            "link": "shopify:\/\/collections\/🔥-best-sellers-men-🔥",
             "left": 0,
             "top": 0,
             "width": 49,
@@ -205,7 +205,7 @@
           "settings": {
             "heading": "womenbestsellers",
             "sensorsLinkName": "womenbestsellers",
-            "link": "shopify:\/\/collections",
+            "link": "shopify:\/\/collections\/🔥-best-sellers-women-🔥",
             "left": 51,
             "top": 3,
             "width": 50,
@@ -217,7 +217,7 @@
           "settings": {
             "heading": "newarrivals",
             "sensorsLinkName": "newarrivals",
-            "link": "shopify:\/\/collections",
+            "link": "shopify:\/\/collections\/new-in-1",
             "left": 0,
             "top": 49,
             "width": 50,
@@ -229,7 +229,7 @@
           "settings": {
             "heading": "sale",
             "sensorsLinkName": "sale",
-            "link": "shopify:\/\/collections",
+            "link": "shopify:\/\/collections\/shop-by-deals",
             "left": 51,
             "top": 52,
             "width": 65,
