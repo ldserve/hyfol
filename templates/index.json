@@ -589,16 +589,29 @@
             "sensorsLinkName": "waterproof",
             "link": "",
             "left": 0,
-            "top": 53,
+            "top": 51,
+            "width": 50,
+            "height": 48
+          }
+        },
+        "c974c2cb-73b3-4988-9c50-5d4160c670f6": {
+          "type": "link",
+          "settings": {
+            "heading": "workwear",
+            "sensorsLinkName": "workwear",
+            "link": "",
+            "left": 52,
+            "top": 50,
             "width": 52,
-            "height": 95
+            "height": 52
           }
         }
       },
       "block_order": [
         "38f995a6-97ec-41cb-b473-5f25b29493f1",
         "97000e23-4cc0-4363-b88a-628158ec30e3",
-        "d490ab79-6849-4968-b95e-5fc388381b64"
+        "d490ab79-6849-4968-b95e-5fc388381b64",
+        "c974c2cb-73b3-4988-9c50-5d4160c670f6"
       ],
       "settings": {
         "linkImg_title": "",
@@ -606,7 +619,7 @@
         "hidDesk": true,
         "sensorsName": "mobile分类导流区",
         "hidWeb": false,
-        "line": true,
+        "line": false,
         "image": "shopify:\/\/shop_images\/05_a700c5ae-9c12-4bbd-aa8a-97fc16a61251.jpg",
         "tpadding": 0,
         "rpadding": 0,
