@@ -525,7 +525,7 @@
           "settings": {
             "heading": "spingsale",
             "sensorsLinkName": "spingsale",
-            "link": "shopify:\/\/collections",
+            "link": "shopify:\/\/collections\/spring-sale",
             "left": 0,
             "top": 0,
             "width": 50,
@@ -537,7 +537,7 @@
           "settings": {
             "heading": "winterclearance",
             "sensorsLinkName": "winterclearance",
-            "link": "shopify:\/\/collections",
+            "link": "shopify:\/\/collections\/winter-clearance",
             "left": 51,
             "top": 0,
             "width": 100,
