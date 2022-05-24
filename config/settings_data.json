@@ -239,12 +239,13 @@
           "ccab5dcb-d3a7-4a2e-9c0e-6699c88abf2e": {
             "type": "announcement",
             "settings": {
-              "text": "5% OFF 2 PIECES | 10% OFF 3 PIECES | 15% OFF 4 PIECES *",
+              "text": "FAMILY WEAR GET 5 FOR $59.9",
               "link": ""
             }
           },
           "f7871216-4fbb-4392-b4a5-25a3e8dbe911": {
             "type": "announcement",
+            "disabled": true,
             "settings": {
               "text": "20% OFF 5 PIECES | 25% OFF 6 PIECES | 30% OFF 7+ PIECES *",
               "link": ""
@@ -267,7 +268,7 @@
           "ebf3f4ad-f1dc-464f-9e19-71c2a7fc4fc3": {
             "type": "announcement",
             "settings": {
-              "text": "BEACH SHORTS BUY 1 GET 2ND 50% OFF",
+              "text": "BEACH SHORTS GET 2 FOR $35.9",
               "link": ""
             }
           }
