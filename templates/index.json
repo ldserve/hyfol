@@ -250,9 +250,9 @@
     "1651218774b7bce676": {
       "type": "transparent-collection",
       "settings": {
-        "collection": "sport-shorts",
-        "sensorsName": "TRAINING SHORTS",
-        "title": "",
+        "collection": "best-sellers-1",
+        "sensorsName": "BEST SELLERS",
+        "title": "BEST SELLERS",
         "products_count": 12,
         "layout": "vertical",
         "stack_products": false,
