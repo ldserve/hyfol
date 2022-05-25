@@ -13169,7 +13169,7 @@
                 previousDotElement.classList.remove('is-selected');
                 newDotElement.classList.add('is-selected'); 
                     //x轴滚动
-                    var scrollX = newNavElement.offsetLeft -this.productThumbnailsListElement.childNodes[0].offsetWidth ;
+                    var scrollX = newNavElement.offsetLeft - (this.productThumbnailsListElement.clientWidth - newNavElement.clientWidth) / 2;
                     this.productThumbnailsListElement.scrollTo({
                         left: scrollX,
                         behavior: animate ? 'smooth' : 'auto'
