@@ -121,9 +121,9 @@
         "6c94ee37-e01c-4716-bc7e-67cc0981d68a": {
           "type": "link",
           "settings": {
-            "heading": "womenbestsellers",
-            "sensorsLinkName": "womenbestsellers",
-            "link": "shopify:\/\/collections\/🔥-best-sellers-women-🔥",
+            "heading": "memorialday",
+            "sensorsLinkName": "memorialday",
+            "link": "shopify:\/\/collections\/memorial-day-sale",
             "left": 25,
             "top": 5,
             "width": 24,
@@ -147,7 +147,7 @@
           "settings": {
             "heading": "sale",
             "sensorsLinkName": "sale",
-            "link": "shopify:\/\/collections\/shop-by-deals",
+            "link": "shopify:\/\/collections\/spring-sale",
             "left": 76,
             "top": 6,
             "width": 24,
@@ -181,9 +181,9 @@
         "1b4a5d11-2c92-45bb-b788-8a362446a835": {
           "type": "link",
           "settings": {
-            "heading": "menbestsellers",
-            "sensorsLinkName": "menbestsellers",
-            "link": "shopify:\/\/collections\/🔥-best-sellers-men-🔥",
+            "heading": "TEES",
+            "sensorsLinkName": "TEES",
+            "link": "shopify:\/\/collections\/z",
             "left": 0,
             "top": 2,
             "width": 48,
@@ -193,9 +193,9 @@
         "f25304d2-8088-49e0-837b-c140d87d31d8": {
           "type": "link",
           "settings": {
-            "heading": "womenbestsellers",
-            "sensorsLinkName": "womenbestsellers",
-            "link": "shopify:\/\/collections\/🔥-best-sellers-women-🔥",
+            "heading": "SHIRTS",
+            "sensorsLinkName": "SHIRTS",
+            "link": "shopify:\/\/collections\/shirts",
             "left": 50,
             "top": 2,
             "width": 53,
@@ -217,9 +217,9 @@
         "e34c6701-d51d-4b6b-b3c3-dbdb091ce635": {
           "type": "link",
           "settings": {
-            "heading": "sale",
-            "sensorsLinkName": "sale",
-            "link": "shopify:\/\/collections\/shop-by-deals",
+            "heading": "ACC",
+            "sensorsLinkName": "ACC",
+            "link": "shopify:\/\/collections\/accessories-12-13",
             "left": 52,
             "top": 51,
             "width": 50,
@@ -414,7 +414,7 @@
           "settings": {
             "heading": "springsale",
             "sensorsLinkName": "springsale",
-            "link": "",
+            "link": "shopify:\/\/collections\/spring-sale",
             "left": 0,
             "top": 0,
             "width": 50,
@@ -426,7 +426,7 @@
           "settings": {
             "heading": "winterclearance",
             "sensorsLinkName": "winterclearance",
-            "link": "",
+            "link": "shopify:\/\/collections\/winter-clearance",
             "left": 51,
             "top": 0,
             "width": 50,
@@ -506,7 +506,7 @@
           "settings": {
             "heading": "patriot",
             "sensorsLinkName": "patriot",
-            "link": "",
+            "link": "shopify:\/\/collections\/american-flag",
             "left": 0,
             "top": 0,
             "width": 25,
@@ -518,7 +518,7 @@
           "settings": {
             "heading": "skull",
             "sensorsLinkName": "skull",
-            "link": "",
+            "link": "shopify:\/\/collections\/skull",
             "left": 26,
             "top": 0,
             "width": 23,
@@ -530,7 +530,7 @@
           "settings": {
             "heading": "waterproof",
             "sensorsLinkName": "waterproof",
-            "link": "",
+            "link": "shopify:\/\/collections\/performance",
             "left": 50,
             "top": 0,
             "width": 25,
@@ -542,7 +542,7 @@
           "settings": {
             "heading": "workwear",
             "sensorsLinkName": "workwear",
-            "link": "",
+            "link": "shopify:\/\/collections\/cargo-pants",
             "left": 76,
             "top": 0,
             "width": 31,
