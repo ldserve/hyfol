@@ -15942,3 +15942,7 @@ justify-content: space-between;
 .size_border{
    border-color: #000000;
 }
+
+.bread_crumbs{
+  margin-bottom : 0px;
+}
