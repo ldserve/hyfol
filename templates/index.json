@@ -92,9 +92,9 @@
     "16474248460d0593be": {
       "type": "transparent-collection",
       "settings": {
-        "collection": "new-in-1",
-        "sensorsName": "NEW IN",
-        "title": "NEW IN",
+        "collection": "best-sellers-1",
+        "sensorsName": "BEST SELLER",
+        "title": "BEST SELLER",
         "products_count": 18,
         "layout": "vertical",
         "stack_products": false,
@@ -247,6 +247,20 @@
         "lpadding": 0
       }
     },
+    "1651218774b7bce676": {
+      "type": "transparent-collection",
+      "settings": {
+        "collection": "sport-shorts",
+        "sensorsName": "TRAINING SHORTS",
+        "title": "",
+        "products_count": 12,
+        "layout": "vertical",
+        "stack_products": false,
+        "show_quick_buy": false,
+        "link_title": "View all",
+        "link_url": ""
+      }
+    },
     "16474250424edba623": {
       "type": "linkImg",
       "blocks": {
@@ -389,21 +403,6 @@
         "rpadding": 0,
         "bpadding": 0,
         "lpadding": 0
-      }
-    },
-    "1651218774b7bce676": {
-      "type": "transparent-collection",
-      "disabled": true,
-      "settings": {
-        "collection": "sport-shorts",
-        "sensorsName": "TRAINING SHORTS",
-        "title": "",
-        "products_count": 12,
-        "layout": "vertical",
-        "stack_products": false,
-        "show_quick_buy": false,
-        "link_title": "View all",
-        "link_url": ""
       }
     },
     "16534593657c96f64d": {
@@ -832,9 +831,9 @@
     "16474248460d0593be",
     "16500767332eb3ea11",
     "164742631051d4db44",
+    "1651218774b7bce676",
     "16474250424edba623",
     "1653297879b5b9419a",
-    "1651218774b7bce676",
     "16534593657c96f64d",
     "1653459372cee0bf93",
     "165345938037a0eeec",
