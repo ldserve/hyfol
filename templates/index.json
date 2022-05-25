@@ -173,11 +173,13 @@
         "1f197e6e-076a-4800-935a-1d35bc6020ce"
       ],
       "settings": {
+        "linkImg_title": "",
+        "linkImg_content": "",
         "hidDesk": false,
         "sensorsName": "",
         "hidWeb": true,
         "line": false,
-        "image": "shopify:\/\/shop_images\/02_669c4690-ca48-41d7-b48e-c5b4336b90a1.jpg",
+        "image": "shopify:\/\/shop_images\/02_8003833b-2704-4074-9d88-b841aea384d7.jpg",
         "tpadding": 0,
         "rpadding": 0,
         "bpadding": 0,
@@ -243,11 +245,13 @@
         "e34c6701-d51d-4b6b-b3c3-dbdb091ce635"
       ],
       "settings": {
+        "linkImg_title": "",
+        "linkImg_content": "",
         "hidDesk": true,
         "sensorsName": "mobile分类导流区",
         "hidWeb": false,
         "line": false,
-        "image": "shopify:\/\/shop_images\/02_3d4b1221-1384-4b32-a7ea-526c7ee1df6e.jpg",
+        "image": "shopify:\/\/shop_images\/02_cad4d144-0c2d-40df-9d45-3ea0e7d69863.jpg",
         "tpadding": 0,
         "rpadding": 0,
         "bpadding": 0,
@@ -368,6 +372,8 @@
         "6defe89d-34bf-47d9-a1f2-91004d693ed8"
       ],
       "settings": {
+        "linkImg_title": "",
+        "linkImg_content": "",
         "hidDesk": false,
         "sensorsName": "pc分类导流区",
         "hidWeb": true,
@@ -438,6 +444,8 @@
         "dbe8a9a1-2bdd-4552-82ae-15b0ebb1e9cf"
       ],
       "settings": {
+        "linkImg_title": "",
+        "linkImg_content": "",
         "hidDesk": true,
         "sensorsName": "mobile分类导流区",
         "hidWeb": false,
