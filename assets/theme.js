@@ -69,12 +69,13 @@
           this.init()
         }
         init(){
-            if(this.activeIndex == 0 ){
-                this.prevButton.style.display= "none"
-            }else{
-                this.prevButton.style.display= "block"
+            if( this.prevButton){
+                if(this.activeIndex == 0 ){
+                    this.prevButton.style.display= "none"
+                }else{
+                    this.prevButton.style.display= "block"
+                }
             }
-
         var that = this
           var startx,movex,endx,nx;
           const style = document.createElement("style");
@@ -4933,7 +4934,7 @@
             }
         })(window, function factory(window, getSize) {
 
-            function Cell(elem, parent) {
+            function Cell(elem, parent) { 
                 this.element = elem;
                 this.parent = parent;
                 this.create();
@@ -6972,7 +6973,6 @@
                 delete this.isTouchScrolling;
                 this.viewport.classList.remove('is-pointer-down');
                 this.dispatchEvent('pointerUp', event, [pointer]);
-
                 this._dragPointerUp(event, pointer);
             };
 
@@ -13009,6 +13009,8 @@
 
                 this.productThumbnailsListElement = this.element.querySelector('.product-gallery__thumbnail-list');
                 this.delegateElement.on('click', '.product-gallery__thumbnail', this._onThumbnailClicked.bind(this));
+                this.delegateElement.on('click', '.product-gallery__carousel-prev-button', this._onPrevClicked.bind(this));
+                this.delegateElement.on('click', '.product-gallery__carousel-next-button', this._onNextClicked.bind(this));
                 this.delegateElement.on('click', '.dot-item', this._onThumbnailClicked.bind(this));
                 this.dotThumbnailsListElement = this.element.querySelector('.dot');
                 if (this.productThumbnailsListElement && this.flickityInstance) {
@@ -13077,7 +13079,6 @@
                         h: parseInt(image.getAttribute('data-zoom-width')) * (image.height / image.width),
                         msrc: image.currentSrc
                     });
-
                     if (filteredItem.classList.contains('is-selected')) {
                         defaultIndex = index;
                     }
@@ -13151,10 +13152,12 @@
                         newNavElement = item;
                     }
                 });
+
                 previousNavElement.classList.remove('is-nav-selected');
                 newNavElement.classList.add('is-nav-selected'); // We animate to move the selected nav item
 
                 this.dotThumbnailsCellsElements.forEach(function (item) {
+                    // console.log(i);
                     if (item.classList.contains('is-selected')) {
                         previousDotElement = item;
                     }
@@ -13164,26 +13167,26 @@
                     }
                 });
                 previousDotElement.classList.remove('is-selected');
-                newDotElement.classList.add('is-selected'); // We ani
-                 if (Responsive.matchesBreakpoint('pocket')) {
-                    var scrollX = newNavElement.offsetLeft - (this.productThumbnailsListElement.parentNode.clientWidth - newNavElement.clientWidth) / 2;
-                    this.productThumbnailsListElement.parentNode.scrollTo({
+                newDotElement.classList.add('is-selected'); 
+                    //x轴滚动
+                    var scrollX = newNavElement.offsetLeft -this.productThumbnailsListElement.childNodes[0].offsetWidth ;
+                    this.productThumbnailsListElement.scrollTo({
                         left: scrollX,
                         behavior: animate ? 'smooth' : 'auto'
                     });
-                } else {
-                    var scrollY = newNavElement.offsetTop - (this.productThumbnailsListElement.clientHeight - newNavElement.clientHeight) / 2;
-                    this.productThumbnailsListElement.scrollTo({
-                        top: scrollY,
-                        behavior: animate ? 'smooth' : 'auto'
-                    });
-                }
+                    //y轴滚动
+                    // var scrollY = newNavElement.offsetTop - (this.productThumbnailsListElement.clientHeight - newNavElement.clientHeight) / 2;
+                    // this.productThumbnailsListElement.scrollTo({
+                    //     top: scrollY,
+                    //     behavior: animate ? 'smooth' : 'auto'
+                    // });
             }
             /**
              * The difference with "change" is that this function is called after the item has transitioned
              */
 
-        }, {
+        },
+        {
             key: "_onGallerySlideSettled",
             value: function _onGallerySlideSettled() {
                 this._handleMedia(this.flickityInstance.selectedElement);
@@ -13195,9 +13198,67 @@
                     });
                 }
             }
-        }, {
+        },
+        {
+            key:"_onPrevClicked",
+            value:function _onPrevClicked(event, target){
+                 this.flickityInstance.cells.forEach((item,index)=>{
+                      if(item.element.className.indexOf("is-selected") != -1){
+                        //   console.log("包含");
+                          if(index != 0){
+                            item.element.className = "product-gallery__carousel-item"
+                            this.flickityInstance.cells[index - 1].element.className = "product-gallery__carousel-item is-selected"
+                            target= this.flickityInstance.cells[index - 1].element
+                              if (this.flickityInstance) {
+                    //  console.log(target);
+                    this.flickityInstance.selectCell("[data-media-id=\"".concat(target.getAttribute('data-media-id'), "\"]"));
+                    console.log("[data-media-id=\"".concat(target.getAttribute('data-media-id'), "\"]"));
+                    if (Responsive.matchesBreakpoint('lap-and-up')) {
+                        var slides = this.element.querySelectorAll('.product-gallery__carousel-item');
+                        slides.forEach(function (slide) {
+                            slide.classList.remove('product-gallery__carousel-item--hidden');
+                        });
+                    }
+                }
+                          }
+                      }
+                 })
+               
+                
+            }
+        },
+        {
+            key:"_onNextClicked",
+            value:function _onNextClicked(event, target){
+                 var activeIndex
+                 this.flickityInstance.cells.forEach((item,index)=>{
+                    if(item.element.className.indexOf("is-selected") != -1){
+                        //真节点
+                        if(index !=  this.flickityInstance.cells.length-1){
+                          item.element.className = "product-gallery__carousel-item"
+                          activeIndex = index + 1
+                        }
+                    }
+               })
+               this.flickityInstance.cells[activeIndex].element.className = "product-gallery__carousel-item is-selected"
+               var target =  this.flickityInstance.cells[activeIndex].element
+               if (this.flickityInstance) {
+               this.flickityInstance.selectCell("[data-media-id=\"".concat(target.getAttribute('data-media-id'), "\"]"));
+               if (Responsive.matchesBreakpoint('lap-and-up')) {
+                   var slides = this.element.querySelectorAll('.product-gallery__carousel-item');
+                   slides.forEach(function (slide) {
+                       slide.classList.remove('product-gallery__carousel-item--hidden');
+                   });
+               }
+           }
+             
+            }
+        },
+
+        {
             key: "_onThumbnailClicked",
             value: function _onThumbnailClicked(event, target) {
+
                 event.preventDefault();
 
                 if (this.flickityInstance) {
@@ -18856,7 +18917,6 @@
              * once the bug is fixed on iOS
              * ----------------------------------------------------------------------------
              */
-
 
             (function () {
                 var touchingCarousel = false,

@@ -131,7 +131,7 @@
 		</a>
 	{%- endif -%}
 
-	<div class="product-item__info" style="background-color: {% if only_show_transparent %} #efebe7 {% endif %}">
+	<div class="product-item__info" style="background-color: {% if only_show_transparent %} #000000 {% endif %}">
 		{%- if settings.show_color_swatch and template != 'blog' and only_show_transparent != true -%}
 			{%- capture color_swatch -%}
 				{%- capture color_name -%}{{ section.id }}-{{ product.id }}{%- endcapture -%}
@@ -325,7 +325,7 @@
 			{%- endif -%}
 
 			<a href="{{ filtered_variant.url | default: product.url }}"
-				 class="product-item__title text--strong link product-item_mktClick" data-scenable="1" data-sctype="mktClick"
+				 class="product-item__title text--strong link product-item_mktClick product-item_text" data-scenable="1" data-sctype="mktClick"
 				 data-scdata='{"mkt_type":"product","first_mkt_name":"{{ first_mkt_name }}","first_mkt_id":"{{ section.id }}","second_mkt_rank":"{{ forloop.index }}","third_mkt_rank":"","mkt_material_url":"","mkt_material_name":"{{ mkt_material_name }}","commodity_spuid":"{{ product.handle }}","commodity_skuid":"{{ product.selected_or_first_available_variant.sku }}","commodity_name":"{{ product.title| handleize }}","original_price":"{{ product.selected_or_first_available_variant.compare_at_price }}","current_price":"{{ product.selected_or_first_available_variant.price }}","currency_unit":"USD","mkt_tag":[]}'>{{ product.title }}</a>
 
 			{%- if settings.product_price_position == 'before_title' -%}

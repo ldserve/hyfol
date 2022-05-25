@@ -8,6 +8,11 @@
   <div class="container">
     {%- if section.settings.title != blank -%}
       <header class="section__header">
+        {% style %}
+         .heading{
+          color:{{ section.settings.title_color }}
+         }
+        {% endstyle %}
         <h2 class="section__title heading h3 font_16">{{ section.settings.title | escape }}</h2>
       </header>
     {%- endif -%}
@@ -86,11 +91,18 @@
       "default": "Recently viewed"
     },
     {
+      "type": "color",
+      "id": "title_color",
+      "label": "Heading color",
+      "default": "#000"
+      },
+    {
       "type": "checkbox",
       "id": "show_quick_buy",
       "label": "Show quick buy",
       "default": false
     }
+    
   ],
   "presets": [
     {

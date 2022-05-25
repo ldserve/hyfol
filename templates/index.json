@@ -3,6 +3,30 @@
     "1650101273f11a55ef": {
       "type": "slideshow",
       "blocks": {
+        "28572d9f-8700-4893-990e-c3b4bf1e7821": {
+          "type": "image",
+          "settings": {
+            "sensorsName": "",
+            "image": "shopify:\/\/shop_images\/6fde99e860fc1fa9004b301ee36b7c02_88de3fe3-9f42-4bbd-a795-df4586e35eec.jpg",
+            "mobile_image": "shopify:\/\/shop_images\/be3d2e6638813747c788cc4248dddfaf_4e607231-8da2-486f-b4e5-8ba8b6ec2e32.jpg",
+            "show_overlay": false,
+            "overlay_opacity": 30,
+            "text_color": "#ffffff",
+            "title": "",
+            "heading_text_font": "helvetica_n4",
+            "heading_text_font_size": 20,
+            "heading_text_color": "#ffffff",
+            "content": "",
+            "content_text_font": "helvetica_n4",
+            "content_text_font_size": 12,
+            "content_text_color": "#ffffff",
+            "content_position": "middle_center",
+            "button_background": "#ffffff",
+            "button_text_color": "#000000",
+            "button_text": "",
+            "link": "shopify:\/\/collections\/fathers-day"
+          }
+        },
         "1650101273ef0886ca-1": {
           "type": "image",
           "settings": {
@@ -25,30 +49,6 @@
             "button_text_color": "#000000",
             "button_text": "",
             "link": "shopify:\/\/collections\/memorial-day-sale"
-          }
-        },
-        "28572d9f-8700-4893-990e-c3b4bf1e7821": {
-          "type": "image",
-          "settings": {
-            "sensorsName": "",
-            "image": "shopify:\/\/shop_images\/6fde99e860fc1fa9004b301ee36b7c02.jpg",
-            "mobile_image": "shopify:\/\/shop_images\/be3d2e6638813747c788cc4248dddfaf.jpg",
-            "show_overlay": false,
-            "overlay_opacity": 30,
-            "text_color": "#ffffff",
-            "title": "",
-            "heading_text_font": "helvetica_n4",
-            "heading_text_font_size": 20,
-            "heading_text_color": "#ffffff",
-            "content": "",
-            "content_text_font": "helvetica_n4",
-            "content_text_font_size": 12,
-            "content_text_color": "#ffffff",
-            "content_position": "middle_center",
-            "button_background": "#ffffff",
-            "button_text_color": "#000000",
-            "button_text": "",
-            "link": "shopify:\/\/collections\/fathers-day"
           }
         },
         "1650101273ef0886ca-0": {
@@ -77,8 +77,8 @@
         }
       },
       "block_order": [
-        "1650101273ef0886ca-1",
         "28572d9f-8700-4893-990e-c3b4bf1e7821",
+        "1650101273ef0886ca-1",
         "1650101273ef0886ca-0"
       ],
       "settings": {
@@ -87,17 +87,6 @@
         "carousel_effect": "slide",
         "autoplay": true,
         "cycle_speed": 5
-      }
-    },
-    "16476930731e3b7419": {
-      "type": "no_space_img",
-      "disabled": true,
-      "settings": {
-        "sensorsName": "banner",
-        "bg_image": "shopify:\/\/shop_images\/hyfol_-pc_-_banner_0e2e3871-a078-4ed4-b794-3604be11c9e5.jpg",
-        "web_bg_image": "shopify:\/\/shop_images\/hyfol_-_-_banner_21d8f73f-0bd2-4054-bca3-9685fca9ff02.jpg",
-        "link": "shopify:\/\/collections\/memorial-day-sale",
-        "shadow": false
       }
     },
     "16474248460d0593be": {
@@ -132,9 +121,9 @@
         "6c94ee37-e01c-4716-bc7e-67cc0981d68a": {
           "type": "link",
           "settings": {
-            "heading": "womenbestsellers",
-            "sensorsLinkName": "womenbestsellers",
-            "link": "shopify:\/\/collections\/🔥-best-sellers-women-🔥",
+            "heading": "memorialday",
+            "sensorsLinkName": "memorialday",
+            "link": "shopify:\/\/collections\/memorial-day-sale",
             "left": 25,
             "top": 5,
             "width": 24,
@@ -158,7 +147,7 @@
           "settings": {
             "heading": "sale",
             "sensorsLinkName": "sale",
-            "link": "shopify:\/\/collections\/shop-by-deals",
+            "link": "shopify:\/\/collections\/spring-sale",
             "left": 76,
             "top": 6,
             "width": 24,
@@ -173,11 +162,13 @@
         "1f197e6e-076a-4800-935a-1d35bc6020ce"
       ],
       "settings": {
+        "linkImg_title": "",
+        "linkImg_content": "",
         "hidDesk": false,
         "sensorsName": "",
         "hidWeb": true,
         "line": false,
-        "image": "shopify:\/\/shop_images\/02_669c4690-ca48-41d7-b48e-c5b4336b90a1.jpg",
+        "image": "shopify:\/\/shop_images\/02_8003833b-2704-4074-9d88-b841aea384d7.jpg",
         "tpadding": 0,
         "rpadding": 0,
         "bpadding": 0,
@@ -190,9 +181,9 @@
         "1b4a5d11-2c92-45bb-b788-8a362446a835": {
           "type": "link",
           "settings": {
-            "heading": "menbestsellers",
-            "sensorsLinkName": "menbestsellers",
-            "link": "shopify:\/\/collections\/🔥-best-sellers-men-🔥",
+            "heading": "TEES",
+            "sensorsLinkName": "TEES",
+            "link": "shopify:\/\/collections\/z",
             "left": 0,
             "top": 2,
             "width": 48,
@@ -202,9 +193,9 @@
         "f25304d2-8088-49e0-837b-c140d87d31d8": {
           "type": "link",
           "settings": {
-            "heading": "womenbestsellers",
-            "sensorsLinkName": "womenbestsellers",
-            "link": "shopify:\/\/collections\/🔥-best-sellers-women-🔥",
+            "heading": "SHIRTS",
+            "sensorsLinkName": "SHIRTS",
+            "link": "shopify:\/\/collections\/shirts",
             "left": 50,
             "top": 2,
             "width": 53,
@@ -226,9 +217,9 @@
         "e34c6701-d51d-4b6b-b3c3-dbdb091ce635": {
           "type": "link",
           "settings": {
-            "heading": "sale",
-            "sensorsLinkName": "sale",
-            "link": "shopify:\/\/collections\/shop-by-deals",
+            "heading": "ACC",
+            "sensorsLinkName": "ACC",
+            "link": "shopify:\/\/collections\/accessories-12-13",
             "left": 52,
             "top": 51,
             "width": 50,
@@ -243,64 +234,25 @@
         "e34c6701-d51d-4b6b-b3c3-dbdb091ce635"
       ],
       "settings": {
+        "linkImg_title": "",
+        "linkImg_content": "",
         "hidDesk": true,
         "sensorsName": "mobile分类导流区",
         "hidWeb": false,
         "line": false,
-        "image": "shopify:\/\/shop_images\/02_3d4b1221-1384-4b32-a7ea-526c7ee1df6e.jpg",
+        "image": "shopify:\/\/shop_images\/02_cad4d144-0c2d-40df-9d45-3ea0e7d69863.jpg",
         "tpadding": 0,
         "rpadding": 0,
         "bpadding": 0,
         "lpadding": 0
       }
     },
-    "16500210584c969cfe": {
-      "type": "ld-imageText",
-      "disabled": true,
-      "settings": {
-        "noMargin": true,
-        "image": "shopify:\/\/shop_images\/98874da468f857bd057140596b570989.jpg",
-        "mobile_image": "shopify:\/\/shop_images\/ef25f4c651b92855092f6b4a7658b4bc.jpg",
-        "link": "",
-        "title_align": "row",
-        "title_tb": "column-reverse",
-        "title": "Text",
-        "subtitle": "Text block",
-        "button": "SHOP NOW",
-        "show": false,
-        "title_size": 4,
-        "sub_title_size": 1.5,
-        "m_title_size": 6,
-        "m_sub_title_size": 4,
-        "sub_title_top": 10,
-        "m_sub_title_top": 10,
-        "text_color": "#ffffff",
-        "text_style": "normal",
-        "s_text_style": "normal",
-        "text_align": "center",
-        "button_color": "#ed6123",
-        "button_text_color": "#ffffff",
-        "button_color_hover": "#ffffff",
-        "button_text_color_hover": "#000000"
-      }
-    },
-    "1650021168ea57a101": {
-      "type": "no_space_img",
-      "disabled": true,
-      "settings": {
-        "sensorsName": "",
-        "bg_image": "shopify:\/\/shop_images\/ed5cb826d8e8739c768f6080bc88f97a.jpg",
-        "web_bg_image": "shopify:\/\/shop_images\/7e6c0994b597e0d1f2f64ddfb57015eb.jpg",
-        "link": "shopify:\/\/collections\/women",
-        "shadow": false
-      }
-    },
     "1651218774b7bce676": {
       "type": "transparent-collection",
       "settings": {
-        "collection": "sport-shorts",
-        "sensorsName": "TRAINING SHORTS",
-        "title": "",
+        "collection": "best-sellers-1",
+        "sensorsName": "BEST SELLERS",
+        "title": "BEST SELLERS",
         "products_count": 12,
         "layout": "vertical",
         "stack_products": false,
@@ -368,11 +320,13 @@
         "6defe89d-34bf-47d9-a1f2-91004d693ed8"
       ],
       "settings": {
+        "linkImg_title": "",
+        "linkImg_content": "",
         "hidDesk": false,
         "sensorsName": "pc分类导流区",
         "hidWeb": true,
         "line": false,
-        "image": "shopify:\/\/shop_images\/04_691fe7f1-90c5-4587-9ada-2e4d5e0db767.jpg",
+        "image": "shopify:\/\/shop_images\/03_5f238c01-7a68-418b-a743-10f89b5b4692.jpg",
         "tpadding": 0,
         "rpadding": 0,
         "bpadding": 0,
@@ -438,126 +392,253 @@
         "dbe8a9a1-2bdd-4552-82ae-15b0ebb1e9cf"
       ],
       "settings": {
+        "linkImg_title": "",
+        "linkImg_content": "",
         "hidDesk": true,
         "sensorsName": "mobile分类导流区",
         "hidWeb": false,
         "line": false,
-        "image": "shopify:\/\/shop_images\/04_519b15b8-6334-484d-b985-1ea1e1ab96ca.jpg",
+        "image": "shopify:\/\/shop_images\/03_f7acf191-7238-4b44-8685-f5a87f01f67b.jpg",
         "tpadding": 5,
         "rpadding": 0,
         "bpadding": 0,
         "lpadding": 0
       }
     },
-    "16501153969d7dc597": {
-      "type": "no_space_img",
+    "16534593657c96f64d": {
+      "type": "linkImg",
+      "blocks": {
+        "3ad9d572-559a-4d94-90b7-00090590bce8": {
+          "type": "link",
+          "settings": {
+            "heading": "springsale",
+            "sensorsLinkName": "springsale",
+            "link": "shopify:\/\/collections\/spring-sale",
+            "left": 0,
+            "top": 0,
+            "width": 50,
+            "height": 100
+          }
+        },
+        "6f3b2d64-3421-4670-af94-3aa71eb6713e": {
+          "type": "link",
+          "settings": {
+            "heading": "winterclearance",
+            "sensorsLinkName": "winterclearance",
+            "link": "shopify:\/\/collections\/winter-clearance",
+            "left": 51,
+            "top": 0,
+            "width": 50,
+            "height": 100
+          }
+        }
+      },
+      "block_order": [
+        "3ad9d572-559a-4d94-90b7-00090590bce8",
+        "6f3b2d64-3421-4670-af94-3aa71eb6713e"
+      ],
       "settings": {
-        "sensorsName": "",
-        "bg_image": "shopify:\/\/shop_images\/8_a0491898-a613-4306-b94d-98d3f8514ee7.jpg",
-        "web_bg_image": "shopify:\/\/shop_images\/7_04eedabc-41fc-4f21-bccd-e474262dad46.jpg",
-        "link": "shopify:\/\/collections\/winter-clearance",
-        "shadow": false
+        "linkImg_title": "",
+        "linkImg_content": "",
+        "hidDesk": false,
+        "sensorsName": "pc分类导流区",
+        "hidWeb": true,
+        "line": false,
+        "image": "shopify:\/\/shop_images\/04_e0bea741-c9b0-4244-a289-95be7160d6f4.jpg",
+        "tpadding": 0,
+        "rpadding": 0,
+        "bpadding": 0,
+        "lpadding": 0
       }
     },
-    "1647498064c408cfd6": {
-      "type": "transparent-collection",
-      "disabled": true,
+    "1653459372cee0bf93": {
+      "type": "linkImg",
+      "blocks": {
+        "aa961e8f-2fe0-4c2c-ab15-9f64f3dc8243": {
+          "type": "link",
+          "settings": {
+            "heading": "springsale",
+            "sensorsLinkName": "springsale",
+            "link": "",
+            "left": 0,
+            "top": 0,
+            "width": 48,
+            "height": 100
+          }
+        },
+        "9033daee-d820-4bd4-8cba-1c138eb7335e": {
+          "type": "link",
+          "settings": {
+            "heading": "winterclearance",
+            "sensorsLinkName": "winterclearance",
+            "link": "",
+            "left": 52,
+            "top": 0,
+            "width": 52,
+            "height": 100
+          }
+        }
+      },
+      "block_order": [
+        "aa961e8f-2fe0-4c2c-ab15-9f64f3dc8243",
+        "9033daee-d820-4bd4-8cba-1c138eb7335e"
+      ],
       "settings": {
-        "collection": "camou",
-        "sensorsName": "FATIGUE COLLECTION",
-        "title": "FATIGUE COLLECTION",
-        "products_count": 18,
-        "layout": "vertical",
-        "stack_products": false,
-        "show_quick_buy": false,
-        "link_title": "View all",
-        "link_url": ""
+        "linkImg_title": "",
+        "linkImg_content": "",
+        "hidDesk": true,
+        "sensorsName": "mobile分类导流区",
+        "hidWeb": false,
+        "line": false,
+        "image": "shopify:\/\/shop_images\/04_9d1b9e60-0c7e-415b-b9ae-7f4d22eb632e.jpg",
+        "tpadding": 0,
+        "rpadding": 0,
+        "bpadding": 0,
+        "lpadding": 0
       }
     },
-    "1648607115d95fb2d3": {
-      "type": "ld-imageText",
+    "165345938037a0eeec": {
+      "type": "linkImg",
+      "blocks": {
+        "0bf20aad-4075-440a-a970-028a6081aadc": {
+          "type": "link",
+          "settings": {
+            "heading": "patriot",
+            "sensorsLinkName": "patriot",
+            "link": "shopify:\/\/collections\/american-flag",
+            "left": 0,
+            "top": 0,
+            "width": 25,
+            "height": 100
+          }
+        },
+        "3b24ef8b-1ed9-4934-9fbf-4530d277b016": {
+          "type": "link",
+          "settings": {
+            "heading": "skull",
+            "sensorsLinkName": "skull",
+            "link": "shopify:\/\/collections\/skull",
+            "left": 26,
+            "top": 0,
+            "width": 23,
+            "height": 100
+          }
+        },
+        "2fca7951-1b2f-4892-9c1c-c36ec573d49b": {
+          "type": "link",
+          "settings": {
+            "heading": "waterproof",
+            "sensorsLinkName": "waterproof",
+            "link": "shopify:\/\/collections\/performance",
+            "left": 50,
+            "top": 0,
+            "width": 25,
+            "height": 100
+          }
+        },
+        "a79c4343-e6c3-4edf-a9e5-df4c54cdda67": {
+          "type": "link",
+          "settings": {
+            "heading": "workwear",
+            "sensorsLinkName": "workwear",
+            "link": "shopify:\/\/collections\/cargo-pants",
+            "left": 76,
+            "top": 0,
+            "width": 31,
+            "height": 100
+          }
+        }
+      },
+      "block_order": [
+        "0bf20aad-4075-440a-a970-028a6081aadc",
+        "3b24ef8b-1ed9-4934-9fbf-4530d277b016",
+        "2fca7951-1b2f-4892-9c1c-c36ec573d49b",
+        "a79c4343-e6c3-4edf-a9e5-df4c54cdda67"
+      ],
       "settings": {
-        "noMargin": true,
-        "image": "shopify:\/\/shop_images\/banner_01.jpg",
-        "mobile_image": "shopify:\/\/shop_images\/33dc2d9d38d4c6a787b8c8217fad8671.jpg",
-        "link": "shopify:\/\/collections\/skull",
-        "title_align": "row-reverse",
-        "title_tb": "column-reverse",
-        "title": "SKULL MADMAN",
-        "subtitle": "ROCK THE SKULL STYLE",
-        "button": "EXPLORE NOW",
-        "show": false,
-        "title_size": 4.5,
-        "sub_title_size": 1.5,
-        "m_title_size": 36,
-        "m_sub_title_size": 13,
-        "sub_title_top": 24,
-        "m_sub_title_top": 10,
-        "text_color": "#ffffff",
-        "text_style": "bolder",
-        "s_text_style": "normal",
-        "text_align": "center",
-        "button_color": "#ed6123",
-        "button_text_color": "#ffffff",
-        "button_color_hover": "#ffffff",
-        "button_text_color_hover": "#000000"
+        "linkImg_title": "",
+        "linkImg_content": "",
+        "hidDesk": false,
+        "sensorsName": "pc分类导流区",
+        "hidWeb": true,
+        "line": false,
+        "image": "shopify:\/\/shop_images\/05_5094faf1-0c0a-48eb-8331-341f5067d2c6.jpg",
+        "tpadding": 0,
+        "rpadding": 0,
+        "bpadding": 0,
+        "lpadding": 0
       }
     },
-    "1647497707f35ea4d8": {
-      "type": "transparent-collection",
+    "16534593896dfc4330": {
+      "type": "linkImg",
+      "blocks": {
+        "5594db23-394f-486d-85ca-ff9e6b274cc7": {
+          "type": "link",
+          "settings": {
+            "heading": "patriot",
+            "sensorsLinkName": "",
+            "link": "",
+            "left": 0,
+            "top": 0,
+            "width": 49,
+            "height": 50
+          }
+        },
+        "4c67b249-31bf-47f7-98c3-ccf6f39b331f": {
+          "type": "link",
+          "settings": {
+            "heading": "skull",
+            "sensorsLinkName": "skull",
+            "link": "",
+            "left": 51,
+            "top": 0,
+            "width": 47,
+            "height": 50
+          }
+        },
+        "804cebe0-e541-42d5-9f9a-e1f14a2a6b43": {
+          "type": "link",
+          "settings": {
+            "heading": "waterproof",
+            "sensorsLinkName": "waterproof",
+            "link": "",
+            "left": 0,
+            "top": 51,
+            "width": 49,
+            "height": 44
+          }
+        },
+        "a3dbce19-5f37-4ed9-a99e-05d201f08abb": {
+          "type": "link",
+          "settings": {
+            "heading": "workwear",
+            "sensorsLinkName": "workwear",
+            "link": "shopify:\/\/collections\/work-wear",
+            "left": 51,
+            "top": 53,
+            "width": 48,
+            "height": 43
+          }
+        }
+      },
+      "block_order": [
+        "5594db23-394f-486d-85ca-ff9e6b274cc7",
+        "4c67b249-31bf-47f7-98c3-ccf6f39b331f",
+        "804cebe0-e541-42d5-9f9a-e1f14a2a6b43",
+        "a3dbce19-5f37-4ed9-a99e-05d201f08abb"
+      ],
       "settings": {
-        "collection": "skull",
-        "sensorsName": "ROCK SKULL",
-        "title": "",
-        "products_count": 18,
-        "layout": "vertical",
-        "stack_products": false,
-        "show_quick_buy": false,
-        "link_title": "View all",
-        "link_url": ""
-      }
-    },
-    "1648191714c3e1b050": {
-      "type": "ld-imageText",
-      "settings": {
-        "noMargin": true,
-        "image": "shopify:\/\/shop_images\/02_0d425458-8123-4a0d-9e23-6414dd915332.jpg",
-        "mobile_image": "shopify:\/\/shop_images\/9573de5236b7167989a7e2067bac8ab2.jpg",
-        "link": "shopify:\/\/collections\/american-flag",
-        "title_align": "row",
-        "title_tb": "column-reverse",
-        "title": "PATRIOT LEAGUE",
-        "subtitle": "GOD，FAMILY，COUNTRY",
-        "button": "EXPLORE NOW",
-        "show": false,
-        "title_size": 4.5,
-        "sub_title_size": 1.5,
-        "m_title_size": 36,
-        "m_sub_title_size": 13,
-        "sub_title_top": 29,
-        "m_sub_title_top": 10,
-        "text_color": "#ffffff",
-        "text_style": "bolder",
-        "s_text_style": "normal",
-        "text_align": "center",
-        "button_color": "#ffffff",
-        "button_text_color": "#1b1b1b",
-        "button_color_hover": "#ffffff",
-        "button_text_color_hover": "#000000"
-      }
-    },
-    "1647424215f34c4fad": {
-      "type": "transparent-collection",
-      "settings": {
-        "collection": "american-flag",
-        "sensorsName": "AMERICAN REAPER",
-        "title": "",
-        "products_count": 18,
-        "layout": "vertical",
-        "stack_products": false,
-        "show_quick_buy": false,
-        "link_title": "View all",
-        "link_url": ""
+        "linkImg_title": "",
+        "linkImg_content": "",
+        "hidDesk": true,
+        "sensorsName": "mobile分类导流区",
+        "hidWeb": false,
+        "line": false,
+        "image": "shopify:\/\/shop_images\/05_8a41c706-747c-4b34-bac8-e98b9cd6ca3f.jpg",
+        "tpadding": 0,
+        "rpadding": 0,
+        "bpadding": 0,
+        "lpadding": 0
       }
     },
     "1640334828c8a975c8": {
@@ -747,21 +828,16 @@
   },
   "order": [
     "1650101273f11a55ef",
-    "16476930731e3b7419",
     "16474248460d0593be",
     "16500767332eb3ea11",
     "164742631051d4db44",
-    "16500210584c969cfe",
-    "1650021168ea57a101",
     "1651218774b7bce676",
     "16474250424edba623",
     "1653297879b5b9419a",
-    "16501153969d7dc597",
-    "1647498064c408cfd6",
-    "1648607115d95fb2d3",
-    "1647497707f35ea4d8",
-    "1648191714c3e1b050",
-    "1647424215f34c4fad",
+    "16534593657c96f64d",
+    "1653459372cee0bf93",
+    "165345938037a0eeec",
+    "16534593896dfc4330",
     "1640334828c8a975c8",
     "16486080199c077c37",
     "164854339383efd708"

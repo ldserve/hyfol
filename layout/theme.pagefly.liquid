@@ -45,7 +45,7 @@ If you plan to remove PageFly, please see the guide in our help center first: ht
 
     {%- comment -%}Few prefech to increase performance on commonly used third-parties{%- endcomment -%}
     <link rel="preload" as="style" href="{{ 'theme.css' | asset_url }}">
-    <link rel="preload" as="script" href="{{ 'theme.js' | asset_url }}">
+    <link as="script" href="{{ 'theme.js' | asset_url }}">
     <link rel="preconnect" href="https://cdn.shopify.com">
     <link rel="preconnect" href="https://fonts.shopifycdn.com">
     <link rel="dns-prefetch" href="https://productreviews.shopifycdn.com">
@@ -282,7 +282,9 @@ line_items: [
 
 {% include 'orichi_multi_pixel' %}	{% render 'vitals-loader' %}
 
-{% include "omega_multi_pixel" %} </head>
+{% include "omega_multi_pixel" %} 
+{% render 'sca-aff-refer-customer' %}
+</head>
 
   <body class="warehouse--v1 {% if settings.animation_image_zoom %}features--animate-zoom{% endif%} template-{{ request.page_type | handle }} {% if request.page_type contains '/' %}template-{{ request.page_type | split: '/' | last | handle }}{% endif %}" data-instant-intensity="viewport"><div class="pagefly-container">{{ content_for_layout }}</div></body>
 </html>
