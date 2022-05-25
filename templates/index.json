@@ -637,7 +637,7 @@
         "image": "shopify:\/\/shop_images\/05_8a41c706-747c-4b34-bac8-e98b9cd6ca3f.jpg",
         "tpadding": 0,
         "rpadding": 0,
-        "bpadding": 0,
+        "bpadding": 100,
         "lpadding": 0
       }
     },
@@ -760,7 +760,7 @@
       ],
       "settings": {
         "title": "#Hyfol_official",
-        "description": "<p>Show us how you match. <\/p><p>Label your  post.<strong>@Hyfol_official<\/strong><\/p>"
+        "description": "<p>Show us how you match<\/p><p>Label your post @<strong>Hyfol_official<\/strong><\/p>"
       }
     },
     "16486080199c077c37": {
