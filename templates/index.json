@@ -92,9 +92,9 @@
     "16474248460d0593be": {
       "type": "transparent-collection",
       "settings": {
-        "collection": "best-sellers-1",
-        "sensorsName": "BEST SELLER",
-        "title": "BEST SELLER",
+        "collection": "new-in-1",
+        "sensorsName": "NEW IN",
+        "title": "NEW IN",
         "products_count": 18,
         "layout": "vertical",
         "stack_products": false,
