@@ -16,6 +16,17 @@
   <link rel="preload" href="{{ settings.text_font | font_url }}" as="font" type="font/woff2" crossorigin>
 {%- endunless -%}
 
+{% assign pageType = request.page_type | json %}
+{% if pageType contains "index" or pageType contains "collection" or pageType contains "search" %}
+{% assign background  = "#000000" %}
+{%elsif pageType contains "product" or pageType contains "cart"%}
+{% assign background  = "#ffffff" %}
+{% else %}
+{% assign background  =  "#edece6"%}
+{% endif %}
+
+
+
 <style>
   {{ settings.heading_font | font_face: font_display: 'swap' }}
   {{ settings.text_font | font_face: font_display: 'swap' }}
@@ -56,7 +67,7 @@
     --accent-color-rgb         : {{ settings.accent_color | color_extract: 'red' }}, {{ settings.accent_color | color_extract: 'green' }}, {{ settings.accent_color | color_extract: 'blue' }};
     --link-color               : {{ settings.link_color }};
     --link-color-hover         : {{ settings.link_color | color_darken: 15 }};
-    --background               : {{ settings.background }};
+    --background               : {{ background }};
     --secondary-background     : {{ settings.secondary_background }};
     --secondary-background-rgb : {{ settings.secondary_background | color_extract: 'red' }}, {{ settings.secondary_background | color_extract: 'green' }}, {{ settings.secondary_background | color_extract: 'blue' }};
     --accent-background        : {{settings.accent_color | color_modify: 'alpha', 0.08 }};

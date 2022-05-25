@@ -20,7 +20,12 @@
   <div class="container">
     {%- if section.settings.heading != blank -%}
       <header class="section__header">
-        <h2 class="section__title heading h3 font_16">{{ section.settings.heading | escape }}</h2>
+        {% style %}
+            .heading{
+              color:{{ section.settings.title_color }}
+            }
+        {% endstyle %}
+        <h2  class="section__title heading h3 font_16">{{ section.settings.heading | escape }}</h2>
       </header>
     {%- endif -%}
 
@@ -101,6 +106,12 @@
       "id": "show_quick_buy",
       "label": "Show quick buy",
       "default": false
+    },
+    {
+      "type": "color",
+      "id": "title_color",
+      "label": "标题字体颜色",
+      "default": "#000000"
     }
   ],
   "blocks": [

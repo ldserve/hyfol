@@ -14,6 +14,15 @@
 		{%- capture supported_sizes -%}{%- render 'image-size', sizes: '300,400,500,600,700,800,900,1000,1100,1200,1300,1400,1500,1600,1700,1800,1900,2000', image: section.settings.image -%}{%- endcapture -%}
 		{%- assign image_url = section.settings.image | img_url: '1x1'| replace: '_1x1.', '_{width}x.' -%}
 		{%- assign mkt_material_url =  section.settings.image | image_url | split: "?" | first -%}
+		
+      <div class="linkImg_text">
+		{% if section.settings.linkImg_title != blank %}
+		<div class="linkImg_title">{{section.settings.linkImg_title}}</div>
+		{% endif %}
+		{% if section.settings.linkImg_content !=blank %}
+		<div class="linkImg_content">{{section.settings.linkImg_content}}</div>
+		{% endif %}
+	  </div>
 		<div class="image_link {%  if section.settings.line %}line{%  endif %} ">
 			<img data-src="{{ image_url }}" data-widths="[{{ supported_sizes }}]" data-sizes="auto" alt="{{ section.settings.bg_image.alt | escape }}" class=" lazyload">
 			{%- for block in section.blocks -%}
@@ -54,6 +63,16 @@
 {
 	"name": "热点链接图片",
 	"settings": [
+	    {
+	    	"type":"text",
+	    	"id":"linkImg_title",
+	    	"label":"头顶标题"
+	    },
+		{
+	    	"type":"text",
+	    	"id":"linkImg_content",
+	    	"label":"头顶内容"
+	    },
 		{
 			"type":"checkbox",
 			"id":"hidDesk",

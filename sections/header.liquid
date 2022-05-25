@@ -61,7 +61,7 @@
 
 				{%- comment -%}---------------logo组件---------------{%- endcomment -%}
 				{%- capture header_logo -%}
-					<a href="{{ routes.root_url }}" class="header__logo-link shence_commodityView hidden-lap-and-up" data-scenable="1"
+					<a href="{{ routes.root_url }}" style="display:block !important;" class="header__logo-link shence_commodityView hidden-lap-and-up" data-scenable="1"
 						 data-expenable="1" data-bindexp="1" data-sctype="mktClick"
 						 data-scdata='{"mkt_type":"bar","first_mkt_name":"顶部导航","first_mkt_id":"{{ section.id }}","second_mkt_rank":"0","third_mkt_rank":"","mkt_material_url":"","mkt_material_name":"logo","commodity_spuid":"","commodity_skuid":"","commodity_name":"","original_price":"","current_price":"","currency_unit":"","mkt_tag":[]}'>
 						{%- if section.settings.logo != blank -%}
@@ -76,6 +76,7 @@
 						{%- else -%}
 							<span class="header__logo-text">{{ shop.name }}</span>
 						{%- endif -%}
+						
 					</a>
 				{%- endcapture -%}
 				{%- comment -%}---------------logo渲染---------------{%- endcomment -%}
@@ -111,9 +112,9 @@
 						{%- endcapture -%}
 						{%- comment -%}---------------logo渲染---------------{%- endcomment -%}
 						{%- if request.page_type == 'index' -%}
-							<h1 class="header__logo">{{ header_logo }}</h1>
+							<h1 class="header__logo" style="display:none">{{ header_logo }}</h1>
 						{%- else -%}
-							<div class="header__logo">{{ header_logo }}</div>
+							<div class="header__logo" style="display:none">{{ header_logo }}</div>
 						{%- endif -%}
 						<div class="nav-bar__inner clearposition">
 							<ul class="nav-bar__linklist list--unstyled clearposition jjs-nav-bar" data-type="menu" role="list">
