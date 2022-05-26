@@ -15,7 +15,6 @@
     {%- assign id = id  | append: "," | append: line_item.sku  -%}
   {%- endif  -%}
  {%- endfor  -%}
-
   {%- if product.template_suffix != 'contact' -%}
     {%- if product.selected_or_first_available_variant.available -%}
       {%- if product.template_suffix == 'pre-order' -%}
@@ -41,7 +40,7 @@
               "compliment_commodities":"{{ id }}",
               "bonus_name":"",
               "bonus_amount":0,
-              "entrance":"CommodityDetailPage_AddToCart"}'
+              "entrance":"{%- if isQuickView -%}QuickView_AddToCart{%- else -%}CommodityDetailPage_AddToCart{%- endif -%}"}'
          data-action="add-to-cart" >{{ 'product.form.add_to_cart' | t }}</button>
       {%- endif -%}
     {%- else -%}

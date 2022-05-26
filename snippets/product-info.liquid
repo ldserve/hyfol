@@ -34,7 +34,7 @@
 				{%- render 'product-variant-selector',form: form, block: block -%}
 
 				{%- when 'buy_buttons' -%}
-				{%- render 'product-buy-buttons', product: product, form: form, block: block -%}
+				{%- render 'product-buy-buttons', product: product, form: form, block: block, isQuickView:isQuickView -%}
 
 				{%- when 'store_pickup' -%}
 					{%- comment -%}The availability container will be added automatically if there is store pickup available{%- endcomment -%}
