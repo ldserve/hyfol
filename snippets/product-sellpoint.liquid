@@ -28,7 +28,7 @@
 
 {% assign customer = 'false' %}
 {%- for tag in product.tags -%}
-	{%- if tag contains '促销' -%}
+	{%- if tag contains 'CustomPromotion' -%}
 		{%- assign customer = 'true' -%}
 		{%- assign text = tag | split: '-' -%}
 		{%- assign sale_text_on_detail =  text[1] -%}
