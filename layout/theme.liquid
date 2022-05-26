@@ -234,6 +234,32 @@ line_items: [
 {% endif %}
  
 <script>
+   const customerId= "{{ customer.id}}" 
+    if (location.href.indexOf("account/login") !== -1) {
+      document.querySelector("body").removeChild(document.querySelector(".ld-dialog"))
+    }
+    
+    async function post_data(url, data) {
+      const response = await fetch(`https://api-dev.leandow-technology.com/api/${url}`, {
+        method: 'POST',
+        mode: 'cors',
+        cache: 'no-cache',
+        credentials: 'same-origin',
+        headers: {
+          'Content-Type': 'application/json',
+          "siteValue": "leandowTest",
+          "Access-Control-Allow-Origin": "*"
+        },
+        redirect: 'follow',
+        referrerPolicy: 'no-referrer',
+        body: JSON.stringify(data)
+      });
+      return response.json();
+    }
+
+</script>
+
+<script>  
   gtag('event', '{{ fa_event }}', {
  'send_to': 'AW-{{ fa_google_ads_audience_tag_id }}',
  {% if template contains 'product' or template contains 'cart' %}'value': {{ fa_product_price }},{% endif %}
