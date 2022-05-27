@@ -33,11 +33,11 @@
           super()
           this.timer = 0
           this.elements = {
-            colorSelector: this.querySelector('.color-selector'),
+            colorSelector: this.querySelectorAll('.color-swatch__radio'),
             cardMedia: this.querySelector('.card__media'),
             cartNode: this.querySelector('.ny-icon-cart'),
             addColleNode: this.querySelector('.add-collect'),
-            removeColleNode: this.querySelector('.remove-collect')
+            removeColleNode: this.querySelector('.remove-collect'),
           }
           this.setupEventListeners()
           this.onload()
@@ -46,7 +46,25 @@
         setupEventListeners() {
           this.elements.addColleNode && this.elements.addColleNode.addEventListener('click', this.handleRemove)
           this.elements.removeColleNode && this.elements.removeColleNode.addEventListener('click', this.handleAdd)
+                  this.elements.colorSelector.forEach((item,index)=>{
+              if( item.closest(".page-width") !=null){
+                item.addEventListener("click",this.changeColor)
+              }
+        })
         }
+
+        changeColor=(event)=>{
+            var newImageElement = document.createElement('img');
+            newImageElement.className = 'product-item__primary-image lazyload image--fade-in';
+            newImageElement.setAttribute('data-media-id', event.target.getAttribute('data-media-id'));
+            newImageElement.setAttribute('data-src', event.target.getAttribute('data-image-url'));
+            newImageElement.setAttribute('data-widths', event.target.getAttribute('data-image-widths'));
+            newImageElement.setAttribute('data-sizes', 'auto');
+            var originalImageElement = this.querySelector(".product-item__primary-image")
+            originalImageElement.parentNode.style.paddingBottom = "".concat(100.0 / newImageElement.getAttribute('data-image-aspect-ratio'), "%");
+            originalImageElement.parentNode.replaceChild(newImageElement, originalImageElement);
+        }
+
         onload() {
           const id = this.elements.removeColleNode.getAttribute("data-id")
           var searchData = {
@@ -73,7 +91,6 @@
           }
         }
         handleRemove() {
-            console.log("移除");
           const newTime = Date.parse(new Date())
           if (newTime - this.timer < 2000) {
             return
@@ -102,7 +119,7 @@
         }
       
         handleAdd() {
-            console.log("添加");
+            if (customerId) {
           if (customerId) {
             const newTime = Date.parse(new Date())
             if (newTime - this.timer < 2000) {
@@ -130,19 +147,16 @@
                   document.querySelector(".header__icon--collect span").innerText = +(text) + 1
                 }
               });
-          } else {
-            document.querySelector('.ld-dialog').style.animation = "myOpacity0 .3s"
-            document.querySelector(".mask").style.display = "block"
-            document.querySelector(".ld-hint").style.display = "block"
-            document.body.classList.add('overflow-hidden');
-            setTimeout(() => {
-              document.querySelector(".ld-hint").style.display = "none"
-            }, 2000)
           }
+        }else{
+            window.location.href= "https://www.hyfol.com/account/login"
         }
+    }
       }
       
       customElements.define('product-item', ProductItem)
+
+      
 
     class SliderShow extends HTMLElement {
         constructor() {
