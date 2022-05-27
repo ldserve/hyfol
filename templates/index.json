@@ -3,12 +3,12 @@
     "1650101273f11a55ef": {
       "type": "slideshow",
       "blocks": {
-        "28572d9f-8700-4893-990e-c3b4bf1e7821": {
+        "fb844d01-0475-4130-aeb7-a118c0a1b427": {
           "type": "image",
           "settings": {
             "sensorsName": "",
-            "image": "shopify:\/\/shop_images\/6fde99e860fc1fa9004b301ee36b7c02_fbb905dd-5a55-462e-b8f0-f3276afd2caf.jpg",
-            "mobile_image": "shopify:\/\/shop_images\/be3d2e6638813747c788cc4248dddfaf_a311841b-8632-4ccd-99bc-79e508c3ccee.jpg",
+            "image": "shopify:\/\/shop_images\/50.jpg",
+            "mobile_image": "shopify:\/\/shop_images\/50_b755a4d6-f3b9-43de-bbcb-3495ce265835.jpg",
             "show_overlay": false,
             "overlay_opacity": 30,
             "text_color": "#ffffff",
@@ -24,31 +24,7 @@
             "button_background": "#ffffff",
             "button_text_color": "#000000",
             "button_text": "",
-            "link": "shopify:\/\/collections\/fathers-day1"
-          }
-        },
-        "1650101273ef0886ca-1": {
-          "type": "image",
-          "settings": {
-            "sensorsName": "",
-            "image": "shopify:\/\/shop_images\/78f533ba629a7a586b29aefc68f6195f.jpg",
-            "mobile_image": "shopify:\/\/shop_images\/78f533ba629a7a586b29aefc68f6195f_176cf0c8-3abc-43f2-82ac-7882c84203cd.jpg",
-            "show_overlay": false,
-            "overlay_opacity": 30,
-            "text_color": "#ffffff",
-            "title": "",
-            "heading_text_font": "helvetica_n4",
-            "heading_text_font_size": 20,
-            "heading_text_color": "#ffffff",
-            "content": "",
-            "content_text_font": "helvetica_n4",
-            "content_text_font_size": 12,
-            "content_text_color": "#ffffff",
-            "content_position": "middle_center",
-            "button_background": "#ffffff",
-            "button_text_color": "#000000",
-            "button_text": "",
-            "link": "shopify:\/\/collections\/memorial-day-sale"
+            "link": "https:\/\/www.hyfol.com\/collections\/3-for-55"
           }
         },
         "1650101273ef0886ca-0": {
@@ -74,12 +50,63 @@
             "button_text": "",
             "link": "shopify:\/\/collections\/summer-sale"
           }
+        },
+        "28572d9f-8700-4893-990e-c3b4bf1e7821": {
+          "type": "image",
+          "disabled": true,
+          "settings": {
+            "sensorsName": "",
+            "image": "shopify:\/\/shop_images\/6fde99e860fc1fa9004b301ee36b7c02_fbb905dd-5a55-462e-b8f0-f3276afd2caf.jpg",
+            "mobile_image": "shopify:\/\/shop_images\/be3d2e6638813747c788cc4248dddfaf_a311841b-8632-4ccd-99bc-79e508c3ccee.jpg",
+            "show_overlay": false,
+            "overlay_opacity": 30,
+            "text_color": "#ffffff",
+            "title": "",
+            "heading_text_font": "helvetica_n4",
+            "heading_text_font_size": 20,
+            "heading_text_color": "#ffffff",
+            "content": "",
+            "content_text_font": "helvetica_n4",
+            "content_text_font_size": 12,
+            "content_text_color": "#ffffff",
+            "content_position": "middle_center",
+            "button_background": "#ffffff",
+            "button_text_color": "#000000",
+            "button_text": "",
+            "link": "shopify:\/\/collections\/fathers-day1"
+          }
+        },
+        "1650101273ef0886ca-1": {
+          "type": "image",
+          "disabled": true,
+          "settings": {
+            "sensorsName": "",
+            "image": "shopify:\/\/shop_images\/78f533ba629a7a586b29aefc68f6195f.jpg",
+            "mobile_image": "shopify:\/\/shop_images\/78f533ba629a7a586b29aefc68f6195f_176cf0c8-3abc-43f2-82ac-7882c84203cd.jpg",
+            "show_overlay": false,
+            "overlay_opacity": 30,
+            "text_color": "#ffffff",
+            "title": "",
+            "heading_text_font": "helvetica_n4",
+            "heading_text_font_size": 20,
+            "heading_text_color": "#ffffff",
+            "content": "",
+            "content_text_font": "helvetica_n4",
+            "content_text_font_size": 12,
+            "content_text_color": "#ffffff",
+            "content_position": "middle_center",
+            "button_background": "#ffffff",
+            "button_text_color": "#000000",
+            "button_text": "",
+            "link": "shopify:\/\/collections\/memorial-day-sale"
+          }
         }
       },
       "block_order": [
+        "fb844d01-0475-4130-aeb7-a118c0a1b427",
+        "1650101273ef0886ca-0",
         "28572d9f-8700-4893-990e-c3b4bf1e7821",
-        "1650101273ef0886ca-1",
-        "1650101273ef0886ca-0"
+        "1650101273ef0886ca-1"
       ],
       "settings": {
         "edge_to_edge": true,
