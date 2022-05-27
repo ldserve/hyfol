@@ -111,7 +111,7 @@
 					</li>
 
 					<li class="breadcrumb__item">
-						<span class="breadcrumb__link" aria-current="page">{{ 'customer.general.orders' | t }}</span>
+						<span class="breadcrumb__link" aria-current="page">Account Overview</span>
 					</li>
 				</ol>
 			</nav>
@@ -121,7 +121,9 @@
 			<div class="layout__section layout__section--secondary">
 				<div class="card card--sticky hidden-pocket">
 					<div class="card__section card__section--tight">
-						<div class="card__linklist">
+	
+						<div class="card__linklist ">
+							<a class="card__linklist-item link d-flex">{%-render 'icon',icon:'account-text' -%} Account Overview</a>
 							<a href="{{ routes.account_url }}"
 								 class="card__linklist-item link text--strong">{{ 'customer.general.orders' | t }}</a>
 							<a href="{{ routes.account_addresses_url }}"
@@ -160,6 +162,8 @@
 			</div>
 
 			<div class="layout__section">
+				{%- comment -%}
+				
 				<div class="card">
 					<div
 						class="{% if customer.orders.size == 0 %}card__section card__section--tight{% else %}card__header card__header--tight{% endif %}">
@@ -215,6 +219,8 @@
 						{% assign dm_paginate_by = paginate.page_size %}{%- endpaginate -%}
 					{%- endif -%}
 				</div>
+				{%- endcomment -%}
+
 			</div>
 		</div>
 	</div>

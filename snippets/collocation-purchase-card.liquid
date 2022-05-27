@@ -309,14 +309,14 @@
                                         "collocation_spuid" :"", "entrance" :{%- if collocationLocation=="mini-cart-collcation" -%} "MiniCartPage_recommend_AddToCart" {%- else -%}"CommodityDetailPage_AddToCart" {%- endif -%}}' 
                                         data-action="add-to-cart" data-purchase>{{'product.form.add_to_cart' | t }}</button>
                     {%- else -%}
-                    <button type="submit" class="product-form__add-button button button--disabled" disabled>{{ 'product.form.sold_out' |  t }}</button>
+                    <button type="submit" class="product-form__add-button button button--disabled" disabled >{{ 'product.form.sold_out' |  t }}</button>
                     {%- endif -%}
                     <input type="hidden" name="id" data-sku="{{ selected_variant.sku }}" value="{{ selected_variant.id }}">
                     <input type="hidden" name="quantity" value="1">
                 </div>
             </div>
 
-            <script type="application/json">{{ product.variants | json }}</script>
+            <script type="application/json">{{ product | json }}</script>
             {%- endform -%}
         </div>
 </collocation-purchase>
