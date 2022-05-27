@@ -4,7 +4,7 @@
 		{%- if tag contains notsale_tag -%}
 			{%- assign showsellpoint = 'false' -%}
 			{%- break -%}
-		{% elsif tag contains '促销' %}
+		{% elsif tag contains 'CustomPromotion' %}
 			{%- assign text = tag | split: '-' -%}
 			{%- assign sale_text_on_detail =  text[1] -%}
 			{%- assign sale_text_on_img =  text[1] -%}
@@ -28,7 +28,7 @@
 
 {% assign customer = 'false' %}
 {%- for tag in product.tags -%}
-	{%- if tag contains '促销' -%}
+	{%- if tag contains 'CustomPromotion' -%}
 		{%- assign customer = 'true' -%}
 		{%- assign text = tag | split: '-' -%}
 		{%- assign sale_text_on_detail =  text[1] -%}
