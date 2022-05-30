@@ -29,9 +29,11 @@
 						{% for handle in handles %}
 							{%- assign product = all_products[handle] -%}
 							{%- assign selected_variant = product.selected_or_first_available_variant -%}
+							{%- if product != blank -%}
 							<li class="collocation-list-item" style="left:{{- forloop.index0 |times:100 -}}%;">
 								{%- render 'collocation-purchase-card' collocationLocation:collocationLocation product:product , selected_variant:selected_variant,handle:handle index:forloop.index -%}
 							</li>
+							{%- endif -%}
 						{%- endfor -%}
 					</ul>
 				</div>

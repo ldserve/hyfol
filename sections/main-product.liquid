@@ -753,7 +753,9 @@
         function initSizeGuideTable() {
             let tbody = sizeGuideModal.querySelector('tbody')
             let className = sizeGuideModal__checkbox.className
-            let data = JSON.parse(sizeGuideModal.querySelector('[type="application/json"][data-type="chart"]').textContent)
+			let jsonText=sizeGuideModal.querySelector('[type="application/json"][data-type="chart"]')
+			let jsonData=jsonText?jsonText.textContent:'[]'
+            let data = JSON.parse(jsonData)
             let tableHtml = ''
 						for (const item in data) {
 								tableHtml += `<tr>`

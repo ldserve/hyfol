@@ -78,7 +78,7 @@
             {% assign allTag = everyTag  %}
         {% endfor %}
         {% assign everyTagString =  everyTag | join:" "%}
-      {% if  everyTagString contains "促销" or everyTagString contains "Nopromotion" %}
+      {% if settings.full_isOpenview==false or everyTagString contains "CustomPromotion" or everyTagString contains "Nopromotion"   %}
         {%- comment -%}
         <div>包含促销信息或不参加全场活动</div>
         {%- endcomment -%}

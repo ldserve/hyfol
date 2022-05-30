@@ -433,23 +433,19 @@
             this.json = this.root.querySelector('[type="application/json"]')
             this.options = this.root.querySelectorAll('.product-wrapper_option')
             this.formElement = this.root.querySelector('form[action*="/cart/add"]');
-            // var color = this.root.querySelector('.color-swatch__radio[checked]')
-            // var size = this.root.querySelector('.block-swatch__radio[checked]')
-            // this.option1 =color? color.value:''
-            // this.option2 =size? size.value:''
-            this.productData=JSON.parse(this.json.innerHTML)
-            var _this =this
-            console.log('this.productData',this.productData);
-
+            this.jsonData = JSON.parse(this.json.innerHTML)
+            this.productOptionsWithValues = this.jsonData['options_with_values']
+            this.productData = this.jsonData['product']
+            this.variantSelectors = this.root.querySelectorAll('.product-wrapper_option[data-selector-type]');
+            var _this = this
             this.productData['variants'].forEach(function (variant) {
-                if (variant['id'] === _this.productData['selected_variant_id']) {
+                if (variant['id'] === _this.jsonData['selected_variant_id']) {
                     _this.currentVariant = variant;
                     _this.option1 = variant['option1'];
                     _this.option2 = variant['option2'];
                     _this.option3 = variant['option3'];
                 }
             });
-            console.log(this.option1,this.option2);
 
             if (!this.formElement) {
                 // 在小购物车没有form表单,动态插入进去
@@ -465,19 +461,17 @@
                 this.root.append(formBox)
                 this.formElement = formBox
             }
-            this.addEven(this.options,this.json,this.formElement)
+            this.addEven(this.options)
             this.bindShence()
-            this.disableChecked()
+            this._updateSelectors()
         }
-        addEven(options, json, formElement) {
-            var productData = this.productData
-            var _this=this
+        addEven(options) {
+            var _this = this
             options.forEach(option => {
-                const checkeds = option.querySelectorAll('input[type="radio"]')
+
                 option.addEventListener('click', (ev) => {
                     if (ev.target.tagName === "INPUT") {
                         var target = ev.target
-                        var variantId = this.root.querySelector('input[name="id"]')
                         var selectedValueElement = option.querySelector('.product-form__selected-value')
                         var selects = option.querySelectorAll('input[checked]')
                         for (var i = 0, len = selects.length; i < len; i++) {
@@ -485,29 +479,15 @@
                         }
                         target.setAttribute('checked', '')
                         _this['option' + target.getAttribute('data-option-position')] = target.value;
-                        this.currentVariant = productData.find(item => item.option1 === _this.option1 && item.option2 === _this.option2)
-                        variantId.value = this.currentVariant.id
-                        if (selectedValueElement != null) {
-                            selectedValueElement.innerHTML = target.value
-                        }
+                        var previousVariant = this.currentVariant;
+                        this.currentVariant = this._getCurrentVariantFromOptions();
 
-                        if (target.classList.contains('color-swatch__radio')) {
-                            const productItem = target.closest('.exhibition')
-                            const variantUrl = target.getAttribute('data-variant-url');
-                            productItem.querySelector('.product-item__image-wrapper').setAttribute('href', variantUrl);
-                            const originalImageElement = productItem.querySelector('.product-item__primary-image');
-                            if (target.hasAttribute('data-image-url') && target.getAttribute('data-media-id') !== originalImageElement.getAttribute('data-media-id')) {
-                                var newImageElement = document.createElement('img');
-                                newImageElement.className = 'product-item__primary-image lazyload image--fade-in';
-                                newImageElement.setAttribute('data-media-id', target.getAttribute('data-media-id'));
-                                newImageElement.setAttribute('data-src', target.getAttribute('data-image-url'));
-                                newImageElement.setAttribute('data-widths', target.getAttribute('data-image-widths'));
-                                newImageElement.setAttribute('data-sizes', 'auto');
-                                originalImageElement.parentNode.style.paddingBottom = "".concat(100.0 / newImageElement.getAttribute('data-image-aspect-ratio'), "%");
-                                originalImageElement.parentNode.replaceChild(newImageElement, originalImageElement);
-                            }
-                        }
-
+                        this._updateAddToCartButton(this.currentVariant, previousVariant)
+                        this._updateSelectors()
+                        this._updataSku()
+                        if (target.classList.contains('color-swatch__radio'))this._updateImg(target)
+                        if (selectedValueElement != null) selectedValueElement.innerHTML = target.value
+                      
                         if (false) {
                             const scoll = option.querySelector('.block-swatch-box')
                             const contentScrollW = option.querySelector('.exhibition-item').offsetWidth
@@ -568,19 +548,117 @@
                     })
                 })
             }
-        }
-        disableChecked(){
-            // console.log('ccccccccc', productData['variants'].some(function (variant) {
-            //     return variant['option1'] === target.value && variant['available'];
-            // }));
+
 
         }
+        _updataSku(){
+            var variantId = this.root.querySelector('input[name="id"]')
+            variantId.value = this.currentVariant.id
+            variantId.setAttribute('data-sku',this.currentVariant.sku)
+            
+        }
+        _updateImg(target){
+                const productItem = target.closest('.exhibition')
+                const variantUrl = target.getAttribute('data-variant-url');
+                productItem.querySelector('.product-item__image-wrapper').setAttribute('href', variantUrl);
+                const originalImageElement = productItem.querySelector('.product-item__primary-image');
+                if (target.hasAttribute('data-image-url') && target.getAttribute('data-media-id') !== originalImageElement.getAttribute('data-media-id')) {
+                    var newImageElement = document.createElement('img');
+                    newImageElement.className = 'product-item__primary-image lazyload image--fade-in';
+                    newImageElement.setAttribute('data-media-id', target.getAttribute('data-media-id'));
+                    newImageElement.setAttribute('data-src', target.getAttribute('data-image-url'));
+                    newImageElement.setAttribute('data-widths', target.getAttribute('data-image-widths'));
+                    newImageElement.setAttribute('data-sizes', 'auto');
+                    originalImageElement.parentNode.style.paddingBottom = "".concat(100.0 / newImageElement.getAttribute('data-image-aspect-ratio'), "%");
+                    originalImageElement.parentNode.replaceChild(newImageElement, originalImageElement);
+                }
+        }
+        _updateSelectors(newVariant) {
+            var _this2 = this;
+            var applyClassToSelector = function applyClassToSelector(selector, valueIndex, available) {
+                var selectorType = selector.getAttribute('data-selector-type');
+
+                switch (selectorType) {
+                    case 'color':
+                        selector.querySelector(".color-swatch:nth-child(".concat(valueIndex + 1, ")")).classList.toggle('color-swatch--disabled', !available);
+                        break;
+                    case 'block':
+                        try {
+                            selector.querySelector(`.block-swatch:nth-child(${valueIndex + 1})`).classList.toggle('block-swatch--disabled', !available);
+                        } catch (error) {
+
+                        }
+                        break;
+                }
+            };
+
+            if (this.variantSelectors && this.variantSelectors[0]) {
+
+                this.productOptionsWithValues[0]['values'].forEach(function (value, valueIndex) {
+                    applyClassToSelector(_this2.variantSelectors[0], valueIndex, _this2.productData['variants'].some(function (variant) {
+                        return variant['option1'] === value && variant['available'];
+                    }));
+                    if (_this2.variantSelectors[1]) {
+                        _this2.productOptionsWithValues[1]['values'].forEach(function (value, valueIndex) {
+                            applyClassToSelector(_this2.variantSelectors[1], valueIndex, _this2.productData['variants'].some(function (variant) {
+                                return variant['option2'] === value && variant['option1'] === _this2.option1 && variant['available'];
+                            }));
+                            if (_this2.variantSelectors[2]) {
+                                _this2.productOptionsWithValues[2]['values'].forEach(function (value, valueIndex) {
+                                    applyClassToSelector(_this2.variantSelectors[2], valueIndex, _this2.productData['variants'].some(function (variant) {
+                                        return variant['option3'] === value && variant['option1'] === _this2.option1 && variant['option2'] === _this2.option2 && variant['available'];
+                                    }));
+                                });
+                            }
+                        });
+                    }
+                });
+            }
+        }
+        _getCurrentVariantFromOptions() {
+            var _this3 = this;
+            var found = false;
+            this.productData['variants'].forEach(function (variant) {
+                if (variant['option1'] === _this3.option1 && variant['option2'] === _this3.option2 && variant['option3'] === _this3.option3) {
+                    found = variant;
+                }
+            });
+            return found || null;
+        }
+        _updateAddToCartButton(newVariant) {
+            var addToCartButtonElement = this.root.querySelector('.mini-cart-add__button')
+            if (!addToCartButtonElement) return
+
+            if (!newVariant) {
+                addToCartButtonElement.setAttribute('disabled', 'disabled');
+                addToCartButtonElement.classList.add('button--disabled');
+                addToCartButtonElement.classList.remove('button--primary');
+                addToCartButtonElement.removeAttribute('data-action');
+                addToCartButtonElement.innerHTML = window.languages.productFormUnavailable;
+            } else {
+                if (newVariant['available']) {
+                    addToCartButtonElement.removeAttribute('disabled');
+                    addToCartButtonElement.classList.remove('button--disabled');
+                    addToCartButtonElement.classList.add('button--primary');
+                    addToCartButtonElement.setAttribute('data-action', 'add-to-cart');
+                    addToCartButtonElement.innerHTML = window.languages.productFormAddToCart;
+                } else {
+                    addToCartButtonElement.setAttribute('disabled', 'disabled');
+                    addToCartButtonElement.classList.add('button--disabled');
+                    addToCartButtonElement.classList.remove('button--primary');
+                    addToCartButtonElement.removeAttribute('data-action');
+                    addToCartButtonElement.innerHTML = window.languages.productFormSoldOut;
+                }
+            }
+
+        }
+
         bindShence() {
             // 点击加购&点击预览
-            const miniCart=this.closest('.mini-cart')
+            const miniCart = this.closest('.mini-cart')
             const purchase = this.root.querySelector('.add-button')
             const root = this.root
-            const jsonData = JSON.parse(this.json.innerHTML)
+            const productValues = this.productData['variants']
             miniCart && purchase && new sadhus_shence({
                 container: purchase,
                 type: "collcation-addCart",
@@ -591,17 +669,18 @@
                     let newData = {}
                     const colorChecked = root.querySelector('.color-swatch__radio[checked]');
                     const sizeChecked = root.querySelector('.block-swatch__radio[checked]')
+                    const currentSku = root.querySelector('input[data-sku]').getAttribute('data-sku')
                     newData.commodity_color = colorChecked ? colorChecked.value : ""
                     newData.commodity_size = sizeChecked ? sizeChecked.value : ""
-                    if(!colorChecked || !sizeChecked)return newData
-                    const currentChecked = jsonData.find(item => item.option1 === colorChecked.value && item.option2 === sizeChecked.value)
-                    currentChecked && (newData.commodity_skuid = currentChecked.sku)
+                    if (!colorChecked || !sizeChecked) return newData
+                        newData.commodity_skuid = currentSku?currentSku:''
+
                     return newData
                 },
-                callback:function(){
-                 sensors.setProfile({last_addtocart_time:getFormatDate()})
-                 this.updateFn();
-             }
+                callback: function () {
+                    sensors.setProfile({ last_addtocart_time: getFormatDate() })
+                    this.updateFn();
+                }
             })
             const colorList = root.querySelector(".ld-variant-list")
             colorList && new sadhus_shence({
@@ -611,13 +690,13 @@
                 // debug: true,
                 sendType: "CommodityDetail",
                 delayed: true,
-                delayTime: 300,
+                delayTime: 1000,
                 customData: function (container, el) {
                     let newData = {}
                     const colorChecked = root.querySelector('.color-swatch__radio[checked]');
                     const sizeChecked = root.querySelector('.block-swatch__radio[checked]')
-                    const currentChecked = jsonData.find(item => item.option1 === colorChecked.value && item.option2 === sizeChecked.value)
-                    newData.commodity_skuid = currentChecked.sku
+                    const currentSku = root.querySelector('input[data-sku]').getAttribute('data-sku')
+                    newData.commodity_skuid = currentSku?currentSku:""
                     newData.commodity_color = colorChecked ? colorChecked.value : ""
                     newData.commodity_size = sizeChecked ? sizeChecked.value : ""
                     newData.site_category = getSiteCategory()
@@ -625,6 +704,7 @@
                 }
             })
         }
+
     }
     customElements.define("collocation-purchase", CollocationPurchase);
 
@@ -2671,7 +2751,7 @@
                         // We extract the data-item-count from the returned element
                         var myDiv = document.createElement('div');
                         myDiv.innerHTML = html;
-                        // console.log(html);
+                   
                         if (myDiv.firstElementChild && myDiv.firstElementChild.hasAttribute('data-item-count')) {
 
                             _this2.itemCount = parseInt(myDiv.firstElementChild.getAttribute('data-item-count'));
@@ -4194,7 +4274,6 @@
 
                 var previousVariant = this.currentVariant;
                 this.currentVariant = this._getCurrentVariantFromOptions();
-
                 this._onVariantChanged(previousVariant, this.currentVariant);
 
                 if (this.currentVariant) {
@@ -4359,6 +4438,7 @@
 
             this.element = element;
             this.delegateElement = new Delegate(this.element);
+            
             this.delegateRoot = new Delegate(document.documentElement);
 
             this._attachListeners();

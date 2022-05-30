@@ -3,12 +3,12 @@
     "1650101273f11a55ef": {
       "type": "slideshow",
       "blocks": {
-        "28572d9f-8700-4893-990e-c3b4bf1e7821": {
+        "fb844d01-0475-4130-aeb7-a118c0a1b427": {
           "type": "image",
           "settings": {
             "sensorsName": "",
-            "image": "shopify:\/\/shop_images\/6fde99e860fc1fa9004b301ee36b7c02_88de3fe3-9f42-4bbd-a795-df4586e35eec.jpg",
-            "mobile_image": "shopify:\/\/shop_images\/be3d2e6638813747c788cc4248dddfaf_4e607231-8da2-486f-b4e5-8ba8b6ec2e32.jpg",
+            "image": "shopify:\/\/shop_images\/3_50.jpg",
+            "mobile_image": "shopify:\/\/shop_images\/3_50_0a407091-e7c1-459a-b37d-98bac3b76817.jpg",
             "show_overlay": false,
             "overlay_opacity": 30,
             "text_color": "#ffffff",
@@ -24,7 +24,7 @@
             "button_background": "#ffffff",
             "button_text_color": "#000000",
             "button_text": "",
-            "link": "shopify:\/\/collections\/fathers-day"
+            "link": "shopify:\/\/collections\/3-for-55"
           }
         },
         "1650101273ef0886ca-1": {
@@ -74,12 +74,38 @@
             "button_text": "",
             "link": "shopify:\/\/collections\/summer-sale"
           }
+        },
+        "28572d9f-8700-4893-990e-c3b4bf1e7821": {
+          "type": "image",
+          "disabled": true,
+          "settings": {
+            "sensorsName": "",
+            "image": "shopify:\/\/shop_images\/6fde99e860fc1fa9004b301ee36b7c02_fbb905dd-5a55-462e-b8f0-f3276afd2caf.jpg",
+            "mobile_image": "shopify:\/\/shop_images\/be3d2e6638813747c788cc4248dddfaf_a311841b-8632-4ccd-99bc-79e508c3ccee.jpg",
+            "show_overlay": false,
+            "overlay_opacity": 30,
+            "text_color": "#ffffff",
+            "title": "",
+            "heading_text_font": "helvetica_n4",
+            "heading_text_font_size": 20,
+            "heading_text_color": "#ffffff",
+            "content": "",
+            "content_text_font": "helvetica_n4",
+            "content_text_font_size": 12,
+            "content_text_color": "#ffffff",
+            "content_position": "middle_center",
+            "button_background": "#ffffff",
+            "button_text_color": "#000000",
+            "button_text": "",
+            "link": "shopify:\/\/collections\/fathers-day1"
+          }
         }
       },
       "block_order": [
-        "28572d9f-8700-4893-990e-c3b4bf1e7821",
+        "fb844d01-0475-4130-aeb7-a118c0a1b427",
         "1650101273ef0886ca-1",
-        "1650101273ef0886ca-0"
+        "1650101273ef0886ca-0",
+        "28572d9f-8700-4893-990e-c3b4bf1e7821"
       ],
       "settings": {
         "edge_to_edge": true,
@@ -101,6 +127,16 @@
         "show_quick_buy": false,
         "link_title": "View all",
         "link_url": "shopify:\/\/collections\/best-sellers-1"
+      }
+    },
+    "16535579500eae05b1": {
+      "type": "no_space_img",
+      "settings": {
+        "sensorsName": "",
+        "bg_image": "shopify:\/\/shop_images\/07_03f491ed-b984-4a18-b3e5-9a4615078d27.jpg",
+        "web_bg_image": "shopify:\/\/shop_images\/07_763331eb-6638-41c8-9b9c-ee77088a17a4.jpg",
+        "link": "",
+        "shadow": false
       }
     },
     "16500767332eb3ea11": {
@@ -168,7 +204,7 @@
         "sensorsName": "",
         "hidWeb": true,
         "line": false,
-        "image": "shopify:\/\/shop_images\/02_8003833b-2704-4074-9d88-b841aea384d7.jpg",
+        "image": "shopify:\/\/shop_images\/02_afb8db69-841b-43bd-9388-61379f9e4076.jpg",
         "tpadding": 0,
         "rpadding": 0,
         "bpadding": 0,
@@ -240,7 +276,7 @@
         "sensorsName": "mobile分类导流区",
         "hidWeb": false,
         "line": false,
-        "image": "shopify:\/\/shop_images\/02_cad4d144-0c2d-40df-9d45-3ea0e7d69863.jpg",
+        "image": "shopify:\/\/shop_images\/02_ad8810a6-1fd5-47d3-b5fb-f6c9f8a458cd.jpg",
         "tpadding": 0,
         "rpadding": 0,
         "bpadding": 0,
@@ -250,7 +286,7 @@
     "1651218774b7bce676": {
       "type": "transparent-collection",
       "settings": {
-        "collection": "best-sellers-1",
+        "collection": "hyfol-best-seller-1",
         "sensorsName": "BEST SELLERS",
         "title": "BEST SELLERS",
         "products_count": 12,
@@ -829,6 +865,7 @@
   "order": [
     "1650101273f11a55ef",
     "16474248460d0593be",
+    "16535579500eae05b1",
     "16500767332eb3ea11",
     "164742631051d4db44",
     "1651218774b7bce676",

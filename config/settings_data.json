@@ -1,6 +1,6 @@
 {
   "current": {
-    "collocation_spus": "sp220113etrs,t31410837an,SP220420J1OO",
+    "collocation_spus": "sp220113etrs,sp2204293w4u,SP211204ASG2",
     "full_reduction": "<p><strong>5% OFF 2 PIECES<\/strong>,<strong>10% OFF 3 PIECES,15% OFF 4 PIECES,20% OFF 5 PIECES,25% OFF 6 PIECES<\/strong>,<strong>30% OFF 7 PIECES<\/strong><\/p>",
     "showFlake": false,
     "show_car_bar": false,
@@ -269,7 +269,7 @@
             "type": "announcement",
             "settings": {
               "text": "FAMILY WEAR GET 5 FOR $59.9",
-              "link": ""
+              "link": "shopify:\/\/collections\/fathers-day1"
             }
           }
         },
