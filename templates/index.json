@@ -53,6 +53,7 @@
         },
         "1650101273ef0886ca-0": {
           "type": "image",
+          "disabled": true,
           "settings": {
             "sensorsName": "轮播图",
             "image": "shopify:\/\/shop_images\/banner_0d06747b-cc02-4c21-9c14-468a2c32d6a9.jpg",
