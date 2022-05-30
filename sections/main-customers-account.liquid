@@ -124,13 +124,7 @@
 					<div class="card__section card__section--tight">
 	
 						<div class="card__linklist ">
-							
-							<a href="{{ routes.account_url }}"
-								 class="card__linklist-item link text--strong text--stronger">{{ 'customer.general.orders' | t }}</a>
-							<a href="{{ routes.account_addresses_url }}"
-								 class="card__linklist-item link">{{ 'customer.general.addresses' | t }}</a>
-							<a href="{{ routes.account_logout_url }}" class="card__linklist-item link"
-								 data-no-instant>{{ 'customer.general.logout' | t }}</a>
+					
 						  <left-nav-list>
 							  <div class="render_nav_list">
 							{%- for block in section.blocks -%}
@@ -143,6 +137,9 @@
 						 {%- endfor -%}
 						</div>
 						</left-nav-list>
+						
+							<a href="{{ routes.account_logout_url }}" class="card__linklist-item link"
+								 data-no-instant>{{ 'customer.general.logout' | t }}</a>
 						</div>
 					</div>
 				</div>
