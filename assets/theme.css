@@ -8809,6 +8809,15 @@ select option {
  * ORDER FOOT (used in order details in customer account)
  * --------------------------------------------------------------------
  */
+ 
+ .account-nav{
+   align-items: center;
+   cursor: pointer;
+
+ }
+ .account-nav svg{
+  margin: 0 0.5rem;
+ }
 
 .order-foot {
   border-top: 1px solid var(--border-color);

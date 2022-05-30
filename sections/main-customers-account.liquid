@@ -97,26 +97,26 @@
 </section>
 
 <section data-section-id="{{ section.id }}" data-section-type="account" class="hidden-phone">
+	<div class="page__sub-header">
+		<nav aria-label="{{ 'general.breadcrumb.title' | t }}" class="breadcrumb">
+			<ol class="breadcrumb__list" role="list">
+				<li class="breadcrumb__item">
+					<a class="breadcrumb__link link"
+						 href="{{ routes.root_url }}">{{ 'general.breadcrumb.home' | t }}</a> {%- render 'icon', icon: 'arrow-right' -%}
+				</li>
+
+				<li class="breadcrumb__item">
+					<a class="breadcrumb__link link"
+						 href="{{ routes.account_url }}">{{ 'general.breadcrumb.account' | t }}</a> {%- render 'icon', icon: 'arrow-right' -%}
+				</li>
+
+				<li class="breadcrumb__item">
+					<span class="breadcrumb__link" aria-current="page">Account Overview</span>
+				</li>
+			</ol>
+		</nav>
+	</div>
 	<div class="container container--flush">
-		<div class="page__sub-header">
-			<nav aria-label="{{ 'general.breadcrumb.title' | t }}" class="breadcrumb">
-				<ol class="breadcrumb__list" role="list">
-					<li class="breadcrumb__item">
-						<a class="breadcrumb__link link"
-							 href="{{ routes.root_url }}">{{ 'general.breadcrumb.home' | t }}</a> {%- render 'icon', icon: 'arrow-right' -%}
-					</li>
-
-					<li class="breadcrumb__item">
-						<a class="breadcrumb__link link"
-							 href="{{ routes.account_url }}">{{ 'general.breadcrumb.account' | t }}</a> {%- render 'icon', icon: 'arrow-right' -%}
-					</li>
-
-					<li class="breadcrumb__item">
-						<span class="breadcrumb__link" aria-current="page">Account Overview</span>
-					</li>
-				</ol>
-			</nav>
-		</div>
 
 		<div class="layout">
 			<div class="layout__section layout__section--secondary">
@@ -124,13 +124,14 @@
 					<div class="card__section card__section--tight">
 	
 						<div class="card__linklist ">
-							<a class="card__linklist-item link d-flex">{%-render 'icon',icon:'account-text' -%} Account Overview</a>
+							<span class="card__linklist-item link d-flex account-nav">{%-render 'icon',icon:'account-text' -%} Account Overview</span>
+							<span class="card__linklist-item link d-flex account-nav">{%-render 'icon',icon:'account-renz' -%} Loyalty Rewards</span>
 							<a href="{{ routes.account_url }}"
-								 class="card__linklist-item link text--strong">{{ 'customer.general.orders' | t }}</a>
+								 class="card__linklist-item link text--strong account-nav">{%- render 'icon',icon:'account-cart' -%}{{ 'customer.general.orders' | t }}</a>
 							<a href="{{ routes.account_addresses_url }}"
-								 class="card__linklist-item link">{{ 'customer.general.addresses' | t }}</a>
-							<a href="{{ routes.account_logout_url }}" class="card__linklist-item link"
-								 data-no-instant>{{ 'customer.general.logout' | t }}</a>
+								 class="card__linklist-item link account-nav">{%- render 'icon',icon:'account-location' -%}{{ 'customer.general.addresses' | t }}</a>
+							<a href="{{ routes.account_logout_url }}" class="card__linklist-item link account-nav"
+								 data-no-instant>{%- render 'icon',icon:'account-logout' -%}{{ 'customer.general.logout' | t }}</a>
 						</div>
 					</div>
 				</div>
