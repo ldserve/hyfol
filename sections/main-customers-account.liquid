@@ -13,6 +13,7 @@
 					 class="value-picker__choice-item">{{ 'customer.general.addresses' | t }} {% render 'icon', icon: 'check-2' %}</a>
 				<a href="{{ routes.account_logout_url }}" class="value-picker__choice-item"
 					 data-no-instant>{{ 'customer.general.logout' | t }} {% render 'icon', icon: 'check-2' %}</a>
+				
 			</div>
 		{%- else -%}
 			<ul class="no-logged">
@@ -162,8 +163,125 @@
 			</div>
 
 			<div class="layout__section">
-				{%- comment -%}
-				
+				<div class="wish_list">
+					<header>
+						<h1 class="center">MY WISHLIST</h1>
+					  </header>
+
+					  <style>
+						   .openQuickView{
+							   display: none;
+						   }
+
+						   .product-item__info{
+							   background-color: #ffffff;
+						   }
+						   .product-item_text , .product-item__info-inner .price{
+                                 color: #000000;
+						   }
+
+						   .product-item__swatch-list {
+                                  padding-bottom: 0px;
+                                  min-height: 50px;
+                              }
+
+						 .scroller__inner .price--compare, .product-item__info-inner .price--compare{
+							text-decoration: line-through black;
+						 }
+					  </style>
+
+					  <div class="collect page-width">
+					  
+					  </div>
+					  {%- if customer -%}
+					  <div class="collect-body">
+						<div class="center">
+						  You currently have nothing saved to your Wishlist.<br />
+						  Personalize your shopping experience with your Wishlist.
+						</div>
+						<div class="d-flex aic jcc sign-button">
+						  <a href="/collections/shop" class="sign-button">Let's Get Started!</a>
+						</div>
+					  </div>
+					  {%- else -%}
+					  <div>
+						<div class="center">
+						  It is empty here. <br />
+						  Personalize your shopping experience with your Wishlist.
+						</div>
+						<h3 class="center">Already have items saved?</h3>
+						<div class="d-flex aic jcc sign-button">
+						  <a href="{{ routes.account_login_url }}" class="sign-button">SIGN IN / REGISTER</a>
+						</div>
+					  </div>
+					  {%- endif -%}
+				</div>
+				<script>
+				     var _templateID =  document.querySelector(".container--flush").parentElement.getAttribute("data-section-id")	
+					async function post_data(url, data) {
+					  const response = await fetch(`https://api-dev.leandow-technology.com/api/${url}`, {
+						method: 'POST',
+						mode: 'cors',
+						cache: 'no-cache',
+						credentials: 'same-origin',
+						headers: {
+						  'Content-Type': 'application/json',
+						  "siteValue": "leandowTest",
+						  "Access-Control-Allow-Origin": "*"
+						},
+						redirect: 'follow',
+						referrerPolicy: 'no-referrer',
+						body: JSON.stringify(data)
+					  });
+					  return response.json();
+					}
+				  
+					function getCollectList() {
+					  const collectList = {
+					  current: 1,
+					  customerId: "{{customer.id}}",
+					  size: 80
+					}
+					post_data("customerCollectionProduct/collectionProductList", collectList)
+						.then(res => {
+						  if (res.data.records.length < 1) {
+							document.querySelector('.collect-body').style.display = "block"
+							return
+						  }
+						  var ids = ""
+
+						  res.data.records.forEach((item, index) => {
+							if (index === 0) {
+							  ids = `id:${item.productId}`
+							} else {
+							  ids = ids + " OR " + `id:${item.productId}`
+							}
+						  });
+						  fetch(`/search?q=${ids}&type=product`)
+							.then((rs) => { return rs.text() })
+							.then((rs) => {
+							  let dom = new DOMParser().parseFromString(rs, 'text/html');
+						
+							  document.querySelector('.collect').appendChild(dom.querySelector(".product-list"))
+						      
+							  const removeNodes=document.querySelectorAll(".collect .add-collect")
+							  document.querySelector(".collect-body").style.display = "none"
+							  removeNodes.forEach((item,index)=>{
+								item.addEventListener("click", () => {
+								  document.querySelectorAll(`.collect .product-list .product-item`)[index].style.display="none"; 
+							   })
+							  })
+				  
+							})
+						});
+					}
+					if ("{{ customer.id}}") {
+					  getCollectList()
+					}
+
+        
+				  </script>
+
 				<div class="card">
 					<div
 						class="{% if customer.orders.size == 0 %}card__section card__section--tight{% else %}card__header card__header--tight{% endif %}">
@@ -219,7 +337,7 @@
 						{% assign dm_paginate_by = paginate.page_size %}{%- endpaginate -%}
 					{%- endif -%}
 				</div>
-				{%- endcomment -%}
+
 
 			</div>
 		</div>
@@ -576,7 +694,25 @@
 
 {% schema %}
 {
-	"name": "Account"
+	
+		"name": "Account",
+		"settings": [],
+		"blocks": [
+		{
+		"name": "Trust text",
+		"type": "trust",
+		"settings": [
+		{
+			"type": "text",
+			"id": "nav_title",
+			"label": "Heading",
+			"default": "导航标题"
+		}
+		
+		]
+		}
+		]
+		
 }
 {% endschema %}
 <script>

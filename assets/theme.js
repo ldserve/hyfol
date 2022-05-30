@@ -3,7 +3,7 @@
         factory();
 }((function () {
     'use strict';
-
+     
     class SizeBlock extends HTMLElement {
         constructor() {
             super();
@@ -27,6 +27,137 @@
         }
     }
     customElements.define("size-block", SizeBlock);
+
+    class ProductItem extends HTMLElement {
+        constructor() {
+          super()
+          this.timer = 0
+          this.elements = {
+            colorSelector: this.querySelectorAll('.color-swatch__radio'),
+            cardMedia: this.querySelector('.card__media'),
+            cartNode: this.querySelector('.ny-icon-cart'),
+            addColleNode: this.querySelector('.add-collect'),
+            removeColleNode: this.querySelector('.remove-collect'),
+          }
+          this.setupEventListeners()
+          this.onload()
+        }
+      
+        setupEventListeners() {
+          this.elements.addColleNode && this.elements.addColleNode.addEventListener('click', this.handleRemove)
+          this.elements.removeColleNode && this.elements.removeColleNode.addEventListener('click', this.handleAdd)
+                  this.elements.colorSelector.forEach((item,index)=>{
+              if( item.closest(".page-width") !=null){
+                item.addEventListener("click",this.changeColor)
+              }
+        })
+        }
+
+        changeColor=(event)=>{
+            var newImageElement = document.createElement('img');
+            newImageElement.className = 'product-item__primary-image lazyload image--fade-in';
+            newImageElement.setAttribute('data-media-id', event.target.getAttribute('data-media-id'));
+            newImageElement.setAttribute('data-src', event.target.getAttribute('data-image-url'));
+            newImageElement.setAttribute('data-widths', event.target.getAttribute('data-image-widths'));
+            newImageElement.setAttribute('data-sizes', 'auto');
+            var originalImageElement = this.querySelector(".product-item__primary-image")
+            originalImageElement.parentNode.style.paddingBottom = "".concat(100.0 / newImageElement.getAttribute('data-image-aspect-ratio'), "%");
+            originalImageElement.parentNode.replaceChild(newImageElement, originalImageElement);
+        }
+
+        onload() {
+          const id = this.elements.removeColleNode.getAttribute("data-id")
+          var searchData = {
+            customerId: customerId,
+            productIds: [id]
+          }
+          if (customerId) {
+              post_data("customerCollectionProduct/selectProductIsCollection", searchData)
+              .then(res => {
+                if (res.success) {
+                  this.elements.addColleNode.parentElement.style.display = 'flex'
+                  if (res.data[0].isCollection) {
+                    this.elements.addColleNode.style.display = 'block'
+                    this.elements.removeColleNode.style.display = "none"
+                  } else {
+                    this.elements.addColleNode.style.display = 'none'
+                    this.elements.removeColleNode.style.display = "block"
+                  }
+                }
+              });
+          } else {
+            this.elements.removeColleNode.style.display = 'block'
+            this.elements.removeColleNode.parentElement.style.display = 'flex'
+          }
+        }
+        handleRemove() {
+          const newTime = Date.parse(new Date())
+          if (newTime - this.timer < 2000) {
+            return
+          }
+          this.timer = newTime
+          var collectData = {
+            customerId: customerId,
+            productId: this.getAttribute('data-id'),
+            productSpu: this.getAttribute('data-spu')
+          }
+          post_data("customerCollectionProduct/collectionProduct", collectData)
+            .then(res => {
+              if (res.success) {
+                this.style.display = 'none'
+                this.previousElementSibling.style.display = "block"
+                // item.parentElement.lastElementChild.innerText = +(item.parentElement.lastElementChild.innerText) - 1
+                const text = document.querySelector(".header__icon--collect span").innerText
+                if (+(text) - 1 === 0) {
+                  document.querySelector(".header__icon--collect span").innerText = ""
+                  document.querySelector(".header__icon--collect span").style.display = "none"
+                  return
+                }
+                document.querySelector(".header__icon--collect span").innerText = +(text) - 1
+              }
+            });
+        }
+      
+        handleAdd() {
+            if (customerId) {
+          if (customerId) {
+            const newTime = Date.parse(new Date())
+            if (newTime - this.timer < 2000) {
+              return
+            }
+            this.timer = newTime
+            var collectData = {
+              customerId: customerId,
+              productId: this.getAttribute('data-id'),
+              productSpu: this.getAttribute('data-spu')
+            }
+      
+            post_data("customerCollectionProduct/collectionProduct", collectData)
+              .then(res => {
+                if (res.success) {
+                  this.style.display = 'none'
+                  this.nextElementSibling.style.display = "block"
+                  // item.parentElement.lastElementChild.innerText = +(item.parentElement.lastElementChild.innerText) + 1
+                  const text = document.querySelector(".header__icon--collect span").innerText
+                  if (!text) {
+                    document.querySelector(".header__icon--collect span").innerText = 1
+                    document.querySelector(".header__icon--collect span").style.display = "flex"
+                    return
+                  }
+                  document.querySelector(".header__icon--collect span").innerText = +(text) + 1
+                }
+              });
+          }
+        }else{
+            window.location.href= "https://www.hyfol.com/account/login"
+        }
+    }
+      }
+      
+      customElements.define('product-item', ProductItem)
+
+      
+
     class SliderShow extends HTMLElement {
         constructor() {
             super();

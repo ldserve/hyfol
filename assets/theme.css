@@ -10668,6 +10668,10 @@ shopify-payment-terms {
 /*  pointer-events: none;*/
 /*}*/
 
+.icon-relative{
+  position: relative;
+}
+
 .product-item__image-wrapper {
   display: block;
 }
@@ -15945,4 +15949,50 @@ justify-content: space-between;
 
 .bread_crumbs{
   margin-bottom : 0px;
+}
+
+
+.ld-collect {
+  opacity: 0;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin-right: 5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  transition: opacity 1s ease;
+  width: 20%;
+}
+
+.ld-collect-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* margin-bottom: 5px; */
+  transform: scale(.8);
+  transition: transform 1s;
+  /* cursor: pointer; */
+
+}
+
+
+.product-item:hover .ld-collect {
+  opacity: 1;
+}
+
+.remove-collect ,.add-collect{
+  font-size: 50px;
+ 
+
+}
+
+.ld-collect .icon {
+  /* display: inline-block; */
+  display: none;
+  pointer-events:all;
+  /* cursor: pointer; */
+}
+
+.ld-collect .ld-collect-icon:hover {
+  transform: scale(1);
 }
