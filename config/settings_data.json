@@ -254,12 +254,13 @@
           "933aa31d-00c1-44a5-8b00-66ceefe87acd": {
             "type": "announcement",
             "settings": {
-              "text": "GRAPHIC TEES GET 3 FOR $39.9",
+              "text": "ALL TEES FOR SUMMER 3 FOR $55",
               "link": ""
             }
           },
           "ebf3f4ad-f1dc-464f-9e19-71c2a7fc4fc3": {
             "type": "announcement",
+            "disabled": true,
             "settings": {
               "text": "BEACH SHORTS GET 2 FOR $35.9",
               "link": ""
@@ -267,6 +268,7 @@
           },
           "ccab5dcb-d3a7-4a2e-9c0e-6699c88abf2e": {
             "type": "announcement",
+            "disabled": true,
             "settings": {
               "text": "FAMILY WEAR GET 5 FOR $59.9",
               "link": "shopify:\/\/collections\/fathers-day1"
