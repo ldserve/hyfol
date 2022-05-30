@@ -466,10 +466,23 @@
             this.json = this.root.querySelector('[type="application/json"]')
             this.options = this.root.querySelectorAll('.product-wrapper_option')
             this.formElement = this.root.querySelector('form[action*="/cart/add"]');
-            var color = this.root.querySelector('.color-swatch__radio[checked]')
-            var size = this.root.querySelector('.block-swatch__radio[checked]')
-            this.option1 =color? color.value:''
-            this.option2 =size? size.value:''
+            // var color = this.root.querySelector('.color-swatch__radio[checked]')
+            // var size = this.root.querySelector('.block-swatch__radio[checked]')
+            // this.option1 =color? color.value:''
+            // this.option2 =size? size.value:''
+            this.productData=JSON.parse(this.json.innerHTML)
+            var _this =this
+            console.log('this.productData',this.productData);
+
+            this.productData['variants'].forEach(function (variant) {
+                if (variant['id'] === _this.productData['selected_variant_id']) {
+                    _this.currentVariant = variant;
+                    _this.option1 = variant['option1'];
+                    _this.option2 = variant['option2'];
+                    _this.option3 = variant['option3'];
+                }
+            });
+            console.log(this.option1,this.option2);
 
             if (!this.formElement) {
                 // 在小购物车没有form表单,动态插入进去
@@ -487,9 +500,10 @@
             }
             this.addEven(this.options,this.json,this.formElement)
             this.bindShence()
+            this.disableChecked()
         }
         addEven(options, json, formElement) {
-            var productData = JSON.parse(json.innerHTML)
+            var productData = this.productData
             var _this=this
             options.forEach(option => {
                 const checkeds = option.querySelectorAll('input[type="radio"]')
@@ -498,15 +512,15 @@
                         var target = ev.target
                         var variantId = this.root.querySelector('input[name="id"]')
                         var selectedValueElement = option.querySelector('.product-form__selected-value')
-                        var selects=option.querySelectorAll('input[checked]')
+                        var selects = option.querySelectorAll('input[checked]')
                         for (var i = 0, len = selects.length; i < len; i++) {
                             selects[i].removeAttribute("checked")
                         }
-                        target.setAttribute('checked','')
+                        target.setAttribute('checked', '')
                         _this['option' + target.getAttribute('data-option-position')] = target.value;
                         this.currentVariant = productData.find(item => item.option1 === _this.option1 && item.option2 === _this.option2)
                         variantId.value = this.currentVariant.id
-                        if( selectedValueElement != null ){
+                        if (selectedValueElement != null) {
                             selectedValueElement.innerHTML = target.value
                         }
 
@@ -541,11 +555,11 @@
                                 let style = window.getComputedStyle(currentItem[i])
                                 offsetLeft += (style.marginLeft.replace('px', '') * 1 + style.marginRight.replace('px', '') * 1)
                             }
-                                let style = window.getComputedStyle(currentItem[index])
-                                let width = (currentItem[index].offsetWidth) + (style.marginLeft.replace('px', '') * 1 + style.marginRight.replace('px', '') * 1)
-                                let scrollLeft = Math.ceil(offsetLeft - middle + width / 2);
-                                const currentScrollX=scoll.scrollLeft
-                                scoll.scroll(scrollLeft, 0)
+                            let style = window.getComputedStyle(currentItem[index])
+                            let width = (currentItem[index].offsetWidth) + (style.marginLeft.replace('px', '') * 1 + style.marginRight.replace('px', '') * 1)
+                            let scrollLeft = Math.ceil(offsetLeft - middle + width / 2);
+                            const currentScrollX = scoll.scrollLeft
+                            scoll.scroll(scrollLeft, 0)
                         }
                     }
 
@@ -587,6 +601,12 @@
                     })
                 })
             }
+        }
+        disableChecked(){
+            // console.log('ccccccccc', productData['variants'].some(function (variant) {
+            //     return variant['option1'] === target.value && variant['available'];
+            // }));
+
         }
         bindShence() {
             // 点击加购&点击预览
