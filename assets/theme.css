@@ -4522,7 +4522,7 @@ scrollbar-width: none; /* firefox */
   }
 
   .collection__filter-checkbox {
-    padding: 0;
+    padding: 0 5px;
   }
 
   .collection__filter-checkbox .checkbox-wrapper {
@@ -4756,7 +4756,7 @@ scrollbar-width: none; /* firefox */
 .product-list--scrollable .product-item+.product-item {
   border: none !important;
   border-color: var(--background);
-  
+
 }
 
 .product-list--scrollable .product-item:first-child {
@@ -15775,7 +15775,7 @@ justify-content: space-between;
   visibility: visible;
 }
 
- 
+
 .sub-bar{
   font-size: 16px;
 }
@@ -15871,7 +15871,6 @@ justify-content: space-between;
 .collection__filter-checkbox-list-pc{
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
 }
 
 .product-gallery__thumbnail{
