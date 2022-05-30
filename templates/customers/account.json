@@ -2,6 +2,80 @@
   "sections": {
     "main": {
       "type": "main-customers-account",
+      "blocks": {
+        "7d45e2c1-c489-43b6-a70c-d33d7bd68544": {
+          "type": "trust",
+          "settings": {
+            "nav_title": "Account Overview",
+            "nav_right": "my_overview",
+            "nav_show": true,
+            "nav_icon": ""
+          }
+        },
+        "f262eb87-b40b-4a18-889b-b20800badb1c": {
+          "type": "trust",
+          "settings": {
+            "nav_title": "Loyalty Rewards",
+            "nav_right": "my_rewards",
+            "nav_show": true,
+            "nav_icon": ""
+          }
+        },
+        "3ac1233e-fe33-4707-90cd-13d53a9b902a": {
+          "type": "trust",
+          "settings": {
+            "nav_title": "Profile",
+            "nav_right": "my_profile",
+            "nav_show": true,
+            "nav_icon": ""
+          }
+        },
+        "cdee28e4-9682-4279-8c89-c421b1c9e3ef": {
+          "type": "trust",
+          "settings": {
+            "nav_title": "Orders",
+            "nav_right": "my_orders",
+            "nav_show": true,
+            "nav_icon": ""
+          }
+        },
+        "665ebc62-1f8e-42fa-a18d-0c509b84e450": {
+          "type": "trust",
+          "settings": {
+            "nav_title": "Wishlist",
+            "nav_right": "wish_list",
+            "nav_show": true,
+            "nav_icon": ""
+          }
+        },
+        "b3726238-309f-44ee-af96-10ee039817e5": {
+          "type": "trust",
+          "settings": {
+            "nav_title": "Addresses",
+            "nav_right": "my_addresses",
+            "nav_show": true,
+            "nav_icon": ""
+          }
+        },
+        "5e2c3432-c4de-4aff-8f98-528c6a7afc15": {
+          "type": "trust",
+          "settings": {
+            "nav_title": "Payment Methods",
+            "nav_right": "my_methods",
+            "nav_show": true,
+            "nav_icon": ""
+          }
+        }
+      },
+      "block_order": [
+        "7d45e2c1-c489-43b6-a70c-d33d7bd68544",
+        "f262eb87-b40b-4a18-889b-b20800badb1c",
+        "3ac1233e-fe33-4707-90cd-13d53a9b902a",
+        "cdee28e4-9682-4279-8c89-c421b1c9e3ef",
+        "665ebc62-1f8e-42fa-a18d-0c509b84e450",
+        "b3726238-309f-44ee-af96-10ee039817e5",
+        "5e2c3432-c4de-4aff-8f98-528c6a7afc15"
+      ],
       "settings": {
       }
     },
@@ -9,6 +83,7 @@
       "type": "recently-viewed-products",
       "settings": {
         "title": "Recently viewed",
+        "title_color": "#000",
         "show_quick_buy": false
       }
     }
