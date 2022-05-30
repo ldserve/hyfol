@@ -124,11 +124,23 @@
 					<div class="card__section card__section--tight">
 						<div class="card__linklist">
 							<a href="{{ routes.account_url }}"
-								 class="card__linklist-item link text--strong">{{ 'customer.general.orders' | t }}</a>
+								 class="card__linklist-item link text--strong text--stronger">{{ 'customer.general.orders' | t }}</a>
 							<a href="{{ routes.account_addresses_url }}"
 								 class="card__linklist-item link">{{ 'customer.general.addresses' | t }}</a>
 							<a href="{{ routes.account_logout_url }}" class="card__linklist-item link"
 								 data-no-instant>{{ 'customer.general.logout' | t }}</a>
+						  <left-nav-list>
+							  <div class="render_nav_list">
+							{%- for block in section.blocks -%}
+							{%- if block.settings.nav_show -%}
+							<div class="card__linklist-item link" data-right="{{block.settings.nav_right}}"> 
+								<span> {%- render 'icon', icon: '{{block.settings.nav_icon}}' -%}</span>
+							{{block.settings.nav_title}} 
+							</div>
+							{%- endif -%}
+						 {%- endfor -%}
+						</div>
+						</left-nav-list>
 						</div>
 					</div>
 				</div>
@@ -161,7 +173,7 @@
 			</div>
 
 			<div class="layout__section">
-				<div class="wish_list">
+				<div class="wish_list account_right_content">
 					<header>
 						<h1 class="center">MY WISHLIST</h1>
 					  </header>
@@ -213,76 +225,78 @@
 						</div>
 					  </div>
 					  {%- endif -%}
-				</div>
-				<script>
-				     var _templateID =  document.querySelector(".container--flush").parentElement.getAttribute("data-section-id")	
-					async function post_data(url, data) {
-					  const response = await fetch(`https://api-dev.leandow-technology.com/api/${url}`, {
-						method: 'POST',
-						mode: 'cors',
-						cache: 'no-cache',
-						credentials: 'same-origin',
-						headers: {
-						  'Content-Type': 'application/json',
-						  "siteValue": "leandowTest",
-						  "Access-Control-Allow-Origin": "*"
-						},
-						redirect: 'follow',
-						referrerPolicy: 'no-referrer',
-						body: JSON.stringify(data)
-					  });
-					  return response.json();
-					}
-				  
-					function getCollectList() {
-					  const collectList = {
-					  current: 1,
-					  customerId: "{{customer.id}}",
-					  size: 80
-					}
-					post_data("customerCollectionProduct/collectionProductList", collectList)
-						.then(res => {
-						  if (res.data.records.length < 1) {
-							document.querySelector('.collect-body').style.display = "block"
-							return
-						  }
-						  var ids = ""
 
-						  res.data.records.forEach((item, index) => {
-							if (index === 0) {
-							  ids = `id:${item.productId}`
-							} else {
-							  ids = ids + " OR " + `id:${item.productId}`
-							}
-						  });
-						  fetch(`/search?q=${ids}&type=product`)
-							.then((rs) => { return rs.text() })
-							.then((rs) => {
-							  let dom = new DOMParser().parseFromString(rs, 'text/html');
-						
-							  document.querySelector('.collect').appendChild(dom.querySelector(".product-list"))
-						      
-							  const removeNodes=document.querySelectorAll(".collect .add-collect")
-							  document.querySelector(".collect-body").style.display = "none"
-							  removeNodes.forEach((item,index)=>{
-								item.addEventListener("click", () => {
-								  document.querySelectorAll(`.collect .product-list .product-item`)[index].style.display="none"; 
+					  <script>
+						var _templateID =  document.querySelector(".container--flush").parentElement.getAttribute("data-section-id")	
+					   async function post_data(url, data) {
+						 const response = await fetch(`https://api-dev.leandow-technology.com/api/${url}`, {
+						   method: 'POST',
+						   mode: 'cors',
+						   cache: 'no-cache',
+						   credentials: 'same-origin',
+						   headers: {
+							 'Content-Type': 'application/json',
+							 "siteValue": "leandowTest",
+							 "Access-Control-Allow-Origin": "*"
+						   },
+						   redirect: 'follow',
+						   referrerPolicy: 'no-referrer',
+						   body: JSON.stringify(data)
+						 });
+						 return response.json();
+					   }
+					 
+					   function getCollectList() {
+						 const collectList = {
+						 current: 1,
+						 customerId: "{{customer.id}}",
+						 size: 80
+					   }
+					   post_data("customerCollectionProduct/collectionProductList", collectList)
+						   .then(res => {
+							 if (res.data.records.length < 1) {
+							   document.querySelector('.collect-body').style.display = "block"
+							   return
+							 }
+							 var ids = ""
+   
+							 res.data.records.forEach((item, index) => {
+							   if (index === 0) {
+								 ids = `id:${item.productId}`
+							   } else {
+								 ids = ids + " OR " + `id:${item.productId}`
+							   }
+							 });
+							 fetch(`/search?q=${ids}&type=product`)
+							   .then((rs) => { return rs.text() })
+							   .then((rs) => {
+								 let dom = new DOMParser().parseFromString(rs, 'text/html');
+						   
+								 document.querySelector('.collect').appendChild(dom.querySelector(".product-list"))
+								 
+								 const removeNodes=document.querySelectorAll(".collect .add-collect")
+								 document.querySelector(".collect-body").style.display = "none"
+								 removeNodes.forEach((item,index)=>{
+								   item.addEventListener("click", () => {
+									 document.querySelectorAll(`.collect .product-list .product-item`)[index].style.display="none"; 
+								  })
+								 })
+					 
 							   })
-							  })
-				  
-							})
-						});
-					}
-					if ("{{ customer.id}}") {
-					  getCollectList()
-					}
+						   });
+					   }
+					   if ("{{ customer.id}}") {
+						 getCollectList()
+					   }
+   
+		   
+					 </script>
+				</div>
+				
 
-        
-				  </script>
-
-				<div class="card">
+				<div class="card my_orders account_right_content">
 					<div
-						class="{% if customer.orders.size == 0 %}card__section card__section--tight{% else %}card__header card__header--tight{% endif %}">
+						class="{% if customer.orders.size == 0 %}card__section card__section--tight{% else %}card__header card__header--tight{% endif %} my_order">
 						<h1
 							class="heading h1">{{ 'customer.general.orders' | t }} {% if customer.orders.size > 0 %}({{ customer.orders.size }}){% endif %}</h1>
 					</div>
@@ -335,7 +349,21 @@
 						{% assign dm_paginate_by = paginate.page_size %}{%- endpaginate -%}
 					{%- endif -%}
 				</div>
+
+				<div class="my_overview account_right_content">
+					overview
+				</div>
+
+				<div class="my_rewards account_right_content">
+					rewards
+				</div>
+
+				<div class="my_profile account_right_content">
+					profilea
+				</div>
+
 			</div>
+			
 		</div>
 	</div>
 </section>
@@ -691,11 +719,11 @@
 {% schema %}
 {
 	
-		"name": "Account",
+		"name": "个人中心左侧导航",
 		"settings": [],
 		"blocks": [
 		{
-		"name": "Trust text",
+		"name": "nav_title",
 		"type": "trust",
 		"settings": [
 		{
@@ -703,7 +731,24 @@
 			"id": "nav_title",
 			"label": "Heading",
 			"default": "导航标题"
+		},
+		{
+			"type": "text",
+			"id": "nav_right",
+			"label": "右侧区域对应类名"
+		},
+		{
+			"type": "checkbox",
+			"id": "nav_show",
+			"label": "是否展示导航",
+			"default": true
+		},
+		{
+			"type":"text",
+			"id":"nav_icon",
+			"label":"icon名字"
 		}
+		
 		
 		]
 		}
@@ -711,7 +756,4 @@
 		
 }
 {% endschema %}
-<script>
-    console.log("order",{{customer.orders[0].id}})
-</script>
 

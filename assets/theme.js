@@ -4,6 +4,39 @@
 }((function () {
     'use strict';
      
+    class LeftNavList extends HTMLElement {
+        constructor() {
+            super();
+            this.navList = this.querySelector(".render_nav_list ")
+            this.init()
+        }
+        init() { 
+           this.navList.childNodes.forEach((item)=>{
+            item.addEventListener("click",this.changeNav)
+           })
+           
+           this.querySelector(".card__linklist-item").className = " card__linklist-item link text--stronger " 
+           document.querySelector(".my_overview").style.display = "block"
+
+        }
+        changeNav = (e) =>{
+            this.navList.childNodes.forEach((item)=>{
+                item.className = " card__linklist-item  "
+               })
+            e.target.className = " card__linklist-item link text--stronger "
+            
+
+            var list = document.querySelector("."+e.target.getAttribute("data-right")).parentElement.children
+            for(let i=0 ; i<list.length ; i++){
+                list[i].style.display = "none"
+            }
+    
+            document.querySelector("."+e.target.getAttribute("data-right")).style.display = "block"
+           
+        }
+    }
+    customElements.define("left-nav-list", LeftNavList);
+
     class SizeBlock extends HTMLElement {
         constructor() {
             super();

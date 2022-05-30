@@ -1138,6 +1138,10 @@ html {
  * TEXT HEADING
  * --------------------------------------------------------------------
  */
+ .text--stronger{
+   font-weight: 600;
+   color: #770202;
+ }
 
 .text--strong,
 .highlight {
@@ -15995,4 +15999,8 @@ justify-content: space-between;
 
 .ld-collect .ld-collect-icon:hover {
   transform: scale(1);
+}
+
+.account_right_content{
+  display: none;
 }
