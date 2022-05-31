@@ -1138,6 +1138,10 @@ html {
  * TEXT HEADING
  * --------------------------------------------------------------------
  */
+ .text--stronger{
+   font-weight: 600;
+   color: #770202;
+ }
 
 .text--strong,
 .highlight {
@@ -16035,4 +16039,7 @@ justify-content: space-between;
 }
 .points-box{
   margin-top: 3rem;
+}
+.account_right_content{
+  display: none;
 }
