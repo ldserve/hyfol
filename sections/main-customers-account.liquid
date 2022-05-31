@@ -164,6 +164,84 @@
 			</div>
 
 			<div class="layout__section">
+
+				<div  class="overview-box">
+					<h1>Hi  {{customer.first_name}}</h1>
+					<div class="d-flex account-overview__list">
+						<p class="d-flex overview-item">
+							<span>
+								100
+							</span>
+							<span>
+								Coupons 
+							</span>
+						</p>
+						<p class="d-flex overview-item">
+							<span>
+								100
+							</span>
+							<span>
+								Points
+							</span>
+						</p>
+						<p class="d-flex overview-item">
+							<span>
+								10
+							</span>
+							<span>
+								Collection
+							</span>
+						</p>
+					</div>
+				</div>
+
+				<div  class="order-preview overview-box">
+					<h1>My  Order</h1>
+					<ul class="d-flex account-overview__list" >
+						<li class="order-preview__item">
+								{%- render 'icon', icon: 'cjj_all' -%}
+								<p>All</p>
+							</a>
+						</li>
+						<li class="order-preview__item">
+							{%- render 'icon', icon: 'cjj_unpaid' -%}<br/>
+							<p>Unpaid</p>
+						</li>
+						<li class="order-preview__item">
+							{%- render 'icon', icon: 'cjj_processing' -%}<br/>
+							<p>Processing</p>
+						</li>
+						<li class="order-preview__item">
+							{%- render 'icon', icon: 'cjj_shipped' -%}<br/>
+							<p>Shipped</p>
+						</li>
+						<li class="order-preview__item">
+							{%- render 'icon', icon: 'cjj_payment' -%}<br/>
+							<p>Payment</p>
+						</li>
+						<li class="order-preview__item">
+							{%- render 'icon', icon: 'cjj_completed' -%}<br/>
+							<p>Completed</p>
+						</li>
+						<li class="order-preview__item">
+							{%- render 'icon', icon: 'cjj_post_sale' -%}<br/>
+							<p>Post-sale</p>
+						</li>
+					</ul>
+				</div>
+				<div class="overview-box points-box">
+					<h1>Points For</h1>
+					<div class="points-img">
+					{%- if section.settings.points_rule!= blank -%}
+					{%- assign points_image = section.settings.points_rule -%}
+					{%- capture supported_sizes -%}{%- render 'image-size', sizes: '200,300,400,500', image: points_image -%}{%- endcapture -%}
+					{%- assign image_url = points_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+					 <img class="lazyload" alt="{{ points_image.alt | escape }}" data-src="{{ image_url }}" data-widths="[{{ supported_sizes }}]" data-sizes="auto">
+					{%- endif -%}
+
+					</div>
+				</div>
+				{%- comment -%}
 				<div class="wish_list">
 					<header>
 						<h1 class="center">MY WISHLIST</h1>
@@ -338,6 +416,8 @@
 						{% assign dm_paginate_by = paginate.page_size %}{%- endpaginate -%}
 					{%- endif -%}
 				</div>
+				
+				{%- endcomment -%}
 
 
 			</div>
@@ -695,9 +775,14 @@
 
 {% schema %}
 {
-	
 		"name": "Account",
-		"settings": [],
+		"settings": [
+		{
+			"type":"image_picker",
+			"id":"points_rule",
+			"label":"积分兑换规则图"
+		}
+		],
 		"blocks": [
 		{
 		"name": "Trust text",

@@ -16004,3 +16004,35 @@ justify-content: space-between;
 .ld-collect .ld-collect-icon:hover {
   transform: scale(1);
 }
+
+.overview-box{
+  padding: 0.2rem 0.6rem;
+  background-color: #f4f4f4;
+}
+.account-overview__list{
+  justify-content: center;
+
+}
+.overview-item{
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 0 2rem;
+  padding: 1rem 0;
+
+}
+.order-preview{
+  margin-top: 3rem;
+}
+.order-preview__item svg{
+  font-size: 2rem;
+}
+.order-preview__item{
+  text-align: center;
+  margin: 0 2rem;
+  padding: 1rem 0;
+  cursor: pointer;
+}
+.points-box{
+  margin-top: 3rem;
+}
