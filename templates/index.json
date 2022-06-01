@@ -230,9 +230,9 @@
         "f25304d2-8088-49e0-837b-c140d87d31d8": {
           "type": "link",
           "settings": {
-            "heading": "SHIRTS",
-            "sensorsLinkName": "SHIRTS",
-            "link": "shopify:\/\/collections\/shirts",
+            "heading": "newin",
+            "sensorsLinkName": "newin",
+            "link": "https:\/\/www.hyfol.com\/collections\/new-in-1",
             "left": 50,
             "top": 2,
             "width": 53,
@@ -242,9 +242,9 @@
         "312647ac-1ad0-4158-af07-2abbd19d8a97": {
           "type": "link",
           "settings": {
-            "heading": "newarrivals",
-            "sensorsLinkName": "newarrivals",
-            "link": "shopify:\/\/collections\/new-in-1",
+            "heading": "memorial",
+            "sensorsLinkName": "memorial",
+            "link": "https:\/\/www.hyfol.com\/collections\/memorial-day",
             "left": 0,
             "top": 51,
             "width": 50,
@@ -254,9 +254,9 @@
         "e34c6701-d51d-4b6b-b3c3-dbdb091ce635": {
           "type": "link",
           "settings": {
-            "heading": "ACC",
-            "sensorsLinkName": "ACC",
-            "link": "shopify:\/\/collections\/accessories-12-13",
+            "heading": "father",
+            "sensorsLinkName": "father",
+            "link": "https:\/\/www.hyfol.com\/collections\/fathers-day",
             "left": 52,
             "top": 51,
             "width": 50,
@@ -277,7 +277,7 @@
         "sensorsName": "mobile分类导流区",
         "hidWeb": false,
         "line": false,
-        "image": "shopify:\/\/shop_images\/02_ad8810a6-1fd5-47d3-b5fb-f6c9f8a458cd.jpg",
+        "image": "shopify:\/\/shop_images\/02_1ef77c31-0263-41c7-a095-cf508917e1a7.jpg",
         "tpadding": 0,
         "rpadding": 0,
         "bpadding": 0,
