@@ -37,6 +37,8 @@
     }
     customElements.define("left-nav-list", LeftNavList);
 
+
+
     class SizeBlock extends HTMLElement {
         constructor() {
             super();
@@ -71,6 +73,7 @@
             cartNode: this.querySelector('.ny-icon-cart'),
             addColleNode: this.querySelector('.add-collect'),
             removeColleNode: this.querySelector('.remove-collect'),
+            quickviewButton : this.querySelector('.openQuickView')
           }
           this.setupEventListeners()
           this.onload()
@@ -79,11 +82,37 @@
         setupEventListeners() {
           this.elements.addColleNode && this.elements.addColleNode.addEventListener('click', this.handleRemove)
           this.elements.removeColleNode && this.elements.removeColleNode.addEventListener('click', this.handleAdd)
+          this.elements.quickviewButton && this.elements.quickviewButton.addEventListener('click', this._openQuickView)
                   this.elements.colorSelector.forEach((item,index)=>{
               if( item.closest(".page-width") !=null){
                 item.addEventListener("click",this.changeColor)
               }
         })
+        }
+
+            _openQuickView(event) {
+            var modal = document.getElementById(event.target.getAttribute('aria-controls'));
+            console.log(modal);
+            modal.classList.add('is-loading');
+            var url = event.target.getAttribute('data-product-url').split("?")[0]
+            fetch("".concat(url, "?view=quick-view"), {
+                credentials: 'same-origin',
+                method: 'GET'
+            }).then(function (response) {
+                response.text().then(function (content) {
+                    modal.querySelector('.modal__inner').innerHTML = content;
+                    modal.classList.remove('is-loading'); // Register a new section to power the JS
+
+                    var modalProductSection = new ProductSection(modal.querySelector('[data-section-type="product"]')); // We set a listener so we can cleanup on close
+
+                    var doCleanUp = function doCleanUp() {
+                        modalProductSection.onUnload();
+                        modal.removeEventListener('modal:closed', doCleanUp);
+                    };
+
+                    modal.addEventListener('modal:closed', doCleanUp);
+                });
+            });
         }
 
         changeColor=(event)=>{
