@@ -805,8 +805,8 @@
       "type": "ld-imageText",
       "settings": {
         "noMargin": false,
-        "image": "shopify:\/\/shop_images\/c46892b713fb6dec4f4072c25892904d_3bf61d9d-edae-4b6e-a21c-331a064a856e.jpg",
-        "mobile_image": "shopify:\/\/shop_images\/c46892b713fb6dec4f4072c25892904d_3bf61d9d-edae-4b6e-a21c-331a064a856e.jpg",
+        "image": "shopify:\/\/shop_images\/1_472cd41b-9aac-4d87-81c6-d1b7769f2a6c.jpg",
+        "mobile_image": "shopify:\/\/shop_images\/1_472cd41b-9aac-4d87-81c6-d1b7769f2a6c.jpg",
         "link": "",
         "title_align": "row",
         "title_tb": "column-reverse",
@@ -881,14 +881,14 @@
         "m_sub_title_size": 4,
         "sub_title_top": 10,
         "m_sub_title_top": 10,
-        "text_color": "#fff",
+        "text_color": "#ffffff",
         "text_style": "normal",
         "s_text_style": "normal",
         "text_align": "center",
         "button_color": "#ed6123",
-        "button_text_color": "#fff",
-        "button_color_hover": "#fff",
-        "button_text_color_hover": "#000"
+        "button_text_color": "#ffffff",
+        "button_color_hover": "#ffffff",
+        "button_text_color_hover": "#000000"
       }
     }
   },
