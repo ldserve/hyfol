@@ -158,9 +158,9 @@
         "6c94ee37-e01c-4716-bc7e-67cc0981d68a": {
           "type": "link",
           "settings": {
-            "heading": "memorialday",
-            "sensorsLinkName": "memorialday",
-            "link": "shopify:\/\/collections\/memorial-day-sale",
+            "heading": "newin",
+            "sensorsLinkName": "newin",
+            "link": "https:\/\/www.hyfol.com\/collections\/new-in-1",
             "left": 25,
             "top": 5,
             "width": 24,
@@ -170,9 +170,9 @@
         "c9e8ee81-fa7f-4664-a2d9-be156e428c8d": {
           "type": "link",
           "settings": {
-            "heading": "newarrivals",
-            "sensorsLinkName": "newarrivals",
-            "link": "shopify:\/\/collections\/new-in-1",
+            "heading": "veterans",
+            "sensorsLinkName": "veterans",
+            "link": "https:\/\/www.hyfol.com\/collections\/memorial-day",
             "left": 50,
             "top": 5,
             "width": 24,
@@ -182,9 +182,9 @@
         "1f197e6e-076a-4800-935a-1d35bc6020ce": {
           "type": "link",
           "settings": {
-            "heading": "sale",
-            "sensorsLinkName": "sale",
-            "link": "shopify:\/\/collections\/3-for-55",
+            "heading": "father",
+            "sensorsLinkName": "father",
+            "link": "https:\/\/www.hyfol.com\/collections\/fathers-day",
             "left": 76,
             "top": 6,
             "width": 24,
@@ -205,7 +205,7 @@
         "sensorsName": "",
         "hidWeb": true,
         "line": false,
-        "image": "shopify:\/\/shop_images\/02_a2450bb1-3771-48d5-8762-3b7d241be9c9.jpg",
+        "image": "shopify:\/\/shop_images\/02_13838e3d-8587-4cbd-9ee2-3def74685c5e.jpg",
         "tpadding": 0,
         "rpadding": 0,
         "bpadding": 0,
