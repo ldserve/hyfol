@@ -10568,6 +10568,7 @@ shopify-payment-terms {
   border-color: #000000;
   /* background: rgba(var(--accent-color-rgb), 0.06); */
   color: #b82928;
+  font-weight: 700;
 }
 
 .block-swatch--disabled .block-swatch__item-text {
