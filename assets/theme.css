@@ -1138,6 +1138,10 @@ html {
  * TEXT HEADING
  * --------------------------------------------------------------------
  */
+ .text--stronger{
+   font-weight: 600;
+   color: #770202;
+ }
 
 .text--strong,
 .highlight {
@@ -8809,6 +8813,15 @@ select option {
  * ORDER FOOT (used in order details in customer account)
  * --------------------------------------------------------------------
  */
+ 
+ .account-nav{
+   align-items: center;
+   cursor: pointer;
+
+ }
+ .account-nav svg{
+  margin: 0 0.5rem;
+ }
 
 .order-foot {
   border-top: 1px solid var(--border-color);
@@ -10554,7 +10567,7 @@ shopify-payment-terms {
   box-shadow: 0 0 0 1px #000000;
   border-color: #000000;
   /* background: rgba(var(--accent-color-rgb), 0.06); */
-  color: #000000;
+  color: #b82928;
 }
 
 .block-swatch--disabled .block-swatch__item-text {
@@ -10667,6 +10680,10 @@ shopify-payment-terms {
 /*  z-index: 2; !* needed to overlap the labels (if any) *!*/
 /*  pointer-events: none;*/
 /*}*/
+
+.icon-relative{
+  position: relative;
+}
 
 .product-item__image-wrapper {
   display: block;
@@ -15625,7 +15642,7 @@ shopify-payment-terms {
     width: 70%;
   }
   .block-swatch__item{
-    padding: 6px;
+    padding: 6px 18px;
   }
   .product-form__option {
     margin-bottom: 10px;
@@ -15944,4 +15961,103 @@ justify-content: space-between;
 
 .bread_crumbs{
   margin-bottom : 0px;
+}
+
+
+.ld-collect {
+  opacity: 0;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin-right: 5px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  transition: opacity 1s ease;
+  width: 20%;
+}
+
+.ld-collect-icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* margin-bottom: 5px; */
+  transform: scale(.8);
+  transition: transform 1s;
+  /* cursor: pointer; */
+
+}
+
+
+.product-item:hover .ld-collect {
+  opacity: 1;
+}
+
+.remove-collect ,.add-collect{
+  font-size: 50px;
+ 
+
+}
+
+.ld-collect .icon {
+  /* display: inline-block; */
+  display: none;
+  pointer-events:all;
+  /* cursor: pointer; */
+}
+
+.ld-collect .ld-collect-icon:hover {
+  transform: scale(1);
+}
+
+.overview-box{
+  padding: 0.2rem 0.6rem;
+  background-color: #f4f4f4;
+}
+.account-overview__list{
+  justify-content: center;
+
+}
+.overview-item{
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 0 2rem;
+  padding: 1rem 0;
+
+}
+.order-preview{
+  margin-top: 3rem;
+}
+.order-preview__item svg{
+  font-size: 2.4rem;
+}
+.order-preview__item{
+  text-align: center;
+  margin: 0 2rem;
+  padding: 1rem 0;
+  cursor: pointer;
+}
+.points-box{
+  margin-top: 3rem;
+}
+.account_right_content{
+  display: none;
+}
+.order-icon{
+  position: relative;
+  display: inline-block;
+}
+.redio-icon{
+  /* border-radius: 50%;
+  width: 1rem;
+  height: 1rem;
+  background-color: #771D1D;
+  position: absolute; */
+  top: -2px;
+  right: -6px;
+  /* text-align: center;
+  color: #fff;
+  font-size: 8px;
+  line-height: 1.2rem; */
+
 }
