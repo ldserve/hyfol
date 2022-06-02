@@ -1,25 +1,27 @@
 <section class="hidden-tablet hidden-tablet-and-up">
 	<div class="header-me container">
 		{%- if customer -%}
-			<input type="checkbox" id="account-input" class="account-input hidden">
-			<ul class="logged">
-				<li class=" text-l name"><span class="hi">Hi!&nbsp;</span>{{ customer.first_name }}</li>
-				<li class=" text-r tab"><label for="account-input">{%- render 'icon', icon: 'arrow-bottom' -%}</label></li>
-			</ul>
-			<div class="account-box">
-				<a href="{{ routes.account_url }}"
-					 class="value-picker__choice-item is-selected">{{ 'customer.general.orders' | t }} {% render 'icon', icon: 'check-2' %}</a>
-				<a href="{{ routes.account_addresses_url }}"
-					 class="value-picker__choice-item">{{ 'customer.general.addresses' | t }} {% render 'icon', icon: 'check-2' %}</a>
-				<a href="{{ routes.account_logout_url }}" class="value-picker__choice-item"
-					 data-no-instant>{{ 'customer.general.logout' | t }} {% render 'icon', icon: 'check-2' %}</a>
-				
-			</div>
+		<input type="checkbox" id="account-input" class="account-input hidden">
+		<ul class="logged">
+			<li class=" text-l name"><span class="hi">Hi!&nbsp;</span>{{ customer.first_name }}</li>
+			<li class=" text-r tab"><label for="account-input">{%- render 'icon', icon: 'arrow-bottom' -%}</label></li>
+		</ul>
+		<div class="account-box">
+			<a href="{{ routes.account_url }}"
+				class="value-picker__choice-item is-selected">{{ 'customer.general.orders' | t }}
+				{% render 'icon', icon: 'check-2' %}</a>
+			<a href="{{ routes.account_addresses_url }}"
+				class="value-picker__choice-item">{{ 'customer.general.addresses' | t }}
+				{% render 'icon', icon: 'check-2' %}</a>
+			<a href="{{ routes.account_logout_url }}" class="value-picker__choice-item"
+				data-no-instant>{{ 'customer.general.logout' | t }} {% render 'icon', icon: 'check-2' %}</a>
+
+		</div>
 		{%- else -%}
-			<ul class="no-logged">
-				<li class="text-l"><a href="{{ routes.account_login_url }}?return_url={{ page.url }}">LOGIN &gt;</a></li>
-				<li class="text-r"><a href="{{ routes.account_register_url }}">CREATE ACCOUNT&gt;</a></li>
-			</ul>
+		<ul class="no-logged">
+			<li class="text-l"><a href="{{ routes.account_login_url }}?return_url={{ page.url }}">LOGIN &gt;</a></li>
+			<li class="text-r"><a href="{{ routes.account_register_url }}">CREATE ACCOUNT&gt;</a></li>
+		</ul>
 		{%- endif -%}
 	</div>
 	<div class="order-me container">
@@ -27,32 +29,32 @@
 
 		<div class="icon-box">
 			<ul class="icons" id="orders-list">
-				<li data-item="orders-all" class="current" >
-					{%- render 'icon', icon: 'cjj_all' -%}<br/>
+				<li data-item="orders-all" class="current">
+					{%- render 'icon', icon: 'cjj_all' -%}<br />
 					<span>All</span>
 				</li>
 				<li data-item="orders-unpaid">
-					{%- render 'icon', icon: 'cjj_unpaid' -%}<br/>
+					{%- render 'icon', icon: 'cjj_unpaid' -%}<br />
 					<span>Unpaid</span>
 				</li>
 				<li data-item="orders-processing">
-					{%- render 'icon', icon: 'cjj_processing' -%}<br/>
+					{%- render 'icon', icon: 'cjj_processing' -%}<br />
 					<span>Processing</span>
 				</li>
 				<li data-item="orders-shipped">
-					{%- render 'icon', icon: 'cjj_shipped' -%}<br/>
+					{%- render 'icon', icon: 'cjj_shipped' -%}<br />
 					<span>Shipped</span>
 				</li>
 				<li data-item="orders-payment">
-					{%- render 'icon', icon: 'cjj_payment' -%}<br/>
+					{%- render 'icon', icon: 'cjj_payment' -%}<br />
 					<span>Payment</span>
 				</li>
 				<li data-item="orders-completed">
-					{%- render 'icon', icon: 'cjj_completed' -%}<br/>
+					{%- render 'icon', icon: 'cjj_completed' -%}<br />
 					<span>Completed</span>
 				</li>
 				<li data-item="post-sale">
-					{%- render 'icon', icon: 'cjj_post_sale' -%}<br/>
+					{%- render 'icon', icon: 'cjj_post_sale' -%}<br />
 					<span>Post-sale</span>
 				</li>
 			</ul>
@@ -64,18 +66,18 @@
 		<span class="loading-text">&nbsp;loading...</span>
 	</div>
 	<div class="card__section" id="order_null">
-			<div class="empty-state empty-state--extra-tight">
-				<div class="empty-state__icon">
-					{%- render 'icon', icon: 'package' -%}
-					<span class="empty-state__count">0</span>
-				</div>
-				<p class="empty-state__icon-description">{{ 'customer.general.no_orders' | t }}</p>
-				<div class="empty-state__button-container">
-					<a href="{{ routes.all_products_collection_url }}"
-						 class="empty-state__button button button--primary">{{ 'customer.general.no_orders_button' | t }}</a>
-				</div>
+		<div class="empty-state empty-state--extra-tight">
+			<div class="empty-state__icon">
+				{%- render 'icon', icon: 'package' -%}
+				<span class="empty-state__count">0</span>
+			</div>
+			<p class="empty-state__icon-description">{{ 'customer.general.no_orders' | t }}</p>
+			<div class="empty-state__button-container">
+				<a href="{{ routes.all_products_collection_url }}"
+					class="empty-state__button button button--primary">{{ 'customer.general.no_orders_button' | t }}</a>
 			</div>
 		</div>
+	</div>
 
 	<div class="body-me" id="body_me">
 		<!--渲染订单区域-->
@@ -84,7 +86,8 @@
 		<div class="container">
 			<h3>
 				{%- render 'icon', icon: 'bi-email' -%}&nbsp;&nbsp;
-				<a href="mailto:contactus@hyfol.com" target="_blank" rel="noopener" aria-describedby="a11y-new-window-message">contactus@hyfol.com</a>
+				<a href="mailto:contactus@hyfol.com" target="_blank" rel="noopener"
+					aria-describedby="a11y-new-window-message">contactus@hyfol.com</a>
 			</h3>
 		</div>
 	</div>
@@ -102,12 +105,14 @@
 			<ol class="breadcrumb__list" role="list">
 				<li class="breadcrumb__item">
 					<a class="breadcrumb__link link"
-						 href="{{ routes.root_url }}">{{ 'general.breadcrumb.home' | t }}</a> {%- render 'icon', icon: 'arrow-right' -%}
+						href="{{ routes.root_url }}">{{ 'general.breadcrumb.home' | t }}</a>
+					{%- render 'icon', icon: 'arrow-right' -%}
 				</li>
 
 				<li class="breadcrumb__item">
 					<a class="breadcrumb__link link"
-						 href="{{ routes.account_url }}">{{ 'general.breadcrumb.account' | t }}</a> {%- render 'icon', icon: 'arrow-right' -%}
+						href="{{ routes.account_url }}">{{ 'general.breadcrumb.account' | t }}</a>
+					{%- render 'icon', icon: 'arrow-right' -%}
 				</li>
 
 				<li class="breadcrumb__item">
@@ -122,7 +127,7 @@
 			<div class="layout__section layout__section--secondary">
 				<div class="card card--sticky hidden-pocket">
 					<div class="card__section card__section--tight">
-	
+
 						<div class="card__linklist ">
 					
 						  <left-nav-list>
@@ -145,26 +150,31 @@
 				</div>
 
 				<div class="value-picker-wrapper hidden-tablet-and-up">
-					<button class="value-picker-button value-picker-button--pill" aria-haspopup="true" aria-expanded="false"
-									aria-controls="account-selector" data-action="open-value-picker">
+					<button class="value-picker-button value-picker-button--pill" aria-haspopup="true"
+						aria-expanded="false" aria-controls="account-selector" data-action="open-value-picker">
 						{{- 'customer.general.orders' | t -}} {%- render 'icon', icon: 'arrow-bottom' -%}
 					</button>
 
 					<div id="account-selector" class="value-picker" aria-hidden="true">
 						<div class="value-picker__inner">
 							<header class="value-picker__header">
-								<span class="value-picker__title text--strong">{{ 'customer.general.my_account' | t }}</span>
-								<button class="value-picker__close" data-action="close-value-picker" aria-controls="account-selector"
-												aria-label="{{ 'general.accessibility.close' | t }}">{% render 'icon', icon: 'close' %}</button>
+								<span
+									class="value-picker__title text--strong">{{ 'customer.general.my_account' | t }}</span>
+								<button class="value-picker__close" data-action="close-value-picker"
+									aria-controls="account-selector"
+									aria-label="{{ 'general.accessibility.close' | t }}">{% render 'icon', icon: 'close' %}</button>
 							</header>
 
 							<div class="value-picker__choice-list">
 								<a href="{{ routes.account_url }}"
-									 class="value-picker__choice-item is-selected">{{ 'customer.general.orders' | t }} {% render 'icon', icon: 'check-2' %}</a>
+									class="value-picker__choice-item is-selected">{{ 'customer.general.orders' | t }}
+									{% render 'icon', icon: 'check-2' %}</a>
 								<a href="{{ routes.account_addresses_url }}"
-									 class="value-picker__choice-item">{{ 'customer.general.addresses' | t }} {% render 'icon', icon: 'check-2' %}</a>
+									class="value-picker__choice-item">{{ 'customer.general.addresses' | t }}
+									{% render 'icon', icon: 'check-2' %}</a>
 								<a href="{{ routes.account_logout_url }}" class="value-picker__choice-item"
-									 data-no-instant>{{ 'customer.general.logout' | t }} {% render 'icon', icon: 'check-2' %}</a>
+									data-no-instant>{{ 'customer.general.logout' | t }}
+									{% render 'icon', icon: 'check-2' %}</a>
 							</div>
 						</div>
 					</div>
@@ -177,131 +187,234 @@
 
 				<div class="wish_list account_right_content">
 					<header>
-						<h1 class="center">MY WISHLIST</h1>
-					  </header>
+						<h1 class="center wish_title">MY WISHLIST</h1>
+					</header>
+                    <div class="wish_loading"><div class="loading_round"></div></div>
+					<style>
+						/* .openQuickView {
+							display: none;
+						} */
 
-					  <style>
-						   .openQuickView{
-							   display: none;
-						   }
+						.product-item__info {
+							background-color: #ffffff;
+						}
 
-						   .product-item__info{
-							   background-color: #ffffff;
-						   }
-						   .product-item_text , .product-item__info-inner .price{
-                                 color: #000000;
-						   }
+						.product-item_text,
+						.product-item__info-inner .price {
+							color: #000000;
+						}
 
-						   .product-item__swatch-list {
-                                  padding-bottom: 0px;
-                                  min-height: 50px;
-                              }
+						.product-item__swatch-list {
+							padding-bottom: 0px;
+							min-height: 50px;
+						}
 
-						 .scroller__inner .price--compare, .product-item__info-inner .price--compare{
+						.scroller__inner .price--compare,
+						.product-item__info-inner .price--compare {
 							text-decoration: line-through black;
-						 }
-					  </style>
+						}
+					</style>
 
-					  <div class="collect page-width">
-					  
+					<div class="collect page-width">
+
+					</div>
+
+					
+
+
+					
+
+					<div id="czquickview" class="modal" aria-hidden="true">
+						<div class="modal__dialog modal__dialog--stretch" role="dialog">
+						  <button class="modal__close link" data-action="close-modal" title="Close"><svg focusable="false" class="icon icon--close " viewBox="0 0 19 19" role="presentation">
+						<path d="M9.1923882 8.39339828l7.7781745-7.7781746 1.4142136 1.41421357-7.7781746 7.77817459 7.7781746 7.77817456L16.9705627 19l-7.7781745-7.7781746L1.41421356 19 0 17.5857864l7.7781746-7.77817456L0 2.02943725 1.41421356.61522369 9.1923882 8.39339828z" fill="currentColor" fill-rule="evenodd"></path>
+					</svg></button>
+					
+						  <div class="modal__loader"><svg focusable="false" class="icon icon--search-loader " viewBox="0 0 64 64" role="presentation">
+						<path opacity=".4" d="M23.8589104 1.05290547C40.92335108-3.43614731 58.45816642 6.79494359 62.94709453 23.8589104c4.48905278 17.06444068-5.74156424 34.59913135-22.80600493 39.08818413S5.54195825 57.2055303 1.05290547 40.1410896C-3.43602265 23.0771228 6.7944697 5.54195825 23.8589104 1.05290547zM38.6146353 57.1445143c13.8647142-3.64731754 22.17719655-17.89443541 18.529879-31.75914961-3.64743965-13.86517841-17.8944354-22.17719655-31.7591496-18.529879S3.20804604 24.7494569 6.8554857 38.6146353c3.64731753 13.8647142 17.8944354 22.17719655 31.7591496 18.529879z">
+						</path>
+						<path d="M1.05290547 40.1410896l5.80258022-1.5264543c3.64731754 13.8647142 17.89443541 22.17719655 31.75914961 18.529879l1.5264543 5.80258023C23.07664892 67.43614731 5.54195825 57.2055303 1.05290547 40.1410896z">
+						</path>
+					</svg></div>
+					
+						  <div class="modal__inner">
+							   <div class="abc"></div>
+						  </div>
+						</div>
 					  </div>
-					  {%- if customer -%}
-					  <div class="collect-body">
-						<div class="center">
-						  You currently have nothing saved to your Wishlist.<br />
-						  Personalize your shopping experience with your Wishlist.
+
+					{%- if customer -%}
+					<div class="collect-body">
+						<div class=" collect-body-layout">
+						<div class="wish_center">
+							You currently have nothing saved to your Wishlist.<br />
+							Personalize your shopping experience with your Wishlist.
 						</div>
 						<div class="d-flex aic jcc sign-button">
-						  <a href="/collections/shop" class="sign-button">Let's Get Started!</a>
+							<a href="/collections/shop" class="sign-button">Let's Get Started!</a>
 						</div>
-					  </div>
-					  {%- else -%}
-					  <div>
-						<div class="center">
-						  It is empty here. <br />
-						  Personalize your shopping experience with your Wishlist.
-						</div>
-						<h3 class="center">Already have items saved?</h3>
-						<div class="d-flex aic jcc sign-button">
-						  <a href="{{ routes.account_login_url }}" class="sign-button">SIGN IN / REGISTER</a>
-						</div>
-					  </div>
-					  {%- endif -%}
+					</div>
+					</div>
+					{%- endif -%}
 
-					  <script>
-						var _templateID =  document.querySelector(".container--flush").parentElement.getAttribute("data-section-id")	
-					   async function post_data(url, data) {
-						 const response = await fetch(`https://api-dev.leandow-technology.com/api/${url}`, {
-						   method: 'POST',
-						   mode: 'cors',
-						   cache: 'no-cache',
-						   credentials: 'same-origin',
-						   headers: {
-							 'Content-Type': 'application/json',
-							 "siteValue": "leandowTest",
-							 "Access-Control-Allow-Origin": "*"
-						   },
-						   redirect: 'follow',
-						   referrerPolicy: 'no-referrer',
-						   body: JSON.stringify(data)
-						 });
-						 return response.json();
-					   }
-					 
-					   function getCollectList() {
-						 const collectList = {
-						 current: 1,
-						 customerId: "{{customer.id}}",
-						 size: 80
-					   }
-					   post_data("customerCollectionProduct/collectionProductList", collectList)
-						   .then(res => {
-							 if (res.data.records.length < 1) {
-							   document.querySelector('.collect-body').style.display = "block"
-							   return
-							 }
-							 var ids = ""
-   
-							 res.data.records.forEach((item, index) => {
-							   if (index === 0) {
-								 ids = `id:${item.productId}`
-							   } else {
-								 ids = ids + " OR " + `id:${item.productId}`
-							   }
-							 });
-							 fetch(`/search?q=${ids}&type=product`)
-							   .then((rs) => { return rs.text() })
-							   .then((rs) => {
-								 let dom = new DOMParser().parseFromString(rs, 'text/html');
-						   
-								 document.querySelector('.collect').appendChild(dom.querySelector(".product-list"))
-								 
-								 const removeNodes=document.querySelectorAll(".collect .add-collect")
-								 document.querySelector(".collect-body").style.display = "none"
-								 removeNodes.forEach((item,index)=>{
-								   item.addEventListener("click", () => {
-									 document.querySelectorAll(`.collect .product-list .product-item`)[index].style.display="none"; 
-								  })
-								 })
-					 
-							   })
-						   });
-					   }
-					   if ("{{ customer.id}}") {
-						 getCollectList()
-					   }
-   
-		   
-					 </script>
-				</div>
+					<script>
+						async function post_data(url, data) {
+							const response = await fetch(`https://api-dev.leandow-technology.com/api/${url}`, {
+								method: 'POST',
+								mode: 'cors',
+								cache: 'no-cache',
+								credentials: 'same-origin',
+								headers: {
+									'Content-Type': 'application/json',
+									"siteValue": "leandowTest",
+									"Access-Control-Allow-Origin": "*"
+								},
+								redirect: 'follow',
+								referrerPolicy: 'no-referrer',
+								body: JSON.stringify(data)
+							});
+							return response.json();
+						}
+
+						function getCollectList(event) {
+
+						   var pageSectionId = document.querySelector(".page__sub-header").parentElement.getAttribute("data-section-id")
+							const collectList = {
+								current: 1,
+								customerId: "{{customer.id}}",
+								size: 100
+							}
+							post_data("customerCollectionProduct/collectionProductList", collectList)
+								.then(res => {
+									if (res.data.records.length < 1) {
+										document.querySelector('.collect-body').style.display = "block"
+										document.querySelector(".wish_loading").style.display = "none"
+										return
+									}
+									var ids = ""
+									res.data.records.forEach((item, index) => {
+										if (index === 0) {
+											ids = `id:${item.productId}`
+										} else {
+											ids = ids + " OR " + `id:${item.productId}`
+										}
+									});
+									fetch(`/search?q=${ids}&type=product`)
+										.then((rs) => {
+											return rs.text()
+										})
+										.then((rs) => {
+                                            document.querySelector(".wish_loading").style.display = "none"
+
+											let dom = new DOMParser().parseFromString(rs, 'text/html');
+
+											dom.querySelector(".collection__toolbar").style.display = "none"
+
+											document.querySelector('.collect').appendChild(dom.querySelector(
+												".collection__dynamic-part"))
+
+											document.querySelector('.collect').appendChild(dom.querySelector(
+												".modal__dialog").parentElement)
+
+											document.querySelector('.pagination__nav').querySelectorAll(".pagination__nav-item")
+												.forEach((item, index) => {
+													item.addEventListener("click", nextCollectList)
+												})
+                                            
+											
+											const removeNodes = document.querySelectorAll(".collect .add-collect")
+											document.querySelector(".collect-body").style.display = "none"
+											removeNodes.forEach((item, index) => {
+												item.addEventListener("click", () => {
+													document.querySelectorAll(
+															`.collect .product-list .product-item`)[index].style
+														.display = "none";
+												})
+											})
+
+										})
+								});
+						}
+						if ("{{ customer.id}}") {
+							getCollectList()
+						}
+
+
+						function nextCollectList(event) {
+							if (event) {
+								event.preventDefault()
+							}
+							document.querySelector(".wish_loading").style.display = "flex"
+							document.querySelector(".product-list--collection").style.display = "none"
+
+                            document.querySelectorAll(".pagination__nav-item").forEach((item)=>{
+								item.className = "pagination__nav-item link"
+							})
+							event.target.className = "pagination__nav-item link is-active"
+
+
+							const collectList = {
+								current: event.target.innerHTML * 1,
+								customerId: "{{customer.id}}",
+								size: 24
+							}
+							post_data("customerCollectionProduct/collectionProductList", collectList)
+								.then(res => {
+								
+									
+									if (res.data.records.length < 1) {
+										document.querySelector('.collect-body').style.display = "block"
+										return
+									}
+									var ids = ""
+
+									res.data.records.forEach((item, index) => {
+										if (index === 0) {
+											ids = `id:${item.productId}`
+										} else {
+											ids = ids + " OR " + `id:${item.productId}`
+										}
+									});
+									fetch(`/search?q=${ids}&type=product`)
+										.then((rs) => {
+											return rs.text()
+										})
+										.then((rs) => {
+											let dom = new DOMParser().parseFromString(rs, 'text/html');
+	
+											document.querySelector(".product-list").remove()
+											//  document.querySelector('.collection__dynamic-part').appendChild()
+											document.querySelector('.collection__dynamic-part').insertBefore(dom.querySelector(
+													".product-list"), document.querySelector(".collection__toolbar")
+												.nextSibling);
+
+												const removeNodes = document.querySelectorAll(".collect .add-collect")
+											document.querySelector(".collect-body").style.display = "none"
+											removeNodes.forEach((item, index) => {
+												item.addEventListener("click", () => {
+													document.querySelectorAll(
+															`.collect .product-list .product-item`)[index].style
+														.display = "none";
+												})
+											})
+											document.querySelector(".wish_loading").style.display = "none"
+											document.querySelector(".product-list--collection").style.display = "flex"
+										})
+								});
+						}
+
+						document.querySelector(".wish_list_quickview").addEventListener("click",wishLishQuickView)
 				
+					</script>
+				</div>
+
 
 				<div class="card my_orders account_right_content">
 					{%- comment -%}
 					<div
 						class="{% if customer.orders.size == 0 %}card__section card__section--tight{% else %}card__header card__header--tight{% endif %} my_order">
-						<h1 class="heading h1">{{ 'customer.general.orders' | t }} {% if customer.orders.size > 0 %}({{
-							customer.orders.size }}){% endif %}</h1>
+						<h1 class="heading h1">{{ 'customer.general.orders' | t }}
+							{% if customer.orders.size > 0 %}({{ customer.orders.size }}){% endif %}</h1>
 					</div>
 					{%- endcomment -%}
 					{% render 'my-order-view' customer:customer%}
@@ -313,18 +426,17 @@
 								{%- render 'icon', icon: 'package' -%}
 								<span class="empty-state__count">0</span>
 							</div>
+
 							<p class="empty-state__icon-description">{{ 'customer.general.no_orders' | t }}</p>
-				
+
 							<div class="empty-state__button-container">
-								<a href="{{ routes.all_products_collection_url }}" class="empty-state__button button button--primary">{{
-									'customer.general.no_orders_button' | t }}</a>
+								<a href="{{ routes.all_products_collection_url }}"
+									class="empty-state__button button button--primary">{{ 'customer.general.no_orders_button' | t }}</a>
 							</div>
 						</div>
 					</div>
 					{%- else -%}
-				
 					{%- paginate customer.orders by 8 -%}
-				
 					<div class="table-wrapper">
 						<table class="table table--loose">
 							<thead>
@@ -336,11 +448,12 @@
 									<th class="table__cell--right">{{ 'customer.order.total' | t }}</th>
 								</tr>
 							</thead>
-				
+
 							<tbody>
 								{%- for order in customer.orders -%}
 								<tr>
-									<td><a href="{{ order.customer_url }}" class="link link--accented">{{ order.name }}</a></td>
+									<td><a href="{{ order.customer_url }}"
+											class="link link--accented">{{ order.name }}</a></td>
 									<td>{{ order.created_at | date: format: 'month_day_year' }}</td>
 									<td>{{ order.financial_status_label }}</td>
 									<td>{{ order.fulfillment_status_label }}</td>
@@ -350,8 +463,6 @@
 							</tbody>
 						</table>
 					</div>
-				
-				
 					{%- render 'pagination', paginate: paginate -%}
 					{% assign dm_paginate_by = paginate.page_size %}{%- endpaginate -%}
 					{%- endif -%}
@@ -514,9 +625,9 @@
 				<div class="my_methods account_right_content">
 					methods
 				</div>
-			
+
 			</div>
-			
+
 		</div>
 	</div>
 </section>
@@ -527,11 +638,14 @@
 	#shopify-section-footer {
 		display: none;
 	}
+
 	body {
 		min-height: 100vh;
 		background: #f0f0f0;
 	}
-	main ul, li {
+
+	main ul,
+	li {
 		list-style: none;
 		padding: 0;
 		margin: 0;
@@ -546,36 +660,47 @@
 		font-weight: var(--heading-font-weight);
 		font-style: var(--heading-font-style);
 	}
+
 	.header-me .logged .tab label {
 		cursor: pointer;
 	}
+
 	.header-me .logged .hi {
 		color: var(--link-color);
 	}
+
 	.header-me .account-box {
 		height: 0;
 		overflow: hidden;
 		transition: all 0.4s ease;
 	}
-	#account-input:checked ~ .account-box {
+
+	#account-input:checked~.account-box {
 		height: 130px;
 		transition: all 0.4s ease;
 	}
-	.header-me .logged > .tab {
+
+	.header-me .logged>.tab {
 		transition: all 0.4s ease;
 	}
-	#account-input:checked ~ .logged > .tab {
+
+	#account-input:checked~.logged>.tab {
 		transform: rotate(180deg);
-		-ms-transform: rotate(180deg); /* IE 9 */
-		-moz-transform: rotate(180deg); /* Firefox */
-		-webkit-transform: rotate(180deg); /* Safari 和 Chrome */
+		-ms-transform: rotate(180deg);
+		/* IE 9 */
+		-moz-transform: rotate(180deg);
+		/* Firefox */
+		-webkit-transform: rotate(180deg);
+		/* Safari 和 Chrome */
 		-o-transform: rotate(180deg);
 	}
+
 	.header-me .no-logged,
 	.header-me .logged {
 		display: flex;
 		padding: 20px 0;
 	}
+
 	.header-me .logged {
 		justify-content: space-between;
 	}
@@ -601,6 +726,7 @@
 		font-style: var(--heading-font-style);
 		padding: 10px 0;
 	}
+
 	.order-me .icon-box {
 		overflow-x: scroll;
 		width: 100%;
@@ -612,25 +738,32 @@
 		display: flex;
 		justify-content: space-between;
 	}
+
 	.order-me .icons li {
 		cursor: pointer;
 	}
+
 	.order-me .icon {
 		font-size: 2em;
 	}
+
 	.order-me span {
 		font-size: 0.85rem;
 	}
+
 	.order-me .current {
 		color: #b82928;
 	}
+
 	.body-me {
 		margin-top: 10px;
 		background-color: #f0f0f0;
 	}
-	.body-me .card{
-	border: none;
+
+	.body-me .card {
+		border: none;
 	}
+
 	.body-me.loading {
 		color: #666666;
 		width: 100%;
@@ -639,69 +772,85 @@
 		text-align: center;
 		background-color: #FFFFFF;
 	}
-	.body-me.loading > svg {
+
+	.body-me.loading>svg {
 		animation: loading;
 		animation-duration: .3s;
 		animation-iteration-count: infinite;
 		animation-timing-function: linear;
 	}
-	.body-me.loading > .loading-text {
+
+	.body-me.loading>.loading-text {
 		font-size: 0.8rem;
 	}
+
 	@keyframes loading {
 		from {
 			transform: rotate(0);
 		}
+
 		to {
 			transform: rotate(45deg);
 		}
 	}
+
 	.body-me .card {
 		background-color: #f0f0f0;
 		padding: 10px;
 	}
+
 	.body-me .order-box {
 		margin-bottom: 10px;
 		border-radius: 5px;
 		padding: 20px;
 		background-color: #fff;
 	}
+
 	.body-me .order-title {
 		display: flex;
 		justify-content: space-between;
 	}
-	.body-me .order-title .title-info > span {
+
+	.body-me .order-title .title-info>span {
 		display: block;
 	}
+
 	.body-me .order-title .title-info-name {
 		font-family: var(--heading-font-family);
 		font-weight: var(--heading-font-weight);
 		font-style: var(--heading-font-style);
 	}
+
 	.body-me .order-title .title-info-data {
 		font-size: 0.8rem;
 		color: #666666;
 	}
+
 	.body-me .order-body {
 		padding-top: 10px;
 	}
+
 	.body-me .order-body li {
 		display: flex;
 		justify-content: space-between;
 		padding: 5px 0;
 	}
+
 	.body-me .order-body .pro-img {
 		width: 30%;
 	}
-	.body-me .order-body .pro-img > div {
+
+	.body-me .order-body .pro-img>div {
 		border: 1px solid #dddddd;
 		overflow: hidden;
 		border-radius: 10px;
 	}
+
 	.body-me .order-body .pro-info {
 		width: 70%;
 		padding: 0 10px;
 	}
+
 	.body-me .order-body .pro-info .info-title {
 		font-weight: 700;
 		overflow: hidden;
@@ -710,31 +859,37 @@
 		-webkit-box-orient: vertical;
 		-webkit-line-clamp: 2;
 	}
+
 	.body-me .order-body .pro-info .info-style {
 		display: flex;
 		justify-content: space-between;
 		color: #666666;
 	}
+
 	.body-me .order-footer {
 		text-align: right;
 	}
+
 	.body-me .order-footer .all-total {
 		font-family: var(--heading-font-family);
 		font-weight: var(--heading-font-weight);
 		font-style: var(--heading-font-style);
 		color: #B82928;
 	}
-	.post{
+
+	.post {
 		background-color: #fff;
 		text-align: center;
 		min-height: 100px;
 		margin-top: 10px;
 		display: none;
 	}
-	.post h3{
+
+	.post h3 {
 		line-height: 100px;
 		font-size: 1.3rem;
 	}
+
 	.icon-box li {
 		display: inline-block;
 		text-align: center;
@@ -747,6 +902,7 @@
 	.text-r {
 		text-align: right;
 	}
+
 	.hidden {
 		display: none;
 	}
@@ -756,9 +912,11 @@
 		margin-top: 10px;
 		min-height: 400px;
 	}
+
 	.advert-me ul {
 		padding: 50px 20px 0;
 	}
+
 	.advert-me li {
 		height: 50px;
 		line-height: 50px;
@@ -767,6 +925,7 @@
 		margin-bottom: 20px;
 		background-color: #707070;
 	}
+
 	.advert-me li a {
 		font-family: var(--heading-font-family);
 		font-weight: var(--heading-font-weight);
@@ -776,97 +935,94 @@
 	}
 </style>
 <script>
+	~ function () {
+		let getDataFlag = false;
 
-  ~function () {
-    let getDataFlag = false;
-
-    function getData(url, fn) {
-      if (getDataFlag) return;
-      getDataFlag = true;
-      let http = new XMLHttpRequest();
-      http.open('GET', url);
-      http.send();
-      http.onreadystatechange = () => {
-        if (http.readyState == 4) {
-          getDataFlag = false;
-          if (http.status == 200) {
-            fn(http.responseText);
-          }
-        }
-      }
-    }
-
-    function loading(bool) {
-      let loading = document.querySelector('#loading')
-      let body_me = document.querySelector('#body_me')
-      let nullbox=document.querySelector('#order_null')
-      if (bool) {
-        loading.style.display = 'block';
-        body_me.innerHTML = ''
-        nullbox.style.display='none'
-      } else {
-        loading.style.display = 'none';
-      }
-    }
-
-    function upData(data) {
-      loading(false);
-      let body_me = document.querySelector('#body_me')
-      body_me.style.display='block'
-      body_me.innerHTML = data
-			isnull()
-    }
-
-    function isnull(){
-			let fag=document.querySelectorAll('.card .order-box')
-			let nullbox=document.querySelector('#order_null')
-			let body_me=document.querySelector('#body_me')
-      console.log(fag.length)
-      if(!fag.length){
-        nullbox.style.display='block'
-        body_me.style.display='none'
-			}else{
-        nullbox.style.display='none'
+		function getData(url, fn) {
+			if (getDataFlag) return;
+			getDataFlag = true;
+			let http = new XMLHttpRequest();
+			http.open('GET', url);
+			http.send();
+			http.onreadystatechange = () => {
+				if (http.readyState == 4) {
+					getDataFlag = false;
+					if (http.status == 200) {
+						fn(http.responseText);
+					}
+				}
 			}
 		}
 
-    function event() {
-      let orders_list = document.querySelector("#orders-list")
-      let orders_li = document.querySelectorAll("#orders-list>li")
-      let post=document.querySelector('#post');
-      let body_me = document.querySelector('#body_me')
-      orders_list.onclick = (ev) => {
-        let target = ev.target;
-        if (target.tagName === "LI") {
-          for (let i = 0; i < orders_li.length; i++) {
-            orders_li[i].classList.remove('current')
-          }
-          target.classList.add('current')
-          let item = target.dataset.item;
-          if (item !== 'post-sale') {
-            post.style.display='none'
-            loading(true);
-            let url = '?section_id=my-'+ item;
-            getData(url, upData)
-          } else {
-            body_me.style.display='none'
-						post.style.display='block'
-          }
-        }
+		function loading(bool) {
+			let loading = document.querySelector('#loading')
+			let body_me = document.querySelector('#body_me')
+			let nullbox = document.querySelector('#order_null')
+			if (bool) {
+				loading.style.display = 'block';
+				body_me.innerHTML = ''
+				nullbox.style.display = 'none'
+			} else {
+				loading.style.display = 'none';
+			}
+		}
 
-      }
-    }
+		function upData(data) {
+			loading(false);
+			let body_me = document.querySelector('#body_me')
+			body_me.style.display = 'block'
+			body_me.innerHTML = data
+			isnull()
+		}
 
-    function init() {
-      let url = '?section_id=my-orders-all';
-      let nullbox=document.querySelector('#order_null')
-      nullbox.style.display='none'
-      getData(url, upData)
-    }
-    event();
-    init();
-  }()
+		function isnull() {
+			let fag = document.querySelectorAll('.card .order-box')
+			let nullbox = document.querySelector('#order_null')
+			let body_me = document.querySelector('#body_me')
+			if (!fag.length) {
+				nullbox.style.display = 'block'
+				body_me.style.display = 'none'
+			} else {
+				nullbox.style.display = 'none'
+			}
+		}
 
+		function event() {
+			let orders_list = document.querySelector("#orders-list")
+			let orders_li = document.querySelectorAll("#orders-list>li")
+			let post = document.querySelector('#post');
+			let body_me = document.querySelector('#body_me')
+			orders_list.onclick = (ev) => {
+				let target = ev.target;
+				if (target.tagName === "LI") {
+					for (let i = 0; i < orders_li.length; i++) {
+						orders_li[i].classList.remove('current')
+					}
+					target.classList.add('current')
+					let item = target.dataset.item;
+					if (item !== 'post-sale') {
+						post.style.display = 'none'
+						loading(true);
+						let url = '?section_id=my-' + item;
+						getData(url, upData)
+					} else {
+						body_me.style.display = 'none'
+						post.style.display = 'block'
+					}
+				}
+
+			}
+		}
+
+		function init() {
+			let url = '?section_id=my-orders-all';
+			let nullbox = document.querySelector('#order_null')
+			nullbox.style.display = 'none'
+			getData(url, upData)
+		}
+		event();
+		init();
+	}()
 </script>
 
 
@@ -953,5 +1109,11 @@
 		]
 		
 }
-{% endschema %}
 
+
+]
+}
+]
+
+}
+{% endschema %}
