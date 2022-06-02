@@ -129,8 +129,8 @@
 							  <div class="render_nav_list">
 							{%- for block in section.blocks -%}
 							{%- if block.settings.nav_show -%}
-							<div class="card__linklist-item link" data-right="{{block.settings.nav_right}}"> 
-								<span> {%- render 'icon', icon: '{{block.settings.nav_icon}}' -%}</span>
+							<div class="card__linklist-item link" style="cursor:pointer ;" data-right="{{block.settings.nav_right}}"> 
+								<span> {%- render 'icon', icon: {{block.settings.nav_icon}} -%}</span>
 							{{block.settings.nav_title}} 
 							</div>
 							{%- endif -%}
@@ -139,7 +139,7 @@
 						</left-nav-list>
 						
 							<a href="{{ routes.account_logout_url }}" class="card__linklist-item link"
-								 data-no-instant>{{ 'customer.general.logout' | t }}</a>
+								 data-no-instant>{% render 'icon', icon :"account-logout" %} {{ 'customer.general.logout' | t }}</a>
 						</div>
 					</div>
 				</div>
@@ -171,86 +171,10 @@
 				</div>
 			</div>
 
-			<div class="layout__section">
+			<div class="layout__section ">
 
-				<div  class="overview-box">
-					<h1>Hi  {{customer.first_name}}</h1>
-					<div class="d-flex account-overview__list">
-						<p class="d-flex overview-item">
-							<span>
-								100
-							</span>
-							<span>
-								Coupons 
-							</span>
-						</p>
-						<p class="d-flex overview-item">
-							<span>
-								100
-							</span>
-							<span>
-								Points
-							</span>
-						</p>
-						<p class="d-flex overview-item">
-							<span>
-								10
-							</span>
-							<span>
-								Collection
-							</span>
-						</p>
-					</div>
-				</div>
-
-				<div  class="order-preview overview-box">
-					<h1>My  Order</h1>
-					<ul class="d-flex account-overview__list" >
-						<li class="order-preview__item">
-								{%- render 'icon', icon: 'cjj_all' -%}
-								<p>All</p>
-							</a>
-						</li>
-						<li class="order-preview__item">
-							{%- render 'icon', icon: 'cjj_unpaid' -%}<br/>
-							<p>Unpaid</p>
-						</li>
-						<li class="order-preview__item">
-							{%- render 'icon', icon: 'cjj_processing' -%}<br/>
-							<p>Processing</p>
-						</li>
-						<li class="order-preview__item">
-							{%- render 'icon', icon: 'cjj_shipped' -%}<br/>
-							<p>Shipped</p>
-						</li>
-						<li class="order-preview__item">
-							{%- render 'icon', icon: 'cjj_payment' -%}<br/>
-							<p>Payment</p>
-						</li>
-						<li class="order-preview__item">
-							{%- render 'icon', icon: 'cjj_completed' -%}<br/>
-							<p>Completed</p>
-						</li>
-						<li class="order-preview__item">
-							{%- render 'icon', icon: 'cjj_post_sale' -%}<br/>
-							<p>Post-sale</p>
-						</li>
-					</ul>
-				</div>
-				<div class="overview-box points-box">
-					<h1>Points For</h1>
-					<div class="points-img">
-					{%- if section.settings.points_rule!= blank -%}
-					{%- assign points_image = section.settings.points_rule -%}
-					{%- capture supported_sizes -%}{%- render 'image-size', sizes: '200,300,400,500', image: points_image -%}{%- endcapture -%}
-					{%- assign image_url = points_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
-					 <img class="lazyload" alt="{{ points_image.alt | escape }}" data-src="{{ image_url }}" data-widths="[{{ supported_sizes }}]" data-sizes="auto">
-					{%- endif -%}
-
-					</div>
-				</div>
-				{%- comment -%}
 				<div class="wish_list">
+
 				<div class="wish_list account_right_content">
 					<header>
 						<h1 class="center">MY WISHLIST</h1>
@@ -373,65 +297,206 @@
 				
 
 				<div class="card my_orders account_right_content">
+					{%- comment -%}
 					<div
 						class="{% if customer.orders.size == 0 %}card__section card__section--tight{% else %}card__header card__header--tight{% endif %} my_order">
-						<h1
-							class="heading h1">{{ 'customer.general.orders' | t }} {% if customer.orders.size > 0 %}({{ customer.orders.size }}){% endif %}</h1>
+						<h1 class="heading h1">{{ 'customer.general.orders' | t }} {% if customer.orders.size > 0 %}({{
+							customer.orders.size }}){% endif %}</h1>
 					</div>
-
+					{%- endcomment -%}
+					{% render 'my-order-view' customer:customer%}
+					{%- comment -%}
 					{%- if customer.orders.size == 0 -%}
-						<div class="card__section">
-							<div class="empty-state empty-state--extra-tight">
-								<div class="empty-state__icon">
-									{%- render 'icon', icon: 'package' -%}
-									<span class="empty-state__count">0</span>
-								</div>
-
-								<p class="empty-state__icon-description">{{ 'customer.general.no_orders' | t }}</p>
-
-								<div class="empty-state__button-container">
-									<a href="{{ routes.all_products_collection_url }}"
-										 class="empty-state__button button button--primary">{{ 'customer.general.no_orders_button' | t }}</a>
-								</div>
+					<div class="card__section">
+						<div class="empty-state empty-state--extra-tight">
+							<div class="empty-state__icon">
+								{%- render 'icon', icon: 'package' -%}
+								<span class="empty-state__count">0</span>
+							</div>
+							<p class="empty-state__icon-description">{{ 'customer.general.no_orders' | t }}</p>
+				
+							<div class="empty-state__button-container">
+								<a href="{{ routes.all_products_collection_url }}" class="empty-state__button button button--primary">{{
+									'customer.general.no_orders_button' | t }}</a>
 							</div>
 						</div>
+					</div>
 					{%- else -%}
-						{%- paginate customer.orders by 8 -%}
-							<div class="table-wrapper">
-								<table class="table table--loose">
-									<thead>
-									<tr>
-										<th>{{ 'customer.order.order' | t }}</th>
-										<th>{{ 'customer.order.date' | t }}</th>
-										<th>{{ 'customer.order.payment_status' | t }}</th>
-										<th>{{ 'customer.order.fulfillment_status' | t }}</th>
-										<th class="table__cell--right">{{ 'customer.order.total' | t }}</th>
-									</tr>
-									</thead>
-
-									<tbody>
-									{%- for order in customer.orders -%}
-										<tr>
-											<td><a href="{{ order.customer_url }}" class="link link--accented">{{ order.name }}</a></td>
-											<td>{{ order.created_at | date: format: 'month_day_year' }}</td>
-											<td>{{ order.financial_status_label }}</td>
-											<td>{{ order.fulfillment_status_label }}</td>
-											<td class="table__cell--right">{{ order.total_price | money }}</td>
-										</tr>
-									{%- endfor -%}
-									</tbody>
-								</table>
-							</div>
-
-						{%- render 'pagination', paginate: paginate -%}
-						{% assign dm_paginate_by = paginate.page_size %}{%- endpaginate -%}
+				
+					{%- paginate customer.orders by 8 -%}
+				
+					<div class="table-wrapper">
+						<table class="table table--loose">
+							<thead>
+								<tr>
+									<th>{{ 'customer.order.order' | t }}</th>
+									<th>{{ 'customer.order.date' | t }}</th>
+									<th>{{ 'customer.order.payment_status' | t }}</th>
+									<th>{{ 'customer.order.fulfillment_status' | t }}</th>
+									<th class="table__cell--right">{{ 'customer.order.total' | t }}</th>
+								</tr>
+							</thead>
+				
+							<tbody>
+								{%- for order in customer.orders -%}
+								<tr>
+									<td><a href="{{ order.customer_url }}" class="link link--accented">{{ order.name }}</a></td>
+									<td>{{ order.created_at | date: format: 'month_day_year' }}</td>
+									<td>{{ order.financial_status_label }}</td>
+									<td>{{ order.fulfillment_status_label }}</td>
+									<td class="table__cell--right">{{ order.total_price | money }}</td>
+								</tr>
+								{%- endfor -%}
+							</tbody>
+						</table>
+					</div>
+				
+				
+					{%- render 'pagination', paginate: paginate -%}
+					{% assign dm_paginate_by = paginate.page_size %}{%- endpaginate -%}
 					{%- endif -%}
+					{%- endcomment -%}
 				</div>
 				
-				{%- endcomment -%}
 
 				<div class="my_overview account_right_content">
-					overview
+					<div  class="overview-box">
+						<h1>Hi  {{customer.first_name}}</h1>
+						<ul class="d-flex account-overview__list">
+							<li class="d-flex overview-item">
+								<span>
+									100
+								</span>
+								<span>
+									Coupons 
+								</span>
+							</li>
+							<li class="d-flex overview-item">
+								<span>
+									100
+								</span>
+								<span>
+									Points
+								</span>
+							</li>
+							<li class="d-flex overview-item">
+								<span>
+									10
+								</span>
+								<span>
+									Collection
+								</span>
+							</li>
+						</ul>
+					</div>
+					{%- assign order_unpaid = 0 -%}
+					{%- assign order_processing = 0 -%}
+					{%- assign order_shipped = 0 -%}
+					{%- assign order_payment = 0 -%}
+					{%- assign order_completed = 0 -%}
+
+					{%- for order in customer.orders -%}
+					{% if order.financial_status=='unpaid' or order.financial_status=='pending' %}
+					{%- assign order_unpaid = order_unpaid | plus: 1 -%}
+					{% endif%}
+					{% if order.fulfillment_status=='on hold' %}
+					{%- assign order_processing = order_processing | plus: 1 -%}
+					{% endif %}
+					{% if order.fulfillment_status=='in progress' %}
+					{%- assign order_shipped = order_shipped | plus: 1 -%}
+					{% endif%}
+					{% if order.financial_status=='paid' %}
+					{%- assign order_payment = order_payment | plus: 1 -%}
+					{% endif %}
+					{% if order.fulfillment_status=='fulfilled' %}
+					{%- assign order_completed = order_completed | plus: 1 -%}
+					{% endif%}
+					{%- endfor -%}
+					<div  class="order-preview overview-box">
+						<h1>My  Order</h1>
+						<ul class="d-flex account-overview__list" >
+							<li class="order-preview__item">
+								<span class="order-icon">
+									{%- render 'icon', icon: 'cjj_all' -%}
+									{%- comment -%}
+									<span class="empty-state__count redio-icon">{{customer.orders_count}}</span>
+									{%- endcomment -%}
+								</span>
+									<p>All</p>
+								</a>
+							</li>
+							<li class="order-preview__item">
+								<span class="order-icon">
+									{%- render 'icon', icon: 'cjj_unpaid' -%}
+									{%- if order_unpaid!=0 -%}
+									<span class="empty-state__count redio-icon">{{order_unpaid}}</span>
+									{%- endif -%}
+								</span>
+								<p>Unpaid</p>
+							</li>
+							<li class="order-preview__item">
+								<span class="order-icon">
+									{%- render 'icon', icon: 'cjj_processing' -%}
+									{%- if order_processing!=0 -%}
+									<span class="empty-state__count redio-icon">{{order_processing}}</span>
+									{%- endif -%}
+								</span>
+								<p>Processing</p>
+							</li>
+							<li class="order-preview__item">
+								<span class="order-icon">
+									{%- render 'icon', icon: 'cjj_shipped' -%}
+									{%- if order_shipped!=0 -%}
+									<span class="empty-state__count redio-icon">{{order_shipped}}</span>
+										
+									{%- endif -%}
+								</span>
+								<p>Shipped</p>
+							</li>
+
+							<li class="order-preview__item">
+								<span class="order-icon">
+									{%- render 'icon', icon: 'cjj_payment' -%}
+									{%- if order_payment!=0 -%}
+									<span class="empty-state__count redio-icon">{{order_payment}}</span>
+										
+									{%- endif -%}
+								</span>
+								<p>Payment</p>
+							</li>
+							<li class="order-preview__item">
+								<span class="order-icon">
+									{%- render 'icon', icon: 'cjj_completed' -%}
+									{%- if order_completed!=0 -%}
+									<span class="empty-state__count redio-icon">{{order_completed}}</span>
+										
+									{%- endif -%}
+								</span>
+								<p>Completed</p>
+							</li>
+							<li class="order-preview__item">
+								<!-- <a href="mailto:contactus@hyfol.com" target="_blank" rel="noopener" aria-describedby="a11y-new-window-message"> -->
+								<span class="order-icon">
+										{%- render 'icon', icon: 'cjj_post_sale' -%}<br/>
+									</span>
+									<p>Post-sale</p>
+									<!-- </a> -->
+							</li>
+						</ul>
+					</div>
+
+					<div class="overview-box points-box">
+						<h1>Points For</h1>
+						<div class="points-img">
+						{%- if section.settings.points_rule!= blank -%}
+						{%- assign points_image = section.settings.points_rule -%}
+						{%- capture supported_sizes -%}{%- render 'image-size', sizes: '200,300,400,500', image: points_image -%}{%- endcapture -%}
+						{%- assign image_url = points_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+						 <img class="lazyload" alt="{{ points_image.alt | escape }}" data-src="{{ image_url }}" data-widths="[{{ supported_sizes }}]" data-sizes="auto">
+						{%- endif -%}
+	
+						</div>
+					</div>
 				</div>
 
 				<div class="my_rewards account_right_content">
@@ -804,6 +869,7 @@
 
 </script>
 
+
 {% schema %}
 {
 		"name": "个人中心左侧导航",
@@ -837,9 +903,48 @@
 			"default": true
 		},
 		{
-			"type":"text",
+			"type":"select",
 			"id":"nav_icon",
-			"label":"icon名字"
+			"options": [
+            {
+              "value": "none",
+              "label": "无"
+            },
+			{
+				"value":"account-text",
+				"label":"文本"
+			},
+			{
+				"value":"account-my",
+				"label":"用户"
+			},
+			{
+				"value":"account-logout",
+				"label":"退出"
+			},
+			{
+				"value":"account-palay",
+				"label":"支付"
+			},
+			{
+				"value":"account-collect",
+				"label":"收藏"
+			},
+			{
+				"value":"account-renz",
+				"label":"认证"
+			},
+			{
+				"value":"account-cart",
+				"label":"购物车"
+			},
+			{
+				"value":"account-location",
+				"label":"定位"
+			}
+			],
+			"default":"none",
+			"label":"选择图标"
 		}
 		
 		
