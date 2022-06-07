@@ -1,4 +1,4 @@
-<section class="hidden-tablet hidden-tablet-and-up">
+<section class="hidden-lap-and-up">
 	<div class="header-me container">
 		{%- if customer -%}
 		<input type="checkbox" id="account-input" class="account-input hidden">
@@ -7,6 +7,7 @@
 			<li class=" text-r tab"><label for="account-input">{%- render 'icon', icon: 'arrow-bottom' -%}</label></li>
 		</ul>
 		<div class="account-box">
+			{%- comment -%}
 			<a href="{{ routes.account_url }}"
 				class="value-picker__choice-item is-selected">{{ 'customer.general.orders' | t }}
 				{% render 'icon', icon: 'check-2' %}</a>
@@ -15,7 +16,26 @@
 				{% render 'icon', icon: 'check-2' %}</a>
 			<a href="{{ routes.account_logout_url }}" class="value-picker__choice-item"
 				data-no-instant>{{ 'customer.general.logout' | t }} {% render 'icon', icon: 'check-2' %}</a>
-
+{%- endcomment -%}
+<div class="card__linklist ">
+					
+	<left-nav-list>
+		<div class="render_nav_list">
+	  {%- for block in section.blocks -%}
+	  {%- if block.settings.nav_show -%}
+	  <div class="card__linklist-item link" style="cursor:pointer ;" data-right="{{block.settings.nav_right}}"> 
+		  <span> {%- render 'icon', icon: {{block.settings.nav_icon}} -%}</span>
+	  {{block.settings.nav_title}} 
+	  </div>
+	  {%- endif -%}
+   {%- endfor -%}
+  </div>
+  </left-nav-list>
+  
+	  <a href="{{ routes.account_logout_url }}" class="card__linklist-item link"
+		   data-no-instant>{% render 'icon', icon :"account-logout" %} {{ 'customer.general.logout' | t }}</a>
+  </div>
+         
 		</div>
 		{%- else -%}
 		<ul class="no-logged">
@@ -24,83 +44,11 @@
 		</ul>
 		{%- endif -%}
 	</div>
-	<div class="order-me container">
-		<h2>{{- 'customer.general.orders' | t -}}</h2>
 
-		<div class="icon-box">
-			<ul class="icons" id="orders-list">
-				<li data-item="orders-all" class="current">
-					{%- render 'icon', icon: 'cjj_all' -%}<br />
-					<span>All</span>
-				</li>
-				<li data-item="orders-unpaid">
-					{%- render 'icon', icon: 'cjj_unpaid' -%}<br />
-					<span>Unpaid</span>
-				</li>
-				<li data-item="orders-processing">
-					{%- render 'icon', icon: 'cjj_processing' -%}<br />
-					<span>Processing</span>
-				</li>
-				<li data-item="orders-shipped">
-					{%- render 'icon', icon: 'cjj_shipped' -%}<br />
-					<span>Shipped</span>
-				</li>
-				<li data-item="orders-payment">
-					{%- render 'icon', icon: 'cjj_payment' -%}<br />
-					<span>Payment</span>
-				</li>
-				<li data-item="orders-completed">
-					{%- render 'icon', icon: 'cjj_completed' -%}<br />
-					<span>Completed</span>
-				</li>
-				<li data-item="post-sale">
-					{%- render 'icon', icon: 'cjj_post_sale' -%}<br />
-					<span>Post-sale</span>
-				</li>
-			</ul>
-		</div>
-
-	</div>
-	<div class="body-me loading" id="loading">
-		{%- render 'icon', icon: 'cjj_loading' -%}
-		<span class="loading-text">&nbsp;loading...</span>
-	</div>
-	<div class="card__section" id="order_null">
-		<div class="empty-state empty-state--extra-tight">
-			<div class="empty-state__icon">
-				{%- render 'icon', icon: 'package' -%}
-				<span class="empty-state__count">0</span>
-			</div>
-			<p class="empty-state__icon-description">{{ 'customer.general.no_orders' | t }}</p>
-			<div class="empty-state__button-container">
-				<a href="{{ routes.all_products_collection_url }}"
-					class="empty-state__button button button--primary">{{ 'customer.general.no_orders_button' | t }}</a>
-			</div>
-		</div>
-	</div>
-
-	<div class="body-me" id="body_me">
-		<!--渲染订单区域-->
-	</div>
-	<div class="post" id="post">
-		<div class="container">
-			<h3>
-				{%- render 'icon', icon: 'bi-email' -%}&nbsp;&nbsp;
-				<a href="mailto:contactus@hyfol.com" target="_blank" rel="noopener"
-					aria-describedby="a11y-new-window-message">contactus@hyfol.com</a>
-			</h3>
-		</div>
-	</div>
-	<div class="advert-me container">
-		<ul>
-			<li><a href="{{ routes.cart_url }}">SHOPPING CART</a></li>
-			<li><a href="{{ routes.root_url }}collections/hot-sale">HOT SALE</a></li>
-		</ul>
-	</div>
 </section>
 
-<section data-section-id="{{ section.id }}" data-section-type="account" class="hidden-phone">
-	<div class="page__sub-header">
+<section data-section-id="{{ section.id }}" data-section-type="account" class="">
+	<div class="page__sub-header hidden-tablet">
 		<nav aria-label="{{ 'general.breadcrumb.title' | t }}" class="breadcrumb">
 			<ol class="breadcrumb__list" role="list">
 				<li class="breadcrumb__item">
@@ -124,7 +72,7 @@
 	<div class="container container--flush">
 
 		<div class="layout">
-			<div class="layout__section layout__section--secondary">
+			<div class="layout__section layout__section--secondary hidden-phone">
 				<div class="card card--sticky hidden-pocket">
 					<div class="card__section card__section--tight">
 
@@ -187,7 +135,15 @@
 					<header>
 						<h1 class="center wish_title">MY WISHLIST</h1>
 					</header>
-                    <div class="wish_loading"><div class="loading_round"></div></div>
+
+				
+
+                    <div class="wish_loading">
+						<div class="body-me loading">
+						{%- render 'icon', icon: 'cjj_loading' -%}
+						<span class="loading-text">&nbsp;loading...</span>
+					</div>
+				</div>
 					<style>
 						/* .openQuickView {
 							display: none;
@@ -213,7 +169,7 @@
 						}
 					</style>
 
-					<div class="collect collection page-width">
+					<div class="collect page-width">
 
 					</div>					
 
@@ -403,6 +359,7 @@
 
 
 				<div class="card my_orders account_right_content">
+
 					{%- comment -%}
 					<div
 						class="{% if customer.orders.size == 0 %}card__section card__section--tight{% else %}card__header card__header--tight{% endif %} my_order">
@@ -410,7 +367,86 @@
 							{% if customer.orders.size > 0 %}({{ customer.orders.size }}){% endif %}</h1>
 					</div>
 					{%- endcomment -%}
-					{% render 'my-order-view' customer:customer%}
+					<div class="hidden-phone">
+						
+						{% render 'my-order-view' customer:customer%}
+					</div>
+
+					<div class="large_pad">
+						<div class="order-me container">
+							<h2>{{- 'customer.general.orders' | t -}}</h2>
+					
+							<div class="icon-box">
+								<ul class="icons" id="orders-list">
+									<li data-item="orders-all" class="current">
+										{%- render 'icon', icon: 'cjj_all' -%}<br />
+										<span>All</span>
+									</li>
+									<li data-item="orders-unpaid">
+										{%- render 'icon', icon: 'cjj_unpaid' -%}<br />
+										<span>Unpaid</span>
+									</li>
+									<li data-item="orders-processing">
+										{%- render 'icon', icon: 'cjj_processing' -%}<br />
+										<span>Processing</span>
+									</li>
+									<li data-item="orders-shipped">
+										{%- render 'icon', icon: 'cjj_shipped' -%}<br />
+										<span>Shipped</span>
+									</li>
+									<li data-item="orders-payment">
+										{%- render 'icon', icon: 'cjj_payment' -%}<br />
+										<span>Payment</span>
+									</li>
+									<li data-item="orders-completed">
+										{%- render 'icon', icon: 'cjj_completed' -%}<br />
+										<span>Completed</span>
+									</li>
+									<li data-item="post-sale">
+										{%- render 'icon', icon: 'cjj_post_sale' -%}<br />
+										<span>Post-sale</span>
+									</li>
+								</ul>
+							</div>
+					
+						</div>
+						<div class="body-me loading" id="loading">
+							{%- render 'icon', icon: 'cjj_loading' -%}
+							<span class="loading-text">&nbsp;loading...</span>
+						</div>
+						<div class="card__section" id="order_null">
+							<div class="empty-state empty-state--extra-tight">
+								<div class="empty-state__icon">
+									{%- render 'icon', icon: 'package' -%}
+									<span class="empty-state__count">0</span>
+								</div>
+								<p class="empty-state__icon-description">{{ 'customer.general.no_orders' | t }}</p>
+								<div class="empty-state__button-container">
+									<a href="{{ routes.all_products_collection_url }}"
+										class="empty-state__button button button--primary">{{ 'customer.general.no_orders_button' | t }}</a>
+								</div>
+							</div>
+						</div>
+					
+						<div class="body-me" id="body_me">
+							<!--渲染订单区域-->
+						</div>
+						<div class="post" id="post">
+							<div class="container">
+								<h3>
+									{%- render 'icon', icon: 'bi-email' -%}&nbsp;&nbsp;
+									<a href="mailto:contactus@hyfol.com" target="_blank" rel="noopener"
+										aria-describedby="a11y-new-window-message">contactus@hyfol.com</a>
+								</h3>
+							</div>
+						</div>
+						<div class="advert-me container">
+							<ul>
+								<li><a href="{{ routes.cart_url }}">SHOPPING CART</a></li>
+								<li><a href="{{ routes.root_url }}collections/hot-sale">HOT SALE</a></li>
+							</ul>
+						</div>
+					</div>
 					{%- comment -%}
 					{%- if customer.orders.size == 0 -%}
 					<div class="card__section">
@@ -669,7 +705,7 @@
 	}
 
 	#account-input:checked~.account-box {
-		height: 130px;
+		height:270px;
 		transition: all 0.4s ease;
 	}
 
@@ -750,7 +786,7 @@
 
 	.body-me {
 		margin-top: 10px;
-		background-color: #f0f0f0;
+		/* background-color: #f0f0f0; */
 	}
 
 	.body-me .card {
@@ -763,7 +799,7 @@
 		height: 60px;
 		font-size: 2em;
 		text-align: center;
-		background-color: #FFFFFF;
+		/* background-color: #FFFFFF; */
 	}
 
 	.body-me.loading>svg {

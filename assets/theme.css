@@ -1584,7 +1584,7 @@ body:not(.is-tabbing) textarea:focus {
 
 @media screen and (max-width: 640px) {
   .container--flush {
-    padding: 20px;
+    padding: 5px;
   }
 
   .container--unflush {
@@ -3505,6 +3505,9 @@ display: none;
 @media screen  and (min-width: 640px) {
   .mini-cart__line-item-list{
     max-height: 135px
+ }
+ .large_pad{
+   display: none;
  }
 
 }
@@ -10439,7 +10442,7 @@ shopify-payment-terms {
 /*  border-bottom: 7px solid #1b1b1b;*/
 /*}*/
 
-.collection .color-swatch__radio:checked+.color-swatch__item::after,
+.color-swatch__radio:checked+.color-swatch__item::after,
 .card__section .color-swatch__radio[checked]+.color-swatch__item::after,
 #mini-cart .color-swatch__radio[checked]+.color-swatch__item::after,
 .color-swatch__button.is-selected .color-swatch__item::after {
