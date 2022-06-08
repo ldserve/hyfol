@@ -17,7 +17,7 @@
           "settings": {
             "nav_title": "Loyalty Rewards",
             "nav_right": "my_rewards",
-            "nav_show": true,
+            "nav_show": false,
             "nav_icon": "account-renz"
           }
         },
@@ -26,7 +26,7 @@
           "settings": {
             "nav_title": "Profile",
             "nav_right": "my_profile",
-            "nav_show": true,
+            "nav_show": false,
             "nav_icon": "account-my"
           }
         },
@@ -62,7 +62,7 @@
           "settings": {
             "nav_title": "Payment Methods",
             "nav_right": "my_methods",
-            "nav_show": true,
+            "nav_show": false,
             "nav_icon": "account-palay"
           }
         }
