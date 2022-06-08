@@ -3,76 +3,6 @@
         factory();
 }((function () {
     'use strict';
-    (function (){
-        class Dep { // 订阅池
-            constructor(name) {
-              this.subs = [] //该事件下被订阅对象的集合
-            }
-            defined(watch) {
-              this.subs.push(watch)
-            }
-            notify() { //通知订阅者有变化
-            //   console.log('this.subs',this.subs)
-              this.subs.forEach((e, i) => {
-                if (typeof e.update === 'function') {
-                  try {
-                    e.update.apply(e) //触发订阅者更新函数
-                  } catch (err) {
-                    console.error(err)
-                  }
-                }
-              })
-            }
-          }
-      
-          class Watch {
-            constructor(name, fn) {
-              this.name = name; //订阅消息的名称
-              this.callBack = fn; //订阅消息发送改变时->订阅者执行的回调函数     
-            }
-            add(dep) { //将订阅者放入dep订阅池
-              dep.subs.push(this);
-            }
-            update() { //将订阅者更新方法
-              var cb = this.callBack; //赋值为了不改变函数内调用的this
-              cb(this.name);
-            }
-          }
-          function addMethod() {
-            let historyDep = new Dep();
-            return function (name) {
-              if (name === 'historychange') {
-                return function (name, fn) {
-                  let event = new Watch(name, fn)
-                  historyDep.defined(event);
-                }
-              } else if (name === 'pushState' ) {
-                let method = history[name];
-                return function () {
-                //   console.log('pushState','arguments',arguments[2])
-                  method.apply(history, arguments);
-                  historyDep.notify();
-                }
-              }else if ( name === 'replaceState') {
-                let method = history[name];
-                return function () {
-                //   console.log('replaceState','arguments',arguments[2])
-                  method.apply(history, arguments);
-                  historyDep.notify();
-                }
-              }
-      
-            }
-          }
-          let addHistoryMethod = new addMethod()
-          window.historyChange = addHistoryMethod('historychange');
-          history.pushState = addHistoryMethod('pushState');
-          history.replaceState = addHistoryMethod('replaceState');              
-          window.historyChange('history',function(){
-            //注意这个方法只要路由发生变化就会被触发
-                console.log('history',location);
-            })
-    })
 
     class LeftNavList extends HTMLElement {
         constructor() {
@@ -81,38 +11,133 @@
             this.init()
         }
         init() { 
-           this.navList.childNodes.forEach((item)=>{
-            item.addEventListener("click",this.changeNav)
+           this.navList.childNodes.forEach((item,index)=>{
+                   item.addEventListener("click",this.changeNav)
            })
         //    history.replaceState('','','https://www.hyfol.com/account?location=overview')
            this.querySelector(".card__linklist-item").className = " card__linklist-item link text--stronger " 
            document.querySelector(".my_overview").style.display = "block"
+          
+           if(window.location.hash){
 
+               var nowNav = window.location.hash.split("#")[1].replace(/\%20/g," ")
+            
+           this.navList.childNodes.forEach((item)=>{
+            item.className = " card__linklist-item  "
+           })
+
+         
+           var list = document.querySelector(".wish_list").parentElement.children
+           for(let i=0 ; i<list.length ; i++){
+               list[i].style.display = "none"
+           }
+
+           document.querySelectorAll(".card__linklist-item").forEach((item)=>{
+               if(item.lastElementChild.innerHTML == nowNav){
+
+                   item.className = " card__linklist-item link text--stronger "
+                   var enode = item.getAttribute("data-right")
+                   document.querySelector("."+enode).style.display = "block"
+               }
+           })
+           }
+
+       
         }
         changeNav = (e) =>{
-            // const target=e.target
-            // if(target.dataset.right){
-            //     const hashUrl=target.dataset.right.replace('my_','')
-            //     history.pushState('','','https://www.hyfol.com/account?location='+hashUrl)
-            // }
+             
+
             this.navList.childNodes.forEach((item)=>{
                 item.className = " card__linklist-item  "
                })
-            e.target.className = " card__linklist-item link text--stronger "
-            
 
-            var list = document.querySelector("."+e.target.getAttribute("data-right")).parentElement.children
+             if( e.target.parentElement.getAttribute("data-right") == null){
+                e.target.className = " card__linklist-item link text--stronger "
+                var enode = e.target.getAttribute("data-right")
+                var searchValue = e.target.lastElementChild.innerHTML
+
+             }else{
+                   e.target.parentElement.className = " card__linklist-item link text--stronger "
+                   var enode = e.target.parentElement.getAttribute("data-right")
+                   var searchValue =  e.target.parentElement.lastElementChild.innerHTML
+
+             }
+             window.location.hash = searchValue
+
+            var list = document.querySelector("."+enode).parentElement.children
             for(let i=0 ; i<list.length ; i++){
                 list[i].style.display = "none"
             }
     
-            document.querySelector("."+e.target.getAttribute("data-right")).style.display = "block"
+            document.querySelector("."+enode).style.display = "block"
            
         }
     }
     customElements.define("left-nav-list", LeftNavList);
 
-   
+    class OrderItem extends HTMLElement {
+        constructor() {
+            super();
+            this.iconList = this.querySelectorAll(".order-preview__item")
+            this.navList = document.querySelector('.table-left-nav').querySelector(".render_nav_list ")
+            this.init()
+        }
+        init() { 
+            this.iconList.forEach((item,index)=>{
+                if(index != this.iconList.length-1){
+                item.addEventListener("click",this.changeNav)
+                }
+            })
+            if(window.location.hash.split("+")[1]){
+                   this.changeNav()
+            }
+        }
+        changeNav(){
+            
+            if(window.location.hash.split("+")[1]){
+               console.log("初始化流程");
+            }else{
+                var searchValue = this.lastElementChild.textContent
+                window.location.hash ="Orders+"+searchValue
+            }
+            
+
+             var url = window.location.hash.split("+")[1].toLowerCase()
+
+             document.querySelector('.table-left-nav').querySelector(".render_nav_list ").childNodes.forEach((item)=>{
+                
+                if(item.getAttribute("data-right") == "my_orders"){
+                    item.className = " card__linklist-item link text--stronger  "
+                }else{
+                    item.className = " card__linklist-item  "
+                }
+               })
+
+             var list = document.querySelector(".wish_list").parentElement.children
+             for(let i=0 ; i<list.length ; i++){
+                 list[i].style.display = "none"
+             }
+             document.querySelector(".my_orders").style.display = "block"
+
+             document.querySelectorAll(".orders-nav__item").forEach((item)=>{
+                item.setAttribute("data-action",false)
+           })
+
+           document.querySelectorAll('.order-item__card').forEach((item)=>{
+            item.setAttribute("aria-hidden",true)
+       })
+
+           document.querySelector(".order-"+url).setAttribute("data-action",true)
+
+           var index= document.querySelector(".order-"+url).getAttribute("data-index")
+           document.querySelectorAll('.order-item__card').forEach((item)=>{
+           if(item.getAttribute("data-index") == index){
+                item.setAttribute("aria-hidden",false)
+           } 
+       })
+        }
+    }
+    customElements.define("order-item", OrderItem);
 
     class SizeBlock extends HTMLElement {
         constructor() {
@@ -132,7 +157,6 @@
                     this.container.getElementsByClassName("block-swatch")[i].style.left = this.sum + "px"
                     this.sum += offsetWidth + 2
                 }
-                // console.log(sum);
             }
         }
     }

@@ -25,7 +25,7 @@
 	  {%- if block.settings.nav_show -%}
 	  <div class="card__linklist-item link" style="cursor:pointer ;" data-right="{{block.settings.nav_right}}"> 
 		  <span> {%- render 'icon', icon: {{block.settings.nav_icon}} -%}</span>
-	  {{block.settings.nav_title}} 
+	<span> {{block.settings.nav_title}} </span> 
 	  </div>
 	  {%- endif -%}
    {%- endfor -%}
@@ -76,7 +76,7 @@
 				<div class="card card--sticky hidden-pocket">
 					<div class="card__section card__section--tight">
 
-						<div class="card__linklist ">
+						<div class="card__linklist table-left-nav">
 					
 						  <left-nav-list>
 							  <div class="render_nav_list">
@@ -84,7 +84,7 @@
 							{%- if block.settings.nav_show -%}
 							<div class="card__linklist-item link" style="cursor:pointer ;" data-right="{{block.settings.nav_right}}"> 
 								<span> {%- render 'icon', icon: {{block.settings.nav_icon}} -%}</span>
-							{{block.settings.nav_title}} 
+							<span>{{block.settings.nav_title}}</span>
 							</div>
 							{%- endif -%}
 						 {%- endfor -%}
@@ -240,6 +240,7 @@
 										document.querySelector(".wish_loading").style.display = "none"
 										return
 									}
+									document.querySelector(".collection-num").innerHTML = res.data.total
 									var ids = ""
 									res.data.records.forEach((item, index) => {
 										if (index === 0) {
@@ -265,10 +266,12 @@
 											document.querySelector('.collect').appendChild(dom.querySelector(
 												".modal__dialog").parentElement)
 
-											document.querySelector('.pagination__nav').querySelectorAll(".pagination__nav-item")
-												.forEach((item, index) => {
-													item.addEventListener("click", nextCollectList)
-												})
+											if(document.querySelector('.pagination__nav')){
+												document.querySelector('.pagination__nav').querySelectorAll(".pagination__nav-item")
+													.forEach((item, index) => {
+														item.addEventListener("click", nextCollectList)
+													})
+											}
                                             
 											
 											const removeNodes = document.querySelectorAll(".collect .add-collect")
@@ -352,7 +355,7 @@
 								});
 						}
 
-						document.querySelector(".wish_list_quickview").addEventListener("click",wishLishQuickView)
+					
 				
 					</script>
 				</div>
@@ -512,16 +515,16 @@
 								</span>
 							</li>
 							<li class="d-flex overview-item">
-								<span>
-									100
+								<span class="account-points">
+									
 								</span>
 								<span>
 									Points
 								</span>
 							</li>
 							<li class="d-flex overview-item">
-								<span>
-									10
+								<span class="collection-num">
+									
 								</span>
 								<span>
 									Collection
@@ -554,6 +557,8 @@
 					{%- endfor -%}
 					<div  class="order-preview overview-box">
 						<h1>My  Order</h1>
+
+					<order-item>
 						<ul class="d-flex account-overview__list" >
 							<li class="order-preview__item">
 								<span class="order-icon">
@@ -623,6 +628,7 @@
 									<!-- </a> -->
 							</li>
 						</ul>
+					</order-item>
 					</div>
 
 					<div class="overview-box points-box">
@@ -1632,7 +1638,6 @@
 		event();
 		init();
 
-
 		function deleteAddresses() {
 			function getFormData(form) {
 				var hash = [];
@@ -1675,7 +1680,20 @@
 		}
 		deleteAddresses()
 
-	
+    function getPoint (){
+
+		let allPrice = 0 
+		
+        {% for order in customer.orders %}
+		{% if order.financial_status=='fulfilled' %}
+        allPrice += ('{{ order.total_price }}' * 1) || 0   
+		{% endif %}
+		{% endfor %}
+        let point = Math.round(allPrice/100) 
+        document.querySelector(".account-points").innerHTML= point
+	}
+	getPoint()
+
 	}()
 </script>
 

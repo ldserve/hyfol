@@ -23,7 +23,7 @@
             {%- render 'icon', icon: 'cjj_processing' -%}
             <span>Processing</span>
         </li>
-        <li class="order-shippend orders-nav__item" data-action="false" data-index="5">
+        <li class="order-completed orders-nav__item" data-action="false" data-index="5">
             {%- render 'icon', icon: 'cjj_completed' -%}
             <span>Completed</span>
         </li>
@@ -34,6 +34,7 @@
     </ul>
    
     <div class="order__render-view">
+
         <div class="card order-item__card" aria-hidden="false" data-index="1">
             {%- if customer.orders_count == 0 -%}
             <div class="card__section">
@@ -665,6 +666,8 @@
                     })
             }
         })
+
+
 
     })()
 
