@@ -376,9 +376,7 @@
 							<div class="header__action-item-content">
 								<a href="{% if customer %}{{ routes.account_url }}{% else %}{{ routes.account_login_url }}{% endif %}"
 									 class="header__action-item-link header__account-icon icon-state hidden-desk shence_commodityView"
-									 aria-label="{{ 'header.general.account' | t }}" {% if customer %}aria-controls="account-popover"
-									 aria-expanded="false"
-									 data-action="toggle-popover"{% endif %} {% if customer %}data-follow-link="phone"{% endif %}
+									 aria-label="{{ 'header.general.account' | t }}" {% if customer %}data-follow-link="phone"{% endif %}
 									 data-scenable="1" data-expenable="1" data-bindexp="1" data-sctype="mktClick"
 									 data-scdata='{"mkt_type":"bar","first_mkt_name":"顶部导航","first_mkt_id":"{{ section.id }}","second_mkt_rank":"","third_mkt_rank":"","mkt_material_url":"","mkt_material_name":"账号","commodity_spuid":"","commodity_skuid":"","commodity_name":"","original_price":"","current_price":"","currency_unit":"","mkt_tag":[]}'>
 									<span class="icon-state__primary">{%- render 'icon', icon: 'account' -%}</span>
@@ -387,8 +385,7 @@
 					
 								<a href="{% if customer %}{{ routes.account_url }}{% else %}{{ routes.account_login_url }}{% endif %}"
 									 class="header__action-item-link hidden-pocket hidden-lap shence_commodityView"
-									 {% if customer %}aria-controls="account-popover" aria-expanded="false"
-									 data-action="toggle-popover"{% endif %} data-scenable="1" data-expenable="1" data-bindexp="1"
+								     data-scenable="1" data-expenable="1" data-bindexp="1"
 									 data-sctype="mktClick"
 									 data-scdata='{"mkt_type":"bar","first_mkt_name":"顶部导航","first_mkt_id":"{{ section.id }}","second_mkt_rank":"","third_mkt_rank":"","mkt_material_url":"","mkt_material_name":"账号","commodity_spuid":"","commodity_skuid":"","commodity_name":"","original_price":"","current_price":"","currency_unit":"","mkt_tag":[]}'>
 								{%- render 'icon', icon: 'account' -%}
