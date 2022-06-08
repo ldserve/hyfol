@@ -904,6 +904,7 @@
 								  class="form__submit button button--primary button--full"               
 								  data-scenable="1"   
 								  data-sctype="profile_set"
+								  data-submitForm
 								>{{ 'customer.addresses.add_address' | t }}</button>
 							  {%- endform -%}
 							</div>
@@ -1631,20 +1632,45 @@
 		event();
 		init();
 
-		Shopify.postLink = function (t, e) {
-			var n = (e = e || {}).method || "post", i = e.parameters || {}, o = document.createElement("form");
-			for (var r in o.setAttribute("method", n),
-				o.setAttribute("action", t), i) {
-				var l = document.createElement("input");
-				l.setAttribute("type", "hidden"), l.setAttribute("name", r), l.setAttribute("value", i[r]), o.appendChild(l)
-			}
-			document.body.appendChild(o), o.submit(), document.body.removeChild(o)
-		}
 
 		function deleteAddresses() {
+			function getFormData(form) {
+				var hash = [];
+				for (var i = 0, len = form.elements.length; i < len; i++) {
+					var formElement = form.elements[i];
+					if (formElement.name === '' || formElement.disabled) {
+						continue;
+					}
+					if (formElement.name && !formElement.disabled && (formElement.checked || /select|textarea/i.test(formElement.nodeName) || /hidden|text|search|tel|url|email|password|datetime|date|month|week|time|datetime-local|number|range|color/i.test(formElement.type))) {
+						hash.push(formElement.name + '=' + formElement.value)
+					}
+				}
+
+				return hash.join('&');
+			}
+
+			document.querySelector('.form__submit[data-submitForm]').onclick = function (e) {
+				e.preventDefault()
+				const form = e.target.closest('form')
+				const formData = getFormData(form)
+				fetch('/account/addresses', {
+					method: "POST", 
+					headers: {'Content-Type': 'application/x-www-form-urlencoded'}, 
+					body: formData
+				}).then(response => {
+					location.reload()
+
+				})
+
+			}
+
 			document.querySelector('.address-list').addEventListener('click', ({ target }) => {
 				if (!target.dataset.target) return
-				confirm("Are you sure you wish to delete this address?") && Shopify.postLink(target.dataset.target, { parameters: { _method: "delete" } })
+				if (confirm("Are you sure you wish to delete this address?")) {
+					fetch(target.dataset.target, { method: "POST", headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: '_method=delete' }).then(response => {
+						location.reload()
+					})
+				}
 			})
 		}
 		deleteAddresses()

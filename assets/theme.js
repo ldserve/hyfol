@@ -72,8 +72,8 @@
             //注意这个方法只要路由发生变化就会被触发
                 console.log('history',location);
             })
-    })()
-    
+    })
+
     class LeftNavList extends HTMLElement {
         constructor() {
             super();
@@ -84,17 +84,17 @@
            this.navList.childNodes.forEach((item)=>{
             item.addEventListener("click",this.changeNav)
            })
-           history.replaceState('','','https://www.hyfol.com/account?location=overview')
+        //    history.replaceState('','','https://www.hyfol.com/account?location=overview')
            this.querySelector(".card__linklist-item").className = " card__linklist-item link text--stronger " 
            document.querySelector(".my_overview").style.display = "block"
 
         }
         changeNav = (e) =>{
-            const target=e.target
-            if(target.dataset.right){
-                const hashUrl=target.dataset.right.replace('my_','')
-                history.pushState('','','https://www.hyfol.com/account?location='+hashUrl)
-            }
+            // const target=e.target
+            // if(target.dataset.right){
+            //     const hashUrl=target.dataset.right.replace('my_','')
+            //     history.pushState('','','https://www.hyfol.com/account?location='+hashUrl)
+            // }
             this.navList.childNodes.forEach((item)=>{
                 item.className = " card__linklist-item  "
                })
