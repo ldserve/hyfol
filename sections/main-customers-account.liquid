@@ -515,8 +515,8 @@
 								</span>
 							</li>
 							<li class="d-flex overview-item">
-								<span>
-									100
+								<span class="account-points">
+									
 								</span>
 								<span>
 									Points
@@ -1057,6 +1057,21 @@
 		}
 		event();
 		init();
+   
+    function getPoint (){
+
+		let allPrice = 0 
+		
+        {% for order in customer.orders %}
+		{% if order.financial_status=='fulfilled' %}
+        allPrice += ('{{ order.total_price }}' * 1) || 0   
+		{% endif %}
+		{% endfor %}
+        let point = Math.round(allPrice/100) 
+        document.querySelector(".account-points").innerHTML= point
+	}
+	getPoint()
+
 	}()
 </script>
 
