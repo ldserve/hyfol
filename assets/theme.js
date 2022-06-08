@@ -3,7 +3,7 @@
         factory();
 }((function () {
     'use strict';
-     
+
     class LeftNavList extends HTMLElement {
         constructor() {
             super();
@@ -11,33 +11,133 @@
             this.init()
         }
         init() { 
-           this.navList.childNodes.forEach((item)=>{
-            item.addEventListener("click",this.changeNav)
+           this.navList.childNodes.forEach((item,index)=>{
+                   item.addEventListener("click",this.changeNav)
            })
            
            this.querySelector(".card__linklist-item").className = " card__linklist-item link text--stronger " 
            document.querySelector(".my_overview").style.display = "block"
+          
+           if(window.location.hash){
 
+               var nowNav = window.location.hash.split("#")[1].replace(/\%20/g," ")
+            
+           this.navList.childNodes.forEach((item)=>{
+            item.className = " card__linklist-item  "
+           })
+
+         
+           var list = document.querySelector(".wish_list").parentElement.children
+           for(let i=0 ; i<list.length ; i++){
+               list[i].style.display = "none"
+           }
+
+           document.querySelectorAll(".card__linklist-item").forEach((item)=>{
+               if(item.lastElementChild.innerHTML == nowNav){
+
+                   item.className = " card__linklist-item link text--stronger "
+                   var enode = item.getAttribute("data-right")
+                   document.querySelector("."+enode).style.display = "block"
+               }
+           })
+           }
+
+       
         }
         changeNav = (e) =>{
+             
+
             this.navList.childNodes.forEach((item)=>{
                 item.className = " card__linklist-item  "
                })
-            e.target.className = " card__linklist-item link text--stronger "
-            
 
-            var list = document.querySelector("."+e.target.getAttribute("data-right")).parentElement.children
+             if( e.target.parentElement.getAttribute("data-right") == null){
+                e.target.className = " card__linklist-item link text--stronger "
+                var enode = e.target.getAttribute("data-right")
+                var searchValue = e.target.lastElementChild.innerHTML
+
+             }else{
+                   e.target.parentElement.className = " card__linklist-item link text--stronger "
+                   var enode = e.target.parentElement.getAttribute("data-right")
+                   var searchValue =  e.target.parentElement.lastElementChild.innerHTML
+
+             }
+             window.location.hash = searchValue
+
+            var list = document.querySelector("."+enode).parentElement.children
             for(let i=0 ; i<list.length ; i++){
                 list[i].style.display = "none"
             }
     
-            document.querySelector("."+e.target.getAttribute("data-right")).style.display = "block"
+            document.querySelector("."+enode).style.display = "block"
            
         }
     }
     customElements.define("left-nav-list", LeftNavList);
 
+    class OrderItem extends HTMLElement {
+        constructor() {
+            super();
+            this.iconList = this.querySelectorAll(".order-preview__item")
+            this.navList = document.querySelector('.table-left-nav').querySelector(".render_nav_list ")
+            this.init()
+        }
+        init() { 
+            this.iconList.forEach((item,index)=>{
+                if(index != this.iconList.length-1){
+                item.addEventListener("click",this.changeNav)
+                }
+            })
+            if(window.location.hash.split("+")[1]){
+                   this.changeNav()
+            }
+        }
+        changeNav(){
+            
+            if(window.location.hash.split("+")[1]){
+               console.log("初始化流程");
+            }else{
+                var searchValue = this.lastElementChild.textContent
+                window.location.hash ="Orders+"+searchValue
+            }
+            
 
+             var url = window.location.hash.split("+")[1].toLowerCase()
+
+             document.querySelector('.table-left-nav').querySelector(".render_nav_list ").childNodes.forEach((item)=>{
+                
+                if(item.getAttribute("data-right") == "my_orders"){
+                    item.className = " card__linklist-item link text--stronger  "
+                }else{
+                    item.className = " card__linklist-item  "
+                }
+               })
+
+             var list = document.querySelector(".wish_list").parentElement.children
+             for(let i=0 ; i<list.length ; i++){
+                 list[i].style.display = "none"
+             }
+             document.querySelector(".my_orders").style.display = "block"
+
+             document.querySelectorAll(".orders-nav__item").forEach((item)=>{
+                item.setAttribute("data-action",false)
+           })
+
+           document.querySelectorAll('.order-item__card').forEach((item)=>{
+            item.setAttribute("aria-hidden",true)
+       })
+
+           document.querySelector(".order-"+url).setAttribute("data-action",true)
+
+           var index= document.querySelector(".order-"+url).getAttribute("data-index")
+           document.querySelectorAll('.order-item__card').forEach((item)=>{
+           if(item.getAttribute("data-index") == index){
+                item.setAttribute("aria-hidden",false)
+           } 
+       })
+        }
+    }
+    customElements.define("order-item", OrderItem);
 
     class SizeBlock extends HTMLElement {
         constructor() {
@@ -57,7 +157,6 @@
                     this.container.getElementsByClassName("block-swatch")[i].style.left = this.sum + "px"
                     this.sum += offsetWidth + 2
                 }
-                // console.log(sum);
             }
         }
     }
