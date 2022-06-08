@@ -506,6 +506,7 @@
 					<div  class="overview-box">
 						<h1>Hi  {{customer.first_name}}</h1>
 						<ul class="d-flex account-overview__list">
+							{%- comment -%}
 							<li class="d-flex overview-item">
 								<span>
 									100
@@ -514,6 +515,7 @@
 									Coupons 
 								</span>
 							</li>
+							{%- endcomment -%}
 							<li class="d-flex overview-item">
 								<span class="account-points">
 									
@@ -711,7 +713,7 @@
 	}
 
 	#account-input:checked~.account-box {
-		height:270px;
+		height:170px;
 		transition: all 0.4s ease;
 	}
 
