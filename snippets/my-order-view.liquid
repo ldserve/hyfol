@@ -42,7 +42,7 @@
                     {%- render 'icon', icon: 'package' -%}
                     <span class="empty-state__count">0</span>
                   </div>
-  
+
                   <p class="empty-state__icon-description">{{ 'customer.general.no_orders' | t }}</p>
   
                   <div class="empty-state__button-container">
@@ -110,7 +110,6 @@
             {%- endpaginate -%}
             {%- endif -%}
         </div>
-
         <div class="card order-item__card"  aria-hidden="true" data-index="2">
             {%- assign empty_state = true -%}
             {%- if customer.orders_count == 0 -%}
@@ -192,7 +191,6 @@
               </div>
             {%- endif -%}
         </div>
-
         <div class="card order-item__card"  aria-hidden="true" data-index="3">
             {%- assign empty_state = true -%}
             {%- if customer.orders_count != 0 -%}
@@ -536,8 +534,10 @@
 
     }
 
-    .order-render__view,
-    .order-item__card {
+    .order-render__view , 
+    .order-item__card>.card__section 
+    , .order-box
+     {
         background-color: #fff;
     }
 
