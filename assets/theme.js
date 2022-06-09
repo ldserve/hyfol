@@ -14,13 +14,12 @@
            this.navList.childNodes.forEach((item,index)=>{
                    item.addEventListener("click",this.changeNav)
            })
-        //    history.replaceState('','','https://www.hyfol.com/account?location=overview')
            this.querySelector(".card__linklist-item").className = " card__linklist-item link text--stronger " 
            document.querySelector(".my_overview").style.display = "block"
           
            if(window.location.hash){
 
-               var nowNav = window.location.hash.split("#")[1].replace(/\%20/g," ")
+            var nowNav = window.location.hash.split("#")[1].replace(/\%20/g," ")
             
            this.navList.childNodes.forEach((item)=>{
             item.className = " card__linklist-item  "
@@ -34,7 +33,7 @@
 
            document.querySelectorAll(".card__linklist-item").forEach((item)=>{
                if(item.lastElementChild.innerHTML == nowNav){
-
+                document.querySelector('.breadcrumb__link[aria-current="page"]').innerHTML=nowNav
                    item.className = " card__linklist-item link text--stronger "
                    var enode = item.getAttribute("data-right")
                    document.querySelector("."+enode).style.display = "block"
@@ -70,6 +69,7 @@
             }
     
             document.querySelector("."+enode).style.display = "block"
+            document.querySelector('.breadcrumb__link[aria-current="page"]').innerHTML=searchValue
            
         }
     }
@@ -95,7 +95,7 @@
         changeNav(){
             
             if(window.location.hash.split("+")[1]){
-               console.log("初始化流程");
+            //    console.log("初始化流程");
             }else{
                 var searchValue = this.lastElementChild.textContent
                 window.location.hash ="Orders+"+searchValue

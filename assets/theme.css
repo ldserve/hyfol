@@ -2012,7 +2012,9 @@ img.lazyload[data-sizes=auto] {
 }
 
 @media screen and (min-width: 1000px) {
-
+.account-overview__list{
+  flex-wrap: wrap;
+}
   .hidden-lap-and-up {
     display: none !important;
   }
@@ -2200,11 +2202,22 @@ img.lazyload[data-sizes=auto] {
   .scroller .block-list__item {
     width: 81%;
   }
+  .account-overview__list{
+    overflow-x: scroll;
+  }
+  .order-preview__item svg{
+    font-size: 2rem;
+  }
+
 }
 
 @media screen and (min-width: 641px) and (max-width: 999px) {
   .scroller .block-list__item {
     width: 56%;
+  }
+
+  .account-overview__list {
+    flex-wrap: wrap;
   }
 
   .scroller .block-list::before {
@@ -2215,7 +2228,6 @@ img.lazyload[data-sizes=auto] {
     flex: 0 0 calc(var(--desktop-container-gutter) - 15px);
   }
 }
-
 @media screen and (min-width: 641px) {
   .block-list {
     flex-direction: row;

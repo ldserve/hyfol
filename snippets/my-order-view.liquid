@@ -5,6 +5,7 @@
 <div class="order-view__box">
 
     <ul class="d-flex orders-nav__list">
+
         <li class="order-all orders-nav__item"  data-action="true" data-index="1">
             {%- render 'icon', icon: 'cjj_all' -%}
             <span>All</span>
@@ -626,18 +627,15 @@
 
 <script>
     (function () {
-
         function getSectionInnerHTML(html, selector = '.shopify-section') {
             return new DOMParser()
                 .parseFromString(html, 'text/html')
                 .querySelector(selector).innerHTML;
         }
-
         const orderBox = document.querySelector('.order-view__box')
         orderBox.addEventListener('click', e => {
             const target = e.target
             if (target.dataset.action !== 'false' && target.parentElement.dataset.action !== 'false') return
-            // if(target.dataset.action ==='false'||target.parentElement.dataset.action ==='false'){
             const nav = target.dataset.action ? target : target.parentElement
             const preNav = orderBox.querySelector('.orders-nav__item[data-action="true"]')
             const preView = document.querySelector('.order-item__card[aria-hidden="false"]')
@@ -646,21 +644,20 @@
             nav.dataset.action = true
             preView.setAttribute('aria-hidden', true)
             openOrederView.setAttribute("aria-hidden", false)
-            // console.log(nav);
-            // }
+            let hashUrl=target.textContent.replace(/\s*|[\r\n]/g,'')
+            window.location.hash ="Orders+"+hashUrl
         })
 
         document.querySelector('.order__render-view').addEventListener('click', e => {
             if (e.target.classList.contains('title-info-name')) {
                 const target = e.target
-                console.log('e.target', e.target);
                 const orderUrl = target.dataset.url
+                
                 fetch(orderUrl, {
                     credentials: 'same-origin',
                     method: 'GET'
                 }).then(response => response.text())
                     .then(html => {
-
                         document.querySelector('.card.my_orders').innerHTML = getSectionInnerHTML(html, '.order-summary')
                         window.scroll(0, 0)
                     })

@@ -7,16 +7,7 @@
 			<li class=" text-r tab"><label for="account-input">{%- render 'icon', icon: 'arrow-bottom' -%}</label></li>
 		</ul>
 		<div class="account-box">
-			{%- comment -%}
-			<a href="{{ routes.account_url }}"
-				class="value-picker__choice-item is-selected">{{ 'customer.general.orders' | t }}
-				{% render 'icon', icon: 'check-2' %}</a>
-			<a href="{{ routes.account_addresses_url }}"
-				class="value-picker__choice-item">{{ 'customer.general.addresses' | t }}
-				{% render 'icon', icon: 'check-2' %}</a>
-			<a href="{{ routes.account_logout_url }}" class="value-picker__choice-item"
-				data-no-instant>{{ 'customer.general.logout' | t }} {% render 'icon', icon: 'check-2' %}</a>
-{%- endcomment -%}
+
 <div class="card__linklist ">
 					
 	<left-nav-list>
@@ -363,13 +354,6 @@
 
 				<div class="card my_orders account_right_content">
 
-					{%- comment -%}
-					<div
-						class="{% if customer.orders.size == 0 %}card__section card__section--tight{% else %}card__header card__header--tight{% endif %} my_order">
-						<h1 class="heading h1">{{ 'customer.general.orders' | t }}
-							{% if customer.orders.size > 0 %}({{ customer.orders.size }}){% endif %}</h1>
-					</div>
-					{%- endcomment -%}
 					<div class="hidden-phone">
 						
 						{% render 'my-order-view' customer:customer%}
@@ -433,6 +417,7 @@
 					
 						<div class="body-me" id="body_me">
 							<!--渲染订单区域-->
+
 						</div>
 						<div class="post" id="post">
 							<div class="container">
@@ -450,55 +435,7 @@
 							</ul>
 						</div>
 					</div>
-					{%- comment -%}
-					{%- if customer.orders.size == 0 -%}
-					<div class="card__section">
-						<div class="empty-state empty-state--extra-tight">
-							<div class="empty-state__icon">
-								{%- render 'icon', icon: 'package' -%}
-								<span class="empty-state__count">0</span>
-							</div>
-
-							<p class="empty-state__icon-description">{{ 'customer.general.no_orders' | t }}</p>
-
-							<div class="empty-state__button-container">
-								<a href="{{ routes.all_products_collection_url }}"
-									class="empty-state__button button button--primary">{{ 'customer.general.no_orders_button' | t }}</a>
-							</div>
-						</div>
-					</div>
-					{%- else -%}
-					{%- paginate customer.orders by 8 -%}
-					<div class="table-wrapper">
-						<table class="table table--loose">
-							<thead>
-								<tr>
-									<th>{{ 'customer.order.order' | t }}</th>
-									<th>{{ 'customer.order.date' | t }}</th>
-									<th>{{ 'customer.order.payment_status' | t }}</th>
-									<th>{{ 'customer.order.fulfillment_status' | t }}</th>
-									<th class="table__cell--right">{{ 'customer.order.total' | t }}</th>
-								</tr>
-							</thead>
-
-							<tbody>
-								{%- for order in customer.orders -%}
-								<tr>
-									<td><a href="{{ order.customer_url }}"
-											class="link link--accented">{{ order.name }}</a></td>
-									<td>{{ order.created_at | date: format: 'month_day_year' }}</td>
-									<td>{{ order.financial_status_label }}</td>
-									<td>{{ order.fulfillment_status_label }}</td>
-									<td class="table__cell--right">{{ order.total_price | money }}</td>
-								</tr>
-								{%- endfor -%}
-							</tbody>
-						</table>
-					</div>
-					{%- render 'pagination', paginate: paginate -%}
-					{% assign dm_paginate_by = paginate.page_size %}{%- endpaginate -%}
-					{%- endif -%}
-					{%- endcomment -%}
+			
 				</div>
 				
 
@@ -1233,17 +1170,12 @@
 						  {%- endfor -%}
 						{% assign dm_paginate_by = paginate.page_size %}{%- endpaginate -%}
 					  </section>
-					{%- comment -%}
-					{%- endcomment -%}
-				
 
 				</div>
 
 				<div class="my_methods account_right_content">
 					methods
 				</div>
-
-		
 
 		</div>
 	</div>
@@ -1550,7 +1482,9 @@
 		color: #ffffff;
 		text-shadow: -2px 1px 3px rgba(0, 0, 0, .5);
 	}
+	
 </style>
+
 <script>
 	~ function () {
 		let getDataFlag = false;
@@ -1589,11 +1523,12 @@
 			let body_me = document.querySelector('#body_me')
 			body_me.style.display = 'block'
 			body_me.innerHTML = data
-			isnull()
+			isnull(data)
 		}
 
-		function isnull() {
-			let fag = document.querySelectorAll('.card .order-box')
+		function isnull(data) {
+			
+			let fag =new DOMParser().parseFromString(data, 'text/html').querySelectorAll('.card .order-box')
 			let nullbox = document.querySelector('#order_null')
 			let body_me = document.querySelector('#body_me')
 			if (!fag.length) {
@@ -1609,8 +1544,10 @@
 			let orders_li = document.querySelectorAll("#orders-list>li")
 			let post = document.querySelector('#post');
 			let body_me = document.querySelector('#body_me')
+			let nullbox = document.querySelector('#order_null')
 			orders_list.onclick = (ev) => {
-				let target = ev.target;
+				let target = ev.target.tagName === "LI"?ev.target:ev.target.parentElement;
+				
 				if (target.tagName === "LI") {
 					for (let i = 0; i < orders_li.length; i++) {
 						orders_li[i].classList.remove('current')
@@ -1625,6 +1562,7 @@
 					} else {
 						body_me.style.display = 'none'
 						post.style.display = 'block'
+						nullbox.style.display='none'
 					}
 				}
 
@@ -1661,8 +1599,8 @@
 				const form = e.target.closest('form')
 				const formData = getFormData(form)
 				fetch('/account/addresses', {
-					method: "POST", 
-					headers: {'Content-Type': 'application/x-www-form-urlencoded'}, 
+					method: "POST",
+					headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
 					body: formData
 				}).then(response => {
 					location.reload()
@@ -1682,19 +1620,20 @@
 		}
 		deleteAddresses()
 
-    function getPoint (){
+		function getPoint() {
 
-		let allPrice = 0 
-		
-        {% for order in customer.orders %}
-		{% if order.financial_status=='fulfilled' %}
-        allPrice += ('{{ order.total_price }}' * 1) || 0   
-		{% endif %}
-		{% endfor %}
-        let point = Math.round(allPrice/100) 
-        document.querySelector(".account-points").innerHTML= point
-	}
-	getPoint()
+			let allPrice = 0
+
+			{% for order in customer.orders %}
+			{% if order.financial_status == 'fulfilled' %}
+			allPrice += ('{{ order.total_price }}' * 1) || 0
+			{% endif %}
+			{% endfor %}
+			let point = Math.round(allPrice / 100)
+			document.querySelector(".account-points").innerHTML = point
+		}
+		getPoint()
+
 
 	}()
 </script>
