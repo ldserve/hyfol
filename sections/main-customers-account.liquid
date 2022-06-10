@@ -7,26 +7,25 @@
 			<li class=" text-r tab"><label for="account-input">{%- render 'icon', icon: 'arrow-bottom' -%}</label></li>
 		</ul>
 		<div class="account-box">
-
-<div class="card__linklist ">
-					
-	<left-nav-list>
-		<div class="render_nav_list">
-	  {%- for block in section.blocks -%}
-	  {%- if block.settings.nav_show -%}
-	  <div class="card__linklist-item link" style="cursor:pointer ;" data-right="{{block.settings.nav_right}}"> 
-		  <span> {%- render 'icon', icon: {{block.settings.nav_icon}} -%}</span>
-	<span> {{block.settings.nav_title}} </span> 
-	  </div>
-	  {%- endif -%}
-   {%- endfor -%}
-  </div>
-  </left-nav-list>
-  
-	  <a href="{{ routes.account_logout_url }}" class="card__linklist-item link"
-		   data-no-instant>{% render 'icon', icon :"account-logout" %} {{ 'customer.general.logout' | t }}</a>
-  </div>
-         
+			<div class="card__linklist ">
+				<left-nav-list>
+					<div class="render_nav_list">
+						{%- for block in section.blocks -%}
+						{%- if block.settings.nav_show -%}
+						<div class="card__linklist-item link" style="cursor:pointer ;"
+							data-right="{{block.settings.nav_right}}">
+							<span> {%- render 'icon', icon: {{block.settings.nav_icon}} -%}</span>
+							<span> {{block.settings.nav_title}} </span>
+						</div>
+						{%- endif -%}
+						{%- endfor -%}
+					</div>
+				</left-nav-list>
+		
+				<a href="{{ routes.account_logout_url }}" class="card__linklist-item link" data-no-instant>{% render 'icon',
+					icon :"account-logout" %} {{ 'customer.general.logout' | t }}</a>
+			</div>
+		
 		</div>
 		{%- else -%}
 		<ul class="no-logged">
@@ -47,7 +46,6 @@
 						href="{{ routes.root_url }}">{{ 'general.breadcrumb.home' | t }}</a>
 					{%- render 'icon', icon: 'arrow-right' -%}
 				</li>
-
 				<li class="breadcrumb__item">
 					<a class="breadcrumb__link link"
 						href="{{ routes.account_url }}">{{ 'general.breadcrumb.account' | t }}</a>
@@ -103,7 +101,6 @@
 									aria-controls="account-selector"
 									aria-label="{{ 'general.accessibility.close' | t }}">{% render 'icon', icon: 'close' %}</button>
 							</header>
-
 							<div class="value-picker__choice-list">
 								<a href="{{ routes.account_url }}"
 									class="value-picker__choice-item is-selected">{{ 'customer.general.orders' | t }}
@@ -362,7 +359,6 @@
 					<div class="large_pad">
 						<div class="order-me container">
 							<h2>{{- 'customer.general.orders' | t -}}</h2>
-					
 							<div class="icon-box">
 								<ul class="icons" id="orders-list">
 									<li data-item="orders-all" class="current">
@@ -440,8 +436,37 @@
 				
 
 				<div class="my_overview account_right_content">
-					<div  class="overview-box">
-						<h1>Hi  {{customer.first_name}}</h1>
+					<div class="overview-box">
+						<h1>Hi {{customer.first_name}}</h1>
+				
+						<!-- <div class="vip-equity__main  d-flex">
+							<div class="vip-grade">
+								<div class="vip-grade__view d-flex">
+									<div class="account-avatar">
+				
+									</div>
+									<div class="vip-grade__current">
+										{{customer.name }}<br />
+										S0
+									</div>
+								</div>
+								<div class="vip-grade__progress">
+								
+								</div>
+							</div>
+							<div class="vip-rules">
+								<p>
+									Silver: US$0.1 or 1 order(s) are required to become a silver member
+								</p>
+								<p>
+									Gold: US$120 or 3 order(s) are required to become a gold member
+								</p>
+								<p>
+									Platinum: US$500 or 5 order(s) are required to become a platinum member
+								</p>
+							</div>
+				
+						</div> -->
 						<ul class="d-flex account-overview__list">
 							{%- comment -%}
 							<li class="d-flex overview-item">
@@ -449,13 +474,12 @@
 									100
 								</span>
 								<span>
-									Coupons 
+									Coupons
 								</span>
 							</li>
 							{%- endcomment -%}
 							<li class="d-flex overview-item">
 								<span class="account-points">
-									
 								</span>
 								<span>
 									Points
@@ -463,7 +487,6 @@
 							</li>
 							<li class="d-flex overview-item">
 								<span class="collection-num">
-									
 								</span>
 								<span>
 									Collection
@@ -476,7 +499,7 @@
 					{%- assign order_shipped = 0 -%}
 					{%- assign order_payment = 0 -%}
 					{%- assign order_completed = 0 -%}
-
+				
 					{%- for order in customer.orders -%}
 					{% if order.financial_status=='unpaid' or order.financial_status=='pending' %}
 					{%- assign order_unpaid = order_unpaid | plus: 1 -%}
@@ -494,92 +517,95 @@
 					{%- assign order_completed = order_completed | plus: 1 -%}
 					{% endif%}
 					{%- endfor -%}
-					<div  class="order-preview overview-box">
-						<h1>My  Order</h1>
-
-					<order-item>
-						<ul class="d-flex account-overview__list" >
-							<li class="order-preview__item">
-								<span class="order-icon">
-									{%- render 'icon', icon: 'cjj_all' -%}
-									{%- comment -%}
-									<span class="empty-state__count redio-icon">{{customer.orders_count}}</span>
-									{%- endcomment -%}
-								</span>
-									<p>All</p>
-								</a>
-							</li>
-							<li class="order-preview__item">
-								<span class="order-icon">
-									{%- render 'icon', icon: 'cjj_unpaid' -%}
-									{%- if order_unpaid!=0 -%}
-									<span class="empty-state__count redio-icon">{{order_unpaid}}</span>
-									{%- endif -%}
-								</span>
-								<p>Unpaid</p>
-							</li>
-							<li class="order-preview__item">
-								<span class="order-icon">
-									{%- render 'icon', icon: 'cjj_processing' -%}
-									{%- if order_processing!=0 -%}
-									<span class="empty-state__count redio-icon">{{order_processing}}</span>
-									{%- endif -%}
-								</span>
-								<p>Processing</p>
-							</li>
-							<li class="order-preview__item">
-								<span class="order-icon">
-									{%- render 'icon', icon: 'cjj_shipped' -%}
-									{%- if order_shipped!=0 -%}
-									<span class="empty-state__count redio-icon">{{order_shipped}}</span>
-										
-									{%- endif -%}
-								</span>
-								<p>Shipped</p>
-							</li>
-
-							<li class="order-preview__item">
-								<span class="order-icon">
-									{%- render 'icon', icon: 'cjj_payment' -%}
-									{%- if order_payment!=0 -%}
-									<span class="empty-state__count redio-icon">{{order_payment}}</span>
-										
-									{%- endif -%}
-								</span>
-								<p>Payment</p>
-							</li>
-							<li class="order-preview__item">
-								<span class="order-icon">
-									{%- render 'icon', icon: 'cjj_completed' -%}
-									{%- if order_completed!=0 -%}
-									<span class="empty-state__count redio-icon">{{order_completed}}</span>
-										
-									{%- endif -%}
-								</span>
-								<p>Completed</p>
-							</li>
-							<li class="order-preview__item">
-								<!-- <a href="mailto:contactus@hyfol.com" target="_blank" rel="noopener" aria-describedby="a11y-new-window-message"> -->
-								<span class="order-icon">
-										{%- render 'icon', icon: 'cjj_post_sale' -%}<br/>
-									</span>
-									<p>Post-sale</p>
-									<!-- </a> -->
-							</li>
-						</ul>
-					</order-item>
+					<div class="order-preview overview-box ">
+						<h1>My Order</h1>
+						<order-item>
+							<div class="icon-box">
+								<ul class="d-flex  account-overview__list icons">
+									<li class="order-preview__item">
+										<span class="order-icon">
+											{%- render 'icon', icon: 'cjj_all' -%}
+											{%- comment -%}
+											<span class="empty-state__count redio-icon">{{customer.orders_count}}</span>
+											{%- endcomment -%}
+										</span>
+										<p>All</p>
+										</a>
+									</li>
+									<li class="order-preview__item">
+										<span class="order-icon">
+											{%- render 'icon', icon: 'cjj_unpaid' -%}
+											{%- if order_unpaid!=0 -%}
+											<span class="empty-state__count redio-icon">{{order_unpaid}}</span>
+											{%- endif -%}
+										</span>
+										<p>Unpaid</p>
+									</li>
+									<li class="order-preview__item">
+										<span class="order-icon">
+											{%- render 'icon', icon: 'cjj_processing' -%}
+											{%- if order_processing!=0 -%}
+											<span class="empty-state__count redio-icon">{{order_processing}}</span>
+											{%- endif -%}
+										</span>
+										<p>Processing</p>
+									</li>
+									<li class="order-preview__item">
+										<span class="order-icon">
+											{%- render 'icon', icon: 'cjj_shipped' -%}
+											{%- if order_shipped!=0 -%}
+											<span class="empty-state__count redio-icon">{{order_shipped}}</span>
+				
+											{%- endif -%}
+										</span>
+										<p>Shipped</p>
+									</li>
+				
+									<li class="order-preview__item">
+										<span class="order-icon">
+											{%- render 'icon', icon: 'cjj_payment' -%}
+											{%- if order_payment!=0 -%}
+											<span class="empty-state__count redio-icon">{{order_payment}}</span>
+				
+											{%- endif -%}
+										</span>
+										<p>Payment</p>
+									</li>
+									<li class="order-preview__item">
+										<span class="order-icon">
+											{%- render 'icon', icon: 'cjj_completed' -%}
+											{%- if order_completed!=0 -%}
+											<span class="empty-state__count redio-icon">{{order_completed}}</span>
+				
+											{%- endif -%}
+										</span>
+										<p>Completed</p>
+									</li>
+									<li class="order-preview__item">
+										<!-- <a href="mailto:contactus@hyfol.com" target="_blank" rel="noopener" aria-describedby="a11y-new-window-message"> -->
+										<span class="order-icon">
+											{%- render 'icon', icon: 'cjj_post_sale' -%}<br />
+										</span>
+										<p>Post-sale</p>
+										<!-- </a> -->
+									</li>
+								</ul>
+							</div>
+						</order-item>
 					</div>
-
+				
 					<div class="overview-box points-box">
 						<h1>Points For</h1>
 						<div class="points-img">
-						{%- if section.settings.points_rule!= blank -%}
-						{%- assign points_image = section.settings.points_rule -%}
-						{%- capture supported_sizes -%}{%- render 'image-size', sizes: '200,300,400,500', image: points_image -%}{%- endcapture -%}
-						{%- assign image_url = points_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
-						 <img class="lazyload" alt="{{ points_image.alt | escape }}" data-src="{{ image_url }}" data-widths="[{{ supported_sizes }}]" data-sizes="auto">
-						{%- endif -%}
-	
+							{%- if section.settings.points_rule!= blank -%}
+							{%- assign points_image = section.settings.points_rule -%}
+							{%- capture supported_sizes -%}{%- render 'image-size', sizes: '200,300,400,500', image: points_image -%}{%-
+							endcapture -%}
+							{%- assign image_url = points_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+							<img class="lazyload" alt="{{ points_image.alt | escape }}" data-src="{{ image_url }}"
+								data-widths="[{{ supported_sizes }}]" data-sizes="auto">
+							{%- endif -%}
+				
 						</div>
 					</div>
 				</div>
@@ -1176,7 +1202,6 @@
 				<div class="my_methods account_right_content">
 					methods
 				</div>
-
 		</div>
 	</div>
 </section>
@@ -1560,8 +1585,8 @@
 						let url = '?section_id=my-' + item;
 						getData(url, upData)
 					} else {
-						body_me.style.display = 'none'
 						post.style.display = 'block'
+						body_me.style.display = 'none'
 						nullbox.style.display='none'
 					}
 				}
