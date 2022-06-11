@@ -4,7 +4,7 @@
    let addQuickView=new sadhus_shence({
       container:"body",
       type:"addCart",
-      sendType:"AddToCart", 
+      sendType:"AddToCart",
       setSessionId:"sensorsCheckout",
       customData: function(container,el){/*形参为当前容器dom */
          let newData={};
@@ -18,7 +18,7 @@
          newData.second_commodity=category.second_commodity
          newData.third_commodity= category.third_commodity
          }
-   
+
          newData.commodity_quantity = 1
          let data =  el.getAttribute('data-scdata')
          data=JSON.parse(data)
@@ -51,7 +51,7 @@
       container:".product-list.product-list--collection",
       type:"quickView",
       event:'click',
-      sendType:"CommodityDetail", 
+      sendType:"CommodityDetail",
       customData: function(container,el){/*形参为当前容器dom */
          let newData={};
               if(!{{product.metafields.my_fields.category | json}} ){
@@ -70,15 +70,15 @@
          return newData  /*返回值必须为{}*/
       }
    })
-   
-   
-   
+
+
+
    new sadhus_shence({
          delayed:true,
       container:"body",
       type:"valueChange",
       event:'click',
-      sendType:"CommodityDetail", 
+      sendType:"CommodityDetail",
       customData: function(container,el){/*形参为当前容器dom */
          let newData={};
          if(!{{product.metafields.my_fields.category | json}} ){
@@ -108,9 +108,9 @@
          return newData  /*返回值必须为{}*/
       },
    })
-   
+
    }
-   
+
    if ({{ request.page_type | json }} == 'product') {/*产品页*/
       document.querySelector('.shenceDetail .ld-variant-list')
       if( document.querySelector('.shenceDetail .ld-variant-list')){
@@ -119,7 +119,7 @@
       container:".shenceDetail .ld-variant-list",
       type:"valueChange",
       event:'click',
-      sendType:"CommodityDetail", 
+      sendType:"CommodityDetail",
       customData:function (container,el){/*形参为当前容器dom */
          let newData={};
          if(!{{product.metafields.my_fields.category | json}} ){
@@ -132,10 +132,10 @@
          newData.second_commodity=category.second_commodity
          newData.third_commodity= category.third_commodity
          }
-   
+
          let data =  el.getAttribute('data-scdata')
          data=JSON.parse(data)
-         const valueSelected=document.querySelector('.select-wrapper option[selected]') 
+         const valueSelected=document.querySelector('.select-wrapper option[selected]')
          let id = ""
          if(valueSelected){
             id =  valueSelected.getAttribute('data-sku') || ""
@@ -151,12 +151,12 @@
       },
    })
       }
-    
-       
+
+
    new sadhus_shence({
       container:".shenceDetail",
       event:'load',
-      sendType:"CommodityDetail", 
+      sendType:"CommodityDetail",
       customData: function(container,el){/*形参为当前容器dom */
          let newData={};
          if(!{{product.metafields.my_fields.category | json}} ){
@@ -190,7 +190,7 @@
       container:".shenceDetail .product-form",
       event:"click",
       type:"addCart",
-      sendType:"AddToCart", 
+      sendType:"AddToCart",
       customData: function(container,el){/*形参为当前容器dom */
          let newData={};
          if(!{{product.metafields.my_fields.category | json}} ){
@@ -232,13 +232,13 @@
       }
    })
    }
-   
+
    new sadhus_shence({
       delayed:true,
       container:"body",
       type:"addMinCart",
       event:'click',
-      sendType:"AddToCart", 
+      sendType:"AddToCart",
       userTabel:{last_addtocart_time:getFormatDate()},
       customData: function(container,el){/*形参为当前容器dom */
         let newData={};
@@ -250,7 +250,7 @@
          const category = {{product.metafields.my_fields.category |  json}}
           newData.first_commodity=category.first_commodity
          newData.second_commodity=category.second_commodity
-         newData.third_commodity= category.third_commodity    
+         newData.third_commodity= category.third_commodity
          }
          let data=el.getAttribute('data-scdata')
          let id=el.getAttribute('data-id')
@@ -266,13 +266,13 @@
           sensors.setProfile({last_addtocart_time:getFormatDate()})
       }
    })
-   
+
    new sadhus_shence({
       delayed:true,
       container:"body",
       type:"minusMinCart",
       event:'click',
-      sendType:"RemoveFromCart", 
+      sendType:"RemoveFromCart",
       customData: function(container){/*形参为当前容器dom */
         let newData={};
          if(!{{product.metafields.my_fields.category | json}} ){
@@ -293,13 +293,13 @@
          return newData  /*返回值必须为{}*/
       }
    })
-   
+
    new sadhus_shence({
       delayed:true,
       container:"body",
       type:"removeMinCart",
       event:'click',
-      sendType:"RemoveFromCart", 
+      sendType:"RemoveFromCart",
       customData: function(container){/*形参为当前容器dom */
         let newData={};
          if(!{{product.metafields.my_fields.category | json}} ){
@@ -320,14 +320,14 @@
          return newData  /*返回值必须为{}*/
       }
    })
-   
+
    if ({{ request.page_type | json }} == 'cart') {/*购物车页*/
    new sadhus_shence({
          delayed:true,
       container:"body",
       type:"addMainCart",
       event:'click',
-      sendType:"AddToCart", 
+      sendType:"AddToCart",
       userTabel:{last_addtocart_time:getFormatDate()},
       customData: function(container){/*形参为当前容器dom */
         let newData={};
@@ -355,13 +355,13 @@
           sensors.setProfile({last_addtocart_time:getFormatDate()})
       }
    })
-   
+
    new sadhus_shence({
          delayed:true,
       container:"body",
       type:"minusMainCart",
       event:'click',
-      sendType:"RemoveFromCart", 
+      sendType:"RemoveFromCart",
       customData: function(container){/*形参为当前容器dom */
         let newData={};
          if(!{{product.metafields.my_fields.category | json}} ){
@@ -382,13 +382,13 @@
          return newData  /*返回值必须为{}*/
       }
    })
-   
+
    new sadhus_shence({
       delayed:true,
       container:"body",
       type:"removeMainCart",
       event:'click',
-      sendType:"RemoveFromCart", 
+      sendType:"RemoveFromCart",
       customData: function(container){/*形参为当前容器dom */
         let newData={};
          if(!{{product.metafields.my_fields.category | json}} ){
@@ -409,10 +409,10 @@
          return newData  /*返回值必须为{}*/
       }
    })
-   
+
    }
-   
-   
+
+
    /*@Author   苦行僧|2022/1/4*/
    /*点击预测搜索产品-上报当前点击产品信息*/
    new sadhus_shence({
@@ -511,7 +511,7 @@
          }else{
          newData.result_page="1";
          }
-   
+
        let session=sessionStorage.getItem('sensorsSearchResultClick');
        session=JSON.parse(session);
        Object.assign(newData,session)
@@ -535,7 +535,7 @@
      }
    });
    {%- endif -%}
-   
+
       // 加购
          let purchaseList = document.querySelectorAll('.card__section .exhibition-right')
          purchaseList && purchaseList.forEach(purchase => {
@@ -558,6 +558,8 @@
                   if(!colorChecked || !sizeChecked) return newData
                   const sku=  purchase.querySelector('input[data-sku]').getAttribute('data-sku')
                   newData.commodity_skuid = sku ? sku : "";
+								  gtag("event","conversion",{"send_to":"AW-319309832/2I9aCIf48eYCEIiQoZgB","transaction_id":""});
+								  pintrk("track","addtocart",{value:data.current_price,order_quantity:1,currency:"USD",line_items:[{product_id:id}]});
                   return newData
                },
          callback:function(){
@@ -566,5 +568,5 @@
       }
             })
          })
-   
+
    </script>

@@ -46,11 +46,11 @@
             this.contains = []
             this.prevkeyframes = `
           @keyframes prevItem1{
-                  0% { 
+                  0% {
                     -webkit-transform: translate(-${this.scorllNum * 100}% ,0%);
-                      transform:  translate(-${this.scorllNum * 100}% ,0%); 
+                      transform:  translate(-${this.scorllNum * 100}% ,0%);
                     }
-                  100% { 
+                  100% {
                     -webkit-transform: translate(-${(this.scorllNum - 1) * 100}%,0%);
                       transform:  translate(-${(this.scorllNum - 1) * 100}%,0%);
                     }
@@ -58,12 +58,12 @@
 
          @keyframes prevItem2{
                   0% {
-                    -webkit-translate(-${this.scorllNum * 100}% ,0%);  
-                       transform:  translate(-${this.scorllNum * 100}% ,0%);  
+                    -webkit-translate(-${this.scorllNum * 100}% ,0%);
+                       transform:  translate(-${this.scorllNum * 100}% ,0%);
                     }
                     
                   100% {
-                    -webkit-translate(-${(this.scorllNum - 1) * 100}%,0%); 
+                    -webkit-translate(-${(this.scorllNum - 1) * 100}%,0%);
                       transform:  translate(-${(this.scorllNum - 1) * 100}%,0%);
                 }
               }
@@ -98,7 +98,7 @@
                 if ( event.target.closest('.product-item__image-wrapper') == null  && event.target.closest('.mini-cart-add__button') == null) {
                     event.preventDefault();//阻止浏览器默认滚动事件
                  }
-                var touch = event.touches[0]   
+                var touch = event.touches[0]
                 startx = Math.floor(touch.pageX)
                 return startx
               
@@ -542,7 +542,8 @@
                     newData.commodity_size = sizeChecked ? sizeChecked.value : ""
                     if (!colorChecked || !sizeChecked) return newData
                         newData.commodity_skuid = currentSku?currentSku:''
-
+                  gtag("event","conversion",{"send_to":"AW-319309832/2I9aCIf48eYCEIiQoZgB","transaction_id":""});
+                  pintrk("track","addtocart",{value:data.current_price,order_quantity:1,currency:"USD",line_items:[{product_id:id}]});
                     return newData
                 },
                 callback: function () {
@@ -4195,7 +4196,7 @@
                 target.setAttribute('disabled', 'disabled');
                 document.dispatchEvent(new CustomEvent('theme:loading:start')); // Then we add the product in Ajax
 
-                var formElement  
+                var formElement
                 if(target.hasAttribute('data-purchase')){
                     formElement=target.closest('form[action*="/cart/add"]')
                 }else{
@@ -5109,7 +5110,7 @@
             }
         })(window, function factory(window, getSize) {
 
-            function Cell(elem, parent) { 
+            function Cell(elem, parent) {
                 this.element = elem;
                 this.parent = parent;
                 this.create();
@@ -5539,7 +5540,7 @@
 
             utils.extend(proto, EvEmitter.prototype);
 
-            proto._create = function () {  
+            proto._create = function () {
                 // add id for Flickity.data
                 var id = this.guid = ++GUID;
                 this.element.flickityGUID = id; // expando
@@ -13342,7 +13343,7 @@
                     }
                 });
                 previousDotElement.classList.remove('is-selected');
-                newDotElement.classList.add('is-selected'); 
+                newDotElement.classList.add('is-selected');
                     //x轴滚动
                     var scrollX = newNavElement.offsetLeft - (this.productThumbnailsListElement.clientWidth - newNavElement.clientWidth) / 2;
                     this.productThumbnailsListElement.scrollTo({
@@ -13426,7 +13427,7 @@
                    });
                }
            }
-             
+            
             }
         },
 
