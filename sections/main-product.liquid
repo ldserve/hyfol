@@ -277,7 +277,7 @@
 							{% render 'product-gallery', zoomFactor:section.settings.zoomFactor %}
 						</div>
 					{%- endif -%}
-						
+
 					<div class="product-block-list__item product-block-list__item--info">
 						{%- render 'product-info' -%}
 					</div>
@@ -494,7 +494,7 @@
 								ESTIMATE SHIPPING
 								--------------------------------------------------------------------------------------
 							{%- endcomment -%}
-                    
+
 						{%- when 'shipping_estimator' -%}
 							{%- if product.available -%}
 								<div class="product-block-list__item product-block-list__item--shipping" {{ block.shopify_attributes }}>
@@ -800,6 +800,7 @@
         initSizeGuideTable()
         /*尺码表 end*/
     })();
+    pintrk('track', 'viewcategory');
 </script>
 
 {% schema %}
@@ -923,7 +924,7 @@
 		"type": "image_picker",
 		"id": "discount_image",
 		"label": "折扣图片"
-		
+
 	},
 	{
 	"type": "checkbox",
