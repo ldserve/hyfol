@@ -61,7 +61,8 @@
 			{%- comment -%}
 			{%- endcomment -%}
 			{%- when  'collocation_purchase' -%}
-			{%- render 'collocation-purchase', collocationLocation:"main-product-collocation", product: product, form: form, block: block -%}
+			{% assign time = settings.autoplay_time%}
+			{%- render 'collocation-purchase', collocationLocation:"main-product-collocation", product: product, form: form, block: block isAuto:settings.product_autoplay time:time-%}
 
 			{%- when 'delivery' -%}
 					<div class="product-form__item product-block-list__item--description" {{ block.shopify_attributes }}>

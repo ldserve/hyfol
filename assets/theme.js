@@ -42,6 +42,8 @@
             this.nextButton = this.querySelector('.nextButton')
             this.animationsflag = true //是否阻止动画
             this.that = this
+            this.time = this.getAttribute("data-time")*1000
+            this.isAuto = this.getAttribute("data-isAuto")
             this.purchaseList = this.querySelectorAll('.exhibition-right')
             this.contains = []
             this.prevkeyframes = `
@@ -71,6 +73,10 @@
             this.init()
         }
         init(){
+            if(this.isAuto == "true"){
+                this.startTimer()
+            }
+
             if( this.prevButton){
                 if(this.activeIndex == 0 ){
                     this.prevButton.style.display= "none"
@@ -126,12 +132,38 @@
 
                 }
             });
+            if(this.isAuto == "true"){
+                this.onmouseenter = ()=>{
+                    this.stopTimer()        
+               }
+               this.onmouseleave = ()=>{
+                   this.startTimer()
+               }
+            }
+          
             this.bindShence()
         }
         bind() {
             this.bindClick()
         }
-
+        stopTimer(){
+             clearInterval(this.timer)
+        }
+        startTimer(){
+            this.timer = setInterval(()=>{
+                this.nextItem()
+                if(this.activeIndex == 0 ){
+                    this.prevButton.style.display= "none"
+                }else{
+                    this.prevButton.style.display= "block"
+                }
+                if (this.activeIndex == this.scorllNum - 1) {
+                    this.nextButton.style.display = "none"
+                } else {
+                    this.nextButton.style.display = "block"
+                }
+              },this.time)
+        }
         bindClick() {
             if (this.prevButton) {
                 this.prevButton.onclick = () => {

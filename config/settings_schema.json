@@ -15,7 +15,26 @@
         "id": "collocation_spus",
         "label": "请输入搭配商品spu",
         "info": "spu用逗号隔开 格式如：sp220420c1yo,sp211119ulk5,sp211204asg2"
+      },
+      {
+        "type": "checkbox",
+        "id": "open_autoplay",
+        "label": "小购物车是否启用自动轮播",
+        "default": true
+      },
+      {
+        "type": "checkbox",
+        "id": "product_autoplay",
+        "label": "详情页是否启用自动轮播",
+        "default": true
+      },
+      {
+        "type": "text",
+        "id": "autoplay_time",
+        "label": "请输入轮播间隔时间",
+        "default":"5"
       }
+     
     ]
   },
   {
