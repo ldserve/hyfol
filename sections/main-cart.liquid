@@ -898,7 +898,8 @@
                 value: newData.current_price,
                 order_quantity: newData.commodity_quantity,
                 currency: "USD",
-                line_items: [{product_id: id}]
+                line_items: [{product_id: id,product_category: '{{product.type}}'
+}]
             });
         } else {
             newData.commodity_quantity = -num
