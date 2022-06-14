@@ -503,7 +503,7 @@
       sensors.track('AddToCart', newData);
       sensors.setProfile({last_addtocart_time:getFormatDate()})
       gtag("event","conversion",{"send_to":"AW-319309832/2I9aCIf48eYCEIiQoZgB","transaction_id":""});
-      pintrk("track","addtocart",{value:newData.current_price,order_quantity:newData.commodity_quantity,currency:"USD",line_items:[{product_id:id}]});
+      pintrk("track","addtocart",{value:newData.current_price,order_quantity:newData.commodity_quantity,currency:"USD",line_items:[{product_id:id,product_category:'{{product.type}}'}]});
     } else {
       newData.commodity_quantity = -num
       sensors.track('RemoveFromCart', newData);
