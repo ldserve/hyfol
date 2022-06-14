@@ -164,17 +164,29 @@ If you plan to remove PageFly, please see the guide in our help center first: ht
 <!-- Pinterest 网站声明 -->
 <meta name="p:domain_verify" content="cbb185202f36b626478a123f1f821626"/>
 <!-- Pinterest Tag -->
-<script type="text/javascript">!function(e){if(!window.pintrk){window.pintrk=function(){window.pintrk.queue.push(Array.prototype.slice.call(arguments))};var n=window.pintrk;n.queue=[],n.version="3.0";var t=document.createElement("script");t.async=!0,t.src=e;var r=document.getElementsByTagName("script")[0];r.parentNode.insertBefore(t,r)}}("https://s.pinimg.com/ct/core.js"); 
- pintrk('load',  '2614456934829',{em: '{{customer.email}} '});
- pintrk('page', {page_name :   ' My Page ' ,page_category :   ' My Page Category '  });
- pintrk('track', 'pagevisit', 
- {line_items: [{
-   product_id: '{{product.id}}',  
-  product_category: '{{product.type}}' 
-  }]
-  });
-  </script>
-
+<script>
+!function(e){if(!window.pintrk){window.pintrk = function () {
+window.pintrk.queue.push(Array.prototype.slice.call(arguments))};var
+  n=window.pintrk;n.queue=[],n.version="3.0";var
+  t=document.createElement("script");t.async=!0,t.src=e;var
+  r=document.getElementsByTagName("script")[0];
+  r.parentNode.insertBefore(t,r)}}("https://s.pinimg.com/ct/core.js");
+pintrk('load', '2614456934829', {em: '<user_email_address>'});
+pintrk('page');
+</script>
+<noscript>
+<img height="1" width="1" style="display:none;" alt=""
+  src="https://ct.pinterest.com/v3/?event=init&tid=2614456934829&pd[em]=<hashed_email_address>&noscript=1" />
+</noscript>
+<!-- pinterest 页面访问事件 -->
+<script>
+pintrk('track', 'pagevisit', {
+property: 'Athleta',
+line_items: [
+{product_id: '{{product.selected_or_first_available_variant.id}}'}
+]
+});
+</script>
 <!-- end Pinterest Tag -->
 <!-- 请勿修改以下内容 -->
 <!-- Global site tag (gtag.js) - Ads. -->
