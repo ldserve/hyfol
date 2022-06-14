@@ -559,7 +559,7 @@
                   const sku=  purchase.querySelector('input[data-sku]').getAttribute('data-sku')
                   newData.commodity_skuid = sku ? sku : "";
 								  gtag("event","conversion",{"send_to":"AW-319309832/2I9aCIf48eYCEIiQoZgB","transaction_id":""});
-								  pintrk("track","addtocart",{value:data.current_price,order_quantity:1,currency:"USD",line_items:[{product_id:id}]});
+								  pintrk("track","addtocart",{value:data.current_price,order_quantity:1,currency:"USD",line_items:[{product_id:id,product_category: '{{product.type}}'}]});
                   return newData
                },
          callback:function(){
