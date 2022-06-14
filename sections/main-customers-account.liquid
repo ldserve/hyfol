@@ -37,7 +37,7 @@
 
 </section>
 
-<section data-section-id="{{ section.id }}" data-section-type="account" class="">
+<section data-section-id="{{ section.id }}" data-section-type="account" id="account">
 	<div class="page__sub-header hidden-tablet">
 		<nav aria-label="{{ 'general.breadcrumb.title' | t }}" class="breadcrumb">
 			<ol class="breadcrumb__list" role="list">
@@ -79,7 +79,6 @@
 						 {%- endfor -%}
 						</div>
 						</left-nav-list>
-						
 							<a href="{{ routes.account_logout_url }}" class="card__linklist-item link"
 								 data-no-instant>{% render 'icon', icon :"account-logout" %} {{ 'customer.general.logout' | t }}</a>
 						</div>
@@ -431,11 +430,12 @@
 							</ul>
 						</div>
 					</div>
-			
+	
 				</div>
 				
 
 				<div class="my_overview account_right_content">
+					{%- comment -%}
 					<div class="overview-box">
 						<h1>Hi {{customer.first_name}}</h1>
 				
@@ -468,7 +468,6 @@
 				
 						</div> -->
 						<ul class="d-flex account-overview__list">
-							{%- comment -%}
 							<li class="d-flex overview-item">
 								<span>
 									100
@@ -477,7 +476,6 @@
 									Coupons
 								</span>
 							</li>
-							{%- endcomment -%}
 							<li class="d-flex overview-item">
 								<span class="account-points">
 								</span>
@@ -494,106 +492,293 @@
 							</li>
 						</ul>
 					</div>
-					{%- assign order_unpaid = 0 -%}
-					{%- assign order_processing = 0 -%}
-					{%- assign order_shipped = 0 -%}
-					{%- assign order_payment = 0 -%}
-					{%- assign order_completed = 0 -%}
-				
-					{%- for order in customer.orders -%}
-					{% if order.financial_status=='unpaid' or order.financial_status=='pending' %}
-					{%- assign order_unpaid = order_unpaid | plus: 1 -%}
-					{% endif%}
-					{% if order.fulfillment_status=='on hold' %}
-					{%- assign order_processing = order_processing | plus: 1 -%}
-					{% endif %}
-					{% if order.fulfillment_status=='in progress' %}
-					{%- assign order_shipped = order_shipped | plus: 1 -%}
-					{% endif%}
-					{% if order.financial_status=='paid' %}
-					{%- assign order_payment = order_payment | plus: 1 -%}
-					{% endif %}
-					{% if order.fulfillment_status=='fulfilled' %}
-					{%- assign order_completed = order_completed | plus: 1 -%}
-					{% endif%}
-					{%- endfor -%}
-					<div class="order-preview overview-box ">
-						<h1>My Order</h1>
-						<order-item>
-							<div class="icon-box">
-								<ul class="d-flex  account-overview__list icons">
-									<li class="order-preview__item">
-										<span class="order-icon">
-											{%- render 'icon', icon: 'cjj_all' -%}
-											{%- comment -%}
-											<span class="empty-state__count redio-icon">{{customer.orders_count}}</span>
-											{%- endcomment -%}
-										</span>
-										<p>All</p>
-										</a>
-									</li>
-									<li class="order-preview__item">
-										<span class="order-icon">
-											{%- render 'icon', icon: 'cjj_unpaid' -%}
-											{%- if order_unpaid!=0 -%}
-											<span class="empty-state__count redio-icon">{{order_unpaid}}</span>
-											{%- endif -%}
-										</span>
-										<p>Unpaid</p>
-									</li>
-									<li class="order-preview__item">
-										<span class="order-icon">
-											{%- render 'icon', icon: 'cjj_processing' -%}
-											{%- if order_processing!=0 -%}
-											<span class="empty-state__count redio-icon">{{order_processing}}</span>
-											{%- endif -%}
-										</span>
-										<p>Processing</p>
-									</li>
-									<li class="order-preview__item">
-										<span class="order-icon">
-											{%- render 'icon', icon: 'cjj_shipped' -%}
-											{%- if order_shipped!=0 -%}
-											<span class="empty-state__count redio-icon">{{order_shipped}}</span>
-				
-											{%- endif -%}
-										</span>
-										<p>Shipped</p>
-									</li>
-				
-									<li class="order-preview__item">
-										<span class="order-icon">
-											{%- render 'icon', icon: 'cjj_payment' -%}
-											{%- if order_payment!=0 -%}
-											<span class="empty-state__count redio-icon">{{order_payment}}</span>
-				
-											{%- endif -%}
-										</span>
-										<p>Payment</p>
-									</li>
-									<li class="order-preview__item">
-										<span class="order-icon">
-											{%- render 'icon', icon: 'cjj_completed' -%}
-											{%- if order_completed!=0 -%}
-											<span class="empty-state__count redio-icon">{{order_completed}}</span>
-				
-											{%- endif -%}
-										</span>
-										<p>Completed</p>
-									</li>
-									<li class="order-preview__item">
-										<!-- <a href="mailto:contactus@hyfol.com" target="_blank" rel="noopener" aria-describedby="a11y-new-window-message"> -->
-										<span class="order-icon">
-											{%- render 'icon', icon: 'cjj_post_sale' -%}<br />
-										</span>
-										<p>Post-sale</p>
-										<!-- </a> -->
-									</li>
-								</ul>
-							</div>
-						</order-item>
+					{%- endcomment -%}
+					<div class="vip-rules" style="display:none;">
+
+						<div class="close-rule__page">{% render 'icon',icon:'close' %} </div>
+
+						<h1 class="h1 vip-rules__title">About Rules</h1>
+						<h3 class="h3">1. Introduction</h3>
+						<div class="rule-tex">
+							There is no fee for the HYFOL VIP. HYFOL VIP membership is limited to individuals only and limited to one
+							account per individual.It is your identification that represent you are at legal ages to join our program
+							and responsibility for your membership to keep youremail and contact details up to date in your Account.HYFOL
+							reserves the right to disqualify Members who have violated any Of theTerms and Conditions. Any
+							fraudulent activity or attempt to manipulate or abuse the program will result in the account being
+							removed from the program without notice. When a Membership is terminated, all outstanding coupons and
+							outstanding rewards associated with the Membership are forfeited.
+						</div>
+						<h3 class="h3">2. Membership</h3>
+						<div class="rule-tex">
+							Every tier is valid for 12 months from the date the HYFOL VIP member qualifies(exclude silver member). identity
+							validation is required every month.Data refreshes typically take up to 24 hours. Please check your level after
+							24
+							hours. Once you become a silver member,you will earn a life-long status. Please note that the level of your
+							membership is based on the times of eligible purchases or the amount of eligible spending during the past 12
+							months
+							which is 45 days before the refresh date every month.
+							<table border="1px" class="rule-table">
+								<thead>
+									<tr>
+										<th> </th>
+										<th>Silver</th>
+										<th>Gold</th>
+										<th>Platinum</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>
+											Points Redeem
+										</td>
+										<td>{% render 'icon',icon:"check" %}</td>
+										<td>{% render 'icon',icon:"check" %}</td>
+										<td>{% render 'icon',icon:"check" %}</td>
+									</tr>
+									<tr>
+										<td>
+											Level-up Coupon
+										</td>
+										<td></td>
+										<td>{% render 'icon',icon:"check" %}</td>
+										<td>{% render 'icon',icon:"check" %}</td>
+									</tr>
+									<tr>
+										<td>
+											Free Shipping Card
+										</td>
+										<td></td>
+										<td>{% render 'icon',icon:"check" %}</td>
+										<td>{% render 'icon',icon:"check" %}</td>
+									</tr>
+									<tr>
+										<td>
+											Birthday Gifts
+										</td>
+										<td></td>
+										<td></td>
+										<td>{% render 'icon',icon:"check" %}</td>
+									</tr>
+									<tr>
+										<td>
+											Exclusive Promotions
+										</td>
+										<td></td>
+										<td></td>
+										<td>{% render 'icon',icon:"check" %}</td>
+									</tr>
+								</tbody>
+							</table>
+							<p style="color:#919191 ;">( The Eligible Purchases means purchases on the HYFOL website during the past 12 months which is 45 days
+								before 10h every month.)</p>
+						</div>
+						<h3 class="h3">3. Rewards </h3>
+						<div class="rule-tex">
+							Membership in the program may entitle you to various ofers in addition to rewards . The details of these
+							ofers are set out from time to time to your personal acCount.
+						</div>
 					</div>
-				
+					<div class="my-account">
+	
+						<div class="vip-page ">
+							<div class="vip-overview">
+								<div class="vip-user d-flex">
+									<div class="vip-user__avatar">
+										<img class="lazyload" alt="fill" src="{{ 'user.png' | asset_url}}">
+									</div>
+									<div class="vip-user__name">
+										<span style="margin-bottom:6px ;">{{customer.name}}</span><br />
+										<div class="vip-icon__box">
+											{%- render 'icon',icon:'vip',class:'vip' -%}
+											<span class="vip-user__grade">Silver</span>
+										</div>
+										<div class="vip-icon__box">
+											{% render "icon",icon:'integral' %}
+											<span class="vip-integral">0</span>
+										</div>
+							
+									</div>
+								</div>
+							
+							
+								<div class="vip-grade d-flex">
+									<span class="vip-level__s0">
+									</span>
+									<span class="vip-solid"></span>
+									<span class="vip-level__s1">
+										<img src="{{'s1.png' | asset_url}}" alt="">
+									</span>
+									<span class="vip-solid"></span>
+									<span class="vip-level__s2">
+										<img src="{{'s2.png' | asset_url}}" alt="">
+									</span>
+									<span class="vip-solid"></span>
+									<span class="vip-level__s3">
+										<img src="{{'s3.png' | asset_url}}" alt="">
+									</span>
+								</div>
+								<p class="vip-info__title">Welcome to the HYFOL VIP</p>
+							</div>
+	
+							<div class="vip-overview__rule">
+								<p>
+									Silver: US$0.1 or 1 order(s) are required to become a silver member
+								</p>
+								<p>
+									Gold: US$120 or 3 order(s) are required to become a gold member
+								</p>
+								<p>
+									Platinum: US$500 or 5 order(s) are required to become a platinum member
+								</p>
+								<summary class="vip-rules__link">
+									About rules
+								</summary>
+							</div>
+						</div>
+
+						{%- assign order_unpaid = 0 -%}
+						{%- assign order_processing = 0 -%}
+						{%- assign order_shipped = 0 -%}
+						{%- assign order_payment = 0 -%}
+						{%- assign order_completed = 0 -%}
+					
+						{%- for order in customer.orders -%}
+						{% if order.financial_status=='unpaid' or order.financial_status=='pending' %}
+						{%- assign order_unpaid = order_unpaid | plus: 1 -%}
+						{% endif%}
+						{% if order.fulfillment_status=='on hold' %}
+						{%- assign order_processing = order_processing | plus: 1 -%}
+						{% endif %}
+						{% if order.fulfillment_status=='in progress' %}
+						{%- assign order_shipped = order_shipped | plus: 1 -%}
+						{% endif%}
+						{% if order.financial_status=='paid' %}
+						{%- assign order_payment = order_payment | plus: 1 -%}
+						{% endif %}
+						{% if order.fulfillment_status=='fulfilled' %}
+						{%- assign order_completed = order_completed | plus: 1 -%}
+						{% endif%}
+						{%- endfor -%}
+	
+						<div class="my-coupons">
+							<h3 class="h3">Unused Coupons</h3>
+							<div class="my-coupons__list ">
+								{% for i in (1..4) %}
+								<div class="my-coupons__item">
+								<p>%15 OFF</p>	
+								<p>For order over us$49.00</p>	
+								<p>Code:HY15</p>	
+									<ul>
+										<li></li>
+										<li>for All Products</li>
+									</ul>
+									<span class="left"></span>
+									<span class="right">
+
+									</span>
+								</div>
+								{% endfor %}
+						
+							</div>
+						
+						
+						</div>
+						<style>
+							.my-coupons__list {
+								display: grid;
+								grid: repeat(2, auto) / auto-flow 45%;
+								grid-column-gap: 4rem;
+								grid-row-gap: 3rem;
+							}
+						
+							.my-coupons__item {
+								background-image: url({{ 'coupon.jpg' | asset_url }});
+								background-position: center;
+								background-repeat: no-repeat;
+								background-size: 100% 100%;
+								background-clip: border-box;
+								padding: 0.6rem 4rem;
+							
+    position: relative;
+							}
+						</style>
+						<div class="order-preview overview-box ">
+							<h3 class="h3">My Order</h3>
+							<order-item>
+								<div class="icon-box">
+									<ul class="d-flex  account-overview__list icons">
+										<li class="order-preview__item">
+											<span class="order-icon">
+												{%- render 'icon', icon: 'cjj_all' -%}
+												{%- comment -%}
+												<span class="empty-state__count redio-icon">{{customer.orders_count}}</span>
+												{%- endcomment -%}
+											</span>
+											<p>All</p>
+											</a>
+										</li>
+										<li class="order-preview__item">
+											<span class="order-icon">
+												{%- render 'icon', icon: 'cjj_unpaid' -%}
+												{%- if order_unpaid!=0 -%}
+												<span class="empty-state__count redio-icon">{{order_unpaid}}</span>
+												{%- endif -%}
+											</span>
+											<p>Unpaid</p>
+										</li>
+										<li class="order-preview__item">
+											<span class="order-icon">
+												{%- render 'icon', icon: 'cjj_processing' -%}
+												{%- if order_processing!=0 -%}
+												<span class="empty-state__count redio-icon">{{order_processing}}</span>
+												{%- endif -%}
+											</span>
+											<p>Processing</p>
+										</li>
+										<li class="order-preview__item">
+											<span class="order-icon">
+												{%- render 'icon', icon: 'cjj_shipped' -%}
+												{%- if order_shipped!=0 -%}
+												<span class="empty-state__count redio-icon">{{order_shipped}}</span>
+					
+												{%- endif -%}
+											</span>
+											<p>Shipped</p>
+										</li>
+					
+										<li class="order-preview__item">
+											<span class="order-icon">
+												{%- render 'icon', icon: 'cjj_payment' -%}
+												{%- if order_payment!=0 -%}
+												<span class="empty-state__count redio-icon">{{order_payment}}</span>
+					
+												{%- endif -%}
+											</span>
+											<p>Payment</p>
+										</li>
+										<li class="order-preview__item">
+											<span class="order-icon">
+												{%- render 'icon', icon: 'cjj_completed' -%}
+												{%- if order_completed!=0 -%}
+												<span class="empty-state__count redio-icon">{{order_completed}}</span>
+					
+												{%- endif -%}
+											</span>
+											<p>Completed</p>
+										</li>
+										<li class="order-preview__item">
+											<!-- <a href="mailto:contactus@hyfol.com" target="_blank" rel="noopener" aria-describedby="a11y-new-window-message"> -->
+											<span class="order-icon">
+												{%- render 'icon', icon: 'cjj_post_sale' -%}<br />
+											</span>
+											<p>Post-sale</p>
+											<!-- </a> -->
+										</li>
+									</ul>
+								</div>
+							</order-item>
+						</div>
+					{%- comment -%}
 					<div class="overview-box points-box">
 						<h1>Points For</h1>
 						<div class="points-img">
@@ -608,6 +793,9 @@
 				
 						</div>
 					</div>
+					{%- endcomment -%}
+					</div>	
+
 				</div>
 
 				<div class="my_rewards account_right_content">
@@ -1508,8 +1696,151 @@
 		text-shadow: -2px 1px 3px rgba(0, 0, 0, .5);
 	}
 	
-</style>
 
+	.vip-overview__rule {
+		font-size: 14px;
+		color: #fff;
+		padding: 0 1rem;
+		margin-left: 50%;
+	}
+
+	.vip-overview__rule p {
+		margin: 0;
+	}
+
+	.vip-overview {
+		margin-left: 2rem;
+		position: absolute;
+		top: 2rem;
+		left: 0;
+
+	}
+
+	.vip-rules__link {
+		text-decoration: underline;
+		cursor: pointer;
+		display: inline-block;
+	}
+
+	.vip-icon__box {
+		display: inline-block;
+		background-color: #aaa;
+		border-radius: 1rem;
+		padding: 0 0.8rem;
+	}
+
+	.vip-icon__box .icon {
+		font-size: 1.6rem;
+	}
+
+	.vip-icon__box span {
+		padding: 0 6px;
+
+	}
+
+	.vip-level__s0 {
+		background-color: #000000;
+		border-radius: 50%;
+		width: 0.6rem;
+		height: 0.6rem;
+	}
+
+	.vip-solid {
+		background-color: #b8b8b8;
+		height: 1px;
+		width: 2rem;
+	}
+
+	.vip-grade {
+		padding: 1rem 0;
+		align-items: center;
+		justify-items: flex-start;
+	}
+
+	.vip-user__avatar {
+		/* background-color: #bbb; */
+		width: 4rem;
+		height: 4rem;
+		border-radius: 50%;
+	}
+
+	.vip-user__name {
+		padding: 0 1rem;
+
+	}
+
+	.vip-page {
+		justify-content: space-between;
+		background-image: url({{ 'user_background.png' | asset_url }});
+		/* background-position: center; */
+		background-position: 50%;
+		background-repeat: no-repeat;
+		background-color: #eee;
+		background-size: 110% 110%;
+		background-clip: border-box;
+		min-height: 200px;
+		padding-top: 2rem;
+		padding:2rem;
+
+		position: relative;
+	}
+
+	.vip-grade img {
+		width: 2rem;
+		height: 2rem;
+	}
+
+	.vip-grade,
+	.vip-info__title {
+		margin-left: 2rem;
+	}
+
+	.vip-rules {
+		background-color: #eee;
+		z-index: 3;
+		color: #000000;
+		cursor: text;
+		padding: 1rem 2rem;
+		/* position: relative; */
+	}
+
+	.vip-rules__title {
+		text-align: center;
+	}
+
+	.rule-table {
+		margin: 20px 0;
+	}
+
+	.rule-table td,
+	.rule-table th {
+		padding: 6px 10px;
+	}
+
+	.rule-table td:nth-child(1n+2),
+	.rule-table th:nth-child(1n+2) {
+		background-color: #c8c8c8;
+		text-align: center;
+	}
+
+	.rule-tex {
+		margin-bottom: 16px;
+	}
+	.close-rule__page{
+		float: right;
+		cursor: pointer;
+	}
+	.my-coupons .h3{
+		text-align: center;
+	}
+	.order-preview .h3{
+		text-align: center;
+	}
+	.my-coupons{
+		margin-top: 3rem;
+		background-color: #eee;
+	}
+</style>
 <script>
 	~ function () {
 		let getDataFlag = false;
@@ -1657,8 +1988,20 @@
 			let point = Math.round(allPrice / 100)
 			document.querySelector(".account-points").innerHTML = point
 		}
-		getPoint()
+		// getPoint()
 
+
+		const rules=document.querySelector('.vip-rules')
+		const user=document.querySelector('.my-account')
+		document.querySelector('.vip-rules__link').addEventListener('click',(e)=>{
+			user.style.display="none"
+			rules.style.display='block'
+			window.scroll(0,0)
+		})
+		document.querySelector('.close-rule__page').addEventListener('click',()=>{
+			rules.style.display='none'
+			user.style.display="block"
+		})
 
 	}()
 </script>
