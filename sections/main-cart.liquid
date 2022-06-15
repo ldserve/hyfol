@@ -355,7 +355,7 @@
 														        data-quantity="{{ line_item.quantity | minus: 1 }}" data-line="{{ forloop.index }}"
 														        aria-label="{{ 'cart.items.decrease_quantity' | t }}"
 														        title="{{ 'cart.items.decrease_quantity' | t }}">{% render 'icon', icon: 'minus' %}</button>
-														<input aria-label="{{ 'product.form.quantity' | t }}" data-id="{{ line_item.variant_id }}"
+														<input aria-label="{{ 'product.form.quantity' | t }}" data-id="{{ line_item.product_id }}"
 														       data-scdata='{"is_quick_view":0,
                               "commodity_spuid": "{{ line_item.product.handle }}",
                                "commodity_name": "{{ line_item.title | handleize }}",
@@ -382,7 +382,7 @@
 														       onblur="mainBlur(this)">
 														<button type="button"
 														        data-scenable="1"
-														        data-sctype="addMainCart" data-id="{{ line_item.variant_id }}"
+														        data-sctype="addMainCart" data-id="{{ line_item.product_id }}"
 														        data-scdata='{"is_quick_view":0,
 							"commodity_spuid": "{{ line_item.product.handle }}",
                "commodity_name": "{{ line_item.title | handleize }}",
