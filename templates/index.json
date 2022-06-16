@@ -3,6 +3,30 @@
     "1650101273f11a55ef": {
       "type": "slideshow",
       "blocks": {
+        "1650101273ef0886ca-0": {
+          "type": "image",
+          "settings": {
+            "sensorsName": "轮播图",
+            "image": "shopify:\/\/shop_images\/2in1_dbf7dde1-4911-402f-8dfb-d9143e28da17.jpg",
+            "mobile_image": "shopify:\/\/shop_images\/94d53239037849179c79285840325f32_58780b60-2ac1-4427-9e10-2f3a18b1f21f.jpg",
+            "show_overlay": false,
+            "overlay_opacity": 30,
+            "text_color": "#b82928",
+            "title": "",
+            "heading_text_font": "abril_fatface_n4",
+            "heading_text_font_size": 49,
+            "heading_text_color": "#eb0e0e",
+            "content": "",
+            "content_text_font": "dosis_n4",
+            "content_text_font_size": 25,
+            "content_text_color": "#ffffff",
+            "content_position": "top_center",
+            "button_background": "#ffffff",
+            "button_text_color": "#000000",
+            "button_text": "",
+            "link": "https:\/\/www.hyfol.com\/collections\/running-shorts"
+          }
+        },
         "fb844d01-0475-4130-aeb7-a118c0a1b427": {
           "type": "image",
           "settings": {
@@ -74,38 +98,13 @@
             "button_text": "",
             "link": "https:\/\/www.hyfol.com\/collections\/independence-day-1"
           }
-        },
-        "1650101273ef0886ca-0": {
-          "type": "image",
-          "disabled": true,
-          "settings": {
-            "sensorsName": "轮播图",
-            "image": "shopify:\/\/shop_images\/banner_0d06747b-cc02-4c21-9c14-468a2c32d6a9.jpg",
-            "mobile_image": "shopify:\/\/shop_images\/banner_562d0bc4-a4ba-4c1d-81fb-66d58a5f9bb4.jpg",
-            "show_overlay": false,
-            "overlay_opacity": 30,
-            "text_color": "#b82928",
-            "title": "",
-            "heading_text_font": "abril_fatface_n4",
-            "heading_text_font_size": 49,
-            "heading_text_color": "#eb0e0e",
-            "content": "",
-            "content_text_font": "dosis_n4",
-            "content_text_font_size": 25,
-            "content_text_color": "#ffffff",
-            "content_position": "top_center",
-            "button_background": "#ffffff",
-            "button_text_color": "#000000",
-            "button_text": "",
-            "link": "shopify:\/\/collections\/summer-sale"
-          }
         }
       },
       "block_order": [
+        "1650101273ef0886ca-0",
         "fb844d01-0475-4130-aeb7-a118c0a1b427",
         "28572d9f-8700-4893-990e-c3b4bf1e7821",
-        "1650101273ef0886ca-1",
-        "1650101273ef0886ca-0"
+        "1650101273ef0886ca-1"
       ],
       "settings": {
         "edge_to_edge": true,
