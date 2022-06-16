@@ -61,7 +61,7 @@
     "cart_empty_button_link": "",
     "cart_show_checkout_button": true,
     "cart_show_free_shipping_threshold": true,
-    "cart_free_shipping_threshold": "60",
+    "cart_free_shipping_threshold": "69",
     "social_facebook": "https:\/\/www.facebook.com\/Hyfolofficial",
     "social_twitter": "",
     "social_pinterest": "",
@@ -397,15 +397,7 @@
     },
     "content_for_index": [
 
-    ],
-    "blocks": {
-      "1513253815146976218": {
-        "type": "shopify:\/\/apps\/omnisend-email-marketing-sms\/blocks\/app-embed\/44704aa2-794f-4c5d-8c8e-039c841158e9",
-        "disabled": false,
-        "settings": {
-        }
-      }
-    }
+    ]
   },
   "presets": {
     "Metal": {
