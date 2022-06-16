@@ -620,7 +620,7 @@
         "id": "cart_free_shipping_threshold",
         "label": "Free shipping minimum amount",
         "info": "Only write a number, no letters. Wording can be changed in [language settings](https:\/\/support.maestrooo.com\/article\/55-changing-themes-wording).",
-        "default": "50"
+        "default": "69"
       }
     ]
   },
