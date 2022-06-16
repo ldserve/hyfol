@@ -680,76 +680,7 @@
 						
 						
 						</div>
-						<style>
-							.my-coupons .h3 {
-								text-align: center;
-							}
 						
-							.order-preview .h3 {
-								text-align: center;
-							}
-							.my-coupons {
-								margin-top: 3rem;
-								background-color: #eee;
-								padding: 0 3rem 3rem;
-							}
-						
-							.my-coupons__title {
-								padding: 1rem 0;
-							}
-							.coupons-date{
-								margin-top: 0.8rem;
-								font-size: 14px;
-							}
-							.coupons-date li{
-								list-style: disc;
-							}
-							.my-coupons__list {
-								display: grid;
-								grid: repeat(2, auto) / auto-flow auto;
-								grid-column-gap: 4rem;
-								grid-row-gap: 3rem;
-								color: #ccc;
-							}
-							.my-coupons__list p{
-								margin: 0;
-							}
-							.my-coupons__item {
-								background-image: url({{ 'coupon.jpg' | asset_url }});
-								background-position: center;
-								background-repeat: no-repeat;
-								background-size: 100% 100%;
-								background-clip: border-box;
-								padding: 0.6rem 4rem;
-								position: relative;
-								overflow: hidden;
-							}
-						
-							.round-left,
-							.round-right {
-								position: absolute;
-								top: 0;
-								bottom: 0;
-								margin: auto;
-								background-color: #eee;
-								width: 2rem;
-								height: 2rem;
-								border-radius: 50%;
-							}
-						
-							.round-left {
-								left: -1rem;
-							}
-						
-							.round-right {
-								right: -1rem;
-							}
-						
-						
-							#main {
-								background-color: #fff;
-							}
-						</style>
 						<div class="order-preview overview-box ">
 							<h3 class="h3">My Order</h3>
 							<order-item>
@@ -851,8 +782,146 @@
 				</div>
 
 				<div class="my_profile account_right_content">
-					profilea
+					<div class="profile-view backgrount_e">
+						<h3 class="h3" style="text-align:center;">My Profile</h3>
+
+					</div>
+
+					<div class="profile-record backgrount_e">
+						<h5 class="h5">Profile Detalls</h5>
+					
+					
+					
+					<details-menu>
+						<div class="profile-nav">
+							<summary aria-expanded="false">
+								All
+							</summary>
+							<summary aria-expanded="false">
+								Earned
+							</summary>
+							<summary aria-expanded="false">
+								Point Amount
+							</summary>
+							<summary aria-expanded="false">
+								Expired
+							</summary>
+						</div>
+						<div class="profile-all">
+							<table border="1">
+								<thead>
+									<tr>
+										<th>Date And Time</th>
+										<th>Point Type</th>
+										<th>Point Amount</th>
+										<th>Expiration Date</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>16/05/2022 02:00:00</td>
+										<td>Emaill Verification</td>
+										<td>+ 100 </td>
+										<td>16/05/2022 02:00:00</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<div class="profile-earned">
+							<table border="1">
+								<thead>
+									<tr>
+										<th>Date And Time</th>
+										<th>Point Type</th>
+										<th>Point Amount</th>
+										<th>Expiration Date</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>16/05/2022 02:00:00</td>
+										<td>Emaill Verification</td>
+										<td>+ 100 </td>
+										<td>16/05/2022 02:00:00</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<div class="profile-point">
+							<table border="1">
+								<thead>
+									<tr>
+										<th>Date And Time</th>
+										<th>Point Type</th>
+										<th>Point Amount</th>
+										<th>Expiration Date</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>16/05/2022 02:00:00</td>
+										<td>Emaill Verification</td>
+										<td>+ 100 </td>
+										<td>16/05/2022 02:00:00</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<div class="profile-expired">
+							<table border="1">
+								<thead>
+									<tr>
+										<th>Date And Time</th>
+										<th>Point Type</th>
+										<th>Point Amount</th>
+										<th>Expiration Date</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>16/05/2022 02:00:00</td>
+										<td>Emaill Verification</td>
+										<td>+ 100 </td>
+										<td>16/05/2022 02:00:00</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</details-menu>
+					
+					
+					</div>
+
+
+
+
+
 				</div>
+					<style>
+						.profile-view{
+							padding: 30px 50px;
+						}
+						.profile-record{
+							margin-top: 2rem;
+							padding: 2rem;
+						}
+						.profile-all th{
+							background-color:#d6d6d6 ;
+							padding: 0 3rem;
+						}
+						.profile-all{
+							text-align: center;
+						}
+						.profile-nav{
+							
+						}
+						/* .profile-nav>li{
+							display: inline-block;
+							margin-right: 1rem;
+							padding: 1rem;
+						} */
+
+					</style>
 
 				<div class="my_addresses account_right_content">
 					<section data-section-id="{{ section.id }}" data-section-type="account">
@@ -1486,7 +1555,7 @@
 	}
 
 	#account-input:checked~.account-box {
-		height:170px;
+		height: 170px;
 		transition: all 0.4s ease;
 	}
 
@@ -1743,7 +1812,7 @@
 		color: #ffffff;
 		text-shadow: -2px 1px 3px rgba(0, 0, 0, .5);
 	}
-	
+
 
 	.vip-overview__rule {
 		font-size: 14px;
@@ -1828,7 +1897,7 @@
 		background-clip: border-box;
 		min-height: 200px;
 		padding-top: 2rem;
-		padding:2rem;
+		padding: 2rem;
 
 		position: relative;
 	}
@@ -1874,14 +1943,95 @@
 	.rule-tex {
 		margin-bottom: 16px;
 	}
-	.close-rule__page{
+
+	.close-rule__page {
 		float: right;
 		cursor: pointer;
 	}
-	.card.card--sticky{
+
+	.card.card--sticky {
+		background-color: #eee;
+	}
+
+	.my-coupons .h3 {
+		text-align: center;
+	}
+
+	.order-preview .h3 {
+		text-align: center;
+	}
+
+	.my-coupons {
+		margin-top: 3rem;
+		background-color: #eee;
+		padding: 0 3rem 3rem;
+	}
+
+	.my-coupons__title {
+		padding: 1rem 0;
+	}
+
+	.coupons-date {
+		margin-top: 0.8rem;
+		font-size: 14px;
+	}
+
+	.coupons-date li {
+		list-style: disc;
+	}
+
+	.my-coupons__list {
+		display: grid;
+		grid: repeat(2, auto) / auto-flow auto;
+		grid-column-gap: 4rem;
+		grid-row-gap: 3rem;
+		color: #ccc;
+	}
+
+	.my-coupons__list p {
+		margin: 0;
+	}
+
+	.my-coupons__item {
+		background-image: url({{ 'coupon.jpg' | asset_url }});
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: 100% 100%;
+		background-clip: border-box;
+		padding: 0.6rem 4rem;
+		position: relative;
+		overflow: hidden;
+	}
+
+	.round-left,
+	.round-right {
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		margin: auto;
+		background-color: #eee;
+		width: 2rem;
+		height: 2rem;
+		border-radius: 50%;
+	}
+
+	.round-left {
+		left: -1rem;
+	}
+
+	.round-right {
+		right: -1rem;
+	}
+
+
+	#main {
+		background-color: #fff;
+	}
+	.backgrount_e{
 		background-color: #eee;
 	}
 </style>
+
 <script>
 	~ function () {
 		let getDataFlag = false;
@@ -2031,6 +2181,30 @@
 		}
 		// getPoint()
 
+
+class DetailsMenu extends HTMLElement {
+  constructor() {
+    super();
+    this.mainDetailsToggle = this.querySelector('summary');
+    // this.content = this.mainDetailsToggle.querySelector('summary').nextElementSibling;
+      this.mainDetailsToggle.addEventListener('focusout', this.close.bind(this));
+      this.mainDetailsToggle.addEventListener('click',this.onAcativ.bind(this))
+
+  }
+
+  onAcativ(e) {
+    e.preventDefault()
+	// this.mainDetailsToggle.setAttribute('open','');
+    this.mainDetailsToggle.querySelector('summary').setAttribute('aria-expanded',true)
+
+  }
+
+  close() {
+    this.mainDetailsToggle.removeAttribute('open');
+    this.mainDetailsToggle.querySelector('summary').setAttribute('aria-expanded', false);
+  }
+}
+customElements.define('details-menu', DetailsMenu);
 
 		const rules=document.querySelector('.vip-rules')
 		const user=document.querySelector('.my-account')
