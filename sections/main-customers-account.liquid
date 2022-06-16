@@ -784,8 +784,36 @@
 				<div class="my_profile account_right_content">
 					<div class="profile-view backgrount_e">
 						<h3 class="h3" style="text-align:center;">My Profile</h3>
-
+						<div class="my-profile__view ">
+							<div class="profile-total">
+								<div><strong>100</strong></div>
+								<div>Total Points</div>
+							</div>
+							<span style="background-color: #999;height: 100%;width: 1px;margin: 0 auto;"></span>
+							<div class="profile-expire">
+								<div><strong>0</strong></div>
+								<div>Points Expired soon</div>
+							</div>
+						</div>
 					</div>
+					<style>
+						.my-profile__view{
+							text-align: center;
+							display: grid;
+							grid: repeat(1, auto) / auto-flow auto;
+							color:#fff;
+							background:url({{ 'coupon.jpg' | asset_url }}) no-repeat 100% 100%;
+							grid-template-columns: auto 1px auto;
+							padding:1rem 2rem;
+
+						}
+						.profile-total,.profile-expire{
+							padding: 1rem 0;
+						}
+						.profile-view .h3{
+							margin-bottom: 2rem;
+						}
+					</style>
 
 					<div class="profile-record backgrount_e">
 						<h5 class="h5">Profile Detalls</h5>
@@ -794,7 +822,7 @@
 					
 					<details-menu>
 						<div class="profile-nav">
-							<summary aria-expanded="false" data-index="1">
+							<summary aria-expanded="true" data-index="1">
 								All
 							</summary>
 							<summary aria-expanded="false" data-index="2">
@@ -807,7 +835,7 @@
 								Expired
 							</summary>
 						</div>
-						<div class="profile-all"  data-index="1">
+						<div class="profile-all page__item"  data-index="1" aria-hidden="false">
 							<table border="1">
 								<thead>
 									<tr>
@@ -827,7 +855,7 @@
 								</tbody>
 							</table>
 						</div>
-						<div class="profile-earned" data-index="2">
+						<div class="profile-earned page__item" data-index="2" aria-hidden="true">
 							<table border="1">
 								<thead>
 									<tr>
@@ -847,7 +875,7 @@
 								</tbody>
 							</table>
 						</div>
-						<div class="profile-point" data-index="3">
+						<div class="profile-point page__item" data-index="3" aria-hidden="true">
 							<table border="1">
 								<thead>
 									<tr>
@@ -867,7 +895,7 @@
 								</tbody>
 							</table>
 						</div>
-						<div class="profile-expired" data-index="4">
+						<div class="profile-expired page__item" data-index="4" aria-hidden="true">
 							<table border="1">
 								<thead>
 									<tr>
@@ -897,31 +925,7 @@
 
 
 				</div>
-					<style>
-						.profile-view{
-							padding: 30px 50px;
-						}
-						.profile-record{
-							margin-top: 2rem;
-							padding: 2rem;
-						}
-						.profile-all th{
-							background-color:#d6d6d6 ;
-							padding: 0 3rem;
-						}
-						.profile-all{
-							text-align: center;
-						}
-						.profile-nav{
-							
-						}
-						/* .profile-nav>li{
-							display: inline-block;
-							margin-right: 1rem;
-							padding: 1rem;
-						} */
-
-					</style>
+				
 
 				<div class="my_addresses account_right_content">
 					<section data-section-id="{{ section.id }}" data-section-type="account">
@@ -2030,6 +2034,40 @@
 	.backgrount_e{
 		background-color: #eee;
 	}
+	.profile-view {
+		padding: 30px 50px;
+	}
+
+	.profile-record {
+		margin-top: 2rem;
+		padding: 2rem;
+	}
+	.profile-record .h5{
+		margin: 0;
+	}
+	.page__item {
+		margin-top: 1rem;
+	}
+	.page__item th {
+		background-color: #d6d6d6;
+		padding: 0 3rem;
+
+	}
+
+	.page__item td {
+		text-align: center;
+	}
+
+	.profile-nav {
+
+	}
+
+	.profile-nav>summary {
+		display: inline-block;
+		margin-right: 1rem;
+		padding: 1rem;
+		cursor: pointer;
+	}
 </style>
 
 <script>
@@ -2185,25 +2223,28 @@
 class DetailsMenu extends HTMLElement {
   constructor() {
     super();
-    this.navs = this.querySelector('summary');
-    // this.content = this.mainDetailsToggle.querySelector('summary').nextElementSibling;
-    //   this.mainDetailsToggle.addEventListener('focusout', this.close.bind(this));
-    //   this.mainDetailsToggle.addEventListener('click',this.onAcativ.bind(this))
-	this.navs.forEach(nav=>{
-		nav.addEventListener('click',this.onAcativ())
+	this.addEventListener('click',(e)=>{ 
+		e.preventDefault()
+		let target=e.target
+		if(!['summary'].includes(target.tagName.toLowerCase())||target.getAttribute('aria-expanded')==='true')return
+		this.onAcativ(target)
+		
 	})
   }
 
-  onAcativ(e) {
-    e.preventDefault()
-	// this.mainDetailsToggle.setAttribute('open','');
-    this.mainDetailsToggle.querySelector('summary').setAttribute('aria-expanded',true)
+  onAcativ(target) {
+	this.close(target)
+	const activePage=this.querySelector(`.page__item[data-index="${target.dataset.index}"]`)
+	activePage.setAttribute('aria-hidden',false)
+    target.setAttribute('aria-expanded',true)
 
   }
 
   close() {
-    this.mainDetailsToggle.removeAttribute('open');
-    this.mainDetailsToggle.querySelector('summary').setAttribute('aria-expanded', false);
+	const oldActiveNav=this.querySelector('[aria-expanded="true"]')
+	const oldActivePage=this.querySelector('[aria-hidden="false"]')
+	oldActivePage.setAttribute('aria-hidden',true)
+	oldActiveNav.setAttribute('aria-expanded', false);
   }
 }
 customElements.define('details-menu', DetailsMenu);
