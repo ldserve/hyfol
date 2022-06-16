@@ -6,7 +6,7 @@
         "7d45e2c1-c489-43b6-a70c-d33d7bd68544": {
           "type": "trust",
           "settings": {
-            "nav_title": "Account Overview",
+            "nav_title": "My Account",
             "nav_right": "my_overview",
             "nav_show": true,
             "nav_icon": "account-text"
