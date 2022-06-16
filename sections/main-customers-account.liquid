@@ -579,7 +579,6 @@
 						</div>
 					</div>
 					<div class="my-account">
-	
 						<div class="vip-page ">
 							<div class="vip-overview">
 								<div class="vip-user d-flex">
@@ -599,7 +598,6 @@
 							
 									</div>
 								</div>
-							
 							
 								<div class="vip-grade d-flex">
 									<span class="vip-level__s0">
@@ -661,20 +659,19 @@
 						{%- endfor -%}
 	
 						<div class="my-coupons">
-							<h3 class="h3">Unused Coupons</h3>
+							<h3 class="h3 my-coupons__title">Unused Coupons</h3>
 							<div class="my-coupons__list ">
 								{% for i in (1..4) %}
 								<div class="my-coupons__item">
 								<p>%15 OFF</p>	
 								<p>For order over us$49.00</p>	
 								<p>Code:HY15</p>	
-									<ul>
-										<li></li>
+									<ul class="coupons-date">
+										<li>16/05/2022  02:00:00~16/06/2022  02:00:00</li>
 										<li>for All Products</li>
 									</ul>
-									<span class="left"></span>
-									<span class="right">
-
+									<span class="round-left"></span>
+									<span class="round-right">
 									</span>
 								</div>
 								{% endfor %}
@@ -684,13 +681,39 @@
 						
 						</div>
 						<style>
-							.my-coupons__list {
-								display: grid;
-								grid: repeat(2, auto) / auto-flow 45%;
-								grid-column-gap: 4rem;
-								grid-row-gap: 3rem;
+							.my-coupons .h3 {
+								text-align: center;
 							}
 						
+							.order-preview .h3 {
+								text-align: center;
+							}
+							.my-coupons {
+								margin-top: 3rem;
+								background-color: #eee;
+								padding: 0 3rem 3rem;
+							}
+						
+							.my-coupons__title {
+								padding: 1rem 0;
+							}
+							.coupons-date{
+								margin-top: 0.8rem;
+								font-size: 14px;
+							}
+							.coupons-date li{
+								list-style: disc;
+							}
+							.my-coupons__list {
+								display: grid;
+								grid: repeat(2, auto) / auto-flow auto;
+								grid-column-gap: 4rem;
+								grid-row-gap: 3rem;
+								color: #ccc;
+							}
+							.my-coupons__list p{
+								margin: 0;
+							}
 							.my-coupons__item {
 								background-image: url({{ 'coupon.jpg' | asset_url }});
 								background-position: center;
@@ -698,8 +721,33 @@
 								background-size: 100% 100%;
 								background-clip: border-box;
 								padding: 0.6rem 4rem;
-							
-    position: relative;
+								position: relative;
+								overflow: hidden;
+							}
+						
+							.round-left,
+							.round-right {
+								position: absolute;
+								top: 0;
+								bottom: 0;
+								margin: auto;
+								background-color: #eee;
+								width: 2rem;
+								height: 2rem;
+								border-radius: 50%;
+							}
+						
+							.round-left {
+								left: -1rem;
+							}
+						
+							.round-right {
+								right: -1rem;
+							}
+						
+						
+							#main {
+								background-color: #fff;
 							}
 						</style>
 						<div class="order-preview overview-box ">
@@ -1699,7 +1747,7 @@
 
 	.vip-overview__rule {
 		font-size: 14px;
-		color: #fff;
+		color: #ccc;
 		padding: 0 1rem;
 		margin-left: 50%;
 	}
@@ -1775,7 +1823,7 @@
 		/* background-position: center; */
 		background-position: 50%;
 		background-repeat: no-repeat;
-		background-color: #eee;
+		background-color: #fff;
 		background-size: 110% 110%;
 		background-clip: border-box;
 		min-height: 200px;
@@ -1830,14 +1878,7 @@
 		float: right;
 		cursor: pointer;
 	}
-	.my-coupons .h3{
-		text-align: center;
-	}
-	.order-preview .h3{
-		text-align: center;
-	}
-	.my-coupons{
-		margin-top: 3rem;
+	.card.card--sticky{
 		background-color: #eee;
 	}
 </style>
