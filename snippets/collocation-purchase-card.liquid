@@ -283,7 +283,9 @@
                     {%- endfor -%}
                     {%- if product.selected_or_first_available_variant.available -%}
                     <button type="submit" class="button button--primary mini-cart-add__button" data-scenable="1"
-                        data-sctype="collcation-addCart" data-scdata='{"is_quick_view":0,
+                        data-sctype="collcation-addCart" 
+                        data-productid="{{product.id}}"
+                        data-scdata='{"is_quick_view":0,
                                         "commodity_spuid": "{{product.handle}}",
                                         "commodity_skuid":"{{ product.selected_or_first_available_variant.sku }}",
                                         "commodity_name": "{{product.title | handleize }}",

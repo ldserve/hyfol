@@ -54,7 +54,7 @@
 		<div class="product-discount">
 			<div class="product-discount-detail">
 				{% render "icon" , icon: 'cjj_postage' %}
-				<div  class="product-discount-left"><strong>Free Shipping On Order Over $60</strong> </div>
+				<div  class="product-discount-left"><strong>Free Shipping On Order Over {{settings.cart_free_shipping_threshold| times: 100 | money}}</strong> </div>
 			</div>
 		</div>
 	{% endif %}
