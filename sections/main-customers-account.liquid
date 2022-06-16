@@ -794,20 +794,20 @@
 					
 					<details-menu>
 						<div class="profile-nav">
-							<summary aria-expanded="false">
+							<summary aria-expanded="false" data-index="1">
 								All
 							</summary>
-							<summary aria-expanded="false">
+							<summary aria-expanded="false" data-index="2">
 								Earned
 							</summary>
-							<summary aria-expanded="false">
+							<summary aria-expanded="false" data-index="3">
 								Point Amount
 							</summary>
-							<summary aria-expanded="false">
+							<summary aria-expanded="false" data-index="4">
 								Expired
 							</summary>
 						</div>
-						<div class="profile-all">
+						<div class="profile-all"  data-index="1">
 							<table border="1">
 								<thead>
 									<tr>
@@ -827,7 +827,7 @@
 								</tbody>
 							</table>
 						</div>
-						<div class="profile-earned">
+						<div class="profile-earned" data-index="2">
 							<table border="1">
 								<thead>
 									<tr>
@@ -847,7 +847,7 @@
 								</tbody>
 							</table>
 						</div>
-						<div class="profile-point">
+						<div class="profile-point" data-index="3">
 							<table border="1">
 								<thead>
 									<tr>
@@ -867,7 +867,7 @@
 								</tbody>
 							</table>
 						</div>
-						<div class="profile-expired">
+						<div class="profile-expired" data-index="4">
 							<table border="1">
 								<thead>
 									<tr>
@@ -2185,11 +2185,13 @@
 class DetailsMenu extends HTMLElement {
   constructor() {
     super();
-    this.mainDetailsToggle = this.querySelector('summary');
+    this.navs = this.querySelector('summary');
     // this.content = this.mainDetailsToggle.querySelector('summary').nextElementSibling;
-      this.mainDetailsToggle.addEventListener('focusout', this.close.bind(this));
-      this.mainDetailsToggle.addEventListener('click',this.onAcativ.bind(this))
-
+    //   this.mainDetailsToggle.addEventListener('focusout', this.close.bind(this));
+    //   this.mainDetailsToggle.addEventListener('click',this.onAcativ.bind(this))
+	this.navs.forEach(nav=>{
+		nav.addEventListener('click',this.onAcativ())
+	})
   }
 
   onAcativ(e) {
