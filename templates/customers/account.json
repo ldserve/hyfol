@@ -17,7 +17,7 @@
           "settings": {
             "nav_title": "My Profiles",
             "nav_right": "my_profiles",
-            "nav_show": true,
+            "nav_show": false,
             "nav_icon": "account-setting"
           }
         },
