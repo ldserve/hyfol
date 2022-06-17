@@ -43,7 +43,7 @@
       {%- comment -%}包邮进度条{%- endcomment -%}
       {% style %}
         .progress-now{
-            width:calc( 100% *  {{cart.total_price}} /6000 );
+            width:calc( 100% *  {{cart.total_price}} /{{settings.cart_free_shipping_threshold | times: 100}} );
             max-width:100%
         }
       {% endstyle %}
