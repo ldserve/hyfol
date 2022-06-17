@@ -248,7 +248,7 @@
           "2caf8430-4f46-405e-b569-d4957d1bde1c": {
             "type": "announcement",
             "settings": {
-              "text": "FREE STANDARD SHIPPING ON ORDERS OVER $60",
+              "text": "FREE STANDARD SHIPPING ON ORDERS OVER $69",
               "link": ""
             }
           },
@@ -261,17 +261,15 @@
           },
           "ebf3f4ad-f1dc-464f-9e19-71c2a7fc4fc3": {
             "type": "announcement",
-            "disabled": true,
             "settings": {
-              "text": "BEACH SHORTS GET 2 FOR $35.9",
+              "text": "2IN1 RUNNING SHORTS GET 2 FOR $49.9",
               "link": ""
             }
           },
           "ccab5dcb-d3a7-4a2e-9c0e-6699c88abf2e": {
             "type": "announcement",
-            "disabled": true,
             "settings": {
-              "text": "FAMILY WEAR GET 5 FOR $59.9",
+              "text": "BUY CARGO SHORTS GET FREE BELT",
               "link": "shopify:\/\/collections\/fathers-day1"
             }
           }
