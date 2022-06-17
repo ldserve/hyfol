@@ -62,8 +62,8 @@
           "settings": {
             "nav_title": "Customers Services",
             "nav_right": "my_postsale",
-            "nav_show": false,
-            "nav_icon": "account-palay"
+            "nav_show": true,
+            "nav_icon": "cjj_post_sale"
           }
         }
       },
