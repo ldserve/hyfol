@@ -780,7 +780,62 @@
 				<div class="my_rewards account_right_content">
 					rewards
 				</div>
+				<div class="my_profiles account_right_content">
+					{%- comment -%}
+					<div class="profile-view backgrount_e">
+						<h3 class="h3" style="text-align:center;">My Profile</h3>
+				
+						<div class="profiles-form">
+							<label for="my_name">The Name</label>
+							<input type="text" name="" id="my_name">
+							<label for="my_brithday">Birthday</label>
+							<input type="text" name="" id="my_brithday">
+							
+							Fill In For 30+Points
+							<div>
+								<input type="checkbox" name="" id="checkbox-y">
+								<label for="checkbox-y">选项</label>
+								<input type="checkbox" name="" id="checkbox-">
+								<label for="checkbox-">选项</label>
+								<input type="checkbox" name="" id="checkbox-z">
+								<label for="checkbox-z">选项</label>
+								<input type="checkbox" name="" id="checkbox-k">
+								<label for="checkbox-k">选项</label>
 
+							</div>
+						</div>
+					</div>
+					{%- endcomment -%}
+				</div>
+				<style>
+					/* .profiles-form > input {
+						border: 1px solid #666;
+						background-color: #eee;
+						width: 100%;
+						display: block;
+						padding: 8px 20px;
+					} */
+				
+					.my-profile__view {
+						text-align: center;
+						display: grid;
+						grid: repeat(1, auto) / auto-flow auto;
+						color: #fff;
+						background:url({{ 'coupon.jpg' | asset_url }}) no-repeat 100% 100%;
+						grid-template-columns: 50% 1px auto;
+						padding: 1rem 2rem;
+				
+					}
+				
+					.profile-total,
+					.profile-expire {
+						padding: 1rem 0;
+					}
+				
+					.profile-view .h3 {
+						margin-bottom: 2rem;
+					}
+				</style>
 				<div class="my_profile account_right_content">
 					<div class="profile-view backgrount_e">
 						<h3 class="h3" style="text-align:center;">My Profile</h3>
@@ -796,27 +851,10 @@
 							</div>
 						</div>
 					</div>
-					<style>
-						.my-profile__view{
-							text-align: center;
-							display: grid;
-							grid: repeat(1, auto) / auto-flow auto;
-							color:#fff;
-							background:url({{ 'coupon.jpg' | asset_url }}) no-repeat 100% 100%;
-							grid-template-columns: auto 1px auto;
-							padding:1rem 2rem;
-
-						}
-						.profile-total,.profile-expire{
-							padding: 1rem 0;
-						}
-						.profile-view .h3{
-							margin-bottom: 2rem;
-						}
-					</style>
+					
 
 					<div class="profile-record backgrount_e">
-						<h5 class="h5">Profile Detalls</h5>
+						<h4 class="">Profile Detalls</h4>
 						<details-menu>
 							<div class="profile-nav">
 								<summary aria-expanded="true" data-index="1">
@@ -2032,8 +2070,9 @@
 		margin-top: 2rem;
 		padding: 2rem;
 	}
-	.profile-record .h5{
+	.profile-record h4{
 		margin: 0;
+		font-size: 18px;
 	}
 	.page__item {
 		margin-top: 1rem;
@@ -2323,6 +2362,10 @@ customElements.define('details-menu', DetailsMenu);
 			{
 				"value":"account-setting",
 				"label":"设置"
+			},
+			{
+				"value":"cjj_post_sale",
+				"label":"客服"
 			},
 			{
 				"value":"account-location",
