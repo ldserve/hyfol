@@ -60,8 +60,8 @@
         "5e2c3432-c4de-4aff-8f98-528c6a7afc15": {
           "type": "trust",
           "settings": {
-            "nav_title": "Payment Methods",
-            "nav_right": "my_methods",
+            "nav_title": "Customers Services",
+            "nav_right": "my_postsale",
             "nav_show": false,
             "nav_icon": "account-palay"
           }
