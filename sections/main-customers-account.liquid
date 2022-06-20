@@ -9,7 +9,7 @@
 		<div class="account-box">
 			<div class="card__linklist ">
 				<left-nav-list>
-					<div class="render_nav_list">
+					<div class="render_nav_list d-flex mobile-account__nav">
 						{%- for block in section.blocks -%}
 						{%- if block.settings.nav_show -%}
 						<div class="card__linklist-item link" style="cursor:pointer ;"
@@ -19,11 +19,10 @@
 						</div>
 						{%- endif -%}
 						{%- endfor -%}
+						<a href="{{ routes.account_logout_url }}" class="card__linklist-item link" data-no-instant>{% render 'icon',
+							icon :"account-logout" %} {{ 'customer.general.logout' | t }}</a>
 					</div>
 				</left-nav-list>
-		
-				<a href="{{ routes.account_logout_url }}" class="card__linklist-item link" data-no-instant>{% render 'icon',
-					icon :"account-logout" %} {{ 'customer.general.logout' | t }}</a>
 			</div>
 		
 		</div>
@@ -59,16 +58,13 @@
 		</nav>
 	</div>
 	<div class="container container--flush">
-
 		<div class="layout">
 			<div class="layout__section layout__section--secondary hidden-phone">
 				<div class="card card--sticky hidden-pocket">
 					<div class="card__section card__section--tight">
-
 						<div class="card__linklist table-left-nav">
-					
 						  <left-nav-list>
-							  <div class="render_nav_list">
+							  <div class="render_nav_list ">
 							{%- for block in section.blocks -%}
 							{%- if block.settings.nav_show -%}
 							<div class="card__linklist-item link" style="cursor:pointer ;" data-right="{{block.settings.nav_right}}"> 
@@ -76,11 +72,11 @@
 							<span>{{block.settings.nav_title}}</span>
 							</div>
 							{%- endif -%}
-						 {%- endfor -%}
-						</div>
-						</left-nav-list>
+							{%- endfor -%}
 							<a href="{{ routes.account_logout_url }}" class="card__linklist-item link"
 								 data-no-instant>{% render 'icon', icon :"account-logout" %} {{ 'customer.general.logout' | t }}</a>
+						</div>
+						</left-nav-list>
 						</div>
 					</div>
 				</div>
@@ -227,7 +223,7 @@
 										document.querySelector(".wish_loading").style.display = "none"
 										return
 									}
-									document.querySelector(".collection-num").innerHTML = res.data.total
+									// document.querySelector(".collection-num").innerHTML = res.data.total
 									var ids = ""
 									res.data.records.forEach((item, index) => {
 										if (index === 0) {
@@ -439,34 +435,6 @@
 					<div class="overview-box">
 						<h1>Hi {{customer.first_name}}</h1>
 				
-						<!-- <div class="vip-equity__main  d-flex">
-							<div class="vip-grade">
-								<div class="vip-grade__view d-flex">
-									<div class="account-avatar">
-				
-									</div>
-									<div class="vip-grade__current">
-										{{customer.name }}<br />
-										S0
-									</div>
-								</div>
-								<div class="vip-grade__progress">
-								
-								</div>
-							</div>
-							<div class="vip-rules">
-								<p>
-									Silver: US$0.1 or 1 order(s) are required to become a silver member
-								</p>
-								<p>
-									Gold: US$120 or 3 order(s) are required to become a gold member
-								</p>
-								<p>
-									Platinum: US$500 or 5 order(s) are required to become a platinum member
-								</p>
-							</div>
-				
-						</div> -->
 						<ul class="d-flex account-overview__list">
 							<li class="d-flex overview-item">
 								<span>
@@ -1536,8 +1504,16 @@
 
 				</div>
 
-				<div class="my_methods account_right_content">
-					methods
+				<div class="my_postsale account_right_content">
+					<div class="customers-services"  >
+						<div class="container">
+							<h3>
+								{%- render 'icon', icon: 'bi-email' -%}&nbsp;&nbsp;
+								<a href="mailto:contactus@hyfol.com" target="_blank" rel="noopener"
+									aria-describedby="a11y-new-window-message">contactus@hyfol.com</a>
+							</h3>
+						</div>
+					</div>
 				</div>
 		</div>
 	</div>
@@ -2059,9 +2035,11 @@
 	#main {
 		background-color: #fff;
 	}
-	.backgrount_e{
+
+	.backgrount_e {
 		background-color: #eee;
 	}
+
 	.profile-view {
 		padding: 30px 50px;
 	}
@@ -2070,23 +2048,29 @@
 		margin-top: 2rem;
 		padding: 2rem;
 	}
-	.profile-record h4{
+
+	.profile-record h4 {
 		margin: 0;
 		font-size: 18px;
 	}
+
 	.page__item {
 		margin-top: 1rem;
 	}
+
 	.page__item th {
 		background-color: #d6d6d6;
 
 	}
-	.page__item th,.page__item td{
+
+	.page__item th,
+	.page__item td {
 		text-align: center;
 		padding: 8px 0;
 
 	}
-	.page__item table{
+
+	.page__item table {
 		width: 100%;
 	}
 
@@ -2096,17 +2080,37 @@
 		padding: 1rem;
 		cursor: pointer;
 	}
-	.profile-amount{
+
+	.profile-amount {
 		color: #1ea364;
+	}
+
+	.card__linklist {
+		overflow-x: auto;
+	}
+
+	.mobile-account__nav {
+		width: 200%;
+		justify-content: space-between;
+
+	}
+
+	.customers-services {
+		background-color: #eee;
+		text-align: center;
+		min-height: 100px;
+		margin-top: 10px;
+		padding: 2rem;
 	}
 </style>
 
 <script>
 	~ function () {
 		let getDataFlag = false;
-
+		let ajaxObj = ''
+		let currentPage = ''
 		function getData(url, fn) {
-			if (getDataFlag) return;
+			// if (getDataFlag) return;
 			getDataFlag = true;
 			let http = new XMLHttpRequest();
 			http.open('GET', url);
@@ -2114,11 +2118,12 @@
 			http.onreadystatechange = () => {
 				if (http.readyState == 4) {
 					getDataFlag = false;
-					if (http.status == 200) {
+					if (http.status == 200 && !getDataFlag) {
 						fn(http.responseText);
 					}
 				}
 			}
+			ajaxObj = http
 		}
 
 		function loading(bool) {
@@ -2142,9 +2147,19 @@
 			isnull(data)
 		}
 
+		function bindEvent(container,target){
+			let element=document.querySelector(container)
+			element.addEventListener('click',(e)=>{
+				if(e.target.className.)
+					console.log('event',e);
+			})
+
+		}
+		// bindEvent('.my_overview','.vip-rules__link')
+
 		function isnull(data) {
-			
-			let fag =new DOMParser().parseFromString(data, 'text/html').querySelectorAll('.card .order-box')
+
+			let fag = new DOMParser().parseFromString(data, 'text/html').querySelectorAll('.card .order-box')
 			let nullbox = document.querySelector('#order_null')
 			let body_me = document.querySelector('#body_me')
 			if (!fag.length) {
@@ -2162,23 +2177,27 @@
 			let body_me = document.querySelector('#body_me')
 			let nullbox = document.querySelector('#order_null')
 			orders_list.onclick = (ev) => {
-				let target = ev.target.tagName === "LI"?ev.target:ev.target.parentElement;
-				
+				let target = ev.target.tagName === "LI" ? ev.target : ev.target.parentElement;
+				let item = target.dataset.item;
+				if (currentPage === item) return
+				currentPage = item
 				if (target.tagName === "LI") {
 					for (let i = 0; i < orders_li.length; i++) {
 						orders_li[i].classList.remove('current')
 					}
 					target.classList.add('current')
-					let item = target.dataset.item;
+
+					try { ajaxObj.abort() } catch (error) { }
 					if (item !== 'post-sale') {
 						post.style.display = 'none'
 						loading(true);
 						let url = '?section_id=my-' + item;
 						getData(url, upData)
 					} else {
+						loading(false);
 						post.style.display = 'block'
 						body_me.style.display = 'none'
-						nullbox.style.display='none'
+						nullbox.style.display = 'none'
 					}
 				}
 
@@ -2251,45 +2270,45 @@
 		// getPoint()
 
 
-class DetailsMenu extends HTMLElement {
-  constructor() {
-    super();
-	this.addEventListener('click',(e)=>{ 
-		e.preventDefault()
-		let target=e.target
-		if(!['summary'].includes(target.tagName.toLowerCase())||target.getAttribute('aria-expanded')==='true')return
-		this.onAcativ(target)
-		
-	})
-  }
+		class DetailsMenu extends HTMLElement {
+			constructor() {
+				super();
+				this.addEventListener('click', (e) => {
+					e.preventDefault()
+					let target = e.target
+					if (!['summary'].includes(target.tagName.toLowerCase()) || target.getAttribute('aria-expanded') === 'true') return
+					this.onAcativ(target)
 
-  onAcativ(target) {
-	this.close(target)
-	const activePage=this.querySelector(`.page__item[data-index="${target.dataset.index}"]`)
-	activePage.setAttribute('aria-hidden',false)
-    target.setAttribute('aria-expanded',true)
+				})
+			}
 
-  }
+			onAcativ(target) {
+				this.close(target)
+				const activePage = this.querySelector(`.page__item[data-index="${target.dataset.index}"]`)
+				activePage.setAttribute('aria-hidden', false)
+				target.setAttribute('aria-expanded', true)
 
-  close() {
-	const oldActiveNav=this.querySelector('[aria-expanded="true"]')
-	const oldActivePage=this.querySelector('[aria-hidden="false"]')
-	oldActivePage.setAttribute('aria-hidden',true)
-	oldActiveNav.setAttribute('aria-expanded', false);
-  }
-}
-customElements.define('details-menu', DetailsMenu);
+			}
 
-		const rules=document.querySelector('.vip-rules')
-		const user=document.querySelector('.my-account')
-		document.querySelector('.vip-rules__link').addEventListener('click',(e)=>{
-			user.style.display="none"
-			rules.style.display='block'
-			window.scroll(0,0)
+			close() {
+				const oldActiveNav = this.querySelector('[aria-expanded="true"]')
+				const oldActivePage = this.querySelector('[aria-hidden="false"]')
+				oldActivePage.setAttribute('aria-hidden', true)
+				oldActiveNav.setAttribute('aria-expanded', false);
+			}
+		}
+		customElements.define('details-menu', DetailsMenu);
+
+		const rules = document.querySelector('.vip-rules')
+		const user = document.querySelector('.my-account')
+		document.querySelector('.vip-rules__link').addEventListener('click', (e) => {
+			user.style.display = "none"
+			rules.style.display = 'block'
+			window.scroll(0, 0)
 		})
-		document.querySelector('.close-rule__page').addEventListener('click',()=>{
-			rules.style.display='none'
-			user.style.display="block"
+		document.querySelector('.close-rule__page').addEventListener('click', () => {
+			rules.style.display = 'none'
+			user.style.display = "block"
 		})
 
 	}()

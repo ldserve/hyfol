@@ -10,67 +10,67 @@
             this.navList = this.querySelector(".render_nav_list ")
             this.init()
         }
-        init() { 
-           this.navList.childNodes.forEach((item,index)=>{
-                   item.addEventListener("click",this.changeNav)
-           })
-           this.querySelector(".card__linklist-item").className = " card__linklist-item link text--stronger " 
-           document.querySelector(".my_overview").style.display = "block"
-          
-           if(window.location.hash){
+        init() {
+            this.navList.childNodes.forEach((item, index) => {
+                item.addEventListener("click", this.changeNav)
+            })
+            this.querySelector(".card__linklist-item").className = " card__linklist-item link text--stronger "
+            document.querySelector(".my_overview").style.display = "block"
 
-            var nowNav = window.location.hash.split("#")[1].replace(/\%20/g," ")
-            
-           this.navList.childNodes.forEach((item)=>{
-            item.className = " card__linklist-item  "
-           })
+            if (window.location.hash) {
 
-         
-           var list = document.querySelector(".wish_list").parentElement.children
-           for(let i=0 ; i<list.length ; i++){
-               list[i].style.display = "none"
-           }
+                var nowNav = window.location.hash.split("#")[1].replace(/\%20/g, " ")
 
-           document.querySelectorAll(".card__linklist-item").forEach((item)=>{
-               if(item.lastElementChild.innerHTML == nowNav){
-                document.querySelector('.breadcrumb__link[aria-current="page"]').innerHTML=nowNav
-                   item.className = " card__linklist-item link text--stronger "
-                   var enode = item.getAttribute("data-right")
-                   document.querySelector("."+enode).style.display = "block"
-               }
-           })
-           }
+                this.navList.childNodes.forEach((item) => {
+                    item.className = " card__linklist-item  "
+                })
 
-       
+
+                var list = document.querySelector(".wish_list").parentElement.children
+                for (let i = 0; i < list.length; i++) {
+                    list[i].style.display = "none"
+                }
+
+                document.querySelectorAll(".card__linklist-item").forEach((item) => {
+                    if (item.lastElementChild.innerHTML == nowNav) {
+                        document.querySelector('.breadcrumb__link[aria-current="page"]').innerHTML = nowNav
+                        item.className = " card__linklist-item link text--stronger "
+                        var enode = item.getAttribute("data-right")
+                        document.querySelector("." + enode).style.display = "block"
+                    }
+                })
+            }
+
+
         }
-        changeNav = (e) =>{
-             
+        changeNav = (e) => {
 
-            this.navList.childNodes.forEach((item)=>{
+
+            this.navList.childNodes.forEach((item) => {
                 item.className = " card__linklist-item  "
-               })
+            })
 
-             if( e.target.parentElement.getAttribute("data-right") == null){
+            if (e.target.parentElement.getAttribute("data-right") == null) {
                 e.target.className = " card__linklist-item link text--stronger "
                 var enode = e.target.getAttribute("data-right")
                 var searchValue = e.target.lastElementChild.innerHTML
 
-             }else{
-                   e.target.parentElement.className = " card__linklist-item link text--stronger "
-                   var enode = e.target.parentElement.getAttribute("data-right")
-                   var searchValue =  e.target.parentElement.lastElementChild.innerHTML
+            } else {
+                e.target.parentElement.className = " card__linklist-item link text--stronger "
+                var enode = e.target.parentElement.getAttribute("data-right")
+                var searchValue = e.target.parentElement.lastElementChild.innerHTML
 
-             }
-             window.location.hash = searchValue
+            }
+            window.location.hash = searchValue
 
-            var list = document.querySelector("."+enode).parentElement.children
-            for(let i=0 ; i<list.length ; i++){
+            var list = document.querySelector("." + enode).parentElement.children
+            for (let i = 0; i < list.length; i++) {
                 list[i].style.display = "none"
             }
-    
-            document.querySelector("."+enode).style.display = "block"
-            document.querySelector('.breadcrumb__link[aria-current="page"]').innerHTML=searchValue
-           
+
+            document.querySelector("." + enode).style.display = "block"
+            document.querySelector('.breadcrumb__link[aria-current="page"]').innerHTML = searchValue
+            window.scroll(0, 0)
         }
     }
     customElements.define("left-nav-list", LeftNavList);
@@ -82,59 +82,72 @@
             this.navList = document.querySelector('.table-left-nav').querySelector(".render_nav_list ")
             this.init()
         }
-        init() { 
-            this.iconList.forEach((item,index)=>{
-                if(index != this.iconList.length-1){
-                item.addEventListener("click",this.changeNav)
-                }
+        init() {
+            this.iconList.forEach((item, index) => {
+                // if(index != this.iconList.length-1){
+                item.addEventListener("click", this.changeNav)
+                // }
             })
-            if(window.location.hash.split("+")[1]){
-                   this.changeNav()
+            if (window.location.hash.split("+")[1]) {
+                this.changeNav()
             }
         }
-        changeNav(){
-            
-            if(window.location.hash.split("+")[1]){
-            //    console.log("初始化流程");
-            }else{
+        changeNav() {
+
+            if (window.location.hash.split("+")[1]) {
+                //    console.log("初始化流程");
+            } else if (this.lastElementChild.textContent === 'Post-sale') {
                 var searchValue = this.lastElementChild.textContent
-                window.location.hash ="Orders+"+searchValue
-            }
-            
-
-             var url = window.location.hash.split("+")[1].toLowerCase()
-
-             document.querySelector('.table-left-nav').querySelector(".render_nav_list ").childNodes.forEach((item)=>{
-                
-                if(item.getAttribute("data-right") == "my_orders"){
-                    item.className = " card__linklist-item link text--stronger  "
-                }else{
-                    item.className = " card__linklist-item  "
+                window.location.hash = searchValue
+                document.querySelector('.table-left-nav').querySelector(".render_nav_list ").childNodes.forEach((item) => {
+                    if (item.nodeType == 1 && item.getAttribute("data-right") == "my_postsale") {
+                        item.className = "card__linklist-item link text--stronger "
+                    } else {
+                        item.className = "card__linklist-item  "
+                    }
+                })
+                var list = document.querySelector(".wish_list").parentElement.children
+                for (let i = 0; i < list.length; i++) {
+                    list[i].style.display = "none"
                 }
-               })
+                window.scroll(0, 0)
+                document.querySelector(".my_postsale").style.display = "block"
+                return
+            }
+            else {
+                var searchValue = this.lastElementChild.textContent
+                window.location.hash = "Orders+" + searchValue
+            }
+            var url = window.location.hash.split("+")[1].toLowerCase()
+            document.querySelector('.table-left-nav').querySelector(".render_nav_list ").childNodes.forEach((item) => {
+                if (item.nodeType == 1 && item.getAttribute("data-right") == "my_orders") {
+                    item.className = "card__linklist-item link text--stronger "
+                } else {
+                    item.className = "card__linklist-item  "
+                }
+            })
 
-             var list = document.querySelector(".wish_list").parentElement.children
-             for(let i=0 ; i<list.length ; i++){
-                 list[i].style.display = "none"
-             }
-             document.querySelector(".my_orders").style.display = "block"
+            var list = document.querySelector(".wish_list").parentElement.children
+            for (let i = 0; i < list.length; i++) {
+                list[i].style.display = "none"
+            }
+            window.scroll(0, 0)
 
-             document.querySelectorAll(".orders-nav__item").forEach((item)=>{
-                item.setAttribute("data-action",false)
-           })
+            document.querySelector(".my_orders").style.display = "block"
+            document.querySelectorAll(".orders-nav__item").forEach((item) => {
+                item.setAttribute("data-action", false)
+            })
+            document.querySelectorAll('.order-item__card').forEach((item) => {
+                item.setAttribute("aria-hidden", true)
+            })
+            document.querySelector(".order-" + url).setAttribute("data-action", true)
+            var index = document.querySelector(".order-" + url).getAttribute("data-index")
+            document.querySelectorAll('.order-item__card').forEach((item) => {
+                if (item.getAttribute("data-index") == index) {
+                    item.setAttribute("aria-hidden", false)
+                }
 
-           document.querySelectorAll('.order-item__card').forEach((item)=>{
-            item.setAttribute("aria-hidden",true)
-       })
-
-           document.querySelector(".order-"+url).setAttribute("data-action",true)
-
-           var index= document.querySelector(".order-"+url).getAttribute("data-index")
-           document.querySelectorAll('.order-item__card').forEach((item)=>{
-           if(item.getAttribute("data-index") == index){
-                item.setAttribute("aria-hidden",false)
-           } 
-       })
+            })
         }
     }
     customElements.define("order-item", OrderItem);
@@ -164,32 +177,32 @@
 
     class ProductItem extends HTMLElement {
         constructor() {
-          super()
-          this.timer = 0
-          this.elements = {
-            colorSelector: this.querySelectorAll('.color-swatch__radio'),
-            cardMedia: this.querySelector('.card__media'),
-            cartNode: this.querySelector('.ny-icon-cart'),
-            addColleNode: this.querySelector('.add-collect'),
-            removeColleNode: this.querySelector('.remove-collect'),
-            quickviewButton : this.querySelector('.openQuickView')
-          }
-          this.setupEventListeners()
-          this.onload()
-        }
-      
-        setupEventListeners() {
-          this.elements.addColleNode && this.elements.addColleNode.addEventListener('click', this.handleRemove)
-          this.elements.removeColleNode && this.elements.removeColleNode.addEventListener('click', this.handleAdd)
-          this.elements.quickviewButton && this.elements.quickviewButton.addEventListener('click', this._openQuickView)
-                  this.elements.colorSelector.forEach((item,index)=>{
-              if( item.closest(".page-width") !=null){
-                item.addEventListener("click",this.changeColor)
-              }
-        })
+            super()
+            this.timer = 0
+            this.elements = {
+                colorSelector: this.querySelectorAll('.color-swatch__radio'),
+                cardMedia: this.querySelector('.card__media'),
+                cartNode: this.querySelector('.ny-icon-cart'),
+                addColleNode: this.querySelector('.add-collect'),
+                removeColleNode: this.querySelector('.remove-collect'),
+                quickviewButton: this.querySelector('.openQuickView')
+            }
+            this.setupEventListeners()
+            this.onload()
         }
 
-            _openQuickView(event) {
+        setupEventListeners() {
+            this.elements.addColleNode && this.elements.addColleNode.addEventListener('click', this.handleRemove)
+            this.elements.removeColleNode && this.elements.removeColleNode.addEventListener('click', this.handleAdd)
+            this.elements.quickviewButton && this.elements.quickviewButton.addEventListener('click', this._openQuickView)
+            this.elements.colorSelector.forEach((item, index) => {
+                if (item.closest(".page-width") != null) {
+                    item.addEventListener("click", this.changeColor)
+                }
+            })
+        }
+
+        _openQuickView(event) {
             var modal = document.getElementById(event.target.getAttribute('aria-controls'));
             console.log(modal);
             modal.classList.add('is-loading');
@@ -214,7 +227,7 @@
             });
         }
 
-        changeColor=(event)=>{
+        changeColor = (event) => {
             var newImageElement = document.createElement('img');
             newImageElement.className = 'product-item__primary-image lazyload image--fade-in';
             newImageElement.setAttribute('data-media-id', event.target.getAttribute('data-media-id'));
@@ -227,95 +240,95 @@
         }
 
         onload() {
-          const id = this.elements.removeColleNode.getAttribute("data-id")
-          var searchData = {
-            customerId: customerId,
-            productIds: [id]
-          }
-          if (customerId) {
-              post_data("customerCollectionProduct/selectProductIsCollection", searchData)
-              .then(res => {
-                if (res.success) {
-                  this.elements.addColleNode.parentElement.style.display = 'flex'
-                  if (res.data[0].isCollection) {
-                    this.elements.addColleNode.style.display = 'block'
-                    this.elements.removeColleNode.style.display = "none"
-                  } else {
-                    this.elements.addColleNode.style.display = 'none'
-                    this.elements.removeColleNode.style.display = "block"
-                  }
-                }
-              });
-          } else {
-            this.elements.removeColleNode.style.display = 'block'
-            this.elements.removeColleNode.parentElement.style.display = 'flex'
-          }
+            const id = this.elements.removeColleNode.getAttribute("data-id")
+            var searchData = {
+                customerId: customerId,
+                productIds: [id]
+            }
+            if (customerId) {
+                post_data("customerCollectionProduct/selectProductIsCollection", searchData)
+                    .then(res => {
+                        if (res.success) {
+                            this.elements.addColleNode.parentElement.style.display = 'flex'
+                            if (res.data[0].isCollection) {
+                                this.elements.addColleNode.style.display = 'block'
+                                this.elements.removeColleNode.style.display = "none"
+                            } else {
+                                this.elements.addColleNode.style.display = 'none'
+                                this.elements.removeColleNode.style.display = "block"
+                            }
+                        }
+                    });
+            } else {
+                this.elements.removeColleNode.style.display = 'block'
+                this.elements.removeColleNode.parentElement.style.display = 'flex'
+            }
         }
         handleRemove() {
-          const newTime = Date.parse(new Date())
-          if (newTime - this.timer < 2000) {
-            return
-          }
-          this.timer = newTime
-          var collectData = {
-            customerId: customerId,
-            productId: this.getAttribute('data-id'),
-            productSpu: this.getAttribute('data-spu')
-          }
-          post_data("customerCollectionProduct/collectionProduct", collectData)
-            .then(res => {
-              if (res.success) {
-                this.style.display = 'none'
-                this.previousElementSibling.style.display = "block"
-                // item.parentElement.lastElementChild.innerText = +(item.parentElement.lastElementChild.innerText) - 1
-                const text = document.querySelector(".header__icon--collect span").innerText
-                if (+(text) - 1 === 0) {
-                  document.querySelector(".header__icon--collect span").innerText = ""
-                  document.querySelector(".header__icon--collect span").style.display = "none"
-                  return
-                }
-                document.querySelector(".header__icon--collect span").innerText = +(text) - 1
-              }
-            });
-        }
-      
-        handleAdd() {
-            if (customerId) {
-          if (customerId) {
             const newTime = Date.parse(new Date())
             if (newTime - this.timer < 2000) {
-              return
+                return
             }
             this.timer = newTime
             var collectData = {
-              customerId: customerId,
-              productId: this.getAttribute('data-id'),
-              productSpu: this.getAttribute('data-spu')
+                customerId: customerId,
+                productId: this.getAttribute('data-id'),
+                productSpu: this.getAttribute('data-spu')
             }
-      
             post_data("customerCollectionProduct/collectionProduct", collectData)
-              .then(res => {
-                if (res.success) {
-                  this.style.display = 'none'
-                  this.nextElementSibling.style.display = "block"
-                  // item.parentElement.lastElementChild.innerText = +(item.parentElement.lastElementChild.innerText) + 1
-                  const text = document.querySelector(".header__icon--collect span").innerText
-                  if (!text) {
-                    document.querySelector(".header__icon--collect span").innerText = 1
-                    document.querySelector(".header__icon--collect span").style.display = "flex"
-                    return
-                  }
-                  document.querySelector(".header__icon--collect span").innerText = +(text) + 1
+                .then(res => {
+                    if (res.success) {
+                        this.style.display = 'none'
+                        this.previousElementSibling.style.display = "block"
+                        // item.parentElement.lastElementChild.innerText = +(item.parentElement.lastElementChild.innerText) - 1
+                        const text = document.querySelector(".header__icon--collect span").innerText
+                        if (+(text) - 1 === 0) {
+                            document.querySelector(".header__icon--collect span").innerText = ""
+                            document.querySelector(".header__icon--collect span").style.display = "none"
+                            return
+                        }
+                        document.querySelector(".header__icon--collect span").innerText = +(text) - 1
+                    }
+                });
+        }
+
+        handleAdd() {
+            if (customerId) {
+                if (customerId) {
+                    const newTime = Date.parse(new Date())
+                    if (newTime - this.timer < 2000) {
+                        return
+                    }
+                    this.timer = newTime
+                    var collectData = {
+                        customerId: customerId,
+                        productId: this.getAttribute('data-id'),
+                        productSpu: this.getAttribute('data-spu')
+                    }
+
+                    post_data("customerCollectionProduct/collectionProduct", collectData)
+                        .then(res => {
+                            if (res.success) {
+                                this.style.display = 'none'
+                                this.nextElementSibling.style.display = "block"
+                                // item.parentElement.lastElementChild.innerText = +(item.parentElement.lastElementChild.innerText) + 1
+                                const text = document.querySelector(".header__icon--collect span").innerText
+                                if (!text) {
+                                    document.querySelector(".header__icon--collect span").innerText = 1
+                                    document.querySelector(".header__icon--collect span").style.display = "flex"
+                                    return
+                                }
+                                document.querySelector(".header__icon--collect span").innerText = +(text) + 1
+                            }
+                        });
                 }
-              });
-          }
-        }else{
-            window.location.href= "https://www.hyfol.com/account/login"
+            } else {
+                window.location.href = "https://www.hyfol.com/account/login"
+            }
         }
     }
-      }
-      
-      customElements.define('product-item', ProductItem)
+
+    customElements.define('product-item', ProductItem)
 
 
     class SliderShow extends HTMLElement {
@@ -361,52 +374,52 @@
           `
             this.init()
         }
-        init(){
-            if( this.prevButton){
-                if(this.activeIndex == 0 ){
-                    this.prevButton.style.display= "none"
-                }else{
-                    this.prevButton.style.display= "block"
+        init() {
+            if (this.prevButton) {
+                if (this.activeIndex == 0) {
+                    this.prevButton.style.display = "none"
+                } else {
+                    this.prevButton.style.display = "block"
                 }
             }
-        var that = this
-          var startx,movex,endx,nx;
-          const style = document.createElement("style");
-          style.type = "text/css";
-          style.innerHTML = this.prevkeyframes;
-          document.getElementsByTagName('head')[0].appendChild(style)
-          this.bind()
-         
-           this.lis[this.activeIndex].className = "scroll-dot__active-li"
-           //监听动画开始和结束
-           this.collocationList.addEventListener("animationstart", this.animationStart)
-           this.collocationList.addEventListener("transitionstart", this.animationStart)
-           this.collocationList.addEventListener("animationend", this.animationEnd)
-           this.collocationList.addEventListener("transitionend", this.animationEnd)
+            var that = this
+            var startx, movex, endx, nx;
+            const style = document.createElement("style");
+            style.type = "text/css";
+            style.innerHTML = this.prevkeyframes;
+            document.getElementsByTagName('head')[0].appendChild(style)
+            this.bind()
 
-           this.collocationList.addEventListener('touchstart',function(event){
-            if (event.target.closest('.color-swatch') == null && event.target.closest('.block-swatch') == null  ){
-                if ( event.target.closest('.product-item__image-wrapper') == null  && event.target.closest('.mini-cart-add__button') == null) {
-                    event.preventDefault();//阻止浏览器默认滚动事件
-                 }
-                var touch = event.touches[0]   
-                startx = Math.floor(touch.pageX)
-                return startx
-              
-            }
-           });
-           this.collocationList.addEventListener('touchend',function(event){
-            if (event.target.closest('.color-swatch') == null && event.target.closest('.block-swatch') == null){
-             if ( event.target.closest('.product-item__image-wrapper'  == null && event.target.closest('.mini-cart-add__button') == null)) {
-                event.preventDefault();//阻止浏览器默认滚动事件
-             }
-                      endx = Math.floor(event.changedTouches[0].pageX);//获取最后的坐标位置
-                      nx = endx-startx;//获取开始位置和离开位置的距离
+            this.lis[this.activeIndex].className = "scroll-dot__active-li"
+            //监听动画开始和结束
+            this.collocationList.addEventListener("animationstart", this.animationStart)
+            this.collocationList.addEventListener("transitionstart", this.animationStart)
+            this.collocationList.addEventListener("animationend", this.animationEnd)
+            this.collocationList.addEventListener("transitionend", this.animationEnd)
+
+            this.collocationList.addEventListener('touchstart', function (event) {
+                if (event.target.closest('.color-swatch') == null && event.target.closest('.block-swatch') == null) {
+                    if (event.target.closest('.product-item__image-wrapper') == null && event.target.closest('.mini-cart-add__button') == null) {
+                        event.preventDefault();//阻止浏览器默认滚动事件
+                    }
+                    var touch = event.touches[0]
+                    startx = Math.floor(touch.pageX)
+                    return startx
+
+                }
+            });
+            this.collocationList.addEventListener('touchend', function (event) {
+                if (event.target.closest('.color-swatch') == null && event.target.closest('.block-swatch') == null) {
+                    if (event.target.closest('.product-item__image-wrapper' == null && event.target.closest('.mini-cart-add__button') == null)) {
+                        event.preventDefault();//阻止浏览器默认滚动事件
+                    }
+                    endx = Math.floor(event.changedTouches[0].pageX);//获取最后的坐标位置
+                    nx = endx - startx;//获取开始位置和离开位置的距离
                     //   console.log(nx , endx);
-                      //判断滑动方向
-                      if(nx > 0){
-                        if (that.activeIndex != 0){
-                           that.prevItem()
+                    //判断滑动方向
+                    if (nx > 0) {
+                        if (that.activeIndex != 0) {
+                            that.prevItem()
                         }
                         return false;
                     } else if (nx < 0) {
@@ -645,9 +658,9 @@
                         this._updateAddToCartButton(this.currentVariant, previousVariant)
                         this._updateSelectors()
                         this._updataSku()
-                        if (target.classList.contains('color-swatch__radio'))this._updateImg(target)
+                        if (target.classList.contains('color-swatch__radio')) this._updateImg(target)
                         if (selectedValueElement != null) selectedValueElement.innerHTML = target.value
-                      
+
                         if (false) {
                             const scoll = option.querySelector('.block-swatch-box')
                             const contentScrollW = option.querySelector('.exhibition-item').offsetWidth
@@ -711,27 +724,27 @@
 
 
         }
-        _updataSku(){
+        _updataSku() {
             var variantId = this.root.querySelector('input[name="id"]')
             variantId.value = this.currentVariant.id
-            variantId.setAttribute('data-sku',this.currentVariant.sku)
-            
+            variantId.setAttribute('data-sku', this.currentVariant.sku)
+
         }
-        _updateImg(target){
-                const productItem = target.closest('.exhibition')
-                const variantUrl = target.getAttribute('data-variant-url');
-                productItem.querySelector('.product-item__image-wrapper').setAttribute('href', variantUrl);
-                const originalImageElement = productItem.querySelector('.product-item__primary-image');
-                if (target.hasAttribute('data-image-url') && target.getAttribute('data-media-id') !== originalImageElement.getAttribute('data-media-id')) {
-                    var newImageElement = document.createElement('img');
-                    newImageElement.className = 'product-item__primary-image lazyload image--fade-in';
-                    newImageElement.setAttribute('data-media-id', target.getAttribute('data-media-id'));
-                    newImageElement.setAttribute('data-src', target.getAttribute('data-image-url'));
-                    newImageElement.setAttribute('data-widths', target.getAttribute('data-image-widths'));
-                    newImageElement.setAttribute('data-sizes', 'auto');
-                    originalImageElement.parentNode.style.paddingBottom = "".concat(100.0 / newImageElement.getAttribute('data-image-aspect-ratio'), "%");
-                    originalImageElement.parentNode.replaceChild(newImageElement, originalImageElement);
-                }
+        _updateImg(target) {
+            const productItem = target.closest('.exhibition')
+            const variantUrl = target.getAttribute('data-variant-url');
+            productItem.querySelector('.product-item__image-wrapper').setAttribute('href', variantUrl);
+            const originalImageElement = productItem.querySelector('.product-item__primary-image');
+            if (target.hasAttribute('data-image-url') && target.getAttribute('data-media-id') !== originalImageElement.getAttribute('data-media-id')) {
+                var newImageElement = document.createElement('img');
+                newImageElement.className = 'product-item__primary-image lazyload image--fade-in';
+                newImageElement.setAttribute('data-media-id', target.getAttribute('data-media-id'));
+                newImageElement.setAttribute('data-src', target.getAttribute('data-image-url'));
+                newImageElement.setAttribute('data-widths', target.getAttribute('data-image-widths'));
+                newImageElement.setAttribute('data-sizes', 'auto');
+                originalImageElement.parentNode.style.paddingBottom = "".concat(100.0 / newImageElement.getAttribute('data-image-aspect-ratio'), "%");
+                originalImageElement.parentNode.replaceChild(newImageElement, originalImageElement);
+            }
         }
         _updateSelectors(newVariant) {
             var _this2 = this;
@@ -833,7 +846,7 @@
                     newData.commodity_color = colorChecked ? colorChecked.value : ""
                     newData.commodity_size = sizeChecked ? sizeChecked.value : ""
                     if (!colorChecked || !sizeChecked) return newData
-                        newData.commodity_skuid = currentSku?currentSku:''
+                    newData.commodity_skuid = currentSku ? currentSku : ''
 
                     return newData
                 },
@@ -856,7 +869,7 @@
                     const colorChecked = root.querySelector('.color-swatch__radio[checked]');
                     const sizeChecked = root.querySelector('.block-swatch__radio[checked]')
                     const currentSku = root.querySelector('input[data-sku]').getAttribute('data-sku')
-                    newData.commodity_skuid = currentSku?currentSku:""
+                    newData.commodity_skuid = currentSku ? currentSku : ""
                     newData.commodity_color = colorChecked ? colorChecked.value : ""
                     newData.commodity_size = sizeChecked ? sizeChecked.value : ""
                     newData.site_category = getSiteCategory()
