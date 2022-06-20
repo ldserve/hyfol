@@ -611,7 +611,7 @@
           "type": "link",
           "settings": {
             "heading": "patriot",
-            "sensorsLinkName": "",
+            "sensorsLinkName": "patriot",
             "link": "",
             "left": 0,
             "top": 0,
