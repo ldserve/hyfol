@@ -437,9 +437,9 @@
 					</div>
 					{%- endcomment -%}
 					<div class="vip-rules" style="display:none;">
-
+					
 						<div class="close-rule__page">{% render 'icon',icon:'close' %} </div>
-
+					
 						<h1 class="h1 vip-rules__title">About Rules</h1>
 						<h3 class="h3">1. Introduction</h3>
 						<div class="rule-tex">
@@ -512,7 +512,8 @@
 									</tr>
 								</tbody>
 							</table>
-							<p style="color:#919191 ;">( The Eligible Purchases means purchases on the HYFOL website during the past 12 months which is 45 days
+							<p style="color:#919191 ;">( The Eligible Purchases means purchases on the HYFOL website during the past 12
+								months which is 45 days
 								before 10h every month.)</p>
 						</div>
 						<h3 class="h3">3. Rewards </h3>
@@ -531,7 +532,7 @@
 										<img class="lazyload" alt="fill" src="{{ 'user.png' | asset_url}}">
 									</div>
 									<div class="vip-user__name">
-										<span style="margin-bottom:6px ;">{{customer.name}}</span><br />
+										<span style="margin-bottom:6px; display: inline-block;">{{customer.name}}</span><br />
 										<div class="vip-icon__box">
 											{%- render 'icon',icon:'vip',class:'vip' -%}
 											<span class="vip-user__grade">Silver</span>
@@ -563,7 +564,7 @@
 										<!-- <span class="vip-grade__name">Platinum</span> -->
 									</span>
 								</div>
-								<p class="vip-info__title">Welcome the HYFOL VIP</p>
+								<p class="vip-info__title">Welcome to the HYFOL VIP</p>
 							</div>
 	
 							<div class="vip-overview__rule">
@@ -2059,7 +2060,7 @@
 		grid: auto-flow auto / repeat(2, auto);
 		grid-column-gap: 4rem;
 		grid-row-gap: 3rem;
-		color: #ccc;
+		color: #fff;
 	}
 
 	.my-coupons__list p {
@@ -2225,10 +2226,12 @@
 		.my_coupons {
 			padding: 1rem 2.6rem;
 		}
-		.my_addresses .h1{
+
+		.my_addresses .h1 {
 			text-align: center;
 		}
-		.order-me .h3{
+
+		.order-me .h3 {
 			text-align: center;
 		}
 	}
@@ -2579,6 +2582,10 @@
 			{
 				"value":"cjj_post_sale",
 				"label":"客服"
+			},
+			{
+				"value":"coupon",
+				"label":"优惠券"
 			},
 			{
 				"value":"account-location",
