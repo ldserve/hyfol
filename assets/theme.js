@@ -62,15 +62,15 @@
 
             }
             window.location.hash = searchValue
-
+           
             var list = document.querySelector("." + enode).parentElement.children
             for (let i = 0; i < list.length; i++) {
                 list[i].style.display = "none"
             }
-
+            window.scroll(0, 0)
             document.querySelector("." + enode).style.display = "block"
             document.querySelector('.breadcrumb__link[aria-current="page"]').innerHTML = searchValue
-            window.scroll(0, 0)
+           
         }
     }
     customElements.define("left-nav-list", LeftNavList);
@@ -119,6 +119,7 @@
                 window.location.hash = "Orders+" + searchValue
             }
             var url = window.location.hash.split("+")[1].toLowerCase()
+
             document.querySelector('.table-left-nav').querySelector(".render_nav_list ").childNodes.forEach((item) => {
                 if (item.nodeType == 1 && item.getAttribute("data-right") == "my_orders") {
                     item.className = "card__linklist-item link text--stronger "
@@ -126,6 +127,14 @@
                     item.className = "card__linklist-item  "
                 }
             })
+            document.querySelector('.card__linklist .render_nav_list').childNodes.forEach((item) => {
+                if (item.nodeType == 1 && item.getAttribute("data-right") == "my_orders") {
+                    item.className = "card__linklist-item link text--stronger "
+                } else {
+                    item.className = "card__linklist-item  "
+                }
+            })
+
 
             var list = document.querySelector(".wish_list").parentElement.children
             for (let i = 0; i < list.length; i++) {
@@ -140,6 +149,7 @@
             document.querySelectorAll('.order-item__card').forEach((item) => {
                 item.setAttribute("aria-hidden", true)
             })
+
             document.querySelector(".order-" + url).setAttribute("data-action", true)
             var index = document.querySelector(".order-" + url).getAttribute("data-index")
             document.querySelectorAll('.order-item__card').forEach((item) => {
@@ -148,6 +158,8 @@
                 }
 
             })
+           
+    
         }
     }
     customElements.define("order-item", OrderItem);

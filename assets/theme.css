@@ -16154,3 +16154,6 @@ details-menu [aria-expanded="true"]::after{
  float: left;
  background-color: #bbb;
 }
+details-menu [aria-expanded="true"]{
+  font-weight: 600;
+}

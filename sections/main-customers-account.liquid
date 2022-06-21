@@ -328,7 +328,7 @@
 
 					<div class="large_pad">
 						<div class="order-me container">
-							<h2>{{- 'customer.general.orders' | t -}}</h2>
+							<h3 class="h3">{{- 'customer.general.orders' | t -}}</h3>
 							<div class="icon-box">
 								<ul class="icons" id="orders-list">
 									<li data-item="orders-all" class="current">
@@ -521,30 +521,7 @@
 							ofers are set out from time to time to your personal acCount.
 						</div>
 					</div>
-					<style>
-
-						.vip-level__s1,.vip-level__s2,.vip-level__s3{
-							position: relative;
-						}
-						.vip-level__s1::after{
-							content: 'Silver';
-							position: absolute;
-							left: -0.2rem;
-							bottom: -1.6rem;
-						}
-						.vip-level__s2::after{
-							content: 'Gold';
-							position: absolute;
-							left: -0.2rem;
-							bottom: -1.6rem;
-						}
-						.vip-level__s3::after{
-							content: 'Platinum';
-							position: absolute;
-							left: -0.8rem;
-							bottom: -1.6rem;
-						}
-					</style>
+				
 
 					<div class="my-account">
 						<div class="vip-page ">
@@ -585,25 +562,26 @@
 										<img src="{{'s3.png' | asset_url}}" alt="">
 										<!-- <span class="vip-grade__name">Platinum</span> -->
 									</span>
-								</div>Welcome the HYFOL VIP</p>
+								</div>
+								<p class="vip-info__title">Welcome the HYFOL VIP</p>
 							</div>
 	
 							<div class="vip-overview__rule">
-								<p>
-									Silver: US$0.1 or 1 order(s) are required to become a silver member
+								<p class="vip-upgrade__info">
+								<span class="vip-upgrade__header">Silver: </span>	US$0.1 or 1 order(s) are required to become a silver member
 								</p>
-								<p>
-									Gold: US$120 or 3 order(s) are required to become a gold member
+								<p class="vip-upgrade__info">
+									<span class="vip-upgrade__header">Gold: </span>US$120 or 3 order(s) are required to become a gold member
 								</p>
-								<p>
-									Platinum: US$500 or 5 order(s) are required to become a platinum member
+								<p class="vip-upgrade__info">
+								<span class="vip-upgrade__header">Platinum: </span>	US$500 or 5 order(s) are required to become a platinum member
 								</p>
 								<summary class="vip-rules__link">
 									About rules
 								</summary>
 							</div>
 						</div>
-
+						
 						{%- assign order_unpaid = 0 -%}
 						{%- assign order_processing = 0 -%}
 						{%- assign order_shipped = 0 -%}
@@ -734,9 +712,42 @@
 
 				</div>
 
-				<div class="my_coupons account_right_content">
-					coupons
+				<div class="my_coupons account_right_content backgrount_e">
+					<h3 class="my_coupons__title h3">My Coupons</h3>
+					<details-menu>
+						<div class="coupons-nav d-flex">
+							<summary aria-expanded="true" data-index="1">
+								Unused Coupons
+							</summary>
+							<summary aria-expanded="false" data-index="2">
+								Expired Coupons 
+							</summary>
+						</div>
+						<div class="unused__coupons page__item" data-index="1" aria-hidden="false">
+							<div class="my-coupons">
+								<!-- <h3 class="h3 my-coupons__title">Unused Coupons</h3> -->
+								<div class="my-coupons__list ">
+									
+							
+								</div>
+							
+							
+							</div>
+						</div>
+						<div class="expired__coupons page__item" data-index="2" aria-hidden="true">
+							<div class="my-coupons">
+								<!-- <h3 class="h3 my-coupons__title">Unused Coupons</h3> -->
+								<div class="my-coupons__list ">
+									
+							
+								</div>
+							
+							
+							</div>
+						</div>
+						</details-menu>
 				</div>
+
 				<div class="my_profiles account_right_content">
 					{%- comment -%}
 					<div class="profile-view backgrount_e">
@@ -767,12 +778,12 @@
 
 				<style>
 					/* .profiles-form > input {
-						border: 1px solid #666;
-						background-color: #eee;
-						width: 100%;
-						display: block;
-						padding: 8px 20px;
-					} */
+										border: 1px solid #666;
+										background-color: #eee;
+										width: 100%;
+										display: block;
+										padding: 8px 20px;
+									} */
 				
 					.my-profile__view {
 						text-align: center;
@@ -792,6 +803,51 @@
 				
 					.profile-view .h3 {
 						margin-bottom: 2rem;
+					}
+				
+					.my_coupons {
+						padding: 1rem 3rem;
+					}
+				
+					.my_coupons__title {
+						text-align: center;
+					}
+				
+					.coupons-nav>summary {
+						/* display: inline-block; */
+						margin-right: 1.8rem;
+						cursor: pointer;
+					}
+				
+					.vip-level__s1,
+					.vip-level__s2,
+					.vip-level__s3 {
+						position: relative;
+					}
+				
+					.vip-level__s1::after {
+						content: 'Silver';
+						position: absolute;
+						left: -0.2rem;
+						bottom: -1.6rem;
+					}
+				
+					.vip-level__s2::after {
+						content: 'Gold';
+						position: absolute;
+						left: -0.2rem;
+						bottom: -1.6rem;
+					}
+				
+					.vip-level__s3::after {
+						content: 'Platinum';
+						position: absolute;
+						left: -0.8rem;
+						bottom: -1.6rem;
+					}
+					.page__item .my-coupons{
+						padding: 0 0rem 3rem;
+
 					}
 				</style>
 
@@ -1669,7 +1725,6 @@
 
 	.body-me {
 		margin-top: 10px;
-		/* background-color: #f0f0f0; */
 	}
 
 	.body-me .card {
@@ -1682,7 +1737,6 @@
 		height: 60px;
 		font-size: 2em;
 		text-align: center;
-		/* background-color: #FFFFFF; */
 	}
 
 	.body-me.loading>svg {
@@ -1849,27 +1903,20 @@
 
 	.vip-overview__rule {
 		font-size: 14px;
-		color: #ccc;
+		color: #edede5;
 		padding: 0 1rem;
-		/* margin-left: 50%; */
+
 	}
 
 	.vip-overview__rule p {
 		margin: 0;
 	}
 
-	.vip-overview {
-		/* margin-left: 2rem; */
-		/* position: absolute; */
-		/* top: 2rem;
-		left: 0; */
-
-	}
-
 	.vip-rules__link {
 		text-decoration: underline;
 		cursor: pointer;
 		display: inline-block;
+		font-weight: 500;
 	}
 
 	.vip-icon__box {
@@ -1908,7 +1955,6 @@
 	}
 
 	.vip-user__avatar {
-		/* background-color: #bbb; */
 		width: 4rem;
 		height: 4rem;
 		border-radius: 50%;
@@ -1922,8 +1968,6 @@
 	.vip-page {
 		justify-content: space-between;
 		background-image: url({{ 'user_background.png' | asset_url }});
-		/* background-position: center; */
-		/* background-position: 50%; */
 		background-repeat: no-repeat;
 		background-size: 100% 100%;
 		background-clip: border-box;
@@ -2063,7 +2107,7 @@
 	}
 
 	.profile-view {
-		padding: 30px 50px;
+		padding: 30px 2rem;
 	}
 
 	.profile-record {
@@ -2113,7 +2157,7 @@
 	}
 
 	.mobile-account__nav {
-		width: 200%;
+		width: 270%;
 		justify-content: space-between;
 
 	}
@@ -2141,7 +2185,7 @@
 		}
 
 		.my-coupons {
-			margin-top: 30px;
+			margin-top: 1rem;
 		}
 
 		.my-coupons__list {
@@ -2153,16 +2197,40 @@
 			margin-top: 1.6rem;
 		}
 
-		/* .vip-page {
-			padding: 0;
+		.vip-page {
+			padding: 1rem 10px;
+			background: #eee;
+			grid: repeat(2, auto)/ auto-flow auto;
+			grid-row-gap: 1rem;
 		}
-		.vip-overview{
-			padding: 10px 0
-		}
-		.vip-overview__rule{
 
-			padding: 10px;
-		} */
+		.vip-overview {
+			padding: 0 2rem
+		}
+
+		.vip-overview__rule {
+			padding: 1rem 2rem;
+			background: #636363;
+		}
+
+		.vip-upgrade__info {
+			display: flex;
+			flex-wrap: wrap;
+		}
+
+		.vip-upgrade__header {
+			font-weight: 600;
+		}
+
+		.my_coupons {
+			padding: 1rem 2.6rem;
+		}
+		.my_addresses .h1{
+			text-align: center;
+		}
+		.order-me .h3{
+			text-align: center;
+		}
 	}
 </style>
 
@@ -2254,6 +2322,18 @@
 				}
 
 			}
+		}
+
+		window.onhashchange = function (e) {
+			try {
+				var url = window.location.hash.split("+")[1].toLowerCase()
+				document.querySelectorAll('#orders-list [data-item]').forEach(item => item.classList.remove('current'))
+				const nav = document.querySelector(`#orders-list [data-item="orders-${url}"]`)
+				nav.classList.add('current')
+				getData('?section_id=my-'+nav.dataset.item, upData)
+			} catch (error) {
+			}
+
 		}
 
 		function init() {
@@ -2359,7 +2439,9 @@
 				scopeOfUse: 'for All Products'
 			}]
 
-			const couponView = document.querySelector('.my-coupons__list')
+			const couponView = document.querySelector('.my-account .my-coupons__list')
+			const unusedCoupons = document.querySelector('.unused__coupons .my-coupons__list')
+			const expiredCoupons = document.querySelector('.expired__coupons .my-coupons__list')
 
 			let couponList = data.map((item, i) => {
 				return `<div class="my-coupons__item">
@@ -2374,6 +2456,8 @@
 									<span class="round-right"></span>
 								</div>`}).join('')
 			couponView.innerHTML = couponList
+			unusedCoupons.innerHTML=couponList
+			expiredCoupons.innerHTML=couponList
 
 		}
 
