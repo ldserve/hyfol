@@ -8813,7 +8813,7 @@ select option {
  * ORDER FOOT (used in order details in customer account)
  * --------------------------------------------------------------------
  */
- 
+
  .account-nav{
    align-items: center;
    cursor: pointer;
@@ -15995,7 +15995,7 @@ justify-content: space-between;
 
 .remove-collect ,.add-collect{
   font-size: 50px;
- 
+
 
 }
 
@@ -16061,4 +16061,7 @@ justify-content: space-between;
   font-size: 8px;
   line-height: 1.2rem; */
 
+}
+.size-chart-btn {
+  border-bottom: 2px solid;
 }
