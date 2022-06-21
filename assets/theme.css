@@ -16063,7 +16063,7 @@ justify-content: space-between;
 
 }
 .size-chart-btn {
-  border-bottom: 1px solid;
-  padding: 0;
-  line-height: 17px;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
 }
