@@ -217,31 +217,28 @@
           {%- when 'block' -%}
 						<div class="product-form__option-name text--strong d-flex space-between">
 							<span>{{ option.name }}:<span class="product-form__selected-value">{{ option.selected_value }}</span> </span>
-							{%- comment -%}
-								尺码表按钮
-								{% assign showSizeGuideModal = true %}
 									{% if product.metafields.my_fields.category != blank%}
-										{% assign noShowList = "Bag,Bracelet,Cap,FLAG,Hat,Jewelry Gift Box,Men's Belt,Men's Coat,Men's Hat,Men's Scarf,Necklace,Pendant,Phone Case,Ring,StickerSocks,Women's Bracelet"  | split: ',' | downcase %}
-										{% for item in noShowList %}
-											{% assign type = product.type | downcase %}
-											{% if type == item %}
+										{% assign showSizeGuideModal = true %}
+										{% assign listStr = "Bag,Bracelet,Cap,FLAG,Hat,Jewelry Gift Box,Men's Belt,Men's Coat,Men's Hat,Men's Scarf,Necklace,Pendant,Phone Case,Ring,StickerSocks,Women's Bracelet"  %}
+										{% assign noShowArr = listStr | split: ','  %}
+										{% for arrItem in noShowArr %}
+											{% assign typeDowncase = product.type | downcase %}
+											{% assign arrItemDowncase = arrItem | downcase %}
+											{% if typeDowncase == arrItemDowncase %}
 												{% assign showSizeGuideModal = false %}
 											{% endif %}
 										{% endfor %}
+										{% if showSizeGuideModal == true %}
+											<button
+												type="button"
+												class="product-form__selected-value size-chart"
+												data-action="open-modal"
+												aria-controls="sizeGuideModal"
+											>
+												Size Chart
+											</button>
+										{% endif %}
 									{% endif %}
-								{% if showSizeGuideModal == true %}
-									<button
-										{{ showSizeGuideModal }}
-										type="button"
-										class="product-form__selected-value size-chart"
-										data-action="open-modal"
-										aria-controls="sizeGuideModal"
-									>
-										Size Chart |
-										{{ product.type | downcase}}
-									</button>
-								{% endif %}
-							{%- endcomment -%}
 						</div>
             <div class="block-swatch-list">
               {%- for value in option.values -%}
