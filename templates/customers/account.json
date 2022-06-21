@@ -24,7 +24,7 @@
         "3ac1233e-fe33-4707-90cd-13d53a9b902a": {
           "type": "trust",
           "settings": {
-            "nav_title": "Profile",
+            "nav_title": "My Profile",
             "nav_right": "my_profile",
             "nav_show": true,
             "nav_icon": "account-my"
@@ -33,7 +33,7 @@
         "cdee28e4-9682-4279-8c89-c421b1c9e3ef": {
           "type": "trust",
           "settings": {
-            "nav_title": "Orders",
+            "nav_title": "My Orders",
             "nav_right": "my_orders",
             "nav_show": true,
             "nav_icon": "account-cart"
@@ -51,7 +51,7 @@
         "b3726238-309f-44ee-af96-10ee039817e5": {
           "type": "trust",
           "settings": {
-            "nav_title": "Addresses",
+            "nav_title": "My Addresses",
             "nav_right": "my_addresses",
             "nav_show": true,
             "nav_icon": "account-location"
