@@ -51,7 +51,7 @@
         "665ebc62-1f8e-42fa-a18d-0c509b84e450": {
           "type": "trust",
           "settings": {
-            "nav_title": "Wishlist",
+            "nav_title": "My Wishlist",
             "nav_right": "wish_list",
             "nav_show": true,
             "nav_icon": "account-collect"
