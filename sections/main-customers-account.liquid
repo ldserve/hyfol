@@ -1,12 +1,13 @@
-<section class="hidden-lap-and-up">
+<section class="hidden-lap-and-up account">
 	<div class="header-me container">
 		{%- if customer -%}
-		<input type="checkbox" id="account-input" class="account-input hidden">
+		<!-- <input type="checkbox" id="account-input" class="account-input hidden">
 		<ul class="logged">
 			<li class=" text-l name"><span class="hi">Hi!&nbsp;</span>{{ customer.first_name }}</li>
 			<li class=" text-r tab"><label for="account-input">{%- render 'icon', icon: 'arrow-bottom' -%}</label></li>
-		</ul>
+		</ul> -->
 		<div class="account-box">
+			<h3 class="mobile-account__title">My Service</h3>
 			<div class="card__linklist ">
 				<left-nav-list>
 					<div class="render_nav_list d-flex mobile-account__nav">
@@ -24,8 +25,8 @@
 					</div>
 				</left-nav-list>
 			</div>
-		
 		</div>
+
 		{%- else -%}
 		<ul class="no-logged">
 			<li class="text-l"><a href="{{ routes.account_login_url }}?return_url={{ page.url }}">LOGIN &gt;</a></li>
@@ -119,39 +120,13 @@
 						<h1 class="center wish_title">MY WISHLIST</h1>
 					</header>
 
-				
-
                     <div class="wish_loading">
 						<div class="body-me loading">
 						{%- render 'icon', icon: 'cjj_loading' -%}
 						<span class="loading-text">&nbsp;loading...</span>
 					</div>
 				</div>
-					<style>
-						/* .openQuickView {
-							display: none;
-						} */
-
-						.product-item__info {
-							background-color: #ffffff;
-						}
-
-						.product-item_text,
-						.product-item__info-inner .price {
-							color: #000000;
-						}
-
-						.product-item__swatch-list {
-							padding-bottom: 0px;
-							min-height: 50px;
-						}
-
-						.scroller__inner .price--compare,
-						.product-item__info-inner .price--compare {
-							text-decoration: line-through black;
-						}
-					</style>
-
+				
 					<div class="collect page-width">
 
 					</div>					
@@ -546,6 +521,31 @@
 							ofers are set out from time to time to your personal acCount.
 						</div>
 					</div>
+					<style>
+
+						.vip-level__s1,.vip-level__s2,.vip-level__s3{
+							position: relative;
+						}
+						.vip-level__s1::after{
+							content: 'Silver';
+							position: absolute;
+							left: -0.2rem;
+							bottom: -1.6rem;
+						}
+						.vip-level__s2::after{
+							content: 'Gold';
+							position: absolute;
+							left: -0.2rem;
+							bottom: -1.6rem;
+						}
+						.vip-level__s3::after{
+							content: 'Platinum';
+							position: absolute;
+							left: -0.8rem;
+							bottom: -1.6rem;
+						}
+					</style>
+
 					<div class="my-account">
 						<div class="vip-page ">
 							<div class="vip-overview">
@@ -573,17 +573,19 @@
 									<span class="vip-solid"></span>
 									<span class="vip-level__s1">
 										<img src="{{'s1.png' | asset_url}}" alt="">
+										<!-- <span class="vip-grade__name">Silver</span> -->
 									</span>
 									<span class="vip-solid"></span>
 									<span class="vip-level__s2">
 										<img src="{{'s2.png' | asset_url}}" alt="">
+									<!-- <span class="vip-grade__name">Gold</span> -->
 									</span>
 									<span class="vip-solid"></span>
 									<span class="vip-level__s3">
 										<img src="{{'s3.png' | asset_url}}" alt="">
+										<!-- <span class="vip-grade__name">Platinum</span> -->
 									</span>
-								</div>
-								<p class="vip-info__title">Welcome to the HYFOL VIP</p>
+								</div>Welcome the HYFOL VIP</p>
 							</div>
 	
 							<div class="vip-overview__rule">
@@ -629,20 +631,7 @@
 						<div class="my-coupons">
 							<h3 class="h3 my-coupons__title">Unused Coupons</h3>
 							<div class="my-coupons__list ">
-								{% for i in (1..4) %}
-								<div class="my-coupons__item">
-								<p>%15 OFF</p>	
-								<p>For order over us$49.00</p>	
-								<p>Code:HY15</p>	
-									<ul class="coupons-date">
-										<li>16/05/2022  02:00:00~16/06/2022  02:00:00</li>
-										<li>for All Products</li>
-									</ul>
-									<span class="round-left"></span>
-									<span class="round-right">
-									</span>
-								</div>
-								{% endfor %}
+								
 						
 							</div>
 						
@@ -745,8 +734,8 @@
 
 				</div>
 
-				<div class="my_rewards account_right_content">
-					rewards
+				<div class="my_coupons account_right_content">
+					coupons
 				</div>
 				<div class="my_profiles account_right_content">
 					{%- comment -%}
@@ -775,6 +764,7 @@
 					</div>
 					{%- endcomment -%}
 				</div>
+
 				<style>
 					/* .profiles-form > input {
 						border: 1px solid #666;
@@ -804,6 +794,7 @@
 						margin-bottom: 2rem;
 					}
 				</style>
+
 				<div class="my_profile account_right_content">
 					<div class="profile-view backgrount_e">
 						<h3 class="h3" style="text-align:center;">My Profile</h3>
@@ -1520,15 +1511,46 @@
 </section>
 
 {% if dm_paginate_by %}{% render 'spurit_dmr_collection_template_snippet', paginate_by: dm_paginate_by %}{% endif %}
-
 <style>
+	.product-item__info {
+		background-color: #ffffff;
+	}
+
+	.product-item_text,
+	.product-item__info-inner .price {
+		color: #000000;
+	}
+
+	.product-item__swatch-list {
+		padding-bottom: 0px;
+		min-height: 50px;
+	}
+
+	.scroller__inner .price--compare,
+	.product-item__info-inner .price--compare {
+		text-decoration: line-through black;
+	}
+
+	.mobile-account__title {
+		text-align: center;
+		font-weight: 600;
+	}
+
+	.hidden-lap-and-up.account {
+		margin: 1rem 0;
+	}
+
+	.container.container--flush {
+		padding: 0;
+	}
+
 	#shopify-section-footer {
 		display: none;
 	}
 
 	body {
 		min-height: 100vh;
-		background: #f0f0f0;
+		background: #fff;
 	}
 
 	main ul,
@@ -1539,7 +1561,8 @@
 	}
 
 	.header-me {
-		background-color: #fff;
+		background-color: #eee;
+		padding: 0 10px;
 	}
 
 	.header-me .logged .name {
@@ -1557,15 +1580,17 @@
 	}
 
 	.header-me .account-box {
-		height: 0;
+		/* height: 0;
 		overflow: hidden;
-		transition: all 0.4s ease;
+		transition: all 0.4s ease; */
+		padding: 1rem 0;
+
 	}
 
-	#account-input:checked~.account-box {
+	/* #account-input:checked~.account-box {
 		height: 170px;
 		transition: all 0.4s ease;
-	}
+	} */
 
 	.header-me .logged>.tab {
 		transition: all 0.4s ease;
@@ -1826,7 +1851,7 @@
 		font-size: 14px;
 		color: #ccc;
 		padding: 0 1rem;
-		margin-left: 50%;
+		/* margin-left: 50%; */
 	}
 
 	.vip-overview__rule p {
@@ -1834,10 +1859,10 @@
 	}
 
 	.vip-overview {
-		margin-left: 2rem;
-		position: absolute;
-		top: 2rem;
-		left: 0;
+		/* margin-left: 2rem; */
+		/* position: absolute; */
+		/* top: 2rem;
+		left: 0; */
 
 	}
 
@@ -1877,7 +1902,7 @@
 	}
 
 	.vip-grade {
-		padding: 1rem 0;
+		padding: 1rem 0 2rem;
 		align-items: center;
 		justify-items: flex-start;
 	}
@@ -1898,16 +1923,14 @@
 		justify-content: space-between;
 		background-image: url({{ 'user_background.png' | asset_url }});
 		/* background-position: center; */
-		background-position: 50%;
+		/* background-position: 50%; */
 		background-repeat: no-repeat;
-		background-color: #fff;
-		background-size: 110% 110%;
+		background-size: 100% 100%;
 		background-clip: border-box;
 		min-height: 200px;
-		padding-top: 2rem;
-		padding: 2rem;
-
-		position: relative;
+		padding: 2rem 3rem;
+		display: grid;
+		grid: auto-flow auto / repeat(2, 50%);
 	}
 
 	.vip-grade img {
@@ -1926,7 +1949,6 @@
 		color: #000000;
 		cursor: text;
 		padding: 1rem 2rem;
-		/* position: relative; */
 	}
 
 	.vip-rules__title {
@@ -1990,7 +2012,7 @@
 
 	.my-coupons__list {
 		display: grid;
-		grid: repeat(2, auto) / auto-flow auto;
+		grid: auto-flow auto / repeat(2, auto);
 		grid-column-gap: 4rem;
 		grid-row-gap: 3rem;
 		color: #ccc;
@@ -2087,6 +2109,7 @@
 
 	.card__linklist {
 		overflow-x: auto;
+		padding-bottom: 1rem;
 	}
 
 	.mobile-account__nav {
@@ -2101,6 +2124,45 @@
 		min-height: 100px;
 		margin-top: 10px;
 		padding: 2rem;
+	}
+
+	@media screen and (max-width: 999px) {
+		.profile-view {
+			padding: 30px 10px;
+		}
+
+		.profile-record {
+			margin: 0;
+			padding: 10px;
+		}
+
+		.profile-nav>summary {
+			margin: 0;
+		}
+
+		.my-coupons {
+			margin-top: 30px;
+		}
+
+		.my-coupons__list {
+			grid: auto-flow auto / repeat(1, auto);
+			grid-row-gap: 2rem;
+		}
+
+		.order-preview {
+			margin-top: 1.6rem;
+		}
+
+		/* .vip-page {
+			padding: 0;
+		}
+		.vip-overview{
+			padding: 10px 0
+		}
+		.vip-overview__rule{
+
+			padding: 10px;
+		} */
 	}
 </style>
 
@@ -2146,16 +2208,6 @@
 			body_me.innerHTML = data
 			isnull(data)
 		}
-
-		function bindEvent(container,target){
-			let element=document.querySelector(container)
-			element.addEventListener('click',(e)=>{
-				if(e.target.className.)
-					console.log('event',e);
-			})
-
-		}
-		// bindEvent('.my_overview','.vip-rules__link')
 
 		function isnull(data) {
 
@@ -2213,6 +2265,17 @@
 		event();
 		init();
 
+		function bindEvent(container,target,call){
+			let content=document.querySelector(container)
+			content.addEventListener('click',(e)=>{
+				if(!e.target.classList.contains(target)) return
+				e.preventDefault()
+				call&&call(e,content,target)
+				
+			})
+
+		}
+		
 		function deleteAddresses() {
 			function getFormData(form) {
 				var hash = [];
@@ -2269,7 +2332,52 @@
 		}
 		// getPoint()
 
+		function getCoupons() {
+			let data = [{
+				couponName: '%15 OFF',
+				coupon: 'For order over us$49.00',
+				couponCode: 'HY15',
+				couponGetDate: '16/05/2022 02:00:00',
+				couponClosingDate: '16/06/2022 02:00:00',
+				scopeOfUse: 'for All Products'
+			},
+			{
+				couponName: '%15 OFF',
+				coupon: 'For order over us$49.00',
+				couponCode: 'HY15',
+				couponGetDate: '16/05/2022 02:00:00',
+				couponClosingDate: '16/06/2022 02:00:00',
+				scopeOfUse: 'for All Products'
+			},
+		
+			{
+				couponName: '%15 OFF',
+				coupon: 'For order over us$49.00',
+				couponCode: 'HY15',
+				couponGetDate: '16/05/2022 02:00:00',
+				couponClosingDate: '16/06/2022 02:00:00',
+				scopeOfUse: 'for All Products'
+			}]
 
+			const couponView = document.querySelector('.my-coupons__list')
+
+			let couponList = data.map((item, i) => {
+				return `<div class="my-coupons__item">
+								<p>${item.couponName}</p>	
+								<p>${item.coupon}</p>	
+								<p>Code:${item.couponCode}</p>	
+									<ul class="coupons-date">
+										<li>${item.couponGetDate}~${item.couponClosingDate}</li>
+										<li>${item.scopeOfUse}</li>
+									</ul>
+									<span class="round-left"></span>
+									<span class="round-right"></span>
+								</div>`}).join('')
+			couponView.innerHTML = couponList
+
+		}
+
+		getCoupons()
 		class DetailsMenu extends HTMLElement {
 			constructor() {
 				super();
@@ -2301,15 +2409,17 @@
 
 		const rules = document.querySelector('.vip-rules')
 		const user = document.querySelector('.my-account')
-		document.querySelector('.vip-rules__link').addEventListener('click', (e) => {
+
+		bindEvent('.my_overview','vip-rules__link',()=>{
 			user.style.display = "none"
 			rules.style.display = 'block'
 			window.scroll(0, 0)
 		})
-		document.querySelector('.close-rule__page').addEventListener('click', () => {
+		bindEvent('.my_overview','close-rule__page',()=>{
 			rules.style.display = 'none'
 			user.style.display = "block"
 		})
+	
 
 	}()
 </script>
