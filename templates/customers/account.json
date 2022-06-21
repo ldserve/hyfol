@@ -65,6 +65,15 @@
             "nav_show": true,
             "nav_icon": "cjj_post_sale"
           }
+        },
+        "9585de15-07d9-4f1b-8169-f9306d195e67": {
+          "type": "trust",
+          "settings": {
+            "nav_title": "My Coupons",
+            "nav_right": "my_coupons",
+            "nav_show": true,
+            "nav_icon": "none"
+          }
         }
       },
       "block_order": [
@@ -74,7 +83,8 @@
         "cdee28e4-9682-4279-8c89-c421b1c9e3ef",
         "665ebc62-1f8e-42fa-a18d-0c509b84e450",
         "b3726238-309f-44ee-af96-10ee039817e5",
-        "5e2c3432-c4de-4aff-8f98-528c6a7afc15"
+        "5e2c3432-c4de-4aff-8f98-528c6a7afc15",
+        "9585de15-07d9-4f1b-8169-f9306d195e67"
       ],
       "settings": {
       }
