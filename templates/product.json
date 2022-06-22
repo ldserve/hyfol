@@ -40,11 +40,6 @@
             "show_payment_button": false
           }
         },
-        "a64f893f-d76a-4d12-8e28-09587bb38b2b": {
-          "type": "collocation_purchase",
-          "settings": {
-          }
-        },
         "40401d43-e40a-46bd-b84a-7563498f1427": {
           "type": "delivery",
           "settings": {
@@ -93,7 +88,6 @@
         "variant_selector",
         "78a65596-bd80-4353-82c9-7ede27334ff0",
         "buy_buttons",
-        "a64f893f-d76a-4d12-8e28-09587bb38b2b",
         "40401d43-e40a-46bd-b84a-7563498f1427",
         "220a0d08-af6d-41fd-a53d-f77edb36997c",
         "description",
@@ -159,6 +153,7 @@
       "type": "recently-viewed-products",
       "settings": {
         "title": "Recently viewed",
+        "title_color": "#000",
         "show_quick_buy": true
       }
     },
