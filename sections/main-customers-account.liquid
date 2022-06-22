@@ -445,7 +445,7 @@
 						<div class="rule-tex">
 							There is no fee for the HYFOL VIP. HYFOL VIP membership is limited to individuals only and limited to one
 							account per individual.It is your identification that represent you are at legal ages to join our program
-							and responsibility for your membership to keep youremail and contact details up to date in your Account.HYFOL
+							and responsibility for your membership to keep your email and contact details up to date in your Account.HYFOL
 							reserves the right to disqualify Members who have violated any Of theTerms and Conditions. Any
 							fraudulent activity or attempt to manipulate or abuse the program will result in the account being
 							removed from the program without notice. When a Membership is terminated, all outstanding coupons and
@@ -471,41 +471,41 @@
 								</thead>
 								<tbody>
 									<tr>
-										<td>
+										<th>
 											Points Redeem
-										</td>
+										</th>
 										<td>{% render 'icon',icon:"check" %}</td>
 										<td>{% render 'icon',icon:"check" %}</td>
 										<td>{% render 'icon',icon:"check" %}</td>
 									</tr>
 									<tr>
-										<td>
+										<th>
 											Level-up Coupon
-										</td>
+										</th>
 										<td></td>
 										<td>{% render 'icon',icon:"check" %}</td>
 										<td>{% render 'icon',icon:"check" %}</td>
 									</tr>
 									<tr>
-										<td>
+										<th>
 											Free Shipping Card
-										</td>
+										</th>
 										<td></td>
 										<td>{% render 'icon',icon:"check" %}</td>
 										<td>{% render 'icon',icon:"check" %}</td>
 									</tr>
 									<tr>
-										<td>
+										<th>
 											Birthday Gifts
-										</td>
+										</th>
 										<td></td>
 										<td></td>
 										<td>{% render 'icon',icon:"check" %}</td>
 									</tr>
 									<tr>
-										<td>
+										<th>
 											Exclusive Promotions
-										</td>
+										</th>
 										<td></td>
 										<td></td>
 										<td>{% render 'icon',icon:"check" %}</td>
@@ -532,7 +532,7 @@
 										<img class="lazyload" alt="fill" src="{{ 'user.png' | asset_url}}">
 									</div>
 									<div class="vip-user__name">
-										<span style="margin-bottom:6px; display: inline-block;">{{customer.name}}</span><br />
+										<span style="margin-bottom:6px; display: block;">{{customer.name}}</span>
 										<div class="vip-icon__box">
 											{%- render 'icon',icon:'vip',class:'vip' -%}
 											<span class="vip-user__grade">Silver</span>
@@ -1905,7 +1905,7 @@
 	.vip-overview__rule {
 		font-size: 14px;
 		color: #edede5;
-		padding: 0 1rem;
+		padding: 1rem 1rem 0;
 
 	}
 
@@ -2173,7 +2173,9 @@
 	.my_addresses .card{
 			background-color: #eee;
 		}
-
+		.product-list--collection,.product-list--collection .product-item{
+			background-color: #fff;
+		}
 	@media screen and (max-width: 999px) {
 		.profile-view {
 			padding: 30px 10px;
@@ -2198,7 +2200,8 @@
 		}
 
 		.order-preview {
-			margin-top: 1.6rem;
+			/* margin-top: 1.6rem; */
+			display: none;
 		}
 
 		.vip-page {
