@@ -81,6 +81,11 @@
             "shipping_estimator_default_country": "United States",
             "show_refunds_policy": true
           }
+        },
+        "e3e249da-bc46-4ead-a01b-fe4486b2bbb2": {
+          "type": "collocation_purchase",
+          "settings": {
+          }
         }
       },
       "block_order": [
@@ -93,7 +98,8 @@
         "description",
         "6040b192-8f10-4ee0-8454-dafbf292b96a",
         "c9a13b76-73f3-4161-aa0c-5edbf018722c",
-        "2387415b-9519-418e-8c17-7ce70355de1c"
+        "2387415b-9519-418e-8c17-7ce70355de1c",
+        "e3e249da-bc46-4ead-a01b-fe4486b2bbb2"
       ],
       "settings": {
         "cjj_pro_bg_top": "shopify:\/\/shop_images\/HYFOL__01_b3e71f0c-87eb-4b3e-83be-f1ba04de0b79.jpg",
@@ -153,7 +159,7 @@
       "type": "recently-viewed-products",
       "settings": {
         "title": "Recently viewed",
-        "title_color": "#000",
+        "title_color": "#000000",
         "show_quick_buy": true
       }
     },
