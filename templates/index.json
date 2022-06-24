@@ -214,30 +214,6 @@
     "164742631051d4db44": {
       "type": "linkImg",
       "blocks": {
-        "1b4a5d11-2c92-45bb-b788-8a362446a835": {
-          "type": "link",
-          "settings": {
-            "heading": "TEES",
-            "sensorsLinkName": "TEES",
-            "link": "shopify:\/\/collections\/graphic-tees",
-            "left": 0,
-            "top": 2,
-            "width": 48,
-            "height": 48
-          }
-        },
-        "f25304d2-8088-49e0-837b-c140d87d31d8": {
-          "type": "link",
-          "settings": {
-            "heading": "newarrival",
-            "sensorsLinkName": "newarrival",
-            "link": "https:\/\/www.hyfol.com\/collections\/new-in-1",
-            "left": 50,
-            "top": 2,
-            "width": 53,
-            "height": 48
-          }
-        },
         "312647ac-1ad0-4158-af07-2abbd19d8a97": {
           "type": "link",
           "settings": {
@@ -248,6 +224,18 @@
             "top": 51,
             "width": 50,
             "height": 46
+          }
+        },
+        "1b4a5d11-2c92-45bb-b788-8a362446a835": {
+          "type": "link",
+          "settings": {
+            "heading": "TEES",
+            "sensorsLinkName": "TEES",
+            "link": "shopify:\/\/collections\/graphic-tees",
+            "left": 0,
+            "top": 2,
+            "width": 48,
+            "height": 48
           }
         },
         "e34c6701-d51d-4b6b-b3c3-dbdb091ce635": {
@@ -261,13 +249,25 @@
             "width": 50,
             "height": 47
           }
+        },
+        "f25304d2-8088-49e0-837b-c140d87d31d8": {
+          "type": "link",
+          "settings": {
+            "heading": "newarrival",
+            "sensorsLinkName": "newarrival",
+            "link": "https:\/\/www.hyfol.com\/collections\/new-in-1",
+            "left": 50,
+            "top": 2,
+            "width": 53,
+            "height": 48
+          }
         }
       },
       "block_order": [
-        "1b4a5d11-2c92-45bb-b788-8a362446a835",
-        "f25304d2-8088-49e0-837b-c140d87d31d8",
         "312647ac-1ad0-4158-af07-2abbd19d8a97",
-        "e34c6701-d51d-4b6b-b3c3-dbdb091ce635"
+        "1b4a5d11-2c92-45bb-b788-8a362446a835",
+        "e34c6701-d51d-4b6b-b3c3-dbdb091ce635",
+        "f25304d2-8088-49e0-837b-c140d87d31d8"
       ],
       "settings": {
         "linkImg_title": "",
