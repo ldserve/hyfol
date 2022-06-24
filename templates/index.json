@@ -219,7 +219,7 @@
           "settings": {
             "heading": "menbestsellers",
             "sensorsLinkName": "menbestsellers",
-            "link": "https:\/\/www.hyfol.com\/collections\/running-shorts",
+            "link": "https:\/\/www.hyfol.com\/collections\/best-sellers-men",
             "left": 0,
             "top": 0,
             "width": 48,
@@ -231,7 +231,7 @@
           "settings": {
             "heading": "runningshorts",
             "sensorsLinkName": "runningshorts",
-            "link": "https:\/\/www.hyfol.com\/collections\/best-sellers-men",
+            "link": "https:\/\/www.hyfol.com\/collections\/running-shorts",
             "left": 51,
             "top": 0,
             "width": 50,
@@ -243,7 +243,7 @@
           "settings": {
             "heading": "newarrivals",
             "sensorsLinkName": "newarrivals",
-            "link": "https:\/\/www.hyfol.com\/collections\/slogan",
+            "link": "https:\/\/www.hyfol.com\/collections\/new-arrivals-sale",
             "left": 0,
             "top": 52,
             "width": 48,
@@ -255,7 +255,7 @@
           "settings": {
             "heading": "slogan",
             "sensorsLinkName": "slogan",
-            "link": "https:\/\/www.hyfol.com\/collections\/new-arrivals-sale",
+            "link": "https:\/\/www.hyfol.com\/collections\/slogan",
             "left": 51,
             "top": 50,
             "width": 50,
