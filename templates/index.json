@@ -6,7 +6,7 @@
         "1650101273ef0886ca-0": {
           "type": "image",
           "settings": {
-            "sensorsName": "2 for $49.9",
+            "sensorsName": "independenceday",
             "image": "shopify:\/\/shop_images\/6a80fd5ff5ab9ce3d2d5c61240d1b46f.jpg",
             "mobile_image": "shopify:\/\/shop_images\/6df2cd1263975a87014f4add9b52b21c.jpg",
             "show_overlay": false,
@@ -29,6 +29,7 @@
         },
         "fb844d01-0475-4130-aeb7-a118c0a1b427": {
           "type": "image",
+          "disabled": true,
           "settings": {
             "sensorsName": "3 for $55",
             "image": "shopify:\/\/shop_images\/3_50.jpg",
