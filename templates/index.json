@@ -217,8 +217,8 @@
         "aece3ec5-1e18-4c1f-9728-1219872a75c1": {
           "type": "link",
           "settings": {
-            "heading": "runningshorts",
-            "sensorsLinkName": "runningshorts",
+            "heading": "menbestsellers",
+            "sensorsLinkName": "menbestsellers",
             "link": "https:\/\/www.hyfol.com\/collections\/running-shorts",
             "left": 0,
             "top": 0,
@@ -229,8 +229,8 @@
         "dd9ea6ff-2fff-4072-8ce4-36c8d509a54c": {
           "type": "link",
           "settings": {
-            "heading": "menbestsellers",
-            "sensorsLinkName": "menbestsellers",
+            "heading": "runningshorts",
+            "sensorsLinkName": "runningshorts",
             "link": "https:\/\/www.hyfol.com\/collections\/best-sellers-men",
             "left": 51,
             "top": 0,
@@ -241,8 +241,8 @@
         "2af8f0c2-4de8-48e5-9005-8c9db641670b": {
           "type": "link",
           "settings": {
-            "heading": "slogan",
-            "sensorsLinkName": "slogan",
+            "heading": "newarrivals",
+            "sensorsLinkName": "newarrivals",
             "link": "https:\/\/www.hyfol.com\/collections\/slogan",
             "left": 0,
             "top": 52,
@@ -253,8 +253,8 @@
         "2ffd1cac-154d-4768-ad67-f1f577097552": {
           "type": "link",
           "settings": {
-            "heading": "newarrivals",
-            "sensorsLinkName": "newarrivals",
+            "heading": "slogan",
+            "sensorsLinkName": "slogan",
             "link": "https:\/\/www.hyfol.com\/collections\/new-arrivals-sale",
             "left": 51,
             "top": 50,
@@ -276,7 +276,7 @@
         "sensorsName": "mobile分类导流区",
         "hidWeb": false,
         "line": false,
-        "image": "shopify:\/\/shop_images\/02_70d51fe3-1db4-48b9-814e-34dea7a58810.jpg",
+        "image": "shopify:\/\/shop_images\/02_11fa97d6-36e1-4bcc-b585-102914908b3f.jpg",
         "tpadding": 0,
         "rpadding": 0,
         "bpadding": 0,
