@@ -217,9 +217,9 @@
         "312647ac-1ad0-4158-af07-2abbd19d8a97": {
           "type": "link",
           "settings": {
-            "heading": "RUNNING SHORTS",
-            "sensorsLinkName": "RUNNING SHORTS",
-            "link": "https:\/\/www.hyfol.com\/collections\/running-shorts",
+            "heading": "runningshorts",
+            "sensorsLinkName": "runningshorts",
+            "link": "shopify:\/\/collections\/running-shorts",
             "left": 0,
             "top": 51,
             "width": 50,
@@ -229,9 +229,9 @@
         "1b4a5d11-2c92-45bb-b788-8a362446a835": {
           "type": "link",
           "settings": {
-            "heading": "TEES",
-            "sensorsLinkName": "TEES",
-            "link": "shopify:\/\/collections\/graphic-tees",
+            "heading": "menbestsellers",
+            "sensorsLinkName": "menbestsellers",
+            "link": "shopify:\/\/collections\/best-sellers-men",
             "left": 0,
             "top": 2,
             "width": 48,
@@ -276,7 +276,7 @@
         "sensorsName": "mobile分类导流区",
         "hidWeb": false,
         "line": false,
-        "image": "shopify:\/\/shop_images\/02_154468fc-cbd5-4d26-87d2-86ed45328c80.jpg",
+        "image": "shopify:\/\/shop_images\/02_70d51fe3-1db4-48b9-814e-34dea7a58810.jpg",
         "tpadding": 0,
         "rpadding": 0,
         "bpadding": 0,
