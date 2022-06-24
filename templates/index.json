@@ -243,7 +243,7 @@
           "settings": {
             "heading": "slogan",
             "sensorsLinkName": "slogan",
-            "link": "https:\/\/www.hyfol.com\/collections\/slogan",
+            "link": "shopify:\/\/pages\/about-covid-19",
             "left": 52,
             "top": 51,
             "width": 50,
@@ -275,7 +275,7 @@
         "hidDesk": true,
         "sensorsName": "mobile分类导流区",
         "hidWeb": false,
-        "line": false,
+        "line": true,
         "image": "shopify:\/\/shop_images\/02_70d51fe3-1db4-48b9-814e-34dea7a58810.jpg",
         "tpadding": 0,
         "rpadding": 0,
