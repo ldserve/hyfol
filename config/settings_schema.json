@@ -32,9 +32,8 @@
         "type": "text",
         "id": "autoplay_time",
         "label": "请输入轮播间隔时间",
-        "default":"5"
+        "default": "5"
       }
-     
     ]
   },
   {
