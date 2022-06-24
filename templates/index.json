@@ -214,40 +214,16 @@
     "164742631051d4db44": {
       "type": "linkImg",
       "blocks": {
-        "312647ac-1ad0-4158-af07-2abbd19d8a97": {
-          "type": "link",
-          "settings": {
-            "heading": "runningshorts",
-            "sensorsLinkName": "runningshort",
-            "link": "shopify:\/\/pages\/about-covid-19",
-            "left": 0,
-            "top": 51,
-            "width": 50,
-            "height": 46
-          }
-        },
         "1b4a5d11-2c92-45bb-b788-8a362446a835": {
           "type": "link",
           "settings": {
-            "heading": "menbestsellers",
-            "sensorsLinkName": "menbestsellers",
-            "link": "https:\/\/www.hyfol.com\/collections\/best-sellers-men",
+            "heading": "runningshorts",
+            "sensorsLinkName": "runningshorts",
+            "link": "https:\/\/www.hyfol.com\/collections\/running-shorts",
             "left": 0,
             "top": 2,
             "width": 48,
             "height": 48
-          }
-        },
-        "e34c6701-d51d-4b6b-b3c3-dbdb091ce635": {
-          "type": "link",
-          "settings": {
-            "heading": "slogan",
-            "sensorsLinkName": "slogan",
-            "link": "shopify:\/\/pages\/contact-us",
-            "left": 52,
-            "top": 51,
-            "width": 50,
-            "height": 47
           }
         },
         "f25304d2-8088-49e0-837b-c140d87d31d8": {
@@ -261,13 +237,37 @@
             "width": 53,
             "height": 48
           }
+        },
+        "312647ac-1ad0-4158-af07-2abbd19d8a97": {
+          "type": "link",
+          "settings": {
+            "heading": "runningshorts",
+            "sensorsLinkName": "runningshort",
+            "link": "shopify:\/\/pages\/about-covid-19",
+            "left": 0,
+            "top": 51,
+            "width": 50,
+            "height": 46
+          }
+        },
+        "e34c6701-d51d-4b6b-b3c3-dbdb091ce635": {
+          "type": "link",
+          "settings": {
+            "heading": "slogan",
+            "sensorsLinkName": "slogan",
+            "link": "shopify:\/\/pages\/contact-us",
+            "left": 52,
+            "top": 51,
+            "width": 50,
+            "height": 47
+          }
         }
       },
       "block_order": [
-        "312647ac-1ad0-4158-af07-2abbd19d8a97",
         "1b4a5d11-2c92-45bb-b788-8a362446a835",
-        "e34c6701-d51d-4b6b-b3c3-dbdb091ce635",
-        "f25304d2-8088-49e0-837b-c140d87d31d8"
+        "f25304d2-8088-49e0-837b-c140d87d31d8",
+        "312647ac-1ad0-4158-af07-2abbd19d8a97",
+        "e34c6701-d51d-4b6b-b3c3-dbdb091ce635"
       ],
       "settings": {
         "linkImg_title": "",
