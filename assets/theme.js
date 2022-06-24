@@ -567,6 +567,8 @@
                 sendType: "AddToCart",
                 customData: function (container, el) {
                     let newData = {}
+                    let data=JSON.parse(el.dataset.scdata)
+                    let id=el.dataset.productid
                     const colorChecked = root.querySelector('.color-swatch__radio[checked]');
                     const sizeChecked = root.querySelector('.block-swatch__radio[checked]')
                     const currentSku = root.querySelector('input[data-sku]').getAttribute('data-sku')
@@ -575,7 +577,7 @@
                     if (!colorChecked || !sizeChecked) return newData
                         newData.commodity_skuid = currentSku?currentSku:''
                   gtag("event","conversion",{"send_to":"AW-319309832/2I9aCIf48eYCEIiQoZgB","transaction_id":""});
-                  pintrk("track","addtocart",{value:data.current_price,order_quantity:1,currency:"USD",line_items:[{product_id:id}]});
+                  pintrk("track","addtocart",{value:data.current_price,order_quantity:1,currency:"USD",line_items:[{product_id:id,product_category:data.commodity_type}]});
                     return newData
                 },
                 callback: function () {

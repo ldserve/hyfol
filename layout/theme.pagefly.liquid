@@ -183,7 +183,9 @@ pintrk('page');
 pintrk('track', 'pagevisit', {
 property: 'Athleta',
 line_items: [
-{product_id: '{{product.selected_or_first_available_variant.id}}'}
+{product_id: "{{product.selected_or_first_available_variant.id}}",
+ product_category: "{{product.type}}" 
+}
 ]
 });
 </script>

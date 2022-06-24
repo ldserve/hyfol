@@ -43,7 +43,7 @@
       {%- comment -%}包邮进度条{%- endcomment -%}
       {% style %}
         .progress-now{
-            width:calc( 100% *  {{cart.total_price}} /6000 );
+            width:calc( 100% *  {{cart.total_price}} /{{settings.cart_free_shipping_threshold | times: 100}} );
             max-width:100%
         }
       {% endstyle %}
@@ -290,7 +290,7 @@
                   data-quantity="{{ line_item.quantity | minus: 1 }}" data-line="{{ forloop.index }}"
                   aria-label="{{ 'cart.items.decrease_quantity' | t }}"
                   title="{{ 'cart.items.decrease_quantity' | t }}">{% render 'icon', icon: 'minus' %}</button>
-                <input aria-label="{{ 'product.form.quantity' | t }}" class="quantity-selector__value quantity-selector__value-width" data-id="{{line_item.variant_id}}" data-scdata='{"is_quick_view":0,
+                <input aria-label="{{ 'product.form.quantity' | t }}" class="quantity-selector__value quantity-selector__value-width" data-id="{{line_item.product_id}}" data-scdata='{"is_quick_view":0,
                       "commodity_spuid": "{{line_item.product.handle}}",
                        "commodity_name": "{{line_item.title | handleize }}",
                       "currency_unit":"USD",
@@ -503,7 +503,7 @@
       sensors.track('AddToCart', newData);
       sensors.setProfile({last_addtocart_time:getFormatDate()})
       gtag("event","conversion",{"send_to":"AW-319309832/2I9aCIf48eYCEIiQoZgB","transaction_id":""});
-      pintrk("track","addtocart",{value:newData.current_price,order_quantity:newData.commodity_quantity,currency:"USD",line_items:[{product_id:id}]});
+      pintrk("track","addtocart",{value:newData.current_price,order_quantity:newData.commodity_quantity,currency:"USD",line_items:[{product_id:id,product_category:newData.commodity_type}]});
     } else {
       newData.commodity_quantity = -num
       sensors.track('RemoveFromCart', newData);

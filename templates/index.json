@@ -3,10 +3,34 @@
     "1650101273f11a55ef": {
       "type": "slideshow",
       "blocks": {
+        "1650101273ef0886ca-0": {
+          "type": "image",
+          "settings": {
+            "sensorsName": "2 for $49.9",
+            "image": "shopify:\/\/shop_images\/2in1_dbf7dde1-4911-402f-8dfb-d9143e28da17.jpg",
+            "mobile_image": "shopify:\/\/shop_images\/94d53239037849179c79285840325f32_58780b60-2ac1-4427-9e10-2f3a18b1f21f.jpg",
+            "show_overlay": false,
+            "overlay_opacity": 30,
+            "text_color": "#b82928",
+            "title": "",
+            "heading_text_font": "abril_fatface_n4",
+            "heading_text_font_size": 49,
+            "heading_text_color": "#eb0e0e",
+            "content": "",
+            "content_text_font": "dosis_n4",
+            "content_text_font_size": 25,
+            "content_text_color": "#ffffff",
+            "content_position": "top_center",
+            "button_background": "#ffffff",
+            "button_text_color": "#000000",
+            "button_text": "",
+            "link": "https:\/\/www.hyfol.com\/collections\/running-shorts"
+          }
+        },
         "fb844d01-0475-4130-aeb7-a118c0a1b427": {
           "type": "image",
           "settings": {
-            "sensorsName": "",
+            "sensorsName": "3 for $55",
             "image": "shopify:\/\/shop_images\/3_50.jpg",
             "mobile_image": "shopify:\/\/shop_images\/3_50_0a407091-e7c1-459a-b37d-98bac3b76817.jpg",
             "show_overlay": false,
@@ -30,7 +54,7 @@
         "28572d9f-8700-4893-990e-c3b4bf1e7821": {
           "type": "image",
           "settings": {
-            "sensorsName": "",
+            "sensorsName": "2 Cargo shorts",
             "image": "shopify:\/\/shop_images\/1_6b3a8f15-15d7-4f15-bc89-74a324ef8d2f.jpg",
             "mobile_image": "shopify:\/\/shop_images\/2_de4346b1-a505-493e-9506-4cbcce41b1d7.jpg",
             "show_overlay": false,
@@ -54,7 +78,7 @@
         "1650101273ef0886ca-1": {
           "type": "image",
           "settings": {
-            "sensorsName": "",
+            "sensorsName": "Independence Day",
             "image": "shopify:\/\/shop_images\/78f533ba629a7a586b29aefc68f6195f_7de858de-4092-4489-8269-8e5b112d6fff.jpg",
             "mobile_image": "shopify:\/\/shop_images\/c28475f5e01489e3c359cf56832e111c_bfb9109c-ec0b-4268-8bce-da87c2203982.jpg",
             "show_overlay": false,
@@ -74,38 +98,13 @@
             "button_text": "",
             "link": "https:\/\/www.hyfol.com\/collections\/independence-day-1"
           }
-        },
-        "1650101273ef0886ca-0": {
-          "type": "image",
-          "disabled": true,
-          "settings": {
-            "sensorsName": "轮播图",
-            "image": "shopify:\/\/shop_images\/banner_0d06747b-cc02-4c21-9c14-468a2c32d6a9.jpg",
-            "mobile_image": "shopify:\/\/shop_images\/banner_562d0bc4-a4ba-4c1d-81fb-66d58a5f9bb4.jpg",
-            "show_overlay": false,
-            "overlay_opacity": 30,
-            "text_color": "#b82928",
-            "title": "",
-            "heading_text_font": "abril_fatface_n4",
-            "heading_text_font_size": 49,
-            "heading_text_color": "#eb0e0e",
-            "content": "",
-            "content_text_font": "dosis_n4",
-            "content_text_font_size": 25,
-            "content_text_color": "#ffffff",
-            "content_position": "top_center",
-            "button_background": "#ffffff",
-            "button_text_color": "#000000",
-            "button_text": "",
-            "link": "shopify:\/\/collections\/summer-sale"
-          }
         }
       },
       "block_order": [
+        "1650101273ef0886ca-0",
         "fb844d01-0475-4130-aeb7-a118c0a1b427",
         "28572d9f-8700-4893-990e-c3b4bf1e7821",
-        "1650101273ef0886ca-1",
-        "1650101273ef0886ca-0"
+        "1650101273ef0886ca-1"
       ],
       "settings": {
         "edge_to_edge": true,
@@ -132,9 +131,9 @@
     "16535579500eae05b1": {
       "type": "no_space_img",
       "settings": {
-        "sensorsName": "",
-        "bg_image": "shopify:\/\/shop_images\/07_03f491ed-b984-4a18-b3e5-9a4615078d27.jpg",
-        "web_bg_image": "shopify:\/\/shop_images\/07_763331eb-6638-41c8-9b9c-ee77088a17a4.jpg",
+        "sensorsName": "4 discount codes",
+        "bg_image": "shopify:\/\/shop_images\/07_aaebdc3a-979e-4f05-91e6-ef79945a85c9.jpg",
+        "web_bg_image": "shopify:\/\/shop_images\/07_a854df98-11d5-4805-9ac0-b1688e526a8a.jpg",
         "link": "",
         "shadow": false
       }
@@ -157,7 +156,7 @@
         "6c94ee37-e01c-4716-bc7e-67cc0981d68a": {
           "type": "link",
           "settings": {
-            "heading": "newin",
+            "heading": "newarrival",
             "sensorsLinkName": "newin",
             "link": "https:\/\/www.hyfol.com\/collections\/new-in-1",
             "left": 25,
@@ -169,8 +168,8 @@
         "c9e8ee81-fa7f-4664-a2d9-be156e428c8d": {
           "type": "link",
           "settings": {
-            "heading": "veterans",
-            "sensorsLinkName": "veterans",
+            "heading": "Performance",
+            "sensorsLinkName": "Performance",
             "link": "https:\/\/www.hyfol.com\/collections\/running-shorts",
             "left": 50,
             "top": 5,
@@ -181,9 +180,9 @@
         "1f197e6e-076a-4800-935a-1d35bc6020ce": {
           "type": "link",
           "settings": {
-            "heading": "father",
-            "sensorsLinkName": "father",
-            "link": "https:\/\/www.hyfol.com\/collections\/fathers-day",
+            "heading": "slogan",
+            "sensorsLinkName": "slogan",
+            "link": "https:\/\/www.hyfol.com\/collections\/slogan",
             "left": 76,
             "top": 6,
             "width": 24,
@@ -204,7 +203,7 @@
         "sensorsName": "",
         "hidWeb": true,
         "line": false,
-        "image": "shopify:\/\/shop_images\/02_4c659581-6f08-402a-99a2-1aeb14a38b92.jpg",
+        "image": "shopify:\/\/shop_images\/02_3587384c-e9e1-4d6a-a6bb-4be6a2b14568.jpg",
         "tpadding": 0,
         "rpadding": 0,
         "bpadding": 0,
@@ -229,8 +228,8 @@
         "f25304d2-8088-49e0-837b-c140d87d31d8": {
           "type": "link",
           "settings": {
-            "heading": "newin",
-            "sensorsLinkName": "newin",
+            "heading": "new arrival",
+            "sensorsLinkName": "new arrival",
             "link": "https:\/\/www.hyfol.com\/collections\/new-in-1",
             "left": 50,
             "top": 2,
@@ -241,8 +240,8 @@
         "312647ac-1ad0-4158-af07-2abbd19d8a97": {
           "type": "link",
           "settings": {
-            "heading": "memorial",
-            "sensorsLinkName": "memorial",
+            "heading": "performance",
+            "sensorsLinkName": "performance",
             "link": "https:\/\/www.hyfol.com\/collections\/running-shorts",
             "left": 0,
             "top": 51,
@@ -253,9 +252,9 @@
         "e34c6701-d51d-4b6b-b3c3-dbdb091ce635": {
           "type": "link",
           "settings": {
-            "heading": "father",
-            "sensorsLinkName": "father",
-            "link": "https:\/\/www.hyfol.com\/collections\/fathers-day",
+            "heading": "slogan",
+            "sensorsLinkName": "slogan",
+            "link": "https:\/\/www.hyfol.com\/collections\/slogan",
             "left": 52,
             "top": 51,
             "width": 50,
@@ -276,7 +275,7 @@
         "sensorsName": "mobile分类导流区",
         "hidWeb": false,
         "line": false,
-        "image": "shopify:\/\/shop_images\/02_e09fea33-4c5a-4702-bff1-c2c83cbf62d4.jpg",
+        "image": "shopify:\/\/shop_images\/02_154468fc-cbd5-4d26-87d2-86ed45328c80.jpg",
         "tpadding": 0,
         "rpadding": 0,
         "bpadding": 0,
@@ -447,8 +446,8 @@
         "3ad9d572-559a-4d94-90b7-00090590bce8": {
           "type": "link",
           "settings": {
-            "heading": "summersale",
-            "sensorsLinkName": "summersale",
+            "heading": "Spring sale",
+            "sensorsLinkName": "Spring sale",
             "link": "shopify:\/\/collections\/spring-sale",
             "left": 0,
             "top": 0,
@@ -563,8 +562,8 @@
         "2fca7951-1b2f-4892-9c1c-c36ec573d49b": {
           "type": "link",
           "settings": {
-            "heading": "waterproof",
-            "sensorsLinkName": "waterproof",
+            "heading": "Waterproof",
+            "sensorsLinkName": "Waterproof",
             "link": "shopify:\/\/collections\/performance",
             "left": 50,
             "top": 0,
@@ -612,7 +611,7 @@
           "type": "link",
           "settings": {
             "heading": "patriot",
-            "sensorsLinkName": "",
+            "sensorsLinkName": "patriot",
             "link": "",
             "left": 0,
             "top": 0,

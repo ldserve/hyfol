@@ -8813,7 +8813,7 @@ select option {
  * ORDER FOOT (used in order details in customer account)
  * --------------------------------------------------------------------
  */
- 
+
  .account-nav{
    align-items: center;
    cursor: pointer;
@@ -12721,8 +12721,8 @@ shopify-payment-terms {
   font-size: 1rem;
   word-break: break-all;
   word-break: break-word;
-  background: var(--background);
-  color: var(--heading-color);
+/* background: var(--background); */
+  /* color: var(--heading-color); */
   text-align: left;
 }
 
@@ -15995,7 +15995,7 @@ justify-content: space-between;
 
 .remove-collect ,.add-collect{
   font-size: 50px;
- 
+
 
 }
 
@@ -16061,4 +16061,8 @@ justify-content: space-between;
   font-size: 8px;
   line-height: 1.2rem; */
 
+}
+.size-chart-btn {
+  text-decoration: underline;
+  text-underline-offset: 4px;
 }

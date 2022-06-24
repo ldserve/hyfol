@@ -14,7 +14,7 @@
 {%- else -%}
 	{%- assign commodity_tag = product.tags -%}
 {%- endif -%}
-<div 
+<div
 	class="card {% if product.media.size > 0 %}card--collapsed{% endif %} {% if template.name == 'product' %}card--sticky{% endif %} card--right">
 	{%- if section.settings.enable_image_zoom -%}
 		<div id="product-zoom-{{ section.id }}" class="product__zoom-wrapper"></div>
@@ -82,7 +82,7 @@
 											<div class="slider-box-content ">
 												<div class="slider-item customer-d-flex ">
 													<div class="slider-item-top">
-														Purchase <strong>Over $60</strong>
+														Purchase <strong>Over {{settings.cart_free_shipping_threshold| times: 100 | money}}</strong>
 													</div>
 													<div class="slider-item-bottom">
 														<strong>FREE</strong>
@@ -90,15 +90,15 @@
 												</div>
 												<div class="slider-item customer-d-flex  ">
 													<div class="slider-item-top">
-														Purchase <strong>$40-$59.9</strong>
+														Purchase <strong>$50.1-$68.9</strong>
 													</div>
 													<div class="slider-item-bottom">
-														Costs <strong>$5.9</strong>
+														Costs <strong>$6.9</strong>
 													</div>
 												</div>
 												<div class="slider-item customer-d-flex ">
 													<div class="slider-item-top">
-														Purchase <strong>$0-$39.9</strong>
+														Purchase <strong>$0-$50</strong>
 													</div>
 													<div class="slider-item-bottom">
 														Costs <strong>$8.9</strong>
@@ -130,7 +130,7 @@
 										<div class="slider-box-content ">
 											<div class="slider-item customer-d-flex ">
 												<div class="slider-item-top">
-													Purchase <strong>Over $60</strong>
+													Purchase <strong>Over {{settings.cart_free_shipping_threshold| times: 100 | money}}</strong>
 												</div>
 												<div class="slider-item-bottom">
 													<strong>FREE</strong>
@@ -138,18 +138,18 @@
 											</div>
 											<div class="slider-item customer-d-flex  ">
 												<div class="slider-item-top">
-													Purchase <strong>$40-$59.9</strong>
+													Purchase <strong>$50.1-$68.9</strong>
 												</div>
 												<div class="slider-item-bottom">
-													Costs <strong>$5.9</strong>
+													Costs <strong>$6.9</strong>
 												</div>
 											</div>
 											<div class="slider-item customer-d-flex ">
 												<div class="slider-item-top">
-													Purchase <strong>$0-$39.9</strong>
+													Purchase <strong>$0-$50</strong>
 												</div>
 												<div class="slider-item-bottom">
-													Costs <strong>$8.9</strong>
+													Costs <strong>$9.9</strong>
 												</div>
 											</div>
 										</div>
@@ -263,7 +263,7 @@
 					{%- endif -%}
 				{%- endcase -%}
 		{%- endfor -%}
-				
+
 		{%- assign product_meta_block = section.blocks | where: 'type', 'product_meta' | first -%}
 
 			{%- if product_meta_block != blank and product_meta_block.settings.show_share_buttons -%}
