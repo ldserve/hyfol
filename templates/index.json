@@ -129,16 +129,6 @@
         "link_url": "shopify:\/\/collections\/best-sellers-1"
       }
     },
-    "16535579500eae05b1": {
-      "type": "no_space_img",
-      "settings": {
-        "sensorsName": "4 discount codes",
-        "bg_image": "shopify:\/\/shop_images\/07_aaebdc3a-979e-4f05-91e6-ef79945a85c9.jpg",
-        "web_bg_image": "shopify:\/\/shop_images\/07_a854df98-11d5-4805-9ac0-b1688e526a8a.jpg",
-        "link": "",
-        "shadow": false
-      }
-    },
     "16500767332eb3ea11": {
       "type": "linkImg",
       "blocks": {
@@ -893,7 +883,6 @@
   "order": [
     "1650101273f11a55ef",
     "16474248460d0593be",
-    "16535579500eae05b1",
     "16500767332eb3ea11",
     "164742631051d4db44",
     "1651218774b7bce676",
