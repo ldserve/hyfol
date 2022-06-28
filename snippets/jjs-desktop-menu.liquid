@@ -54,7 +54,7 @@
           {%- if sub_link.links.size == 0 -%}
 					{% assign  title_downcase = sub_link.title | downcase%}
 
-          <a href="{{ sub_link.url }}" class="{% if high_light_menu contains title_downcase %}nav-dropdown__link__highlight {% endif %} nav-dropdown__link link " data-type="menuitem">
+          <a href="{{ sub_link.url }}" class=" nav-dropdown__link link {% if high_light_menu contains title_downcase %}nav-dropdown__link__highlight {% endif %}" data-type="menuitem">
             {{ sub_link.title }}
             {% if high_light_menu contains title_downcase %}
               {%- render 'icon', icon: 'link-hot', -%}
