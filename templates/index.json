@@ -129,6 +129,16 @@
         "link_url": "shopify:\/\/collections\/best-sellers-1"
       }
     },
+    "1656469887bd8ac047": {
+      "type": "no_space_img",
+      "settings": {
+        "sensorsName": "",
+        "bg_image": "shopify:\/\/shop_images\/07_c0c9bbc1-2023-472d-829b-536c4173a9bc.jpg",
+        "web_bg_image": "shopify:\/\/shop_images\/07_69246ae0-a20f-4475-a6ef-85477dde15e0.jpg",
+        "link": "",
+        "shadow": false
+      }
+    },
     "16500767332eb3ea11": {
       "type": "linkImg",
       "blocks": {
@@ -883,6 +893,7 @@
   "order": [
     "1650101273f11a55ef",
     "16474248460d0593be",
+    "1656469887bd8ac047",
     "16500767332eb3ea11",
     "164742631051d4db44",
     "1651218774b7bce676",
