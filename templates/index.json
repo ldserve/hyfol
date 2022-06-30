@@ -31,8 +31,8 @@
           "type": "image",
           "settings": {
             "sensorsName": "runningshorts",
-            "image": "shopify:\/\/shop_images\/2in1_b3e1c8e0-9605-4409-8970-a9b995801876.jpg",
-            "mobile_image": "shopify:\/\/shop_images\/2in1_994d2583-57cf-445b-8a84-412405e3867b.jpg",
+            "image": "shopify:\/\/shop_images\/2in1_fd0789a3-be80-4187-829b-86b3f201b676.jpg",
+            "mobile_image": "shopify:\/\/shop_images\/2in1_451127f3-6397-49ec-8386-6437d671c222.jpg",
             "show_overlay": false,
             "overlay_opacity": 30,
             "text_color": "#ffffff",
@@ -48,7 +48,7 @@
             "button_background": "#ffffff",
             "button_text_color": "#000000",
             "button_text": "",
-            "link": "shopify:\/\/collections\/running-shorts"
+            "link": "https:\/\/www.hyfol.com\/collections\/sportswear-2for49-9"
           }
         },
         "fb844d01-0475-4130-aeb7-a118c0a1b427": {
