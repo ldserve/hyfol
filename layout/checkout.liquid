@@ -36,7 +36,9 @@ property: 'Athleta'
     {{ checkout_stylesheets }}
     {{ checkout_scripts }}
     <script src="{{ 'shencesdk.js' | asset_url }}"></script>
-
+  <!-- PLM -->
+  <script src="https://www.paypal.com/sdk/js?client-id=AaoMEq4pF7_1JBTPdRANwtH_MdqLAgscO0ivoPn1JlNmpA3YdqEuxxUY2gUg9vszi8RWrvPHSoTV8tjQ&components=messages,buttons" async></script>
+  <!-- PLM END -->
   </head>
   <body>
     {{ skip_to_content_link }}
@@ -102,11 +104,24 @@ property: 'Athleta'
   let sections= document.querySelector(".order-summary__sections");
   const observer=new MutationObserver(callback)
   observer.observe(sections,{childList:true,subtree:true})
+
+  const patment=document.querySelector('.section--payment-method[data-payment-method]')
+  const paypalBtn =document.createElement('div')
+  paypalBtn.setAttribute('data-pp-message','')
+  paypalBtn.setAttribute('data-pp-placement','payment')
+  paypalBtn.setAttribute('data-pp-amount','{{checkout.total_price | money_without_currency}}')
+  paypalBtn.setAttribute('data-pp-buyercountry','US')
+  paypalBtn.setAttribute('data-pp-style-align','center')
+  paypalBtn.classList.add('pp-message')
+  patment.insertBefore(paypalBtn,patment.children[1])
+
 	}()
   </script>
     {% render 'shence-checkout-data' %}
   </body>
 </html>
 <style>
-
+.pp-message{
+  margin-bottom: 1.5em;
+}
 </style>

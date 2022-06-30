@@ -686,9 +686,11 @@
 													p-id="6851" fill="#ffffff"></path>
 											</svg>
 										</button>
+
+										<div data-pp-message data-pp-placement="product" data-pp-amount="{{cart.total_price| money_without_currency }}" data-pp-buyercountry="US" data-pp-style-align="center" class="message"></div>
+
 									</div>
 								</div>
-
 
 								{%- if section.settings.show_payment_icons -%}
 									<div class="cart-recap__secure-payment">
@@ -838,6 +840,12 @@
 <style>
   #shopify-section-{{ section.id }} .payment-list--centered {
     justify-content: left;
+  }
+  .message{
+	margin-top: 1.6rem;
+  }
+  .card__section{
+	padding-bottom: 0;
   }
 </style>
 <script>

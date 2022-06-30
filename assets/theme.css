@@ -9983,7 +9983,7 @@ shopify-payment-terms {
 .product-form__payment-container {
   display: flex;
   flex-direction: column;
-  padding-bottom: 20px;
+  padding-bottom: 10px;
     /* border-bottom: 1px #bbb7b7 solid; */
 }
 .product-form__item {
