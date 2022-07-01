@@ -76,7 +76,7 @@
 						{%- else -%}
 							<span class="header__logo-text">{{ shop.name }}</span>
 						{%- endif -%}
-						
+
 					</a>
 				{%- endcapture -%}
 				{%- comment -%}---------------logo渲染---------------{%- endcomment -%}
@@ -384,7 +384,7 @@
 									<span class="icon-state__primary">{%- render 'icon', icon: 'account' -%}</span>
 									<span class="icon-state__secondary">{%- render 'icon', icon: 'close' -%}</span>
 								</a>
-					
+
 								<a href="{% if customer %}{{ routes.account_url }}{% else %}{{ routes.account_login_url }}{% endif %}"
 									 class="header__action-item-link hidden-pocket hidden-lap shence_commodityView"
 									 {% if customer %}aria-controls="account-popover" aria-expanded="false"
@@ -393,7 +393,7 @@
 									 data-scdata='{"mkt_type":"bar","first_mkt_name":"顶部导航","first_mkt_id":"{{ section.id }}","second_mkt_rank":"","third_mkt_rank":"","mkt_material_url":"","mkt_material_name":"账号","commodity_spuid":"","commodity_skuid":"","commodity_name":"","original_price":"","current_price":"","currency_unit":"","mkt_tag":[]}'>
 								{%- render 'icon', icon: 'account' -%}
 								</a>
-								
+
 								<div id="account-popover"
 										 class="popover {% if customer %}popover--logged{% else %}popover--large popover--unlogged{% endif %}"
 										 aria-hidden="true">
@@ -598,7 +598,7 @@
 
   #shopify-section-{{ section.id }} {
     position: relative;
-    z-index: 5;
+    z-index: 3;
 
 	{%- if section.settings.enable_sticky_header -%} position: -webkit-sticky;
     position: sticky;
@@ -898,5 +898,5 @@
 	}]
 	}]
 }
-{% endschema %} 
+{% endschema %}
  {% include 'alireviews_aggregateRating' %}

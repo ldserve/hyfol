@@ -1,5 +1,5 @@
 {%- assign mega_menus = section.blocks | map: 'settings' | map: 'menu_item' -%}
-
+{% assign high_light_menu = 'raglan tees,graphic tees, running shorts,independence day' %}
 <div id="mobile-menu" class="mobile-menu jjs-mobile-menu" aria-hidden="true">
   {%- render 'icon', icon: 'nav-triangle-borderless' -%}
 
@@ -72,8 +72,14 @@
                             <div class="mobile-menu__section open-view"  style="padding-bottom: 0;">
                               <ul class="mobile-menu__nav" data-type="menu" role="list">
                                 {%- for sub_sub_link in sub_link.links -%}
+                                  {% assign title_downcase = sub_sub_link.title | downcase%}
                                 <li class="mobile-menu__nav-item">
-                                  <a href="{{ sub_sub_link.url }}" class="mobile-menu__nav-link" data-type="menuitem">{{ sub_sub_link.title }}</a>
+                                  <a href="{{ sub_sub_link.url }}" class="{% if high_light_menu contains title_downcase %}nav-dropdown__link__highlight {% endif %}mobile-menu__nav-link" data-type="menuitem">
+                                    {{ sub_sub_link.title }}
+                                    {% if high_light_menu contains title_downcase %}
+                                      {%- render 'icon', icon: 'link-hot', -%}
+                                    {% endif %}
+                                  </a>
                                 </li>
                                 {%- endfor -%}
                               </ul>

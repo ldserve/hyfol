@@ -10,7 +10,7 @@
 {%- if is_floating == false and is_mega_menu -%}
 {%- render 'mega-menu', is_floating: is_floating, mega_menu: menu, index: index -%}
 {%- else -%}
-
+{% assign high_light_menu = 'raglan tees,graphic tees, running shorts,independence day' %}
 <div class="nav-exhibition " aria-hidden="true">
   {%- for block in section.blocks -%}
   {%- if block.settings.menu_item==menu.title -%}
@@ -18,14 +18,14 @@
   {%- break -%}
   {%- endif -%}
   {%- endfor -%}
-  
+
 
   {%- if config.menu_item == menu.title -%}
   <div class="nav-bar__image" style="width: 15%;">
   {%- capture supported_sizes -%}{%- render 'image-size', sizes: '200,300,400,500', image: config.image_url -%}{%- endcapture -%}
   {%- assign image_url = config.image_1 | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
    <img class="lazyload" alt="{{ config.image_1.alt | escape }}" data-src="{{ image_url }}" data-widths="[{{ supported_sizes }}]" data-sizes="auto">
-  </div> 
+  </div>
   {%- endif -%}
 
   <ul id="{{ index }}"
@@ -43,17 +43,24 @@
       {%- else -%}
       {%- capture index_nested -%}{{ index }}-{% increment nav_dropdown %}{%- endcapture -%}
       <div  class="nav-dropdown__link link" data-type="menuitem" aria-expanded="false"
-        aria-controls="{{ index_nested }}" aria-haspopup="true">{{- link.title -}} 
+        aria-controls="{{ index_nested }}" aria-haspopup="true">{{- link.title -}}
       </div>
- 
+
       <ul id="{{ index_nested }}" class="nav-dropdown clearposition clearborder padding-0 " data-type="menu" aria-hidden="true"
         role="list" data-expenable="1">
 
         {%- for sub_link in link.links -%}
         <li class="nav-dropdown__item sub-item">
           {%- if sub_link.links.size == 0 -%}
-          <a href="{{ sub_link.url }}" class="nav-dropdown__link link" data-type="menuitem">{{ sub_link.title }}</a>
-          
+					{% assign  title_downcase = sub_link.title | downcase%}
+
+          <a href="{{ sub_link.url }}" class=" nav-dropdown__link link {% if high_light_menu contains title_downcase %}nav-dropdown__link__highlight {% endif %}" data-type="menuitem">
+            {{ sub_link.title }}
+            {% if high_light_menu contains title_downcase %}
+              {%- render 'icon', icon: 'link-hot', -%}
+            {% endif %}
+          </a>
+
           {%- else -%}
           {%- capture index_nested_nested -%}{{ index_nested }}-{% increment nav_dropdown_nested %}{%- endcapture -%}
           <div  class="nav-dropdown__link link" data-type="menuitem" aria-expanded="false"

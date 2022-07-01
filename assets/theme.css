@@ -8015,17 +8015,14 @@ select option {
 .nav-dropdown__link {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   padding: 2px 60px 2px 10px;
   cursor: pointer;
 }
 
 .nav-dropdown__link svg {
   position: relative;
-  width: 8px;
-  height: 12px;
-  top: 1px;
-  margin: 0 -40px 0 65px;
+  width: 12px;
+  height: 10px;
 }
 
 .nav-dropdown__link[aria-expanded=true] {
@@ -8479,6 +8476,29 @@ select option {
   justify-content: space-between;
   width: 100%;
   padding: 8px 0 7px 0;
+}
+.nav-dropdown__link__highlight {
+  font-weight: 500;
+  justify-content: unset;
+  background-image: -webkit-linear-gradient(left, #ff0000, #0000ff 25%, #ff0000 50%, #0000ff 75%, #ff0000);
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  -webkit-background-size: 200% 100%;
+  -webkit-animation: nav-dropdown__link__highlight__move 3s infinite linear;
+}
+.nav-dropdown__link__highlight:hover, .nav-dropdown__link__highlight:focus {
+  color: var(--accent-color);
+  -webkit-text-fill-color: unset;
+}
+@keyframes nav-dropdown__link__highlight__move {
+  0%{ background-position: 0 0;}
+  100% { background-position: -100% 0;}
+}
+
+/*Safari 和 Chrome:*/
+@-webkit-keyframes nav-dropdown__link__highlight__move {
+  0%{ background-position: 0 0;}
+  100% { background-position: -100% 0;}
 }
 
 .mobile-menu__back-button {
