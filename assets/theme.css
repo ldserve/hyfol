@@ -4020,7 +4020,7 @@ scrollbar-width: none; /* firefox */
   align-items: center;
   /* box-shadow: 0 1px var(--border-color), 0 -1px var(--border-color); */
   background: var(--background);
-  z-index: 3;
+  z-index: 2;
 }
 
  .filter_icon{
