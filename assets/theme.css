@@ -16086,3 +16086,14 @@ justify-content: space-between;
   text-decoration: underline;
   text-underline-offset: 4px;
 }
+
+.select-size-no{
+  color: #f00;
+  margin: 0;
+  line-height: 1.8rem;
+  padding-top: 0.4rem;
+}
+.select-size-no >svg{
+  margin-right: 0.6rem;
+  font-size: 1.4rem;
+}
