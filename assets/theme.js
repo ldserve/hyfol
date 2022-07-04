@@ -3800,9 +3800,6 @@
                 this.variantSelectors = this.element.querySelectorAll('.product-form__option[data-selector-type]');
                 this.masterSelector = this.element.querySelector("#product-select-".concat(this.productData['id'])); // We init value with the first selected variant
               
-                // 设初始值
-                _this.option3 = null
-                this.currentVariant = {};
                 var variantString = jsonData['selected_variant_id'];
                 this.productData['variants'].forEach(function (variant) {
                     if (variant['id'] == variantString) {
@@ -3812,7 +3809,7 @@
                         _this.option3 = variant['option3'];
                     }
                 })
-               if(!this.options['isQuickView']) this.option2 =null;
+            //    if(!this.options['isQuickView']) this.option2 =null;
                 this.storeAvailability = new StoreAvailability(this.element.querySelector('.product-meta__store-availability-container'));
             }
             
@@ -4050,7 +4047,7 @@
             key: "_updateSelectors",
             value: function _updateSelectors(newVariant) {
                 var _this2 = this;
-                if(!_this2.option1&&!_this2.option2)return
+                if(!_this2.option2)return
                 // We apply a top-down approach where we first check the first option, second option and third option. If there is
                 // more than one option, the value is considered "available" if there is at least one variant with this value
                 // available (independently of the selected variant)
@@ -4223,13 +4220,17 @@
             key: "_addToCart",
             value: function _addToCart(event, target) {
                 var _this4 = this;
-               
+
                 if (window.theme.cartType === 'page') {
                     return; // When using a cart type of page, we just simply redirect to the cart page
                 }
                 event.preventDefault(); // Prevent form to be submitted
-                if (!this.option2){ document.querySelector('.select-size-no').classList.remove('d-none')
-                 return 
+                var isSelect = false
+                var sizeBlock = Array.from(this.element.querySelectorAll('.block-swatch__radio'))
+                isSelect = sizeBlock.some(item => item.checked && item.hasAttribute('checked'))
+                if (!this.option2 || !isSelect) {
+                    document.querySelector('.select-size-no').classList.remove('d-none')
+                    return
                 }
 
                 //event.stopPropagation(); // First, we switch the status of the button
@@ -4237,12 +4238,12 @@
                 document.dispatchEvent(new CustomEvent('theme:loading:start')); // Then we add the product in Ajax
 
                 var formElement
-                if(target.hasAttribute('data-purchase')){
-                    formElement=target.closest('form[action*="/cart/add"]')
-                }else{
+                if (target.hasAttribute('data-purchase')) {
+                    formElement = target.closest('form[action*="/cart/add"]')
+                } else {
                     formElement = this.element.querySelector('form[action*="/cart/add"]');
                 }
-             
+
                 fetch("".concat(window.routes.cartAddUrl, ".js"), {
                     body: JSON.stringify(Form.serialize(formElement)),
                     credentials: 'same-origin',

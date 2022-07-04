@@ -10459,9 +10459,10 @@ shopify-payment-terms {
 /*  border-bottom: 7px solid #1b1b1b;*/
 /*}*/
 
-.collection .color-swatch__radio:checked+.color-swatch__item::after,
+/* .collection .color-swatch__radio:checked+.color-swatch__item::after, */
 .card__section .color-swatch__radio[checked]+.color-swatch__item::after,
 #mini-cart .color-swatch__radio[checked]+.color-swatch__item::after,
+.product-item .color-swatch__radio:checked+.color-swatch__item::after,
 .color-swatch__button.is-selected .color-swatch__item::after {
   position: absolute;
   content: "";
