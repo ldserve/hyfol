@@ -3799,7 +3799,7 @@
                 this.variantsInventories = jsonData['inventories'] || {};
                 this.variantSelectors = this.element.querySelectorAll('.product-form__option[data-selector-type]');
                 this.masterSelector = this.element.querySelector("#product-select-".concat(this.productData['id'])); // We init value with the first selected variant
-              
+
                 var variantString = jsonData['selected_variant_id'];
                 this.productData['variants'].forEach(function (variant) {
                     if (variant['id'] == variantString) {
@@ -4170,7 +4170,7 @@
                     select.removeAttribute('checked')
                 })
                 target.setAttribute('checked','')
-                this.option2&& document.querySelector('.select-size-no').classList.add('d-none')
+                this.option1&&document.querySelector('.select-size-no').classList.add('d-none')
                 if (selectedValueElement) {
                     selectedValueElement.innerHTML = target.value;
                 } // Finally, we get the new variant
@@ -4225,14 +4225,16 @@
                     return; // When using a cart type of page, we just simply redirect to the cart page
                 }
                 event.preventDefault(); // Prevent form to be submitted
-                var isSelect = false
+                var isSelect = false//是否选择尺码
                 var sizeBlock = Array.from(this.element.querySelectorAll('.block-swatch__radio'))
                 isSelect = sizeBlock.some(item => item.checked && item.hasAttribute('checked'))
-                if (!this.option2 || !isSelect) {
+                isSelect=isSelect|| this.currentVariant.option2===null&&this.currentVariant.option1==='Default Title'
+                
+                if (!isSelect) {
+                    window.screen.availWidth<649 &&alert('Select An Option Above Before Adding To The Cart.')
                     document.querySelector('.select-size-no').classList.remove('d-none')
                     return
                 }
-
                 //event.stopPropagation(); // First, we switch the status of the button
                 target.setAttribute('disabled', 'disabled');
                 document.dispatchEvent(new CustomEvent('theme:loading:start')); // Then we add the product in Ajax
