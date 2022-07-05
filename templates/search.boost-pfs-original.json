@@ -1,0 +1,17 @@
+{
+  "sections": {
+    "main": {
+      "type": "main-search-boost-pfs-original",
+      "settings": {
+        "products_per_row": "4",
+        "default_view_layout": "grid",
+        "show_quick_view": "list_grid",
+        "show_quick_buy": "list",
+        "quick_links": ""
+      }
+    }
+  },
+  "order": [
+    "main"
+  ]
+}
