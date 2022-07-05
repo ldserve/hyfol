@@ -1,0 +1,154 @@
+/*********************** Custom CSS for Boost Filter & Search  ************************/
+{% assign breakpointMobile = '767px' %}
+{% assign breakpointDesktop = '768px' %}
+{% assign searchBoxMobileHeight = '64px' %}
+
+/**************************** Place your custom css below  ****************************/
+{% assign accent_color = settings.accent_color %}
+.boost-pfs-most-popular .boost-pfs-product-slider {
+  width: 100%;
+  max-width: 100%;
+  position: relative;
+  margin-left: 0px;
+}
+.boost-pfs-product-slider-item-wrapper {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  overflow: hidden;
+  width: 100%;
+  border-top: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+  z-index: 1;
+}
+.boost-pfs-search-no-result-body .boost-pfs-filter-bottom-pagination {
+  display: none;
+}
+
+.search-bar__inner {
+  display: none;
+}
+
+.boost-pfs-search-suggestion-wrapper {
+  position: fixed;
+}
+
+.boost-pfs-search-suggestion-item:hover {
+  color: {{accent_color}};
+  background-color: rgba(10, 10, 10, 0.08);
+}
+
+.boost-pfs-filter-breadcrumb.hidden {
+  display: none;
+}
+
+.boost-pfs-filter-message {
+  margin: 0 auto;
+}
+
+.search-bar__filter {
+  display: none !important;
+}
+
+.boost-pfs-filter-scroll-to-top {
+  z-index: 1;
+}
+
+.boost-pfs-in-collection-search {
+  padding: 0 20px;
+}
+
+.boost-pfs-in-collection-search-button {
+	padding: 8px 20px !important;
+}
+
+.boost-pfs-in-collection-search-clear {
+	padding: 8px !important;
+}
+
+/**** Custom Search result toolbar ****/
+.boost-pfs-search-result-toolbar {
+  display: flex;
+  align-items: center;
+  margin: 35px 0;
+  border: 1px solid #e1e3e4;
+  padding: 0 30px;
+  border-radius: 3px;
+  white-space: nowrap;
+  background: #fff;
+}
+.boost-pfs-search-result-toolbar .boost-pfs-search-result-item:first-child {
+  flex: auto;
+}
+.boost-pfs-search-result-toolbar .boost-pfs-search-result-panel-controls {
+  padding: 17px 0;
+  margin: 0;
+}
+.boost-pfs-filter-tree-vertical-style-off-canvas:not(.boost-pfs-filter-tree-horizontal-style-expand) .boost-pfs-filter-left-col .card__section {
+  padding: 0;
+}
+#shopify-section-header:after {
+  display: table;
+  content: "";
+  clear: both;
+}
+.boost-pfs-search-result-wrap {
+  background: #fff;
+  border: 1px solid #e1e3e4;
+  padding: 30px 0 0 0;
+  border-radius: 3px;
+}
+.boost-pfs-search-result-wrap .boost-pfs-search-result-list-item {
+  padding: 30px;
+}
+.boost-pfs-search-result-wrap .pagination {
+  padding: 20px 30px;
+}
+.search-bar__inner {
+  display: none !important;
+}
+
+@media (min-width: {{breakpointDesktop}}) {
+  .boost-pfs-filter-tree-vertical-style-off-canvas:not(.boost-pfs-filter-tree-horizontal-style-expand) .boost-pfs-filter-right-col {
+    width: calc(100% - 30px);
+    margin: 0 15px;
+  }
+  .boost-pfs-filter-stick.boost-pfs-filter-tree-desktop-button-sticky-wrapper {
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;  
+    box-shadow: none;
+    padding: 0 15px;
+  }
+}
+
+@media (max-width: {{breakpointMobile}}) {
+  .boost-pfs-search-result-toolbar .boost-pfs-search-total-result {
+    display: none;
+  }
+  .boost-pfs-filter-tree-mobile-button button {
+    background: none;
+    color: inherit;
+    margin: 0;
+    text-transform: capitalize;
+  }
+  .boost-pfs-filter-tree-mobile-button button svg {
+    margin-right: 7px;
+  }
+  .collection__dynamic-part .boost-pfs-filter-tree-mobile-button button, 
+  .collection__dynamic-part .boost-pfs-filter-top-sorting-mobile button {
+    background: none !important;
+    color: inherit !important;
+  }
+  .boost-pfs-filter-tree-button-sticky-wrapper-body .header--search-expanded {
+    margin-bottom: 0;
+  }
+  .boost-pfs-filter-tree-desktop-button-sticky-wrapper {
+    margin-top: 0;
+    position: relative;
+    top: auto;
+  }
+}
+
+.boost-pfs-variants-display [data-section-type="recently-viewed-products"] {
+	display: none !important;
+}
