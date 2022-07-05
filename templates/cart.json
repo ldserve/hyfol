@@ -24,7 +24,7 @@
         "gift_wrap_product": "",
         "gift_wrap_text": "Do you want a gift wrap?",
         "gift_wrap_button": "Add a gift wrap",
-        "show_shipping_estimator": true,
+        "show_shipping_estimator": false,
         "shipping_estimator_default_country": "United States",
         "trust_heading": "Our guarantees",
         "upsell_heading": "Complete your cart",
@@ -36,6 +36,7 @@
       "type": "recently-viewed-products",
       "settings": {
         "title": "Recently viewed",
+        "title_color": "#000",
         "show_quick_buy": false
       }
     },
