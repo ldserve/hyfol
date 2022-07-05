@@ -1,0 +1,240 @@
+{% raw %}
+    <div class="ets_fs_ic_box_wrapper ets_fs_ic_alignment_{{ alignment }}">
+        {% if isNoResult == false %}
+        <div class="ets_fs_ic_wrapper layout1 desktop {% if alignment %} {{ alignment }} {% endif %}">
+            <div class="ets_fs_ic_sections">
+                {% for search_type in search_types %}
+
+                {% if data[search_type.value].total > 0 %}
+                <div class="ets_fs_ic_section_item ets_fs_ic_section_{{ search_type.value }} ">
+                    <div class="ets_fs_ic_section_header">
+                        <div class="ets_fs_ic_section_title">{{ search_type.label }}</div>
+                        <span class="ets_fs_ic_section_total"><span class="ets_fs_ic_section_total_nb">{% if init %}--{% else %}({{ data[search_type.value].total }}){% endif %}</span></span>
+                    </div>
+                    {% if search_type.value == 'suggestions' %}
+                    <div class="ets_fs_ic_section_body">
+                        <ul class="ets_fs_ic_list_result">
+                            {% for item in data[search_type.value].list  %}
+                            <li class="ets_fs_ic_data_item"><a onclick="return etsFsOnClickSuggestion(this, '{{ item.key_word }}')" class="ets_fs_ic_link_item" href="/pages/search-result-data?q={{ item.key_word }}">{{ item.key_word }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    {% else %}
+                    <div class="ets_fs_ic_section_body">
+                        <ul class="ets_fs_ic_list_result">
+                            {% for item in data[search_type.value].list  %}
+                            <li class="ets_fs_ic_data_item">
+                                <a href="{{ item.url }}" class="ets_fs_ic_link_item">
+                                    <div class="ets_fs_ic_data_item_wrapper {% if search_type.value != 'pages' %}has_img{% endif %}">
+                                        {% if search_type.value != 'pages' %}
+                                        <div class="ets_fs_ic_data_item_img_wrapper">
+                                            <img onerror="etsFsOnErrorImg(this)" class="ets_fs_ic_item_img" src="{% if item.image %}{{ item.image.src }}{% endif %}" alt="{{ item.title }}" />
+                                        </div>
+                                        {% endif %}
+                                        <div class="ets_fs_ic_data_item_content">
+                                            <div class="ets_fs_ic_data_item_title">{{ item.title }}</div>
+                                            {% if search_type.value == 'products' %}
+                                            <div class="ets_fs_ic_data_item_meta_data">
+                                                {% if item.compare_at_price > item.price %}
+                                                <span class="ets_fs_ic_product_price--regular-price">{{ item.compare_at_price_to_display }}</span>
+                                                {% endif %}
+                                                <span class="ets_fs_ic_product_price--sale-price">{{ item.price_to_display }}</span>
+                                            </div>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    {% endif %}
+                </div>
+                {% elsif init == true %}
+                <div class="ets_fs_ic_section_item">
+                    <div class="ets_fs_ic_section_header">
+                        <div class="ets_fs_ic_section_title">{{ search_type.label }}</div>
+                    </div>
+                    <div class="ets_fs_ic_section_body">
+                        <ul class="ets_fs_ic_list_result">
+                            <li>
+                                <div class="ets_fs_ic_loading">Loading...</div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                {% endif %}
+                {% endfor %}
+            </div>
+            <div class="ets_fs_ic_footer">
+                <a href="/pages/search-result-data?q={{ query }}" class="ets_fs_ic_view_all">
+                <span class="iconsvg_search"><svg width="14" height="14" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1216 832q0-185-131.5-316.5t-316.5-131.5-316.5 131.5-131.5 316.5 131.5 316.5 316.5 131.5 316.5-131.5 131.5-316.5zm512 832q0 52-38 90t-90 38q-54 0-90-38l-343-342q-179 124-399 124-143 0-273.5-55.5t-225-150-150-225-55.5-273.5 55.5-273.5 150-225 225-150 273.5-55.5 273.5 55.5 225 150 150 225 55.5 273.5q0 220-124 399l343 343q37 37 37 90z"/></svg>
+                            </span> View all results</a>
+            </div>
+        </div>
+        {% else %}
+        <div class="ets_fs_ic_wrapper ets_fs_ic_no_result desktop {% if alignment %} {{ alignment }} {% endif %}">
+            <div class="ets_fs_ic_sections">
+                {% if query and query != "" %}
+                <p class="ets_fs_no_data ets_fs_no_data_alert">No data found for "{{ query }}"</p>
+                {% endif %}
+                <div class="ets_fs_ic_section_header">
+                    <div class="ets_fs_ic_section_title">
+
+                        {% if data.no_result.total > 0 %}
+                        <span>Other products you might also like</span>
+                        {% endif %}
+                    </div>
+                </div>
+                {% if data.no_result.total > 0 %}
+                <div class="ets_fs_ic_section_body">
+                    <ul class="ets_fs_ic_list_result">
+                        {% for item in data.no_result.list  %}
+                        <li>
+                            <div class="ets_fs_ic_data_item">
+                                <a href="/products/{{ item.handle }}" class="ets_fs_ic_link_item">
+                                    <div class="ets_fs_ic_data_item_wrapper has_img">
+                                        <div class="ets_fs_ic_data_item_img_wrapper">
+                                            <img onerror="etsFsOnErrorImg(this)" class="ets_fs_ic_item_img" src="{% if item.image %}{{ item.image.src }}{% endif %}" alt="{{ item.title }}" />
+                                        </div>
+                                        <div class="ets_fs_ic_data_item_content">
+                                            <div class="ets_fs_ic_data_item_title">{{ item.title }}</div>
+                                            <div class="ets_fs_ic_data_item_meta_data">
+                                                {% if item.compare_at_price > item.price %}
+                                                <span class="ets_fs_ic_product_price--regular-price">{{ item.compare_at_price_to_display }}</span>
+                                                {% endif %}
+                                                <span class="ets_fs_ic_product_price--sale-price">{{ item.price_to_display }}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        {% endif %}
+
+        {% comment %} for mobile {% endcomment %}
+        {% if isNoResult == false %}
+        <div class="ets_fs_ic_wrapper layout1 mobile {% if alignment %} {{ alignment }} {% endif %}">
+            <div class="ets_fs_ic_sections">
+                {% for search_type in search_types %}
+
+                {% if data[search_type.value].total > 0 %}
+                <div class="ets_fs_ic_section_item ets_fs_ic_section_{{ search_type.value }} ">
+                    <div class="ets_fs_ic_section_header">
+                        <div class="ets_fs_ic_section_title">{{ search_type.label }}</div>
+                        <span class="ets_fs_ic_section_total"><span class="ets_fs_ic_section_total_nb">{% if init %}--{% else %}({{ data[search_type.value].total }}){% endif %}</span></span>
+                    </div>
+                    {% if search_type.value == 'suggestions' %}
+                    <div class="ets_fs_ic_section_body">
+                        <ul class="ets_fs_ic_list_result">
+                            {% for item in data[search_type.value].list  %}
+                            <li class="ets_fs_ic_data_item"><a onclick="return etsFsOnClickSuggestion(this, '{{ item.key_word }}')" class="ets_fs_ic_link_item" href="/pages/search-result-data?q={{ item.key_word }}">{{ item.key_word }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    {% else %}
+                    <div class="ets_fs_ic_section_body">
+                        <ul class="ets_fs_ic_list_result">
+                            {% for item in data[search_type.value].list  %}
+                            <li class="ets_fs_ic_data_item">
+                                <a href="{{ item.url }}" class="ets_fs_ic_link_item">
+                                    <div class="ets_fs_ic_data_item_wrapper {% if search_type.value != 'pages' %}has_img{% endif %}">
+                                        {% if search_type.value != 'pages' %}
+                                        <div class="ets_fs_ic_data_item_img_wrapper">
+                                            <img onerror="etsFsOnErrorImg(this)" class="ets_fs_ic_item_img" src="{% if item.image %}{{ item.image.src }}{% endif %}" alt="{{ item.title }}" />
+                                        </div>
+                                        {% endif %}
+                                        <div class="ets_fs_ic_data_item_content">
+                                            <div class="ets_fs_ic_data_item_title">{{ item.title }}</div>
+                                            {% if search_type.value == 'products' %}
+                                            <div class="ets_fs_ic_data_item_meta_data">
+                                                {% if item.compare_at_price > item.price %}
+                                                <span class="ets_fs_ic_product_price--regular-price">{{ item.compare_at_price_to_display }}</span>
+                                                {% endif %}
+                                                <span class="ets_fs_ic_product_price--sale-price">{{ item.price_to_display }}</span>
+                                            </div>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    {% endif %}
+                </div>
+                {% elsif init == true %}
+                <div class="ets_fs_ic_section_item">
+                    <div class="ets_fs_ic_section_header">
+                        <div class="ets_fs_ic_section_title">{{ search_type.label }}</div>
+                    </div>
+                    <div class="ets_fs_ic_section_body">
+                        <ul class="ets_fs_ic_list_result">
+                            <li>
+                                <div class="ets_fs_ic_loading">Loading...</div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                {% endif %}
+                {% endfor %}
+            </div>
+            <div class="ets_fs_ic_footer">
+                <a href="/pages/search-result-data?q={{ query }}" class="ets_fs_ic_view_all">
+                <span class="iconsvg_search"><svg width="14" height="14" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1216 832q0-185-131.5-316.5t-316.5-131.5-316.5 131.5-131.5 316.5 131.5 316.5 316.5 131.5 316.5-131.5 131.5-316.5zm512 832q0 52-38 90t-90 38q-54 0-90-38l-343-342q-179 124-399 124-143 0-273.5-55.5t-225-150-150-225-55.5-273.5 55.5-273.5 150-225 225-150 273.5-55.5 273.5 55.5 225 150 150 225 55.5 273.5q0 220-124 399l343 343q37 37 37 90z"/></svg>
+                            </span> View all results</a>
+            </div>
+        </div>
+        {% else %}
+        <div class="ets_fs_ic_wrapper ets_fs_ic_no_result mobile {% if alignment %} {{ alignment }} {% endif %}">
+            <div class="ets_fs_ic_sections">
+                {% if query and query != "" %}
+                <p class="ets_fs_no_data ets_fs_no_data_alert">No data found for "{{ query }}"</p>
+                {% endif %}
+                <div class="ets_fs_ic_section_header">
+                    <div class="ets_fs_ic_section_title">
+
+                        {% if data.no_result.total > 0 %}
+                        <span>Other products you might also like</span>
+                        {% endif %}
+                    </div>
+                </div>
+                {% if data.no_result.total > 0 %}
+                <div class="ets_fs_ic_section_body">
+                    <ul class="ets_fs_ic_list_result">
+                        {% for item in data.no_result.list  %}
+                        <li>
+                            <div class="ets_fs_ic_data_item">
+                                <a href="/products/{{ item.handle }}" class="ets_fs_ic_link_item">
+                                    <div class="ets_fs_ic_data_item_wrapper has_img">
+                                        <div class="ets_fs_ic_data_item_img_wrapper">
+                                            <img onerror="etsFsOnErrorImg(this)" class="ets_fs_ic_item_img" src="{% if item.image %}{{ item.image.src }}{% endif %}" alt="{{ item.title }}" />
+                                        </div>
+                                        <div class="ets_fs_ic_data_item_content">
+                                            <div class="ets_fs_ic_data_item_title">{{ item.title }}</div>
+                                            <div class="ets_fs_ic_data_item_meta_data">
+                                                {% if item.compare_at_price > item.price %}
+                                                <span class="ets_fs_ic_product_price--regular-price">{{ item.compare_at_price_to_display }}</span>
+                                                {% endif %}
+                                                <span class="ets_fs_ic_product_price--sale-price">{{ item.price_to_display }}</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        {% endif %}
+    </div>
+{% endraw %}

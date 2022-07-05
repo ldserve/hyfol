@@ -1,0 +1,14 @@
+
+<script type="text/javascript">
+    const ETS_FS_MONEY_FORMAT = "{{ shop.money_format }}";
+    const ETS_FS_COLLECTION_HANDLE = "{{ collection.handle }}";
+    const ETS_FS_COLLECTION_ID = "{{ collection.id }}";
+    const ETS_FS_PAGE_HANDLE = "{{ page.handle }}";
+    const ETS_FS_TEMPLATE_NAME = "{{ template.name }}";
+    const ETS_FS_CACHE_FILTER_URL = "{{ 'ets_fs_cache_filter.json' | asset_url}}";
+    const ETS_FS_THEME_SETTING = {{ settings | json }};
+    const ETS_FS_CUSTOMER_ID = {% if customer %}{{ customer.id }}{% else %}0{% endif %};
+    const ETS_FS_CUSTOMER_EMAIL = "{% if customer %}{{customer.email}}{% endif %}";
+    const ETS_FS_CUSTOMER_TAGS = "{% if customer and customer.tags %}{{customer.tags}}{% else %}[]{% endif %}";
+</script>
+<script src="{{ 'ets_fs_config.js' | asset_url }}" type="text/javascript"></script>

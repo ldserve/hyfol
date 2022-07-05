@@ -1,0 +1,44 @@
+{% raw %}
+    <div class="ets_fs_sort_box">
+        <div class="ets_fs_sort_label"></div>
+        <div class="ets_fs_sort_selection">
+            <div class="ets_fs_sort_show_product">
+                <div class="ets_fs_sort_label_limit"></div>
+                <div class="ets_fs_sort_limit ets_fs_dropdown">
+                    <span class="ets_fs_btn_dropdown_text">{{ show_label }}</span>
+                    <div class="ets_fs_btn_dropdown_content">
+                        <button class="ets_fs_sort_btn_label ets_fs_dropdown_btn" data-current="{% if filter_data.limit and filter_data.limit != 0 %}{{ filter_data.limit}}{% else %}12{% endif %}">
+                            <span class="current_number">{% if filter_data.limit and filter_data.limit != 0 %}{{ filter_data.limit}}{% else %}12{% endif %}</span>
+                        </button>
+                        <ul class="ets_fs_sort_dropdown ets_fs_dropdown_list" >
+                            {% for limit in limit_list %}
+                            <li class="{{ limit }} {% if filter_data.limit and filter_data.limit == limit %}ets_fs_active{% endif %}">
+                                <a href="#" data-sort="{{ limit }}" onclick="etsFsSelectLimit('{{ limit }}', this, '{{ tabActive }}'); return false">{{ limit }}</a>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            {% if sort_list and sort_list.size > 0 %}
+                <div class="ets_fs_sort_custom ets_fs_dropdown">
+                    {% assign sortDefault = sort_list[0] %}
+                    {% for sort in sort_list %}
+                        {% if sort.default == true %}
+                            {% assign sortDefault = sort %}
+                            {% break %}
+                        {% endif %}
+                    {% endfor %}
+                    <button class="ets_fs_sort_btn_label ets_fs_dropdown_btn" data-current="{{ sortDefault.value }}"><span class="ets_fs_btn_dropdown_text">{{ sortDefault.label }}</span></button>
+                    <ul class="ets_fs_sort_dropdown_list ets_fs_dropdown_list">
+                        {% for sort in sort_list %}
+                            <li class="{% if filter_data.sort_by and filter_data.sort_by == sort.value %}ets_fs_active{% endif %}">
+                                <a href="#" data-sort="{{ sort.value }}" onclick="etsFsSelectFieldSort('{{ sort.value }}', this, '{{ tabActive }}'); return false">{{ sort.label }}</a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+{% endraw %}
