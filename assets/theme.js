@@ -134,7 +134,7 @@
             });
             if(this.isAuto == "true"){
                 this.onmouseenter = ()=>{
-                    this.stopTimer()        
+                    this.stopTimer()
                }
                this.onmouseleave = ()=>{
                    this.startTimer()
@@ -4231,7 +4231,7 @@
                 isSelect=isSelect|| this.currentVariant.option2===null&&this.currentVariant.option1==='Default Title'
                 
                 if (!isSelect) {
-                    window.screen.availWidth<649 &&alert('Select An Option Above Before Adding To The Cart.')
+                    window.screen.availWidth<649 &&alert('Please Select Size.')
                     document.querySelector('.select-size-no').classList.remove('d-none')
                     return
                 }
