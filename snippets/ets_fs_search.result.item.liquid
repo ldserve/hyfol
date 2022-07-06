@@ -1,0 +1,38 @@
+{% raw %}
+    <div class="item item-{{ item.handle }} item-{{ index }}">
+        {% if tab != 'pages' %}
+            {% if item.image %}
+                <div class="img-thumbnail">
+                    {% if item.url %}
+                    <a href="{{ item.url }}">
+                        <img alt="{{ item.title }}"  src="{{ item.image.src }}"/>
+                    </a>
+                    {% else %}
+                        <img alt="{{ item.title }}"  src="{{ item.image.src }}"/>
+                    {% endif %}
+
+                </div>
+            {% endif %}
+        {% endif %}
+        <div class="item_info">
+            <h3 class="title">
+                {% if item.url %}
+                    <a href="{{ item.url }}">{{ item.title }}</a>
+                {% else %}
+                    {{ item.title }}
+                {% endif %}
+            </h3>
+            <p class="description">{{ item.description }}</p>
+            <button class="btn btn-view-more">
+                <a href="{% if item.url %}{{ item.url }}{% endif %}">
+                    View more
+                    <i class="ets_icon">
+                        <svg width="14" height="14" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                            <path d="M340.485 366l99.03-99.029c4.686-4.686 4.686-12.284 0-16.971l-99.03-99.029c-7.56-7.56-20.485-2.206-20.485 8.485v71.03H12c-6.627 0-12 5.373-12 12v32c0 6.627 5.373 12 12 12h308v71.03c0 10.689 12.926 16.043 20.485 8.484z" class=""></path>
+                        </svg>
+                    </i>
+                </a>
+            </button>
+        </div>
+    </div>
+{% endraw %}

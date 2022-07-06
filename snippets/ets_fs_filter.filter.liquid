@@ -1,0 +1,822 @@
+{% raw %}
+    <div id="etsFsFilterDesktop">
+    {% if currentCollection != 'all' %}
+        {% assign currentCollection = currentCollection %}
+    {% endif %}
+    {% if layout == 'side_bar' or layout == 'floating' %}
+    {% for filterItem in filters %}
+        {% assign showFilter = false %}
+        {% if filterItem.filter_information.active%}
+            {% if isSearchResultPage %}
+                {% assign showFilter = true %}
+            {% elsif filterItem.filter_information.collection_applied.size == 0 %}
+                {% assign showFilter = true %}
+            {% elsif filterItem.filter_information.collection_applied.size > 0 and filterItem.filter_information.collection_applied contains currentCollection  %}
+                {% assign showFilter = true %}
+            {% endif %}
+        {% endif %}
+        {% if showFilter == true %}
+        <div class="ets_fs_filter_bar ets_fs_filter_gf ets_fs_filter_{{ filterItem.id }}">
+            <div class="ets_fs_filter_header">
+                <div class="ets_fs_filter_header_title">
+                    <h3>{{ translate.filter_by }}</h3>
+                    <button class="ets_fs_btn ets_fs_btn_clear_filter" onclick="etsFsClearAllFilter(this)">Clear all</button>
+                </div>
+                <div class="ets_fs_filter_items"></div>
+            </div>
+            <div class="ets_fs_filter_body" >
+                {% assign filterIndex = forloop.index0 %}
+                <div class="ets_fs_filter_content" data-filter-id="{{ filterItem.id }}" >
+                    {% for filter in filterItem.list_filter_options %}
+                        {% assign hasItems = false %}
+                        {% if filter.filter_type_key == 'list' %}
+                        {% for collection in filter.filter_list  %}
+                            {% if collection.total_products > 0 %}
+                                {% assign hasItems = true %}
+                                {% break %}
+                            {% endif %}
+                        {% endfor  %}
+                        {% else %}
+                            {% assign hasItems = true %}
+                        {% endif %}
+                        <div class="ets_fs_block_filter {% if hasItems == false %}ets_fs_hidden{% endif %}" data-label="{{ filter.filter_label }}" data-key="{% if filter.filter_type_default == 1 %}{{ filter.filter_type }}{% else %}options[{{ filter.filter_type }}]{% endif %}">
+                            {% assign optionIndex = forloop.index0 %}
+                            {% if filter.filter_enable %}
+                            <div class="ets_fs_block_filter_title ets_fs_open ets_fs_filter_collapse" onclick="etsFsToggleFilterCollapse(this)">
+                                <h3>{{ filter.filter_label }}
+                                    {% if filter.filter_description and filter.filter_description != '' %}
+                                        <span class="ets_fs_info_filter ets_fs_tooltip" onmouseover="etsFsTooltip(this, true)" onmouseleave="etsFsTooltip(this, false)">
+                                            <i class="ets_fs_icon">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+                                                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.496 6.033h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286a.237.237 0 0 0 .241.247zm2.325 6.443c.61 0 1.029-.394 1.029-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94 0 .533.425.927 1.01.927z"/>
+                                                </svg>
+                                            </i>
+                                            <span class="tooltip-text">{{ filter.filter_description }}</span>
+                                        </span>
+                                    {% endif %}
+                                </h3>
+                                <div class="ets_fs_block_filter_title_action">
+                                    <i class="ets_fs_icon">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+                                            <path fill="currentColor" d="M151.5 347.8L3.5 201c-4.7-4.7-4.7-12.3 0-17l19.8-19.8c4.7-4.7 12.3-4.7 17 0L160 282.7l119.7-118.5c4.7-4.7 12.3-4.7 17 0l19.8 19.8c4.7 4.7 4.7 12.3 0 17l-148 146.8c-4.7 4.7-12.3 4.7-17 0z"></path>
+                                        </svg>
+                                    </i>
+                                </div>
+                            </div>
+                            <div class="ets_fs_block_filter_body ets_fs_open
+                                {% if filter.is_color %}
+                                    ets_fs_block_color {{ 'ets_fs_color_display_type_' | append: filter.filter_display_type }} {{ 'ets_fs_color_option_type_' | append: filter.filter_option_value_type }} {{ 'ets_fs_color_swatch_style_' | append: filter.filter_swatch_style }}
+                                    {% if collection.has_image %} ets_fs_is_color_img{% endif %}
+
+                                {% endif %}
+                                ">
+                                {% if filter.filter_type_key == 'list' %}
+                                <ul class="ets_fs_list_options">
+                                    {% for collection in filter.filter_list  %}
+                                    {% assign collectionIdStr = collection.id | append:"" %}
+                                    {%  assign checkerType = 'checkbox' %}
+                                    {% if filter.filter_display_type == 'radio' or filter.filter_display_type == 'grid_single' or filter.filter_display_type == 'list_single' %}
+                                        {% assign checkerType = 'radio' %}
+                                    {% endif %}
+                                    {%  assign colorLayout = '' %}
+                                    {% if filter.is_color  %}
+                                        {% assign colorLayout = 'ets_fs_color_type_' | append: filter.filter_display_type %}
+                                    {% endif %}
+                                    {% if filter.filter_type == 'collections' %}
+                                    {% if collection.id != currentCollection %}
+                                        <li class="ets_fs_option_item {{ colorLayout }} {% if collection.total_products <= 0 %}ets_fs_hidden{% endif %}" data-value="{{ collection.id }}">
+
+                                            {% if filter.filter_collection_behavior == 'redirect' %}
+                                                <a class="ets_fs_redirect_link" href="/collections/{{ collection.handle }}">{{ collection.title }}</a>
+                                            {% else %}
+                                                <div class="ets_fs_filter_checker ets_fs_{{ checkerType }} {% if filter_data[filter.filter_type] contains collectionIdStr %}checked{% endif %} {% if filter.is_color %}ets_fs_cb_color color_type_{{ filter.filter_option_value_type }}{% endif %}"
+                                             data-label="{{ collection.title }}"
+                                             data-key="{{ filter.filter_type }}"
+                                             data-value="{{ collection.id }}"
+                                             data-is-color="{% if filter.is_color %}1{% else %}0{% endif %}"
+                                             data-color1="{{ collection.color_1 }}"
+                                             data-color2="{{ collection.color_2 }}"
+                                             data-color-is-image="{% if collection.has_image %}1{% else %}0{% endif %}"
+                                             data-color-image="{{ collection.image }}"
+                                             data-value-type="{{ filter.filter_option_value_type }}"
+                                             data-watch-style="{{ filter.filter_swatch_style }}"
+                                             data-value-type="{{ filter.filter_option_value_type }}"
+                                             data-watch-style="{{ filter.filter_swatch_style }}"
+                                             data-is-group="{% if filter.is_group %}1{% else %}0{% endif %}"
+                                             onclick="etsFsCheckListItem('{% if filter.filter_type_default == 1 %}{{ filter.filter_type }}{% else %}options[{{ filter.filter_type }}]{% endif %}','{{ collection.id }}', this)">
+                                            <span class="{% if filter.is_color %} ets_fs_{{ filter.filter_display_type }}_btn {% else %} ets_fs_{{ checkerType }}_btn {% endif %}"></span>
+                                            <span class="ets_fs_label {% if filter.filter_uppercase_values == true %}ets_fs_uppercase{% endif %}">
+                                                {% if filter.is_color %}
+                                                    {% if filter.filter_option_value_type != 'text' %}
+                                                        <span class="ets_fs_color_box {{ filter.filter_swatch_style }}" data-title="{{ collection.title }}">
+                                                            {% if collection.has_image %}
+                                                                <img class="ets_fs_img_color" data-color-1="{{ collection.color_1 }}" data-color-2="{{ collection.color_2 }}" onerror="etsFsOnErrorImg(this)"  src="{{ collection.image }}" alt="{{ collection.title }}" />
+                                                            {% elsif collection.color_1 and collection.color_1 != '' and collection.color_2 and collection.color_2 != '' %}
+                                                                <span class="ets_fs_color_single" style="background: linear-gradient(to right, {{ collection.color_1 }} 50%, {{ collection.color_2 }} 50%);"></span>
+                                                            {% elsif collection.color_1 and collection.color_1 != '' %}
+                                                                <span class="ets_fs_color_single" style="background-color: {{ collection.color_1 }};"></span>
+                                                            {% elsif collection.color_2 and collection.color_2 != '' %}
+                                                                <span class="ets_fs_color_single" style="background-color: {{ collection.color_2 }};"></span>
+                                                            {% endif %}
+                                                        </span>
+                                                    {% endif %}
+                                                {% if filter.filter_option_value_type != 'color' %}
+                                                <span class="ets_fs_color_label">{{ collection.title }}</span>
+                                                {% endif %}
+                                                {% else %}
+                                                    {{ collection.title }}
+                                                {% endif %}
+                                            </span>
+                                            <span class="ets_fs_total">({{ collection.total_products }})</span>
+                                        </div>
+                                            {% endif %}
+                                    </li>
+                                    {% endif %}
+                                    {% else %}
+                                        <li class="ets_fs_option_item {{ colorLayout }} {% if collection.total_products <= 0 %}ets_fs_hidden{% endif %}" data-value="{{ collection.id }}">
+                                        <div class="ets_fs_filter_checker ets_fs_{{ checkerType }} {% if filter_data[filter.filter_type] contains collectionIdStr %}checked{% endif %} {% if filter.is_color %}ets_fs_cb_color color_type_{{ filter.filter_option_value_type }}{% endif %}"
+                                             data-label="{{ collection.title }}"
+                                             data-key="{{ filter.filter_type }}"
+                                             data-value="{{ collection.id }}"
+                                             data-is-color="{% if filter.is_color %}1{% else %}0{% endif %}"
+                                             data-color1="{{ collection.color_1 }}"
+                                             data-color2="{{ collection.color_2 }}"
+                                             data-color-is-image="{% if collection.has_image %}1{% else %}0{% endif %}"
+                                             data-color-image="{{ collection.image }}"
+                                             data-value-type="{{ filter.filter_option_value_type }}"
+                                             data-watch-style="{{ filter.filter_swatch_style }}"
+                                             data-is-group="{% if filter.is_group %}1{% else %}0{% endif %}"
+                                             onclick="etsFsCheckListItem('{% if filter.filter_type_default == 1 %}{{ filter.filter_type }}{% else %}options[{{ filter.filter_type }}]{% endif %}','{{ collection.id }}', this)">
+                                            <span class="{% if filter.is_color %} ets_fs_{{ filter.filter_display_type }}_btn {% else %} ets_fs_{{ checkerType }}_btn {% endif %}"></span>
+                                            <span class="ets_fs_label {% if filter.filter_uppercase_values == true %}ets_fs_uppercase{% endif %}">
+                                                {% if filter.is_color %}
+                                                    {% if filter.filter_option_value_type != 'text' %}
+                                                        <span class="ets_fs_color_box {{ filter.filter_swatch_style }}" data-title="{{ collection.title }}">
+                                                            {% if collection.has_image %}
+                                                                <img class="ets_fs_img_color" data-color-1="{{ collection.color_1 }}" data-color-2="{{ collection.color_2 }}" onerror="etsFsOnErrorImg(this)"  src="{{ collection.image }}" alt="{{ collection.title }}" />
+                                                            {% elsif collection.color_1 and collection.color_1 != '' and collection.color_2 and collection.color_2 != '' %}
+                                                                <span class="ets_fs_color_single" style="background: linear-gradient(to right, {{ collection.color_1 }} 50%, {{ collection.color_2 }} 50%);"></span>
+                                                            {% elsif collection.color_1 and collection.color_1 != '' %}
+                                                                <span class="ets_fs_color_single" style="background-color: {{ collection.color_1 }};"></span>
+                                                            {% elsif collection.color_2 and collection.color_2 != '' %}
+                                                                <span class="ets_fs_color_single" style="background-color: {{ collection.color_2 }};"></span>
+                                                            {% endif %}
+                                                        </span>
+                                                    {% endif %}
+                                                {% if filter.filter_option_value_type != 'color' %}
+                                                <span class="ets_fs_color_label">{{ collection.title }}</span>
+                                                {% endif %}
+                                                {% else %}
+                                                    {{ collection.title }}
+                                                {% endif %}
+                                            </span>
+                                            <span class="ets_fs_total">({{ collection.total_products }})</span>
+                                        </div>
+                                    </li>
+                                    {% endif %}
+                                    {% endfor %}
+                                </ul>
+                                {% elsif filter.filter_type_key == 'range' %}
+                                {% assign rangeFromKey = filter.filter_type | append: "_min" %}
+                                {% assign rangeToKey = filter.filter_type | append: "_max" %}
+                                <div class="ets_fs_box_range" data-type="{{ filter.filter_type }}">
+                                    {% comment %}<div class="ets_fs_range_nb {% if filter.filter_range.show_ranger == '0' or filter.filter_range.show_ranger == 0 %}ets_fs_hidden{% endif %}">{% endcomment %}
+                                    <div class="ets_fs_range_nb">
+                                        <div class="ets_fs_range_nb_from">
+                                            <input type="text" data-delimiter="{{ filter.filter_range.delimiter }}" class="ets_fs_form_control nb_min_input js-ets_fs_range_input" value="{% if filter_data[rangeFromKey] %}{{ filter_data[rangeFromKey] }}{% else %}{{ filter.filter_range.from }}{% endif %}" />
+                                        </div>
+                                        <span>-</span>
+                                        <div class="ets_fs_range_nb_to">
+                                            <input type="text" data-delimiter="{{ filter.filter_range.delimiter }}"  class="ets_fs_form_control nb_max_input js-ets_fs_range_input" value="{% if filter_data[rangeToKey] %}{{ filter_data[rangeToKey] }}{% else %}{{ filter.filter_range.to }}{% endif %}" />
+                                        </div>
+                                    </div>
+                                    <div class="ets_fs_range_slider">
+                                        {% assign range_from = filter.filter_range.from %}
+                                        {% assign range_to = filter.filter_range.to %}
+                                        {% if filter.filter_range.from == '' %}
+                                        {% assign range_from = 0 %}
+                                        {% endif %}
+                                        {% if filter.filter_range.to == '' %}
+                                        {% assign range_to = 0 %}
+                                        {% endif %}
+
+                                        {% assign dataRangeToKey = filter.filter_range.to %}
+                                        {% if filter_data[rangeToKey] %}
+                                        {% assign dataRangeToKey = filter_data[rangeToKey] %}
+                                        {% endif %}
+                                        {% assign dataRangeFromKey = filter.filter_range.from %}
+                                        {% if filter_data[rangeFromKey] %}
+                                        {% assign dataRangeFromKey = filter_data[rangeFromKey] %}
+                                        {% endif %}
+                                        <div class="ets_fs_range_ui"
+                                             data-type="{{ filter.filter_type }}"
+                                             data-default="{{ filter.filter_type_default }}"
+                                             data-delimiter="{{ filter.filter_range.delimiter }}"
+                                             data-unit="{{ filter.filter_type_default }}"
+                                             data-ranger="{{ filter.filter_range.ranger }}"
+                                             data-step="{{ filter.filter_range.step }}"
+                                             data-min="{{ range_from }}"
+                                             data-max="{{ range_to }}"
+                                             data-current-min="{{ dataRangeFromKey }}"
+                                             data-current-max="{{ dataRangeToKey }}"></div>
+                                    </div>
+                                </div>
+                                {% endif %}
+                            </div>
+                            {% endif %}
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        {% endif %}
+    {% endfor %}
+    {% elsif layout == 'horizontal' %}
+    {% for filterItem in filters %}
+        {% assign showFilter = false %}
+        {% if filterItem.filter_information.active%}
+            {% if isSearchResultPage %}
+                {% assign showFilter = true %}
+            {% elsif filterItem.filter_information.collection_applied.size == 0 %}
+                {% assign showFilter = true %}
+            {% elsif filterItem.filter_information.collection_applied.size > 0 and filterItem.filter_information.collection_applied contains currentCollection  %}
+                {% assign showFilter = true %}
+            {% endif %}
+        {% endif %}
+        {% if showFilter == true %}
+            <div class="ets_fs_filter_bar_horizon ets_fs_filter_gf ets_fs_filter_{{ filterItem.id }}">
+                <div class="ets_fs_filter_bar_inner">
+                    {% assign filterIndex = forloop.index0 %}
+                    <div class="ets_fs_filter_tab_nav">
+                        <div class="ets_fs_filter_header_title">
+                            <h3>{{ translate.filter_by }}</h3>
+                        </div>
+                        <ul class="ets_fs_tab_ul">
+                        {% for filter in filterItem.list_filter_options %}
+
+                        {% assign hasData = true %}
+                        {% if filter.filter_type_key == 'list' %}
+                            {% assign empty_product = true %}
+                            {% for collection in filter.filter_list %}
+                                {% if collection.total_products > 0 %}
+                                    {% assign empty_product = false %}
+                                {% endif %}
+                            {% endfor %}
+                            {% if empty_product == true %}
+                                {% assign hasData = false %}
+                            {% else %}
+                                {% assign hasData = true %}
+                            {% endif %}
+
+                        {% else %}
+                            {% assign hasData = true %}
+                         {% endif %}
+                        {% if hasData == true %}
+                            {% assign optionIndex = forloop.index0 %}
+                            <li data-key="{% if filter.filter_type_default == 1 %}{{ filter.filter_type }}{% else %}options[{{ filter.filter_type }}]{% endif %}" class="{{ filter.filter_type_key }} ets_fs_filter_item_tab ets_fs_filter_type_{{ filter.filter_type }}">
+                                    <a href="#" class="ets_fs_nav_link js-ets_fs_filter_tab" data-target="#etsFsHzTab{{ filterIndex }}_{{ optionIndex }}">{{ filter.filter_label }}
+                                    {% if filter.filter_description and filter.filter_description != '' %}
+                                    <span class="ets_fs_info_filter ets_fs_tooltip" onmouseover="etsFsTooltip(this, true)" onmouseleave="etsFsTooltip(this, false)">
+                                            <i class="ets_fs_icon">
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+                                                    <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.496 6.033h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286a.237.237 0 0 0 .241.247zm2.325 6.443c.61 0 1.029-.394 1.029-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94 0 .533.425.927 1.01.927z"/>
+                                                </svg>
+                                            </i>
+                                            <span class="tooltip-text">{{ filter.filter_description }}</span>
+                                        </span>
+                                    {% endif %}
+                                </a>
+                                    <div class="ets_fs_filter_content_body">
+                                        <div class="ets_fs_filter_content" data-filter-id="{{ filterItem.id }}">
+                                            {% assign hasData = true %}
+                                            {% if filter.filter_type_key == 'list' and  filter.filter_list.size == 0 %}
+                                                {% assign hasData = false %}
+                                            {% else %}
+                                                {% assign hasData = true %}
+                                             {% endif %}
+
+                                            {% if hasData == true %}
+                                            {% assign optionIndex = forloop.index0 %}
+
+                                            <div id="etsFsHzTab{{ filterIndex }}_{{ optionIndex }}" class="ets_fs_block_filter ets_fs_filter_tab_pane" data-label="{{ filter.filter_label }}"
+                                                 data-key="{% if filter.filter_type_default == 1 %}{{ filter.filter_type }}{% else %}options[{{ filter.filter_type }}]{% endif %}">
+                                                <div class="ets_fs_filter_tab_pane_inner ets_fs_list_options">
+                                                    {% if filter.filter_type_key == 'list' %}
+                                                        {% for collection in filter.filter_list %}
+                                                        {% assign collectionIdStr = collection.id | append:"" %}
+                                                    {% assign checkerType = 'checkbox' %}
+                                                    {% if filter.filter_display_type == 'radio' or filter.filter_display_type == 'grid_single' or filter.filter_display_type == 'list_single' %}
+                                                    {% assign checkerType = 'radio' %}
+                                                    {% endif %}
+                                                    {% assign colorLayout = '' %}
+                                                    {% if filter.is_color  %}
+                                                    {% assign colorLayout = 'ets_fs_color_type_' | append: filter.filter_display_type %}
+                                                    {% endif %}
+                                                        {% if filter.filter_type == 'collections' %}
+                                                            {% if collection.id != currentCollection %}
+                                                                <div class="ets_fs_filter_hz_item ets_fs_option_item {{ colorLayout }} {% if collection.total_products <= 0 %}ets_fs_hidden{% endif %}" data-value="{{ collection.id }}">
+                                                                    {% if filter.filter_collection_behavior == 'redirect' %}
+                                                                        <a class="ets_fs_redirect_link" href="/collections/{{ collection.handle }}">{{ collection.title }}</a>
+                                                                    {% else %}
+                                                                        <div class="ets_fs_filter_checker ets_fs_{{ checkerType }} {% if filter_data[filter.filter_type] contains collectionIdStr %}checked{% endif %}"
+                                                                         data-label="{{ collection.title }}"
+                                                                         data-key="{{ filter.filter_type }}"
+                                                                         data-default="{{ filter.filter_type_default }}"
+                                                                         data-value="{{ collection.id }}"
+                                                                         data-is-color="{% if filter.is_color %}1{% else %}0{% endif %}"
+                                                                         data-color1="{{ collection.color_1 }}"
+                                                                         data-color2="{{ collection.color_2 }}"
+                                                                         data-color-is-image="{% if collection.has_image %}1{% else %}0{% endif %}"
+                                                                         data-color-image="{{ collection.image }}"
+                                                                         data-value-type="{{ filter.filter_option_value_type }}"
+                                                                         data-watch-style="{{ filter.filter_swatch_style }}"
+                                                                         data-is-group="{% if filter.is_group %}1{% else %}0{% endif %}"
+                                                                         onclick="etsFsCheckListItem('{% if filter.filter_type_default == 1 %}{{ filter.filter_type }}{% else %}options[{{ filter.filter_type }}]{% endif %}','{{ collection.id }}', this)">
+                                                                        <span class="{% if filter.is_color %} ets_fs_{{ filter.filter_display_type }}_btn {% else %} ets_fs_{{ checkerType }}_btn {% endif %}"></span>
+                                                                        <span class="ets_fs_label {% if filter.filter_uppercase_values == true %}ets_fs_uppercase{% endif %}">
+                                                                        {% if filter.is_color %}
+                                                                            {% if filter.filter_option_value_type != 'text' %}
+                                                                                <span class="ets_fs_color_box {{ filter.filter_swatch_style }}" data-title="{{ collection.title }}">
+                                                                                    {% if collection.has_image %}
+                                                                                        <img class="ets_fs_img_color" data-color-1="{{ collection.color_1 }}" data-color-2="{{ collection.color_2 }}" onerror="etsFsOnErrorImg(this)"  src="{{ collection.image }}" alt="{{ collection.title }}" />
+                                                                                    {% elsif collection.color_1 and collection.color_1 != '' and collection.color_2 and collection.color_2 != '' %}
+                                                                                        <span class="ets_fs_color_single" style="background: linear-gradient(to right, {{ collection.color_1 }} 50%, {{ collection.color_2 }} 50%);"></span>
+                                                                                    {% elsif collection.color_1 and collection.color_1 != '' %}
+                                                                                        <span class="ets_fs_color_single" style="background-color: {{ collection.color_1 }};"></span>
+                                                                                    {% elsif collection.color_2 and collection.color_2 != '' %}
+                                                                                        <span class="ets_fs_color_single" style="background-color: {{ collection.color_2 }};"></span>
+                                                                                    {% endif %}
+                                                                                </span>
+                                                                            {% endif %}
+                                                                        {% if filter.filter_option_value_type != 'color' %}
+                                                                        <span class="ets_fs_color_label">{{ collection.title }}</span>
+                                                                        {% endif %}
+                                                                        {% else %}
+                                                                            {{ collection.title }}
+                                                                        {% endif %}
+                                                            </span>
+                                                                        <span class="ets_fs_total">({{ collection.total_products }})</span>
+                                                                    </div>
+                                                                    {% endif %}
+                                                    </div>
+                                                            {% endif %}
+                                                        {% else %}
+                                                        <div class="ets_fs_filter_hz_item ets_fs_option_item {{ colorLayout }} {% if collection.total_products <= 0 %}ets_fs_hidden{% endif %}" data-value="{{ collection.id }}">
+                                                            <div class="ets_fs_filter_checker ets_fs_{{ checkerType }} {% if filter_data[filter.filter_type] contains collectionIdStr %}checked{% endif %}"
+                                                                 data-label="{{ collection.title }}"
+                                                                 data-key="{{ filter.filter_type }}"
+                                                                 data-default="{{ filter.filter_type_default }}"
+                                                                 data-value="{{ collection.id }}"
+                                                                 data-is-color="{% if filter.is_color %}1{% else %}0{% endif %}"
+                                                                 data-color1="{{ collection.color_1 }}"
+                                                                 data-color2="{{ collection.color_2 }}"
+                                                                 data-color-is-image="{% if collection.has_image %}1{% else %}0{% endif %}"
+                                                                 data-color-image="{{ collection.image }}"
+                                                                 data-value-type="{{ filter.filter_option_value_type }}"
+                                                                 data-watch-style="{{ filter.filter_swatch_style }}"
+                                                                 data-is-group="{% if filter.is_group %}1{% else %}0{% endif %}"
+                                                                 onclick="etsFsCheckListItem('{% if filter.filter_type_default == 1 %}{{ filter.filter_type }}{% else %}options[{{ filter.filter_type }}]{% endif %}','{{ collection.id }}', this)">
+                                                                <span class="{% if filter.is_color %} ets_fs_{{ filter.filter_display_type }}_btn {% else %} ets_fs_{{ checkerType }}_btn {% endif %}"></span>
+                                                                <span class="ets_fs_label {% if filter.filter_uppercase_values == true %}ets_fs_uppercase{% endif %}">
+                                                                {% if filter.is_color %}
+                                                                    {% if filter.filter_option_value_type != 'text' %}
+                                                                        <span class="ets_fs_color_box {{ filter.filter_swatch_style }}" data-title="{{ collection.title }}">
+                                                                            {% if collection.has_image %}
+                                                                                <img class="ets_fs_img_color" data-color-1="{{ collection.color_1 }}" data-color-2="{{ collection.color_2 }}" onerror="etsFsOnErrorImg(this)"  src="{{ collection.image }}" alt="{{ collection.title }}" />
+                                                                            {% elsif collection.color_1 and collection.color_1 != '' and collection.color_2 and collection.color_2 != '' %}
+                                                                                <span class="ets_fs_color_single" style="background: linear-gradient(to right, {{ collection.color_1 }} 50%, {{ collection.color_2 }} 50%);"></span>
+                                                                            {% elsif collection.color_1 and collection.color_1 != '' %}
+                                                                                <span class="ets_fs_color_single" style="background-color: {{ collection.color_1 }};"></span>
+                                                                            {% elsif collection.color_2 and collection.color_2 != '' %}
+                                                                                <span class="ets_fs_color_single" style="background-color: {{ collection.color_2 }};"></span>
+                                                                            {% endif %}
+                                                                        </span>
+                                                                    {% endif %}
+                                                                {% if filter.filter_option_value_type != 'color' %}
+                                                                <span class="ets_fs_color_label">{{ collection.title }}</span>
+                                                                {% endif %}
+                                                                {% else %}
+                                                                    {{ collection.title }}
+                                                                {% endif %}
+                                                            </span>
+                                                                <span class="ets_fs_total">({{ collection.total_products }})</span>
+                                                            </div>
+                                                        </div>
+                                                        {% endif %}
+                                                        {% endfor %}
+                                                        {% elsif filter.filter_type_key == 'range' %}
+                                                        {% assign rangeFromKey = filter.filter_type | append: "_from" %}
+                                                        {% assign rangeToKey = filter.filter_type | append: "_to" %}
+                                                        <div class="ets_fs_box_range" data-type="{{ filter.filter_type }}" data-label="{{ filter.filter_label }}" data-unit="$">
+                                                            {% comment %}<div class="ets_fs_range_nb {% if filter.filter_range.show_ranger == '0' or filter.filter_range.show_ranger == 0 %}ets_fs_hidden{% endif %}">{% endcomment %}
+                                                            <div class="ets_fs_range_nb">
+                                                                <div class="ets_fs_range_nb_from ">
+                                                                    <input type="text" data-delimiter="{{ filter.filter_range.delimiter }}"  class="ets_fs_form_control nb_min_input js-ets_fs_range_input" value="{% if filter_data[rangeFromKey] %}{{ filter_data[rangeFromKey] }}{% else %}{{ filter.filter_range.from }}{% endif %}" />
+                                                                </div>
+                                                                <span>-</span>
+                                                                <div class="ets_fs_range_nb_to">
+                                                                    <input type="text" data-delimiter="{{ filter.filter_range.delimiter }}"  class="ets_fs_form_control nb_max_input js-ets_fs_range_input" value="{% if filter_data[rangeToKey] %}{{ filter_data[rangeToKey] }}{% else %}{{ filter.filter_range.to }}{% endif %}" />
+                                                                </div>
+                                                            </div>
+                                                            <div class="ets_fs_range_slider">
+
+                                                                {% assign dataRangeToKey = filter.filter_range.to %}
+                                                                {% if filter_data[rangeToKey] %}
+                                                                {% assign dataRangeToKey = filter_data[rangeToKey] %}
+                                                                {% endif %}
+                                                                {% assign dataRangeFromKey = filter.filter_range.from %}
+                                                                {% if filter_data[rangeFromKey] %}
+                                                                {% assign dataRangeFromKey = filter_data[rangeFromKey] %}
+                                                                {% endif %}
+                                                                <div class="ets_fs_range_ui"
+                                                                     data-unit=""
+                                                                     data-type="{{ filter.filter_type }}"
+                                                                     data-default="{{ filter.filter_type_default }}"
+                                                                     data-ranger="{{ filter.filter_range.ranger }}"
+                                                                     data-step="{{ filter.filter_range.step }}"
+                                                                     data-min="{{ filter.filter_range.from }}"
+                                                                     data-max="{{ filter.filter_range.to }}"
+                                                                     data-current-min="{{ dataRangeFromKey }}"
+                                                                     data-current-max="{{ dataRangeToKey }}"></div>
+                                                            </div>
+                                                        </div>
+                                                    {% endif %}
+                                                </div>
+                                            </div>
+                                            {% endif %}
+                                        </div>
+                                        <div class="ets_fs_filter_bottom">
+                                            <div class="ets_fs_filter_items"></div>
+                                            <button class="ets_fs_btn ets_fs_btn_clear_filter" onclick="etsFsClearAllFilter(this)">Clear all</button>
+                                        </div>
+                                    </div>
+                                </li>
+                             {% endif %}
+                            {% endfor %}
+                            </ul>
+                        </div>
+                    {% comment %}<div class="ets_fs_filter_content_body">{% endcomment %}
+                        {% comment %}<div class="ets_fs_filter_content" data-filter-id="{{ filterItem.id }}">{% endcomment %}
+                            {% comment %}{% for filter in filterItem.list_filter_options %}{% endcomment %}
+                            {% comment %}{% assign hasData = true %}{% endcomment %}
+                            {% comment %}{% if filter.filter_type_key == 'list' and  filter.filter_list.size == 0 %}{% endcomment %}
+                                {% comment %}{% assign hasData = false %}{% endcomment %}
+                            {% comment %}{% else %}{% endcomment %}
+                                {% comment %}{% assign hasData = true %}{% endcomment %}
+                             {% comment %}{% endif %}{% endcomment %}
+    {% comment %}{% endcomment %}
+                            {% comment %}{% if hasData == true %}{% endcomment %}
+                            {% comment %}{% assign optionIndex = forloop.index0 %}{% endcomment %}
+    {% comment %}{% endcomment %}
+                            {% comment %}<div id="etsFsHzTab{{ filterIndex }}_{{ optionIndex }}" class="ets_fs_block_filter ets_fs_filter_tab_pane" data-label="{{ filter.filter_label }}"{% endcomment %}
+                                 {% comment %}data-key="{% if filter.filter_type_default == 1 %}{{ filter.filter_type }}{% else %}options[{{ filter.filter_type }}]{% endif %}">{% endcomment %}
+                                {% comment %}<div class="ets_fs_filter_tab_pane_inner ets_fs_list_options">{% endcomment %}
+                                    {% comment %}{% if filter.filter_type_key == 'list' %}{% endcomment %}
+                                        {% comment %}{% for collection in filter.filter_list %}{% endcomment %}
+                                        {% comment %}{% assign collectionIdStr = collection.id | append:"" %}{% endcomment %}
+                                    {% comment %}{% assign checkerType = 'checkbox' %}{% endcomment %}
+                                    {% comment %}{% if filter.filter_display_type == 'radio' or filter.filter_display_type == 'grid_single' or filter.filter_display_type == 'list_single' %}{% endcomment %}
+                                    {% comment %}{% assign checkerType = 'radio' %}{% endcomment %}
+                                    {% comment %}{% endif %}{% endcomment %}
+                                    {% comment %}{% assign colorLayout = '' %}{% endcomment %}
+                                    {% comment %}{% if filter.is_color  %}{% endcomment %}
+                                    {% comment %}{% assign colorLayout = 'ets_fs_color_type_' | append: filter.filter_display_type %}{% endcomment %}
+                                    {% comment %}{% endif %}{% endcomment %}
+                                        {% comment %}{% if filter.filter_type == 'collections' %}{% endcomment %}
+                                            {% comment %}{% if collection.id != currentCollection %}{% endcomment %}
+                                                {% comment %}<div class="ets_fs_filter_hz_item ets_fs_option_item {{ colorLayout }} {% if collection.total_products <= 0 %}ets_fs_hidden{% endif %}" data-value="{{ collection.id }}">{% endcomment %}
+                                                    {% comment %}{% if filter.filter_collection_behavior == 'redirect' %}{% endcomment %}
+                                                        {% comment %}<a class="ets_fs_redirect_link" href="/collections/{{ collection.handle }}">{{ collection.title }}</a>{% endcomment %}
+                                                    {% comment %}{% else %}{% endcomment %}
+                                                        {% comment %}<div class="ets_fs_filter_checker ets_fs_{{ checkerType }} {% if filter_data[filter.filter_type] contains collectionIdStr %}checked{% endif %}"{% endcomment %}
+                                                         {% comment %}data-label="{{ collection.title }}"{% endcomment %}
+                                                         {% comment %}data-key="{{ filter.filter_type }}"{% endcomment %}
+                                                         {% comment %}data-default="{{ filter.filter_type_default }}"{% endcomment %}
+                                                         {% comment %}data-value="{{ collection.id }}"{% endcomment %}
+                                                         {% comment %}data-is-color="{% if filter.is_color %}1{% else %}0{% endif %}"{% endcomment %}
+                                                         {% comment %}data-color1="{{ collection.color_1 }}"{% endcomment %}
+                                                         {% comment %}data-color2="{{ collection.color_2 }}"{% endcomment %}
+                                                         {% comment %}data-color-is-image="{% if collection.has_image %}1{% else %}0{% endif %}"{% endcomment %}
+                                                         {% comment %}data-color-image="{{ collection.image }}"{% endcomment %}
+                                                         {% comment %}data-is-group="{% if filter.is_group %}1{% else %}0{% endif %}"{% endcomment %}
+                                                         {% comment %}onclick="etsFsCheckListItem('{% if filter.filter_type_default == 1 %}{{ filter.filter_type }}{% else %}options[{{ filter.filter_type }}]{% endif %}','{{ collection.id }}', this)">{% endcomment %}
+                                                        {% comment %}<span class="ets_fs_{{ filter.filter_display_type }}_btn"></span>{% endcomment %}
+                                                        {% comment %}<span class="ets_fs_label {% if filter.filter_uppercase_values == true %}ets_fs_uppercase{% endif %}">{% endcomment %}
+                                                {% comment %}{% if filter.is_color %}{% endcomment %}
+                                                    {% comment %}<span class="ets_fs_color_box {{ filter.filter_swatch_style }}" data-title="{{ collection.title }}">{% endcomment %}
+                                                        {% comment %}{% if collection.has_image %}{% endcomment %}
+                                                            {% comment %}<img class="ets_fs_img_color" data-color-1="{{ collection.color_1 }}" data-color-2="{{ collection.color_2 }}" onerror="etsFsOnErrorImg(this)"  onerror="etsFsOnErrorImg(this)" src="{{ collection.image }}" alt="{{ collection.title }}" />{% endcomment %}
+                                                        {% comment %}{% elsif collection.color_1 and collection.color_1 != '' and collection.color_2 and collection.color_2 != '' %}{% endcomment %}
+                                                            {% comment %}<span class="ets_fs_color_single" style="background: linear-gradient(to right, {{ collection.color_1 }} 50%, {{ collection.color_2 }} 50%);"></span>{% endcomment %}
+                                                        {% comment %}{% elsif collection.color_1 and collection.color_1 != '' %}{% endcomment %}
+                                                            {% comment %}<span class="ets_fs_color_single" style="background-color: {{ collection.color_1 }};"></span>{% endcomment %}
+                                                        {% comment %}{% elsif collection.color_2 and collection.color_2 != '' %}{% endcomment %}
+                                                            {% comment %}<span class="ets_fs_color_single" style="background-color: {{ collection.color_2 }};"></span>{% endcomment %}
+                                                        {% comment %}{% endif %}{% endcomment %}
+                                                    {% comment %}</span>{% endcomment %}
+                                                {% comment %}{% else %}{% endcomment %}
+                                                    {% comment %}{{ collection.title }}{% endcomment %}
+                                                {% comment %}{% endif %}{% endcomment %}
+                                            {% comment %}</span>{% endcomment %}
+                                                        {% comment %}<span class="ets_fs_total">({{ collection.total_products }})</span>{% endcomment %}
+                                                    {% comment %}</div>{% endcomment %}
+                                                    {% comment %}{% endif %}{% endcomment %}
+                                    {% comment %}</div>{% endcomment %}
+                                            {% comment %}{% endif %}{% endcomment %}
+                                        {% comment %}{% else %}{% endcomment %}
+                                        {% comment %}<div class="ets_fs_filter_hz_item ets_fs_option_item {{ colorLayout }} {% if collection.total_products <= 0 %}ets_fs_hidden{% endif %}" data-value="{{ collection.id }}">{% endcomment %}
+                                            {% comment %}<div class="ets_fs_filter_checker ets_fs_{{ checkerType }} {% if filter_data[filter.filter_type] contains collectionIdStr %}checked{% endif %}"{% endcomment %}
+                                                 {% comment %}data-label="{{ collection.title }}"{% endcomment %}
+                                                 {% comment %}data-key="{{ filter.filter_type }}"{% endcomment %}
+                                                 {% comment %}data-default="{{ filter.filter_type_default }}"{% endcomment %}
+                                                 {% comment %}data-value="{{ collection.id }}"{% endcomment %}
+                                                 {% comment %}data-is-color="{% if filter.is_color %}1{% else %}0{% endif %}"{% endcomment %}
+                                                 {% comment %}data-color1="{{ collection.color_1 }}"{% endcomment %}
+                                                 {% comment %}data-color2="{{ collection.color_2 }}"{% endcomment %}
+                                                 {% comment %}data-color-is-image="{% if collection.has_image %}1{% else %}0{% endif %}"{% endcomment %}
+                                                 {% comment %}data-color-image="{{ collection.image }}"{% endcomment %}
+                                                 {% comment %}data-is-group="{% if filter.is_group %}1{% else %}0{% endif %}"{% endcomment %}
+                                                 {% comment %}onclick="etsFsCheckListItem('{% if filter.filter_type_default == 1 %}{{ filter.filter_type }}{% else %}options[{{ filter.filter_type }}]{% endif %}','{{ collection.id }}', this)">{% endcomment %}
+                                                {% comment %}<span class="ets_fs_{{ filter.filter_display_type }}_btn"></span>{% endcomment %}
+                                                {% comment %}<span class="ets_fs_label {% if filter.filter_uppercase_values == true %}ets_fs_uppercase{% endif %}">{% endcomment %}
+                                                {% comment %}{% if filter.is_color %}{% endcomment %}
+                                                    {% comment %}<span class="ets_fs_color_box {{ filter.filter_swatch_style }}" data-title="{{ collection.title }}">{% endcomment %}
+                                                        {% comment %}{% if collection.has_image %}{% endcomment %}
+                                                            {% comment %}<img class="ets_fs_img_color" data-color-1="{{ collection.color_1 }}" data-color-2="{{ collection.color_2 }}" onerror="etsFsOnErrorImg(this)"  src="{{ collection.image }}" alt="{{ collection.title }}" />{% endcomment %}
+                                                        {% comment %}{% elsif collection.color_1 and collection.color_1 != '' and collection.color_2 and collection.color_2 != '' %}{% endcomment %}
+                                                            {% comment %}<span class="ets_fs_color_single" style="background: linear-gradient(to right, {{ collection.color_1 }} 50%, {{ collection.color_2 }} 50%);"></span>{% endcomment %}
+                                                        {% comment %}{% elsif collection.color_1 and collection.color_1 != '' %}{% endcomment %}
+                                                            {% comment %}<span class="ets_fs_color_single" style="background-color: {{ collection.color_1 }};"></span>{% endcomment %}
+                                                        {% comment %}{% elsif collection.color_2 and collection.color_2 != '' %}{% endcomment %}
+                                                            {% comment %}<span class="ets_fs_color_single" style="background-color: {{ collection.color_2 }};"></span>{% endcomment %}
+                                                        {% comment %}{% endif %}{% endcomment %}
+                                                    {% comment %}</span>{% endcomment %}
+                                                {% comment %}{% else %}{% endcomment %}
+                                                    {% comment %}{{ collection.title }}{% endcomment %}
+                                                {% comment %}{% endif %}{% endcomment %}
+                                            {% comment %}</span>{% endcomment %}
+                                                {% comment %}<span class="ets_fs_total">({{ collection.total_products }})</span>{% endcomment %}
+                                            {% comment %}</div>{% endcomment %}
+                                        {% comment %}</div>{% endcomment %}
+                                        {% comment %}{% endif %}{% endcomment %}
+                                        {% comment %}{% endfor %}{% endcomment %}
+                                        {% comment %}{% elsif filter.filter_type_key == 'range' %}{% endcomment %}
+                                        {% comment %}{% assign rangeFromKey = filter.filter_type | append: "_from" %}{% endcomment %}
+                                        {% comment %}{% assign rangeToKey = filter.filter_type | append: "_to" %}{% endcomment %}
+                                        {% comment %}<div class="ets_fs_box_range" data-type="{{ filter.filter_type }}" data-label="{{ filter.filter_label }}" data-unit="$">{% endcomment %}
+                                            {% comment %}<div class="ets_fs_range_nb {% if filter.filter_range.show_ranger == '0' or filter.filter_range.show_ranger == 0 %}ets_fs_hidden{% endif %}">{% endcomment %}
+                                                {% comment %}<div class="ets_fs_range_nb_from ">{% endcomment %}
+                                                    {% comment %}<input type="text" class="ets_fs_form_control nb_min_input js-ets_fs_range_input" value="{% if filter_data[rangeFromKey] %}{{ filter_data[rangeFromKey] }}{% else %}{{ filter.filter_range.from }}{% endif %}" />{% endcomment %}
+                                                {% comment %}</div>{% endcomment %}
+                                                {% comment %}<span>-</span>{% endcomment %}
+                                                {% comment %}<div class="ets_fs_range_nb_to">{% endcomment %}
+                                                    {% comment %}<input type="text" class="ets_fs_form_control nb_max_input js-ets_fs_range_input" value="{% if filter_data[rangeToKey] %}{{ filter_data[rangeToKey] }}{% else %}{{ filter.filter_range.to }}{% endif %}" />{% endcomment %}
+                                                {% comment %}</div>{% endcomment %}
+                                            {% comment %}</div>{% endcomment %}
+                                            {% comment %}<div class="ets_fs_range_slider">{% endcomment %}
+                                                {% comment %}<div class="ets_fs_range_ui"{% endcomment %}
+                                                     {% comment %}data-unit=""{% endcomment %}
+                                                     {% comment %}data-type="{{ filter.filter_type }}"{% endcomment %}
+                                                     {% comment %}data-default="{{ filter.filter_type_default }}"{% endcomment %}
+                                                     {% comment %}data-ranger="{{ filter.filter_range.ranger }}"{% endcomment %}
+                                                     {% comment %}data-min="{{ filter.filter_range.from }}"{% endcomment %}
+                                                     {% comment %}data-max="{{ filter.filter_range.to }}"{% endcomment %}
+                                                     {% comment %}data-current-min="{{ filter_data[rangeFromKey] }}"{% endcomment %}
+                                                     {% comment %}data-current-max="{{ filter_data[rangeToKey] }}"></div>{% endcomment %}
+                                            {% comment %}</div>{% endcomment %}
+                                        {% comment %}</div>{% endcomment %}
+                                    {% comment %}{% endif %}{% endcomment %}
+                                {% comment %}</div>{% endcomment %}
+                            {% comment %}</div>{% endcomment %}
+                            {% comment %}{% endif %}{% endcomment %}
+                            {% comment %}{% endfor %}{% endcomment %}
+                        {% comment %}</div>{% endcomment %}
+                        {% comment %}<div class="ets_fs_filter_bottom">{% endcomment %}
+                            {% comment %}<div class="ets_fs_filter_items"></div>{% endcomment %}
+                            {% comment %}<button class="ets_fs_btn ets_fs_btn_clear_filter" onclick="etsFsClearAllFilter(this)">Clear all</button>{% endcomment %}
+                        {% comment %}</div>{% endcomment %}
+                    {% comment %}</div>{% endcomment %}
+                </div>
+            </div>
+        {% endif %}
+    {% endfor %}
+    {% endif %}
+</div>
+<div id="etsFsFilterMobile" class="ets_fs_hidden">
+    {% if currentCollection != 'all' %}
+        {% assign currentCollection = currentCollection %}
+    {% endif %}
+    {% for filterItem in filters %}
+        {% assign showFilter = false %}
+        {% if filterItem.filter_information.active%}
+            {% if isSearchResultPage %}
+                {% assign showFilter = true %}
+            {% elsif filterItem.filter_information.collection_applied.size == 0 %}
+                {% assign showFilter = true %}
+            {% elsif filterItem.filter_information.collection_applied.size > 0 and filterItem.filter_information.collection_applied contains currentCollection  %}
+                {% assign showFilter = true %}
+            {% endif %}
+        {% endif %}
+        {% if showFilter == true %}
+            <div class="ets_fs_filter_bar ets_fs_filter_gf ets_fs_filter_{{ filterItem.id }}">
+                <div class="ets_fs_filter_header">
+                    <div class="ets_fs_filter_header_title">
+                        <h3>{{ translate.filter_by }}</h3>
+                        <button class="ets_fs_btn ets_fs_btn_clear_filter" onclick="etsFsClearAllFilter(this)">Clear all</button>
+                    </div>
+                    <div class="ets_fs_filter_items ets_fs_js_filter_items_mobile"></div>
+                </div>
+                <div class="ets_fs_filter_body" >
+                    {% assign filterIndex = forloop.index0 %}
+                    <div class="ets_fs_filter_content" data-filter-id="{{ filterItem.id }}" >
+                        {% for filter in filterItem.list_filter_options %}
+                            <div class="ets_fs_block_filter" data-label="{{ filter.filter_label }}" data-key="{% if filter.filter_type_default == 1 %}{{ filter.filter_type }}{% else %}options[{{ filter.filter_type }}]{% endif %}">
+                                {% assign optionIndex = forloop.index0 %}
+                                {% if filter.filter_enable %}
+                                    <div class="ets_fs_block_filter_title ets_fs_open ets_fs_filter_collapse" onclick="etsFsToggleFilterCollapse(this)">
+                                        <h3>{{ filter.filter_label }}
+                                            {% if filter.filter_description and filter.filter_description != '' %}
+                                            <span class="ets_fs_info_filter ets_fs_tooltip" onmouseover="etsFsTooltip(this, true)" onmouseleave="etsFsTooltip(this, false)">
+                                                <i class="ets_fs_icon">
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16">
+                                                        <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM5.496 6.033h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286a.237.237 0 0 0 .241.247zm2.325 6.443c.61 0 1.029-.394 1.029-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94 0 .533.425.927 1.01.927z"/>
+                                                    </svg>
+                                                </i>
+                                                <span class="tooltip-text">{{ filter.filter_description }}</span>
+                                            </span>
+                                            {% endif %}
+                                        </h3>
+                                        <div class="ets_fs_block_filter_title_action">
+                                            <i class="ets_fs_icon">
+                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
+                                                    <path fill="currentColor" d="M151.5 347.8L3.5 201c-4.7-4.7-4.7-12.3 0-17l19.8-19.8c4.7-4.7 12.3-4.7 17 0L160 282.7l119.7-118.5c4.7-4.7 12.3-4.7 17 0l19.8 19.8c4.7 4.7 4.7 12.3 0 17l-148 146.8c-4.7 4.7-12.3 4.7-17 0z"></path>
+                                                </svg>
+                                            </i>
+                                        </div>
+                                    </div>
+                                    <div class="ets_fs_block_filter_body ets_fs_open">
+                                        {% if filter.filter_type_key == 'list' %}
+                                            <ul class="ets_fs_list_options">
+                                                {% for collection in filter.filter_list  %}
+                                                    {% assign collectionIdStr = collection.id | append:"" %}
+                                                    {%  assign checkerType = 'checkbox' %}
+                                                    {% if filter.filter_display_type == 'radio' or filter.filter_display_type == 'grid_single' or filter.filter_display_type == 'list_single' %}
+                                                        {% assign checkerType = 'radio' %}
+                                                    {% endif %}
+                                                    {%  assign colorLayout = '' %}
+                                                    {% if filter.is_color  %}
+                                                        {% assign colorLayout = 'ets_fs_color_type_' | append: filter.filter_display_type %}
+                                                    {% endif %}
+                                                    {% if filter.filter_type == 'collections' %}
+                                                        {% if collection.id != currentCollection %}
+                                                            <li class="ets_fs_option_item {{ colorLayout }} {% if collection.total_products <= 0 %}ets_fs_hidden{% endif %}" data-value="{{ collection.id }}">
+                                                                {% if filter.filter_collection_behavior == 'redirect' %}
+                                                                    <a class="ets_fs_redirect_link" href="/collections/{{ collection.handle }}">{{ collection.title }}</a>
+                                                                {% else %}
+                                                                    <div class="ets_fs_filter_checker ets_fs_{{ checkerType }} {% if filter_data[filter.filter_type] contains collectionIdStr %}checked{% endif %}"
+                                                                 data-label="{{ collection.title }}"
+                                                                 data-key="{{ filter.filter_type }}"
+                                                                 data-value="{{ collection.id }}"
+                                                                 data-is-color="{% if filter.is_color %}1{% else %}0{% endif %}"
+                                                                 data-color1="{{ collection.color_1 }}"
+                                                                 data-color2="{{ collection.color_2 }}"
+                                                                 data-color-is-image="{% if collection.has_image %}1{% else %}0{% endif %}"
+                                                                 data-color-image="{{ collection.image }}"
+                                                                 data-value-type="{{ filter.filter_option_value_type }}"
+                                                                 data-watch-style="{{ filter.filter_swatch_style }}"
+                                                                 data-is-group="{% if filter.is_group %}1{% else %}0{% endif %}"
+                                                                 onclick="etsFsCheckListItem('{% if filter.filter_type_default == 1 %}{{ filter.filter_type }}{% else %}options[{{ filter.filter_type }}]{% endif %}','{{ collection.id }}', this)">
+                                                                <span class="ets_fs_{{ checkerType }}_btn"></span>
+                                                                <span class="ets_fs_label {% if filter.filter_uppercase_values == true %}ets_fs_uppercase{% endif %}">
+                                                {% if filter.is_color %}
+                                                    {% if filter.filter_option_value_type != 'text' %}
+                                                        <span class="ets_fs_color_box {{ filter.filter_swatch_style }}" data-title="{{ collection.title }}">
+                                                            {% if collection.has_image %}
+                                                                <img class="ets_fs_img_color" data-color-1="{{ collection.color_1 }}" data-color-2="{{ collection.color_2 }}" onerror="etsFsOnErrorImg(this)"  src="{{ collection.image }}" alt="{{ collection.title }}" />
+                                                            {% elsif collection.color_1 and collection.color_1 != '' and collection.color_2 and collection.color_2 != '' %}
+                                                                <span class="ets_fs_color_single" style="background: linear-gradient(to right, {{ collection.color_1 }} 50%, {{ collection.color_2 }} 50%);"></span>
+                                                            {% elsif collection.color_1 and collection.color_1 != '' %}
+                                                                <span class="ets_fs_color_single" style="background-color: {{ collection.color_1 }};"></span>
+                                                            {% elsif collection.color_2 and collection.color_2 != '' %}
+                                                                <span class="ets_fs_color_single" style="background-color: {{ collection.color_2 }};"></span>
+                                                            {% endif %}
+                                                        </span>
+                                                    {% endif %}
+                                                {% if filter.filter_option_value_type != 'color' %}
+                                                <span class="ets_fs_color_label">{{ collection.title }}</span>
+                                                {% endif %}
+                                                {% else %}
+                                                    {{ collection.title }}
+                                                {% endif %}
+                                                    </span>
+                                                                <span class="ets_fs_total">({{ collection.total_products }})</span>
+                                                            </div>
+                                                                {% endif %}
+                                                        </li>
+                                                        {% endif %}
+                                                    {% else %}
+                                                        <li class="ets_fs_option_item {{ colorLayout }} {% if collection.total_products <= 0 %}ets_fs_hidden{% endif %}" data-value="{{ collection.id }}">
+                                                        <div class="ets_fs_filter_checker ets_fs_{{ checkerType }} {% if filter_data[filter.filter_type] contains collectionIdStr %}checked{% endif %}"
+                                                             data-label="{{ collection.title }}"
+                                                             data-key="{{ filter.filter_type }}"
+                                                             data-value="{{ collection.id }}"
+                                                             data-is-color="{% if filter.is_color %}1{% else %}0{% endif %}"
+                                                             data-color1="{{ collection.color_1 }}"
+                                                             data-color2="{{ collection.color_2 }}"
+                                                             data-color-is-image="{% if collection.has_image %}1{% else %}0{% endif %}"
+                                                             data-color-image="{{ collection.image }}"
+                                                             data-value-type="{{ filter.filter_option_value_type }}"
+                                                             data-watch-style="{{ filter.filter_swatch_style }}"
+                                                             data-is-group="{% if filter.is_group %}1{% else %}0{% endif %}"
+                                                             onclick="etsFsCheckListItem('{% if filter.filter_type_default == 1 %}{{ filter.filter_type }}{% else %}options[{{ filter.filter_type }}]{% endif %}','{{ collection.id }}', this)">
+                                                            <span class="ets_fs_{{ checkerType }}_btn"></span>
+                                                            <span class="ets_fs_label {% if filter.filter_uppercase_values == true %}ets_fs_uppercase{% endif %}">
+                                                {% if filter.is_color %}
+                                                    {% if filter.filter_option_value_type != 'text' %}
+                                                        <span class="ets_fs_color_box {{ filter.filter_swatch_style }}" data-title="{{ collection.title }}">
+                                                            {% if collection.has_image %}
+                                                                <img class="ets_fs_img_color" data-color-1="{{ collection.color_1 }}" data-color-2="{{ collection.color_2 }}" onerror="etsFsOnErrorImg(this)"  src="{{ collection.image }}" alt="{{ collection.title }}" />
+                                                            {% elsif collection.color_1 and collection.color_1 != '' and collection.color_2 and collection.color_2 != '' %}
+                                                                <span class="ets_fs_color_single" style="background: linear-gradient(to right, {{ collection.color_1 }} 50%, {{ collection.color_2 }} 50%);"></span>
+                                                            {% elsif collection.color_1 and collection.color_1 != '' %}
+                                                                <span class="ets_fs_color_single" style="background-color: {{ collection.color_1 }};"></span>
+                                                            {% elsif collection.color_2 and collection.color_2 != '' %}
+                                                                <span class="ets_fs_color_single" style="background-color: {{ collection.color_2 }};"></span>
+                                                            {% endif %}
+                                                        </span>
+                                                    {% endif %}
+                                                {% if filter.filter_option_value_type != 'color' %}
+                                                <span class="ets_fs_color_label">{{ collection.title }}</span>
+                                                {% endif %}
+                                                {% else %}
+                                                    {{ collection.title }}
+                                                {% endif %}
+                                            </span>
+                                                            <span class="ets_fs_total">({{ collection.total_products }})</span>
+                                                        </div>
+                                                    </li>
+                                                    {% endif %}
+                                                {% endfor %}
+                                            </ul>
+                                        {% elsif filter.filter_type_key == 'range' %}
+                                            {% assign rangeFromKey = filter.filter_type | append: "_min" %}
+                                            {% assign rangeToKey = filter.filter_type | append: "_max" %}
+                                            <div class="ets_fs_box_range" data-type="{{ filter.filter_type }}">
+                                                {% comment %}<div class="ets_fs_range_nb {% if filter.filter_range.show_ranger == '0' or filter.filter_range.show_ranger == 0 %}ets_fs_hidden{% endif %}">{% endcomment %}
+                                                <div class="ets_fs_range_nb">
+                                                    <div class="ets_fs_range_nb_from">
+                                                        <input type="text" data-delimiter="{{ filter.filter_range.delimiter }}"  class="ets_fs_form_control nb_min_input js-ets_fs_range_input" value="{% if filter_data[rangeFromKey] %}{{ filter_data[rangeFromKey] }}{% else %}{{ filter.filter_range.from }}{% endif %}" />
+                                                    </div>
+                                                    <span>-</span>
+                                                    <div class="ets_fs_range_nb_to">
+                                                        <input type="text" data-delimiter="{{ filter.filter_range.delimiter }}"  class="ets_fs_form_control nb_max_input js-ets_fs_range_input" value="{% if filter_data[rangeToKey] %}{{ filter_data[rangeToKey] }}{% else %}{{ filter.filter_range.to }}{% endif %}" />
+                                                    </div>
+                                                </div>
+                                                <div class="ets_fs_range_slider">
+                                                    {% assign range_from = filter.filter_range.from %}
+                                                    {% assign range_to = filter.filter_range.to %}
+                                                    {% if filter.filter_range.from == '' %}
+                                                    {% assign range_from = 0 %}
+                                                    {% endif %}
+                                                    {% if filter.filter_range.to == '' %}
+                                                    {% assign range_to = 0 %}
+                                                    {% endif %}
+
+                                                    {% assign dataRangeToKey = filter.filter_range.to %}
+                                                    {% if filter_data[rangeToKey] %}
+                                                    {% assign dataRangeToKey = filter_data[rangeToKey] %}
+                                                    {% endif %}
+                                                    {% assign dataRangeFromKey = filter.filter_range.from %}
+                                                    {% if filter_data[rangeFromKey] %}
+                                                    {% assign dataRangeFromKey = filter_data[rangeFromKey] %}
+                                                    {% endif %}
+                                                    <div class="ets_fs_range_ui"
+                                                         data-type="{{ filter.filter_type }}"
+                                                         data-default="{{ filter.filter_type_default }}"
+                                                         data-delimiter="{{ filter.filter_range.delimiter }}"
+                                                         data-unit="{{ filter.filter_type_default }}"
+                                                         data-ranger="{{ filter.filter_range.ranger }}"
+                                                         data-step="{{ filter.filter_range.step }}"
+                                                         data-min="{{ range_from }}"
+                                                         data-max="{{ range_to }}"
+                                                         data-current-min="{{ dataRangeToKey }}"
+                                                         data-current-max="{{ dataRangeFromKey }}"></div>
+                                                </div>
+                                            </div>
+                                        {% endif %}
+                                    </div>
+                                {% endif %}
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        {% endif %}
+    {% endfor %}
+    <div class="ets_fs_filter_footer">
+        <div class="ets_fs_result_info" onclick="etsFsCloseFilterMobile(this)">
+            <div class="ets_fs_total_products">View <span class="ets_fs_total_product_nb">0</span> Products</div>
+        </div>
+    </div>
+</div>
+{% endraw %}

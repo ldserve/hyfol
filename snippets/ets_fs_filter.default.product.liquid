@@ -1,0 +1,162 @@
+{% raw %}
+    {% if product.title %}
+        {%- assign compare_at_price = product.compare_at_price -%}
+        {%- assign price = product.price -%}
+        {%- assign available = product.available -%}
+    {% else %}
+        {%- assign compare_at_price = 1999 -%}
+        {%- assign price = 1999 -%}
+        {%- assign available = true -%}
+    {% endif %}
+<li class="ets_fs_product_item ets_fs_product_item_{{ product.id }} ets_fs_lg_col_{{ 12 | divided_by: config.display_product_per_row.desktop }} ets_fs_md_col_{{ 12 | divided_by: config.display_product_per_row.tablet }} ets_fs_sm_col_{{ 12 | divided_by: config.display_product_per_row.tablet }} ets_fs_xs_col_{{ 12 | divided_by: config.display_product_per_row.mobile }}">
+<div class="ets_fs_product_grid_view_item {% unless product.available %} ets_fs_product_grid_view_item--sold-out{% endunless %} ets_fs_product_card">
+
+    {% if config.display_options and product.variants.size > 0 %}
+    {% assign showListOption = true %}
+    {% endif %}
+    {% if product.variants.size == 1 and product.variants[0].title == 'Default Title' %}
+    {% assign showListOption = false %}
+    {% endif %}
+    {% capture product_options %}
+        {% if showListOption %}
+            <div class="ets_fs_product_options {% if config.when_to_display_options == 'when_hover_product' %}display_on_hover{% endif %}">
+            {% for variant in product.variants %}
+                {% assign variantIndex = forloop.index0 %}
+                {% if variant.title != 'Default Title'  %}
+                <div class="ets_fs_product_option_item">
+                    <span class="ets_fs_product_option_title"></span>
+                    <span class="ets_fs_product_option_list">
+                    {% assign isSoldOut = false %}
+                    {% if variant.inventory_quantity == 0 and variant.inventory_policy == 'deny' %}
+                    {% assign isSoldOut = true %}
+                    {% endif %}
+                        <span class="ets_fs_product_option_item {% if variantIndex == 0 %}ets_fs_selected{% endif %}" data-compare-at-price-to-display="{{ variant.compare_at_price_to_display }}" data-is-sold-out="{% if isSoldOut %} 1 {% endif %}" data-compare-at-price="{{ variant.compare_at_price }}" data-price-to-display="{{ variant.price_to_display }}" data-price="{{ variant.price }}" data-variant="{{ variant.id }}" onclick="etsFsSelectVariant('{{ variant.id }}', this)">{{ variant.title }}</span>
+                    </span>
+                </div>
+                {% endif  %}
+            {% endfor %}
+        </div>
+        {% endif %}
+    {% endcapture %}
+    {% capture product_vendor %}
+        {% if config.display_vendor %}
+        <div class="ets_fs_product_vendor">
+            {% comment %}<span class="ets_fs_product_vendor_title">Vendor: </span>{% endcomment %}
+            <span class="ets_fs_product_vendor_content">{{ product.vendor }}</span>
+        </div>
+        {% endif %}
+    {% endcapture %}
+    {% capture btn_add_to_cart %}
+        {% if config.display_add_to_cart_button %}
+        {% assign add_to_card_label = "Add to card" %}
+        {% if translate and translate.add_to_cart %}
+        {% assign add_to_card_label = translate.add_to_cart %}
+        {% endif %}
+        <button class="ets_fs_btn ets_fs_btn_add_to_card js-ets_fs_btn_add_to_card" data-variant="{% if product.variants.size > 0 %}{{ product.variants[0].id }}{% endif %}" onclick="etsFsAddToCart(this)">{{ add_to_card_label }}</button>
+        {% endif %}
+    {% endcapture %}
+
+    {%- assign img_url = product.featured_image.src | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+    <div class="ets_fs_product_img_wrapper{% if config.options_position == 'bottom_product_image' %} optioncart_bottom_product_image{% endif %}{% if config.add_to_cart_position == 'bottom_product_image' %} addcart_bottom_product_image {% endif %}">
+        {% if compare_at_price > price and config.display_sale_label %}
+            {% assign sale_label = "Sale" %}
+            {% if translate and translate.sale %}
+            {% assign sale_label = translate.sale %}
+            {% endif %}
+            <span class="ets_fs_label_sale {% if config.sale_label_position == 'left' %}ets_fs_label_sale--left{% else %}ets_fs_label_sale--right{% endif %}">
+                {% if config.sale_label_type == 'text' %}
+                    {{ sale_label }}
+                {% elsif config.sale_label_type == 'percent' %}
+                    - {{ product.percent_sale }}%
+                {% elsif config.sale_label_type == 'amount' %}
+                    - {{ product.save_price_to_display | money }}
+                {% endif %}
+            </span>
+        {% endif %}
+
+        {% if config.display_out_of_stock_label == true %}
+            {% assign sold_out_label = "Sold out" %}
+            {% if translate and translate.sold_out %}
+            {% assign sold_out_label = translate.sold_out %}
+            {% endif %}
+            <span class="ets_fs_label_sold_out js-ets_fs_label_sold_out {% if config.out_of_stock_label_position == 'left' %}ets_fs_label_sold_out--left{% else %}ets_fs_label_sold_out--right{% endif %} {% if available == true %} ets_fs_hidden {% endif %}"> {{ sold_out_label }} </span>
+        {% endif %}
+            <a class="ets_fs_product_link full-width-link" href="{{ product.url }}">
+                <div class="ets_fs_product_img_display_box js-ets_fs_product_img  {% if config.display_2nd_image_when_hover and product.images.size > 1 %}display_2nd_img{% endif %}" style="background-image:url({{ product.featured_image.src | img_url: '300x300' }});">
+                    <img onerror="etsFsOnErrorImg(this)"
+                        class="ets_fs_product_img_item lazyload"
+                        src="{{ product.featured_image.src | img_url: '300x300' }}"
+                        data-src="{{ img_url }}"
+                        data-widths="[180, 360, 540, 720, 900, 1080, 1296, 1512, 1728, 2048]"
+                        data-sizes="auto"
+                        alt="" />
+                    {% if config.display_2nd_image_when_hover and product.images.size > 1 %}
+                        {%- assign img_url2 = product.images[1].src | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+                        <div class="img_url2 js-ets_fs_product_img" >
+
+                        </div>
+                    {% endif %}
+                </div>
+            </a>
+        <div class="optioncart_bottom_product_image_content {% if config.when_to_display_add_cart_btn == 'when_hover_product' %} hover_to_display_card_btn {% endif %} {% if config.when_to_display_options == 'when_hover_product' %} hover_to_display_options {% endif %}">
+            {% if config.options_position == 'bottom_product_image' %} {{ product_options }} {% endif %}
+            {% if config.add_to_cart_position == 'bottom_product_image' %} {{ btn_add_to_cart }} {% endif %}
+        </div>
+    </div>
+        {% if config.vendor_position == 'above_title' %} {{ product_vendor }} {% endif %}
+
+        {% if config.options_position == 'above_product_title' %} {{ product_options }} {% endif %}
+    <div class="ets_fs_product_title" aria-hidden="true"><a class="ets_fs_product_link full-width-link" href="/products/{{ product.handle }}">{{ product.title }}</a></div>
+        {% if config.vendor_position == 'below_title' %} {{ product_vendor }} {% endif %}
+    {% comment %} Price {% endcomment %}
+    <!-- snippet/product-price.liquid -->
+
+    {%- assign money_price = price | money -%}
+    {% assign isDisplayPriceRange = false %}
+    {% if product.price_min > 0 and product.price_max > 0 and product.price_min != product.price_max and showListOption == false %}
+    {% assign isDisplayPriceRange = true %}
+    {% endif %}
+    <div class="ets_fs_product_price{% if compare_at_price > price %} price--on-sale{% endif %}">
+        {% if section.settings.show_vendor %}
+            <div class="ets_fs_product_price__vendor">
+                {{ product.vendor }}
+            </div>
+        {% endif %}
+        {% capture price_regular_content %}
+            {% if config.display_original_price %}
+            <div class="ets_fs_product_price__regular {% if isDisplayPriceRange or compare_at_price <= price %} ets_fs_hidden {% endif %}">
+                <span class="ets_fs_product_price_item ets_fs_product_price_item--regular" data-regular-price>
+                  {{ product.compare_at_price_to_display }}
+                  </span>
+            </div>
+            {% endif %}
+        {% endcapture %}
+        {% if config.original_price_position == 'left' %}
+            {{ price_regular_content }}
+        {% endif %}
+      <div class="ets_fs_product_price__sale {% if isDisplayPriceRange %} ets_fs_hidden {% endif %}">
+        <span class="ets_fs_product_price_item ets_fs_product_price_item--sale" data-sale-price>
+            {{ product.price_to_display }}
+        </span>
+      </div>
+        {% if config.original_price_position == 'right' %}
+            {{ price_regular_content }}
+        {% endif %}
+        {% if isDisplayPriceRange %}
+        <div class="ets_fs_product_price__range">
+                <span class="ets_fs_product_price_item ets_fs_product_price_range_item ets_fs_product_price_range_item_min">
+                  {{ product.price_min_to_display }}
+                  </span>
+            <span class="ets_fs_strikethrough_price">-</span>
+            <span class="ets_fs_product_price_item ets_fs_product_price_range_item ets_fs_product_price_range_item_max">
+                  {{ product.price_max_to_display }}
+                  </span>
+        </div>
+        {%endif%}
+    </div>
+    {% if config.options_position == 'under_product_price' %} {{ product_options }} {% endif %}
+    {% if config.add_to_cart_position == 'bottom_product_information' %} {{ btn_add_to_cart }} {% endif %}
+{% comment %} End Price {% endcomment %}
+</div>
+</li>
+{% endraw %}
