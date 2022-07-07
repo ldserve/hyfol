@@ -16,7 +16,7 @@
           "type": "variant_selector",
           "settings": {
             "selector_mode": "block",
-            "color_mode": "variant_image",
+            "color_mode": "color",
             "show_promotion": true,
             "show_discount_image": true,
             "discount_image": "shopify:\/\/shop_images\/19f6cdf48e7de3247131d5a9d51946b6_4eb89303-4ebd-44b5-96b2-5dd5c6c7d076.jpg",
