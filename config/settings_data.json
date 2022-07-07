@@ -269,6 +269,7 @@
           },
           "ccab5dcb-d3a7-4a2e-9c0e-6699c88abf2e": {
             "type": "announcement",
+            "disabled": true,
             "settings": {
               "text": "BUY CARGO SHORTS GET FREE BELT",
               "link": "shopify:\/\/collections\/fathers-day1"
