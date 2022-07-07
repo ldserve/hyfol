@@ -42,14 +42,24 @@
       {
         "type": "richtext",
         "id": "full_reduction",
-        "label": "满减信息",
+        "label": "折扣信息",
         "info": "活动信息用逗号隔开 格式如： 5% OFF 2 PIECES,10% OFF 3 PIECES 第一位是折扣，第三位是数量"
       },
       {
         "type": "checkbox",
         "id": "full_isOpenview",
-        "label": "是否启用全场活动",
+        "label": "是否启用全场折扣活动",
         "default": true
+      },{
+        "type": "richtext",
+        "id": "full_minus",
+        "label": "满减信息阶梯",
+        "info": "活动信息用逗号隔开 格式如：ORDER 59 minus 5,ORDER 79 minus 10 第二位是订单金额，第四位是折扣金额"
+      },{
+          "type": "checkbox",
+          "id": "full_minusSwitch",
+          "label": "是否启用满减活动",
+          "default": false
       }
     ]
   },
