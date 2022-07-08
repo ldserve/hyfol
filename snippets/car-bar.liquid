@@ -58,6 +58,19 @@
 					class="page__description d-inline-block">{{ 'cart.general.free_shipping_remaining_html' | t: remaining_amount: remaining_amount }}</p>
 			{%- endif -%}
 		{%- endif -%}
+		  {%- comment -%}满减活动阶梯{%- endcomment -%}
+		  {% if settings.full_minusSwitch %}
+		  {%- assign arrstr=settings.full_minus | strip_html | split:',' -%}
+		  {%- for str in arrstr -%}
+			{%- assign itemstr = str | split: ' ' -%}
+			{% assign order_price = itemstr[1] |times:100%}
+			{% assign minus_monry = itemstr[3] |times:100%}
+			{% if cart.total_price < order_price %}
+			{% break %}
+			{% endif %}
+			{%- endfor -%}
+			<span class="d-block" data-action="{{order_price}},{{minus_monry}},{{cart.total_price | minus: order_price | abs}}">ON ORDER {{order_price | money}}+ {{minus_monry |money}} OFF</span>
+		  {% endif %}
 	</div>
 	<div class="shipping-progress-bar">
 		<div class="progress-now"></div>
