@@ -1585,6 +1585,7 @@ body:not(.is-tabbing) textarea:focus {
 @media screen and (max-width: 640px) {
   .container--flush {
     padding: 20px;
+    padding-bottom: 0;
   }
 
   .container--unflush {

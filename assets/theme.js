@@ -2428,10 +2428,6 @@
                 // var cartId=typeof this.miniCartElement.id =="string" ? this.miniCartElement.id:'mini-cart'
                 this.miniCartToggleElement = this.element.querySelector("[aria-controls=\"".concat(this.miniCartElement.id, "\"]"));
                 // this.miniCartToggleElement = this.element.querySelector("[aria-controls=\"".concat(cartId, "\"]"));
-                // console.log('this.element',this.element);
-                // console.log(' this.miniCartElement', this.miniCartElement);
-                // console.log('this.miniCartElementqweewq',this.miniCartElement.id);
-                // console.log('cartId',cartId);
                 this._checkMiniCartScrollability();
             }
           this.itemCount = window.theme.cartCount;
