@@ -50,27 +50,31 @@
 			{%- if cart.total_price >= threshold_in_cents -%}
 				<p class="page__description d-inline-block">{{ 'cart.general.free_shipping' | t }}</p>
 			{%- else -%}
-				{%- capture remaining_amount -%}<span><span class="wh-original-cart-total"><span
-							class='wh-original-price'>{{ cart.total_price | minus: threshold_in_cents | abs | money }}</span></span><span
-						class="wh-cart-total"></span><div class="additional-notes d-inline-block"><span
-							class="wh-minimums-note"></span><span class="wh-extra-note"></span></div></span>{%- endcapture -%}
-				<p
-					class="page__description d-inline-block">{{ 'cart.general.free_shipping_remaining_html' | t: remaining_amount: remaining_amount }}</p>
+				{%- capture remaining_amount -%}<span><span class="wh-original-cart-total">
+					<span class='wh-original-price'>{{ cart.total_price | minus: threshold_in_cents | abs | money }}</span></span>
+					<span class="wh-cart-total"></span>
+					<div class="additional-notes d-inline-block"><span class="wh-minimums-note"></span>
+						<span class="wh-extra-note"></span></div> </span>{%- endcapture -%}
+				<div class="page__description d-inline-block">{{ 'cart.general.free_shipping_remaining_html' | t: remaining_amount: remaining_amount }}</div>
 			{%- endif -%}
 		{%- endif -%}
 		  {%- comment -%}满减活动阶梯{%- endcomment -%}
-		  {% if settings.full_minusSwitch %}
-		  {%- assign arrstr=settings.full_minus | strip_html | split:',' -%}
-		  {%- for str in arrstr -%}
-			{%- assign itemstr = str | split: ' ' -%}
-			{% assign order_price = itemstr[1] |times:100%}
-			{% assign minus_monry = itemstr[3] |times:100%}
-			{% if cart.total_price < order_price %}
-			{% break %}
-			{% endif %}
-			{%- endfor -%}
-			<span class="d-block" data-action="{{order_price}},{{minus_monry}},{{cart.total_price | minus: order_price | abs}}">ON ORDER {{order_price | money}}+ {{minus_monry |money}} OFF</span>
-		  {% endif %}
+		   {%- comment -%}满减活动阶梯{%- endcomment -%}
+		   {% if settings.full_minusSwitch %}
+		   {%- assign arrstr=settings.full_minus | strip_html | split:',' -%}
+		   {%- for str in arrstr -%}
+			 {%- assign itemstr = str | split: ' ' -%}
+			 {% assign order_price = itemstr[1] |times:100%}
+			 {% assign minus_monry = itemstr[3] |times:100%}
+			 {% if cart.total_price < order_price %}
+			 {% break %}
+			 {% endif %}
+			 {%- endfor -%}
+			 {% if cart.total_price < order_price %}
+			 <span class="d-block" data-action="{{order_price}},{{minus_monry}},{{cart.total_price | minus: order_price | abs}}">spend <span
+			   class='wh-original-price  mini-car-font'>{{cart.total_price | minus: order_price | abs|money}}</span> more and get {{minus_monry |money}} off！ </span>
+			 {% endif %}
+		   {% endif %}
 	</div>
 	<div class="shipping-progress-bar">
 		<div class="progress-now"></div>

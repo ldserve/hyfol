@@ -54,12 +54,13 @@
         "type": "richtext",
         "id": "full_minus",
         "label": "满减信息阶梯",
-        "info": "活动信息用逗号隔开 格式如：ORDER 59 minus 5,ORDER 79 minus 10 第二位是订单金额，第四位是折扣金额"
+        "info": "活动信息用逗号隔开 格式如：ORDER 59 minus 5,ORDER 79 minus 10 第二位是订单金额，第四位是折扣金额",
+        "default":"<p>ORDER 59 minus 5,ORDER 79 minus 10,ORDER 149 minus 20,ORDER 299 minus 50</p>"
       },{
           "type": "checkbox",
           "id": "full_minusSwitch",
           "label": "是否启用满减活动",
-          "default": false
+          "default": true
       }
     ]
   },
