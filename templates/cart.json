@@ -18,7 +18,7 @@
       ],
       "settings": {
         "show_car_bar": false,
-        "cart_show_count_down": true,
+        "cart_show_count_down": false,
         "enable_order_notes": true,
         "show_payment_icons": true,
         "gift_wrap_product": "",
