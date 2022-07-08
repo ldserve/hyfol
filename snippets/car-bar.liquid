@@ -48,7 +48,7 @@
 		{%- if settings.cart_show_free_shipping_threshold -%}
 			{%- assign threshold_in_cents = settings.cart_free_shipping_threshold | times: 100 -%}
 			{%- if cart.total_price >= threshold_in_cents -%}
-				<p class="page__description d-inline-block">{{ 'cart.general.free_shipping' | t }}</p>
+				<p class="page__description d-inline-block">{{ 'cart.general.free_shipping_html' | t }}</p>
 			{%- else -%}
 				{%- capture remaining_amount -%}<span><span class="wh-original-cart-total">
 					<span class='wh-original-price'>{{ cart.total_price | minus: threshold_in_cents | abs | money }}</span></span>
