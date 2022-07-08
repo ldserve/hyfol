@@ -4226,7 +4226,8 @@
                 }
                 event.preventDefault(); // Prevent form to be submitted
                 var isSelect = false//是否选择尺码
-                var sizeBlock = Array.from(this.element.querySelectorAll('.block-swatch__radio'))
+                var formtag=target.closest('form')
+                var sizeBlock = Array.from(formtag.querySelectorAll('.block-swatch__radio'))
                 isSelect = sizeBlock.some(item => item.checked && item.hasAttribute('checked'))
                 isSelect=isSelect|| this.currentVariant.option2===null&&this.currentVariant.option1==='Default Title'
                 
