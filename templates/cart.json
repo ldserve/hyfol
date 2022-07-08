@@ -18,7 +18,7 @@
       ],
       "settings": {
         "show_car_bar": false,
-        "cart_show_count_down": true,
+        "cart_show_count_down": false,
         "enable_order_notes": true,
         "show_payment_icons": true,
         "gift_wrap_product": "",
@@ -84,7 +84,7 @@
         "stack_products": false,
         "show_quick_buy": false,
         "link_title": "View all",
-        "link_url": ""
+        "link_url": "https:\/\/www.hyfol.com\/collections\/new-in-1"
       }
     }
   },
