@@ -4170,7 +4170,11 @@
                     select.removeAttribute('checked')
                 })
                 target.setAttribute('checked','')
-                this.option1&&document.querySelector('.select-size-no').classList.add('d-none')
+              console.log(this.option1);
+              console.log(this.option2);
+              console.log(this.option3);
+              console.log(this.currentVariant);
+              this.option1&&document.querySelector('.select-size-no').classList.add('d-none')
                 if (selectedValueElement) {
                     selectedValueElement.innerHTML = target.value;
                 } // Finally, we get the new variant
@@ -4245,8 +4249,8 @@
                 } else {
                     formElement = this.element.querySelector('form[action*="/cart/add"]');
                 }
-
-                fetch("".concat(window.routes.cartAddUrl, ".js"), {
+              console.log(Form.serialize(formElement));
+              fetch("".concat(window.routes.cartAddUrl, ".js"), {
                     body: JSON.stringify(Form.serialize(formElement)),
                     credentials: 'same-origin',
                     method: 'POST',
