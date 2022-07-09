@@ -40,6 +40,12 @@
         "show_quick_buy": false
       }
     },
+    "1657335361b9c0e6f5": {
+      "type": "mobile-payment-icons",
+      "settings": {
+        "show_payment_icons": true
+      }
+    },
     "164855003715c57e88": {
       "type": "web-text",
       "blocks": {
@@ -91,6 +97,7 @@
   "order": [
     "main",
     "recently-viewed-products",
+    "1657335361b9c0e6f5",
     "164855003715c57e88",
     "1657104594e23caf5d"
   ]
