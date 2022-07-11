@@ -9971,7 +9971,7 @@ select option {
   margin-left: 5px;
 }
 
-.product-discount-left p{
+.product-discount-left a, .product-discount-left p{
   margin: 0;
   color: #b82928;
   font-weight: 550;

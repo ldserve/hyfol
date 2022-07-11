@@ -37,12 +37,12 @@
     ]
   },
   {
-    "name": "全场活动配置",
+    "name": "活动配置",
     "settings": [
       {
         "type": "richtext",
         "id": "full_reduction",
-        "label": "折扣信息",
+        "label": "按数量阶梯满减",
         "info": "活动信息用逗号隔开 格式如： 5% OFF 2 PIECES,10% OFF 3 PIECES 第一位是折扣，第三位是数量"
       },
       {
@@ -53,7 +53,7 @@
       },{
         "type": "richtext",
         "id": "full_minus",
-        "label": "满减信息阶梯",
+        "label": "按金额阶梯满减",
         "info": "活动信息用逗号隔开 格式如：ORDER 59 minus 5,ORDER 79 minus 10 第二位是订单金额，第四位是折扣金额",
         "default":"<p>ORDER 59 minus 5,ORDER 79 minus 10,ORDER 149 minus 20,ORDER 299 minus 50</p>"
       },{
@@ -61,6 +61,12 @@
           "id": "full_minusSwitch",
           "label": "是否启用满减活动",
           "default": true
+      },{
+        "type": "richtext",
+        "id": "CustomPromotionUrl",
+        "label": "自定义活动跳转链接配置",
+        "info": "活动名称和链接用'='隔开，每条活动用','隔开 格式如：Choose 3 for $55=https://www.hyfol.com/collections/3-for-55",
+        "default":"<p>Choose 3 for $55=https://www.hyfol.com/collections/3-for-55,Choose 3 for $49.9=https://www.hyfol.com/collections/spring-sale</p>"
       }
     ]
   },
