@@ -203,7 +203,7 @@
                       "commodity_type":"{{product.type | handleize}}",
 							        "original_price":"{{ product.selected_or_first_available_variant.compare_at_price }}",
 			      	        "current_price":"{{ product.selected_or_first_available_variant.price }}"}'>
-                      <input class="variant-swatch__radio product-form__single-selector" type="radio" name="{{ option_name }}" id="{{ variant_swatch_id }}" value="{{ value | escape }}"  data-option-position="{{ option.position }}">
+                      <input class="variant-swatch__radio product-form__single-selector" type="radio" name="{{ option_name }}" id="{{ variant_swatch_id }}" value="{{ value | escape }}"  data-option-position="{{ option.position }}" {% if option.selected_value == value %}checked{% endif %}>
 
                       <label class="variant-swatch__item" for="{{ variant_swatch_id }}" title="{{ value | escape }}">
                         <div class="aspect-ratio" style="padding-bottom: {{ 100.0 | divided_by: variant.image.aspect_ratio }}%">
@@ -221,7 +221,6 @@
 							{%- assign handles = variable | split:',' -%}
 							{% for handle in handles %}
 								{%- assign collocation_product = all_products[handle] -%}
-								{%- assign selected_variant = collocation_product.selected_or_first_available_variant -%}
 								{%- if collocation_product != blank -%}
 									<a class="variant-swatch ld-variant" href="{{ collocation_product.url }}">
 										<div class="variant-swatch__item">
