@@ -8482,6 +8482,8 @@ select option {
   font-weight: 500;
   justify-content: unset;
   background-image: -webkit-linear-gradient(left, #ff0000, #0000ff 25%, #ff0000 50%, #0000ff 75%, #ff0000);
+  display: block;
+  text-align: left;
   -webkit-text-fill-color: transparent;
   -webkit-background-clip: text;
   -webkit-background-size: 200% 100%;
