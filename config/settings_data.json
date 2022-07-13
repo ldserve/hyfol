@@ -397,7 +397,15 @@
     },
     "content_for_index": [
 
-    ]
+    ],
+    "blocks": {
+      "444262ce7e9698bc3": {
+        "type": "shopify:\/\/apps\/growave-loyalty-wishlist-3\/blocks\/block.embed.socialshopwave-helper\/b3d2efbe-110a-4e27-84a8-1f2ed63996a4",
+        "disabled": false,
+        "settings": {
+        }
+      }
+    }
   },
   "presets": {
     "Metal": {
