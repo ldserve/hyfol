@@ -84,12 +84,12 @@
       "disabled": true,
       "settings": {
         "collection": "",
-        "title": "Featured collection",
+        "title": "JUST LANDED",
         "products_count": 12,
         "layout": "vertical",
         "stack_products": false,
         "show_quick_buy": false,
-        "link_title": "JUST LANDED",
+        "link_title": "View all",
         "link_url": "https:\/\/www.hyfol.com\/collections\/new-in-1"
       }
     }
