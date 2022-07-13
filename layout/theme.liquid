@@ -2,6 +2,7 @@
 
 <html class="no-js" lang="{{ request.locale.iso_code }}">
   <head>{% render 'pagefly-head' %}
+
 {% include 'limespot' %}
 {% include 'kiwiSizing' %}
     <meta charset="utf-8">
@@ -287,6 +288,38 @@ line_items: [
     <!-- PLM -->
     <script src="https://www.paypal.com/sdk/js?client-id=AaoMEq4pF7_1JBTPdRANwtH_MdqLAgscO0ivoPn1JlNmpA3YdqEuxxUY2gUg9vszi8RWrvPHSoTV8tjQ&components=messages" async></script>
     <!-- PLM END -->
+<!-- Bind 营销代码 END -->
+	{% include 'ets_fs_assets' %}
+		<!-- outbrain 营销代码 Start -->
+		<script data-obct type = "text/javascript">
+      /** DO NOT MODIFY THIS CODE**/
+      !function(_window, _document) {
+        var OB_ADV_ID = '003ef57537f3b4dcb7123571cef9547222';
+        if (_window.obApi) {
+          var toArray = function(object) {
+            return Object.prototype.toString.call(object) === '[object Array]' ? object : [object];
+          };
+          _window.obApi.marketerId = toArray(_window.obApi.marketerId).concat(toArray(OB_ADV_ID));
+          return;
+        }
+        var api = _window.obApi = function() {
+          api.dispatch ? api.dispatch.apply(api, arguments) : api.queue.push(arguments);
+        };
+        api.version = '1.1';
+        api.loaded = true;
+        api.marketerId = OB_ADV_ID;
+        api.queue = [];
+        var tag = _document.createElement('script');
+        tag.async = true;
+        tag.src = '//amplify.outbrain.com/cp/obtp.js';
+        tag.type = 'text/javascript';
+        var script = _document.getElementsByTagName('script')[0];
+        script.parentNode.insertBefore(tag, script);
+      }(window, document);
+
+      obApi('track', 'PAGE_VIEW');
+		</script>
+		<!-- outbrain 营销代码 end -->
 	</head>
 
   <body class="warehouse--v1 {% if settings.animation_image_zoom %}features--animate-zoom{% endif%} template-{{ request.page_type | handle }} {% if request.page_type contains '/' %}template-{{ request.page_type | split: '/' | last | handle }}{% endif %}" data-instant-intensity="viewport">

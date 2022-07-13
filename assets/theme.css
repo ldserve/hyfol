@@ -1585,6 +1585,7 @@ body:not(.is-tabbing) textarea:focus {
 @media screen and (max-width: 640px) {
   .container--flush {
     padding: 20px;
+    padding-bottom: 0;
   }
 
   .container--unflush {
@@ -4020,7 +4021,7 @@ scrollbar-width: none; /* firefox */
   align-items: center;
   /* box-shadow: 0 1px var(--border-color), 0 -1px var(--border-color); */
   background: var(--background);
-  z-index: 3;
+  z-index: 2;
 }
 
  .filter_icon{
@@ -8481,6 +8482,8 @@ select option {
   font-weight: 500;
   justify-content: unset;
   background-image: -webkit-linear-gradient(left, #ff0000, #0000ff 25%, #ff0000 50%, #0000ff 75%, #ff0000);
+  display: block;
+  text-align: left;
   -webkit-text-fill-color: transparent;
   -webkit-background-clip: text;
   -webkit-background-size: 200% 100%;
@@ -10459,9 +10462,10 @@ shopify-payment-terms {
 /*  border-bottom: 7px solid #1b1b1b;*/
 /*}*/
 
-.collection .color-swatch__radio:checked+.color-swatch__item::after,
+/* .collection .color-swatch__radio:checked+.color-swatch__item::after, */
 .card__section .color-swatch__radio[checked]+.color-swatch__item::after,
 #mini-cart .color-swatch__radio[checked]+.color-swatch__item::after,
+.product-item .color-swatch__radio:checked+.color-swatch__item::after,
 .color-swatch__button.is-selected .color-swatch__item::after {
   position: absolute;
   content: "";
@@ -16085,4 +16089,19 @@ justify-content: space-between;
 .size-chart-btn {
   text-decoration: underline;
   text-underline-offset: 4px;
+}
+
+.select-size-no{
+  color: #f00;
+  margin: 0;
+  line-height: 1.8rem;
+  padding-top: 0.4rem;
+}
+.select-size-no >svg{
+  margin-right: 0.6rem;
+  font-size: 1.4rem;
+}
+.text-prominent{
+  font-weight:600;
+  color:#CF0E0E;
 }

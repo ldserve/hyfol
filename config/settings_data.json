@@ -1,7 +1,7 @@
 {
   "current": {
-    "collocation_spus": "sp220527ulgb,sp2206083d0s,sp220420j1oo",
-    "autoplay_time": "2",
+    "collocation_spus": "sp2204293w4u,sp211204asg2,sp220420j1oo",
+    "autoplay_time": "3",
     "full_reduction": "<p><strong>5% OFF 2 PIECES<\/strong>,<strong>10% OFF 3 PIECES,15% OFF 4 PIECES,20% OFF 5 PIECES,25% OFF 6 PIECES<\/strong>,<strong>30% OFF 7 PIECES<\/strong><\/p>",
     "full_isOpenview": false,
     "showFlake": false,
@@ -269,6 +269,7 @@
           },
           "ccab5dcb-d3a7-4a2e-9c0e-6699c88abf2e": {
             "type": "announcement",
+            "disabled": true,
             "settings": {
               "text": "BUY CARGO SHORTS GET FREE BELT",
               "link": "shopify:\/\/collections\/fathers-day1"
@@ -396,7 +397,15 @@
     },
     "content_for_index": [
 
-    ]
+    ],
+    "blocks": {
+      "444262ce7e9698bc3": {
+        "type": "shopify:\/\/apps\/growave-loyalty-wishlist-3\/blocks\/block.embed.socialshopwave-helper\/b3d2efbe-110a-4e27-84a8-1f2ed63996a4",
+        "disabled": false,
+        "settings": {
+        }
+      }
+    }
   },
   "presets": {
     "Metal": {

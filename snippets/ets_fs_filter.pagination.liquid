@@ -1,0 +1,68 @@
+{% raw %}
+    {% assign load_more = "Load more" %}
+    {% if translate and translate.load_more %}
+    {% assign load_more = translate.load_more %}
+    {% endif %}
+    {% if pagination_type == 'pagination' %}
+        {% if paginate.last_page > 1 %}
+        {% capture listPage %}
+                {% assign remainder = paginate.current_page | divided_by: 5 | floor %}
+                {% if paginate.current_page > 5 or remainder > 0 %}
+                <li class="ets_fs_pagination_item ets_fs_pagination_button ets_fs_icon ets_fs_tooltip" onclick="etsFsGotoPage(1, '{{ tabActive }}')" onmouseover="etsFsTooltip(this, true)" onmouseleave="etsFsTooltip(this, false)">
+                    <span class="ets_fs_pagination_button_item fist_page"><i class="icon icon_svg icon_play"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="backward" class="svg-inline--fa fa-backward fa-w-16" role="img" viewBox="0 0 512 512"><path fill="currentColor" d="M11.5 280.6l192 160c20.6 17.2 52.5 2.8 52.5-24.6V96c0-27.4-31.9-41.8-52.5-24.6l-192 160c-15.3 12.8-15.3 36.4 0 49.2zm256 0l192 160c20.6 17.2 52.5 2.8 52.5-24.6V96c0-27.4-31.9-41.8-52.5-24.6l-192 160c-15.3 12.8-15.3 36.4 0 49.2z"/></svg></i></span>
+                    {% comment %}<span class="tooltip-text">First page</span>{% endcomment %}
+                </li>
+                {% endif %}
+                {% if paginate.current_page > 1 %}
+                <li class="ets_fs_pagination_item ets_fs_pagination_button ets_fs_icon ets_fs_tooltip" onclick="etsFsGotoPage('{{ paginate.current_page | minus: 1 }}', '{{ tabActive }}')" onmouseover="etsFsTooltip(this, true)" onmouseleave="etsFsTooltip(this, false)">
+                    <span class="ets_fs_pagination_button_item prev"><i class="icon icon_svg icon_play"><svg width="14" height="14" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M424.4 214.7L72.4 6.6C43.8-10.3 0 6.1 0 47.9V464c0 37.5 40.7 60.1 72.4 41.3l352-208c31.4-18.5 31.5-64.1 0-82.6z"></path></svg></i></span>
+                </li>
+                {% endif %}
+            {% if paginate.last_page > 5 %}
+                {% assign start_page = remainder | times: 5 %}
+                {% if start_page == 0 %}
+                {% assign start_page = 1 %}
+                {% endif %}
+                {% assign plus_remainder = remainder |  plus: 1 %}
+                {% assign last_page = plus_remainder | times: 5 %}
+                {% if last_page > paginate.last_page %}
+                    {% assign last_page = paginate.last_page %}
+                {% endif %}
+                {% for page in (start_page..last_page) %}
+                    <li onclick="etsFsGotoPage('{{page}}', '{{ tabActive }}')" class="ets_fs_pagination_item ets_fs_pagination_page {% if page == paginate.current_page %}active{% endif %}"><span class="prev">{{ page }}</span></li>
+                {% endfor %}
+            {% else %}
+                {% for page in (1..paginate.last_page) %}
+                    <li onclick="etsFsGotoPage('{{page}}', '{{ tabActive }}')" class="ets_fs_pagination_item ets_fs_pagination_page {% if page == paginate.current_page %}active{% endif %}"><span class="prev">{{ page }}</span></li>
+                {% endfor %}
+            {% endif %}
+            {% if paginate.current_page < paginate.last_page %}
+            <li class="ets_fs_pagination_item ets_fs_pagination_button ets_fs_icon ets_fs_tooltip" onclick="etsFsGotoPage('{{ paginate.current_page | plus: 1 }}', '{{ tabActive }}')" onmouseover="etsFsTooltip(this, true)" onmouseleave="etsFsTooltip(this, false)">
+            <span class="ets_fs_pagination_button_item next"><i class="icon icon_svg icon_play"><svg width="14" height="14" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M424.4 214.7L72.4 6.6C43.8-10.3 0 6.1 0 47.9V464c0 37.5 40.7 60.1 72.4 41.3l352-208c31.4-18.5 31.5-64.1 0-82.6z"></path></svg></i></span>
+            </li>
+            {% endif %}
+            {% assign isShowLastPageBtn = paginate.last_page | minus: 5 %}
+            {% if paginate.current_page < isShowLastPageBtn %}
+            <li class="ets_fs_pagination_item ets_fs_pagination_button  ets_fs_icon ets_fs_tooltip" onclick="etsFsGotoPage( '{{ paginate.last_page }}', '{{ tabActive }}')" onmouseover="etsFsTooltip(this, true)" onmouseleave="etsFsTooltip(this, false)">
+                <span class="ets_fs_pagination_button_item last_page"><i class="icon icon_svg icon_play"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="forward" class="svg-inline--fa fa-forward fa-w-16" role="img" viewBox="0 0 512 512"><path fill="currentColor" d="M500.5 231.4l-192-160C287.9 54.3 256 68.6 256 96v320c0 27.4 31.9 41.8 52.5 24.6l192-160c15.3-12.8 15.3-36.4 0-49.2zm-256 0l-192-160C31.9 54.3 0 68.6 0 96v320c0 27.4 31.9 41.8 52.5 24.6l192-160c15.3-12.8 15.3-36.4 0-49.2z"/></svg></i></span>
+                {% comment %}<span class="tooltip-text">Last page</span>{% endcomment %}
+            </li>
+            {% endif %}
+        {%endcapture%}
+        <ul class="pagination ets_fs_pagination {{ remainder }}">
+            {{ listPage }}
+        </ul>
+        {% endif %}
+    {% elsif pagination_type == 'load_more' and paginate.current_page < paginate.last_page %}
+
+        <button class="ets_fs_btn_loadmore_prod"
+                data-last-page="{{ paginate.last_page }}"
+                data-current-page="{{ paginate.current_page }}" onclick="etsFsPagination('click', this, '{{ tabActive }}')">
+            {{ load_more }}</button>
+    {% elsif pagination_type == 'infinity' and paginate.current_page < paginate.last_page %}
+        <button class="ets_fs_btn_scroll_pagination"
+                data-last-page="{{ paginate.last_page }}"
+                data-current-page="{{ paginate.current_page }}" onclick="etsFsPagination('scroll', this, '{{ tabActive }}')">{{ load_more }}</button>
+    {% endif %}
+
+{% endraw %}

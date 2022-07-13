@@ -134,7 +134,7 @@
             });
             if(this.isAuto == "true"){
                 this.onmouseenter = ()=>{
-                    this.stopTimer()        
+                    this.stopTimer()
                }
                this.onmouseleave = ()=>{
                    this.startTimer()
@@ -2428,10 +2428,6 @@
                 // var cartId=typeof this.miniCartElement.id =="string" ? this.miniCartElement.id:'mini-cart'
                 this.miniCartToggleElement = this.element.querySelector("[aria-controls=\"".concat(this.miniCartElement.id, "\"]"));
                 // this.miniCartToggleElement = this.element.querySelector("[aria-controls=\"".concat(cartId, "\"]"));
-                // console.log('this.element',this.element);
-                // console.log(' this.miniCartElement', this.miniCartElement);
-                // console.log('this.miniCartElementqweewq',this.miniCartElement.id);
-                // console.log('cartId',cartId);
                 this._checkMiniCartScrollability();
             }
           this.itemCount = window.theme.cartCount;
@@ -3800,20 +3796,21 @@
                 this.variantSelectors = this.element.querySelectorAll('.product-form__option[data-selector-type]');
                 this.masterSelector = this.element.querySelector("#product-select-".concat(this.productData['id'])); // We init value with the first selected variant
 
+                var variantString = jsonData['selected_variant_id'];
                 this.productData['variants'].forEach(function (variant) {
-                    if (variant['id'] === jsonData['selected_variant_id']) {
+                    if (variant['id'] == variantString) {
                         _this.currentVariant = variant;
                         _this.option1 = variant['option1'];
                         _this.option2 = variant['option2'];
                         _this.option3 = variant['option3'];
                     }
-                });
+                })
+            //    if(!this.options['isQuickView']) this.option2 =null;
                 this.storeAvailability = new StoreAvailability(this.element.querySelector('.product-meta__store-availability-container'));
             }
-
+            
             this._updateSelectors(this.currentVariant); // We update the selectors on initial load to disable the sold out variants
-
-
+            
             this._setupStockCountdown();
 
             this._attachListeners();
@@ -3888,7 +3885,7 @@
                 var productPrices = this.element.querySelector('.price-list'),
                     currencyFormat = window.theme.currencyCodeEnabled ? window.theme.moneyWithCurrencyFormat : window.theme.moneyFormat;
 
-                if (!productPrices) {
+                if (!productPrices||!this.option2) {
                     return; // Sometimes merchant remove element from the code without taking care of JS... so let's be defensive
                 }
 
@@ -4022,7 +4019,7 @@
             value: function _updateUnitPrice(newVariant, previousVariant) {
                 var unitPriceMeasurement = this.element.querySelector('.unit-price-measurement');
 
-                if (!unitPriceMeasurement) {
+                if (!unitPriceMeasurement||!this.option2) {
                     return; // Sometimes merchant remove element from the code without taking care of JS... so let's be defensive
                 }
 
@@ -4046,13 +4043,12 @@
             key: "_updateSelectors",
             value: function _updateSelectors(newVariant) {
                 var _this2 = this;
-
+                if(!_this2.option2)return
                 // We apply a top-down approach where we first check the first option, second option and third option. If there is
                 // more than one option, the value is considered "available" if there is at least one variant with this value
                 // available (independently of the selected variant)
                 var applyClassToSelector = function applyClassToSelector(selector, valueIndex, available) {
                     var selectorType = selector.getAttribute('data-selector-type');
-
                     switch (selectorType) {
                         case 'color':
                             selector.querySelector(".color-swatch:nth-child(".concat(valueIndex + 1, ")")).classList.toggle('color-swatch--disabled', !available);
@@ -4070,8 +4066,10 @@
 
                 if (this.variantSelectors && this.variantSelectors[0]) {
                     // For the first option, the value is considered available if there is at least one variant available
+                  
                     this.productOptionsWithValues[0]['values'].forEach(function (value, valueIndex) {
                         applyClassToSelector(_this2.variantSelectors[0], valueIndex, _this2.productData['variants'].some(function (variant) {
+    
                             return variant['option1'] === value && variant['available'];
                         })); // We now do the second level
 
@@ -4103,7 +4101,7 @@
                 var addToCartButtonElement = this.element.querySelector('.product-form__add-button'),
                     infoListElement = this.element.querySelector('.product-form__info-list');
 
-                if (!addToCartButtonElement) {
+                if (!addToCartButtonElement ||!this.option2) {
                     return; // Sometimes merchant remove element from the code without taking care of JS... so let's be defensive
                 }
 
@@ -4167,9 +4165,8 @@
                 selectList.forEach(select=>{
                     select.removeAttribute('checked')
                 })
-
                 target.setAttribute('checked','')
-
+                this.option1&&document.querySelector('.select-size-no').classList.add('d-none')
                 if (selectedValueElement) {
                     selectedValueElement.innerHTML = target.value;
                 } // Finally, we get the new variant
@@ -4199,8 +4196,8 @@
         }, {
             key: "_getCurrentVariantFromOptions",
             value: function _getCurrentVariantFromOptions() {
-                var _this3 = this;
 
+                var _this3 = this;
                 var found = false;
                 this.productData['variants'].forEach(function (variant) {
                     if (variant['option1'] === _this3.option1 && variant['option2'] === _this3.option2 && variant['option3'] === _this3.option3) {
@@ -4223,20 +4220,29 @@
                 if (window.theme.cartType === 'page') {
                     return; // When using a cart type of page, we just simply redirect to the cart page
                 }
-
                 event.preventDefault(); // Prevent form to be submitted
-
+                var isSelect = false//是否选择尺码
+                var formtag=target.closest('form')
+                var sizeBlock = Array.from(formtag.querySelectorAll('.block-swatch__radio'))
+                isSelect = sizeBlock.some(item => item.checked && item.hasAttribute('checked'))
+                isSelect=isSelect|| this.currentVariant.option2===null&&this.currentVariant.option1==='Default Title'
+                
+                if (!isSelect) {
+                    window.screen.availWidth<649 &&alert('Please Select Size')
+                    document.querySelector('.select-size-no').classList.remove('d-none')
+                    return
+                }
                 //event.stopPropagation(); // First, we switch the status of the button
                 target.setAttribute('disabled', 'disabled');
                 document.dispatchEvent(new CustomEvent('theme:loading:start')); // Then we add the product in Ajax
 
                 var formElement
-                if(target.hasAttribute('data-purchase')){
-                    formElement=target.closest('form[action*="/cart/add"]')
-                }else{
+                if (target.hasAttribute('data-purchase')) {
+                    formElement = target.closest('form[action*="/cart/add"]')
+                } else {
                     formElement = this.element.querySelector('form[action*="/cart/add"]');
                 }
-             
+
                 fetch("".concat(window.routes.cartAddUrl, ".js"), {
                     body: JSON.stringify(Form.serialize(formElement)),
                     credentials: 'same-origin',
@@ -13104,7 +13110,7 @@
             key: "variantHasChanged",
             value: function variantHasChanged(newVariant) {
                 var _this = this;
-
+                if(!newVariant)return
                 // We may have selected a variant that will cause the set of images to change completely. To do that we need to iterate through all images,
                 // check for the attribute "data-group-name" and verify if some images need to be filtered or not
                 var shouldReload = false;
@@ -14747,7 +14753,6 @@
                 if (window.theme.cartType === 'page') {
                     return; // When using a cart type of page, we just simply redirect to the cart page
                 }
-
                 event.preventDefault(); // Prevent form to be submitted
 
                 event.stopPropagation(); // First, we switch the status of the button

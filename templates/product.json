@@ -30,7 +30,7 @@
           "type": "product_sellpoint",
           "settings": {
             "notsale_tag": "Nopromotion",
-            "sale_text_on_detail": "<p><strong>5% OFF 2 PIECES    <\/strong>|  <strong>10% OFF 3 PIECES <\/strong><\/p><p><strong>15% OFF 4 PIECES <\/strong>| <strong>20% OFF 5 PIECES <\/strong><\/p><p><strong>25% OFF 6 PIECES <\/strong>| <strong>30% OFF 7+ PIECES<\/strong><\/p><p><\/p>",
+            "sale_text_on_detail": "<p><strong>5% OFF 2 PIECES    <\/strong>| <strong>10% OFF 3 PIECES <\/strong><\/p><p><strong>15% OFF 4 PIECES <\/strong>| <strong>20% OFF 5 PIECES <\/strong><\/p><p><strong>25% OFF 6 PIECES <\/strong>| <strong>30% OFF 7+ PIECES<\/strong><\/p><p><\/p>",
             "sale_text_on_img": "<p>BUY 1 MORE GET EXTRA 5% OFF<\/p>"
           }
         },
@@ -81,6 +81,16 @@
             "shipping_estimator_default_country": "United States",
             "show_refunds_policy": true
           }
+        },
+        "98d40b54-cd8a-44cc-910c-b9e07340dbd3": {
+          "type": "collocation_purchase",
+          "settings": {
+          }
+        },
+        "71bfc909-1214-40ac-8a48-312475466c53": {
+          "type": "shopify:\/\/apps\/growave-loyalty-wishlist-3\/blocks\/block.product.faveButton\/b3d2efbe-110a-4e27-84a8-1f2ed63996a4",
+          "settings": {
+          }
         }
       },
       "block_order": [
@@ -88,12 +98,14 @@
         "variant_selector",
         "78a65596-bd80-4353-82c9-7ede27334ff0",
         "buy_buttons",
+        "71bfc909-1214-40ac-8a48-312475466c53",
         "40401d43-e40a-46bd-b84a-7563498f1427",
         "220a0d08-af6d-41fd-a53d-f77edb36997c",
         "description",
         "6040b192-8f10-4ee0-8454-dafbf292b96a",
         "c9a13b76-73f3-4161-aa0c-5edbf018722c",
-        "2387415b-9519-418e-8c17-7ce70355de1c"
+        "2387415b-9519-418e-8c17-7ce70355de1c",
+        "98d40b54-cd8a-44cc-910c-b9e07340dbd3"
       ],
       "settings": {
         "cjj_pro_bg_top": "shopify:\/\/shop_images\/HYFOL__01_b3e71f0c-87eb-4b3e-83be-f1ba04de0b79.jpg",
@@ -182,12 +194,29 @@
         "link": "",
         "shadow": false
       }
+    },
+    "1192462ce7ecb73678": {
+      "type": "apps",
+      "blocks": {
+        "337ce0d6-a5dd-41ec-8c62-492f49115819": {
+          "type": "shopify:\/\/apps\/growave-loyalty-wishlist-3\/blocks\/block.product.reviewWidget\/b3d2efbe-110a-4e27-84a8-1f2ed63996a4",
+          "settings": {
+          }
+        }
+      },
+      "block_order": [
+        "337ce0d6-a5dd-41ec-8c62-492f49115819"
+      ],
+      "settings": {
+        "include_margins": false
+      }
     }
   },
   "order": [
     "main",
     "1648198863f0dd211e",
     "product-recommendations",
+    "1192462ce7ecb73678",
     "recently-viewed-products",
     "16476891022bcaf9d0",
     "alireviews-widget-95110",
