@@ -8482,6 +8482,8 @@ select option {
   font-weight: 500;
   justify-content: unset;
   background-image: -webkit-linear-gradient(left, #ff0000, #0000ff 25%, #ff0000 50%, #0000ff 75%, #ff0000);
+  display: block;
+  text-align: left;
   -webkit-text-fill-color: transparent;
   -webkit-background-clip: text;
   -webkit-background-size: 200% 100%;
@@ -9971,7 +9973,7 @@ select option {
   margin-left: 5px;
 }
 
-.product-discount-left a, .product-discount-left p{
+.product-discount-left p{
   margin: 0;
   color: #b82928;
   font-weight: 550;
@@ -16099,3 +16101,8 @@ justify-content: space-between;
   margin-right: 0.6rem;
   font-size: 1.4rem;
 }
+.text-prominent{
+  font-weight:600;
+  color:#CF0E0E;
+}
+
