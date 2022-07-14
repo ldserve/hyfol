@@ -9977,10 +9977,11 @@ select option {
   margin: 0;
   color: #b82928;
   font-weight: 550;
+}
+.product-discount-left a{
   text-decoration: underline;
   text-underline-offset: 4px;
 }
-
 .product-discount-icon{
   font-size: 20px;
 }
