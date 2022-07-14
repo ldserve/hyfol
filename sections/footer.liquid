@@ -168,7 +168,7 @@
           <div class="footer__aside-item footer__aside-item--payment">
             <p class="footer__aside-title">{{ 'footer.general.we_accept' | t }}</p>
 
-
+						<div class="payment-list">
                 {% for type in shop.enabled_payment_types %}
                   {%- if type =='paypal' or type=='unionpay' or type=='visa' or type=='american_express' or type=='maestro'or type=='master' or type=='diners_club' or type=='discover'or type=='jcb'or type=='trustly' %}
                     {{ type | payment_type_svg_tag: class: 'payment-list__item' }}
