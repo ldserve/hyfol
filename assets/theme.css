@@ -9973,10 +9973,12 @@ select option {
   margin-left: 5px;
 }
 
-.product-discount-left p{
+.product-discount-left p, .product-discount-left a{
   margin: 0;
   color: #b82928;
   font-weight: 550;
+  text-decoration: underline;
+  text-underline-offset: 4px;
 }
 
 .product-discount-icon{
