@@ -217,8 +217,8 @@
                   {%- endif -%}
                 {%- endfor -%}
 							{%- endfor -%}
-							{%- assign variable = product.metafields.my_fields.collocation -%}
-							{%- assign handles = variable | split:',' -%}
+							{%- assign collocation_list = product.metafields.my_fields.collocation -%}
+							{%- assign handles = collocation_list | split:',' -%}
 							{% for handle in handles %}
 								{%- assign collocation_product = all_products[handle] -%}
 								{%- if collocation_product != blank -%}
