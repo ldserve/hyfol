@@ -3,6 +3,30 @@
     "1650101273f11a55ef": {
       "type": "slideshow",
       "blocks": {
+        "28572d9f-8700-4893-990e-c3b4bf1e7821": {
+          "type": "image",
+          "settings": {
+            "sensorsName": "2 Cargo shorts",
+            "image": "shopify:\/\/shop_images\/005e84d459065c07f1cb8389db6eaa16.jpg",
+            "mobile_image": "shopify:\/\/shop_images\/6156e1ef1c55cb4f63cdc9d4004c7b5c.jpg",
+            "show_overlay": false,
+            "overlay_opacity": 30,
+            "text_color": "#ffffff",
+            "title": "",
+            "heading_text_font": "helvetica_n4",
+            "heading_text_font_size": 20,
+            "heading_text_color": "#ffffff",
+            "content": "",
+            "content_text_font": "helvetica_n4",
+            "content_text_font_size": 12,
+            "content_text_color": "#ffffff",
+            "content_position": "middle_center",
+            "button_background": "#ffffff",
+            "button_text_color": "#000000",
+            "button_text": "",
+            "link": "https:\/\/www.hyfol.com\/collections\/fishing"
+          }
+        },
         "1650101273ef0886ca-0": {
           "type": "image",
           "settings": {
@@ -25,31 +49,6 @@
             "button_text_color": "#000000",
             "button_text": "",
             "link": "https:\/\/www.hyfol.com\/collections\/3-for-55"
-          }
-        },
-        "fb844d01-0475-4130-aeb7-a118c0a1b427": {
-          "type": "image",
-          "disabled": true,
-          "settings": {
-            "sensorsName": "3 for $55",
-            "image": "shopify:\/\/shop_images\/1_97f07d21-5be2-4733-93db-ea3111813e02.jpg",
-            "mobile_image": "shopify:\/\/shop_images\/4_d9176fe6-6b49-4b42-b4bd-bf8ee19ceca7.jpg",
-            "show_overlay": false,
-            "overlay_opacity": 30,
-            "text_color": "#ffffff",
-            "title": "",
-            "heading_text_font": "helvetica_n4",
-            "heading_text_font_size": 20,
-            "heading_text_color": "#ffffff",
-            "content": "",
-            "content_text_font": "helvetica_n4",
-            "content_text_font_size": 12,
-            "content_text_color": "#ffffff",
-            "content_position": "middle_center",
-            "button_background": "#ffffff",
-            "button_text_color": "#000000",
-            "button_text": "",
-            "link": "https:\/\/www.hyfol.com\/collections\/tops-packs-1"
           }
         },
         "1650101273ef0886ca-1": {
@@ -76,12 +75,13 @@
             "link": "https:\/\/www.hyfol.com\/collections\/sportswear-2for49-9"
           }
         },
-        "28572d9f-8700-4893-990e-c3b4bf1e7821": {
+        "fb844d01-0475-4130-aeb7-a118c0a1b427": {
           "type": "image",
+          "disabled": true,
           "settings": {
-            "sensorsName": "2 Cargo shorts",
-            "image": "shopify:\/\/shop_images\/005e84d459065c07f1cb8389db6eaa16.jpg",
-            "mobile_image": "shopify:\/\/shop_images\/6156e1ef1c55cb4f63cdc9d4004c7b5c.jpg",
+            "sensorsName": "3 for $55",
+            "image": "shopify:\/\/shop_images\/1_97f07d21-5be2-4733-93db-ea3111813e02.jpg",
+            "mobile_image": "shopify:\/\/shop_images\/4_d9176fe6-6b49-4b42-b4bd-bf8ee19ceca7.jpg",
             "show_overlay": false,
             "overlay_opacity": 30,
             "text_color": "#ffffff",
@@ -97,15 +97,15 @@
             "button_background": "#ffffff",
             "button_text_color": "#000000",
             "button_text": "",
-            "link": "https:\/\/www.hyfol.com\/collections\/fishing"
+            "link": "https:\/\/www.hyfol.com\/collections\/tops-packs-1"
           }
         }
       },
       "block_order": [
+        "28572d9f-8700-4893-990e-c3b4bf1e7821",
         "1650101273ef0886ca-0",
-        "fb844d01-0475-4130-aeb7-a118c0a1b427",
         "1650101273ef0886ca-1",
-        "28572d9f-8700-4893-990e-c3b4bf1e7821"
+        "fb844d01-0475-4130-aeb7-a118c0a1b427"
       ],
       "settings": {
         "edge_to_edge": true,
