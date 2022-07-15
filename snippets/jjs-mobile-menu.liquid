@@ -1,9 +1,5 @@
 {%- assign mega_menus = section.blocks | map: 'settings' | map: 'menu_item' -%}
-{% assign high_light_menu = 'raglan tees,graphic tees, running shorts,fishing,polo shirt,Flash Deal 【Buy 3 For $55】,Fishing Sale,Summer Sale 【20% Off 4 PCS】
-
-								,Flash Deal 【Buy 3 For $55】
-
-								' %}
+{% assign high_light_menu = 'raglan tees,graphic tees, running shorts,fishing,polo shirt,Flash Deal 【Buy 3 For $55】,Fishing Sale,Summer Sale 【20% Off 4 PCS】,Flash Deal 【Buy 3 For $55】' %}
 <div id="mobile-menu" class="mobile-menu jjs-mobile-menu" aria-hidden="true">
   {%- render 'icon', icon: 'nav-triangle-borderless' -%}
 
@@ -19,7 +15,7 @@
                   {{- link.title -}} {%- render 'icon', icon: 'arrow-right' -%}
                 </button>
               {%- else -%}
-								{% assign link_title_downcase = link.title | downcase%}
+								{% assign link_title_downcase = link.title | downcase | strip%}
 								<a href="{{ link.url }}" class="{% if high_light_menu contains link_title_downcase %}nav-dropdown__link__highlight {% endif %} mobile-menu__nav-link shence_commodityView nav-bar-link__mobile
                 data-type="menuitem"  data-scenable="1" data-expenable="1" data-bindexp="1"
                 data-sctype="mktClick" data-scdata='{"mkt_type":"bar",
