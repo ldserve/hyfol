@@ -16108,4 +16108,7 @@ justify-content: space-between;
   font-weight:600;
   color:#CF0E0E;
 }
-
+.shipping-bar-top .icon {
+    font-size: 1.4rem;
+    margin-right: 6px;
+}
