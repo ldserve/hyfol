@@ -51,6 +51,7 @@
       {% endstyle %}
       <div class="shipping-bar" >
         <div class="shipping-bar-top">
+          {%- render:'icon',icon:'cjj_postage' -%}
           {%- if settings.cart_show_free_shipping_threshold -%}
           {%- assign threshold_in_cents = settings.cart_free_shipping_threshold | times: 100 -%}
           {%- if cart.total_price >= threshold_in_cents -%}
@@ -77,8 +78,8 @@
           {% endif %}
           {%- endfor -%}
           {% if cart.total_price < order_price %}
-          <span class="d-block step-discount" data-action="{{order_price}},{{minus_monry}},{{cart.total_price | minus: order_price | abs}}">Spend <span
-            class='wh-original-price  mini-car-font'>{{cart.total_price | minus: order_price | abs|money}}</span> more and <span class="text-prominent">get {{minus_monry |money}} off！ {{code_text}}</span></span>
+          <span class="d-block step-discount" data-action="{{order_price}},{{minus_monry}},{{cart.total_price | minus: order_price | abs}}">
+            {%- render 'icon',icon:'discount' -%}Spend <span class='wh-original-price  mini-car-font'>{{cart.total_price | minus: order_price | abs|money}}</span> more and <span class="text-prominent">get {{minus_monry |money}} off！ {{code_text}}</span></span>
           {% endif %}
         {% endif %}
         </div>
@@ -175,8 +176,21 @@
               {%- endunless -%}
 
               <a href="{{ line_item.url }}" class="mini-cart__product-title text--strong link"><span
-                  class="mini-cart_product_title">{{ line_item.product.title }}</span><span
-                  class="mini-cart_variant_title">{{ line_item.variant.title }}</span>
+                  class="mini-cart_product_title">{{ line_item.product.title }}</span>
+                <span class="mini-cart_variant_title">{{ line_item.variant.title }}</span>
+              {%- comment -%}显示活动标签 start{%- endcomment -%}
+                {% assign show_tag = false %}
+                {%- for tag in line_item.product.tags -%}
+                {%- if tag contains 'CustomPromotion' -%}
+                {%- assign show_tag = true -%}
+                {%- assign text = tag | split: '-' -%}
+                {%- assign sale_text_on_detail = text[1] -%}
+                {%- endif -%}
+                {%- endfor -%}
+                {%- if show_tag -%}
+                <span class="mini-cart_variant_title price--highlight">{{ sale_text_on_detail }}</span>
+                {%- endif -%}
+                {%- comment -%}END{%- endcomment -%}
                 <span class='booster-cart-item-success-notes' data-key='{{line_item.key}}'></span><span
                   class='booster-cart-item-upsell-notes' data-key='{{line_item.key}}'></span></a>
 

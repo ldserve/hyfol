@@ -134,8 +134,14 @@
           {%- assign option_selector_type = 'block' -%}
         {%- endif -%}
       {%- endif -%}
-
-      <div class="product-form__option" data-selector-type="{{ option_selector_type }}">
+			{% assign show_col_options_spu_list = 'sp211119ulk5,sp220527w6tm,sp220531osjl,sp220527u31i' | split:',' %}
+			{% assign main_show_col_product_spu = show_col_options_spu_list[0] | downcase%}
+			{% if main_show_col_product_spu == product.handle %}
+				{% assign show_col_options = true %}
+			{%- else -%}
+				{% assign show_col_options = false %}
+			{% endif %}
+			<div class="product-form__option" data-selector-type="{{ option_selector_type }}">
         {%- case option_selector_type -%}
           {%- when 'color' -%}
             <span class="product-form__option-name text--strong">{{ option.name }}: <span class="product-form__selected-value">{{ option.selected_value }}</span></span>
@@ -197,13 +203,12 @@
                       "commodity_type":"{{product.type | handleize}}",
 							        "original_price":"{{ product.selected_or_first_available_variant.compare_at_price }}",
 			      	        "current_price":"{{ product.selected_or_first_available_variant.price }}"}'>
-                      <input class="variant-swatch__radio product-form__single-selector" type="radio" name="{{ option_name }}" id="{{ variant_swatch_id }}" value="{{ value | escape }}"  data-option-position="{{ option.position }}">
+                      <input class="variant-swatch__radio product-form__single-selector" type="radio" name="{{ option_name }}" id="{{ variant_swatch_id }}" value="{{ value | escape }}"  data-option-position="{{ option.position }}" {% if option.selected_value == value %}checked{% endif %}>
 
                       <label class="variant-swatch__item" for="{{ variant_swatch_id }}" title="{{ value | escape }}">
                         <div class="aspect-ratio" style="padding-bottom: {{ 100.0 | divided_by: variant.image.aspect_ratio }}%">
-                          <img src="{{ variant.image | img_url: '120x' }}" alt="{{ variant.image.alt | escape }}">
+                          <img src="{{ variant.image | img_url: '80x' }}" alt="{{ variant.image.alt | escape }}">
                         </div>
-
                         {% render 'icon', icon: 'cross-sold-out' %}
                       </label>
                     </div>
@@ -211,7 +216,21 @@
                     {%- break -%}
                   {%- endif -%}
                 {%- endfor -%}
-              {%- endfor -%}
+							{%- endfor -%}
+							{%- assign collocation_list = product.metafields.my_fields.collocation -%}
+							{%- assign handles = collocation_list | split:',' -%}
+							{% for handle in handles %}
+								{%- assign collocation_product = all_products[handle] -%}
+								{%- if collocation_product != blank -%}
+									<a class="variant-swatch ld-variant" href="{{ collocation_product.url }}">
+										<div class="variant-swatch__item">
+											<div class="aspect-ratio" style="padding-bottom: {{ 100.0 | divided_by:  collocation_product.featured_image.aspect_ratio }}%">
+												<img src="{{  collocation_product.featured_image | img_url: '80x' }}" alt="{{  collocation_product.featured_image.alt | escape }}">
+											</div>
+										</div>
+									</a>
+								{%- endif -%}
+							{%- endfor -%}
             </div>
 
           {%- when 'block' -%}

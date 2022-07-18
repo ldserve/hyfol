@@ -4166,7 +4166,7 @@
                     select.removeAttribute('checked')
                 })
                 target.setAttribute('checked','')
-                this.option1&&document.querySelector('.select-size-no').classList.add('d-none')
+              this.option1&&document.querySelector('.select-size-no').classList.add('d-none')
                 if (selectedValueElement) {
                     selectedValueElement.innerHTML = target.value;
                 } // Finally, we get the new variant
@@ -4243,7 +4243,7 @@
                     formElement = this.element.querySelector('form[action*="/cart/add"]');
                 }
 
-                fetch("".concat(window.routes.cartAddUrl, ".js"), {
+              fetch("".concat(window.routes.cartAddUrl, ".js"), {
                     body: JSON.stringify(Form.serialize(formElement)),
                     credentials: 'same-origin',
                     method: 'POST',
