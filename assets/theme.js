@@ -487,7 +487,7 @@
                         try {
                             selector.querySelector(`.block-swatch:nth-child(${valueIndex + 1})`).classList.toggle('block-swatch--disabled', !available);
                         } catch (error) {
-
+                            selector.querySelectorAll(`.block-swatch`)[valueIndex].classList.toggle('block-swatch--disabled', !available);
                         }
                         break;
                 }
