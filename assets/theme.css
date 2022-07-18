@@ -1968,7 +1968,9 @@ img.lazyload[data-sizes=auto] {
     width: 16.666667%;
   }
 
-
+  .product-list.mobile-layout{
+    flex-wrap:wrap;
+   }
 
 }
 

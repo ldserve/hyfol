@@ -5635,7 +5635,7 @@
                 if (this.isActive) {
                     return;
                 }
-
+                if (this.element.dataset.laout == "flex" && document.body.clientWidth < 1000) return
                 this.isActive = true;
                 this.element.classList.add('flickity-enabled');
 
