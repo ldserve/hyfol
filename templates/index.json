@@ -31,8 +31,8 @@
           "type": "image",
           "settings": {
             "sensorsName": "independenceday",
-            "image": "shopify:\/\/shop_images\/3_FOR_55.jpg",
-            "mobile_image": "shopify:\/\/shop_images\/3for55.jpg",
+            "image": "shopify:\/\/shop_images\/3_FOR_55_c6b2e6d5-9c1b-4e6a-8368-af54dc0ea64b.jpg",
+            "mobile_image": "shopify:\/\/shop_images\/3for55_d9a9a3ac-a5b3-4bbf-9816-ef1f5552690d.jpg",
             "show_overlay": false,
             "overlay_opacity": 30,
             "text_color": "#b82928",
@@ -131,6 +131,7 @@
     },
     "1656469887bd8ac047": {
       "type": "no_space_img",
+      "disabled": true,
       "settings": {
         "sensorsName": "",
         "bg_image": "shopify:\/\/shop_images\/07_c0c9bbc1-2023-472d-829b-536c4173a9bc.jpg",
