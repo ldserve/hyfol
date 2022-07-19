@@ -37,7 +37,8 @@
       "settings": {
         "title": "JUST LANDED",
         "title_color": "#000000",
-        "show_quick_buy": false
+        "show_quick_buy": false,
+        "product_layout": "flex"
       }
     },
     "1657335361b9c0e6f5": {
