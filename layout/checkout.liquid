@@ -101,24 +101,30 @@ property: 'Athleta'
        }
     }
   callback();
-  let sections= document.querySelector(".order-summary__sections");
-  const observer=new MutationObserver(callback)
-  observer.observe(sections,{childList:true,subtree:true})
+    let sections = document.querySelector(".order-summary__sections");
+    const observer = new MutationObserver(callback)
+    observer.observe(sections, { childList: true, subtree: true })
 
-  const patment=document.querySelector('.section--payment-method[data-payment-method]')
-	const mian = document.querySelector('.main__content')
-  const paypalBtn =document.createElement('div')
-  paypalBtn.setAttribute('data-pp-message','')
-  paypalBtn.setAttribute('data-pp-placement','payment')
-  paypalBtn.setAttribute('data-pp-amount','{{checkout.total_price | money_without_currency}}')
-  paypalBtn.setAttribute('data-pp-buyercountry','US')
-  paypalBtn.setAttribute('data-pp-style-align','center')
-  paypalBtn.classList.add('pp-message')
-	if(patment){
-    patment.insertBefore(paypalBtn,patment.children[1])
-  } else {
-		mian.insertBefore(paypalBtn,mian.children[1]);
-	}
+    const patment = document.querySelector('.section--payment-method[data-payment-method]')
+    const mian = document.querySelector('.main__content')
+    const paypalBtn = document.createElement('div')
+    paypalBtn.setAttribute('data-pp-message', '')
+    paypalBtn.setAttribute('data-pp-placement', 'payment')
+    paypalBtn.setAttribute('data-pp-amount', '{{checkout.total_price | money_without_currency}}')
+    paypalBtn.setAttribute('data-pp-buyercountry', 'US')
+    paypalBtn.setAttribute('data-pp-style-align', 'center')
+    paypalBtn.classList.add('pp-message')
+    if (patment) {
+      patment.insertBefore(paypalBtn, patment.children[1])
+    } else {
+      mian.insertBefore(paypalBtn, mian.children[1]);
+    }
+
+    const alertInfoBox = document.querySelector('.fieldset[data-credit-card-fields]')
+    const alertInfo = document.createElement('div')
+    alertInfo.className = 'info__text'
+    alertInfo.innerHTML = 'Powered by <span class="alert_text">Stripe</span>'
+    alertInfoBox && alertInfoBox.appendChild(alertInfo)
 
 	}()
   </script>
@@ -129,12 +135,11 @@ property: 'Athleta'
   .pp-message {
     margin-bottom: .5em;
   }
-
-  .fieldset[data-credit-card-fields]::after {
-    clear: both;
-    content: "Powered by Stripe";
-    color: #3128f2;
+  .info__text {
+    color: black;
     text-align: right;
-    display: block;
+  }
+  .alert_text{
+    font-weight: 600;
   }
 </style>
