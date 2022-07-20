@@ -126,7 +126,15 @@ property: 'Athleta'
   </body>
 </html>
 <style>
-.pp-message{
-  margin-bottom: .5em;
-}
+  .pp-message {
+    margin-bottom: .5em;
+  }
+
+  .fieldset[data-credit-card-fields]::after {
+    clear: both;
+    content: "Powered by Stripe";
+    color: #3128f2;
+    text-align: right;
+    display: block;
+  }
 </style>
