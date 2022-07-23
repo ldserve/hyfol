@@ -614,10 +614,34 @@
         {%- assign show_as_list = true -%}
         {%- endif -%}
 
-        <div class="product-list product-list--collection {% if has_filters %}product-list--with-sidebar{% endif %}">
+        <div class="product-list product-list--collection {% if has_filters %}product-list--with-sidebar{% endif %}" >
+          {%- comment -%} ------------------ 顶置排序 -------------- {%- endcomment -%}
+          {% if collection.sort_by and collection.sort_by != empty %}
+          {% assign sort_by_list = collection.sort_by | split: "," %}
+          {% for item in sort_by_list %}
+          {%- if all_products[item]!= empty and all_products[item].handle!= empty -%}
+          {%- render 'product-item', product: all_products[item], list: show_as_list, grid_classes: grid_classes,forloop:forloop-%}
+          {%- endif -%}
+          {%-endfor-%}
+          {%-endif-%}
+
+          {%- comment -%}-------- 过滤掉已渲染产品 -----------{%- endcomment -%}
           {%- for product in collection.products -%}
-          {%- render 'product-item', product: product, list: show_as_list, grid_classes: grid_classes,forloop:forloop -%}
+
+          {%- assign render_item = true -%}
+          {%- for str_item in sort_by_list -%}
+          {%- if product.handle == str_item -%}
+          {%- assign render_item = false -%}
+          {% break %}
+          {%- endif -%}
           {%- endfor -%}
+
+          {% if render_item %}
+          {%- render 'product-item', product: product, list: show_as_list, grid_classes: grid_classes,forloop:forloop -%}
+          {% endif %}
+          {%- endfor -%}
+
+          {%- comment -%} ------------------------END------------------ {%- endcomment -%}
         </div>
 
         {%- render 'pagination', paginate: paginate -%}
