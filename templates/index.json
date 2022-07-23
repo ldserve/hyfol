@@ -470,7 +470,7 @@
     "16585474086f148753": {
       "type": "transparent-collection",
       "settings": {
-        "collection": "winter-clearance",
+        "collection": "flash-sale",
         "sensorsName": "Flash sale",
         "title": "Flash sale",
         "products_count": 12,
@@ -478,7 +478,7 @@
         "stack_products": false,
         "show_quick_buy": false,
         "link_title": "View all",
-        "link_url": "shopify:\/\/collections\/winter-clearance"
+        "link_url": "shopify:\/\/collections\/flash-sale"
       }
     },
     "16534593657c96f64d": {
