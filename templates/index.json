@@ -527,60 +527,59 @@
         "lpadding": 0
       }
     },
-    "1658547759021dc428": {
+    "165345938037a0eeec": {
       "type": "linkImg",
-      "disabled": true,
       "blocks": {
-        "db0c7f06-e296-447a-8c6b-bd58d3b1bb34": {
+        "0bf20aad-4075-440a-a970-028a6081aadc": {
           "type": "link",
           "settings": {
-            "heading": "55",
-            "sensorsLinkName": "55",
+            "heading": "items",
+            "sensorsLinkName": "items",
             "link": "https:\/\/www.hyfol.com\/collections\/awesome-graphic-tees-sale-all-3-for-only-55-in-this-collection",
             "left": 0,
             "top": 0,
-            "width": 36,
-            "height": 39
+            "width": 32,
+            "height": 100
           }
         },
-        "e01b3221-a807-40f2-b06b-94136f624c29": {
+        "3b24ef8b-1ed9-4934-9fbf-4530d277b016": {
           "type": "link",
           "settings": {
-            "heading": "20",
-            "sensorsLinkName": "20",
+            "heading": "for",
+            "sensorsLinkName": "for",
             "link": "https:\/\/www.hyfol.com\/collections\/custompromotion-buy-4-get-20-off",
-            "left": 0,
+            "left": 34,
             "top": 0,
-            "width": 10,
-            "height": 10
+            "width": 33,
+            "height": 100
           }
         },
-        "c9c93787-59e1-4013-9129-f8bddb37dc55": {
+        "2fca7951-1b2f-4892-9c1c-c36ec573d49b": {
           "type": "link",
           "settings": {
-            "heading": "50",
-            "sensorsLinkName": "50",
+            "heading": "all",
+            "sensorsLinkName": "all",
             "link": "https:\/\/www.hyfol.com\/collections\/hyfol-best-seller-1",
-            "left": 0,
+            "left": 68,
             "top": 0,
-            "width": 10,
-            "height": 10
+            "width": 42,
+            "height": 100
           }
         }
       },
       "block_order": [
-        "db0c7f06-e296-447a-8c6b-bd58d3b1bb34",
-        "e01b3221-a807-40f2-b06b-94136f624c29",
-        "c9c93787-59e1-4013-9129-f8bddb37dc55"
+        "0bf20aad-4075-440a-a970-028a6081aadc",
+        "3b24ef8b-1ed9-4934-9fbf-4530d277b016",
+        "2fca7951-1b2f-4892-9c1c-c36ec573d49b"
       ],
       "settings": {
         "linkImg_title": "",
         "linkImg_content": "",
         "hidDesk": false,
-        "sensorsName": "",
+        "sensorsName": "pc分类导流区",
         "hidWeb": true,
-        "line": true,
-        "image": "shopify:\/\/shop_images\/50_off.gif",
+        "line": false,
+        "image": "shopify:\/\/shop_images\/50_off_b28c19e5-ad93-4468-ab95-be4a8ae208b3.gif",
         "tpadding": 0,
         "rpadding": 0,
         "bpadding": 0,
@@ -633,69 +632,40 @@
         "lpadding": 0
       }
     },
-    "16585477712ee67084": {
+    "16534593896dfc4330": {
       "type": "linkImg",
-      "disabled": true,
-      "settings": {
-        "linkImg_title": "",
-        "linkImg_content": "",
-        "hidDesk": false,
-        "sensorsName": "",
-        "hidWeb": false,
-        "line": true,
-        "tpadding": 0,
-        "rpadding": 0,
-        "bpadding": 0,
-        "lpadding": 0
-      }
-    },
-    "165345938037a0eeec": {
-      "type": "linkImg",
-      "disabled": true,
       "blocks": {
-        "0bf20aad-4075-440a-a970-028a6081aadc": {
+        "5594db23-394f-486d-85ca-ff9e6b274cc7": {
           "type": "link",
           "settings": {
-            "heading": "patriot",
-            "sensorsLinkName": "patriot",
-            "link": "shopify:\/\/collections\/american-flag",
+            "heading": "items",
+            "sensorsLinkName": "items",
+            "link": "https:\/\/www.hyfol.com\/collections\/awesome-graphic-tees-sale-all-3-for-only-55-in-this-collection",
             "left": 0,
             "top": 0,
-            "width": 25,
+            "width": 33,
             "height": 100
           }
         },
-        "3b24ef8b-1ed9-4934-9fbf-4530d277b016": {
+        "4c67b249-31bf-47f7-98c3-ccf6f39b331f": {
           "type": "link",
           "settings": {
-            "heading": "skull",
-            "sensorsLinkName": "skull",
-            "link": "shopify:\/\/collections\/skull",
-            "left": 26,
+            "heading": "for",
+            "sensorsLinkName": "for",
+            "link": "https:\/\/www.hyfol.com\/collections\/custompromotion-buy-4-get-20-off",
+            "left": 34,
             "top": 0,
-            "width": 23,
+            "width": 32,
             "height": 100
           }
         },
-        "2fca7951-1b2f-4892-9c1c-c36ec573d49b": {
+        "804cebe0-e541-42d5-9f9a-e1f14a2a6b43": {
           "type": "link",
           "settings": {
-            "heading": "Waterproof",
-            "sensorsLinkName": "Waterproof",
-            "link": "shopify:\/\/collections\/performance",
-            "left": 50,
-            "top": 0,
-            "width": 25,
-            "height": 100
-          }
-        },
-        "a79c4343-e6c3-4edf-a9e5-df4c54cdda67": {
-          "type": "link",
-          "settings": {
-            "heading": "workwear",
-            "sensorsLinkName": "workwear",
-            "link": "shopify:\/\/collections\/work-wear",
-            "left": 76,
+            "heading": "all",
+            "sensorsLinkName": "all",
+            "link": "https:\/\/www.hyfol.com\/collections\/hyfol-best-seller-1",
+            "left": 68,
             "top": 0,
             "width": 31,
             "height": 100
@@ -703,83 +673,9 @@
         }
       },
       "block_order": [
-        "0bf20aad-4075-440a-a970-028a6081aadc",
-        "3b24ef8b-1ed9-4934-9fbf-4530d277b016",
-        "2fca7951-1b2f-4892-9c1c-c36ec573d49b",
-        "a79c4343-e6c3-4edf-a9e5-df4c54cdda67"
-      ],
-      "settings": {
-        "linkImg_title": "",
-        "linkImg_content": "",
-        "hidDesk": false,
-        "sensorsName": "pc分类导流区",
-        "hidWeb": true,
-        "line": false,
-        "image": "shopify:\/\/shop_images\/05_5094faf1-0c0a-48eb-8331-341f5067d2c6.jpg",
-        "tpadding": 0,
-        "rpadding": 0,
-        "bpadding": 0,
-        "lpadding": 0
-      }
-    },
-    "16534593896dfc4330": {
-      "type": "linkImg",
-      "disabled": true,
-      "blocks": {
-        "5594db23-394f-486d-85ca-ff9e6b274cc7": {
-          "type": "link",
-          "settings": {
-            "heading": "patriot",
-            "sensorsLinkName": "patriot",
-            "link": "",
-            "left": 0,
-            "top": 0,
-            "width": 49,
-            "height": 50
-          }
-        },
-        "4c67b249-31bf-47f7-98c3-ccf6f39b331f": {
-          "type": "link",
-          "settings": {
-            "heading": "skull",
-            "sensorsLinkName": "skull",
-            "link": "",
-            "left": 51,
-            "top": 0,
-            "width": 47,
-            "height": 50
-          }
-        },
-        "804cebe0-e541-42d5-9f9a-e1f14a2a6b43": {
-          "type": "link",
-          "settings": {
-            "heading": "waterproof",
-            "sensorsLinkName": "waterproof",
-            "link": "",
-            "left": 0,
-            "top": 51,
-            "width": 49,
-            "height": 44
-          }
-        },
-        "a3dbce19-5f37-4ed9-a99e-05d201f08abb": {
-          "type": "link",
-          "settings": {
-            "heading": "workwear",
-            "sensorsLinkName": "workwear",
-            "link": "shopify:\/\/collections\/work-wear",
-            "left": 51,
-            "top": 53,
-            "width": 48,
-            "height": 43
-          }
-        }
-      },
-      "block_order": [
         "5594db23-394f-486d-85ca-ff9e6b274cc7",
         "4c67b249-31bf-47f7-98c3-ccf6f39b331f",
-        "804cebe0-e541-42d5-9f9a-e1f14a2a6b43",
-        "a3dbce19-5f37-4ed9-a99e-05d201f08abb"
+        "804cebe0-e541-42d5-9f9a-e1f14a2a6b43"
       ],
       "settings": {
         "linkImg_title": "",
@@ -788,7 +684,7 @@
         "sensorsName": "mobile分类导流区",
         "hidWeb": false,
         "line": false,
-        "image": "shopify:\/\/shop_images\/05_8a41c706-747c-4b34-bac8-e98b9cd6ca3f.jpg",
+        "image": "shopify:\/\/shop_images\/50off_dcdf288b-6234-4975-82b8-4f581cd4074e.gif",
         "tpadding": 0,
         "rpadding": 0,
         "bpadding": 20,
@@ -1019,10 +915,8 @@
     "1653297879b5b9419a",
     "16585474086f148753",
     "16534593657c96f64d",
-    "1658547759021dc428",
-    "1653459372cee0bf93",
-    "16585477712ee67084",
     "165345938037a0eeec",
+    "1653459372cee0bf93",
     "16534593896dfc4330",
     "1640334828c8a975c8",
     "16486080199c077c37",
