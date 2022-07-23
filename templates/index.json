@@ -354,7 +354,7 @@
           "type": "link",
           "settings": {
             "heading": "work",
-            "sensorsLinkName": "work",
+            "sensorsLinkName": "cargo-collection",
             "link": "https:\/\/www.hyfol.com\/collections\/polo-and-cargo-collection",
             "left": 50,
             "top": 0,
@@ -426,7 +426,7 @@
           "type": "link",
           "settings": {
             "heading": "workwear",
-            "sensorsLinkName": "workwear",
+            "sensorsLinkName": "cargo-collection",
             "link": "https:\/\/www.hyfol.com\/collections\/polo-and-cargo-collection",
             "left": 0,
             "top": 50,
