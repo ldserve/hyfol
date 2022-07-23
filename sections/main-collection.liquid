@@ -1091,6 +1091,7 @@
     display: none;
   }
 </style>
+
 <script>
   function closeFilter(e) {
     if(document.getElementById('filter_content') != null){
@@ -1194,6 +1195,8 @@
 				<img src="#{primary_media_src}" alt="">
 			</noscript>
 		</div>
+    <div class="htusb-ui-coll-boost htusb-ui-coll-boost--top-right htusb-ui-shape--square htusb-ui-fade-in" style="--text-color: #FFFFFF; --font-family: inherit; --font-size-desktop: 16px; --font-size-mobile: 11px; --gradient-color-start: #01cef0; --gradient-color-end: #cced8e; --z-index: 4; opacity: 1; height: auto;position:absolute;">
+      <div class="htusb-ui-coll-text"><div class="htusb-ui-coll-text_msg">#{tag_string}</div></div></div>
 	</a>
 	<div class="product-item__info">
 		<div class="product-item__swatch-list">
@@ -1245,7 +1248,7 @@
 `
       }
       color_temp() {
-        return `<div class="color-swatch color-swatch--#{value_l}">
+        return `<div class="color-swatch color-swatch--white ">
 		<input class="color-swatch__radio"
 					 type="radio"
 					 name="#{name}"
@@ -1257,7 +1260,7 @@
 					 data-image-widths="[200,300,400,500,600,700,800]"
 					 data-image-aspect-ratio="1.0"
 					 aria-label="#{value}">
-		<label class="color-swatch__item #{class}" for="#{id}" title="#{value}">
+		<label class="color-swatch__item #{class}" for="#{id}" title="#{value}" style="background-color:#{background};">
 			<span class="visually-hidden">#{value}</span>
 		</label>
 		<a href="#{url}" class="color-swatch__item-link">+#{num}</a>
@@ -1299,6 +1302,13 @@
         } else {
           data.tags = '';
         }
+        //----  动态插入标签  ---
+        data.tag_string=''
+        let tag_string=product.tags.find(i=>i.includes('CustomPromotion'))
+        tag_string &&(data.tag_string=tag_string.split('-')[1])
+        let colorTemplate={{settings.color_swatch_config | newline_to_br | split: '<br />' |json }}
+        // ----- END ----
+
         data.url = '/products/' + product.handle;
         data.title = product.title;
         data.primary_media_id = product.media[0].id;
@@ -1315,6 +1325,7 @@
           data.compare_at_price = ''
         }
         data.primary_media_src = product.media[0].src.replace(/.jpg/, '_{width}x.jpg');
+        
         if (product.media[1]) {
           data.second_media_id = product.media[1].id;
           data.second_media_src = product.media[1].preview_image.src.replace(/.jpg/, '_{width}x.jpg');
@@ -1325,8 +1336,7 @@
 
         data.first_variants_id = product.variants[0].id;
         data.ratingColor = this.ratingColor;
-        data.templateId = document.querySelector('.product-item .product-item__info form').getAttribute('id').split(
-          "--")[1];
+        data.templateId = document.querySelector('.product-item .product-item__info form').getAttribute('id').split("--")[1];
         for (let i = 0, max = product.options[0].values.length; i < max; i++) {
           let color = {};
           let variants = product.options[0].values[i];
@@ -1347,6 +1357,15 @@
               break;
             }
           }
+          colorTemplate.find(item=>{
+            item=item.trim()
+            let background=item.split(':')
+            let colorName=background[0].toLocaleLowerCase()
+            if(color.value_l==colorName){
+              color.background=background[1]
+              return true
+            }
+          })
           colors.push(color)
         }
         this.data = data;
