@@ -179,7 +179,7 @@
           "navigation_menu": "pc",
           "navigation_mobile_menu": "main-menu",
           "desktop_navigation_layout": "inline",
-          "desktop_navigation_open_trigger": "hover",
+          "desktop_navigation_open_trigger": "click",
           "show_navigation_social_media": false,
           "navigation_phone_number": "",
           "navigation_email": "contactus@hyfol.com",

@@ -9,7 +9,7 @@
             "show_vendor": false,
             "show_sku": false,
             "show_reviews_badge": false,
-            "show_share_buttons": false
+            "show_share_buttons": true
           }
         },
         "variant_selector": {
@@ -211,7 +211,8 @@
       "settings": {
         "title": "Recently viewed",
         "title_color": "#000000",
-        "show_quick_buy": true
+        "show_quick_buy": true,
+        "product_layout": "paging"
       }
     },
     "16476891022bcaf9d0": {
