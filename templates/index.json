@@ -170,7 +170,7 @@
           "type": "link",
           "settings": {
             "heading": "bestseller",
-            "sensorsLinkName": "bestseller-1",
+            "sensorsLinkName": "bestseller",
             "link": "https:\/\/www.hyfol.com\/collections\/hyfol-best-seller-1",
             "left": 51,
             "top": 34,
@@ -182,7 +182,7 @@
           "type": "link",
           "settings": {
             "heading": "bottom",
-            "sensorsLinkName": "bottoms-12-13",
+            "sensorsLinkName": "bottom",
             "link": "https:\/\/www.hyfol.com\/collections\/bottoms-12-13",
             "left": 0,
             "top": 67,
