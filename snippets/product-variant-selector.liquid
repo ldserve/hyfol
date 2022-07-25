@@ -79,8 +79,7 @@
             data-sctype="ShareCommodity"
             data-scdata='{"share_medium": "Facebook"}'
             class="social-media__item social-media__item--facebook">
-            <a href="{{ share_url }}" target="_blank" rel="noopener"
-               aria-label="{{ 'general.social.facebook_share' | t }}">{%- render 'icon', icon: 'facebook' -%}</a>
+						<a href="https://www.facebook.com/sharer.php?u={{ share_url }}" target="_blank" rel="noopener" aria-label="{{ 'general.social.facebook_share' | t }}">{%- render 'icon', icon: 'facebook' -%}</a>
           </li>
 
           <li
