@@ -545,12 +545,12 @@
         "3b24ef8b-1ed9-4934-9fbf-4530d277b016": {
           "type": "link",
           "settings": {
-            "heading": "4items",
-            "sensorsLinkName": "4items",
+            "heading": "buy4get20",
+            "sensorsLinkName": "buy4get20",
             "link": "https:\/\/www.hyfol.com\/collections\/custompromotion-buy-4-get-20-off",
-            "left": 34,
+            "left": 35,
             "top": 0,
-            "width": 33,
+            "width": 32,
             "height": 100
           }
         },
@@ -558,7 +558,7 @@
           "type": "link",
           "settings": {
             "heading": "allupto50",
-            "sensorsLinkName": "allupto50%",
+            "sensorsLinkName": "allupto50",
             "link": "https:\/\/www.hyfol.com\/collections\/hyfol-best-seller-1",
             "left": 68,
             "top": 0,
