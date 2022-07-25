@@ -9821,6 +9821,10 @@ select option {
   align-items: center;
   justify-content: space-between;
   margin-top: 40px;
+
+}
+.desktop-product-meta__share-buttons{
+  margin: 0;
 }
 
 .product-meta__share-buttons .social-media__item svg {
@@ -10285,6 +10289,8 @@ shopify-payment-terms {
   display: inline-flex;
   align-items: baseline;
   line-height: 1;
+  justify-content: space-between;
+  width: 100%;
 }
 
 .price {
@@ -12657,8 +12663,8 @@ shopify-payment-terms {
 }
 
 .social-media__item svg {
-  width: 28px;
-  height: 28px;
+  width: 25px;
+  height: 25px;
   /* opacity: 0; */
   transition: color 0.25s ease-in-out, opacity 0.25s ease-in-out;
   will-change: opacity;
@@ -15672,7 +15678,7 @@ shopify-payment-terms {
     width: 70%;
   }
   .block-swatch__item{
-    padding: 6px 18px;
+    padding: 2px 8px;
   }
   .product-form__option {
     margin-bottom: 10px;
