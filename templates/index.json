@@ -499,8 +499,8 @@
         "6f3b2d64-3421-4670-af94-3aa71eb6713e": {
           "type": "link",
           "settings": {
-            "heading": "down",
-            "sensorsLinkName": "down",
+            "heading": "under15",
+            "sensorsLinkName": "under15",
             "link": "https:\/\/www.hyfol.com\/collections\/under-15",
             "left": 51,
             "top": 0,
@@ -604,8 +604,8 @@
         "9033daee-d820-4bd4-8cba-1c138eb7335e": {
           "type": "link",
           "settings": {
-            "heading": "downto",
-            "sensorsLinkName": "downto",
+            "heading": "under15",
+            "sensorsLinkName": "under15",
             "link": "https:\/\/www.hyfol.com\/collections\/under-15",
             "left": 52,
             "top": 0,
