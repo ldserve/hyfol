@@ -170,7 +170,7 @@
           "type": "link",
           "settings": {
             "heading": "bestseller",
-            "sensorsLinkName": "bestseller",
+            "sensorsLinkName": "bestseller-1",
             "link": "https:\/\/www.hyfol.com\/collections\/hyfol-best-seller-1",
             "left": 51,
             "top": 34,
@@ -182,7 +182,7 @@
           "type": "link",
           "settings": {
             "heading": "bottom",
-            "sensorsLinkName": "bottom",
+            "sensorsLinkName": "bottoms-12-13",
             "link": "https:\/\/www.hyfol.com\/collections\/bottoms-12-13",
             "left": 0,
             "top": 67,
@@ -488,7 +488,7 @@
           "type": "link",
           "settings": {
             "heading": "flashdeal",
-            "sensorsLinkName": "winter-clearance",
+            "sensorsLinkName": "flashdeal",
             "link": "https:\/\/www.hyfol.com\/collections\/winter-clearance",
             "left": 0,
             "top": 0,
@@ -534,7 +534,7 @@
           "type": "link",
           "settings": {
             "heading": "items",
-            "sensorsLinkName": "items",
+            "sensorsLinkName": "55for3items",
             "link": "https:\/\/www.hyfol.com\/collections\/awesome-graphic-tees-sale-all-3-for-only-55-in-this-collection",
             "left": 0,
             "top": 0,
@@ -545,8 +545,8 @@
         "3b24ef8b-1ed9-4934-9fbf-4530d277b016": {
           "type": "link",
           "settings": {
-            "heading": "for",
-            "sensorsLinkName": "for",
+            "heading": "for any 4 items 20% off",
+            "sensorsLinkName": "20%off4items",
             "link": "https:\/\/www.hyfol.com\/collections\/custompromotion-buy-4-get-20-off",
             "left": 34,
             "top": 0,
@@ -557,8 +557,8 @@
         "2fca7951-1b2f-4892-9c1c-c36ec573d49b": {
           "type": "link",
           "settings": {
-            "heading": "all",
-            "sensorsLinkName": "all",
+            "heading": "all up to 50%",
+            "sensorsLinkName": "allupto50%",
             "link": "https:\/\/www.hyfol.com\/collections\/hyfol-best-seller-1",
             "left": 68,
             "top": 0,
@@ -593,7 +593,7 @@
           "type": "link",
           "settings": {
             "heading": "flashdeal",
-            "sensorsLinkName": "winter-clearance",
+            "sensorsLinkName": "flashdeal",
             "link": "https:\/\/www.hyfol.com\/collections\/winter-clearance",
             "left": 0,
             "top": 0,
@@ -639,7 +639,7 @@
           "type": "link",
           "settings": {
             "heading": "items",
-            "sensorsLinkName": "items",
+            "sensorsLinkName": "55for3items",
             "link": "https:\/\/www.hyfol.com\/collections\/awesome-graphic-tees-sale-all-3-for-only-55-in-this-collection",
             "left": 0,
             "top": 0,
@@ -650,8 +650,8 @@
         "4c67b249-31bf-47f7-98c3-ccf6f39b331f": {
           "type": "link",
           "settings": {
-            "heading": "for",
-            "sensorsLinkName": "for",
+            "heading": "for any 4 items 20% off",
+            "sensorsLinkName": "20%off4items",
             "link": "https:\/\/www.hyfol.com\/collections\/custompromotion-buy-4-get-20-off",
             "left": 34,
             "top": 0,
@@ -662,8 +662,8 @@
         "804cebe0-e541-42d5-9f9a-e1f14a2a6b43": {
           "type": "link",
           "settings": {
-            "heading": "all",
-            "sensorsLinkName": "all",
+            "heading": "all up to 50%",
+            "sensorsLinkName": "allupto50%",
             "link": "https:\/\/www.hyfol.com\/collections\/hyfol-best-seller-1",
             "left": 68,
             "top": 0,
