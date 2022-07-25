@@ -471,7 +471,7 @@
       "type": "transparent-collection",
       "settings": {
         "collection": "flash-sale",
-        "sensorsName": "Flash sale",
+        "sensorsName": "flashsale",
         "title": "Flash sale",
         "products_count": 12,
         "layout": "vertical",
