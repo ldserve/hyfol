@@ -365,8 +365,8 @@
         "6defe89d-34bf-47d9-a1f2-91004d693ed8": {
           "type": "link",
           "settings": {
-            "heading": "loungery",
-            "sensorsLinkName": "loungery",
+            "heading": "kimonosets",
+            "sensorsLinkName": "kimonosets",
             "link": "https:\/\/www.hyfol.com\/collections\/kimono-sets",
             "left": 76,
             "top": 0,
@@ -425,8 +425,8 @@
         "1a56e24f-fd33-4441-a6c2-3cf03868b44a": {
           "type": "link",
           "settings": {
-            "heading": "workwear",
-            "sensorsLinkName": "workwear",
+            "heading": "poloandcargocollection",
+            "sensorsLinkName": "poloandcargocollection",
             "link": "https:\/\/www.hyfol.com\/collections\/polo-and-cargo-collection",
             "left": 0,
             "top": 50,
@@ -437,8 +437,8 @@
         "dbe8a9a1-2bdd-4552-82ae-15b0ebb1e9cf": {
           "type": "link",
           "settings": {
-            "heading": "loungery",
-            "sensorsLinkName": "loungery",
+            "heading": "kimonosets",
+            "sensorsLinkName": "kimonosets",
             "link": "https:\/\/www.hyfol.com\/collections\/kimono-sets",
             "left": 51,
             "top": 50,
