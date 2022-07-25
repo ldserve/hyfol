@@ -146,7 +146,7 @@
           "type": "link",
           "settings": {
             "heading": "polo",
-            "sensorsLinkName": "Buy 4 Get 20% Off",
+            "sensorsLinkName": "Buy4Get20%Off",
             "link": "https:\/\/www.hyfol.com\/collections\/custompromotion-buy-4-get-20-off",
             "left": 0,
             "top": 0,
@@ -170,7 +170,7 @@
           "type": "link",
           "settings": {
             "heading": "bestseller",
-            "sensorsLinkName": "best-seller-1",
+            "sensorsLinkName": "bestseller-1",
             "link": "https:\/\/www.hyfol.com\/collections\/hyfol-best-seller-1",
             "left": 51,
             "top": 34,
