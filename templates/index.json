@@ -414,7 +414,7 @@
           "type": "link",
           "settings": {
             "heading": "pateiotic",
-            "sensorsLinkName": "american-flag",
+            "sensorsLinkName": "pateiotic",
             "link": "https:\/\/www.hyfol.com\/collections\/american-flag",
             "left": 51,
             "top": 0,
@@ -426,7 +426,7 @@
           "type": "link",
           "settings": {
             "heading": "workwear",
-            "sensorsLinkName": "polo and cargo collection",
+            "sensorsLinkName": "workwear",
             "link": "https:\/\/www.hyfol.com\/collections\/polo-and-cargo-collection",
             "left": 0,
             "top": 50,
@@ -438,7 +438,7 @@
           "type": "link",
           "settings": {
             "heading": "loungery",
-            "sensorsLinkName": "kimono-sets",
+            "sensorsLinkName": "loungery",
             "link": "https:\/\/www.hyfol.com\/collections\/kimono-sets",
             "left": 51,
             "top": 50,
