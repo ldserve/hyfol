@@ -330,7 +330,7 @@
           "type": "link",
           "settings": {
             "heading": "hellfire",
-            "sensorsLinkName": "hellfire-club",
+            "sensorsLinkName": "hellfire",
             "link": "https:\/\/www.hyfol.com\/collections\/hellfire-club",
             "left": 0,
             "top": 0,
@@ -342,7 +342,7 @@
           "type": "link",
           "settings": {
             "heading": "patrtotic",
-            "sensorsLinkName": "american-flag",
+            "sensorsLinkName": "patrtotic",
             "link": "https:\/\/www.hyfol.com\/collections\/american-flag",
             "left": 25,
             "top": 0,
@@ -353,8 +353,8 @@
         "9ff77147-50cf-4ea6-a2e8-88372aa19d4a": {
           "type": "link",
           "settings": {
-            "heading": "work",
-            "sensorsLinkName": "polo and cargo collection",
+            "heading": "workwear",
+            "sensorsLinkName": "workwear",
             "link": "https:\/\/www.hyfol.com\/collections\/polo-and-cargo-collection",
             "left": 50,
             "top": 0,
@@ -366,7 +366,7 @@
           "type": "link",
           "settings": {
             "heading": "loungery",
-            "sensorsLinkName": "kimono-sets",
+            "sensorsLinkName": "loungery",
             "link": "https:\/\/www.hyfol.com\/collections\/kimono-sets",
             "left": 76,
             "top": 0,
@@ -402,7 +402,7 @@
           "type": "link",
           "settings": {
             "heading": "hellfire",
-            "sensorsLinkName": "hellfire-club",
+            "sensorsLinkName": "hellfire",
             "link": "https:\/\/www.hyfol.com\/collections\/hellfire-club",
             "left": 0,
             "top": 0,
