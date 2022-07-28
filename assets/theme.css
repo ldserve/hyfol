@@ -9816,12 +9816,13 @@ select option {
 }
 
 .product-meta__share-buttons {
-  position: relative;
+  position: absolute;
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-top: 40px;
-
+right: 0;
+top: 0;
 }
 .desktop-product-meta__share-buttons{
   margin: 0;
@@ -9903,6 +9904,7 @@ select option {
 }
 .procut-discount {
   margin-bottom: 10px;
+  position: relative;
 }
 .product-form__option {
   margin-bottom: 23px;
@@ -10290,7 +10292,6 @@ shopify-payment-terms {
   align-items: baseline;
   line-height: 1;
   justify-content: space-between;
-  width: 100%;
 }
 
 .price {
