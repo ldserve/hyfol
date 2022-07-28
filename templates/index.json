@@ -7,8 +7,8 @@
           "type": "image",
           "settings": {
             "sensorsName": "2cargoshorts",
-            "image": "shopify:\/\/shop_images\/005e84d459065c07f1cb8389db6eaa16_694ed10e-5194-40b3-97f6-34ae46edc861.jpg",
-            "mobile_image": "shopify:\/\/shop_images\/6156e1ef1c55cb4f63cdc9d4004c7b5c_7dca0150-3bb1-4a8f-9db5-2a4a07ef0c1a.jpg",
+            "image": "shopify:\/\/shop_images\/005e84d459065c07f1cb8389db6eaa16_2980a6bd-6495-48d0-9cad-df0332263f70.jpg",
+            "mobile_image": "shopify:\/\/shop_images\/6156e1ef1c55cb4f63cdc9d4004c7b5c_448e2dd1-a161-4e43-bee0-850d5972b079.jpg",
             "show_overlay": false,
             "overlay_opacity": 30,
             "text_color": "#ffffff",
@@ -31,8 +31,8 @@
           "type": "image",
           "settings": {
             "sensorsName": "independenceday",
-            "image": "shopify:\/\/shop_images\/3_FOR_55_c6b2e6d5-9c1b-4e6a-8368-af54dc0ea64b.jpg",
-            "mobile_image": "shopify:\/\/shop_images\/3for55_d9a9a3ac-a5b3-4bbf-9816-ef1f5552690d.jpg",
+            "image": "shopify:\/\/shop_images\/3_FOR_55_74a706ea-8930-4605-b305-c7d8c5074bfa.jpg",
+            "mobile_image": "shopify:\/\/shop_images\/3for55-1.jpg",
             "show_overlay": false,
             "overlay_opacity": 30,
             "text_color": "#b82928",
@@ -55,8 +55,8 @@
           "type": "image",
           "settings": {
             "sensorsName": "bottoms",
-            "image": "shopify:\/\/shop_images\/pc_51289d65-376b-4270-8619-b17227ed9293.gif",
-            "mobile_image": "shopify:\/\/shop_images\/ef982941f13989a2b439db2799b9d5d6_7ed1da2d-1a76-47df-970d-569e4d87898c.gif",
+            "image": "shopify:\/\/shop_images\/20_off_2d4a5ff9-20e8-483b-adaf-3b563d8a671c.gif",
+            "mobile_image": "shopify:\/\/shop_images\/20_off.gif",
             "show_overlay": false,
             "overlay_opacity": 30,
             "text_color": "#ffffff",
