@@ -65,10 +65,10 @@
         "title_color": "#ffffff",
         "text_color": "#ffffff",
         "background": "#000000",
-        "margin_top": 20,
-        "margin_botton": 20,
-        "title": "Your title",
-        "content": "<p>Use this text to share information about your brand with your customers.<br\/>Describe a product, share announcements, or welcome customers to your store.<\/p>",
+        "margin_top": 0,
+        "margin_botton": 0,
+        "title": "What Will You Create?",
+        "content": "<p>We love seeing what you make so please tag us when your products arrive. You can design on your phone<br\/>and we'll print what you see on screen in full colour. It's easy :)<\/p>",
         "button_text": "",
         "button_link": ""
       }
