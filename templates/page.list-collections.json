@@ -60,8 +60,8 @@
     "165907847214e16188": {
       "type": "rich-text",
       "settings": {
-        "text_width": "narrow",
-        "text_layout": "center",
+        "text_width": "wide",
+        "text_layout": "left",
         "title_color": "#ffffff",
         "text_color": "#ffffff",
         "background": "#000000",
@@ -86,7 +86,7 @@
     "16590785450cc5cf8a": {
       "type": "rich-text",
       "settings": {
-        "text_width": "narrow",
+        "text_width": "wide",
         "text_layout": "center",
         "title_color": "#ffffff",
         "text_color": "#ffffff",
