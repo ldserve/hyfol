@@ -142,6 +142,49 @@
     },
     "1659078670c9c60ada": {
       "type": "linkImg",
+      "blocks": {
+        "68272705-abdf-48ff-afaa-80f3bb73aca6": {
+          "type": "link",
+          "settings": {
+            "heading": "(´థ౪థ）σ",
+            "sensorsLinkName": "",
+            "link": "",
+            "left": 0,
+            "top": 0,
+            "width": 10,
+            "height": 10
+          }
+        },
+        "d2650935-0174-4ba0-898a-1cec0c214412": {
+          "type": "link",
+          "settings": {
+            "heading": "(´థ౪థ）σ",
+            "sensorsLinkName": "",
+            "link": "",
+            "left": 0,
+            "top": 0,
+            "width": 10,
+            "height": 10
+          }
+        },
+        "05978106-18d8-4dc1-99c7-3ae44ae2252e": {
+          "type": "link",
+          "settings": {
+            "heading": "(´థ౪థ）σ",
+            "sensorsLinkName": "",
+            "link": "",
+            "left": 0,
+            "top": 0,
+            "width": 10,
+            "height": 10
+          }
+        }
+      },
+      "block_order": [
+        "68272705-abdf-48ff-afaa-80f3bb73aca6",
+        "d2650935-0174-4ba0-898a-1cec0c214412",
+        "05978106-18d8-4dc1-99c7-3ae44ae2252e"
+      ],
       "settings": {
         "linkImg_title": "",
         "linkImg_content": "",
@@ -165,6 +208,16 @@
         "link": "",
         "shadow": false
       }
+    },
+    "165907878923c6b2b1": {
+      "type": "rich-text",
+      "settings": {
+        "text_width": "narrow",
+        "title": "Your title",
+        "content": "<p>Use this text to share information about your brand with your customers.<br\/>Describe a product, share announcements, or welcome customers to your store.<\/p>",
+        "button_text": "",
+        "button_link": ""
+      }
     }
   },
   "order": [
@@ -178,6 +231,7 @@
     "16590785450cc5cf8a",
     "165907865634949e08",
     "1659078670c9c60ada",
-    "165907856021cc2f9c"
+    "165907856021cc2f9c",
+    "165907878923c6b2b1"
   ]
 }
