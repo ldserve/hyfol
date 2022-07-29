@@ -2,18 +2,105 @@
   "sections": {
     "main": {
       "type": "main-collections-list",
+      "disabled": true,
       "settings": {
-        "collections_to_show": "selected"
+        "collections_to_show": "selected",
+        "collection_linklist": "",
+        "show_collection_title": true,
+        "show_collection_overlay": true,
+        "collection_overlay_opacity": 20
       }
     },
     "newsletter": {
       "type": "newsletter",
+      "disabled": true,
       "settings": {
+        "title": "Newsletter",
+        "content": "<p>A short sentence describing what someone will receive by subscribing<\/p>",
+        "background": "#1e2d7d",
+        "text": "#ffffff"
+      }
+    },
+    "1659078275fbaaff0b": {
+      "type": "no_space_img",
+      "settings": {
+        "sensorsName": "",
+        "bg_image": "shopify:\/\/shop_images\/02_4e11db1e-b9a0-4b66-81b2-416f1bc8a2b0.jpg",
+        "web_bg_image": "shopify:\/\/shop_images\/02_e262c0fd-d5b2-42ab-8691-9118e64ad12f.jpg",
+        "link": "",
+        "shadow": false
+      }
+    },
+    "1659078326335e9c03": {
+      "type": "rich-text",
+      "settings": {
+        "text_width": "narrow",
+        "title": "Your title",
+        "content": "<p>Use this text to share information about your brand with your customers.<br\/>Describe a product, share announcements, or welcome customers to your store.<\/p>",
+        "button_text": "",
+        "button_link": ""
+      }
+    },
+    "165907842062e21097": {
+      "type": "no_space_img",
+      "settings": {
+        "sensorsName": "",
+        "bg_image": "shopify:\/\/shop_images\/04_6639beec-81ef-42c6-ad37-59947bfe6cad.jpg",
+        "web_bg_image": "shopify:\/\/shop_images\/04_04b60de3-2807-4d61-8e7b-4d4652054fc6.jpg",
+        "link": "",
+        "shadow": false
+      }
+    },
+    "165907847214e16188": {
+      "type": "rich-text",
+      "settings": {
+        "text_width": "narrow",
+        "title": "Your title",
+        "content": "<p>Use this text to share information about your brand with your customers.<br\/>Describe a product, share announcements, or welcome customers to your store.<\/p>",
+        "button_text": "",
+        "button_link": ""
+      }
+    },
+    "165907848769ab3ff1": {
+      "type": "no_space_img",
+      "settings": {
+        "sensorsName": "",
+        "bg_image": "shopify:\/\/shop_images\/06_56b60c55-1398-49da-b1ec-3f24783203b0.jpg",
+        "web_bg_image": "shopify:\/\/shop_images\/06_23394901-da7b-4e36-aa88-a4f464728435.jpg",
+        "link": "",
+        "shadow": false
+      }
+    },
+    "16590785450cc5cf8a": {
+      "type": "rich-text",
+      "settings": {
+        "text_width": "narrow",
+        "title": "Your title",
+        "content": "<p>Use this text to share information about your brand with your customers.<br\/>Describe a product, share announcements, or welcome customers to your store.<\/p>",
+        "button_text": "",
+        "button_link": ""
+      }
+    },
+    "165907856021cc2f9c": {
+      "type": "no_space_img",
+      "settings": {
+        "sensorsName": "",
+        "bg_image": "shopify:\/\/shop_images\/10_192c3e05-4c99-4dcd-a2fb-60a211b73a83.jpg",
+        "web_bg_image": "shopify:\/\/shop_images\/10_e855fa39-dd03-4da7-8e8e-fa3cf4ce0637.jpg",
+        "link": "",
+        "shadow": false
       }
     }
   },
   "order": [
     "main",
-    "newsletter"
+    "newsletter",
+    "1659078275fbaaff0b",
+    "1659078326335e9c03",
+    "165907842062e21097",
+    "165907847214e16188",
+    "165907848769ab3ff1",
+    "16590785450cc5cf8a",
+    "165907856021cc2f9c"
   ]
 }
