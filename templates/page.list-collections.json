@@ -218,6 +218,19 @@
         "button_text": "",
         "button_link": ""
       }
+    },
+    "1659078888dc51c719": {
+      "type": "featured-collection",
+      "settings": {
+        "collection": "10-19-new-in",
+        "title": "Featured collection",
+        "products_count": 12,
+        "layout": "vertical",
+        "stack_products": false,
+        "show_quick_buy": false,
+        "link_title": "View all",
+        "link_url": ""
+      }
     }
   },
   "order": [
@@ -232,6 +245,7 @@
     "165907865634949e08",
     "1659078670c9c60ada",
     "165907856021cc2f9c",
-    "165907878923c6b2b1"
+    "165907878923c6b2b1",
+    "1659078888dc51c719"
   ]
 }
