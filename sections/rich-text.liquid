@@ -10,6 +10,11 @@
 {%- endcase -%}
 
 
+<style>
+  .rich-section-{{section.id}}{
+    font-size:{{section.settings.font_size}}px;
+  }
+</style>
 
 <section class="section section--text-centered section__text--layout" data-section-id="{{ section.id }}" data-section-type="rich-text" style="margin-top:{{section.settings.margin_top}}px; margin-bottom: {{section.settings.margin_botton}}px;margin-left:{{section.settings.margin_lr}}px;margin-right:{{section.settings.margin_lr}}px;background-color: {{section.settings.background}};">
   <div class="{{ container_classes }} text--layout" style=" text-align: {{section.settings.text_layout}}; color: {{section.settings.text_color}}; ">
@@ -17,7 +22,7 @@
       <h2 class="heading h1" style="color: {{section.settings.title_color}};">{{ section.settings.title | escape }}</h2>
     {%- endif -%}
 
-    <div class="rte">
+    <div class="rte rich-section-{{section.id}}">
       {{ section.settings.content }}
 
       {%- if section.settings.button_link != blank and section.settings.button_text != blank -%}
@@ -104,6 +109,16 @@
       "unit":"px",
       "label":"底部边距",
       "default":20
+    },
+    {
+      "type":"range",
+      "id":"font_size",
+      "min":10,
+      "max":100,
+      "step":1,
+      "unit":"px",
+      "label":"正文字体大小",
+      "default":16
     },
     {
       "type":"range",
