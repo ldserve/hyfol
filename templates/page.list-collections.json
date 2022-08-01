@@ -262,6 +262,65 @@
         "show_collection_overlay": true,
         "collection_overlay_opacity": 20
       }
+    },
+    "1659336417e01aa356": {
+      "type": "summary-tex",
+      "blocks": {
+        "cc1a4018-6738-4f77-b38b-7c5b393f4bdd": {
+          "type": "text",
+          "settings": {
+            "title_text": "How Do I Create A Custom T-Shirt?",
+            "centont_text": "<p>Just pick one essential products from the website，<br\/>and send in your design or your design ideas via email：<a href=\"mailto:contactus@hyfol.com\" title=\"mailto:contactus@hyfol.com\">contactus@hyfol.com<\/a>.<br\/>your will qet a qoute once you let us know the quantity required.<br\/><\/p>",
+            "title_size": 16,
+            "margin_top": 16,
+            "margin_botton": 16,
+            "border_top_size": 1,
+            "border_color": "#CCCCCC",
+            "details_margin_botton": 14
+          }
+        },
+        "ea776825-66c6-403c-b59f-9a62b4f980f5": {
+          "type": "text",
+          "settings": {
+            "title_text": "summary",
+            "centont_text": "",
+            "title_size": 16,
+            "margin_top": 16,
+            "margin_botton": 16,
+            "border_top_size": 1,
+            "border_color": "#CCCCCC",
+            "details_margin_botton": 14
+          }
+        },
+        "66b4f19c-e061-47e0-98ca-d6fe617b9cf7": {
+          "type": "text",
+          "settings": {
+            "title_text": "summary",
+            "centont_text": "",
+            "title_size": 16,
+            "margin_top": 16,
+            "margin_botton": 16,
+            "border_top_size": 1,
+            "border_color": "#CCCCCC",
+            "details_margin_botton": 14
+          }
+        }
+      },
+      "block_order": [
+        "cc1a4018-6738-4f77-b38b-7c5b393f4bdd",
+        "ea776825-66c6-403c-b59f-9a62b4f980f5",
+        "66b4f19c-e061-47e0-98ca-d6fe617b9cf7"
+      ],
+      "settings": {
+        "header_text": "Your Custom T-Shirt FAQS",
+        "text_color": "#ffffff",
+        "background_color": "#000000",
+        "margin_tb": 16,
+        "text_size": 15,
+        "header_mtop": 0,
+        "header_mbottom": 0,
+        "summary_layout": "left"
+      }
     }
   },
   "order": [
@@ -276,6 +335,7 @@
     "165907856021cc2f9c",
     "165907878923c6b2b1",
     "1659321991c10f5bc2",
-    "main"
+    "main",
+    "1659336417e01aa356"
   ]
 }
