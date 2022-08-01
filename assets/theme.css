@@ -1482,6 +1482,9 @@ position: absolute;
   .card .table td:first-child {
     padding-left: 0;
   }
+  .text--layout .h1{
+    font-size: 20px;
+  }
 }
 
 @media screen and (min-width: 641px) {
@@ -2217,6 +2220,9 @@ img.lazyload[data-sizes=auto] {
   .scroller .block-list::after {
     flex: 0 0 calc(var(--desktop-container-gutter) - 15px);
   }
+  .text--layout .h1 {
+    font-size: 20px;
+}
 }
 
 @media screen and (min-width: 641px) {
@@ -11929,7 +11935,10 @@ shopify-payment-terms {
 .section--tight {
   margin: 30px 0;
 }
-
+.section-layout{
+  margin: 0;
+  padding: 15px 0;
+}
 /* When isolated, sections use padding instead of margin (useful for sections that has plain background) */
 .section--isolated {
   margin: 0 !important;
@@ -11999,7 +12008,12 @@ shopify-payment-terms {
   .section--isolated {
     padding: 60px 0;
   }
+  .section-layout{
 
+    margin: 0;
+    padding: 20px 0;
+
+  }
   .section__header {
     overflow: visible;
     margin-bottom: 20px;
@@ -12260,6 +12274,7 @@ shopify-payment-terms {
   .slideshow--large {
     height: 520px;
   }
+
 }
 
 .store-availability-container {
