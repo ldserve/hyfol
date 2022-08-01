@@ -316,7 +316,7 @@
         "text_color": "#ffffff",
         "background_color": "#000000",
         "margin_tb": 12,
-        "text_size": 22,
+        "text_size": 19,
         "header_mtop": 0,
         "header_mbottom": 0,
         "summary_layout": "left"
