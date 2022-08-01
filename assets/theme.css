@@ -2214,6 +2214,9 @@ img.lazyload[data-sizes=auto] {
   .scroller .block-list__item {
     width: 81%;
   }
+  .shipping_info{
+    font-size: 13px;
+  }
 }
 
 @media screen and (min-width: 641px) and (max-width: 999px) {
