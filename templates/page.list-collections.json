@@ -20,6 +20,7 @@
         "background": "#000000",
         "margin_top": 0,
         "margin_botton": 0,
+        "margin_lr": 0,
         "title": "Coustomize Your T-Shirt",
         "content": "<p>Order in bulk online. We print in full colour and ship to you.<\/p>",
         "button_text": "",
@@ -46,6 +47,7 @@
         "background": "#000000",
         "margin_top": 0,
         "margin_botton": 0,
+        "margin_lr": 0,
         "title": "What Will You Create?",
         "content": "<p>We love seeing what you make so please tag us when your products arrive. You can design on your phone<br\/>and we'll print what you see on screen in full colour. It's easy :)<\/p>",
         "button_text": "",
@@ -72,6 +74,7 @@
         "background": "#000000",
         "margin_top": 0,
         "margin_botton": 0,
+        "margin_lr": 0,
         "title": "Custom Printed Plothing",
         "content": "<p>Add your design to a huge range of quality sustainable products<\/p>",
         "button_text": "",
@@ -216,6 +219,7 @@
         "background": "#000000",
         "margin_top": 0,
         "margin_botton": 0,
+        "margin_lr": 0,
         "title": "Full Colour, Photo Quality And Strong Designs.",
         "content": "<p>Our world-class designers team will be able to create and customize your graphics to meet your demand.<br\/>your will feel empowered and inspired to wear on some creative and beautiful designs that speak for you.<\/p>",
         "button_text": "",
@@ -233,66 +237,8 @@
         "stack_products": false,
         "show_quick_buy": false,
         "link_title": "",
-        "link_url": "https:\/\/www.hyfol.com\/collections\/hyfol-best-seller-1"
-      }
-    },
-    "165932154276abf74a": {
-      "type": "summary_tex",
-      "blocks": {
-        "5af0c29f-cbd3-4c6f-bc18-e12e30da9b2f": {
-          "type": "text",
-          "settings": {
-            "title_text": "How Do I Create A Custom T-Shirt?",
-            "centont_text": "<p>Just pick one essential products from the website，<br\/>and send in your design or your design ideas via email：<a href=\"mailto:contactus@hyfol.com\" title=\"mailto:contactus@hyfol.com\">contactus@hyfol.com.<\/a><br\/>your will qet a qoute once you let us know the quantity required.<\/p>",
-            "title_size": 16,
-            "margin_top": 16,
-            "margin_botton": 16,
-            "border_top_size": 1,
-            "border_color": "#CCCCCC",
-            "details_margin_botton": 14
-          }
-        },
-        "51d2c0a0-0e21-40ab-918f-66085dd67894": {
-          "type": "text",
-          "settings": {
-            "title_text": "What’s The Minimum Order For Custom T-Shirts?",
-            "centont_text": "<p>We do have minimum number requirement of 10 pieces at a time in order to produce more efficiently . <br\/>Bulk discounts will be offered depending on your order quantity.<\/p>",
-            "title_size": 16,
-            "margin_top": 16,
-            "margin_botton": 16,
-            "border_top_size": 1,
-            "border_color": "#CCCCCC",
-            "details_margin_botton": 14
-          }
-        },
-        "639621df-415f-4ced-9556-593fcf540176": {
-          "type": "text",
-          "settings": {
-            "title_text": "When Will I Receive My Custom Clothing?",
-            "centont_text": "<p>Designs will be ready within 3 working days for you to decide. we can alternaate the designs regardingly . <br\/>Once the designs are fixed and your order payment received, we will inform you the estimated production and<br\/>shipping time needed according to order quantity and your shipping countries.<\/p>",
-            "title_size": 16,
-            "margin_top": 16,
-            "margin_botton": 16,
-            "border_top_size": 1,
-            "border_color": "#CCCCCC",
-            "details_margin_botton": 14
-          }
-        }
-      },
-      "block_order": [
-        "5af0c29f-cbd3-4c6f-bc18-e12e30da9b2f",
-        "51d2c0a0-0e21-40ab-918f-66085dd67894",
-        "639621df-415f-4ced-9556-593fcf540176"
-      ],
-      "settings": {
-        "header_text": "Your Custom T-Shirt FAQS",
-        "text_color": "#ffffff",
-        "background_color": "#000000",
-        "margin_tb": 20,
-        "text_size": 15,
-        "header_mtop": 0,
-        "header_mbottom": 0,
-        "summary_layout": "left"
+        "link_url": "https:\/\/www.hyfol.com\/collections\/hyfol-best-seller-1",
+        "backgroun": "#000000"
       }
     },
     "main": {
@@ -330,7 +276,6 @@
     "165907856021cc2f9c",
     "165907878923c6b2b1",
     "1659321991c10f5bc2",
-    "165932154276abf74a",
     "main"
   ]
 }
