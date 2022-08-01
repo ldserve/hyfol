@@ -297,7 +297,7 @@
           "settings": {
             "title_text": "When Will I Receive My Custom Clothing?",
             "centont_text": "<p>Designs will be ready within 3 working days for you to decide. we can alternaate the designs regardingly . Once the designs are fixed and your order payment received, we will inform you the estimated production and shipping time needed according to order quantity and your shipping countries.<\/p>",
-            "title_size": 21,
+            "title_size": 22,
             "margin_top": 15,
             "margin_botton": 5,
             "border_top_size": 1,
@@ -316,7 +316,7 @@
         "text_color": "#ffffff",
         "background_color": "#000000",
         "margin_tb": 12,
-        "text_size": 21,
+        "text_size": 22,
         "header_mtop": 0,
         "header_mbottom": 0,
         "summary_layout": "left"
