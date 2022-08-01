@@ -86,7 +86,7 @@
           "settings": {
             "heading": "menshirt",
             "sensorsLinkName": "menshirt",
-            "link": "",
+            "link": "https:\/\/www.hyfol.com\/collections\/polo-shirts",
             "left": 0,
             "top": 0,
             "width": 32,
@@ -98,7 +98,7 @@
           "settings": {
             "heading": "pants",
             "sensorsLinkName": "pants",
-            "link": "",
+            "link": "https:\/\/www.hyfol.com\/collections\/cargo-pants-1",
             "left": 33,
             "top": 0,
             "width": 31,
@@ -110,7 +110,7 @@
           "settings": {
             "heading": "hats",
             "sensorsLinkName": "hats",
-            "link": "",
+            "link": "https:\/\/www.hyfol.com\/collections\/accessories-12-13",
             "left": 67,
             "top": 0,
             "width": 100,
