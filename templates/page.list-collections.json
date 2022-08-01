@@ -14,7 +14,7 @@
       "type": "rich-text",
       "settings": {
         "text_width": "wide",
-        "text_layout": "left",
+        "text_layout": "center",
         "title_color": "#ffffff",
         "text_color": "#ffffff",
         "background": "#000000",
@@ -41,7 +41,7 @@
       "type": "rich-text",
       "settings": {
         "text_width": "wide",
-        "text_layout": "left",
+        "text_layout": "center",
         "title_color": "#ffffff",
         "text_color": "#ffffff",
         "background": "#000000",
@@ -49,7 +49,7 @@
         "margin_botton": 0,
         "margin_lr": 0,
         "title": "What Will You Create?",
-        "content": "<p>We love seeing what you make so please tag us when your products arrive. You can design on your phone and we'll print what you see on screen in full colour. It's easy :)<\/p>",
+        "content": "<p>We love seeing what you make so please tag us when your products arrive. <\/p><p>You can design on your phone and we'll print what you see on screen in full colour. It's easy :)<\/p>",
         "button_text": "",
         "button_link": ""
       }
@@ -68,7 +68,7 @@
       "type": "rich-text",
       "settings": {
         "text_width": "wide",
-        "text_layout": "left",
+        "text_layout": "center",
         "title_color": "#ffffff",
         "text_color": "#ffffff",
         "background": "#000000",
@@ -213,7 +213,7 @@
       "type": "rich-text",
       "settings": {
         "text_width": "wide",
-        "text_layout": "left",
+        "text_layout": "center",
         "title_color": "#ffffff",
         "text_color": "#ffffff",
         "background": "#000000",
@@ -221,7 +221,7 @@
         "margin_botton": 0,
         "margin_lr": 0,
         "title": "Full Colour, Photo Quality And Strong Designs.",
-        "content": "<p>Our world-class designers team will be able to create and customize your graphics to meet your demand.your will feel empowered and inspired to wear on some creative and beautiful designs that speak for you.<\/p>",
+        "content": "<p>Our world-class designers team will be able to create and customize your graphics to meet your demand.<\/p><p>Your will feel empowered and inspired to wear on some creative and beautiful designs that speak for you.<\/p>",
         "button_text": "",
         "button_link": ""
       }
