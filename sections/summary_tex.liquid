@@ -1,6 +1,6 @@
 <style>
-#shopify-section-{{section.id}}{
-    padding:{{section.settings.margin_tb}}px {{section.settings.margin_lr}}px;
+#myshopify-section-{{section.id}}{
+    padding:{{section.settings.margin_tb}}px 0px;
     background:{{section.settings.background_color}};
     color:{{section.settings.text_color}};
     font-size:{{section.settings.text_size}}px;
@@ -17,36 +17,32 @@
     transform: rotate(90deg);
 }
 
-.accordion__content{
 
+.accordion__title{
+margin: 0;
 }
 .summary-header--title{
-    font-size: {{section.settings.header_text_size}}px;
     margin-top:{{section.settings.header_mtop}}px;
     margin-bottom:{{section.settings.header_mbottom}}px;
     text-align:{{section.settings.summary_layout}}
 }
 </style>
 
-<section class="section" id="shopify-section-{{section.id}}">
-
-<h1 class="summary-header--title" style="{%- if section.settings.strnog -%}font-weight:800;{%- endif -%}">{{section.settings.header_text}}</h1>
+<section class="section" id="myshopify-section-{{section.id}}">
+<div class="container">
+<h1 class="summary-header--title heading h1" style="color:{{section.settings.text_color}} ;">{{section.settings.header_text}}</h1>
 
 {%- for block in section.blocks -%}
 <style>
-    {%- if block.settings.border_top -%}
     .section-template-{{forloop.index}} {
     border-top:{{block.settings.border_top_size}}px solid {{block.settings.border_color}};
 
     }
-    {%- endif -%}
     .summary-item-{{forloop.index}}{
-        font-size:{{block.settings.title_size}}px;
-        margin-top:{{block.settings.margin-top}}px;
+        margin-top:{{block.settings.margin_top}}px;
         margin-bottom:{{block.settings.margin_botton}}px;
     }
    .section-template-{{forloop.index}}{
-    margin-top:{{block.settings.details_margin_top}}px;
     margin-bottom:{{block.settings.details_margin_botton}}px;
    }
 </style>
@@ -54,7 +50,7 @@
 <details class="section-{{section.id}} section-template-{{forloop.index}}" open>
     <summary role="button" aria-expanded="true">
         <div class="summary-title__{{section.id}} summary-item-{{forloop.index}}" >
-            <h2 class="accordion__title">{{block.settings.title_text}} </h2>
+            <h2 class="accordion__title" style=" font-size:{{block.settings.title_size}}px;">{{block.settings.title_text}} </h2>
             {%- render 'icon',icon:'arrow-right'-%}
         </div>
     </summary>
@@ -64,6 +60,8 @@
     
 </details>
 {%- endfor -%}
+
+</div>
 
 </section>
 
@@ -75,7 +73,7 @@
         "type": "text",
         "id": "header_text",
         "default": "Welcome to our store",
-        "label": "标题文本"
+        "label": "标题"
   },{
         "type": "color",
         "id": "text_color",
@@ -95,26 +93,6 @@
     "unit":"px",
     "label":"上下边距",
     "default":20
-  },
-  {
-    "type":"range",
-    "id":"margin_lr",
-    "min":0,
-    "max":100,
-    "step":1,
-    "unit":"px",
-    "label":"左右边距",
-    "default":20
-  },
-  {
-    "type":"range",
-    "id":"header_text_size",
-    "min":0,
-    "max":100,
-    "step":1,
-    "unit":"px",
-    "label":"主标题字体大小",
-    "default":15
   },
   {
     "type":"range",
@@ -145,12 +123,6 @@
     "unit":"px",
     "label":"主标题底部边距",
     "default":0
-  },
-  {
-    "type":"checkbox",
-    "id":"strnog",
-    "label":"主标题是否加粗",
-    "default":false
   },
   {
     "type":"select",
@@ -188,7 +160,7 @@
             "step":1,
             "unit":"px",
             "label":"标题字体大小",
-            "default":15
+            "default":16
         },{
             "type":"range",
             "id":"margin_top",
@@ -197,7 +169,7 @@
             "step":1,
             "unit":"px",
             "label":"标题顶部边距",
-            "default":0
+            "default":16
         },{
             "type":"range",
             "id":"margin_botton",
@@ -206,12 +178,7 @@
             "step":1,
             "unit":"px",
             "label":"标题底部边距",
-            "default":0
-        },{
-            "type":"checkbox",
-            "id":"border_top",
-            "label":"顶部边框",
-            "default":true
+            "default":16
         },{
             "type":"number",
             "id":"border_top_size",
@@ -230,16 +197,7 @@
             "step":1,
             "unit":"px",
             "label":"底部边距",
-            "default":0
-        },{
-            "type":"range",
-            "id":"details_margin_top",
-            "min":0,
-            "max":100,
-            "step":1,
-            "unit":"px",
-            "label":"顶部边距",
-            "default":0
+            "default":14
         }]
   }],
   "presets": [
