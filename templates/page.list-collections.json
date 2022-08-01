@@ -222,9 +222,79 @@
         "button_link": ""
       }
     },
+    "165932154276abf74a": {
+      "type": "summary_tex",
+      "blocks": {
+        "5af0c29f-cbd3-4c6f-bc18-e12e30da9b2f": {
+          "type": "text",
+          "settings": {
+            "title_text": "How Do I Create A Custom T-Shirt?",
+            "centont_text": "<p>Just pick one essential products from the website，<br\/>and send in your design or your design ideas via email：contactus@hyfol.com.<br\/>your will qet a qoute once you let us know the quantity required.<\/p>",
+            "title_size": 16,
+            "margin_top": 16,
+            "margin_botton": 16,
+            "border_top_size": 1,
+            "border_color": "#CCCCCC",
+            "details_margin_botton": 14
+          }
+        },
+        "51d2c0a0-0e21-40ab-918f-66085dd67894": {
+          "type": "text",
+          "settings": {
+            "title_text": "What’s The Minimum Order For Custom T-Shirts?",
+            "centont_text": "<p>We do have minimum number requirement of 10 pieces at a time in order to produce more efficiently . <br\/>Bulk discounts will be offered depending on your order quantity.<\/p>",
+            "title_size": 16,
+            "margin_top": 16,
+            "margin_botton": 16,
+            "border_top_size": 1,
+            "border_color": "#CCCCCC",
+            "details_margin_botton": 14
+          }
+        },
+        "639621df-415f-4ced-9556-593fcf540176": {
+          "type": "text",
+          "settings": {
+            "title_text": "When Will I Receive My Custom Clothing?",
+            "centont_text": "<p>Designs will be ready within 3 working days for you to decide. we can alternaate the designs regardingly . <br\/>Once the designs are fixed and your order payment received, we will inform you the estimated production and<br\/>shipping time needed according to order quantity and your shipping countries.<\/p>",
+            "title_size": 16,
+            "margin_top": 16,
+            "margin_botton": 16,
+            "border_top_size": 1,
+            "border_color": "#CCCCCC",
+            "details_margin_botton": 14
+          }
+        }
+      },
+      "block_order": [
+        "5af0c29f-cbd3-4c6f-bc18-e12e30da9b2f",
+        "51d2c0a0-0e21-40ab-918f-66085dd67894",
+        "639621df-415f-4ced-9556-593fcf540176"
+      ],
+      "settings": {
+        "header_text": "Your Custom T-Shirt FAQS",
+        "text_color": "#ffffff",
+        "background_color": "#000000",
+        "margin_tb": 20,
+        "text_size": 15,
+        "header_mtop": 0,
+        "header_mbottom": 0,
+        "summary_layout": "left"
+      }
+    },
     "main": {
       "type": "main-collections-list",
       "disabled": true,
+      "blocks": {
+        "ddd82bfb-8303-4233-9e4e-4db4a1e3af78": {
+          "type": "collection",
+          "settings": {
+            "collection": ""
+          }
+        }
+      },
+      "block_order": [
+        "ddd82bfb-8303-4233-9e4e-4db4a1e3af78"
+      ],
       "settings": {
         "collections_to_show": "selected",
         "collection_linklist": "",
@@ -245,6 +315,7 @@
     "1659078670c9c60ada",
     "165907856021cc2f9c",
     "165907878923c6b2b1",
+    "165932154276abf74a",
     "main"
   ]
 }
