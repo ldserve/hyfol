@@ -89,8 +89,8 @@
             "link": "",
             "left": 0,
             "top": 0,
-            "width": 10,
-            "height": 10
+            "width": 32,
+            "height": 100
           }
         },
         "b88d1ed7-9c5d-4f10-af88-75d2c090f683": {
@@ -99,10 +99,10 @@
             "heading": "pants",
             "sensorsLinkName": "pants",
             "link": "",
-            "left": 0,
+            "left": 33,
             "top": 0,
-            "width": 10,
-            "height": 10
+            "width": 31,
+            "height": 100
           }
         },
         "aa6a8643-1128-4282-9282-a51475ee2f6c": {
@@ -111,10 +111,10 @@
             "heading": "hats",
             "sensorsLinkName": "hats",
             "link": "",
-            "left": 0,
+            "left": 67,
             "top": 0,
-            "width": 10,
-            "height": 10
+            "width": 100,
+            "height": 100
           }
         }
       },
