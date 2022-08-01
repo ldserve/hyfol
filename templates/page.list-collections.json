@@ -14,7 +14,7 @@
       "type": "rich-text",
       "settings": {
         "text_width": "wide",
-        "text_layout": "center",
+        "text_layout": "left",
         "title_color": "#ffffff",
         "text_color": "#ffffff",
         "background": "#000000",
@@ -41,7 +41,7 @@
       "type": "rich-text",
       "settings": {
         "text_width": "wide",
-        "text_layout": "center",
+        "text_layout": "left",
         "title_color": "#ffffff",
         "text_color": "#ffffff",
         "background": "#000000",
@@ -68,7 +68,7 @@
       "type": "rich-text",
       "settings": {
         "text_width": "wide",
-        "text_layout": "center",
+        "text_layout": "left",
         "title_color": "#ffffff",
         "text_color": "#ffffff",
         "background": "#000000",
@@ -213,7 +213,7 @@
       "type": "rich-text",
       "settings": {
         "text_width": "wide",
-        "text_layout": "center",
+        "text_layout": "left",
         "title_color": "#ffffff",
         "text_color": "#ffffff",
         "background": "#000000",
