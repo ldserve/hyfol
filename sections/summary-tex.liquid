@@ -7,7 +7,6 @@
     margin:0;
 }
 
-
 .summary-title__{{section.id}}{
     display: flex;
     align-items: center;
@@ -17,7 +16,6 @@
     transform: rotate(90deg);
 }
 
-
 .accordion__title{
 margin: 0;
 }
@@ -25,6 +23,14 @@ margin: 0;
     margin-top:{{section.settings.header_mtop}}px;
     margin-bottom:{{section.settings.header_mbottom}}px;
     text-align:{{section.settings.summary_layout}}
+}
+@media screen and (max-width: 999px) {
+    #myshopify-section-{{section.id}} .accordion__title{
+        font-size:18px
+    }
+    .accordion__content.rte{
+        font-size: 14px;
+    }
 }
 </style>
 
@@ -45,12 +51,15 @@ margin: 0;
    .section-template-{{forloop.index}}{
     margin-bottom:{{block.settings.details_margin_botton}}px;
    }
+   .accordion__title{
+    font-size:{{block.settings.title_size}}px;
+   }
 </style>
 
 <details class="section-{{section.id}} section-template-{{forloop.index}}" open>
     <summary role="button" aria-expanded="true">
         <div class="summary-title__{{section.id}} summary-item-{{forloop.index}}" >
-            <h2 class="accordion__title" style=" font-size:{{block.settings.title_size}}px;">{{block.settings.title_text}} </h2>
+            <h2 class="accordion__title" >{{block.settings.title_text}} </h2>
             {%- render 'icon',icon:'arrow-right'-%}
         </div>
     </summary>

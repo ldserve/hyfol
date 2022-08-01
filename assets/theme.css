@@ -1485,6 +1485,9 @@ position: absolute;
   .text--layout .h1{
     font-size: 20px;
   }
+  .text--layout .rte{
+    font-size: 18px;
+  }
 }
 
 @media screen and (min-width: 641px) {
@@ -2222,6 +2225,9 @@ img.lazyload[data-sizes=auto] {
   }
   .text--layout .h1 {
     font-size: 20px;
+}
+.text--layout .rte{
+  font-size: 18px;
 }
 }
 
