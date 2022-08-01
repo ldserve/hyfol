@@ -4,7 +4,7 @@
       "type": "no_space_img",
       "settings": {
         "sensorsName": "",
-        "bg_image": "shopify:\/\/shop_images\/02_dd4d5129-6142-42eb-abcb-4e0e820e1c2d.jpg",
+        "bg_image": "shopify:\/\/shop_images\/pc_-__02.jpg",
         "web_bg_image": "shopify:\/\/shop_images\/02_b7f8815e-9146-4d00-a62b-b3a701b9a012.jpg",
         "link": "mailto:contactus@hyfol.com",
         "shadow": false
@@ -31,8 +31,8 @@
       "type": "no_space_img",
       "settings": {
         "sensorsName": "",
-        "bg_image": "shopify:\/\/shop_images\/04_65e3741b-ea23-4aa7-a922-4ac36f668046.jpg",
-        "web_bg_image": "shopify:\/\/shop_images\/04_d4c92e54-956d-4969-92e4-cd40e7cc3a08.jpg",
+        "bg_image": "shopify:\/\/shop_images\/pc_-__04_30c7b1f4-101f-4724-9043-6c7fb125c740.jpg",
+        "web_bg_image": "shopify:\/\/shop_images\/04_3575d6f0-55bb-4ff3-a19f-b1c214c2a372.jpg",
         "link": "",
         "shadow": false
       }
@@ -49,7 +49,7 @@
         "margin_botton": 0,
         "margin_lr": 0,
         "title": "What Will You Create?",
-        "content": "<p>We love seeing what you make so please tag us when your products arrive. You can design on your phone and we'll print what you see on screen in full colour. It's easy :)<\/p>",
+        "content": "<p>We love seeing what you make so please tag us when your products arrive. <\/p><p>You can design on your phone and we'll print what you see on screen in full colour. It's easy :)<\/p>",
         "button_text": "",
         "button_link": ""
       }
@@ -76,7 +76,7 @@
         "margin_botton": 0,
         "margin_lr": 0,
         "title": "Custom Printed Plothing",
-        "content": "<p>Add your design to a huge range of quality sustainable products<\/p>",
+        "content": "<p>Add your design to a huge range of quality products<\/p>",
         "button_text": "",
         "button_link": ""
       }
@@ -133,7 +133,7 @@
         "sensorsName": "",
         "hidWeb": true,
         "line": false,
-        "image": "shopify:\/\/shop_images\/08_89b39562-bfef-42cf-a089-156efebb84a0.jpg",
+        "image": "shopify:\/\/shop_images\/pc_-__08_35422bbc-9124-4863-883f-33d6c403a111.jpg",
         "tpadding": 0,
         "rpadding": 0,
         "bpadding": 0,
@@ -192,7 +192,7 @@
         "sensorsName": "",
         "hidWeb": false,
         "line": false,
-        "image": "shopify:\/\/shop_images\/08_df585b08-5061-4dd8-9b21-0f45db509dc7.jpg",
+        "image": "shopify:\/\/shop_images\/08_7d1c4e28-b64b-4d47-91b6-a66bc7288834.jpg",
         "tpadding": 0,
         "rpadding": 0,
         "bpadding": 0,
@@ -203,7 +203,7 @@
       "type": "no_space_img",
       "settings": {
         "sensorsName": "",
-        "bg_image": "shopify:\/\/shop_images\/10_f42fe56e-c88d-44b2-8c4f-7f4be7dafaf1.jpg",
+        "bg_image": "shopify:\/\/shop_images\/pc_-__10.jpg",
         "web_bg_image": "shopify:\/\/shop_images\/10_75c9691d-f895-4403-acc7-7853b251d6ac.jpg",
         "link": "",
         "shadow": false
@@ -221,7 +221,7 @@
         "margin_botton": 0,
         "margin_lr": 0,
         "title": "Full Colour, Photo Quality And Strong Designs.",
-        "content": "<p>Our world-class designers team will be able to create and customize your graphics to meet your demand.your will feel empowered and inspired to wear on some creative and beautiful designs that speak for you.<\/p>",
+        "content": "<p>Our world-class designers team will be able to create and customize your graphics to meet your demand.<\/p><p>Your will feel empowered and inspired to wear on some creative and beautiful designs that speak for you.<\/p>",
         "button_text": "",
         "button_link": ""
       }
@@ -270,7 +270,7 @@
           "type": "text",
           "settings": {
             "title_text": "How Do I Create A Custom T-Shirt?",
-            "centont_text": "<p>Just pick one essential products from the website，and send in your design or your design ideas via email：<a href=\"mailto:contactus@hyfol.com\" title=\"mailto:contactus@hyfol.com\">contactus@hyfol.com<\/a> your will qet a qoute once you let us know the quantity required.<br\/><\/p>",
+            "centont_text": "<p>Just pick one essential products from the website，and send in your design or your design ideas via email：<a href=\"mailto:contactus@hyfol.com\" title=\"mailto:contactus@hyfol.com\">contactus@hyfol.com<\/a> <\/p><p>your will qet a qoute once you let us know the quantity required.<br\/><\/p>",
             "title_size": 17,
             "margin_top": 15,
             "margin_botton": 5,
@@ -297,7 +297,7 @@
           "settings": {
             "title_text": "When Will I Receive My Custom Clothing?",
             "centont_text": "<p>Designs will be ready within 3 working days for you to decide. we can alternaate the designs regardingly . Once the designs are fixed and your order payment received, we will inform you the estimated production and shipping time needed according to order quantity and your shipping countries.<\/p>",
-            "title_size": 16,
+            "title_size": 22,
             "margin_top": 15,
             "margin_botton": 5,
             "border_top_size": 1,
@@ -316,7 +316,7 @@
         "text_color": "#ffffff",
         "background_color": "#000000",
         "margin_tb": 12,
-        "text_size": 16,
+        "text_size": 19,
         "header_mtop": 0,
         "header_mbottom": 0,
         "summary_layout": "left"
