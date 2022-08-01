@@ -321,6 +321,16 @@
         "header_mbottom": 0,
         "summary_layout": "left"
       }
+    },
+    "1659339876ca738e1f": {
+      "type": "no_space_img",
+      "settings": {
+        "sensorsName": "",
+        "bg_image": "shopify:\/\/shop_images\/2_0721a565-b0bb-43c3-a335-569b09045683.jpg",
+        "web_bg_image": "shopify:\/\/shop_images\/94d53239037849179c79285840325f32_7960dc77-b64f-4044-b983-4a651b8a5322.jpg",
+        "link": "",
+        "shadow": false
+      }
     }
   },
   "order": [
@@ -336,6 +346,7 @@
     "165907878923c6b2b1",
     "1659321991c10f5bc2",
     "main",
-    "1659336417e01aa356"
+    "1659336417e01aa356",
+    "1659339876ca738e1f"
   ]
 }
