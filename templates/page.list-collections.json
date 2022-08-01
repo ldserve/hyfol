@@ -222,6 +222,20 @@
         "button_link": ""
       }
     },
+    "1659321991c10f5bc2": {
+      "type": "transparent-collection",
+      "settings": {
+        "collection": "hyfol-best-seller-1",
+        "sensorsName": "",
+        "title": "BEST SELLER",
+        "products_count": 12,
+        "layout": "vertical",
+        "stack_products": false,
+        "show_quick_buy": false,
+        "link_title": "",
+        "link_url": "https:\/\/www.hyfol.com\/collections\/hyfol-best-seller-1"
+      }
+    },
     "165932154276abf74a": {
       "type": "summary_tex",
       "blocks": {
@@ -229,7 +243,7 @@
           "type": "text",
           "settings": {
             "title_text": "How Do I Create A Custom T-Shirt?",
-            "centont_text": "<p>Just pick one essential products from the website，<br\/>and send in your design or your design ideas via email：contactus@hyfol.com.<br\/>your will qet a qoute once you let us know the quantity required.<\/p>",
+            "centont_text": "<p>Just pick one essential products from the website，<br\/>and send in your design or your design ideas via email：<a href=\"mailto:contactus@hyfol.com\" title=\"mailto:contactus@hyfol.com\">contactus@hyfol.com.<\/a><br\/>your will qet a qoute once you let us know the quantity required.<\/p>",
             "title_size": 16,
             "margin_top": 16,
             "margin_botton": 16,
@@ -315,6 +329,7 @@
     "1659078670c9c60ada",
     "165907856021cc2f9c",
     "165907878923c6b2b1",
+    "1659321991c10f5bc2",
     "165932154276abf74a",
     "main"
   ]
