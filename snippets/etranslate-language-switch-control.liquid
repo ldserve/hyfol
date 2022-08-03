@@ -1109,11 +1109,12 @@ function etranslateCurrency(originCurrency, currentCurrency) {
                 }
                 if (amountDom[i].dataset.currency !== currentCurrency.code) {
                     let specialCurrency = ['DKK','EUR','RON','BRL','ARS']
+                    let money_format = '{{ shop.money_format }}'
                     if(parseFloat(originCurrency.round) === 8848){
                         var price = parseFloat(amountDom[i].innerHTML.match(/\d+/g));
                     }else{
                         var price
-                        if (specialCurrency.includes(originCurrency.code)) {
+                        if (specialCurrency.includes(originCurrency.code) && money_format.includes('amount_with_comma_separator')) {
                             price = parseFloat(amountDom[i].innerHTML.replace('.', '').replace(",", ".").match(/\d+(\.\d+)?/g));
                         } else {
                             price = parseFloat(amountDom[i].innerHTML.replace(",", "").match(/\d+(\.\d+)?/g));
@@ -1122,27 +1123,27 @@ function etranslateCurrency(originCurrency, currentCurrency) {
                     price = Currency.convert(price, originCurrency.code, currentCurrency.code).toFixed(2);
                     if (parseFloat(currentCurrency.round) !== 0 && parseFloat(currentCurrency.round) !== 1 && parseFloat(currentCurrency.round) !== 8848) {
                         price = parseFloat(price.toString().replace(/(\.[0-9]+)/g, '')) + parseFloat(currentCurrency.round);
-                        if (specialCurrency.includes(currentCurrency.code)) {
+                        if (specialCurrency.includes(currentCurrency.code) && money_format.includes('amount_with_comma_separator')) {
                             price = Number(price).toLocaleString('in', {minimumFractionDigits: 2})
                         } else {
                             price = Number(price).toLocaleString('zh', {minimumFractionDigits: 2})
                         }
                     } else if (parseFloat(currentCurrency.round) === 8848) {
                         price = parseInt(price);
-                        if (specialCurrency.includes(currentCurrency.code)) {
+                        if (specialCurrency.includes(currentCurrency.code) && money_format.includes('amount_with_comma_separator')) {
                             price = Number(price).toLocaleString('in', {minimumFractionDigits: 0})
                         } else {
                             price = Number(price).toLocaleString('zh', {minimumFractionDigits: 0})
                         }
                     } else if (parseFloat(currentCurrency.round) === 1) {
                         price = parseInt(price) + 1;
-                        if (specialCurrency.includes(currentCurrency.code)) {
+                        if (specialCurrency.includes(currentCurrency.code) && money_format.includes('amount_with_comma_separator')) {
                             price = Number(price).toLocaleString('in', {minimumFractionDigits: 0})
                         } else {
                             price = Number(price).toLocaleString('zh', {minimumFractionDigits: 0})
                         }
                     }else{
-                        if (specialCurrency.includes(currentCurrency.code)) {
+                        if (specialCurrency.includes(currentCurrency.code) && money_format.includes('amount_with_comma_separator')) {
                             price = Number(price).toLocaleString('in', {minimumFractionDigits: 2})
                         } else {
                             price = Number(price).toLocaleString('zh', {minimumFractionDigits: 2})
