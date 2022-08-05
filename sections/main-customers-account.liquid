@@ -1,11 +1,15 @@
 <section class="hidden-lap-and-up account">
 	<div class="header-me container">
 		{%- if customer -%}
+
+		{%- comment -%}
 		<!-- <input type="checkbox" id="account-input" class="account-input hidden">
 		<ul class="logged">
 			<li class=" text-l name"><span class="hi">Hi!&nbsp;</span>{{ customer.first_name }}</li>
 			<li class=" text-r tab"><label for="account-input">{%- render 'icon', icon: 'arrow-bottom' -%}</label></li>
 		</ul> -->
+		{%- endcomment -%}
+
 		<div class="account-box">
 			<h3 class="mobile-account__title">My Service</h3>
 			<div class="card__linklist ">
@@ -38,6 +42,7 @@
 </section>
 
 <section data-section-id="{{ section.id }}" data-section-type="account" id="account">
+	{%- comment -%}{%- endcomment -%}
 	<div class="page__sub-header hidden-tablet">
 		<nav aria-label="{{ 'general.breadcrumb.title' | t }}" class="breadcrumb">
 			<ol class="breadcrumb__list" role="list">
@@ -61,6 +66,7 @@
 	<div class="container container--flush">
 		<div class="layout">
 			<div class="layout__section layout__section--secondary hidden-phone">
+				{%- comment -%}自定义导航栏{%- endcomment -%}
 				<div class="card card--sticky hidden-pocket">
 					<div class="card__section card__section--tight">
 						<div class="card__linklist table-left-nav">
@@ -81,7 +87,7 @@
 						</div>
 					</div>
 				</div>
-
+				{%- comment -%}自定义导航栏 END{%- endcomment -%}
 				<div class="value-picker-wrapper hidden-tablet-and-up">
 					<button class="value-picker-button value-picker-button--pill" aria-haspopup="true"
 						aria-expanded="false" aria-controls="account-selector" data-action="open-value-picker">
@@ -114,7 +120,7 @@
 			</div>
 
 			<div class="layout__section ">
-
+				{%- comment -%}收藏列表{%- endcomment -%}
 				<div class="wish_list account_right_content">
 					<header>
 						<h1 class="center wish_title">MY WISHLIST</h1>
@@ -163,162 +169,162 @@
 					</div>
 					</div>
 					{%- endif -%}
+{%- comment -%}
+{%- endcomment -%}
+<script>
+	async function post_data(url, data) {
+		const response = await fetch(`https://api-dev.leandow-technology.com/api/${url}`, {
+			method: 'POST',
+			mode: 'cors',
+			cache: 'no-cache',
+			credentials: 'same-origin',
+			headers: {
+				'Content-Type': 'application/json',
+				"siteValue": "leandowTest",
+				"Access-Control-Allow-Origin": "*"
+			},
+			redirect: 'follow',
+			referrerPolicy: 'no-referrer',
+			body: JSON.stringify(data)
+		});
+		return response.json();
+	}
 
-					<script>
-						async function post_data(url, data) {
-							const response = await fetch(`https://api-dev.leandow-technology.com/api/${url}`, {
-								method: 'POST',
-								mode: 'cors',
-								cache: 'no-cache',
-								credentials: 'same-origin',
-								headers: {
-									'Content-Type': 'application/json',
-									"siteValue": "leandowTest",
-									"Access-Control-Allow-Origin": "*"
-								},
-								redirect: 'follow',
-								referrerPolicy: 'no-referrer',
-								body: JSON.stringify(data)
-							});
-							return response.json();
-						}
+	function getCollectList(event) {
 
-						function getCollectList(event) {
+		var pageSectionId = document.querySelector(".page__sub-header").parentElement.getAttribute("data-section-id")
+		const collectList = {
+			current: 1,
+			customerId: "{{customer.id}}",
+			size: 100
+		}
+		post_data("customerCollectionProduct/collectionProductList", collectList)
+			.then(res => {
+				if (res.data.records.length < 1) {
+					document.querySelector('.collect-body').style.display = "block"
+					document.querySelector(".wish_loading").style.display = "none"
+					return
+				}
+				// document.querySelector(".collection-num").innerHTML = res.data.total
+				var ids = ""
+				res.data.records.forEach((item, index) => {
+					if (index === 0) {
+						ids = `id:${item.productId}`
+					} else {
+						ids = ids + " OR " + `id:${item.productId}`
+					}
+				});
+				fetch(`/search?q=${ids}&type=product`)
+					.then((rs) => {
+						return rs.text()
+					})
+					.then((rs) => {
+						document.querySelector(".wish_loading").style.display = "none"
 
-						   var pageSectionId = document.querySelector(".page__sub-header").parentElement.getAttribute("data-section-id")
-							const collectList = {
-								current: 1,
-								customerId: "{{customer.id}}",
-								size: 100
-							}
-							post_data("customerCollectionProduct/collectionProductList", collectList)
-								.then(res => {
-									if (res.data.records.length < 1) {
-										document.querySelector('.collect-body').style.display = "block"
-										document.querySelector(".wish_loading").style.display = "none"
-										return
-									}
-									// document.querySelector(".collection-num").innerHTML = res.data.total
-									var ids = ""
-									res.data.records.forEach((item, index) => {
-										if (index === 0) {
-											ids = `id:${item.productId}`
-										} else {
-											ids = ids + " OR " + `id:${item.productId}`
-										}
-									});
-									fetch(`/search?q=${ids}&type=product`)
-										.then((rs) => {
-											return rs.text()
-										})
-										.then((rs) => {
-                                            document.querySelector(".wish_loading").style.display = "none"
+						let dom = new DOMParser().parseFromString(rs, 'text/html');
 
-											let dom = new DOMParser().parseFromString(rs, 'text/html');
+						dom.querySelector(".collection__toolbar").style.display = "none"
 
-											dom.querySelector(".collection__toolbar").style.display = "none"
+						document.querySelector('.collect').appendChild(dom.querySelector(
+							".collection__dynamic-part"))
 
-											document.querySelector('.collect').appendChild(dom.querySelector(
-												".collection__dynamic-part"))
+						document.querySelector('.collect').appendChild(dom.querySelector(
+							".modal__dialog").parentElement)
 
-											document.querySelector('.collect').appendChild(dom.querySelector(
-												".modal__dialog").parentElement)
-
-											if(document.querySelector('.pagination__nav')){
-												document.querySelector('.pagination__nav').querySelectorAll(".pagination__nav-item")
-													.forEach((item, index) => {
-														item.addEventListener("click", nextCollectList)
-													})
-											}
-                                            
-											
-											const removeNodes = document.querySelectorAll(".collect .add-collect")
-											document.querySelector(".collect-body").style.display = "none"
-											removeNodes.forEach((item, index) => {
-												item.addEventListener("click", () => {
-													document.querySelectorAll(
-															`.collect .product-list .product-item`)[index].style
-														.display = "none";
-												})
-											})
-
-										})
-								});
-						}
-						if ("{{ customer.id}}") {
-							getCollectList()
+						if (document.querySelector('.pagination__nav')) {
+							document.querySelector('.pagination__nav').querySelectorAll(".pagination__nav-item")
+								.forEach((item, index) => {
+									item.addEventListener("click", nextCollectList)
+								})
 						}
 
 
-						function nextCollectList(event) {
-							if (event) {
-								event.preventDefault()
-							}
-							document.querySelector(".wish_loading").style.display = "flex"
-							document.querySelector(".product-list--collection").style.display = "none"
-
-                            document.querySelectorAll(".pagination__nav-item").forEach((item)=>{
-								item.className = "pagination__nav-item link"
+						const removeNodes = document.querySelectorAll(".collect .add-collect")
+						document.querySelector(".collect-body").style.display = "none"
+						removeNodes.forEach((item, index) => {
+							item.addEventListener("click", () => {
+								document.querySelectorAll(
+									`.collect .product-list .product-item`)[index].style
+									.display = "none";
 							})
-							event.target.className = "pagination__nav-item link is-active"
+						})
+					})
+			});
+	}
+	if ("{{ customer.id}}") {
+		getCollectList()
+	}
 
 
-							const collectList = {
-								current: event.target.innerHTML * 1,
-								customerId: "{{customer.id}}",
-								size: 24
-							}
-							post_data("customerCollectionProduct/collectionProductList", collectList)
-								.then(res => {
-								
-									
-									if (res.data.records.length < 1) {
-										document.querySelector('.collect-body').style.display = "block"
-										return
-									}
-									var ids = ""
+	function nextCollectList(event) {
+		if (event) {
+			event.preventDefault()
+		}
+		document.querySelector(".wish_loading").style.display = "flex"
+		document.querySelector(".product-list--collection").style.display = "none"
 
-									res.data.records.forEach((item, index) => {
-										if (index === 0) {
-											ids = `id:${item.productId}`
-										} else {
-											ids = ids + " OR " + `id:${item.productId}`
-										}
-									});
-									fetch(`/search?q=${ids}&type=product`)
-										.then((rs) => {
-											return rs.text()
-										})
-										.then((rs) => {
-											let dom = new DOMParser().parseFromString(rs, 'text/html');
-	
-											document.querySelector(".product-list").remove()
-											//  document.querySelector('.collection__dynamic-part').appendChild()
-											document.querySelector('.collection__dynamic-part').insertBefore(dom.querySelector(
-													".product-list"), document.querySelector(".collection__toolbar")
-												.nextSibling);
+		document.querySelectorAll(".pagination__nav-item").forEach((item) => {
+			item.className = "pagination__nav-item link"
+		})
+		event.target.className = "pagination__nav-item link is-active"
 
-												const removeNodes = document.querySelectorAll(".collect .add-collect")
-											document.querySelector(".collect-body").style.display = "none"
-											removeNodes.forEach((item, index) => {
-												item.addEventListener("click", () => {
-													document.querySelectorAll(
-															`.collect .product-list .product-item`)[index].style
-														.display = "none";
-												})
-											})
-											document.querySelector(".wish_loading").style.display = "none"
-											document.querySelector(".product-list--collection").style.display = "flex"
-										})
-								});
-						}
 
-					
-				
-					</script>
+		const collectList = {
+			current: event.target.innerHTML * 1,
+			customerId: "{{customer.id}}",
+			size: 24
+		}
+		post_data("customerCollectionProduct/collectionProductList", collectList)
+			.then(res => {
+
+
+				if (res.data.records.length < 1) {
+					document.querySelector('.collect-body').style.display = "block"
+					return
+				}
+				var ids = ""
+
+				res.data.records.forEach((item, index) => {
+					if (index === 0) {
+						ids = `id:${item.productId}`
+					} else {
+						ids = ids + " OR " + `id:${item.productId}`
+					}
+				});
+				fetch(`/search?q=${ids}&type=product`)
+					.then((rs) => {
+						return rs.text()
+					})
+					.then((rs) => {
+						let dom = new DOMParser().parseFromString(rs, 'text/html');
+
+						document.querySelector(".product-list").remove()
+						//  document.querySelector('.collection__dynamic-part').appendChild()
+						document.querySelector('.collection__dynamic-part').insertBefore(dom.querySelector(
+							".product-list"), document.querySelector(".collection__toolbar")
+							.nextSibling);
+
+						const removeNodes = document.querySelectorAll(".collect .add-collect")
+						document.querySelector(".collect-body").style.display = "none"
+						removeNodes.forEach((item, index) => {
+							item.addEventListener("click", () => {
+								document.querySelectorAll(
+									`.collect .product-list .product-item`)[index].style
+									.display = "none";
+							})
+						})
+						document.querySelector(".wish_loading").style.display = "none"
+						document.querySelector(".product-list--collection").style.display = "flex"
+					})
+			});
+	}
+
+
+</script>
+
 				</div>
 
-
+				{%- comment -%}订单列表{%- endcomment -%}
 				<div class="card my_orders account_right_content">
 
 					<div class="hidden-phone">
@@ -404,38 +410,8 @@
 	
 				</div>
 				
-
+				{%- comment -%}vip规则说明{%- endcomment -%}
 				<div class="my_overview account_right_content">
-					{%- comment -%}
-					<div class="overview-box">
-						<h1>Hi {{customer.first_name}}</h1>
-				
-						<ul class="d-flex account-overview__list">
-							<li class="d-flex overview-item">
-								<span>
-									100
-								</span>
-								<span>
-									Coupons
-								</span>
-							</li>
-							<li class="d-flex overview-item">
-								<span class="account-points">
-								</span>
-								<span>
-									Points
-								</span>
-							</li>
-							<li class="d-flex overview-item">
-								<span class="collection-num">
-								</span>
-								<span>
-									Collection
-								</span>
-							</li>
-						</ul>
-					</div>
-					{%- endcomment -%}
 					<div class="vip-rules" style="display:none;">
 					
 						<div class="close-rule__page">{% render 'icon',icon:'close' %} </div>
@@ -712,7 +688,7 @@
 					</div>	
 
 				</div>
-
+				{%- comment -%}优惠券{%- endcomment -%}
 				<div class="my_coupons account_right_content backgrount_e">
 					<h3 class="my_coupons__title h3">My Coupons</h3>
 					<details-menu>
@@ -748,7 +724,7 @@
 						</div>
 						</details-menu>
 				</div>
-
+			
 				<div class="my_profiles account_right_content">
 					{%- comment -%}
 					<div class="profile-view backgrount_e">
@@ -776,85 +752,10 @@
 					</div>
 					{%- endcomment -%}
 				</div>
-
-				<style>
-					/* .profiles-form > input {
-										border: 1px solid #666;
-										background-color: #eee;
-										width: 100%;
-										display: block;
-										padding: 8px 20px;
-									} */
-				
-					.my-profile__view {
-						text-align: center;
-						display: grid;
-						grid: repeat(1, auto) / auto-flow auto;
-						color: #fff;
-						background:url({{ 'coupon.jpg' | asset_url }}) no-repeat 100% 100%;
-						grid-template-columns: 50% 1px auto;
-						padding: 1rem 2rem;
-				
-					}
-				
-					.profile-total,
-					.profile-expire {
-						padding: 1rem 0;
-					}
-				
-					.profile-view .h3 {
-						margin-bottom: 2rem;
-					}
-				
-					.my_coupons {
-						padding: 1rem 3rem;
-					}
-				
-					.my_coupons__title {
-						text-align: center;
-					}
-				
-					.coupons-nav>summary {
-						/* display: inline-block; */
-						margin-right: 1.8rem;
-						cursor: pointer;
-					}
-				
-					.vip-level__s1,
-					.vip-level__s2,
-					.vip-level__s3 {
-						position: relative;
-					}
-				
-					.vip-level__s1::after {
-						content: 'Silver';
-						position: absolute;
-						left: -0.2rem;
-						bottom: -1.6rem;
-					}
-				
-					.vip-level__s2::after {
-						content: 'Gold';
-						position: absolute;
-						left: -0.2rem;
-						bottom: -1.6rem;
-					}
-				
-					.vip-level__s3::after {
-						content: 'Platinum';
-						position: absolute;
-						left: -0.8rem;
-						bottom: -1.6rem;
-					}
-					.page__item .my-coupons{
-						padding: 0 0rem 3rem;
-
-					}
-				</style>
-
+				{%- comment -%}积分概览{%- endcomment -%}
 				<div class="my_profile account_right_content">
 					<div class="profile-view backgrount_e">
-						<h3 class="h3" style="text-align:center;">My Profile</h3>
+						<h3 class="h3" >My Profile</h3>
 						<div class="my-profile__view ">
 							<div class="profile-total">
 								<div><strong>100</strong></div>
@@ -868,9 +769,9 @@
 						</div>
 					</div>
 					
-
+					{%- comment -%}积分记录{%- endcomment -%}
 					<div class="profile-record backgrount_e">
-						<h4 class="">Profile Detalls</h4>
+						<h4 class="profile-story__title">Profile Detalls</h4>
 						<details-menu>
 							<div class="profile-nav">
 								<summary aria-expanded="true" data-index="1">
@@ -970,7 +871,7 @@
 					</div>
 				</div>
 				
-
+				{%- comment -%}客户地址{%- endcomment -%}
 				<div class="my_addresses account_right_content ">
 					<section data-section-id="{{ section.id }}" data-section-type="account">
 						<div class="container container--flush">
@@ -1551,7 +1452,7 @@
 					  </section>
 
 				</div>
-
+				{%- comment -%}联系我们{%- endcomment -%}
 				<div class="my_postsale account_right_content">
 					<div class="customers-services"  >
 						<div class="container">
@@ -1563,12 +1464,85 @@
 						</div>
 					</div>
 				</div>
+
 		</div>
 	</div>
 </section>
 
 {% if dm_paginate_by %}{% render 'spurit_dmr_collection_template_snippet', paginate_by: dm_paginate_by %}{% endif %}
 <style>
+	/* .profiles-form > input {
+		border: 1px solid #666;
+		background-color: #eee;
+		width: 100%;
+		display: block;
+		padding: 8px 20px;
+	} */
+
+	.my-profile__view {
+		text-align: center;
+		display: grid;
+		grid: repeat(1, auto) / auto-flow auto;
+		color: #fff;
+		background:url({{ 'coupon.jpg' | asset_url }}) no-repeat 100% 100%;
+		grid-template-columns: 50% 1px auto;
+		padding: 1rem 2rem;
+
+	}
+
+	.profile-total,
+	.profile-expire {
+		padding: 1rem 0;
+	}
+
+
+	.my_coupons {
+		padding: 1rem 3rem;
+	}
+
+	.my_coupons__title {
+		text-align: center;
+	}
+
+	.coupons-nav>summary {
+		/* display: inline-block; */
+		margin-right: 1.8rem;
+		cursor: pointer;
+	}
+
+	.vip-level__s1,
+	.vip-level__s2,
+	.vip-level__s3 {
+		position: relative;
+	}
+
+	.vip-level__s1::after {
+		content: 'Silver';
+		position: absolute;
+		left: -0.2rem;
+		bottom: -1.6rem;
+	}
+
+	.vip-level__s2::after {
+		content: 'Gold';
+		position: absolute;
+		left: -0.2rem;
+		bottom: -1.6rem;
+	}
+
+	.vip-level__s3::after {
+		content: 'Platinum';
+		position: absolute;
+		left: -0.8rem;
+		bottom: -1.6rem;
+	}
+	.page__item .my-coupons{
+		padding: 0 0rem 3rem;
+
+	}
+</style>
+<style>
+
 	.product-item__info {
 		background-color: #ffffff;
 	}
@@ -1968,9 +1942,9 @@
 
 	.vip-page {
 		justify-content: space-between;
-		background-image: url({{ 'user_background.png' | asset_url }});
-		background-repeat: no-repeat;
-		background-size: 100% 100%;
+		background: url({{ 'user_background.png' | asset_url }}) no-repeat -2rem 0rem;
+		/* background-repeat: no-repeat; */
+		background-size: 106% 100%;
 		background-clip: border-box;
 		min-height: 200px;
 		padding: 2rem 3rem;
@@ -2028,14 +2002,15 @@
 		background-color: #eee;
 	}
 
-	.my-coupons .h3 {
+	.my-coupons .h3,
+	.order-preview .h3 ,
+	.profile-view .h3{
 		text-align: center;
+		font-weight: 700;
 	}
-
-	.order-preview .h3 {
-		text-align: center;
+	.profile-story__title{
+		font-weight: 700;
 	}
-
 	.my-coupons {
 		margin-top: 3rem;
 		background-color: #eee;
@@ -2514,6 +2489,43 @@
 			user.style.display = "block"
 		})
 	
+	function getToken(){
+		const customerJson = {
+			"accepts_marketing": {{customer.accepts_marketing}},
+			"addresses": {{customer.addresses | json}},
+			"addresses_count": {{customer.addresses_count}},
+			"b2b?": {{customer["b2b?"]}},
+			"company_available_locations":{{customer.company_available_locations |json}},
+			"current_company": {{customer.current_company |json}},
+			"current_location": {{customer.current_location |json}},
+			"default_address": {{customer.default_address |json }},
+			"email": {{customer.email |json}},
+			"first_name": {{customer.first_name |json}},
+			"has_account": {{customer.has_account}},
+			"id": {{customer.id}},
+			"last_name": {{customer.last_name |json}},
+			"last_order": {},
+			"name": {{customer.name |json}},
+			"orders": {{customer.name |json}},
+			"orders_count": {{customer.orders_count }},
+			"phone": {{customer.phone |json}},
+			"tags": {{customer.tags |json}},
+			"tax_exempt": {{customer.tax_exempt}},
+			"total_spent":"{{customer.total_spent }}"
+		}
+				// console.log(customerJson)
+		let url = 'https://api-dev.leandow-technology.com/api/customerAccount/login'
+		fetch(url, {
+			method: "POST",
+			body: JSON.stringify(customerJson),
+			headers: { 'Content-Type': 'application/json' }
+		}).then(data => {
+
+			console.log('data', data);
+		})
+
+	}
+	getToken()
 
 	}()
 </script>
