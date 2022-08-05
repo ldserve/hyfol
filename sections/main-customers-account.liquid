@@ -2491,38 +2491,27 @@
 	
 	function getToken(){
 		const customerJson = {
-			"accepts_marketing": {{customer.accepts_marketing}},
-			"addresses": {{customer.addresses | json}},
-			"addresses_count": {{customer.addresses_count}},
-			"b2b?": {{customer["b2b?"]}},
-			"company_available_locations":{{customer.company_available_locations |json}},
-			"current_company": {{customer.current_company |json}},
-			"current_location": {{customer.current_location |json}},
-			"default_address": {{customer.default_address |json }},
 			"email": {{customer.email |json}},
-			"first_name": {{customer.first_name |json}},
-			"has_account": {{customer.has_account}},
-			"id": {{customer.id}},
-			"last_name": {{customer.last_name |json}},
-			"last_order": {},
-			"name": {{customer.name |json}},
-			"orders": {{customer.name |json}},
-			"orders_count": {{customer.orders_count }},
-			"phone": {{customer.phone |json}},
-			"tags": {{customer.tags |json}},
-			"tax_exempt": {{customer.tax_exempt}},
-			"total_spent":"{{customer.total_spent }}"
+			"id": {{customer.id}}
 		}
 				// console.log(customerJson)
-		let url = 'https://api-dev.leandow-technology.com/api/customerAccount/login'
+		let url = 'http://api.leandow-technology.com/api/customerAccount/login'
+		
 		fetch(url, {
 			method: "POST",
 			body: JSON.stringify(customerJson),
-			headers: { 'Content-Type': 'application/json' }
+			headers: { 'content-type': 'application/json','siteValue':'hyfol'}
 		}).then(data => {
 
 			console.log('data', data);
 		})
+
+/* 	const requist= new	XMLHttpRequest
+	requist.open('post',url,true)
+	requist.setRequestHeader('content-type','application/json')
+	requist.setRequestHeader('siteValue','hyfol')
+	requist.send(JSON.stringify(customerJson)) */
+
 
 	}
 	getToken()
