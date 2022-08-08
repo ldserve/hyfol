@@ -2495,7 +2495,8 @@
 			"id": {{customer.id}}
 		}
 				// console.log(customerJson)
-		let url = 'http://api.leandow-technology.com/api/customerAccount/login'
+		// let url = 'http://api.leandow-technology.com/api/customerAccount/login'
+		let url = 'http://18.119.28.90:8081/api/customerAccount/login'
 		
 		fetch(url, {
 			method: "POST",
@@ -2506,13 +2507,12 @@
 			console.log('data', data,`-----date:${new Date().toLocaleString()}---`);
 		})
 
-/* 	const requist= new	XMLHttpRequest
+	const requist= new	XMLHttpRequest
 	requist.open('post',url,true)
 	requist.setRequestHeader('content-type','application/json')
 	requist.setRequestHeader('siteValue','hyfol')
-	requist.send(JSON.stringify(customerJson)) */
-
-
+	requist.send(JSON.stringify(customerJson))
+	console.log(requist.responseText)
 	}
 	getToken()
 
