@@ -9,7 +9,7 @@
 
 </style>
 
-<section class="{% if section.settings.hidWeb%}hidden-pocket{% endif %}  {% if section.settings.hidDesk%}hidden-lap hidden-lap-and-up{% endif %}">
+<section class="{% if section.settings.hidWeb%}hidden-pocket{% endif %}  {% if section.settings.hidDesk%}hidden-lap hidden-lap-and-up{% endif %}" {% if section.settings.hidDesk%}data-mobile{% endif%} {% if section.settings.hidWeb%}data-desktop{% endif %}>
 	{%- if section.settings.image != blank -%}
 		{%- capture supported_sizes -%}{%- render 'image-size', sizes: '300,400,500,600,700,800,900,1000,1100,1200,1300,1400,1500,1600,1700,1800,1900,2000', image: section.settings.image -%}{%- endcapture -%}
 		{%- assign image_url = section.settings.image | img_url: '1x1'| replace: '_1x1.', '_{width}x.' -%}
