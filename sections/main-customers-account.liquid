@@ -2292,12 +2292,16 @@
 			body: JSON.stringify(customerJson),
 			headers: { 'content-type': 'application/json','siteValue':'hyfol'}
 		})
-		if(response.status!==200)return 'error'
-		const data = await response.json()
-		if(data.code!==200)return 'error'
-		console.log('data',data,`-----date:${new Date().toLocaleString()}----`);
-		token = token || data.data
-		localStorage.setItem('customerToken',token)
+		try {
+			if(response.status!==200)return 'error'
+			const data = await response.json()
+			if(data.code!==200)return 'error'
+			console.log('data',data,`-----date:${new Date().toLocaleString()}----`);
+			token = token || data.data
+			localStorage.setItem('customerToken',token)
+		} catch (error) {
+			token=''
+		}
 		return token	
 	}
 
