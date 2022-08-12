@@ -6,7 +6,7 @@
         "28572d9f-8700-4893-990e-c3b4bf1e7821": {
           "type": "image",
           "settings": {
-            "sensorsName": "buy4get20off",
+            "sensorsName": "golfevent",
             "image": "shopify:\/\/shop_images\/polo.jpg",
             "mobile_image": "shopify:\/\/shop_images\/polo_652f0f74-50fa-4241-a346-8995e0ae1473.jpg",
             "show_overlay": false,
@@ -24,7 +24,7 @@
             "button_background": "#ffffff",
             "button_text_color": "#000000",
             "button_text": "",
-            "link": "https:\/\/www.hyfol.com\/collections\/custompromotion-buy-4-get-20-off"
+            "link": ""
           }
         },
         "1650101273ef0886ca-1": {
