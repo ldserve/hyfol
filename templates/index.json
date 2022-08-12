@@ -6,7 +6,7 @@
         "28572d9f-8700-4893-990e-c3b4bf1e7821": {
           "type": "image",
           "settings": {
-            "sensorsName": "golf event",
+            "sensorsName": "golfevent",
             "image": "shopify:\/\/shop_images\/polo.jpg",
             "mobile_image": "shopify:\/\/shop_images\/polo_652f0f74-50fa-4241-a346-8995e0ae1473.jpg",
             "show_overlay": false,
