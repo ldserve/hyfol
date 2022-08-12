@@ -7,8 +7,8 @@
           "type": "image",
           "settings": {
             "sensorsName": "2cargoshorts",
-            "image": "shopify:\/\/shop_images\/005e84d459065c07f1cb8389db6eaa16_c5bf5303-09c9-4121-9850-263916c1cb99.jpg",
-            "mobile_image": "shopify:\/\/shop_images\/6156e1ef1c55cb4f63cdc9d4004c7b5c_9a3fb2ae-0918-465e-bdeb-ebebeb5f6430.jpg",
+            "image": "shopify:\/\/shop_images\/polo.jpg",
+            "mobile_image": "shopify:\/\/shop_images\/polo_9f6ec581-74ae-4ae8-95ba-3d6ff4ea046d.jpg",
             "show_overlay": false,
             "overlay_opacity": 30,
             "text_color": "#ffffff",
@@ -24,7 +24,7 @@
             "button_background": "#ffffff",
             "button_text_color": "#000000",
             "button_text": "",
-            "link": "https:\/\/www.hyfol.com\/collections\/fishing"
+            "link": "https:\/\/www.hyfol.com\/collections\/custompromotion-buy-4-get-20-off"
           }
         },
         "1650101273ef0886ca-1": {
