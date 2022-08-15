@@ -6,9 +6,9 @@
         "28572d9f-8700-4893-990e-c3b4bf1e7821": {
           "type": "image",
           "settings": {
-            "sensorsName": "2cargoshorts",
-            "image": "shopify:\/\/shop_images\/005e84d459065c07f1cb8389db6eaa16_c5bf5303-09c9-4121-9850-263916c1cb99.jpg",
-            "mobile_image": "shopify:\/\/shop_images\/6156e1ef1c55cb4f63cdc9d4004c7b5c_9a3fb2ae-0918-465e-bdeb-ebebeb5f6430.jpg",
+            "sensorsName": "golfevent",
+            "image": "shopify:\/\/shop_images\/polo.jpg",
+            "mobile_image": "shopify:\/\/shop_images\/polo_652f0f74-50fa-4241-a346-8995e0ae1473.jpg",
             "show_overlay": false,
             "overlay_opacity": 30,
             "text_color": "#ffffff",
@@ -24,7 +24,7 @@
             "button_background": "#ffffff",
             "button_text_color": "#000000",
             "button_text": "",
-            "link": "https:\/\/www.hyfol.com\/collections\/fishing"
+            "link": "https:\/\/www.hyfol.com\/collections\/golf-event"
           }
         },
         "1650101273ef0886ca-1": {
