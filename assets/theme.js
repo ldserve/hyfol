@@ -42,7 +42,7 @@
             this.nextButton = this.querySelector('.nextButton')
             this.animationsflag = true //是否阻止动画
             this.that = this
-            this.time = this.getAttribute("data-time")*1000
+            this.time = this.getAttribute("data-time") * 1000
             this.isAuto = this.getAttribute("data-isAuto")
             this.purchaseList = this.querySelectorAll('.exhibition-right')
             this.contains = []
@@ -72,56 +72,56 @@
           `
             this.init()
         }
-        init(){
-            if(this.isAuto == "true"){
+        init() {
+            if (this.isAuto == "true") {
                 this.startTimer()
             }
 
-            if( this.prevButton){
-                if(this.activeIndex == 0 ){
-                    this.prevButton.style.display= "none"
-                }else{
-                    this.prevButton.style.display= "block"
+            if (this.prevButton) {
+                if (this.activeIndex == 0) {
+                    this.prevButton.style.display = "none"
+                } else {
+                    this.prevButton.style.display = "block"
                 }
             }
-        var that = this
-          var startx,movex,endx,nx;
-          const style = document.createElement("style");
-          style.type = "text/css";
-          style.innerHTML = this.prevkeyframes;
-          document.getElementsByTagName('head')[0].appendChild(style)
-          this.bind()
-         
-           this.lis[this.activeIndex].className = "scroll-dot__active-li"
-           //监听动画开始和结束
-           this.collocationList.addEventListener("animationstart", this.animationStart)
-           this.collocationList.addEventListener("transitionstart", this.animationStart)
-           this.collocationList.addEventListener("animationend", this.animationEnd)
-           this.collocationList.addEventListener("transitionend", this.animationEnd)
+            var that = this
+            var startx, movex, endx, nx;
+            const style = document.createElement("style");
+            style.type = "text/css";
+            style.innerHTML = this.prevkeyframes;
+            document.getElementsByTagName('head')[0].appendChild(style)
+            this.bind()
 
-           this.collocationList.addEventListener('touchstart',function(event){
-            if (event.target.closest('.color-swatch') == null && event.target.closest('.block-swatch') == null  ){
-                if ( event.target.closest('.product-item__image-wrapper') == null  && event.target.closest('.mini-cart-add__button') == null) {
-                    event.preventDefault();//阻止浏览器默认滚动事件
-                 }
-                var touch = event.touches[0]
-                startx = Math.floor(touch.pageX)
-                return startx
-              
-            }
-           });
-           this.collocationList.addEventListener('touchend',function(event){
-            if (event.target.closest('.color-swatch') == null && event.target.closest('.block-swatch') == null){
-             if ( event.target.closest('.product-item__image-wrapper'  == null && event.target.closest('.mini-cart-add__button') == null)) {
-                event.preventDefault();//阻止浏览器默认滚动事件
-             }
-                      endx = Math.floor(event.changedTouches[0].pageX);//获取最后的坐标位置
-                      nx = endx-startx;//获取开始位置和离开位置的距离
+            this.lis[this.activeIndex].className = "scroll-dot__active-li"
+            //监听动画开始和结束
+            this.collocationList.addEventListener("animationstart", this.animationStart)
+            this.collocationList.addEventListener("transitionstart", this.animationStart)
+            this.collocationList.addEventListener("animationend", this.animationEnd)
+            this.collocationList.addEventListener("transitionend", this.animationEnd)
+
+            this.collocationList.addEventListener('touchstart', function (event) {
+                if (event.target.closest('.color-swatch') == null && event.target.closest('.block-swatch') == null) {
+                    if (event.target.closest('.product-item__image-wrapper') == null && event.target.closest('.mini-cart-add__button') == null) {
+                        event.preventDefault();//阻止浏览器默认滚动事件
+                    }
+                    var touch = event.touches[0]
+                    startx = Math.floor(touch.pageX)
+                    return startx
+
+                }
+            });
+            this.collocationList.addEventListener('touchend', function (event) {
+                if (event.target.closest('.color-swatch') == null && event.target.closest('.block-swatch') == null) {
+                    if (event.target.closest('.product-item__image-wrapper' == null && event.target.closest('.mini-cart-add__button') == null)) {
+                        event.preventDefault();//阻止浏览器默认滚动事件
+                    }
+                    endx = Math.floor(event.changedTouches[0].pageX);//获取最后的坐标位置
+                    nx = endx - startx;//获取开始位置和离开位置的距离
                     //   console.log(nx , endx);
-                      //判断滑动方向
-                      if(nx > 0){
-                        if (that.activeIndex != 0){
-                           that.prevItem()
+                    //判断滑动方向
+                    if (nx > 0) {
+                        if (that.activeIndex != 0) {
+                            that.prevItem()
                         }
                         return false;
                     } else if (nx < 0) {
@@ -132,37 +132,37 @@
 
                 }
             });
-            if(this.isAuto == "true"){
-                this.onmouseenter = ()=>{
+            if (this.isAuto == "true") {
+                this.onmouseenter = () => {
                     this.stopTimer()
-               }
-               this.onmouseleave = ()=>{
-                   this.startTimer()
-               }
+                }
+                this.onmouseleave = () => {
+                    this.startTimer()
+                }
             }
-          
+
             this.bindShence()
         }
         bind() {
             this.bindClick()
         }
-        stopTimer(){
-             clearInterval(this.timer)
+        stopTimer() {
+            clearInterval(this.timer)
         }
-        startTimer(){
-            this.timer = setInterval(()=>{
+        startTimer() {
+            this.timer = setInterval(() => {
                 this.nextItem()
-                if(this.activeIndex == 0 ){
-                    this.prevButton.style.display= "none"
-                }else{
-                    this.prevButton.style.display= "block"
+                if (this.activeIndex == 0) {
+                    this.prevButton.style.display = "none"
+                } else {
+                    this.prevButton.style.display = "block"
                 }
                 if (this.activeIndex == this.scorllNum - 1) {
                     this.nextButton.style.display = "none"
                 } else {
                     this.nextButton.style.display = "block"
                 }
-              },this.time)
+            }, this.time)
         }
         bindClick() {
             if (this.prevButton) {
@@ -386,9 +386,9 @@
                         this._updateAddToCartButton(this.currentVariant, previousVariant)
                         this._updateSelectors()
                         this._updataSku()
-                        if (target.classList.contains('color-swatch__radio'))this._updateImg(target)
+                        if (target.classList.contains('color-swatch__radio')) this._updateImg(target)
                         if (selectedValueElement != null) selectedValueElement.innerHTML = target.value
-                      
+
                         if (false) {
                             const scoll = option.querySelector('.block-swatch-box')
                             const contentScrollW = option.querySelector('.exhibition-item').offsetWidth
@@ -452,27 +452,27 @@
 
 
         }
-        _updataSku(){
+        _updataSku() {
             var variantId = this.root.querySelector('input[name="id"]')
             variantId.value = this.currentVariant.id
-            variantId.setAttribute('data-sku',this.currentVariant.sku)
-            
+            variantId.setAttribute('data-sku', this.currentVariant.sku)
+
         }
-        _updateImg(target){
-                const productItem = target.closest('.exhibition')
-                const variantUrl = target.getAttribute('data-variant-url');
-                productItem.querySelector('.product-item__image-wrapper').setAttribute('href', variantUrl);
-                const originalImageElement = productItem.querySelector('.product-item__primary-image');
-                if (target.hasAttribute('data-image-url') && target.getAttribute('data-media-id') !== originalImageElement.getAttribute('data-media-id')) {
-                    var newImageElement = document.createElement('img');
-                    newImageElement.className = 'product-item__primary-image lazyload image--fade-in';
-                    newImageElement.setAttribute('data-media-id', target.getAttribute('data-media-id'));
-                    newImageElement.setAttribute('data-src', target.getAttribute('data-image-url'));
-                    newImageElement.setAttribute('data-widths', target.getAttribute('data-image-widths'));
-                    newImageElement.setAttribute('data-sizes', 'auto');
-                    originalImageElement.parentNode.style.paddingBottom = "".concat(100.0 / newImageElement.getAttribute('data-image-aspect-ratio'), "%");
-                    originalImageElement.parentNode.replaceChild(newImageElement, originalImageElement);
-                }
+        _updateImg(target) {
+            const productItem = target.closest('.exhibition')
+            const variantUrl = target.getAttribute('data-variant-url');
+            productItem.querySelector('.product-item__image-wrapper').setAttribute('href', variantUrl);
+            const originalImageElement = productItem.querySelector('.product-item__primary-image');
+            if (target.hasAttribute('data-image-url') && target.getAttribute('data-media-id') !== originalImageElement.getAttribute('data-media-id')) {
+                var newImageElement = document.createElement('img');
+                newImageElement.className = 'product-item__primary-image lazyload image--fade-in';
+                newImageElement.setAttribute('data-media-id', target.getAttribute('data-media-id'));
+                newImageElement.setAttribute('data-src', target.getAttribute('data-image-url'));
+                newImageElement.setAttribute('data-widths', target.getAttribute('data-image-widths'));
+                newImageElement.setAttribute('data-sizes', 'auto');
+                originalImageElement.parentNode.style.paddingBottom = "".concat(100.0 / newImageElement.getAttribute('data-image-aspect-ratio'), "%");
+                originalImageElement.parentNode.replaceChild(newImageElement, originalImageElement);
+            }
         }
         _updateSelectors(newVariant) {
             var _this2 = this;
@@ -567,17 +567,17 @@
                 sendType: "AddToCart",
                 customData: function (container, el) {
                     let newData = {}
-                    let data=JSON.parse(el.dataset.scdata)
-                    let id=el.dataset.productid
+                    let data = JSON.parse(el.dataset.scdata)
+                    let id = el.dataset.productid
                     const colorChecked = root.querySelector('.color-swatch__radio[checked]');
                     const sizeChecked = root.querySelector('.block-swatch__radio[checked]')
                     const currentSku = root.querySelector('input[data-sku]').getAttribute('data-sku')
                     newData.commodity_color = colorChecked ? colorChecked.value : ""
                     newData.commodity_size = sizeChecked ? sizeChecked.value : ""
                     if (!colorChecked || !sizeChecked) return newData
-                        newData.commodity_skuid = currentSku?currentSku:''
-                  gtag("event","conversion",{"send_to":"AW-319309832/2I9aCIf48eYCEIiQoZgB","transaction_id":""});
-                  pintrk("track","addtocart",{value:data.current_price,order_quantity:1,currency:"USD",line_items:[{product_id:id,product_category:data.commodity_type}]});
+                    newData.commodity_skuid = currentSku ? currentSku : ''
+                    gtag("event", "conversion", { "send_to": "AW-319309832/2I9aCIf48eYCEIiQoZgB", "transaction_id": "" });
+                    pintrk("track", "addtocart", { value: data.current_price, order_quantity: 1, currency: "USD", line_items: [{ product_id: id, product_category: data.commodity_type }] });
                     return newData
                 },
                 callback: function () {
@@ -599,7 +599,7 @@
                     const colorChecked = root.querySelector('.color-swatch__radio[checked]');
                     const sizeChecked = root.querySelector('.block-swatch__radio[checked]')
                     const currentSku = root.querySelector('input[data-sku]').getAttribute('data-sku')
-                    newData.commodity_skuid = currentSku?currentSku:""
+                    newData.commodity_skuid = currentSku ? currentSku : ""
                     newData.commodity_color = colorChecked ? colorChecked.value : ""
                     newData.commodity_size = sizeChecked ? sizeChecked.value : ""
                     newData.site_category = getSiteCategory()
@@ -1355,10 +1355,10 @@
                         // Remove things that have previously fired
                         toFire = [];
                     } // Check for match and fire
-                        // the event if there's one
-                        //
-                        // TODO:MCG:20120117: Need a way
-                        // to check if event#stopImmediatePropagation
+                    // the event if there's one
+                    //
+                    // TODO:MCG:20120117: Need a way
+                    // to check if event#stopImmediatePropagation
                     // was called. If so, break both loops.
                     else if (listener.matcher.call(target, listener.matcherParam, target)) {
                         toFire.push([event, target, listener]);
@@ -1949,24 +1949,24 @@
                         }
                     });
                 }
-                var navItem=target.closest('.nav-bar__item')
+                var navItem = target.closest('.nav-bar__item')
                 var menuToOpen = navItem.querySelector('[aria-hidden]');
-                var navList=_this3.element.querySelectorAll('.nav-bar__item')
+                var navList = _this3.element.querySelectorAll('.nav-bar__item')
                 // var menuToOpen = Dom.getSiblings(target, '[aria-hidden]')[0];
                 var callback = function callback() {
-                   if(!target.closest('.is-dropdown-open')){
-                    target.firstElementChild&&target.firstElementChild.classList.add('nav-bar-item__top')
-                       navList.forEach(item => {
-                           item.classList.remove('is-dropdown-open')
-                           var temp1 = item.querySelector('[aria-expanded="true"]')
-                           temp1 && temp1.setAttribute('aria-expanded', 'false')
-                           var temp2 = item.querySelector('[aria-hidden="false"]')
-                           temp2 && temp2.setAttribute('aria-hidden', 'true')
-                       })
-                       target.setAttribute('aria-expanded', 'true');
-                       target.parentNode.classList.add('is-dropdown-open');
-                       menuToOpen.setAttribute('aria-hidden', 'false'); // If this menu was scheduled for deactivation, we remove the scheduling as it is now meant to open
-                   }
+                    if (!target.closest('.is-dropdown-open')) {
+                        target.firstElementChild && target.firstElementChild.classList.add('nav-bar-item__top')
+                        navList.forEach(item => {
+                            item.classList.remove('is-dropdown-open')
+                            var temp1 = item.querySelector('[aria-expanded="true"]')
+                            temp1 && temp1.setAttribute('aria-expanded', 'false')
+                            var temp2 = item.querySelector('[aria-hidden="false"]')
+                            temp2 && temp2.setAttribute('aria-hidden', 'true')
+                        })
+                        target.setAttribute('aria-expanded', 'true');
+                        target.parentNode.classList.add('is-dropdown-open');
+                        menuToOpen.setAttribute('aria-hidden', 'false'); // If this menu was scheduled for deactivation, we remove the scheduling as it is now meant to open
+                    }
 
                     if (_this3.openTrigger === 'hover' && _this3.dropdownDeactivationTimeouts[menuToOpen.id]) {
                         clearTimeout(_this3.dropdownDeactivationTimeouts[menuToOpen.id]);
@@ -2033,14 +2033,14 @@
                     return;
                 }
                 var menuToClose = target.querySelector('[aria-hidden]');
-                var svgItem =target.querySelector('.nav-bar-item__top')
-                svgItem&&svgItem.classList.remove('nav-bar-item__top')
-                
+                var svgItem = target.querySelector('.nav-bar-item__top')
+                svgItem && svgItem.classList.remove('nav-bar-item__top')
+
                 var callback = function callback() {
                     target.classList.remove('is-dropdown-open');
                     target.querySelector('[data-type="menuitem"]').setAttribute('aria-expanded', 'false');
                     var menuToClose = target.querySelector('[aria-hidden]');
-                   
+
                     menuToClose.setAttribute('aria-hidden', 'true');
                     target.closest('[data-type="menu"]').classList.remove('nav-dropdown--glued'); // If on click, we also close all sub-menus that may be open
 
@@ -2423,14 +2423,14 @@
 
             this.miniCartElement = this.element.querySelector('.mini-cart');
             this.isMiniCartOpen = false;
-            
+
             if (window.theme.pageType !== 'cart' && this.miniCartElement) {
                 // var cartId=typeof this.miniCartElement.id =="string" ? this.miniCartElement.id:'mini-cart'
                 this.miniCartToggleElement = this.element.querySelector("[aria-controls=\"".concat(this.miniCartElement.id, "\"]"));
                 // this.miniCartToggleElement = this.element.querySelector("[aria-controls=\"".concat(cartId, "\"]"));
                 this._checkMiniCartScrollability();
             }
-          this.itemCount = window.theme.cartCount;
+            this.itemCount = window.theme.cartCount;
 
             this._attachListeners();
         }
@@ -2478,10 +2478,10 @@
         }, {
             key: "_openMiniCart",
             value: function _openMiniCart() {
-                if(document.querySelector('.product-form__payment-container') && document.body.clientWidth <= 640){
+                if (document.querySelector('.product-form__payment-container') && document.body.clientWidth <= 640) {
                     document.querySelector('.product-form__payment-container').style.display = "none"
                 }
-              
+
                 this.miniCartToggleElement.setAttribute('aria-expanded', 'true'); // If we are on mobile phone we also set the aria-expanded attribute to true on the icon state holder
 
                 if (Responsive.getCurrentBreakpoint() === 'phone') {
@@ -2501,7 +2501,7 @@
         }, {
             key: "_closeMiniCart",
             value: function _closeMiniCart() {
-                if(document.querySelector('.product-form__payment-container') && document.body.clientWidth <= 640){
+                if (document.querySelector('.product-form__payment-container') && document.body.clientWidth <= 640) {
                     document.querySelector('.product-form__payment-container').style.display = "block"
                 }
                 this.miniCartToggleElement.setAttribute('aria-expanded', 'false'); // If we are on mobile phone we also set the aria-expanded attribute to true on the icon state holder
@@ -2650,7 +2650,7 @@
                         // We extract the data-item-count from the returned element
                         var myDiv = document.createElement('div');
                         myDiv.innerHTML = html;
-                   
+
                         if (myDiv.firstElementChild && myDiv.firstElementChild.hasAttribute('data-item-count')) {
 
                             _this2.itemCount = parseInt(myDiv.firstElementChild.getAttribute('data-item-count'));
@@ -2844,7 +2844,7 @@
         }, {
             key: "_openPanel",
             value: function _openPanel(event, target) {
-                if(target.getAttribute('aria-expanded')==='true'){
+                if (target.getAttribute('aria-expanded') === 'true') {
                     var panelToClose = target.closest('.mobile-menu__nav-item')
                     panelToClose.querySelector('#'.concat(target.getAttribute('aria-controls'))).classList.remove('is-open')
                     target.setAttribute('aria-expanded', 'false');
@@ -3805,12 +3805,12 @@
                         _this.option3 = variant['option3'];
                     }
                 })
-            //    if(!this.options['isQuickView']) this.option2 =null;
+                //    if(!this.options['isQuickView']) this.option2 =null;
                 this.storeAvailability = new StoreAvailability(this.element.querySelector('.product-meta__store-availability-container'));
             }
-            
+
             this._updateSelectors(this.currentVariant); // We update the selectors on initial load to disable the sold out variants
-            
+
             this._setupStockCountdown();
 
             this._attachListeners();
@@ -3885,7 +3885,7 @@
                 var productPrices = this.element.querySelector('.price-list'),
                     currencyFormat = window.theme.currencyCodeEnabled ? window.theme.moneyWithCurrencyFormat : window.theme.moneyFormat;
 
-                if (!productPrices||!this.option2) {
+                if (!productPrices || !this.option2) {
                     return; // Sometimes merchant remove element from the code without taking care of JS... so let's be defensive
                 }
 
@@ -4019,7 +4019,7 @@
             value: function _updateUnitPrice(newVariant, previousVariant) {
                 var unitPriceMeasurement = this.element.querySelector('.unit-price-measurement');
 
-                if (!unitPriceMeasurement||!this.option2) {
+                if (!unitPriceMeasurement || !this.option2) {
                     return; // Sometimes merchant remove element from the code without taking care of JS... so let's be defensive
                 }
 
@@ -4043,7 +4043,7 @@
             key: "_updateSelectors",
             value: function _updateSelectors(newVariant) {
                 var _this2 = this;
-                if(!_this2.option2)return
+                if (!_this2.option2) return
                 // We apply a top-down approach where we first check the first option, second option and third option. If there is
                 // more than one option, the value is considered "available" if there is at least one variant with this value
                 // available (independently of the selected variant)
@@ -4066,10 +4066,10 @@
 
                 if (this.variantSelectors && this.variantSelectors[0]) {
                     // For the first option, the value is considered available if there is at least one variant available
-                  
+
                     this.productOptionsWithValues[0]['values'].forEach(function (value, valueIndex) {
                         applyClassToSelector(_this2.variantSelectors[0], valueIndex, _this2.productData['variants'].some(function (variant) {
-    
+
                             return variant['option1'] === value && variant['available'];
                         })); // We now do the second level
 
@@ -4101,7 +4101,7 @@
                 var addToCartButtonElement = this.element.querySelector('.product-form__add-button'),
                     infoListElement = this.element.querySelector('.product-form__info-list');
 
-                if (!addToCartButtonElement ||!this.option2) {
+                if (!addToCartButtonElement || !this.option2) {
                     return; // Sometimes merchant remove element from the code without taking care of JS... so let's be defensive
                 }
 
@@ -4159,14 +4159,14 @@
             key: "_onOptionChanged",
             value: function _onOptionChanged(event, target) {
                 this['option' + target.getAttribute('data-option-position')] = target.value; // We update the selected value
-                var optionsBox=target.closest('.product-form__option')
+                var optionsBox = target.closest('.product-form__option')
                 var selectedValueElement = optionsBox.querySelector('.product-form__selected-value');
-                var selectList= optionsBox.querySelectorAll('input[checked]')
-                selectList.forEach(select=>{
+                var selectList = optionsBox.querySelectorAll('input[checked]')
+                selectList.forEach(select => {
                     select.removeAttribute('checked')
                 })
-                target.setAttribute('checked','')
-              this.option1&&document.querySelector('.select-size-no').classList.add('d-none')
+                target.setAttribute('checked', '')
+                this.option1 && document.querySelector('.select-size-no').classList.add('d-none')
                 if (selectedValueElement) {
                     selectedValueElement.innerHTML = target.value;
                 } // Finally, we get the new variant
@@ -4222,13 +4222,13 @@
                 }
                 event.preventDefault(); // Prevent form to be submitted
                 var isSelect = false//是否选择尺码
-                var formtag=target.closest('form')
+                var formtag = target.closest('form')
                 var sizeBlock = Array.from(formtag.querySelectorAll('.block-swatch__radio'))
                 isSelect = sizeBlock.some(item => item.checked && item.hasAttribute('checked'))
-                isSelect=isSelect|| this.currentVariant.option2===null&&this.currentVariant.option1==='Default Title'
-                
+                isSelect = isSelect || ['Default Title', 'ONE SIZE','one size','default title'].some(it => it == this.currentVariant.option1) || this.currentVariant.option2 === null && this.currentVariant.option2 === null
+
                 if (!isSelect) {
-                    window.screen.availWidth<649 &&alert('Please Select Size')
+                    window.screen.availWidth < 649 && alert('Please Select Size')
                     document.querySelector('.select-size-no').classList.remove('d-none')
                     return
                 }
@@ -4243,7 +4243,7 @@
                     formElement = this.element.querySelector('form[action*="/cart/add"]');
                 }
 
-              fetch("".concat(window.routes.cartAddUrl, ".js"), {
+                fetch("".concat(window.routes.cartAddUrl, ".js"), {
                     body: JSON.stringify(Form.serialize(formElement)),
                     credentials: 'same-origin',
                     method: 'POST',
@@ -4347,7 +4347,7 @@
 
             this.element = element;
             this.delegateElement = new Delegate(this.element);
-            
+
             this.delegateRoot = new Delegate(document.documentElement);
 
             this._attachListeners();
@@ -7662,7 +7662,7 @@
                 for (var i = length; i < max; i++) {
                     var dot = document.createElement('li');
                     dot.className = 'dot';
-                    dot.innerHTML=`<span>${i+1}</span>`
+                    dot.innerHTML = `<span>${i + 1}</span>`
                     // dot.innerText=i+1
                     dot.setAttribute('aria-label', 'Page dot ' + (i + 1));
                     fragment.appendChild(dot);
@@ -8613,22 +8613,22 @@
                             }
                         }
                         /*
-            	elastic: {
-            		out: function ( k ) {
-            				var s, a = 0.1, p = 0.4;
-            			if ( k === 0 ) return 0;
-            			if ( k === 1 ) return 1;
-            			if ( !a || a < 1 ) { a = 1; s = p / 4; }
-            			else s = p * Math.asin( 1 / a ) / ( 2 * Math.PI );
-            			return ( a * Math.pow( 2, - 10 * k) * Math.sin( ( k - s ) * ( 2 * Math.PI ) / p ) + 1 );
-            			},
-            	},
-            	back: {
-            		out: function ( k ) {
-            			var s = 1.70158;
-            			return --k * k * ( ( s + 1 ) * k + s ) + 1;
-            		}
-            	}
+                elastic: {
+                    out: function ( k ) {
+                            var s, a = 0.1, p = 0.4;
+                        if ( k === 0 ) return 0;
+                        if ( k === 1 ) return 1;
+                        if ( !a || a < 1 ) { a = 1; s = p / 4; }
+                        else s = p * Math.asin( 1 / a ) / ( 2 * Math.PI );
+                        return ( a * Math.pow( 2, - 10 * k) * Math.sin( ( k - s ) * ( 2 * Math.PI ) / p ) + 1 );
+                        },
+                },
+                back: {
+                    out: function ( k ) {
+                        var s = 1.70158;
+                        return --k * k * ( ( s + 1 ) * k + s ) + 1;
+                    }
+                }
             */
 
                     },
@@ -9751,11 +9751,11 @@
                     // Zoom current item to
                     zoomTo: function zoomTo(destZoomLevel, centerPoint, speed, easingFn, updateFn) {
                         /*
-            	if(destZoomLevel === 'fit') {
-            		destZoomLevel = self.currItem.fitRatio;
-            	} else if(destZoomLevel === 'fill') {
-            		destZoomLevel = self.currItem.fillRatio;
-            	}
+                if(destZoomLevel === 'fit') {
+                    destZoomLevel = self.currItem.fitRatio;
+                } else if(destZoomLevel === 'fill') {
+                    destZoomLevel = self.currItem.fillRatio;
+                }
             */
                         if (centerPoint) {
                             _startZoomLevel = _currZoomLevel;
@@ -13110,7 +13110,7 @@
             key: "variantHasChanged",
             value: function variantHasChanged(newVariant) {
                 var _this = this;
-                if(!newVariant)return
+                if (!newVariant) return
                 // We may have selected a variant that will cause the set of images to change completely. To do that we need to iterate through all images,
                 // check for the attribute "data-group-name" and verify if some images need to be filtered or not
                 var shouldReload = false;
@@ -13267,7 +13267,7 @@
                             handleTouch: false,
                             inlineOffsetY: window.innerWidth < 1024 ? -85 : 0,
                             paneContainer: zoomWrapper,
-                            zoomFactor:image.getAttribute('data-zoomFactor')
+                            zoomFactor: image.getAttribute('data-zoomFactor')
                         }));
                     });
                 }
@@ -13357,9 +13357,9 @@
                 var animate = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : true;
                 var previousNavElement = null,
                     newNavElement = null;
-                    var previousDotElement = null,
+                var previousDotElement = null,
                     newDotElement = null;
-                    this.productThumbnailsCellsElements.forEach(function (item) {
+                this.productThumbnailsCellsElements.forEach(function (item) {
                     if (item.classList.contains('is-nav-selected')) {
                         previousNavElement = item;
                     }
@@ -13384,18 +13384,18 @@
                 });
                 previousDotElement.classList.remove('is-selected');
                 newDotElement.classList.add('is-selected');
-                    //x轴滚动
-                    var scrollX = newNavElement.offsetLeft - (this.productThumbnailsListElement.clientWidth - newNavElement.clientWidth) / 2;
-                    this.productThumbnailsListElement.scrollTo({
-                        left: scrollX,
-                        behavior: animate ? 'smooth' : 'auto'
-                    });
-                    //y轴滚动
-                    // var scrollY = newNavElement.offsetTop - (this.productThumbnailsListElement.clientHeight - newNavElement.clientHeight) / 2;
-                    // this.productThumbnailsListElement.scrollTo({
-                    //     top: scrollY,
-                    //     behavior: animate ? 'smooth' : 'auto'
-                    // });
+                //x轴滚动
+                var scrollX = newNavElement.offsetLeft - (this.productThumbnailsListElement.clientWidth - newNavElement.clientWidth) / 2;
+                this.productThumbnailsListElement.scrollTo({
+                    left: scrollX,
+                    behavior: animate ? 'smooth' : 'auto'
+                });
+                //y轴滚动
+                // var scrollY = newNavElement.offsetTop - (this.productThumbnailsListElement.clientHeight - newNavElement.clientHeight) / 2;
+                // this.productThumbnailsListElement.scrollTo({
+                //     top: scrollY,
+                //     behavior: animate ? 'smooth' : 'auto'
+                // });
             }
             /**
              * The difference with "change" is that this function is called after the item has transitioned
@@ -13416,19 +13416,50 @@
             }
         },
         {
-            key:"_onPrevClicked",
-            value:function _onPrevClicked(event, target){
-                 this.flickityInstance.cells.forEach((item,index)=>{
-                      if(item.element.className.indexOf("is-selected") != -1){
+            key: "_onPrevClicked",
+            value: function _onPrevClicked(event, target) {
+                this.flickityInstance.cells.forEach((item, index) => {
+                    if (item.element.className.indexOf("is-selected") != -1) {
                         //   console.log("包含");
-                          if(index != 0){
+                        if (index != 0) {
                             item.element.className = "product-gallery__carousel-item"
                             this.flickityInstance.cells[index - 1].element.className = "product-gallery__carousel-item is-selected"
-                            target= this.flickityInstance.cells[index - 1].element
-                              if (this.flickityInstance) {
-                    //  console.log(target);
+                            target = this.flickityInstance.cells[index - 1].element
+                            if (this.flickityInstance) {
+                                //  console.log(target);
+                                this.flickityInstance.selectCell("[data-media-id=\"".concat(target.getAttribute('data-media-id'), "\"]"));
+                                console.log("[data-media-id=\"".concat(target.getAttribute('data-media-id'), "\"]"));
+                                if (Responsive.matchesBreakpoint('lap-and-up')) {
+                                    var slides = this.element.querySelectorAll('.product-gallery__carousel-item');
+                                    slides.forEach(function (slide) {
+                                        slide.classList.remove('product-gallery__carousel-item--hidden');
+                                    });
+                                }
+                            }
+                        }
+                    }
+                })
+
+
+            }
+        },
+        {
+            key: "_onNextClicked",
+            value: function _onNextClicked(event, target) {
+                var activeIndex
+                this.flickityInstance.cells.forEach((item, index) => {
+                    if (item.element.className.indexOf("is-selected") != -1) {
+                        //真节点
+                        if (index != this.flickityInstance.cells.length - 1) {
+                            item.element.className = "product-gallery__carousel-item"
+                            activeIndex = index + 1
+                        }
+                    }
+                })
+                this.flickityInstance.cells[activeIndex].element.className = "product-gallery__carousel-item is-selected"
+                var target = this.flickityInstance.cells[activeIndex].element
+                if (this.flickityInstance) {
                     this.flickityInstance.selectCell("[data-media-id=\"".concat(target.getAttribute('data-media-id'), "\"]"));
-                    console.log("[data-media-id=\"".concat(target.getAttribute('data-media-id'), "\"]"));
                     if (Responsive.matchesBreakpoint('lap-and-up')) {
                         var slides = this.element.querySelectorAll('.product-gallery__carousel-item');
                         slides.forEach(function (slide) {
@@ -13436,38 +13467,7 @@
                         });
                     }
                 }
-                          }
-                      }
-                 })
-               
-                
-            }
-        },
-        {
-            key:"_onNextClicked",
-            value:function _onNextClicked(event, target){
-                 var activeIndex
-                 this.flickityInstance.cells.forEach((item,index)=>{
-                    if(item.element.className.indexOf("is-selected") != -1){
-                        //真节点
-                        if(index !=  this.flickityInstance.cells.length-1){
-                          item.element.className = "product-gallery__carousel-item"
-                          activeIndex = index + 1
-                        }
-                    }
-               })
-               this.flickityInstance.cells[activeIndex].element.className = "product-gallery__carousel-item is-selected"
-               var target =  this.flickityInstance.cells[activeIndex].element
-               if (this.flickityInstance) {
-               this.flickityInstance.selectCell("[data-media-id=\"".concat(target.getAttribute('data-media-id'), "\"]"));
-               if (Responsive.matchesBreakpoint('lap-and-up')) {
-                   var slides = this.element.querySelectorAll('.product-gallery__carousel-item');
-                   slides.forEach(function (slide) {
-                       slide.classList.remove('product-gallery__carousel-item--hidden');
-                   });
-               }
-           }
-            
+
             }
         },
 
@@ -15298,9 +15298,9 @@
                     this.searchResultsElement.setAttribute('aria-hidden', 'false');
                     this.searchBarElement.classList.add('is-expanded', 'is-loading');
                     var queryOptions = {
-                            method: 'GET',
-                            credentials: 'same-origin'
-                        },
+                        method: 'GET',
+                        credentials: 'same-origin'
+                    },
                         productQuery = "".concat(this.productTypeFilter !== '' ? "product_type:".concat(this.productTypeFilter, " AND ") : '').concat(encodeURIComponent(this.lastInputValue)),
                         queries = [fetch("".concat(window.routes.searchUrl, "?section_id=search-ajax&q=").concat(productQuery, "&options[prefix]=last&options[unavailable_products]=").concat(window.theme.searchUnavailableProducts, "&type=product"), queryOptions)];
 
@@ -15672,7 +15672,7 @@
                         address: address
                     }, function (results, status) {
                         if (status !== google.maps.GeocoderStatus.OK) {
-                            if (Shopify.designMode) ;
+                            if (Shopify.designMode);
                         } else {
                             var position = results[0].geometry.location;
                             _this5.mapPositions[index] = position; // The desktop map holds all the markers, so we add it to the desktop global map.
@@ -17884,7 +17884,7 @@
 
                 if (!config.supportsType) {
                     config.supportsType = function (type
-                                                    /*, elem*/
+                        /*, elem*/
                     ) {
                         return !type;
                     };
@@ -18259,12 +18259,12 @@
 
      For video that plays automatically if in view:
      <video
-    	class="lazyload"
-    	preload="none"
-    	muted=""
-    	data-autoplay=""
-    	data-poster="poster.jpg"
-    	src="src.mp4">
+        class="lazyload"
+        preload="none"
+        muted=""
+        data-autoplay=""
+        data-poster="poster.jpg"
+        src="src.mp4">
     </video>
 
      Scripts:
@@ -18728,7 +18728,7 @@
 
             if (!lazySizesCfg.supportsType) {
                 lazySizesCfg.supportsType = function (type
-                                                      /*, elem*/
+                    /*, elem*/
                 ) {
                     return !type;
                 };
@@ -18900,7 +18900,7 @@
                     return _matchesMedia(media);
                 };
 
-                var getCandidate = function  (elem) {
+                var getCandidate = function (elem) {
                     var sources, i, len, source, srces, src, width;
                     source = elem;
                     createSrcset(source, true);
