@@ -4225,7 +4225,7 @@
                 var formtag = target.closest('form')
                 var sizeBlock = Array.from(formtag.querySelectorAll('.block-swatch__radio'))
                 isSelect = sizeBlock.some(item => item.checked && item.hasAttribute('checked'))
-                isSelect = isSelect || ['Default Title', 'ONE SIZE','one size','default title'].some(it => it == this.currentVariant.option1) || this.currentVariant.option2 === null && this.currentVariant.option2 === null
+                isSelect = isSelect || ['Default Title', 'ONE SIZE','one size','default title'].indexOf(this.currentVariant.option1)!==-1 || this.currentVariant.option2 === null && ['SIZE'].indexOf(this.productOptionsWithValues.name.toUpperCase())!==-1
 
                 if (!isSelect) {
                     window.screen.availWidth < 649 && alert('Please Select Size')
