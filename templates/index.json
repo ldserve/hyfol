@@ -79,8 +79,8 @@
           "type": "image",
           "settings": {
             "sensorsName": "bottoms",
-            "image": "shopify:\/\/shop_images\/20_off_2d4a5ff9-20e8-483b-adaf-3b563d8a671c.gif",
-            "mobile_image": "shopify:\/\/shop_images\/20_off.gif",
+            "image": "shopify:\/\/shop_images\/5.gif",
+            "mobile_image": "shopify:\/\/shop_images\/3.gif",
             "show_overlay": false,
             "overlay_opacity": 30,
             "text_color": "#ffffff",
