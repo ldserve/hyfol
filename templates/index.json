@@ -77,6 +77,7 @@
         },
         "fb844d01-0475-4130-aeb7-a118c0a1b427": {
           "type": "image",
+          "disabled": true,
           "settings": {
             "sensorsName": "bottoms",
             "image": "shopify:\/\/shop_images\/5.gif",
