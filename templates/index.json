@@ -7,8 +7,8 @@
           "type": "image",
           "settings": {
             "sensorsName": "golfevent",
-            "image": "shopify:\/\/shop_images\/polo.jpg",
-            "mobile_image": "shopify:\/\/shop_images\/polo_652f0f74-50fa-4241-a346-8995e0ae1473.jpg",
+            "image": "shopify:\/\/shop_images\/polo_8eecc1df-cb46-4df1-a4f1-a3af7ddf1b8e.jpg",
+            "mobile_image": "shopify:\/\/shop_images\/polo_1a0d6aeb-7b3d-493e-97a3-78486f8e0ec6.jpg",
             "show_overlay": false,
             "overlay_opacity": 30,
             "text_color": "#ffffff",
@@ -31,8 +31,8 @@
           "type": "image",
           "settings": {
             "sensorsName": "backtoschool",
-            "image": "shopify:\/\/shop_images\/backtoschool_c6fc104a-f716-4b19-98cb-ce9263bf90c1.jpg",
-            "mobile_image": "shopify:\/\/shop_images\/backtoschool_91a3c791-1bb8-41cf-8a14-ebbd8b151c54.jpg",
+            "image": "shopify:\/\/shop_images\/backtoschool_31d36916-1d19-4709-9c7d-935f22489d96.jpg",
+            "mobile_image": "shopify:\/\/shop_images\/backtoschool_20f2035e-9016-42db-a691-c70997b0e046.jpg",
             "show_overlay": false,
             "overlay_opacity": 30,
             "text_color": "#ffffff",
@@ -55,8 +55,8 @@
           "type": "image",
           "settings": {
             "sensorsName": "independenceday",
-            "image": "shopify:\/\/shop_images\/3_FOR_55_02af0fed-2a6c-4322-a59d-f6b8cc81d685.jpg",
-            "mobile_image": "shopify:\/\/shop_images\/3for55_b4c6a9b8-f290-4378-952c-3f7e535e9940.jpg",
+            "image": "shopify:\/\/shop_images\/3_FOR_55_f203ea7b-86f0-4492-b965-0213a51812e9.jpg",
+            "mobile_image": "shopify:\/\/shop_images\/3for55-1_848f277f-337f-44cc-9f04-3142370df20f.jpg",
             "show_overlay": false,
             "overlay_opacity": 30,
             "text_color": "#b82928",
@@ -79,8 +79,8 @@
           "type": "image",
           "settings": {
             "sensorsName": "bottoms",
-            "image": "shopify:\/\/shop_images\/20_off_2d4a5ff9-20e8-483b-adaf-3b563d8a671c.gif",
-            "mobile_image": "shopify:\/\/shop_images\/20_off.gif",
+            "image": "shopify:\/\/shop_images\/5.gif",
+            "mobile_image": "shopify:\/\/shop_images\/3.gif",
             "show_overlay": false,
             "overlay_opacity": 30,
             "text_color": "#ffffff",
