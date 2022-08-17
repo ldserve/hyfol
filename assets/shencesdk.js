@@ -18,7 +18,8 @@
     y.parentNode.insertBefore(x, y);
   }
 })({
-  sdk_url: 'https://cdn.shopifycdn.net/s/files/1/0595/0691/7535/files/sensorsdata.min.js?v=1639989639',
+  // sdk_url: 'https://cdn.shopifycdn.net/s/files/1/0595/0691/7535/files/sensorsdata.min.js?v=1639989639',//v1.20.2
+  sdk_url: 'https://cdn.shopify.com/s/files/1/0595/0691/7535/files/sensorsdata.min_be8ac7a5-cc19-4af9-9310-5933d1f054b5.js?v=1660706678',//v1.23.3
   name: 'sensors',
   /* 正式环境地址 */
   server_url: 'https://data.ld-bdp.com/sa?project=production',
@@ -54,8 +55,10 @@ sensors.register({
   site_type: "shopify",
   device_type: device_type
 });
+sensors.use('PageLoad');//页面加载时长
 sensors.quick('autoTrack');
 sensors.use('PageLeave');
+
 function getSiteCategory(){
     try {
         let al = document.querySelectorAll('ol a')
