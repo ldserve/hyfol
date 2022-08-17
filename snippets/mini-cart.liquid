@@ -188,7 +188,7 @@
                 {%- endif -%}
                 {%- endfor -%}
                 {%- if show_tag -%}
-                <span class="mini-cart_variant_title price--highlight">{{ sale_text_on_detail }}</span>
+                <span class="mini-cart_variant_title price--highlight mini-cart_variant_title--size">{{ sale_text_on_detail }}</span>
                 {%- endif -%}
                 {%- comment -%}END{%- endcomment -%}
                 <span class='booster-cart-item-success-notes' data-key='{{line_item.key}}'></span><span
@@ -223,12 +223,12 @@
                 <span class="price price--highlight">{{ line_item.final_line_price | money }}</span>
                 {%- endif -%}
 
-                <span class="price price--compare "><span class='booster-cart-item-line-price'
+                <span class="price price--compare price--original"><span class='booster-cart-item-line-price'
                     data-key='{{line_item.key}}'>{{ line_item.original_line_price | money }}</span></span>
                 {%- elsif line_item.variant.compare_at_price > line_item.variant.price -%}
                 <span class="price price--highlight">{{ line_item.final_line_price | money }}</span>
                 <span
-                  class="price price--compare">{{ line_item.variant.compare_at_price | times: line_item.quantity | money }}</span>
+                  class="price price--compare  price--original">{{ line_item.variant.compare_at_price | times: line_item.quantity | money }}</span>
                 {%- else -%}
                 <span class="price">{{ line_item.final_line_price | money }}</span>
                 {%- endif -%}
@@ -251,16 +251,16 @@
               </div>
               {%- endif -%}
 {%- comment -%}
-              {%- if line_item.line_level_discount_allocations != blank -%}
-              <ul class="mini-cart__discount-list" role="list">
-                {%- for discount_allocation in line_item.line_level_discount_allocations -%}
-                <li class="mini-cart__discount">
-                  {%- render 'icon', icon: 'sale' -%}{{ discount_allocation.discount_application.title }}
-                  (-{{ discount_allocation.amount | money }})
-                </li>
-                {%- endfor -%}
-              </ul>
-              {%- endif -%}
+    {%- if line_item.line_level_discount_allocations != blank -%}
+    <ul class="mini-cart__discount-list" role="list">
+      {%- for discount_allocation in line_item.line_level_discount_allocations -%}
+      <li class="mini-cart__discount">
+        {%- render 'icon', icon: 'sale' -%}{{ discount_allocation.discount_application.title }}
+        (-{{ discount_allocation.amount | money }})
+      </li>
+      {%- endfor -%}
+    </ul>
+    {%- endif -%}
 {%- endcomment -%}
             </div>
 
@@ -425,14 +425,18 @@
       {%- endfor -%}
       {%- endif -%}
       {%- endcomment -%}
+
       {%- comment -%}折扣前总价{%- endcomment -%}
-      
-  
       <div class="mini-cart-cost-information"><span>Subtoal</span>  <span>{{cart.original_total_price | money}}</span> </div>
  
-      
-      {%- assign total_discount = 0 -%}
+      {%- comment -%}购物车产品单个总折扣累加{%- endcomment -%}
+      {%- assign line_total_discount = 0 -%}
+      {%- for line_item in cart.items -%}
+      {%- assign line_total_discount = line_total_discount | plus : line_item.line_level_total_discount -%}
+      {%- endfor -%}
 
+      {%- comment -%} 所有原价减去现价得到总折扣价格
+      {%- assign total_discount = 0 -%}
       {%- for line_item in cart.items -%}
       {%- if line_item.final_line_price < line_item.original_line_price -%}
       {%- assign total_discount = total_discount | plus: line_item.total_discount -%}
@@ -441,11 +445,14 @@
       {%- assign total_discount = total_discount | plus: line_discount -%}
       {%- endif -%}
       {%- endfor -%}
-
-      {%- if total_discount > 0 -%}
+      {%- endcomment -%}
+      {%- if total_discount > 0  or line_total_discount > 0 -%}
       {%- capture amount_saved -%}<span>{{ total_discount | money }}</span>{%- endcapture -%}
+      {%- if line_total_discount > 0 -%}
+      {%- capture amount_saved -%}<span>{{ line_total_discount | money }}</span>{%- endcapture -%}
+      {%- endif -%}
       <span
-        class="mini-cart-cost-information"> <span>You Saved</span><span>{{ amount_saved }}</span></span> 
+        class="mini-cart-cost-information" > <span>You Saved</span><span>{{ amount_saved }}</span></span> 
       {%- endif -%}
 
       <div class="mini-cart__recap-price-line">
@@ -460,7 +467,9 @@
       
       {%- comment -%}To calculate the total discount, we take both into account the Shopify Script (for Plus merchants),
       but we also add the compare at price{%- endcomment -%}
-
+      <div class="mini-cart__discount--info">
+        Apply a Coupon Code on the next step!
+      </div>
 
       <div class="mini-cart__button-container">
         <div class="button-group button-group--loose button-group--fit">

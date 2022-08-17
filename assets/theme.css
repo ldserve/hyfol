@@ -15768,6 +15768,9 @@ shopify-payment-terms {
   .product-gallery__carousel-wrapper .sellpoint {
     font-size: 13px;
   }
+  .mini-cart_variant_title--size{
+    font-size: 10px;
+  }
 }
 
 .margin-0{
@@ -16149,4 +16152,12 @@ justify-content: space-between;
 .shipping-bar-top .icon {
     font-size: 1.4rem;
     margin-right: 6px;
+}
+.price--original .money{
+  color:#9f9f9f;
+  font-size:12px;
+}
+.mini-cart__discount--info{
+  font-size: 0.8rem;
+  text-align: right;
 }
