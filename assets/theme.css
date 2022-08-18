@@ -16154,7 +16154,6 @@ justify-content: space-between;
     margin-right: 6px;
 }
 .price--original .money{
-  color:#9f9f9f;
   font-size:12px;
 }
 .mini-cart__discount--info{
@@ -16164,3 +16163,10 @@ justify-content: space-between;
 .d-flex {
   display: flex!important;
 }
+
+.price--compare .money,
+.line-item__price--compare .money{
+  opacity: 0.6;
+  /* color: var(--product-on-sale-accent-original); */
+}
+

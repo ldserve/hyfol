@@ -331,6 +331,12 @@
       },
       {
         "type": "color",
+        "id": "original_price_after_promotion",
+        "label": "Original price after promotion",
+        "default": "#212121"
+      },
+      {
+        "type": "color",
         "id": "product_in_stock_color",
         "label": "In stock",
         "default": "#00a500"

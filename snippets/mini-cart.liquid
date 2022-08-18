@@ -446,9 +446,9 @@
       {%- endif -%}
       {%- endfor -%}
       {%- endcomment -%}
-      {%- if total_discount > 0  or line_total_discount > 0 -%}
+      {%- if total_discount > 0  or line_total_discount >= 0 -%}
       {%- capture amount_saved -%}<span>{{ total_discount | money }}</span>{%- endcapture -%}
-      {%- if line_total_discount > 0 -%}
+      {%- if line_total_discount >= 0 -%}
       {%- capture amount_saved -%}<span>{{ line_total_discount | money }}</span>{%- endcapture -%}
       {%- endif -%}
       <span
