@@ -16161,3 +16161,6 @@ justify-content: space-between;
   font-size: 0.8rem;
   text-align: right;
 }
+.d-flex {
+  display: flex!important;
+}

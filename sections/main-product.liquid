@@ -596,8 +596,9 @@
 			{%- render 'product-info',isQuickView:isQuickView  -%}
 		</div>
 	{%- endif -%}
+
 	{%- comment -%} 尺码表弹窗 {%- endcomment -%}
-	<div id="sizeGuideModal" class="modal" aria-hidden="true">
+	<div id="sizeGuideModal" class="modal" aria-hidden="true" data-type="{{product.metafields.my_fields.category.second_commodity}}">
 		<div class="modal__dialog modal__dialog--stretch" role="dialog">
 			<button class="modal__close link" data-action="close-modal"
 							title="{{ 'general.accessibility.close' | t | escape }}">
@@ -618,33 +619,85 @@
 						<table>
 							<tbody></tbody>
 						</table>
+
 						{%- comment -%}上装{%- endcomment -%}
 						{% if product.metafields.my_fields.category.second_commodity contains '上装' %}
+							
+						{%- comment -%}女上装{%- endcomment -%}
+							{%- if product.metafields.my_fields.category.second_commodity contains '女上装' -%}
+							<script type="application/json" data-type="chart">
+								{
+								"SIZE":	"S/M/L/XL/XXL",
+								"US SIZE":"33-35/35-37/37-39/39-41/41-44",
+								"CHEST": "33.9-35.4/35.4-37/37-39.4/39.4-41.7/41.7-44",
+								"WASIT":"26-27.6/27.6-29.1/29.1-31.5/31.5-33.9/33.9-36.2",
+								"HIPS": "35.8-37.4/37.4-39/39-41.3/41.3-43.7/43.7-45.4"
+								}
+							</script>
+							<script type="application/json" data-type="cm-chart">
+								{
+								"SIZE":	"S/M/L/XL/XXL",
+								"CM SIZE":"86-90/90-94/94-100/100-104/104-110",
+								"CHEST": "86-90/90-94/94-100/100-104/104-110",
+								"WASIT":"66-70/70-74/74-80/80-88/88-96",
+								"HIPS": "91-95/95-99/99-105/105-112/112-116"
+								}
+							</script>
+							<div class="sizeGuideModal__tips">
+								<div class="sizeGuideModal__tips__left">
+									<h2 class="sizeGuideModal__tips__title heading">HOW TO MEASURE</h2>
+									<div class="sizeGuideModal__tips__item">
+										<span class="sizeGuideModal__tips__item__num">1</span>
+										<div class="sizeGuideModal__tips__item__text">
+											<p class="heading">Your bust</p>
+											<p>Measure the circumference over the fullest part of your bust.</p>
+										</div>
+									</div>
+									<div class="sizeGuideModal__tips__item">
+										<span class="sizeGuideModal__tips__item__num">2</span>
+										<div class="sizeGuideModal__tips__item__text">
+											<p class="heading">Your waist</p>
+											<p>Measure your waist at the thinnest place.</p>
+										</div>
+									</div>
+									<div class="sizeGuideModal__tips__item">
+										<span class="sizeGuideModal__tips__item__num">3</span>
+										<div class="sizeGuideModal__tips__item__text">
+											<p class="heading">Your hips</p>
+											<p>Measure the fullest part of your hips.</p>
+										</div>
+									</div>
+								</div>
+								<div class="sizeGuideModal__tips__right">
+									<img src="https://cdn.shopifycdn.net/s/files/1/0595/0691/7535/files/nv.png?v=1660788734" alt="women's">
+								</div>
+							</div>
+							{%- else -%}
 							{% if product.metafields.my_fields.fatthintype == 'fat' %}
-								<script type="application/json" data-type="chart">
-									{
-										"SIZE": "S/M/L/XL/XXL/XXXL/XXXXL",
-										"US SIZE": "37-39/40-42/43-45/46-48/49-51/52-54/55-57",
-										"CHEST": "36.5-39.5/39.5-43.5/43.5-45.5/45.5-48.5/49.5-51.5/51.5-53.5/54.5-57.5",
-										"SLEEVE": "32.5-33.5/33.5-34.5/34-35/34.5-35.5/35.5-36.5/36.5-37.5/37-38",
-										"WASIT": "29.5-31.5/32.5-33.5/33.5-35.5/35.5-37.5/37.5-39.5/39.5-41.5/41.5-43.5",
-										"HIPS": "37.5-39/39.5-41/41.5-43/43.5-45/45.5-47/47.5-49/49.5-51",
-										"INSDE LEG":"32-33/32-33/32-33/33-33.5/33-33.5/33-33.5/33-33.5"
-									}
-								</script>
-							{% else %}
-								<script type="application/json" data-type="chart">
-									{
-										"SIZE": "S/M/L/XL/XXL/XXXL/XXXXL",
-										"US SIZE": "37-39/39-41/42-44/44-46/46-48/48-50/50-52",
-										"CHEST": "37.5-39.5/39.5-41.5/41.5-44.5/43.5-46.5/45.5-48.5/47.5-50.5/49.5-52.5",
-										"SLEEVE": "32.5-33.5/33.5-34.5/34-35/34.5-35.5/35.5-36.5/36.5-37.5/37-38",
-										"WASIT": "29.5-31.5/32.5-33.5/33.5-35.5/35.5-37.5/37.5-39.5/39.5-41.5/41.5-43.5",
-										"HIPS": "37.5-39/39.5-41/41.5-43/43.5-45/45.5-47/47.5-49/49.5-51",
-										"INSDE LEG":"32-33/32-33/32-33/33-33.5/33-33.5/33-33.5/33-33.5"
-									}
-								</script>
-							{% endif %}
+									<script type="application/json" data-type="chart">
+										{
+											"SIZE": "S/M/L/XL/XXL/XXXL/XXXXL",
+											"US SIZE": "37-39/40-42/43-45/46-48/49-51/52-54/55-57",
+											"CHEST": "36.5-39.5/39.5-43.5/43.5-45.5/45.5-48.5/49.5-51.5/51.5-53.5/54.5-57.5",
+											"SLEEVE": "32.5-33.5/33.5-34.5/34-35/34.5-35.5/35.5-36.5/36.5-37.5/37-38",
+											"WASIT": "29.5-31.5/32.5-33.5/33.5-35.5/35.5-37.5/37.5-39.5/39.5-41.5/41.5-43.5",
+											"HIPS": "37.5-39/39.5-41/41.5-43/43.5-45/45.5-47/47.5-49/49.5-51",
+											"INSIDE LEG":"32-33/32-33/32-33/33-33.5/33-33.5/33-33.5/33-33.5"
+										}
+									</script>
+								{% else %}
+									<script type="application/json" data-type="chart">
+										{
+											"SIZE": "S/M/L/XL/XXL/XXXL/XXXXL",
+											"US SIZE": "37-39/39-41/42-44/44-46/46-48/48-50/50-52",
+											"CHEST": "37.5-39.5/39.5-41.5/41.5-44.5/43.5-46.5/45.5-48.5/47.5-50.5/49.5-52.5",
+											"SLEEVE": "32.5-33.5/33.5-34.5/34-35/34.5-35.5/35.5-36.5/36.5-37.5/37-38",
+											"WASIT": "29.5-31.5/32.5-33.5/33.5-35.5/35.5-37.5/37.5-39.5/39.5-41.5/41.5-43.5",
+											"HIPS": "37.5-39/39.5-41/41.5-43/43.5-45/45.5-47/47.5-49/49.5-51",
+											"INSIDE LEG":"32-33/32-33/32-33/33-33.5/33-33.5/33-33.5/33-33.5"
+										}
+									</script>
+								{% endif %}
 							<div class="sizeGuideModal__tips">
 								<div class="sizeGuideModal__tips__left">
 									<h2 class="sizeGuideModal__tips__title heading">HOW TO MEASURE</h2>
@@ -679,7 +732,10 @@
 									<img src="{{ imgUrl }}" alt="">
 								</div>
 							</div>
-						{% endif %}
+							
+							{%- endif -%}
+						{%- endif -%}
+
 						{%- comment -%}下装{%- endcomment -%}
 						{% if product.metafields.my_fields.category.second_commodity contains '下装' %}
 							<script type="application/json" data-type="chart">
@@ -728,80 +784,83 @@
 	</div>
 </section>
 <script>
-    window.ShopifyXR = window.ShopifyXR || function () {
-        (ShopifyXR.q = ShopifyXR.q || []).push(arguments)
-    };
-    ShopifyXR('addModels', {{ product.media | where: 'media_type', 'model' | json }});
+	window.ShopifyXR = window.ShopifyXR || function () {
+		(ShopifyXR.q = ShopifyXR.q || []).push(arguments)
+	};
+	ShopifyXR('addModels', {{ product.media | where: 'media_type', 'model' | json }});
 
-    // We save the ID of the product in the local storage, as it can be used by the "recently viewed products" section
-    (() => {
-        let items = JSON.parse(localStorage.getItem('recentlyViewedProducts') || '[]');
+	// We save the ID of the product in the local storage, as it can be used by the "recently viewed products" section
+	(() => {
+		let items = JSON.parse(localStorage.getItem('recentlyViewedProducts') || '[]');
 
-        // We check if the current product already exists, and if it does not, we add it at the start
-        if (!items.includes({{ product.id | json }})) {
-            items.unshift({{ product.id | json }});
+		// We check if the current product already exists, and if it does not, we add it at the start
+		if (!items.includes({{ product.id | json }})) {
+		items.unshift({{ product.id | json }});
         }
 
-        // Then, we save the current product into the local storage, by keeping only the 18 most recent
-        try {
-            localStorage.setItem('recentlyViewedProducts', JSON.stringify(items.slice(0, 18)));
-        } catch (error) {
-            // Do nothing, this may happen in Safari in incognito mode
-        }
-        /*尺码表 start*/
-        let sizeGuideModal = document.querySelector('#shopify-section-{{ section.id }} #sizeGuideModal')
-        let sizeGuideModal__checkbox = sizeGuideModal.querySelector('.sizeGuideModal__checkbox')
-        function initSizeGuideTable() {
-            let tbody = sizeGuideModal.querySelector('tbody')
-            let className = sizeGuideModal__checkbox.className
-			let jsonText=sizeGuideModal.querySelector('[type="application/json"][data-type="chart"]')
-			let jsonData=jsonText?jsonText.textContent:'[]'
-            let data = JSON.parse(jsonData)
-            let tableHtml = ''
-						for (const item in data) {
-								tableHtml += `<tr>`
-								if (item === 'SIZE') {
-										tableHtml += `<th>${item}</th>`
-										let arr = data[item].split('/')
-										arr.map(i => {
-												tableHtml += `<th>${i}</th>`
-										})
-								} else {
-								  if (className.indexOf('is-checked') > -1) {
-                    tableHtml += `<td>${item === 'US SIZE' ? 'CM SIZE' : item}</td>`
-                    let arr = data[item].split('/')
-                    arr.map(i => {
-                      let tdArr = i.split('-')
-                      tableHtml += `<td>${tdArr[0]*2.54.toFixed(1) + '-' + tdArr[1]*2.54.toFixed(1)}</td>`
-                    })
-									}else {
-                    tableHtml += `<td>${item}</td>`
-                    let arr = data[item].split('/')
-                    arr.map(i => {
-                      tableHtml += `<td>${i}</td>`
-                    })
-									}
-								}
-								tableHtml += `</tr>`
-						}
-            tbody.innerHTML = tableHtml
-        }
+	// Then, we save the current product into the local storage, by keeping only the 18 most recent
+	try {
+		localStorage.setItem('recentlyViewedProducts', JSON.stringify(items.slice(0, 18)));
+	} catch (error) {
+		// Do nothing, this may happen in Safari in incognito mode
+	}
+	/*尺码表 start*/
+	let sizeGuideModal = document.querySelector('#shopify-section-{{ section.id }} #sizeGuideModal')
+	let sizeGuideModal__checkbox = sizeGuideModal.querySelector('.sizeGuideModal__checkbox')
+	function initSizeGuideTable() {
+		let tbody = sizeGuideModal.querySelector('tbody')
+		let className = sizeGuideModal__checkbox.className
+		let jsonText = sizeGuideModal.querySelector('[type="application/json"][data-type="chart"]')
+		let cmJsonHtml = sizeGuideModal.querySelector('[type="application/json"][data-type="cm-chart"]')
+		let cmjson = cmJsonHtml ? cmJsonHtml.innerHTML : '[]'
+		let jsonData = jsonText ? jsonText.textContent : '[]'
+		let data = JSON.parse(jsonData)
+		if(cmJsonHtml&&className.indexOf('is-checked') > -1)data = JSON.parse(cmjson)
+		let tableHtml = ''
+		for (const item in data) {
+			tableHtml += `<tr>`
+			if (item === 'SIZE') {
+				tableHtml += `<th>${item}</th>`
+				let arr = data[item].split('/')
+				arr.map(i => {
+					tableHtml += `<th>${i}</th>`
+				})
+			} else {
+				if (className.indexOf('is-checked') > -1 && !cmJsonHtml) {
+					tableHtml += `<td>${item === 'US SIZE' ? 'CM SIZE' : item}</td>`
+					let arr = data[item].split('/')
+					arr.map(i => {
+						let tdArr = i.split('-')
+						tableHtml += `<td>${tdArr[0] * 2.54.toFixed(1) + '-' + tdArr[1] * 2.54.toFixed(1)}</td>`
+					})
+				} else {
+					tableHtml += `<td>${item}</td>`
+					let arr = data[item].split('/')
+					arr.map(i => {
+						tableHtml += `<td>${i}</td>`
+					})
+				}
+			}
+			tableHtml += `</tr>`
+		}
+		tbody.innerHTML = tableHtml
+	}
 
-        sizeGuideModal__checkbox.addEventListener('click', () => {
-            let className = sizeGuideModal__checkbox.className
-            if (className.indexOf('is-checked') > -1) {
-                sizeGuideModal__checkbox.classList.remove('is-checked')
-            } else {
-                sizeGuideModal__checkbox.classList.add('is-checked')
-            }
-            initSizeGuideTable()
-        })
+	sizeGuideModal__checkbox.addEventListener('click', () => {
+		let className = sizeGuideModal__checkbox.className
+		if (className.indexOf('is-checked') > -1) {
+			sizeGuideModal__checkbox.classList.remove('is-checked')
+		} else {
+			sizeGuideModal__checkbox.classList.add('is-checked')
+		}
+		initSizeGuideTable()
+	})
 
-		let a = 1
-        initSizeGuideTable()
+	let a = 1
+	initSizeGuideTable()
         /*尺码表 end*/
-    })();
-    pintrk('track', 'viewcategory');
+    }) ();
+	pintrk('track', 'viewcategory');
 </script>
 
 {% schema %}
