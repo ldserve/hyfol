@@ -133,10 +133,10 @@
     "16585455879cf4cc45": {
       "type": "no_space_img",
       "settings": {
-        "sensorsName": "hotsalecollection",
-        "bg_image": "shopify:\/\/shop_images\/pc__03_45ca401f-7157-4c60-a6ec-9193b5bf2f44.jpg",
-        "web_bg_image": "shopify:\/\/shop_images\/02_0f4fa514-eb08-411e-903d-3056d690cd0f.jpg",
-        "link": "https:\/\/www.hyfol.com\/collections\/hot-sale-collection",
+        "sensorsName": "summer clearance",
+        "bg_image": "shopify:\/\/shop_images\/pc__03_3cba143b-f440-40cb-9383-41772daec23e.jpg",
+        "web_bg_image": "shopify:\/\/shop_images\/02_32448210-05da-4155-862f-dd8452120955.jpg",
+        "link": "https:\/\/www.hyfol.com\/collections\/summer-clearance-up-to-50-off",
         "shadow": false
       }
     },
@@ -492,7 +492,7 @@
           "settings": {
             "heading": "flashdeal",
             "sensorsLinkName": "flashdeal",
-            "link": "https:\/\/www.hyfol.com\/collections\/winter-clearance",
+            "link": "https:\/\/www.hyfol.com\/collections\/summer-clearance-up-to-50-off",
             "left": 0,
             "top": 0,
             "width": 50,
@@ -597,7 +597,7 @@
           "settings": {
             "heading": "flashdeal",
             "sensorsLinkName": "flashdeal",
-            "link": "https:\/\/www.hyfol.com\/collections\/winter-clearance",
+            "link": "https:\/\/www.hyfol.com\/collections\/summer-clearance-up-to-50-off",
             "left": 0,
             "top": 0,
             "width": 48,
