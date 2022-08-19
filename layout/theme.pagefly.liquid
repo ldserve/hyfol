@@ -7,7 +7,6 @@ If you plan to remove PageFly, please see the guide in our help center first: ht
 <html class="no-js" lang="{{ request.locale.iso_code }}">
   <head>{% render 'pagefly-head' %}
 
-{% include 'limespot' %}
 {% include 'kiwiSizing' %}
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, height=device-height, minimum-scale=1.0, maximum-scale=1.0">
@@ -147,7 +146,7 @@ If you plan to remove PageFly, please see the guide in our help center first: ht
 {% include "code-customizer-header" %}
 <!-- END CODE CUSTOMIZER -->
 {% include 'upsellio' %}
-{% include 'hulkcode_common' %}{% if template contains 'product' or template contains 'cart' %}<script src='https://ha-volume-discount.nyc3.digitaloceanspaces.com/assets/api/v2/hulkcode.js' defer='defer'></script>{% endif %}{% include 'alireviews_core' %}
+{% include 'alireviews_core' %}
 <!-- Google Ads Remarketing Tag By Shopify_Fans -->
 
 <!-- 替换掉受众源Tag ID -->
