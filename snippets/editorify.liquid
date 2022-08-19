@@ -47,6 +47,7 @@
 
         renderIframe(iframes);
         let formFrame = document.querySelector('.edititorifyReviewsFormFrame')
+        if(!formFrame)return
         let formSrc = formFrame.getAttribute('data-src');
         if(window.location.href.indexOf('#reviewrequest')>-1){
             document.querySelector('.editorify-form-dialog').style.display = 'block';

@@ -2,7 +2,7 @@
   var listenChange = function(element) {
     mediaReplace();
   }
-  const config = { attributeFilter: ["src","srcset"] };
+  const obseverConfig = { attributeFilter: ["src","srcset"] };
   const obsever = new MutationObserver(listenChange);
   function mediaReplace(){
     obsever.disconnect();
@@ -45,7 +45,7 @@
           var is_url_src = isMatchFirstName(url_name_length, img_dome[i].src, url_name,source_url[s].url_content)
           if(v!=false && ((is_url && srcset_url.indexOf(url_suffix) >= 0) || (is_url_situ && srcset_url_situ.indexOf(url_suffix) >= 0) || is_url_src)){
             findReplace(replace_url, source_url[s].id, img_dome[i], srcset_url)
-            obsever.observe(img_dome[i], config);
+            obsever.observe(img_dome[i], obseverConfig);
             continue
           }
         }
