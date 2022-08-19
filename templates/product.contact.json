@@ -63,17 +63,11 @@
         "title": "Recently viewed",
         "show_quick_buy": false
       }
-    },
-    "alireviews-widget-95109": {
-      "type": "alireviews-widget-95109",
-      "settings": {
-      }
     }
   },
   "order": [
     "main",
     "product-recommendations",
-    "recently-viewed-products",
-    "alireviews-widget-95109"
+    "recently-viewed-products"
   ]
 }
