@@ -283,7 +283,6 @@ line_items: [
 {% include 'dexter' %}
 
 {% include 'orichi_multi_pixel' %}
-{% render 'vitals-loader' %}
 
 {% include "omega_multi_pixel" %}
 
@@ -329,9 +328,6 @@ line_items: [
 
   <body class="warehouse--v1 {% if settings.animation_image_zoom %}features--animate-zoom{% endif%} template-{{ request.page_type | handle }} {% if request.page_type contains '/' %}template-{{ request.page_type | split: '/' | last | handle }}{% endif %}" data-instant-intensity="viewport">
 
-
-
-
     {%- comment -%}Common SVG definitions that we are re-using in several places{%- endcomment -%}
     <svg class="visually-hidden">
       <linearGradient id="rating-star-gradient-half">
@@ -362,12 +358,6 @@ line_items: [
 
     {% section 'foot-navbar' %}
     {% include 'gotop' %}
-
-
-
-
-
-
 
     <ul hidden>
       <li id="a11y-new-window-message">{{ 'general.accessibility.new_window' | t }}</li>
@@ -421,8 +411,6 @@ line_items: [
     </script>
     <script src="{{ 'tms.js' | asset_url }}" defer="defer"></script>
     <!-- **END** Hextom TMS Integration // Main Include - DO NOT MODIFY -->
-
-
 
 
  {% include 'smile-initializer' %}
