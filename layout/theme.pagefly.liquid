@@ -56,7 +56,7 @@ If you plan to remove PageFly, please see the guide in our help center first: ht
     {% render 'social-meta-tags' %}
     {% render 'css-variables' %}
 
-    {{ content_for_header }}
+    {% include 'globo.filter.script' %}{{ content_for_header }}
 {% render 'globo.alsobought.script' %}
 
     <link rel="stylesheet" href="{{ 'theme.css' | asset_url }}">
@@ -291,5 +291,6 @@ line_items: [
     <!-- Bind 营销代码 END -->
 	</head>
 
-  <body class="warehouse--v1 {% if settings.animation_image_zoom %}features--animate-zoom{% endif%} template-{{ request.page_type | handle }} {% if request.page_type contains '/' %}template-{{ request.page_type | split: '/' | last | handle }}{% endif %}" data-instant-intensity="viewport"><div class="pagefly-container">{{ content_for_layout }}</div></body>
+  <body class="warehouse--v1 {% if settings.animation_image_zoom %}features--animate-zoom{% endif%} template-{{ request.page_type | handle }} {% if request.page_type contains '/' %}template-{{ request.page_type | split: '/' | last | handle }}{% endif %}" data-instant-intensity="viewport"><div class="pagefly-container">{{ content_for_layout }}</div>{% include 'globo.filter.action' %}
+	</body>
 </html>

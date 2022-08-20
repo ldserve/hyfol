@@ -614,7 +614,7 @@
         {%- assign show_as_list = true -%}
         {%- endif -%}
 
-        <div data-section-id="{% if section.id %}{{section.id}}{% endif %}" data-sectionId="{% if section.id %}{{section.id}}{% endif %}" {% if section.blocks %}data-blocks='{ {%- capture blocks_json -%}{% for block in section.blocks %}{%- capture block_json -%}"{{ block.type }}":{{ block.settings | json }}{%- endcapture -%}{{ block_json | prepend: ","  }}{% endfor %}{%- endcapture -%}{{ blocks_json | remove_first: "," }} }' {% endif %} data-settings='{% if section.settings %}{{section.settings | json}}{% endif %}' id="gf-products" class="product-list product-list--collection {% if has_filters %}product-list--with-sidebar{% endif %}">
+        <div class="product-list product-list--collection {% if has_filters %}product-list--with-sidebar{% endif %}">
           {%- for product in collection.products -%}
           {%- render 'product-item', product: product, list: show_as_list, grid_classes: grid_classes,forloop:forloop -%}
           {%- endfor -%}

@@ -122,7 +122,7 @@
 
               <div {% if has_filters %}class="layout__section"{% endif %}>
                 {%- if search.results_count > 0 -%}
-                  <div data-section-id="{% if section.id %}{{section.id}}{% endif %}" data-sectionId="{% if section.id %}{{section.id}}{% endif %}" {% if section.blocks %}data-blocks='{ {%- capture blocks_json -%}{% for block in section.blocks %}{%- capture block_json -%}"{{ block.type }}":{{ block.settings | json }}{%- endcapture -%}{{ block_json | prepend: ","  }}{% endfor %}{%- endcapture -%}{{ blocks_json | remove_first: "," }} }' {% endif %} data-settings='{% if section.settings %}{{section.settings | json}}{% endif %}' id="gf-products" class="collection"
+                  <div class="collection"
                        data-scenable="1"
                        data-sctype="SearchRequest"
                        data-scdata='{"result_number":"{{ search.results_count }}","commodity_skuid_list":"{%- for product in search.results -%}{{ product.handle }},{%- endfor -%}"}'
@@ -205,7 +205,7 @@
                           {%- assign show_as_list = true -%}
                         {%- endif -%}
 
-                        <div data-section-id="{% if section.id %}{{section.id}}{% endif %}" data-sectionId="{% if section.id %}{{section.id}}{% endif %}" {% if section.blocks %}data-blocks='{ {%- capture blocks_json -%}{% for block in section.blocks %}{%- capture block_json -%}"{{ block.type }}":{{ block.settings | json }}{%- endcapture -%}{{ block_json | prepend: ","  }}{% endfor %}{%- endcapture -%}{{ blocks_json | remove_first: "," }} }' {% endif %} data-settings='{% if section.settings %}{{section.settings | json}}{% endif %}' id="gf-products" class="product-list product-list--collection" data-resultNumber="{{ search.results_count }}">
+                        <div class="product-list product-list--collection" data-resultNumber="{{ search.results_count }}">
                           {%- for product in search.results -%}
                             {%- render 'product-item', product: product, list: show_as_list, grid_classes: grid_classes,index:forloop.index -%}
                           {%- endfor -%}

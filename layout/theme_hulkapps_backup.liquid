@@ -49,7 +49,7 @@
     {% render 'social-meta-tags' %}
     {% render 'css-variables' %}
 
-    {{ content_for_header }}
+    {% include 'globo.filter.script' %}{{ content_for_header }}
 
     <link rel="stylesheet" href="{{ 'theme.css' | asset_url }}">
 
@@ -188,5 +188,6 @@
   {% include 'revy-bundle-script' %}
 {% render 'spurit_dmr_theme_snippet' %}
 {% include 'booster-discounts' %}
-</body>
+{% include 'globo.filter.action' %}
+	</body>
 </html>
