@@ -52,7 +52,7 @@
     {% render 'social-meta-tags' %}
     {% render 'css-variables' %}
 
-    {% include 'globo.filter.script' %}{{ content_for_header }}
+    {{ content_for_header }}
 {% render 'globo.alsobought.script' %}
 
     <link rel="stylesheet" href="{{ 'theme.css' | asset_url }}">
@@ -403,6 +403,6 @@ line_items: [
 {% include 'gtranslate', float: 'yes' %}
 
 {% include 'ets_fs_layoutdata' %}
-{% include 'globo.filter.action' %}
+
 	</body>
 </html>
