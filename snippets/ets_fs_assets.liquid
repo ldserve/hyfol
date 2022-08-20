@@ -11,4 +11,4 @@
     const ETS_FS_CUSTOMER_EMAIL = "{% if customer %}{{customer.email}}{% endif %}";
     const ETS_FS_CUSTOMER_TAGS = "{% if customer and customer.tags %}{{customer.tags}}{% else %}[]{% endif %}";
 </script>
-<script src="{{ 'ets_fs_config.js' | asset_url }}" type="text/javascript"></script>
+<script src="{{ 'ets_fs_config.js' | asset_url }}" type="text/javascript" async></script>
