@@ -275,12 +275,12 @@ line_items: [
 </script>
 <!-- Google Ads Remarketing Tag By Shopify_Fans END -->
  
-{% include 'editorify' %} <script>var scaaffCheck = false;</script>
+<script>var scaaffCheck = false;</script>
 {%- comment -%}
 {{ 'sca_affiliate.js' | asset_url | script_tag }}
 {%- endcomment -%}
 <script src="{{ 'sca_affiliate.js' | asset_url}}" type="text/javascript" async></script>
-{% include 'flashify-common' %}{% include 'dexter' %}
+{% include 'dexter' %}
 
 {% include 'orichi_multi_pixel' %}
 {% render 'vitals-loader' %}
