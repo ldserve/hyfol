@@ -39,7 +39,7 @@
     {% render 'social-meta-tags' %}
     {% render 'css-variables' %}
 
-    {{ content_for_header }}
+    {% include 'globo.filter.script' %}{{ content_for_header }}
 
     <link rel="stylesheet" href="{{ 'theme.css' | asset_url }}">
 
@@ -120,5 +120,6 @@
       <li id="a11y-new-window-message">{{ 'general.accessibility.new_window' | t }}</li>
     </ul>
   {% include 'booster-discounts' %}
-</body>
+{% include 'globo.filter.action' %}
+	</body>
 </html>
