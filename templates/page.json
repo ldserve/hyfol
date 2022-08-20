@@ -14,16 +14,10 @@
         "background": "#1e2d7d",
         "text": "#ffffff"
       }
-    },
-    "editorify_section_widget": {
-      "type": "editorify_section_widget",
-      "settings": {
-      }
     }
   },
   "order": [
     "main",
-    "newsletter",
-    "editorify_section_widget"
+    "newsletter"
   ]
 }

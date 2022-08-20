@@ -16,12 +16,6 @@
         "text": "#ffffff"
       }
     },
-    "editorify_section_widget": {
-      "type": "editorify_section_widget",
-      "disabled": true,
-      "settings": {
-      }
-    },
     "164214075552818667": {
       "type": "blog-posts",
       "settings": {
@@ -257,7 +251,6 @@
   "order": [
     "main",
     "newsletter",
-    "editorify_section_widget",
     "164214075552818667",
     "1642061192a5d1a0ac",
     "1642055251b3e62f1a",
