@@ -29,6 +29,7 @@
         cartType: {{ settings.cart_type | json }},
         customer_id: "{{ customer.id }}"
     };
+  window.pageType={{ request.page_type | json }}
 </script>
 <div class="sc-checkout-data"
      data-scenable="1"
