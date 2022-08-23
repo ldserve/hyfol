@@ -106,6 +106,7 @@ window.getFormatDate = function getFormatDate() {
       } else {
         this.container = obj.container;
       }
+      if(!this.container) return;
       this.event = obj.event || 'click';
       this.addFn = obj.customData || function () { return {} };
       this.customSession = obj.customSession || function () { return {} };
