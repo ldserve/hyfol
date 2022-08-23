@@ -144,7 +144,6 @@
          const formParent=el.closest('.product-form')
          const colorChecked=formParent.querySelector('.product-form__option[data-selector-type="color"]')||formParent.querySelector('.product-form__option[data-selector-type="variant"]')
          const sizeChecked= formParent.querySelector('.product-form__option[data-selector-type="block"]')
-         console.log('colorChecked',colorChecked);
          newData.commodity_color=colorChecked?colorChecked.querySelector('.product-form__selected-value').innerText : ""
          newData.commodity_size=sizeChecked?sizeChecked.querySelector('.product-form__selected-value').innerText : ""
          newData.commodity_skuid=id
@@ -219,7 +218,7 @@
          }
          id= el.dataset.productid
          const formParent=el.closest('.product-form')
-         const colorChecked=formParent.querySelector('.product-form__option[data-selector-type="color"]')
+         const colorChecked=formParent.querySelector('.product-form__option[data-selector-type="color"]')||formParent.querySelector('.product-form__option[data-selector-type="variant"]')
          const sizeChecked= formParent.querySelector('.product-form__option[data-selector-type="block"]')
          newData.commodity_color=colorChecked?colorChecked.querySelector('.product-form__selected-value').innerText : ""
          newData.commodity_size=sizeChecked?sizeChecked.querySelector('.product-form__selected-value').innerText : ""
