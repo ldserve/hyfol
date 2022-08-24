@@ -4,7 +4,21 @@
 	"layout": {{ section.settings.layout | json }}
 	}
 {%- endcapture -%}
-
+<style>
+	@media screen and (min-width:1000px) {
+		#shopify-section-{{section.id}}>.section{
+		padding-top: {{section.settings.padding_top}}px;
+		padding-bottom: {{section.settings.padding_bottom}}px;
+		}
+	}
+	#shopify-section-{{section.id}} .section__title{
+		text-align: {{section.settings.section_title_layout}};
+		margin-bottom:20px;
+	}
+	#shopify-section-{{section.id}}{
+		background:{{section.settings.background}};
+	}
+</style>
 <section class="section" data-section-id="{{ section.id }}" data-section-type="featured-collection"
 				 data-section-settings='{{ section_settings }}'>
 	{%- assign collection = section.settings.collection -%}
@@ -130,6 +144,26 @@
 	"default": "Featured collection"
 	},
 	{
+		"type": "select",
+		"id": "section_title_layout",
+		"label": "标题布局",
+		"options": [
+		{
+		"value": "left",
+		"label": "left"
+		},
+		{
+		"value": "center",
+		"label": "center"
+		},
+		{
+		"value": "right",
+		"label": "right"
+		}
+		],
+		"default": "left"
+		},
+	{
 	"type": "range",
 	"id": "products_count",
 	"label": "Products to show",
@@ -183,6 +217,30 @@
 	"id": "link_url",
 	"label": "Link URL",
 	"info": "If empty, the collection URL is used."
+	},
+	{
+		"type": "range",
+		"id": "padding_top",
+		"label": "PC顶部填充",
+		"min": 0,
+		"max": 100,
+		"unit":"px",
+		"step": 1,
+		"default": 0
+	},
+	{
+		"type": "range",
+		"id": "padding_bottom",
+		"label": "PC底部填充",
+		"min": 0,
+		"max": 100,
+		"unit":"px",
+		"step": 1,
+		"default": 0
+	},{
+		"type":"color_background",
+		"id":"background",
+		"label":"背景色"
 	}
 	],
 	"presets": [

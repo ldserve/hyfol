@@ -600,9 +600,10 @@
     position: relative;
     z-index: 5;
 
-	{%- if section.settings.enable_sticky_header -%} position: -webkit-sticky;
+	{%- if section.settings.enable_sticky_header -%}
+	position: -webkit-sticky;
     position: sticky;
-    top: 0;
+    top: 2.7rem;
 	{%- endif -%}
   }
 
@@ -611,6 +612,11 @@
     max-width: {{ section.settings.mobile_logo_max_width }}px !important;
   }
 
+  @media screen and (max-width: 641px) {
+	#shopify-section-{{ section.id }}{
+		top:1.5rem;
+	}
+  }
   @media screen and (min-width: 641px) {
     .header__logo-image {
       max-width: {{ section.settings.logo_max_width }}px !important;

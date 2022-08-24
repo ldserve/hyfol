@@ -157,17 +157,16 @@
 														{%- endif -%}
 
 														{%- if gift_wrap_product.handle == line_item.product.handle -%}
-															<span class="line-item__title text--strong">{{ line_item.product.title }}<br/><span
-																	class="line_item_variant_title">{{ line_item.variant.title }}</span>
-<span class='booster-cart-item-success-notes' data-key='{{ line_item.key }}'></span><span
+															<span class="line-item__title text--strong">{{ line_item.product.title }}<br/>
+															<span class="line_item_variant_title">{{ line_item.variant.title }}</span>
+															<span class='booster-cart-item-success-notes' data-key='{{ line_item.key }}'></span><span
 																	class='booster-cart-item-upsell-notes' data-key='{{ line_item.key }}'></span></span>
 														{%- else -%}
 															<a href="{{ line_item.url }}"
-															   class="line-item__title link text--strong">{{ line_item.product.title }}<br/><span
-																	class="line_item_variant_title">{{ line_item.variant.title }}</span>
-																<span class='booster-cart-item-success-notes'
-																      data-key='{{ line_item.key }}'></span><span class='booster-cart-item-upsell-notes'
-																                                                  data-key='{{ line_item.key }}'></span></a>
+															   class="line-item__title link text--strong">{{ line_item.product.title }}<br/>
+																<span class="line_item_variant_title">{{ line_item.variant.title }}</span>
+																<span class='booster-cart-item-success-notes' data-key='{{ line_item.key }}'></span>
+																<span class='booster-cart-item-upsell-notes'  data-key='{{ line_item.key }}'></span></a>
 														{%- endif -%}
 
 														{%- if line_item.selling_plan_allocation -%}
@@ -188,7 +187,21 @@
 																{%- endfor -%}
 															</ul>
 														{%- endunless -%}
-
+														{%- comment -%}显示活动标签 start{%- endcomment -%}
+														{% assign show_tag = false %}
+														{%- for tag in line_item.product.tags -%}
+														{%- if tag contains 'CustomPromotion' -%}
+														{%- assign show_tag = true -%}
+														{%- assign text = tag | split: '-' -%}
+														{%- assign sale_text_on_detail = text[1] -%}
+														{%- endif -%}
+														{%- endfor -%}
+														{%- if show_tag -%}
+														<div class="cart-line-item_tag">
+															<span class="cart-line-item_variant--title price--highlight ">{{ sale_text_on_detail }}</span>
+														</div>
+														{%- endif -%}
+														{%- comment -%}END{%- endcomment -%}
 														<div class="line-item__price-list">
 															{%- if line_item.original_price > line_item.final_price -%}
 																{%- if line_item.final_price == 0 -%}

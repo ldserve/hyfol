@@ -131,7 +131,7 @@
 		</a>
 	{%- endif -%}
 
-	<div class="product-item__info" style="background-color: {% if only_show_transparent %} #000000 {% endif %}">
+	<div class="product-item__info" >
 		{%- if settings.show_color_swatch and template != 'blog' and only_show_transparent != true -%}
 			{%- capture color_swatch -%}
 				{%- capture color_name -%}{{ section.id }}-{{ product.id }}{%- endcapture -%}
@@ -182,7 +182,6 @@
 				{%- endfor -%}
 			{%- endcapture -%}
 
-
 				<div class="product-item__swatch-list">
 					{%- if color_swatch != blank -%}
 							<div class="color-swatch-list">
@@ -193,9 +192,7 @@
 
 		{%- endif -%}
 
-		<div class="product-item__info-inner" {% if show_mask %}
-			style="display:none"
-		{% endif %}>
+		<div class="product-item__info-inner {{request.page_type}}-product-item__info-inner" {% if show_mask %}style="display:none"{% endif %}>
 			<a href="{{ filtered_variant.url | default: product.url }}" style="position: absolute;top: 70px;right: 0;left: 0;bottom: 0;"></a>
 			{%- capture price_list -%}
 				<div class="product-item__price-list price-list">

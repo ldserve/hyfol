@@ -6,6 +6,11 @@
   {%- endcapture -%}
 
   <style>
+    #shopify-section-{{section.id}}{
+      position:sticky;
+      z-index:5;
+      top:0;
+    }
     .announcement-bar {
       background: {{ section.settings.background }};
       color: {{ section.settings.text_color }};
