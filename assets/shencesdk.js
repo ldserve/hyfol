@@ -127,7 +127,7 @@ window.getFormatDate = function getFormatDate() {
     }
     target(ev) {
       let targetEl = ev.target;
-      while (targetEl !== this.container && (targetEl.dataset[this.scTypeName] !== this.type || !targetEl.dataset[this.scEnableName])) {
+      while (targetEl!=''&&targetEl !== this.container && (targetEl.dataset[this.scTypeName] !== this.type || !targetEl.dataset[this.scEnableName])) {
         targetEl = targetEl.parentNode ? targetEl.parentNode : '';
       }
       this.debug && console.info("匹配节点", targetEl);

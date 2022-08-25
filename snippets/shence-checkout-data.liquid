@@ -450,7 +450,7 @@
         compliment_commodities.push('{{ line_item.sku }}')
 			{% endfor %}
 
-
+        let isSubmit = false
         function actionCheckout() {
             new sadhus_shence({
                 container: ".sc-checkout-data",
@@ -904,6 +904,19 @@
                 }
             }
         }
+
+        console.log('pageType','{{request.page_type}}');
+        function customEvents(){
+                isSubmit=true
+                sensors.track('complateOrderQuty',{
+                $option:{server_url:'https://data.ld-bdp.com/sa?project=default'},
+                cookie_id:sensors.quick('getAnonymousID'),
+                checkout_id:'{{checkout.id}}',
+                order_id:'{{checkout.order_id}}',
+                time:Date.now()
+            })
+        }
+        window.pageType=='completeOrder' && customEvents();
         Checkout.$(document).on("page:load", function () {
             removeHref()
             sendError()
@@ -971,6 +984,7 @@
                     sessionStorage.setItem('checkoutStep', 'Payment');
                 }
                 if (window.pageType === 'completeOrder')  {
+                    isSubmit==false&&customEvents()
                     let sendData = JSON.parse(localStorage.getItem('sendJavaData'))
 		                if(sendData) {
                         ajax_method('api/sensorsAnalytics/trackSignUp', {
@@ -981,7 +995,7 @@
                         ajax_method('api/sensorsAnalytics/reportPaySuccessOrder', sendData,'post',true)
                     }
                     sessionStorage.setItem('checkoutStep', 'Checkout');
-								}
+						}
                 /*注册成功代码*/
                 if (window.SensorsDataWebJSSDKPlugin.PageLeave.current_page_url === location.origin + '/account/register' || window.SensorsDataWebJSSDKPlugin.PageLeave.current_page_url ===  location.origin + '/challenge') {/*从注册页面跳转进来*/
                     if (Number({{ customer.id }})) {
