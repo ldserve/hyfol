@@ -10870,7 +10870,9 @@ shopify-payment-terms {
   color: initial;
   text-decoration: line-through black;
 }
-
+.cart-product-item__info-inner .product-item__price-list>.price{
+  color: initial;
+}
 .product-item  {
   font-size: calc(var(--base-text-font-size) - (var(--default-text-font-size) - 18px));
 }
@@ -15784,6 +15786,11 @@ justify-content: space-between;
 .exhibition .exhibition-item {
   overflow-x: auto;
   overflow-y: hidden;
+}
+.exhibition-right_price{
+  justify-content: space-between;
+  border-bottom: 1px solid #bbb7b7 ;
+   align-items: center;
 }
 .block-swatch-box{
   /* margin-right: 8px; */

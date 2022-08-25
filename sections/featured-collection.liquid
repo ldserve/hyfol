@@ -22,7 +22,7 @@
 <section class="section" data-section-id="{{ section.id }}" data-section-type="featured-collection"
 				 data-section-settings='{{ section_settings }}'>
 	{%- assign collection = section.settings.collection -%}
-
+<div class="container">
 	<div class="indexContainer">
 		<div class="container">
 			<h2 class="section__title heading h3 section--text-centered">{{ section.settings.title | default: collection.title | escape }}</h2>
@@ -126,6 +126,7 @@
 			</div>
 		</div>
 	</div>
+</div>
 </section>
 
 {% schema %}
