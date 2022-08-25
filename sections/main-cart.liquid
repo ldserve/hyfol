@@ -196,10 +196,20 @@
 														{%- assign sale_text_on_detail = text[1] -%}
 														{%- endif -%}
 														{%- endfor -%}
+														{% assign CustomPromotionUrlList = settings.CustomPromotionUrl | strip_html | split : ',' %}
+														{% for CustomPromotionUrItem in CustomPromotionUrlList %}
+															{% assign CustomPromotionUrItemAll = CustomPromotionUrItem | split : '=' %}
+															{% assign CustomPromotionUrItemName = CustomPromotionUrItemAll[0] | strip %}
+															{% if CustomPromotionUrItemName == sale_text_on_detail %}
+																{% assign CustomPromotionUrItemUrl = CustomPromotionUrItemAll[1] %}
+																{%- break -%}
+															{% endif %}
+														{% endfor %}
 														{%- if show_tag -%}
-														<div class="cart-line-item_tag">
-															<span class="cart-line-item_variant--title price--highlight ">{{ sale_text_on_detail }}</span>
-														</div>
+														<a class="product-line-item_tag button--primary " {%if CustomPromotionUrItemUrl!=blank%}href="{{CustomPromotionUrItemUrl}}"{%endif%}>
+															<span class="cart-line-item_variant--title ">{{ sale_text_on_detail }}</span>
+														{%-	render 'icon',icon:'solid-arrow-right' -%}
+														</a>
 														{%- endif -%}
 														{%- comment -%}END{%- endcomment -%}
 														<div class="line-item__price-list">

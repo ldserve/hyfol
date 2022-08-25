@@ -714,6 +714,7 @@
                     anonymousId: sensors.quick('getAnonymousID'),
                     registerId: "{{checkout.customer.id}}"
                 },'post')
+
                 ajax_method('api/sensorsAnalytics/reportPaySuccessOrder', sendData,'post')
             },true)
         }
@@ -916,7 +917,6 @@
                 time:Date.now()
             })
         }
-        window.pageType=='completeOrder' && customEvents();
         Checkout.$(document).on("page:load", function () {
             removeHref()
             sendError()
@@ -1090,6 +1090,7 @@
                                 registerId: "{{ checkout.customer.id }}"
                             }, 'post')
                             ajax_method('api/sensorsAnalytics/reportPaySuccessOrder', sendData, 'post')
+                            isSubmit==false&&customEvents()
                         }, 800)
                     })
                 });

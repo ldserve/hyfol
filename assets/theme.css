@@ -16119,18 +16119,8 @@ justify-content: space-between;
   display: inline-block;
 }
 .redio-icon{
-  /* border-radius: 50%;
-  width: 1rem;
-  height: 1rem;
-  background-color: #771D1D;
-  position: absolute; */
   top: -2px;
   right: -6px;
-  /* text-align: center;
-  color: #fff;
-  font-size: 8px;
-  line-height: 1.2rem; */
-
 }
 .size-chart-btn {
   text-decoration: underline;
@@ -16172,3 +16162,27 @@ justify-content: space-between;
   /* color: var(--product-on-sale-accent-original); */
 }
 
+.product-line-item_tag{
+  padding: 0.4rem 0.6rem;
+  /* background: var(--product-on-sale-accent); */
+  border-radius: 5px;
+  font-size: 12px;
+  margin: 4px 0;
+  color: #ffffff;
+    vertical-align: middle;
+    background-color: #cf0e0e;
+    background-image: -moz-linear-gradient(top, #b31a1a, #c40d0d);
+    /* background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#62c462), to(#51a351)); */
+    background-image: -webkit-linear-gradient(top, #b31a1a, #c40d0d);
+    background-image: linear-gradient(to bottom, #b31a1a, #c40d0d);
+    background-repeat: repeat-x;
+    border: 1px solid #cccccc;
+    border-color: #cf0e0e #cf0e0e #be2323;
+    /* border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25); */
+    box-shadow: inset 0 1px 0 rgb(255 255 255 / 20%), 0 1px 2px rgb(0 0 0 / 5%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff62c462', endColorstr='#ff51a351', GradientType=0);
+}
+.product-line-item_tag>.icon{
+  margin-left: 6px;
+  line-height: 12px;
+}
