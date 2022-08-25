@@ -7,8 +7,8 @@
           "type": "image",
           "settings": {
             "sensorsName": "golfevent",
-            "image": "shopify:\/\/shop_images\/polo_8eecc1df-cb46-4df1-a4f1-a3af7ddf1b8e.jpg",
-            "mobile_image": "shopify:\/\/shop_images\/polo_1a0d6aeb-7b3d-493e-97a3-78486f8e0ec6.jpg",
+            "image": "shopify:\/\/shop_images\/polo_0d319304-4223-49b6-b1c4-cef4c66c93ee.jpg",
+            "mobile_image": "shopify:\/\/shop_images\/polo_d19280f3-d9b9-4b89-aa3d-1844e1e095e9.jpg",
             "show_overlay": false,
             "overlay_opacity": 30,
             "text_color": "#ffffff",
@@ -31,8 +31,8 @@
           "type": "image",
           "settings": {
             "sensorsName": "backtoschool",
-            "image": "shopify:\/\/shop_images\/backtoschool_31d36916-1d19-4709-9c7d-935f22489d96.jpg",
-            "mobile_image": "shopify:\/\/shop_images\/backtoschool_20f2035e-9016-42db-a691-c70997b0e046.jpg",
+            "image": "shopify:\/\/shop_images\/backtoschool_6957b1fe-d408-4058-b2f7-651fc36b0316.jpg",
+            "mobile_image": "shopify:\/\/shop_images\/backtoschool_5ef72136-9ecb-4989-b456-84cf4d23db95.jpg",
             "show_overlay": false,
             "overlay_opacity": 30,
             "text_color": "#ffffff",
@@ -55,8 +55,8 @@
           "type": "image",
           "settings": {
             "sensorsName": "Summer Clearance Up To 50% Off",
-            "image": "shopify:\/\/shop_images\/3_FOR_55_4e3ba403-a0d8-42ae-b2ef-291d7877b896.jpg",
-            "mobile_image": "shopify:\/\/shop_images\/3for55-1_9a1c1700-8f34-42b5-b3df-dbaf9e51c6a3.jpg",
+            "image": "shopify:\/\/shop_images\/3_FOR_55_fa662d15-c832-4377-a294-c079af02d838.jpg",
+            "mobile_image": "shopify:\/\/shop_images\/3for55-1_7b0cdfbc-15eb-4910-940b-1503a7900d59.jpg",
             "show_overlay": false,
             "overlay_opacity": 30,
             "text_color": "#b82928",
