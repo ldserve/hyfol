@@ -16162,27 +16162,45 @@ justify-content: space-between;
   /* color: var(--product-on-sale-accent-original); */
 }
 
+/* 购物车活动标签  */
 .product-line-item_tag{
-  padding: 0.4rem 0.6rem;
-  /* background: var(--product-on-sale-accent); */
+  color: #bd2222;
+  font-weight: 600;
+  display: inline-block;
+  padding: 0.2rem 0.6rem;
   border-radius: 5px;
   font-size: 12px;
-  margin: 4px 0;
-  color: #ffffff;
-    vertical-align: middle;
-    background-color: #cf0e0e;
-    background-image: -moz-linear-gradient(top, #b31a1a, #c40d0d);
-    /* background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#62c462), to(#51a351)); */
-    background-image: -webkit-linear-gradient(top, #b31a1a, #c40d0d);
-    background-image: linear-gradient(to bottom, #b31a1a, #c40d0d);
-    background-repeat: repeat-x;
-    border: 1px solid #cccccc;
-    border-color: #cf0e0e #cf0e0e #be2323;
-    /* border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25); */
-    box-shadow: inset 0 1px 0 rgb(255 255 255 / 20%), 0 1px 2px rgb(0 0 0 / 5%);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff62c462', endColorstr='#ff51a351', GradientType=0);
+  margin: 6px 0;
+  vertical-align: middle;
+  background-color: #fcf2f0fc;
+  background-image: -moz-linear-gradient(top, #fcf2f0fc,#fff0eefc);
+  background-image: -webkit-linear-gradient(top, #fcf2f0fc,#fff0eefc);
+  background-image: linear-gradient(to bottom,#fcf2f0fc,#fff0eefc);
+  border: 1px solid #ebd9d9;
+  /* border-color:#fceae7 #f7e3e0 #f5e5e3; */
+  border-color:#ffdee0 #f1dada #f6e4e5;
+  /* box-shadow: inset 0 1px #ffffff52, inset 0 -1px #ffffff52; */
+  box-shadow: 1px 1px 5px #ccc;
 }
 .product-line-item_tag>.icon{
   margin-left: 6px;
-  line-height: 12px;
+}
+.mini-cart-line-item_tag{
+  text-align: center;
+  margin: 0;
+}
+.purchace-item_tag{
+  margin: 0;
+  padding: 0;
+  font-size: 10px;
+}
+@media screen and (max-width:649px) {
+  .mini-cart-line-item_tag{
+    padding: 0;
+    font-size:10px ;
+    overflow: hidden;
+  }
+  .mini-cart-line-item_tag >.icon{
+    display: none;
+  }
 }

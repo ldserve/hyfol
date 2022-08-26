@@ -178,7 +178,9 @@
               <a href="{{ line_item.url }}" class="mini-cart__product-title text--strong link"><span
                   class="mini-cart_product_title">{{ line_item.product.title }}</span>
                 <span class="mini-cart_variant_title">{{ line_item.variant.title }}</span>
-              {%- comment -%}显示活动标签 start{%- endcomment -%}
+                <span class='booster-cart-item-success-notes' data-key='{{line_item.key}}'></span><span
+                class='booster-cart-item-upsell-notes' data-key='{{line_item.key}}'></span></a>
+                {%- comment -%}显示活动标签 start{%- endcomment -%}
                 {% assign show_tag = false %}
                 {%- for tag in line_item.product.tags -%}
                 {%- if tag contains 'CustomPromotion' -%}
@@ -187,12 +189,24 @@
                 {%- assign sale_text_on_detail = text[1] -%}
                 {%- endif -%}
                 {%- endfor -%}
+                {% assign CustomPromotionUrlList = settings.CustomPromotionUrl | strip_html | split : ',' %}
+                {% for CustomPromotionUrItem in CustomPromotionUrlList %}
+                  {% assign CustomPromotionUrItemAll = CustomPromotionUrItem | split : '=' %}
+                  {% assign CustomPromotionUrItemName = CustomPromotionUrItemAll[0] | strip %}
+                  {% if CustomPromotionUrItemName == sale_text_on_detail %}
+                    {% assign CustomPromotionUrItemUrl = CustomPromotionUrItemAll[1] %}
+                    {%- break -%}
+                  {% endif %}
+                {% endfor %}
                 {%- if show_tag -%}
-                <span class="mini-cart_variant_title price--highlight mini-cart_variant_title--size">{{ sale_text_on_detail }}</span>
+                <div>
+                  <a class="product-line-item_tag  link mini-cart-line-item_tag" {%if CustomPromotionUrItemUrl!=blank%}href="{{CustomPromotionUrItemUrl}}"{%endif%}>
+                    <span class="cart-line-item_variant--title ">{{ sale_text_on_detail }}</span>
+                  {%-	render 'icon',icon:'solid-arrow-right' -%}
+                  </a>
+                </div>
                 {%- endif -%}
                 {%- comment -%}END{%- endcomment -%}
-                <span class='booster-cart-item-success-notes' data-key='{{line_item.key}}'></span><span
-                  class='booster-cart-item-upsell-notes' data-key='{{line_item.key}}'></span></a>
 
               {%- if line_item.selling_plan_allocation -%}
               <p class="mini-cart__plan-allocation">{{ line_item.selling_plan_allocation.selling_plan.name }}</p>

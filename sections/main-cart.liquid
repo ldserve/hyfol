@@ -206,7 +206,7 @@
 															{% endif %}
 														{% endfor %}
 														{%- if show_tag -%}
-														<a class="product-line-item_tag button--primary " {%if CustomPromotionUrItemUrl!=blank%}href="{{CustomPromotionUrItemUrl}}"{%endif%}>
+														<a class="product-line-item_tag  link" {%if CustomPromotionUrItemUrl!=blank%}href="{{CustomPromotionUrItemUrl}}"{%endif%}>
 															<span class="cart-line-item_variant--title ">{{ sale_text_on_detail }}</span>
 														{%-	render 'icon',icon:'solid-arrow-right' -%}
 														</a>
