@@ -330,9 +330,9 @@
         "ff6f97b8-1adb-4a65-93e8-533754b197fc": {
           "type": "link",
           "settings": {
-            "heading": "hellfire",
-            "sensorsLinkName": "hellfire",
-            "link": "https:\/\/www.hyfol.com\/collections\/hellfire-club",
+            "heading": "camo",
+            "sensorsLinkName": "camo",
+            "link": "https:\/\/www.hyfol.com\/collections\/camo",
             "left": 0,
             "top": 0,
             "width": 24,
@@ -366,9 +366,9 @@
         "6defe89d-34bf-47d9-a1f2-91004d693ed8": {
           "type": "link",
           "settings": {
-            "heading": "kimonosets",
-            "sensorsLinkName": "kimonosets",
-            "link": "https:\/\/www.hyfol.com\/collections\/kimono-sets",
+            "heading": "hooded",
+            "sensorsLinkName": "hooded",
+            "link": "https:\/\/www.hyfol.com\/collections\/hooded",
             "left": 76,
             "top": 0,
             "width": 40,
