@@ -420,7 +420,7 @@
     </div>
 
 {%- comment -%}搭配购{%- endcomment -%}
-{%- if settings.collocation_spus !=blank -%}
+{%- if settings.collocation_spus !=blank and settings.collocation_show-%}
     <div class="mini-car-title">Before You Go</div>
     <div class="mini-cart__collocation mini-cart__collocation-height">
       {% render 'collocation-purchase' collocationLocation:"mini-cart-collcation" isAuto:settings.open_autoplay time:settings.autoplay_time%}

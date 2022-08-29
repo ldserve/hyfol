@@ -27,6 +27,11 @@
         "id": "product_autoplay",
         "label": "详情页是否启用自动轮播",
         "default": true
+      },{
+        "type": "checkbox",
+        "id": "collocation_show",
+        "label": "是否启用搭配购",
+        "default": true
       },
       {
         "type": "text",
