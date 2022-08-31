@@ -3,8 +3,33 @@
     "1650101273f11a55ef": {
       "type": "slideshow",
       "blocks": {
+        "fb844d01-0475-4130-aeb7-a118c0a1b427": {
+          "type": "image",
+          "settings": {
+            "sensorsName": "fall for you",
+            "image": "shopify:\/\/shop_images\/banner_4da1a432-a2e1-435a-bcd3-30eadc0b0956.jpg",
+            "mobile_image": "shopify:\/\/shop_images\/18b9b8bd6c4b3912b53c099f03003b94.jpg",
+            "show_overlay": false,
+            "overlay_opacity": 30,
+            "text_color": "#ffffff",
+            "title": "",
+            "heading_text_font": "helvetica_n4",
+            "heading_text_font_size": 20,
+            "heading_text_color": "#ffffff",
+            "content": "",
+            "content_text_font": "helvetica_n4",
+            "content_text_font_size": 12,
+            "content_text_color": "#ffffff",
+            "content_position": "middle_center",
+            "button_background": "#ffffff",
+            "button_text_color": "#000000",
+            "button_text": "",
+            "link": "https:\/\/www.hyfol.com\/collections\/fall-for-you"
+          }
+        },
         "28572d9f-8700-4893-990e-c3b4bf1e7821": {
           "type": "image",
+          "disabled": true,
           "settings": {
             "sensorsName": "golfevent",
             "image": "shopify:\/\/shop_images\/polo_0d319304-4223-49b6-b1c4-cef4c66c93ee.jpg",
@@ -74,38 +99,13 @@
             "button_text": "",
             "link": "https:\/\/www.hyfol.com\/collections\/summer-clearance-up-to-50-off"
           }
-        },
-        "fb844d01-0475-4130-aeb7-a118c0a1b427": {
-          "type": "image",
-          "disabled": true,
-          "settings": {
-            "sensorsName": "bottoms",
-            "image": "shopify:\/\/shop_images\/5.gif",
-            "mobile_image": "shopify:\/\/shop_images\/3.gif",
-            "show_overlay": false,
-            "overlay_opacity": 30,
-            "text_color": "#ffffff",
-            "title": "",
-            "heading_text_font": "helvetica_n4",
-            "heading_text_font_size": 20,
-            "heading_text_color": "#ffffff",
-            "content": "",
-            "content_text_font": "helvetica_n4",
-            "content_text_font_size": 12,
-            "content_text_color": "#ffffff",
-            "content_position": "middle_center",
-            "button_background": "#ffffff",
-            "button_text_color": "#000000",
-            "button_text": "",
-            "link": "https:\/\/www.hyfol.com\/collections\/bottoms-12-13"
-          }
         }
       },
       "block_order": [
+        "fb844d01-0475-4130-aeb7-a118c0a1b427",
         "28572d9f-8700-4893-990e-c3b4bf1e7821",
         "1650101273ef0886ca-1",
-        "1650101273ef0886ca-0",
-        "fb844d01-0475-4130-aeb7-a118c0a1b427"
+        "1650101273ef0886ca-0"
       ],
       "settings": {
         "edge_to_edge": true,
@@ -134,8 +134,8 @@
       "type": "no_space_img",
       "settings": {
         "sensorsName": "summer clearance",
-        "bg_image": "shopify:\/\/shop_images\/pc__03_3cba143b-f440-40cb-9383-41772daec23e.jpg",
-        "web_bg_image": "shopify:\/\/shop_images\/02_32448210-05da-4155-862f-dd8452120955.jpg",
+        "bg_image": "shopify:\/\/shop_images\/pc__03_2ff60edb-3cfc-4c86-b9f9-508285fd1f2e.jpg",
+        "web_bg_image": "shopify:\/\/shop_images\/02_f5e86cd6-1609-477a-8a5e-8cfce4d349f3.jpg",
         "link": "https:\/\/www.hyfol.com\/collections\/summer-clearance-up-to-50-off",
         "shadow": false
       }
@@ -218,7 +218,7 @@
         "sensorsName": "pc分类导流区",
         "hidWeb": true,
         "line": false,
-        "image": "shopify:\/\/shop_images\/5_05_5f87c0ec-6ab7-4277-b903-b46bb1241eb6.jpg",
+        "image": "shopify:\/\/shop_images\/pc__05_220eb1de-b9ee-4648-9e40-3dae639fb144.jpg",
         "tpadding": 0,
         "rpadding": 0,
         "bpadding": 0,
@@ -303,7 +303,7 @@
         "sensorsName": "mobile分类导流区",
         "hidWeb": false,
         "line": false,
-        "image": "shopify:\/\/shop_images\/05_a312d5d3-4415-4c15-bd54-7d80f6cf8f85.jpg",
+        "image": "shopify:\/\/shop_images\/05_a0a91f11-3e5a-479e-9a72-3fdbf5ddc538.jpg",
         "tpadding": 0,
         "rpadding": 0,
         "bpadding": 0,
@@ -331,9 +331,9 @@
         "ff6f97b8-1adb-4a65-93e8-533754b197fc": {
           "type": "link",
           "settings": {
-            "heading": "hellfire",
-            "sensorsLinkName": "hellfire",
-            "link": "https:\/\/www.hyfol.com\/collections\/hellfire-club",
+            "heading": "camo",
+            "sensorsLinkName": "camo",
+            "link": "https:\/\/www.hyfol.com\/collections\/camo",
             "left": 0,
             "top": 0,
             "width": 24,
@@ -355,9 +355,9 @@
         "9ff77147-50cf-4ea6-a2e8-88372aa19d4a": {
           "type": "link",
           "settings": {
-            "heading": "poloandcargocollection",
-            "sensorsLinkName": "poloandcargocollection",
-            "link": "https:\/\/www.hyfol.com\/collections\/polo-and-cargo-collection",
+            "heading": "outwear",
+            "sensorsLinkName": "outwear",
+            "link": "https:\/\/www.hyfol.com\/collections\/mens-outwear",
             "left": 50,
             "top": 0,
             "width": 25,
@@ -367,9 +367,9 @@
         "6defe89d-34bf-47d9-a1f2-91004d693ed8": {
           "type": "link",
           "settings": {
-            "heading": "kimonosets",
-            "sensorsLinkName": "kimonosets",
-            "link": "https:\/\/www.hyfol.com\/collections\/kimono-sets",
+            "heading": "hooded",
+            "sensorsLinkName": "hooded",
+            "link": "https:\/\/www.hyfol.com\/collections\/hooded",
             "left": 76,
             "top": 0,
             "width": 40,
@@ -390,7 +390,7 @@
         "sensorsName": "pc分类导流区",
         "hidWeb": true,
         "line": false,
-        "image": "shopify:\/\/shop_images\/5_06.jpg",
+        "image": "shopify:\/\/shop_images\/pc__08_4592a6b8-2b51-4672-8dc9-2293f44e8759.jpg",
         "tpadding": 0,
         "rpadding": 0,
         "bpadding": 0,
@@ -403,9 +403,9 @@
         "0736ae2f-d8f9-4699-9348-1065c0a82879": {
           "type": "link",
           "settings": {
-            "heading": "hellfire",
-            "sensorsLinkName": "hellfire",
-            "link": "https:\/\/www.hyfol.com\/collections\/hellfire-club",
+            "heading": "camo",
+            "sensorsLinkName": "camo",
+            "link": "https:\/\/www.hyfol.com\/collections\/camo",
             "left": 0,
             "top": 0,
             "width": 49,
@@ -427,9 +427,9 @@
         "1a56e24f-fd33-4441-a6c2-3cf03868b44a": {
           "type": "link",
           "settings": {
-            "heading": "poloandcargocollection",
-            "sensorsLinkName": "poloandcargocollection",
-            "link": "https:\/\/www.hyfol.com\/collections\/polo-and-cargo-collection",
+            "heading": "outwear",
+            "sensorsLinkName": "outwear",
+            "link": "https:\/\/www.hyfol.com\/collections\/mens-outwear",
             "left": 0,
             "top": 50,
             "width": 49,
@@ -439,9 +439,9 @@
         "dbe8a9a1-2bdd-4552-82ae-15b0ebb1e9cf": {
           "type": "link",
           "settings": {
-            "heading": "kimonosets",
-            "sensorsLinkName": "kimonosets",
-            "link": "https:\/\/www.hyfol.com\/collections\/kimono-sets",
+            "heading": "hooded",
+            "sensorsLinkName": "hooded",
+            "link": "https:\/\/www.hyfol.com\/collections\/hooded",
             "left": 51,
             "top": 50,
             "width": 60,
@@ -462,7 +462,7 @@
         "sensorsName": "mobile分类导流区",
         "hidWeb": false,
         "line": false,
-        "image": "shopify:\/\/shop_images\/05_94126c05-8fec-478b-9a17-30d9cd2ee8e2.jpg",
+        "image": "shopify:\/\/shop_images\/07_0b14ba47-312b-4ede-94e0-4134c932a299.jpg",
         "tpadding": 5,
         "rpadding": 0,
         "bpadding": 0,
