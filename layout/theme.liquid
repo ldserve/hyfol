@@ -16,12 +16,8 @@
       {%- endif -%}
     {%- endcapture -%}
 
-  <!-- Avada Size Chart Script -->
- {% include 'avada-sc-setting' %}
-  <!-- /Avada Size Chart Script -->
-
-<title>{{- seo_page_title -}}</title>
- <script src="{{ 'shencesdk.js' | asset_url }}" ></script>
+    <title>{{- seo_page_title -}}</title>
+    <script src="{{ 'shencesdk.js' | asset_url }}" ></script>
     {%- if page_description -%}
       <meta name="description" content="{{ page_description | escape }}">
     {%- endif -%}
@@ -282,9 +278,8 @@ line_items: [
 <script src="{{ 'sca_affiliate.js' | asset_url}}" type="text/javascript" async></script>
 {% include 'dexter' %}
 
-{% include 'orichi_multi_pixel' %}
-
-{% include "omega_multi_pixel" %}
+{%- include 'orichi_multi_pixel' -%}
+{%- include "omega_multi_pixel" -%}
 
 		<!-- Bind 营销代码 Start -->
 <script>(function(w,d,t,r,u){var f,n,i;w[u]=w[u]||[],f=function(){var o={ti:"136017208"};o.q=w[u],w[u]=new UET(o),w[u].push("pageLoad")},n=d.createElement(t),n.src=r,n.async=1,n.onload=n.onreadystatechange=function(){var s=this.readyState;s&&s!=="loaded"&&s!=="complete"||(f(),n.onload=n.onreadystatechange=null)},i=d.getElementsByTagName(t)[0],i.parentNode.insertBefore(n,i)})(window,document,"script","//bat.bing.com/bat.js","uetq");</script>
@@ -355,7 +350,6 @@ line_items: [
     {% section 'static-text-with-icons' %}
     {% section 'footer' %}
 
-
     {% section 'foot-navbar' %}
     {% include 'gotop' %}
 
@@ -373,8 +367,6 @@ line_items: [
 <!-- **BEGIN** Hextom FSB Integration // Main Include - DO NOT MODIFY -->
     {% render 'hextom_fsb_main', product: product, customer: customer %}
     <!-- **END** Hextom FSB Integration // Main Include - DO NOT MODIFY -->
-
-
 <!-- **BEGIN** Hextom TMS Integration // Main Include - DO NOT MODIFY -->
     <script>
       var hextom_tms = {
@@ -412,16 +404,12 @@ line_items: [
     <script src="{{ 'tms.js' | asset_url }}" defer="defer"></script>
     <!-- **END** Hextom TMS Integration // Main Include - DO NOT MODIFY -->
 
-
- {% include 'smile-initializer' %}
- {% render 'shenceTrack' %}
- {% render 'shenceTrackBanner' %}
- {% render 'shenceData' %}
+ {%- render 'shenceTrack' -%}
+ {%- render 'shenceTrackBanner' -%}
+ {%- render 'shenceData' -%}
 <!-- Back in Stock helper snippet -->
-{% render 'back-in-stock-helper' %}
+{%- render 'back-in-stock-helper' -%}
 <!-- End Back in Stock helper snippet -->
-
-{% include 'gtranslate', float: 'yes' %}
 
 </body>
 </html>

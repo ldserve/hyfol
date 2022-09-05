@@ -2511,10 +2511,10 @@
                     this.miniCartElement.style.maxHeight = '';
                 } // Finally also set aria-hidden to false on controlled element
 
-
                 this.miniCartElement.setAttribute('aria-hidden', 'true');
                 this.isMiniCartOpen = false;
                 document.body.classList.remove('no-mobile-scroll');
+                Accessibility.removeTrapFocus(this.miniCartElement, 'mini-cart');
             }
         }, {
             key: "_checkMiniCartClose",
@@ -13598,6 +13598,11 @@
             value: function _onInputFocusOut(event) {
                 event.target.value = Math.max(1, parseInt(event.target.value) || 1);
             }
+        },{
+            key:"destroy",
+            value:function destroy(){
+            this.delegateElement.off()
+            }
         }]);
 
         return QuantityPicker;
@@ -14135,19 +14140,10 @@
             value: function onUnload() {
                 this.productVariants.destroy();
                 this.productGallery.destroy();
-
-                if (this.options['showShippingEstimator']) {
-                    this.shippingEstimator.destroy();
-                }
-
-                if (this.options['infoOverflowScroll']) {
-                    this.infoOverflowScroller.destroy();
-                }
-
-                if (window.ResizeObserver && this.productInfoResizeObserver) {
-                    this.productInfoResizeObserver.disconnect();
-                }
-
+                this.options['showShippingEstimator'] && this.shippingEstimator.destroy();
+                this.options['infoOverflowScroll'] && this.infoOverflowScroller.destroy();
+                window.ResizeObserver && this.productInfoResizeObserver && this.productInfoResizeObserver.disconnect();
+                this.quantityPicker && this.quantityPicker.destroy()
                 this.delegateElement.off();
                 this.element.removeEventListener('variant:changed', this._onVariantChangedListener);
             }
@@ -14490,6 +14486,7 @@
 
                         var doCleanUp = function doCleanUp() {
                             modalProductSection.onUnload();
+                            modalProductSection=null
                             modal.removeEventListener('modal:closed', doCleanUp);
                         };
 
