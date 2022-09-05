@@ -55,7 +55,7 @@
 				{%- if settings.cart_show_free_shipping_threshold -%}
 					{%- assign threshold_in_cents = settings.cart_free_shipping_threshold | times: 100 -%}
 					{%- capture remaining_amount -%}<span><span class="wh-original-cart-total"><span
-								class='wh-original-price'>{{ cart.total_price | minus: threshold_in_cents | abs | money }}</span data-hulkapps-cart-total ></span><span
+								class='wh-original-price'>{{ cart.total_price | minus: threshold_in_cents | abs | money }}</span></span><span
 							class="wh-cart-total"></span><div class="additional-notes"><span class="wh-minimums-note"></span><span
 								class="wh-extra-note"></span></div></span>{%- endcapture -%}
 					<p
@@ -610,7 +610,7 @@
 											<span class="cart-recap__price-line-label">{{ 'cart.general.total' | t }}</span>
 											<span class="cart-recap__price-line-price"><span id='revy-cart-subtotal-price'><span
 														class="wh-original-cart-total"><span
-															class='wh-original-price'>{{ cart.total_price | money_with_currency }}</span data-hulkapps-cart-total ></span><span
+															class='wh-original-price'>{{ cart.total_price | money_with_currency }}</span></span><span
 														class="wh-cart-total"></span><div class="additional-notes"><span
 															class="wh-minimums-note"></span><span class="wh-extra-note"></span></div></span></span>
 										</div>

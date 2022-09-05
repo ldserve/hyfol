@@ -14,7 +14,7 @@
   <p class="alert alert--tight alert--center text--strong">{{ 'cart.general.free_shipping' | t }}</p>
   {%- else -%}
   {%- capture remaining_amount -%}<span><span class="wh-original-cart-total"><span
-        class='wh-original-price'>{{ cart.total_price | minus: threshold_in_cents | abs | money }}</span data-hulkapps-cart-total ></span><span
+        class='wh-original-price'>{{ cart.total_price | minus: threshold_in_cents | abs | money }}</span></span><span
       class="wh-cart-total"></span>
     <div class="additional-notes"><span class="wh-minimums-note"></span><span class="wh-extra-note"></span></div>
   </span>{%- endcapture -%}
@@ -59,7 +59,7 @@
             <span class="page__description d-inline-block" style="margin: 0!important;font-weight: 500;">{{ 'cart.general.free_shipping_html' | t}}</span>
           {%- else -%}
             {%- capture remaining_amount -%}<span><span class="wh-original-cart-total"><span
-                  class='wh-original-price  mini-car-font'>{{ cart.total_price | minus: threshold_in_cents | abs | money }}</span data-hulkapps-cart-total ></span><span
+                  class='wh-original-price  mini-car-font'>{{ cart.total_price | minus: threshold_in_cents | abs | money }}</span></span><span
                 class="wh-cart-total"></span><div class="additional-notes d-inline-block"><span
                   class="wh-minimums-note"></span><span class="wh-extra-note"></span></div></span>{%- endcapture -%}
             <span
@@ -438,7 +438,7 @@
       <div class="mini-cart__recap-price-line">
         <span>{{ 'cart.general.total' | t }}</span>
         <span><span class="wh-original-cart-total"><span
-              class='wh-original-price'>{{ cart.total_price | money_with_currency }}</span data-hulkapps-cart-total ></span><span
+              class='wh-original-price'>{{ cart.total_price | money_with_currency }}</span></span><span
             class="wh-cart-total"></span>
           <div class="additional-notes"><span class="wh-minimums-note"></span><span class="wh-extra-note"></span></div>
         </span>
