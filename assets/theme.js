@@ -389,26 +389,6 @@
                         if (target.classList.contains('color-swatch__radio')) this._updateImg(target)
                         if (selectedValueElement != null) selectedValueElement.innerHTML = target.value
 
-                        if (false) {
-                            const scoll = option.querySelector('.block-swatch-box')
-                            const contentScrollW = option.querySelector('.exhibition-item').offsetWidth
-                            const currentItem = option.querySelectorAll('.scroll__item')
-                            const inputItem = [...option.querySelectorAll('[type="radio"]')]
-                            const index = inputItem.indexOf(target)
-                            const middle = contentScrollW / 2
-                            let offsetLeft = 0
-                            const scrollWidth = scoll.scrollWidth
-                            for (let i = 0; i < index; i++) {
-                                offsetLeft += currentItem[i].offsetWidth
-                                let style = window.getComputedStyle(currentItem[i])
-                                offsetLeft += (style.marginLeft.replace('px', '') * 1 + style.marginRight.replace('px', '') * 1)
-                            }
-                            let style = window.getComputedStyle(currentItem[index])
-                            let width = (currentItem[index].offsetWidth) + (style.marginLeft.replace('px', '') * 1 + style.marginRight.replace('px', '') * 1)
-                            let scrollLeft = Math.ceil(offsetLeft - middle + width / 2);
-                            const currentScrollX = scoll.scrollLeft
-                            scoll.scroll(scrollLeft, 0)
-                        }
                     }
 
                 })
