@@ -472,9 +472,9 @@
     "16585474086f148753": {
       "type": "transparent-collection",
       "settings": {
-        "collection": "flash-sale",
-        "sensorsName": "flashsale",
-        "title": "Flash sale",
+        "collection": "summer-clearance-any-3-for-59",
+        "sensorsName": "Summer Clearance",
+        "title": "Summer Clearance",
         "products_count": 12,
         "layout": "vertical",
         "stack_products": false,
