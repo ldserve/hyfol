@@ -472,15 +472,15 @@
     "16585474086f148753": {
       "type": "transparent-collection",
       "settings": {
-        "collection": "summer-clearance-any-3-for-59",
-        "sensorsName": "Summer Clearance",
-        "title": "Summer Clearance",
+        "collection": "summer-finalsale",
+        "sensorsName": "summer finalsale",
+        "title": "summer finalsale",
         "products_count": 12,
         "layout": "vertical",
         "stack_products": false,
         "show_quick_buy": false,
         "link_title": "View all",
-        "link_url": "shopify:\/\/collections\/summer-clearance-up-to-50-off",
+        "link_url": "https:\/\/www.hyfol.com\/collections\/summer-finalsale?page=1",
         "backgroun": ""
       }
     },
