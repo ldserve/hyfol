@@ -77,6 +77,7 @@
         },
         "1650101273ef0886ca-0": {
           "type": "image",
+          "disabled": true,
           "settings": {
             "sensorsName": "Summer Clearance Up To 50% Off",
             "image": "shopify:\/\/shop_images\/3_FOR_55_fa662d15-c832-4377-a294-c079af02d838.jpg",
