@@ -3,12 +3,36 @@
     "1650101273f11a55ef": {
       "type": "slideshow",
       "blocks": {
+        "28572d9f-8700-4893-990e-c3b4bf1e7821": {
+          "type": "image",
+          "settings": {
+            "sensorsName": "labor day",
+            "image": "shopify:\/\/shop_images\/banner_7fd94f7c-16be-43d4-a12a-111bc5680ce2.jpg",
+            "mobile_image": "shopify:\/\/shop_images\/cb52396d171fff1cfdbc9ff51881c552.jpg",
+            "show_overlay": false,
+            "overlay_opacity": 30,
+            "text_color": "#ffffff",
+            "title": "",
+            "heading_text_font": "helvetica_n4",
+            "heading_text_font_size": 20,
+            "heading_text_color": "#ffffff",
+            "content": "",
+            "content_text_font": "helvetica_n4",
+            "content_text_font_size": 12,
+            "content_text_color": "#ffffff",
+            "content_position": "middle_center",
+            "button_background": "#ffffff",
+            "button_text_color": "#000000",
+            "button_text": "",
+            "link": "https:\/\/www.hyfol.com\/collections\/labor-day"
+          }
+        },
         "fb844d01-0475-4130-aeb7-a118c0a1b427": {
           "type": "image",
           "settings": {
             "sensorsName": "fall for you",
-            "image": "shopify:\/\/shop_images\/banner_4da1a432-a2e1-435a-bcd3-30eadc0b0956.jpg",
-            "mobile_image": "shopify:\/\/shop_images\/18b9b8bd6c4b3912b53c099f03003b94.jpg",
+            "image": "shopify:\/\/shop_images\/banner_02cb3445-a9b9-4177-84d0-69cf3d5df616.jpg",
+            "mobile_image": "shopify:\/\/shop_images\/18b9b8bd6c4b3912b53c099f03003b94_ce82967c-eced-4701-92e1-e54a4f811e93.jpg",
             "show_overlay": false,
             "overlay_opacity": 30,
             "text_color": "#ffffff",
@@ -27,37 +51,12 @@
             "link": "https:\/\/www.hyfol.com\/collections\/fall-for-you"
           }
         },
-        "28572d9f-8700-4893-990e-c3b4bf1e7821": {
-          "type": "image",
-          "disabled": true,
-          "settings": {
-            "sensorsName": "golfevent",
-            "image": "shopify:\/\/shop_images\/polo_0d319304-4223-49b6-b1c4-cef4c66c93ee.jpg",
-            "mobile_image": "shopify:\/\/shop_images\/polo_d19280f3-d9b9-4b89-aa3d-1844e1e095e9.jpg",
-            "show_overlay": false,
-            "overlay_opacity": 30,
-            "text_color": "#ffffff",
-            "title": "",
-            "heading_text_font": "helvetica_n4",
-            "heading_text_font_size": 20,
-            "heading_text_color": "#ffffff",
-            "content": "",
-            "content_text_font": "helvetica_n4",
-            "content_text_font_size": 12,
-            "content_text_color": "#ffffff",
-            "content_position": "middle_center",
-            "button_background": "#ffffff",
-            "button_text_color": "#000000",
-            "button_text": "",
-            "link": "https:\/\/www.hyfol.com\/collections\/golf-event"
-          }
-        },
         "1650101273ef0886ca-1": {
           "type": "image",
           "settings": {
-            "sensorsName": "backtoschool",
-            "image": "shopify:\/\/shop_images\/backtoschool_6957b1fe-d408-4058-b2f7-651fc36b0316.jpg",
-            "mobile_image": "shopify:\/\/shop_images\/backtoschool_5ef72136-9ecb-4989-b456-84cf4d23db95.jpg",
+            "sensorsName": "summer finalsale",
+            "image": "shopify:\/\/shop_images\/banner_7ac9186e-231e-4a53-bd8d-6b42253ec3e4.jpg",
+            "mobile_image": "shopify:\/\/shop_images\/67823198960a4435a6064f9ce8db07a2.jpg",
             "show_overlay": false,
             "overlay_opacity": 30,
             "text_color": "#ffffff",
@@ -73,7 +72,7 @@
             "button_background": "#ffffff",
             "button_text_color": "#000000",
             "button_text": "",
-            "link": "https:\/\/www.hyfol.com\/collections\/back-to-school"
+            "link": "https:\/\/www.hyfol.com\/collections\/summer-finalsale?page=1"
           }
         },
         "1650101273ef0886ca-0": {
@@ -102,8 +101,8 @@
         }
       },
       "block_order": [
-        "fb844d01-0475-4130-aeb7-a118c0a1b427",
         "28572d9f-8700-4893-990e-c3b4bf1e7821",
+        "fb844d01-0475-4130-aeb7-a118c0a1b427",
         "1650101273ef0886ca-1",
         "1650101273ef0886ca-0"
       ],
