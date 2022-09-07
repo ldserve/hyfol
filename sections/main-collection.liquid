@@ -28,7 +28,28 @@
 {%- assign active_filters_count = active_filters_count | plus: 1 -%}
 {%- endif -%}
 {%- endfor -%}
-
+<style>
+ 
+  .product-item_activity .aspect-ratio {
+    height: 100%;
+    padding-bottom: 100%;	
+    background-color: #fff;
+    width: 100%;
+  }
+  .activity_banner{
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 50%;
+    {%- if section.settings.show_line_border -%} border:1px solid red{%- endif -%}
+  }
+  .activity-image2{
+    top: 50%;
+  }
+  </style>
+  
 {%- capture section_settings -%}
 {
 "currentSortBy": {{ sort_by | json }},
@@ -614,8 +635,32 @@
         {%- assign show_as_list = true -%}
         {%- endif -%}
 
-        <div class="product-list product-list--collection {% if has_filters %}product-list--with-sidebar{% endif %}" >
-          {%- comment -%} ------------------ 顶置排序 -------------- {%- endcomment -%}
+        <div class="product-list product-list--collection {% if has_filters %}product-list--with-sidebar{% endif %}"  >
+          {%- comment -%}------------------- 活动图片顶置 -----------------{%- endcomment -%}
+          {%- assign collection_name = collection.title | downcase -%}
+          {%- assign collection_name_list = section.settings.activity_incolle | downcase | split:"," -%}
+         {%- assign show_activity = false -%}
+         {%- if collection_name_list contains collection_name -%}
+         {%- assign show_activity = true -%}
+          {%- endif -%}
+          {%- if  section.settings.activity_image !=blank and show_activity -%}
+          <div class=" product-item product-item--vertical  1/3--tablet-and-up 1/4--desk product-item_activity" data-scenable="1"  style="justify-content:space-between ;">
+          {%- assign image_url = section.settings.activity_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+          {%- capture supported_sizes -%}{%- render 'image-size', sizes: '100,200,300,400,500,600,700', image: section.settings.activity_image -%}{%- endcapture -%}
+            <div class="aspect-ratio " >
+              <img class="image--fade-in lazyload"
+                data-sizes="auto" data-widths="[{{ supported_sizes }}]" 
+                alt="{{section.settings.activity_image.alt}}"
+                data-src="{{image_url}}"/>
+                <noscript>
+                <img src="{{section.settings.activity_image | img_url}}" alt="{{section.settings.activity_image.alt}}">
+              </noscript>
+            </div>
+            <a href="{{section.settings.activity_link1}}" class="activity_banner activity-image1"  ></a>
+            <a href="{{section.settings.activity_link2}}" class="activity_banner activity-image2"  ></a>
+          </div>
+          {%- endif -%}
+          {%- comment -%} ------------------ 产品顶置排序 -------------- {%- endcomment -%}
           {% if collection.sort_by and collection.sort_by != empty %}
           {% assign sort_by_list = collection.sort_by | split: "," %}
           {% for item in sort_by_list %}
@@ -624,10 +669,8 @@
           {%- endif -%}
           {%-endfor-%}
           {%-endif-%}
-
           {%- comment -%}-------- 过滤掉已渲染产品 -----------{%- endcomment -%}
           {%- for product in collection.products -%}
-
           {%- assign render_item = true -%}
           {%- for str_item in sort_by_list -%}
           {%- if product.handle == str_item -%}
@@ -921,58 +964,82 @@
 {
 "name": "Collection",
 "settings": [
-{
-"type": "checkbox",
-"id": "show_collection_image",
-"label": "Show collection image",
-"default": true
-},
-{
-"type": "checkbox",
-"id": "collapse_collection_description",
-"label": "Collapse long description",
-"default": false
-},
-{
-"type": "select",
-"id": "collection_image_size",
-"label": "Collection image size",
-"options": [
-{
-"value": "preserve_ratio",
-"label": "Original image ratio"
-},
-{
-"value": "small",
-"label": "Small"
-},
-{
-"value": "medium",
-"label": "Medium"
-},
-{
-"value": "large",
-"label": "Large"
-}
-],
-"default": "small"
-},
-{
-"type": "select",
-"id": "products_per_row",
-"label": "Products per row (desktop)",
-"options": [
-{
-"value": "3",
-"label": "3"
-},
-{
-"value": "4",
-"label": "4"
-}
-],
-"default": "4"
-},
+  {
+  "type": "checkbox",
+  "id": "show_collection_image",
+  "label": "Show collection image",
+  "default": true
+  },{
+    "type":"image_picker",
+    "id":"activity_image",
+    "label":"活动图"
+  },
+  {
+    "type":"url",
+    "id":"activity_link1",
+    "label":"活动链接1"
+  },{
+    "type":"url",
+    "id":"activity_link2",
+    "label":"活动链接2"
+  },{
+    "type":"text",
+    "id":"activity_incolle",
+    "label":"需要展示的集合",
+    "info":"不区分大小写,集合名称用英文逗号隔开"
+  },
+  {
+    "type":"checkbox",
+    "id":"show_line_border",
+    "label":"辅助线",
+    "default":false
+  },
+  {
+  "type": "checkbox",
+  "id": "collapse_collection_description",
+  "label": "Collapse long description",
+  "default": false
+  },
+  {
+  "type": "select",
+  "id": "collection_image_size",
+  "label": "Collection image size",
+  "options": [
+  {
+  "value": "preserve_ratio",
+  "label": "Original image ratio"
+  },
+  {
+  "value": "small",
+  "label": "Small"
+  },
+  {
+  "value": "medium",
+  "label": "Medium"
+  },
+  {
+  "value": "large",
+  "label": "Large"
+  }
+  ],
+  "default": "small"
+  },
+  {
+  "type": "select",
+  "id": "products_per_row",
+  "label": "Products per row (desktop)",
+  "options": [
+    {
+    "value": "3",
+    "label": "3"
+    },
+    {
+    "value": "4",
+    "label": "4"
+    }
+    ],
+  "default": "4"
+  },
 {
 "type": "range",
 "id": "default_products_per_page",
@@ -1097,14 +1164,7 @@
     if(document.getElementById('filter_content') != null){
       if (e.target.closest('.filter_card_layout') == null) {
       document.getElementById('filter_content').className = 'filter_content hidden-pocket'
-    } else {  //点在过滤器区域内
-      // console.log("点击区域在范围内");
-      // if (event.target.id != "clean_all_button") {
-      //   e = e || window.event || arguments.callee.caller.arguments[0]
-      //   e.stopPropagation()
-      //   document.getElementById('filter_content').className = 'filter_content_show hidden-pocket'
-      // }
-    }
+    } else { }
     }
   
   }
@@ -1124,13 +1184,6 @@
     let productList = document.querySelector('.product-list')
     let clientWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
     if (clientWidth <= 640) {
-      //  let productItem = document.querySelectorAll('.product-item')
-      //   for (let i = 0; i < productItem.length; i++) {
-      // 			if(i % 2 !== 0){
-      //           console.log(i);
-      //           productItem[i].style.paddingRight = '0'
-      // 			}
-      //   }
       if(document.querySelector('.product-item').className.includes("product-item--vertical") == true){
         productList.style.width = '102%'
       }
