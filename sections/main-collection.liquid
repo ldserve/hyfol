@@ -636,14 +636,25 @@
         {%- endif -%}
 
         <div class="product-list product-list--collection {% if has_filters %}product-list--with-sidebar{% endif %}"  >
+          {%- comment -%} ------------------ 产品顶置排序 -------------- {%- endcomment -%}
+          {% if collection.sort_by and collection.sort_by != empty %}
+          {% assign sort_by_list = collection.sort_by | split: "," %}
+          {% for item in sort_by_list %}
+          {%- if all_products[item]!= empty and all_products[item].handle!= empty -%}
+          {%- render 'product-item', product: all_products[item], list: show_as_list, grid_classes: grid_classes,forloop:forloop-%}
+          {%- endif -%}
+          {%-endfor-%}
+          {%-endif-%}
           {%- comment -%}------------------- 活动图片顶置 -----------------{%- endcomment -%}
           {%- assign collection_name = collection.title | downcase -%}
           {%- assign collection_name_list = section.settings.activity_incolle | downcase | split:"," -%}
-         {%- assign show_activity = false -%}
-         {%- if collection_name_list contains collection_name -%}
-         {%- assign show_activity = true -%}
+          {%- assign show_activity = false -%}
+          {%- if collection_name_list contains collection_name -%}
+          {%- assign show_activity = true -%}
           {%- endif -%}
-          {%- if  section.settings.activity_image !=blank and show_activity -%}
+          {%- if section.settings.activity_image ==blank -%} {%- assign show_activity = false -%}{%- endif -%}
+          {%- if  show_activity -%}
+          {%- capture activity_template -%}
           <div class=" product-item product-item--vertical  1/3--tablet-and-up 1/4--desk product-item_activity" data-scenable="1"  style="justify-content:space-between ;">
           {%- assign image_url = section.settings.activity_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
           {%- capture supported_sizes -%}{%- render 'image-size', sizes: '100,200,300,400,500,600,700', image: section.settings.activity_image -%}{%- endcapture -%}
@@ -659,16 +670,8 @@
             <a href="{{section.settings.activity_link1}}" class="activity_banner activity-image1"  ></a>
             <a href="{{section.settings.activity_link2}}" class="activity_banner activity-image2"  ></a>
           </div>
+          {%- endcapture -%}
           {%- endif -%}
-          {%- comment -%} ------------------ 产品顶置排序 -------------- {%- endcomment -%}
-          {% if collection.sort_by and collection.sort_by != empty %}
-          {% assign sort_by_list = collection.sort_by | split: "," %}
-          {% for item in sort_by_list %}
-          {%- if all_products[item]!= empty and all_products[item].handle!= empty -%}
-          {%- render 'product-item', product: all_products[item], list: show_as_list, grid_classes: grid_classes,forloop:forloop-%}
-          {%- endif -%}
-          {%-endfor-%}
-          {%-endif-%}
           {%- comment -%}-------- 过滤掉已渲染产品 -----------{%- endcomment -%}
           {%- for product in collection.products -%}
           {%- assign render_item = true -%}
@@ -678,8 +681,9 @@
           {% break %}
           {%- endif -%}
           {%- endfor -%}
-
-          {% if render_item %}
+          {% if show_activity and  section.settings.activity_inser == forloop.index %}
+            {{activity_template}}
+          {% elsif render_item %}
           {%- render 'product-item', product: product, list: show_as_list, grid_classes: grid_classes,forloop:forloop -%}
           {% endif %}
           {%- endfor -%}
@@ -987,6 +991,14 @@
     "id":"activity_incolle",
     "label":"需要展示的集合",
     "info":"不区分大小写,集合名称用英文逗号隔开"
+  },{
+    "type": "range",
+    "id": "activity_inser",
+    "label": "活动插入位置",
+    "min": 1,
+    "max": 48,
+    "step": 1,
+    "default": 1
   },
   {
     "type":"checkbox",
