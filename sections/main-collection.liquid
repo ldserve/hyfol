@@ -42,12 +42,9 @@
     left: 0;
     top: 0;
     width: 100%;
-    height: 50%;
-    {%- if section.settings.show_line_border -%} border:1px solid red{%- endif -%}
+    height: 100%;
   }
-  .activity-image2{
-    top: 50%;
-  }
+ 
   </style>
   
 {%- capture section_settings -%}
@@ -316,11 +313,9 @@
               <button class="value-picker-button" aria-haspopup="true" aria-expanded="false"
                 aria-controls="sort-by-selector" data-action="open-value-picker">
                 <span class="hidden-tablet-and-up">{{ 'collection.sorting.title' | t }}</span>
-                <!--
-                          --><span class="hidden-phone">{{ 'collection.sorting.title' | t }}:
+                <span class="hidden-phone">{{ 'collection.sorting.title' | t }}:
                   {{ collection_sort_by_name }}</span>
-                <!--
-                          -->{%- render 'icon', icon: 'arrow-bottom' -%}
+                {%- render 'icon', icon: 'arrow-bottom' -%}
               </button>
 
               <div id="sort-by-selector" class="value-picker" aria-hidden="true">
@@ -645,34 +640,10 @@
           {%- endif -%}
           {%-endfor-%}
           {%-endif-%}
-          {%- comment -%}------------------- 活动图片顶置 -----------------{%- endcomment -%}
+
           {%- assign collection_name = collection.title | downcase -%}
-          {%- assign collection_name_list = section.settings.activity_incolle | downcase | split:"," -%}
-          {%- assign show_activity = false -%}
-          {%- if collection_name_list contains collection_name -%}
-          {%- assign show_activity = true -%}
-          {%- endif -%}
-          {%- if section.settings.activity_image ==blank -%} {%- assign show_activity = false -%}{%- endif -%}
-          {%- if  show_activity -%}
-          {%- capture activity_template -%}
-          <div class=" product-item product-item--vertical  1/3--tablet-and-up 1/4--desk product-item_activity" data-scenable="1"  style="justify-content:space-between ;">
-          {%- assign image_url = section.settings.activity_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
-          {%- capture supported_sizes -%}{%- render 'image-size', sizes: '100,200,300,400,500,600,700', image: section.settings.activity_image -%}{%- endcapture -%}
-            <div class="aspect-ratio " >
-              <img class="image--fade-in lazyload"
-                data-sizes="auto" data-widths="[{{ supported_sizes }}]" 
-                alt="{{section.settings.activity_image.alt}}"
-                data-src="{{image_url}}"/>
-                <noscript>
-                <img src="{{section.settings.activity_image | img_url}}" alt="{{section.settings.activity_image.alt}}">
-              </noscript>
-            </div>
-            <a href="{{section.settings.activity_link1}}" class="activity_banner activity-image1"  ></a>
-            <a href="{{section.settings.activity_link2}}" class="activity_banner activity-image2"  ></a>
-          </div>
-          {%- endcapture -%}
-          {%- endif -%}
-          {%- comment -%}-------- 过滤掉已渲染产品 -----------{%- endcomment -%}
+         
+          {%- comment -%}--------产品渲染--过滤掉已渲染产品 -----------{%- endcomment -%}
           {%- for product in collection.products -%}
           {%- assign render_item = true -%}
           {%- for str_item in sort_by_list -%}
@@ -681,13 +652,40 @@
           {% break %}
           {%- endif -%}
           {%- endfor -%}
-          {% if show_activity and  section.settings.activity_inser == forloop.index %}
-            {{activity_template}}
-          {% elsif render_item %}
+          {%- comment -%}------------------- 活动图片顶置 -----------------{%- endcomment -%}
+          {%- assign for_index = forloop.index -%}
+          {%- for block in section.blocks -%}
+            {%- assign activity_inser = block.settings.activity_inser -%}
+            {%- assign show_activity = false -%}
+            {%- assign collection_name_list = block.settings.activity_incolle | downcase | split:"," -%}
+            {%- if block.settings.activity_image ==blank -%} {%- assign show_activity = false -%}{%- endif -%}
+            {%- if collection_name_list contains collection_name -%}
+              {%- assign show_activity = true -%}
+            {%- endif -%}
+              {%- if  show_activity and activity_inser == for_index and block.settings.show_activity-%}
+              <div class=" product-item product-item--vertical  1/3--tablet-and-up 1/4--desk product-item_activity" data-scenable="1"  style="justify-content:space-between ;">
+              {%- assign image_url = block.settings.activity_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+              {%- capture supported_sizes -%}{%- render 'image-size', sizes: '100,200,300,400,500,600,700', image: block.settings.activity_image -%}{%- endcapture -%}
+                <div class="aspect-ratio " >
+                  <img class="image--fade-in lazyload"
+                    data-sizes="auto" data-widths="[{{ supported_sizes }}]" 
+                    alt="{{block.settings.activity_image.alt}}"
+                    data-src="{{image_url}}"/>
+                    <noscript>
+                    <img src="{{block.settings.activity_image | img_url}}" alt="{{block.settings.activity_image.alt}}">
+                  </noscript>
+                </div>
+                <a href="{{block.settings.activity_link1}}" class="activity_banner activity-image1" {% if block.settings.show_line_border %}style=" border:1px solid red;"{%- endif -%}></a>
+              </div>
+            {%- break -%}
+            {%- endif -%}
+        {%- endfor -%}
+           {%- comment -%}----------------------- 活动 END-----------------------{%- endcomment -%}
+
+          {% if render_item %}
           {%- render 'product-item', product: product, list: show_as_list, grid_classes: grid_classes,forloop:forloop -%}
           {% endif %}
           {%- endfor -%}
-
           {%- comment -%} ------------------------END------------------ {%- endcomment -%}
         </div>
 
@@ -973,38 +971,6 @@
   "id": "show_collection_image",
   "label": "Show collection image",
   "default": true
-  },{
-    "type":"image_picker",
-    "id":"activity_image",
-    "label":"活动图"
-  },
-  {
-    "type":"url",
-    "id":"activity_link1",
-    "label":"活动链接1"
-  },{
-    "type":"url",
-    "id":"activity_link2",
-    "label":"活动链接2"
-  },{
-    "type":"text",
-    "id":"activity_incolle",
-    "label":"需要展示的集合",
-    "info":"不区分大小写,集合名称用英文逗号隔开"
-  },{
-    "type": "range",
-    "id": "activity_inser",
-    "label": "活动插入位置",
-    "min": 1,
-    "max": 48,
-    "step": 1,
-    "default": 1
-  },
-  {
-    "type":"checkbox",
-    "id":"show_line_border",
-    "label":"辅助线",
-    "default":false
   },
   {
   "type": "checkbox",
@@ -1162,7 +1128,47 @@
 ],
 "default": "all_closed"
 }
-]
+],
+"blocks":[{
+  "type":"activity",
+  "name":"活动图片",
+  "settings":[
+  {
+    "type":"checkbox",
+    "id":"show_activity",
+    "label":"是否显示",
+    "default":true
+  },
+  {
+    "type":"image_picker",
+    "id":"activity_image",
+    "label":"活动图"
+  },
+  {
+    "type":"url",
+    "id":"activity_link1",
+    "label":"活动链接"
+  },{
+    "type":"text",
+    "id":"activity_incolle",
+    "label":"需要展示的集合",
+    "info":"不区分大小写,集合名称用英文逗号隔开"
+  },{
+    "type": "range",
+    "id": "activity_inser",
+    "label": "活动插入位置",
+    "min": 1,
+    "max": 48,
+    "step": 1,
+    "default": 1
+  },
+  {
+    "type":"checkbox",
+    "id":"show_line_border",
+    "label":"辅助线",
+    "default":false
+  }]
+}]
 }
 {% endschema %}
 <style>

@@ -623,55 +623,55 @@
 						{%- comment -%}上装{%- endcomment -%}
 						{% if product.metafields.my_fields.category.second_commodity contains '上装' %}
 							
-						{%- comment -%}女上装{%- endcomment -%}
+							{%- comment -%}女上装{%- endcomment -%}
 							{%- if product.metafields.my_fields.category.second_commodity contains '女上装' -%}
-							<script type="application/json" data-type="chart">
-								{
-								"SIZE":	"S/M/L/XL/XXL/XXXL/XXXXL",
-								"CHEST": "33.9-35.4/35.4-37/37-39.4/39.4-41.7/41.7-44/44-47.8/47.8-49.9",
-								"WASIT":"26-27.6/27.6-29.1/29.1-31.5/31.5-33.9/33.9-36.2/36.2-38.8/38.8-41.5",
-								"HIPS": "35.8-37.4/37.4-39/39-41.3/41.3-43.7/43.7-45.4/45.4-47.5/47.5-49.2"
-								}
-							</script>
-							<script type="application/json" data-type="cm-chart">
-								{
-								"SIZE":	"S/M/L/XL/XXL/XXXL/XXXXL",
-								"CHEST": "86-90/90-94/94-100/100-106/106-112/112-121/122-128",
-								"WASIT":"66-70/70-74/74-80/80-88/88-96/96-102/102-108",
-								"HIPS": "91-95/95-99/99-105/105-112/112-116/116-122/122-126"
-								}
-							</script>
-							<div class="sizeGuideModal__tips">
-								<div class="sizeGuideModal__tips__left">
-									<h2 class="sizeGuideModal__tips__title heading">HOW TO MEASURE</h2>
-									<div class="sizeGuideModal__tips__item">
-										<span class="sizeGuideModal__tips__item__num">1</span>
-										<div class="sizeGuideModal__tips__item__text">
-											<p class="heading">Your bust</p>
-											<p>Measure the circumference over the fullest part of your bust.</p>
+								<script type="application/json" data-type="chart">
+									{
+									"SIZE":	"S/M/L/XL/XXL/XXXL/XXXXL",
+									"CHEST": "33.9-35.4/35.4-37/37-39.4/39.4-41.7/41.7-44/44-47.8/47.8-49.9",
+									"WASIT":"26-27.6/27.6-29.1/29.1-31.5/31.5-33.9/33.9-36.2/36.2-38.8/38.8-41.5",
+									"HIPS": "35.8-37.4/37.4-39/39-41.3/41.3-43.7/43.7-45.4/45.4-47.5/47.5-49.2"
+									}
+								</script>
+								<script type="application/json" data-type="cm-chart">
+									{
+									"SIZE":	"S/M/L/XL/XXL/XXXL/XXXXL",
+									"CHEST": "86-90/90-94/94-100/100-106/106-112/112-121/122-128",
+									"WASIT":"66-70/70-74/74-80/80-88/88-96/96-102/102-108",
+									"HIPS": "91-95/95-99/99-105/105-112/112-116/116-122/122-126"
+									}
+								</script>
+								<div class="sizeGuideModal__tips">
+									<div class="sizeGuideModal__tips__left">
+										<h2 class="sizeGuideModal__tips__title heading">HOW TO MEASURE</h2>
+										<div class="sizeGuideModal__tips__item">
+											<span class="sizeGuideModal__tips__item__num">1</span>
+											<div class="sizeGuideModal__tips__item__text">
+												<p class="heading">Your bust</p>
+												<p>Measure the circumference over the fullest part of your bust.</p>
+											</div>
+										</div>
+										<div class="sizeGuideModal__tips__item">
+											<span class="sizeGuideModal__tips__item__num">2</span>
+											<div class="sizeGuideModal__tips__item__text">
+												<p class="heading">Your waist</p>
+												<p>Measure your waist at the thinnest place.</p>
+											</div>
+										</div>
+										<div class="sizeGuideModal__tips__item">
+											<span class="sizeGuideModal__tips__item__num">3</span>
+											<div class="sizeGuideModal__tips__item__text">
+												<p class="heading">Your hips</p>
+												<p>Measure the fullest part of your hips.</p>
+											</div>
 										</div>
 									</div>
-									<div class="sizeGuideModal__tips__item">
-										<span class="sizeGuideModal__tips__item__num">2</span>
-										<div class="sizeGuideModal__tips__item__text">
-											<p class="heading">Your waist</p>
-											<p>Measure your waist at the thinnest place.</p>
-										</div>
-									</div>
-									<div class="sizeGuideModal__tips__item">
-										<span class="sizeGuideModal__tips__item__num">3</span>
-										<div class="sizeGuideModal__tips__item__text">
-											<p class="heading">Your hips</p>
-											<p>Measure the fullest part of your hips.</p>
-										</div>
+									<div class="sizeGuideModal__tips__right">
+										<img src="https://cdn.shopifycdn.net/s/files/1/0595/0691/7535/files/nv.png?v=1660788734" alt="women's">
 									</div>
 								</div>
-								<div class="sizeGuideModal__tips__right">
-									<img src="https://cdn.shopifycdn.net/s/files/1/0595/0691/7535/files/nv.png?v=1660788734" alt="women's">
-								</div>
-							</div>
 							{%- else -%}
-							{% if product.metafields.my_fields.fatthintype == 'fat' %}
+								{% if product.metafields.my_fields.fatthintype == 'fat' %}
 									<script type="application/json" data-type="chart">
 										{
 											"SIZE": "S/M/L/XL/XXL/XXXL/XXXXL",
@@ -730,12 +730,10 @@
 									<img src="{{ imgUrl }}" alt="">
 								</div>
 							</div>
-							
 							{%- endif -%}
-						{%- endif -%}
 
 						{%- comment -%}下装{%- endcomment -%}
-						{% if product.metafields.my_fields.category.second_commodity contains '下装' %}
+						{%- elsif  product.metafields.my_fields.category.second_commodity contains '下装' %}
 							<script type="application/json" data-type="chart">
 								{
 									"SIZE": "S/M/L/XL/XXL/XXXL/XXXXL",
@@ -774,6 +772,18 @@
 									<img src="{{ imgUrl }}" alt="">
 								</div>
 							</div>
+						{%- comment -%}男式鞋{%- endcomment -%}
+						{% elsif product.metafields.my_fields.category.second_commodity contains '男式鞋' %}
+						<script type="application/json" data-type="shoe-chart">
+							{
+								"US":"4.5/5/5.5/6/6.5/7/7.5/8/8.5/9/9.5/10/10.5/11",
+								"UK":"4/4.5/5/5.5/6/6.5/7/7.5/8/8.5/9/9.5/10/10.5",
+								"EU":"35/36/37/38/39/40/40.5/41/41.5/42/43/44/45/46",
+								"JP":"225/230/235/240/245/250/255/260/265/270/275/280/285/290",
+								"The length of the foot(cm)":"225/230/235/240/245/250/255/260/265/270/275/280/285/290"
+							}
+						</script>
+
 						{% endif %}
 
 					</div>
@@ -811,7 +821,9 @@
 		let className = sizeGuideModal__checkbox.className
 		let jsonText = sizeGuideModal.querySelector('[type="application/json"][data-type="chart"]')
 		let cmJsonHtml = sizeGuideModal.querySelector('[type="application/json"][data-type="cm-chart"]')
+		let shoeJsonHtml = sizeGuideModal.querySelector('[type="application/json"][data-type="shoe-chart"]')
 		let cmjson = cmJsonHtml ? cmJsonHtml.innerHTML : '[]'
+		jsonText = jsonText || shoeJsonHtml 
 		let jsonData = jsonText ? jsonText.textContent : '[]'
 		let data = JSON.parse(jsonData)
 		if(cmJsonHtml&&className.indexOf('is-checked') > -1)data = JSON.parse(cmjson)
@@ -825,7 +837,7 @@
 					tableHtml += `<th>${i}</th>`
 				})
 			} else {
-				if (className.indexOf('is-checked') > -1 && !cmJsonHtml) {
+				if (className.indexOf('is-checked') > -1 && !cmJsonHtml && !shoeJsonHtml) {
 					tableHtml += `<td>${item === 'US SIZE' ? 'CM SIZE' : item}</td>`
 					let arr = data[item].split('/')
 					arr.map(i => {
