@@ -36,9 +36,12 @@ property: 'Athleta'
     {{ checkout_stylesheets }}
     {{ checkout_scripts }}
     <script src="{{ 'shencesdk.js' | asset_url }}"></script>
-  <!-- PLM -->
-  <script src="https://www.paypal.com/sdk/js?client-id=AaoMEq4pF7_1JBTPdRANwtH_MdqLAgscO0ivoPn1JlNmpA3YdqEuxxUY2gUg9vszi8RWrvPHSoTV8tjQ&components=messages,buttons" data-namespace="paypal_sdk" async></script>
-  <!-- PLM END -->
+{%- comment -%}
+<!-- PLM -->
+<script src="https://www.paypal.com/sdk/js?client-id=AaoMEq4pF7_1JBTPdRANwtH_MdqLAgscO0ivoPn1JlNmpA3YdqEuxxUY2gUg9vszi8RWrvPHSoTV8tjQ&components=messages,buttons" data-namespace="paypal_sdk" async></script>
+<!-- PLM END -->
+{%- endcomment -%}
+
   </head>
   <body>
     <style>
@@ -145,7 +148,7 @@ property: 'Athleta'
     const discountCode=document.querySelector('.order-summary__section.order-summary__section--discount[data-reduction-form="update"]')
     const paypalBtn = document.createElement('div')
 
-    paypalBtn.setAttribute('data-pp-message', '')
+  /*   paypalBtn.setAttribute('data-pp-message', '')
     paypalBtn.setAttribute('data-pp-placement', 'payment')
     paypalBtn.setAttribute('data-pp-amount', '{{checkout.total_price | money_without_currency}}')
     paypalBtn.setAttribute('data-pp-buyercountry', 'US')
@@ -156,7 +159,7 @@ property: 'Athleta'
     } else {
       mian.insertBefore(paypalBtn, mian.children[1]);
       if(discountCode && document.body.clientWidth < 999) mian.insertBefore(discountCode, mian.children[1]);
-    }
+    } */
     const alertInfoBox = document.querySelector('.fieldset[data-credit-card-fields]')
     const alertInfo = document.createElement('div')
     alertInfo.className = 'info__text'

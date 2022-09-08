@@ -95,8 +95,9 @@
   {%- endif -%}
 </div>
 
-
+{%- comment -%}
 <div data-pp-message data-pp-placement="product" data-pp-amount="{{cart.total_price| money_without_currency }}" data-pp-buyercountry="US" data-pp-style-align="center"></div>
+{%- endcomment -%}
 <div class="payment-list">
   {% for type in shop.enabled_payment_types %}
     {%- if type =='paypal' or type=='unionpay' or type=='visa' or type=='american_express' or type=='maestro'or type=='master' or type=='diners_club' or type=='discover'or type=='jcb'or type=='trustly' %}
