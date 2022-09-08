@@ -2,6 +2,34 @@
   "sections": {
     "main": {
       "type": "main-collection",
+      "blocks": {
+        "aadbe3da-449e-4121-b058-c6934b46191f": {
+          "type": "activity",
+          "settings": {
+            "show_activity": true,
+            "activity_image": "shopify:\/\/shop_images\/20.jpg",
+            "activity_link1": "https:\/\/www.hyfol.com\/collections\/custompromotion-buy-4-get-20-off",
+            "activity_incolle": "Women's Graphic Tees&Tanks",
+            "activity_inser": 8,
+            "show_line_border": false
+          }
+        },
+        "72528d66-ff69-4592-8e46-c5ff1c715a09": {
+          "type": "activity",
+          "settings": {
+            "show_activity": true,
+            "activity_image": "shopify:\/\/shop_images\/59.jpg",
+            "activity_link1": "https:\/\/www.hyfol.com\/collections\/summer-clearance-any-3-for-59",
+            "activity_incolle": "Women's Graphic Tees&Tanks",
+            "activity_inser": 12,
+            "show_line_border": false
+          }
+        }
+      },
+      "block_order": [
+        "aadbe3da-449e-4121-b058-c6934b46191f",
+        "72528d66-ff69-4592-8e46-c5ff1c715a09"
+      ],
       "settings": {
         "show_collection_image": true,
         "collapse_collection_description": false,
