@@ -1,4 +1,7 @@
 <style>
+    :root{
+        --background:#000;
+    }
     .questionnaire_mask {
         position: absolute;
         width: 100vw;
@@ -17,7 +20,6 @@
         /*高宽分别对应横竖滚动条的尺寸*/
         height: 4px;
         scrollbar-arrow-color: red;
-
     }
     .questionnaire_mask::-webkit-scrollbar-thumb {
         /*滚动条里面小方块*/
@@ -56,7 +58,6 @@
             width: 90%;
             padding: 2rem;
             top: 72px;
-            
         }
         .questionnaire_content .radio-group{
         width: 30%;
@@ -86,10 +87,6 @@
         text-align: left;
     }
 
-    .input-group {
-        margin-bottom: 2rem;
-    }
-
     .button-submit {
         text-align: center;
         margin: 0;
@@ -102,10 +99,6 @@
 
     .required {
         color: red;
-    }
-
-    .form-control {
-        background-color: #fff;
     }
 
     .must-info {
@@ -142,9 +135,6 @@
     .show-btn3{
         left: 67%;
     }
-    /* .btn-color{
-        background-color: #000;
-    } */
     body{
         background-color: #000;
     }
@@ -177,8 +167,58 @@
         width: 1.6rem;
         height: 1.6rem;
     }
+    .input-group .form-control{
+        display: table-cell; 
+    }
+    .input-group .form-control {
+    position: relative;
+    z-index: 2;
+    float: left;
+    width: 100%;
+    margin-bottom: 0;
+}
+.form-control {
+    display: block;
+    width: 100%;
+    height: 34px;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%);
+    box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%);
+    -webkit-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+}
+.input-group .form-control:focus {
+    z-index: 3;
+}
+.form-control:focus {
+    border-color: #66afe9;
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%), 0 0 8px rgb(102 175 233 / 60%);
+    box-shadow: inset 0 1px 1px rgb(0 0 0 / 8%), 0 0 8px rgb(102 175 233 / 60%);
+}
+.input-group {
+    position: relative;
+    display: table;
+    border-collapse: separate;
+    margin-bottom: 1.6rem;
+    width: 100%;
+}
+.form-control option{
+    background-color: #FFF;
+}
 </style>
-<div class="questionnaire_mask">
+<div class="questionnaire_mask d-none">
     <div class="questionnaire_content">
         <h1 class="h1 questionnaire-title">Inquiry FORM</h1>
         <div class="closeForm" data-type="close">{% render 'icon',icon:"close" %}</div>
@@ -203,7 +243,7 @@
             </div>
             <div class="input-group">
                 <label class="input-group-addon" form="questionnaire-customize">Product I Want To Customize</label>
-                <select class="form-control" placeholder="Username" id="questionnaire-customize" name="customize">
+                <select class="form-control" placeholder="Username" id="questionnaire-customize" name="customize" type="select">
                     <option value="Top">Top</option>
                     <option value="Bottom">Bottom</option>
                     <option value="Hat">Hat</option>
@@ -211,7 +251,7 @@
             </div>
             <div class="input-group">
                 <label class="input-group-addon" form="questionnaire-quantity">Quantity I Need</label>
-                <select class="form-control" placeholder="Username" id="questionnaire-quantity" name="quantity">
+                <select class="form-control" placeholder="Username" id="questionnaire-quantity" name="quantity" type="select">
                     <option value="10-30">10-30</option>
                     <option value="30-50">30-50</option>
                     <option value="50-100">50-100</option>
@@ -238,6 +278,7 @@
 </div>
 <script>
     ~function () {
+        let userid='{{customer.id}}'
         const maskBox = document.querySelector('.questionnaire_mask')
         const formBox = document.getElementById('questionnaire-form')
         const emailInput = document.getElementById('questionnaire-email')
@@ -254,9 +295,15 @@
                 maskBox.classList.remove('d-none')
                 body.classList.add('promo-block__image-clip')
             }
-            if (target.dataset.type == 'submit') {
+            if (target.dataset.type == 'submit') {//({optionContent:{},questionId:Date.now(),userid})
                 !isSubmit && empty.classList.remove('d-none')
-                isSubmit && console.log('提交成功')
+              const resData= []
+              Array.prototype.forEach.call(formBox.elements,item=>{
+                if(item.type == 'text'||item.type == "select" || item.type=="radio"&&item.checked ||item.type == 'email') resData.push( {optionContent:item.value,questionId:item.name,userid});
+                })
+                isSubmit && fetch('http://api.leandow-technology.com/api/customerAccount/submitSurvey',{method:"POST",body:JSON.stringify(resData)}).then(res=>{
+                    console.log(res);
+                })
                 ev.preventDefault()
                 ev.stopPropagation()
             }
@@ -266,7 +313,7 @@
             let target = ev.target
             if (target.name == 'email') {
                 let value = target.value
-                isSubmit = value && value.search(/^([a-zA-Z\d][\w-]{2,})@(\w{2,})\.([a-z]{2,})(\.[a-z]{2,})?$/) !== -1
+                isSubmit = value && value.search(/^(([\w]{1,}\.){0,2})?([a-zA-Z\d][\w-]{2,})@(\w{2,})\.([a-z]{2,})(\.[a-z]{2,})?$/) !== -1
                 !value && !isSubmit && empty.classList.remove('d-none')
                 value && !isSubmit && (error.classList.remove('d-none'))
 
