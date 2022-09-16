@@ -148,18 +148,18 @@ property: 'Athleta'
     const discountCode=document.querySelector('.order-summary__section.order-summary__section--discount[data-reduction-form="update"]')
     const paypalBtn = document.createElement('div')
 
-  /*   paypalBtn.setAttribute('data-pp-message', '')
-    paypalBtn.setAttribute('data-pp-placement', 'payment')
-    paypalBtn.setAttribute('data-pp-amount', '{{checkout.total_price | money_without_currency}}')
-    paypalBtn.setAttribute('data-pp-buyercountry', 'US')
-    paypalBtn.setAttribute('data-pp-style-align', 'center')
-    paypalBtn.classList.add('pp-message')
+  //   paypalBtn.setAttribute('data-pp-message', '')
+  //   paypalBtn.setAttribute('data-pp-placement', 'payment')
+  //   paypalBtn.setAttribute('data-pp-amount', '{{checkout.total_price | money_without_currency}}')
+  //   paypalBtn.setAttribute('data-pp-buyercountry', 'US')
+  //   paypalBtn.setAttribute('data-pp-style-align', 'center')
+  //   paypalBtn.classList.add('pp-message')
     if (patment) {
-      patment.insertBefore(paypalBtn, patment.children[1])
+      // patment.insertBefore(paypalBtn, patment.children[1])
     } else {
-      mian.insertBefore(paypalBtn, mian.children[1]);
+      // mian.insertBefore(paypalBtn, mian.children[1]);
       if(discountCode && document.body.clientWidth < 999) mian.insertBefore(discountCode, mian.children[1]);
-    } */
+    } 
     const alertInfoBox = document.querySelector('.fieldset[data-credit-card-fields]')
     const alertInfo = document.createElement('div')
     alertInfo.className = 'info__text'
