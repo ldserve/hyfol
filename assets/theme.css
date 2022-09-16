@@ -9995,6 +9995,9 @@ top: 0;
 .product-discount-detail .icon {
   height: 1.8rem;
 }
+.product-discount-detail .icon--solid-arrow-right{
+  height: 1rem;
+} 
 .product-discount-left{
   margin-left: 5px;
 }
@@ -10004,10 +10007,7 @@ top: 0;
   color: #b82928;
   font-weight: 550;
 }
-.product-discount-left a{
-  text-decoration: underline;
-  text-underline-offset: 4px;
-}
+
 .product-discount-icon{
   font-size: 20px;
 }

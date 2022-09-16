@@ -54,8 +54,7 @@
 	{%- if product.media.size > 0 -%}
 		{%- assign primary_media = product.featured_media -%}
 
-		<a
-			href="{{ product.url }}"
+		<a href="{{ product.url }}"
 			 class="product-item__image-wrapper product-item_mktClick shence_commodityView {% if show_secondary_media %}product-item__image-wrapper--with-secondary{% endif %}"
 			 data-scenable="1" data-expenable="1" data-bindexp="1" data-sctype="mktClick"
 			 data-scdata='{"mkt_type":"product","first_mkt_name":"{{ first_mkt_name }}","first_mkt_id":"{{ section.id }}","second_mkt_rank":"{{ forloop.index }}","third_mkt_rank":"","mkt_material_url":"","mkt_material_name":"{{ mkt_material_name }}","commodity_spuid":"{{ product.handle }}","commodity_skuid":"{{ product.selected_or_first_available_variant.sku }}","commodity_name":"{{ product.title| handleize }}","original_price":"{{ product.selected_or_first_available_variant.compare_at_price }}","current_price":"{{ product.selected_or_first_available_variant.price }}","currency_unit":"USD","mkt_tag":[]}'>
@@ -78,11 +77,11 @@
 				{%- endcomment -%}
 
 
-				{% if product.metafields.my_fields.transparentimg1  != blank%}
+				{%- if product.metafields.my_fields.transparentimg1  != blank -%}
 					{%- assign image_url = product.metafields.my_fields.transparentimg1 | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
-				{% elsif product.metafields.my_fields.transparencydrawing[0].path != blank %}
+				{%- elsif product.metafields.my_fields.transparencydrawing[0].path != blank -%}
 					{%- assign image_url = product.metafields.my_fields.transparencydrawing[0].path | append: product.metafields.my_fields.transparencydrawing[0].imageMd5 -%}
-				{% endif %}
+				{%- endif -%}
 				{%- capture supported_sizes -%}{%- render 'image-size', sizes: '200,300,400,500,600,700,800', image: primary_media.preview_image -%}{%- endcapture -%}
 				<div
 					class="aspect-ratio {% if settings.product_image_size != 'natural' %}aspect-ratio--{{ settings.product_image_size }}{% endif %}"
@@ -128,6 +127,14 @@
 					</noscript>
 				</div>
 			{% endif %}
+			{%- comment -%}活动TAG{%- endcomment -%}
+			{%- comment -%}
+			<div class="htusb-ui-coll-boost htusb-ui-coll-boost--top-right htusb-ui-shape--square htusb-ui-fade-in" 
+			style="--text-color: #FFFFFF; --font-family: inherit; --font-size-desktop: 16px; --font-size-mobile: 11px; --gradient-color-start: #01cef0; --gradient-color-end: #cced8e; --z-index: 4; opacity: 1; height: auto;">
+			<div class="htusb-ui-coll-text">
+				<div class="htusb-ui-coll-text_msg">Buy 4 Get EXTRA 20% Off</div>
+			</div></div>
+			{%- endcomment -%}
 		</a>
 	{%- endif -%}
 
