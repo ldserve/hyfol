@@ -162,6 +162,59 @@
         "label": "阶梯信息"
       }
     ]
+  },{
+    "name": "活动标签",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "show_activity_tag",
+        "label": "是否显示活动",
+        "default": true
+      },
+      {
+        "type": "header",
+        "content": "全局标签颜色"
+      },
+      {
+        "type": "color",
+        "id": "gradient_color_start",
+        "label": "开始颜色",
+        "info": "渐变颜色",
+        "default":"#01cef0"
+      },
+      {
+        "type": "color",
+        "id": "gradient_color_end",
+        "label": "结束颜色",
+        "info": "渐变颜色",
+        "default":"#cced8e"
+      },
+      {
+        "type":"select",
+        "label":"标签形状",
+        "id":"tag_layout",
+        "options":[
+          {
+            "label":"标签",
+            "value":"TAG"
+          },{
+            "label":"书签",
+            "value":"bookmark"
+          }
+        ],
+        "default":"TAG"
+      },
+      {
+        "type": "header",
+        "content": "指定标签"
+      },{
+        "type":"textarea",
+        "id":"custome_tag_ui",
+        "label":"指定标签颜色配置",
+        "default":"<p>Choose 3 for $59:#ff0000&#559ffb,Buy 1 get 2nd 50% OFF:#ebc918&#ee362a</p>",
+        "info":"颜色之间用&隔开，tag之间用英文','隔开，格式：Choose 3 for $59:#01cef0&#cced8e"
+      }
+    ]
   },
   {
     "name": "巴西是否必填门牌号",

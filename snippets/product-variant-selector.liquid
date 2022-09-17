@@ -304,6 +304,7 @@
           {%- when 'block' -%}
 						<div class="product-form__option-name text--strong d-flex space-between">
 							<span>{{ option.name }}:<span class="product-form__selected-value"></span> </span>
+              {%- comment -%}尺码表按钮{%- endcomment -%}
 									{% if product.metafields.my_fields.category != blank%}
 										{% assign showSizeGuideModal = true %}
 										{% assign listStr = "Bag,Bracelet,Cap,FLAG,Hat,Jewelry Gift Box,Men's Belt,Men's Coat,Men's Hat,Men's Scarf,Necklace,Pendant,Phone Case,Ring,StickerSocks,Women's Bracelet"  %}

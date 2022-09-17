@@ -9871,9 +9871,9 @@ top: 0;
 @media screen and (min-width: 641px) {
 
   /*
-  IMPLEMENTATION NOTE: there are a lot of manual adjustments here with negative margins, depending on which elements are here or not. This is not
-                       really something I'm really happy with as it makes editing more complex. However designer absolutely wanted a pixel-perfect
-                       adjustment for all conditions... which result in more complex code :)
+IMPLEMENTATION NOTE: there are a lot of manual adjustments here with negative margins, depending on which elements are here or not. This is not
+really something I'm really happy with as it makes editing more complex. However designer absolutely wanted a pixel-perfect
+adjustment for all conditions... which result in more complex code :)
   */
   .product-meta__share-buttons {
     margin-top: 0;
@@ -16205,5 +16205,89 @@ justify-content: space-between;
   }
   .mini-cart-line-item_tag >.icon{
     display: none;
+  }
+}
+
+
+/* 自定义活动TAG */
+.activity-tag-ui {
+  display: inline-block;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  z-index: 5;
+  font-family: inherit;
+  line-height: 1;
+}
+.activity-tag-ui.activity-tag-ui-right {
+  left: auto;
+  right: 0;
+  text-align: right;
+}
+
+.activity-ui-fade-in {
+  transition: opacity .3s cubic-bezier(0.68, 0.02, 0.24, 0.98) 0.3s, height .3s cubic-bezier(0.68, 0.02, 0.24, 0.98);
+  opacity: 0;
+  height: 0;
+}
+
+.activity-ui-text {
+  display: inline-block;
+  font-size: 1rem;
+}
+
+.activity-ui-text_msg {
+  background: var(--gradient-color-start);
+  background: linear-gradient(to right, var(--gradient-color-start), var(--gradient-color-end));
+  line-height: 2em;
+  padding: 0 1em;
+  color: #FFFFFF;
+}
+
+.activity-label:after {
+  content: "";
+  position: absolute;
+  bottom: -0.5rem;
+  right: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 2.4rem 0.5rem 0;
+  border-color: transparent var(--gradient-color-start) transparent transparent;
+}
+
+.activity-label:before {
+  content: "";
+  position: absolute;
+  bottom: -0.5rem;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0.5rem 2.4rem 0 0;
+  border-color: var(--gradient-color-start) transparent transparent transparent;
+}
+.activity-tag-ui.activity-label{
+  width: 4.4rem;
+  right: 10px;
+}
+.activity-label .activity-ui-text{
+  font-size: 0.6rem;
+}
+.activity-label .activity-ui-text_msg{
+  background:var(--gradient-color-start) ;
+}
+@media (max-width: 649px) {
+  .activity-ui-text {
+    font-size: 0.8rem;
+  }
+
+  .activity-tag-ui.activity-label {
+    width: 4.6rem;
+    right: 10px;
+  }
+
+  .activity-label .activity-ui-text {
+    font-size: 0.5rem;
   }
 }
