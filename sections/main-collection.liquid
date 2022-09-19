@@ -157,7 +157,7 @@
         </div>
       </div>
       {%- else -%}
-      <div class="collection__dynamic-part card {% if collection.products_count == 0 %}clearfix{% endif %}">
+      < class="collection__dynamic-part card {% if collection.products_count == 0 %}clearfix{% endif %}">
         <header
           class="card__header {% unless collection.template_suffix == 'brand' %}card__header--tight{% endunless %}"
           style="margin-top:0;padding-bottom: 0;padding-top:10px;">
@@ -645,51 +645,72 @@
          
           {%- comment -%}--------产品渲染--过滤掉已渲染产品 -----------{%- endcomment -%}
           {%- for product in collection.products -%}
-          {%- assign render_item = true -%}
-          {%- for str_item in sort_by_list -%}
-          {%- if product.handle == str_item -%}
-          {%- assign render_item = false -%}
-          {% break %}
-          {%- endif -%}
-          {%- endfor -%}
-          {%- comment -%}------------------- 活动图片顶置 -----------------{%- endcomment -%}
-          {%- assign for_index = forloop.index -%}
-          {%- for block in section.blocks -%}
-            {%- assign activity_inser = block.settings.activity_inser -%}
-            {%- assign show_activity = false -%}
-            {%- assign collection_name_list = block.settings.activity_incolle | downcase | split:"," -%}
-            {%- if block.settings.activity_image ==blank -%} {%- assign show_activity = false -%}{%- endif -%}
-            {%- if collection_name_list contains collection_name -%}
-              {%- assign show_activity = true -%}
+            {%- assign render_item = true -%}
+            {%- for str_item in sort_by_list -%}
+            {%- if product.handle == str_item -%}
+            {%- assign render_item = false -%}
+            {% break %}
             {%- endif -%}
-              {%- if  show_activity and activity_inser == for_index and block.settings.show_activity-%}
-              <div class=" product-item product-item--vertical  1/3--tablet-and-up 1/4--desk product-item_activity" data-scenable="1"  style="justify-content:space-between ;">
-              {%- assign image_url = block.settings.activity_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
-              {%- capture supported_sizes -%}{%- render 'image-size', sizes: '100,200,300,400,500,600,700', image: block.settings.activity_image -%}{%- endcapture -%}
-                <div class="aspect-ratio " >
-                  <img class="image--fade-in lazyload"
-                    data-sizes="auto" data-widths="[{{ supported_sizes }}]" 
-                    alt="{{block.settings.activity_image.alt}}"
-                    data-src="{{image_url}}"/>
-                    <noscript>
-                    <img src="{{block.settings.activity_image | img_url}}" alt="{{block.settings.activity_image.alt}}">
-                  </noscript>
-                </div>
-                <a href="{{block.settings.activity_link1}}" class="activity_banner activity-image1" {% if block.settings.show_line_border %}style=" border:1px solid red;"{%- endif -%}></a>
-              </div>
-            {%- break -%}
-            {%- endif -%}
-        {%- endfor -%}
-           {%- comment -%}----------------------- 活动 END-----------------------{%- endcomment -%}
+            {%- endfor -%}
+            {%- comment -%}------------------- 活动图片顶置 -----------------{%- endcomment -%}
+            {%- assign for_index = forloop.index -%}
+              {%- for block in section.blocks -%}
+                {%- assign activity_inser = block.settings.activity_inser -%}
+                {%- assign show_activity = false -%}
+                {%- assign collection_name_list = block.settings.activity_incolle | downcase | split:"," -%}
+                {%- if block.settings.activity_image ==blank -%} {%- assign show_activity = false -%}{%- endif -%}
+                {%- if collection_name_list contains collection_name -%}
+                  {%- assign show_activity = true -%}
+                {%- endif -%}
+                  {%- if  show_activity and activity_inser == for_index and block.settings.show_activity-%}
+                  <div class=" product-item product-item--vertical  1/3--tablet-and-up 1/4--desk product-item_activity" data-scenable="1"  style="justify-content:space-between ;">
+                  {%- assign image_url = block.settings.activity_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+                  {%- capture supported_sizes -%}{%- render 'image-size', sizes: '100,200,300,400,500,600,700', image: block.settings.activity_image -%}{%- endcapture -%}
+                    <div class="aspect-ratio " >
+                      <img class="image--fade-in lazyload"
+                        data-sizes="auto" data-widths="[{{ supported_sizes }}]" 
+                        alt="{{block.settings.activity_image.alt}}"
+                        data-src="{{image_url}}"/>
+                        <noscript>
+                        <img src="{{block.settings.activity_image | img_url}}" alt="{{block.settings.activity_image.alt}}">
+                      </noscript>
+                    </div>
+                    <a href="{{block.settings.activity_link1}}" class="activity_banner activity-image1" {% if block.settings.show_line_border %}style=" border:1px solid red;"{%- endif -%}></a>
+                  </div>
+                {%- break -%}
+                {%- endif -%}
+              {%- endfor -%}
+           {%- comment -%}----------------------- 活动图片 END-----------------------{%- endcomment -%}
 
           {% if render_item %}
           {%- render 'product-item', product: product, list: show_as_list, grid_classes: grid_classes,forloop:forloop -%}
           {% endif %}
+          
+          {%- comment -%} ------------------------LOADING------------------ {%- endcomment -%}
+          {%- comment -%}
+          
+          {%- if forloop.last -%}
+          <div
+            class=" product-item {% if list %}product-item--list{% else %}product-item--vertical{% endif %} {% if section.id == 'blog-sidebar' %}product-item--compact{% endif %} {{ grid_classes }} ">
+            <div class="product-item__image-wrapper product-item_mktClick shence_commodityView">
+              <div
+                class="aspect-ratio {% if settings.product_image_size != 'natural' %}aspect-ratio--{{ settings.product_image_size }}{% endif %}"
+                style="padding-bottom:100%">
+                <h2>loading more 
+                  <span>.</span>
+                  <span>.</span>
+                  <span>.</span>
+                
+                </h2>
+              </div>
+            </div>
+          </div>
+          {%- endif -%}
+          {%- endcomment -%}
           {%- endfor -%}
-          {%- comment -%} ------------------------END------------------ {%- endcomment -%}
         </div>
 
-        {%- render 'pagination', paginate: paginate -%}
+        {%- render 'pagination', paginate: paginate ,class:"d-none"-%}
         {%- endif -%}
 
       </div>
@@ -960,6 +981,7 @@
       <div class="modal__inner"></div>
     </div>
   </div>
+
 </section>
 
 {% schema %}
