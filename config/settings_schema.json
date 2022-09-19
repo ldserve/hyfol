@@ -211,7 +211,7 @@
         "type":"textarea",
         "id":"custome_tag_ui",
         "label":"指定标签颜色配置",
-        "default":"<p>Choose 3 for $59:#ff0000&#559ffb,Buy 1 get 2nd 50% OFF:#ebc918&#ee362a</p>",
+        "default":"Choose 3 for $59:#ff0000&#559ffb,Buy 1 get 2nd 50% OFF:#ebc918&#ee362a",
         "info":"颜色之间用&隔开，tag之间用英文','隔开，格式：Choose 3 for $59:#01cef0&#cced8e"
       }
     ]
