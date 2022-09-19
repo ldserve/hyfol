@@ -14474,13 +14474,14 @@
                 var itemHeight=this.element.querySelector('.product-item').offsetHeight
                 // 在到达最后一排之前发送请求
                 if (currentOffset > itemHeight) return;
-                console.log(currentOffset);
                 var nextPage = theme.currentPage + 1
                 var pages = theme.pages
                 var sectionID = this.element.getAttribute('data-section-id')
-                if (nextPage >= pages) return;
+                if (nextPage >= pages){
+                    this.element.querySelector('.loading-heading').innerHTML='Loading completed'
+                    return
+                }
                 if (this.isFetch) return;
-                return
                 this.isFetch = true
                 var productContaine = this.element.querySelector('.product-list')
                 fetch(location.pathname + "?page=" + nextPage + "&section_id=" + sectionID).then(response => {
@@ -14490,10 +14491,10 @@
                         var products = document.createElement('div')
                         products.innerHTML = content
                         products && (productList = utils.filterFindElements(products, '.product-item'))
-                        console.log(productList.length, theme.currentPage)
                         while (productList.length) {
                             productContaine.appendChild(productList.shift())
                         }
+             
                         theme.currentPage = nextPage
                         this.isFetch = false;
                     })
