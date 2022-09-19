@@ -16253,7 +16253,7 @@ justify-content: space-between;
   height: 0;
   border-style: solid;
   border-width: 0 2.4rem 0.5rem 0;
-  border-color: transparent var(--gradient-color-start) transparent transparent;
+  border-color: transparent var(--gradient-color-end) transparent transparent;
 }
 
 .activity-label:before {
@@ -16265,7 +16265,7 @@ justify-content: space-between;
   height: 0;
   border-style: solid;
   border-width: 0.5rem 2.4rem 0 0;
-  border-color: var(--gradient-color-start) transparent transparent transparent;
+  border-color: var(--gradient-color-end) transparent transparent transparent;
 }
 .activity-tag-ui.activity-label{
   width: 4.4rem;
@@ -16275,8 +16275,10 @@ justify-content: space-between;
   font-size: 0.6rem;
 }
 .activity-label .activity-ui-text_msg{
-  background:var(--gradient-color-start) ;
+  /* background:var(--gradient-color-start) ; */
+  background: linear-gradient(to bottom, var(--gradient-color-start), var(--gradient-color-end))
 }
+
 @media (max-width: 649px) {
   .activity-ui-text {
     font-size: 0.8rem;
