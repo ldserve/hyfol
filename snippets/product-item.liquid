@@ -126,19 +126,18 @@
 						<img src="{{ primary_media | img_url: '600x' }}" alt="{{ primary_media.alt | escape }}">
 					</noscript>
 				</div>
-			{% endif %}
+			{%- endif -%}
+
 			{%- comment -%}活动TAG{%- endcomment -%}
-			{%- comment -%}
-			<div class="htusb-ui-coll-boost htusb-ui-coll-boost--top-right htusb-ui-shape--square htusb-ui-fade-in" 
-			style="--text-color: #FFFFFF; --font-family: inherit; --font-size-desktop: 16px; --font-size-mobile: 11px; --gradient-color-start: #01cef0; --gradient-color-end: #cced8e; --z-index: 4; opacity: 1; height: auto;">
-			<div class="htusb-ui-coll-text">
-				<div class="htusb-ui-coll-text_msg">Buy 4 Get EXTRA 20% Off</div>
-			</div></div>
-			{%- endcomment -%}
+
+			{%- if settings.show_activity_tag and request.page_type contains 'collection' -%}
+			
+			{%- render "activity-tag",product:product -%}
+			{%- endif -%}
 		</a>
 	{%- endif -%}
 
-	<div class="product-item__info" >
+	<div class="product-item__info" data-temp="{{request.page_type}}">
 		{%- if settings.show_color_swatch and template != 'blog' and only_show_transparent != true -%}
 			{%- capture color_swatch -%}
 				{%- capture color_name -%}{{ section.id }}-{{ product.id }}{%- endcapture -%}

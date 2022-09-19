@@ -17,13 +17,13 @@
 {%- endunless -%}
 
 {% assign pageType = request.page_type | json %}
-{% if pageType contains "index" or pageType contains "collection" or pageType contains "search" %}
+{%- if pageType contains "index" or pageType contains "collection" or pageType contains "search" -%}
 {% assign background  = "#000000" %}
-{%elsif pageType contains "product" or pageType contains "cart"%}
+{%-elsif pageType contains "product" or pageType contains "cart"-%}
 {% assign background  = "#ffffff" %}
-{% else %}
+{%- else -%}
 {% assign background  =  "#edece6"%}
-{% endif %}
+{%- endif -%}
 
 
 
@@ -46,6 +46,10 @@
   {{ text_font_bold_italic | font_face: font_display: 'swap' }}
 
   :root {
+  {% if settings.show_activity_tag %}
+--gradient-color-start: {{settings.gradient_color_start}}; 
+--gradient-color-end: {{settings.gradient_color_end}};
+{% endif %}
     --default-text-font-size : 15px;
     --base-text-font-size    : {{ settings.base_text_font_size }}px;
     --heading-font-family    : {{ settings.heading_font.family }}, {{ settings.heading_font.fallback_families }};

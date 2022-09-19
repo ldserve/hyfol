@@ -177,13 +177,13 @@
 						</button>
 					{%- endif -%}
 
-					<!-- {%- if template != 'product.quick-view' and section.settings.enable_image_zoom -%}
+			{%- comment -%}{%- if template != 'product.quick-view' and section.settings.enable_image_zoom -%}
             <span class="product-gallery__zoom-notice">
               {% render 'icon', icon: 'zoom' %}
               <span class="hidden-pocket">{{ 'product.general.zoom' | t }}</span>
               <span class="hidden-lap-and-up">{{ 'product.general.zoom_mobile' | t }}</span>
             </span>
-          {%- endif -%} -->
+          {%- endif -%} {%- endcomment -%} 
 				</div>
 
 				{%- if section.settings.enable_image_zoom -%}
@@ -221,6 +221,8 @@
 						</div>
 					</div>
 				{%- endif -%}
+				{%- comment -%}活动标签{%- endcomment -%}
+				{% render "activity-tag" %}
 			</div>
 		</div>
 

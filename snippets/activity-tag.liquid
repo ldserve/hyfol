@@ -1,0 +1,29 @@
+{%- assign custom = false -%}
+
+			{% for tag in product.tags %}
+				{%- if tag contains 'CustomPromotion' -%}
+				{%- assign custom = true -%}
+				{%- assign text = tag | split: '-' -%}
+				{%- assign custom_tag =  text[1] | strip -%}
+				{%- endif -%}
+			{% endfor %}
+				
+			{%- assign custome_tags = settings.custome_tag_ui | strip_html | split: ',' -%}
+			{%- for cus_tag in custome_tags -%}
+				{%- assign tag_arr = cus_tag | split: ':' -%}
+				{%- assign tag_heading = tag_arr[0] | strip-%}
+
+				{%- if tag_heading contains custom_tag -%}
+					{%- assign color_list = tag_arr[1] | split: '&' -%}
+					{%- capture gradient_colors -%}--gradient-color-start: {{color_list[0]}}; --gradient-color-end: {{color_list[1]}};{%- endcapture -%}
+				{%- endif -%}
+			{%- endfor -%}
+			<!-- --gradient-color-start: #01cef0; --gradient-color-end: #cced8e; -->
+			{%- if custom -%}
+			<div class="activity-tag-ui activity-tag-ui-right  activity-ui-fade-in {%if settings.tag_layout=='bookmark'%}activity-label{%endif%}"
+			style="{{gradient_colors}} opacity: 1; height: auto;">
+			<div class="activity-ui-text">
+				<div class="activity-ui-text_msg">{{custom_tag}}</div>
+			</div></div>
+			{%- endif -%}
+			
