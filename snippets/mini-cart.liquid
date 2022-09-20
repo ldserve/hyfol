@@ -1,5 +1,21 @@
+<!-- <div class="mask"></div> -->
+<style>
+.mini-cart-heading{
+  position: relative;
+  padding: 2rem 0.6rem 0;
+}
+  .mini-cart-close{
+    position: absolute;
+    right: 10%;
+    width: 2rem;
+    height: 2rem;
+    cursor: pointer;
+  }
+</style>
+
 <form method="post" action="{{ routes.cart_url }}" id="mini-cart" class="mini-cart" aria-hidden="true"
   novalidate="novalidate" data-item-count="{{ cart.item_count }}">
+  <div class="h4 mini-cart-heading">CART <button class="mini-cart-close">{%- render 'icon', icon: 'close' -%}</button></div>
   {% assign cartNum = cart.item_count %}
   <input type="hidden" name="attributes[collection_products_per_page]" value="">
   <input type="hidden" name="attributes[collection_layout]" value="">
@@ -180,6 +196,7 @@
                 <span class="mini-cart_variant_title">{{ line_item.variant.title }}</span>
                 <span class='booster-cart-item-success-notes' data-key='{{line_item.key}}'></span><span
                 class='booster-cart-item-upsell-notes' data-key='{{line_item.key}}'></span></a>
+               
                 {%- comment -%}显示活动标签 start{%- endcomment -%}
                 {% assign show_tag = false %}
                 {%- for tag in line_item.product.tags -%}
@@ -460,6 +477,7 @@
       {%- endif -%}
       {%- endfor -%}
       {%- endcomment -%}
+
       {%- if total_discount > 0  or line_total_discount >= 0 -%}
       {%- capture amount_saved -%}<span>{{ total_discount | money }}</span>{%- endcapture -%}
       {%- if line_total_discount >= 0 -%}
@@ -487,7 +505,9 @@
 
       <div class="mini-cart__button-container">
         <div class="button-group button-group--loose button-group--fit">
+          {%- comment -%}
           <a href="{{ routes.cart_url }}" class="button button--secondary">{{ 'cart.general.view_cart' | t }}</a>
+          {%- endcomment -%}
           {%- if settings.cart_show_checkout_button -%}
           <button type="submit" name="checkout" class="button button--primary" data-scenable="1" data-sctype="Checkout"
             data-scsession='{"entrance":"MiniCartPage"}'>{{ 'cart.general.checkout' | t }}</button>

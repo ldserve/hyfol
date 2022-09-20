@@ -2420,18 +2420,21 @@
             value: function destroy() {
                 this.delegateElement.off();
                 this.delegateRoot.off();
-                window.removeEventListener('resize', this._calculateMiniCartHeightListener);
+                // window.removeEventListener('resize', this._calculateMiniCartHeightListener);
             }
         }, {
             key: "_attachListeners",
             value: function _attachListeners() {
-                this._calculateMiniCartHeightListener = this._calculateMiniCartHeight.bind(this);
+                // this._calculateMiniCartHeightListener = this._calculateMiniCartHeight.bind(this);
 
                 if (window.theme.pageType !== 'cart' && window.theme.cartType !== 'page') {
                     this.delegateElement.on('click', '[data-action="toggle-mini-cart"]', this._toggleMiniCart.bind(this));
+                    this.delegateElement.on('click', '.mini-cart-close', this._toggleMiniCart.bind(this));
                     this.delegateElement.on('keyup', this._checkMiniCartClose.bind(this));
                     this.delegateRoot.on('click', this._onWindowClick.bind(this));
-                    window.addEventListener('resize', this._calculateMiniCartHeightListener);
+                    // window.addEventListener('resize', this._calculateMiniCartHeightListener);
+                    this.delegateRoot.on('touchstart', this._onTouch.bind(this));
+                    this.delegateRoot.on('touchend', this._onTouch.bind(this));
                 }
 
                 this.delegateRoot.on('click', '[data-action="decrease-quantity"]', this._updateQuantity.bind(this));
@@ -2461,24 +2464,56 @@
                 if (document.querySelector('.product-form__payment-container') && document.body.clientWidth <= 640) {
                     document.querySelector('.product-form__payment-container').style.display = "none"
                 }
-
+                !this.cartMask&&(this.cartMask=document.querySelector('.mini-cart-mask'))
                 this.miniCartToggleElement.setAttribute('aria-expanded', 'true'); // If we are on mobile phone we also set the aria-expanded attribute to true on the icon state holder
-
+                this.cartMask.classList.remove('d-none')
                 if (Responsive.getCurrentBreakpoint() === 'phone') {
                     this.miniCartToggleElement.querySelector('.header__cart-icon').setAttribute('aria-expanded', 'true');
                 } // Finally also set aria-hidden to false on controlled element
 
-
                 this.miniCartElement.setAttribute('aria-hidden', 'false');
                 this.isMiniCartOpen = true;
+                this.miniCartElement.style.transform='translateX(0%)'
 
-                this._calculateMiniCartHeight(); // Trap the focus
-
+                // this._calculateMiniCartHeight(); // Trap the focus
 
                 Accessibility.trapFocus(this.miniCartElement, 'mini-cart');
-                document.body.classList.add('no-mobile-scroll');
+                // document.body.classList.add('no-mobile-scroll');
+                document.documentElement.classList.add('is-locked');
             }
         }, {
+            key:'_onTouch',
+            value: function _onTouchMove(event) {
+                var type = event.type
+                var touchObj = event.changedTouches[0]
+                var availWidth = window.screen.availWidth
+                var pageX = touchObj.pageX
+                var path = event.path
+
+                if (type == "touchstart") {
+                    // var isContais
+                    // for (let i = 0; i < path.length; i++) {
+                    //     if (path[i] == this.miniCartToggleElement) isContais = true
+                    // }
+                    // if (!isContais) {
+                    //     return
+                    // }
+                    this.touchStart = pageX
+                }
+
+                if (!this.touchStart) return;
+                var pageMove = (((pageX - this.touchStart) / availWidth) * 100).toFixed(1)
+
+                if (type == 'touchend') {
+                    var touchEnd = touchObj.pageX
+                    if (pageMove >= 50) {
+                        this._closeMiniCart()
+                    }
+                    this.touchStart = 0
+                }
+            }
+        },
+            {
             key: "_closeMiniCart",
             value: function _closeMiniCart() {
                 if (document.querySelector('.product-form__payment-container') && document.body.clientWidth <= 640) {
@@ -2488,13 +2523,19 @@
 
                 if (Responsive.getCurrentBreakpoint() === 'phone') {
                     this.miniCartToggleElement.querySelector('.header__cart-icon').setAttribute('aria-expanded', 'false');
-                    this.miniCartElement.style.maxHeight = '';
+                    // this.miniCartElement.style.maxHeight = '';
                 } // Finally also set aria-hidden to false on controlled element
 
-                this.miniCartElement.setAttribute('aria-hidden', 'true');
-                this.isMiniCartOpen = false;
-                document.body.classList.remove('no-mobile-scroll');
-                Accessibility.removeTrapFocus(this.miniCartElement, 'mini-cart');
+                this.miniCartElement.style.transform='translateX(100%)'
+                setTimeout(()=>{
+                    this.miniCartElement.setAttribute('aria-hidden', 'true');
+                    this.isMiniCartOpen = false;
+                    // document.body.classList.remove('no-mobile-scroll');
+                    document.documentElement.classList.remove('is-locked');
+                    this.cartMask.classList.add('d-none')
+                    Accessibility.removeTrapFocus(this.miniCartElement, 'mini-cart');
+                },300)
+
             }
         }, {
             key: "_checkMiniCartClose",
@@ -2661,7 +2702,7 @@
 
                                 _this2._checkMiniCartScrollability();
 
-                                _this2._calculateMiniCartHeight();
+                                // _this2._calculateMiniCartHeight();
 
                                 _this2.element.dispatchEvent(new CustomEvent('cart:rerendered'));
                             } else {
