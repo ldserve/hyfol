@@ -3656,10 +3656,13 @@ scrollbar-width: none; /* firefox */
 }
 
 @media screen and (min-width: 641px) {
-  .mini-cart {
+  .mini-cart-section{
+    width: 470px;
     left: auto;
     right: 0;
-    width: 470px;
+
+  }
+  .mini-cart {
     border-radius: 3px;
     box-shadow: 0 1px 5px 2px rgba(0, 0, 0, 0.1);
   }

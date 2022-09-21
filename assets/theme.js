@@ -2402,6 +2402,7 @@
             }
 
             this.miniCartElement = this.element.querySelector('.mini-cart');
+            this.miniCartSection = this.element.querySelector('.mini-cart-section');
             this.isMiniCartOpen = false;
 
             if (window.theme.pageType !== 'cart' && this.miniCartElement) {
