@@ -2,14 +2,23 @@
 <style>
 .mini-cart-heading{
   position: relative;
-  padding: 2rem 0.6rem 0;
+  padding: 0.2rem 0.6rem 0;
+  font-weight: 600;
+  font-size: 1rem;
 }
+
   .mini-cart-close{
     position: absolute;
     right: 10%;
-    width: 2rem;
-    height: 2rem;
+    width: 2.6rem;
+    height: 2.6rem;
     cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 3rem;
+    background: #e3e3e3;
+    top: 0;
   }
 
 .mini-cart-section{
@@ -17,17 +26,51 @@
   top: 0;
   right: 0;
   z-index: 99;
+  height: 100vh;
+  background: var(--secondary-background);
+  color: var(--text-color);
+
+  transform: translateX(100%);
+  will-change: transform;
+  overflow-y: auto;
+  transition: transform 0.3s linear;
+  visibility: hidden;
+  opacity: 0;
+
+}
+
+.mini-cart-section[aria-hidden=false] {
+  visibility: visible;
+  opacity: 1;
+  transform: translateX(0%);
+}
+
+@media screen and (max-width: 640px){
+  .mini-cart-section{
+    width: 92%;
+  }
 }
 .mini-cart-recommendations{
 
 }
+.mini-cart-product_list{
+  flex-wrap: wrap;
+}
+.mini-cart-product_list>.product-item{
+width: 50%;
+}
+
+.mini-cart-section::-webkit-scrollbar {
+  width: 2px;    
+}
 </style>
 
 
-<section class="mini-cart-section">
+<section class="mini-cart-section" aria-hidden="true" novalidate="novalidate" data-item-count="{{ cart.item_count }}">
+
   <form method="post" action="{{ routes.cart_url }}" id="mini-cart" class="mini-cart" aria-hidden="true"
     novalidate="novalidate" data-item-count="{{ cart.item_count }}">
-    <div class="h4 mini-cart-heading">CART <button class="mini-cart-close">{%- render 'icon', icon: 'close' -%}</button></div>
+    <div class="h4 mini-cart-heading">SHOPPING CART <button class="mini-cart-close">{%- render 'icon', icon: 'close' -%}</button></div>
     {% assign cartNum = cart.item_count %}
     <input type="hidden" name="attributes[collection_products_per_page]" value="">
     <input type="hidden" name="attributes[collection_layout]" value="">
@@ -100,14 +143,17 @@
             {%- assign itemstr = str | split: ' ' -%}
             {% assign order_price = itemstr[1] |times:100%}
             {% assign minus_monry = itemstr[3] |times:100%}
-            {% assign code_text = itemstr[4] %}
+            {% assign code_text = itemstr[4] | strip %}
             {% if cart.total_price < order_price %}
             {% break %}
             {% endif %}
             {%- endfor -%}
+
             {% if cart.total_price < order_price %}
+
             <span class="d-block step-discount" data-action="{{order_price}},{{minus_monry}},{{cart.total_price | minus: order_price | abs}}">
-              {%- render 'icon',icon:'discount' -%}Spend <span class='wh-original-price  mini-car-font'>{{cart.total_price | minus: order_price | abs|money}}</span> more and <span class="text-prominent">get {{minus_monry |money}} off！ {{code_text}}</span></span>
+              {%- render 'icon',icon:'discount' -%}Spend <span class='wh-original-price  mini-car-font'>{{cart.total_price | minus: order_price | abs | round  | money_without_trailing_zeros }}</span> more & <span class="text-prominent">get {{minus_monry | money_without_trailing_zeros}} off！ {{code_text}}</span></span>
+
             {% endif %}
           {% endif %}
           </div>
@@ -228,6 +274,11 @@
                     {% endif %}
                   {% endfor %}
                   {%- if show_tag -%}
+                  {%- if sale_text_on_detail == "Buy 1 get 2nd 50% OFF" -%}
+                    {%- assign sale_text_on_detail = '2ND 50% OFF' -%}
+                  {%- elsif sale_text_on_detail == "Buy 4 Get EXTRA 20% Off" -%}
+                  {%- assign sale_text_on_detail = '4 FOR 20% OFF' -%}
+                  {%- endif -%}
                   <div>
                     <a class="product-line-item_tag  link mini-cart-line-item_tag" {%if CustomPromotionUrItemUrl!=blank%}href="{{CustomPromotionUrItemUrl}}"{%endif%}>
                       <span class="cart-line-item_variant--title ">{{ sale_text_on_detail }}</span>
@@ -562,17 +613,31 @@
   </form>
   {%- comment -%}
   {%- endcomment -%}
-  <section class="section mini-cart-recommendations" data-section-id="{{ section.id }}" data-section-type="mini-cart-recommendations" >
-    <div class="container">
+
+  {%- assign use_recommendations = false -%}
+
+
+{%- capture section_settings -%}
+{
+  "stackable": true,
+  "layout": "horizontal",
+  "productId": {{ product.id | json }},
+  "useRecommendations": {{ use_recommendations | json }},
+  "recommendationsCount": 10
+}
+{%- endcapture -%}
+
+  <section class="section mini-cart-recommendations" data-section-id="{{ section.id }}" data-section-type="product-recommendations" data-section-settings='{{ section_settings }}' >
+    <div class="recommendations__container">
         <header class="section__header">
-          <h2  class="section__title heading h3 font_16">You May Also Like</h2>
+          <h2  class=" heading h4 font_16">You May Also Like</h2>
         </header>
       <div class="product-recommendations pb-80">
           <div class="scroller">
             <div class="scroller__inner">
-              <div class="product-list product-list--vertical product-list--scrollable">
+              <div class="product-list product-list--vertical product-list--scrollable mini-cart-product_list">
   
-                  {%- for product in collections['custompromotion-buy-4-get-20-off'].products -%}
+                  {%- for product in collections['custompromotion-buy-4-get-20-off'].products limit: 20 -%}
                     {%- render 'product-item', product: product,forloop:forloop,first_mkt_name:'You may also like' -%}
                   {%- endfor -%}
               </div>
