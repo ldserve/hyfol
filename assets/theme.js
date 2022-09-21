@@ -2402,6 +2402,7 @@
             }
 
             this.miniCartElement = this.element.querySelector('.mini-cart');
+            this.miniCartSection = this.element.querySelector('.mini-cart-section');
             this.isMiniCartOpen = false;
 
             if (window.theme.pageType !== 'cart' && this.miniCartElement) {
@@ -2436,7 +2437,7 @@
                     this.delegateRoot.on('touchstart', this._onTouch.bind(this));
                     this.delegateRoot.on('touchend', this._onTouch.bind(this));
                 }
-
+                
                 this.delegateRoot.on('click', '[data-action="decrease-quantity"]', this._updateQuantity.bind(this));
                 this.delegateRoot.on('click', '[data-action="increase-quantity"]', this._updateQuantity.bind(this));
                 this.delegateRoot.on('change', '.quantity-selector:not(.quantity-selector--product) .quantity-selector__value', this._updateQuantity.bind(this));
@@ -2471,14 +2472,13 @@
                     this.miniCartToggleElement.querySelector('.header__cart-icon').setAttribute('aria-expanded', 'true');
                 } // Finally also set aria-hidden to false on controlled element
 
-                this.miniCartElement.setAttribute('aria-hidden', 'false');
+                this.miniCartSection.setAttribute('aria-hidden', 'false');
                 this.isMiniCartOpen = true;
-                this.miniCartElement.style.transform='translateX(0%)'
+                this.miniCartSection.style.transform='translateX(0%)'
 
                 // this._calculateMiniCartHeight(); // Trap the focus
 
-                Accessibility.trapFocus(this.miniCartElement, 'mini-cart');
-                // document.body.classList.add('no-mobile-scroll');
+                Accessibility.trapFocus(this.miniCartSection, 'mini-cart');     
                 document.documentElement.classList.add('is-locked');
             }
         }, {
@@ -2491,13 +2491,6 @@
                 var path = event.path
 
                 if (type == "touchstart") {
-                    // var isContais
-                    // for (let i = 0; i < path.length; i++) {
-                    //     if (path[i] == this.miniCartToggleElement) isContais = true
-                    // }
-                    // if (!isContais) {
-                    //     return
-                    // }
                     this.touchStart = pageX
                 }
 
@@ -2506,7 +2499,7 @@
 
                 if (type == 'touchend') {
                     var touchEnd = touchObj.pageX
-                    if (pageMove >= 50) {
+                    if (pageMove >= 35) {
                         this._closeMiniCart()
                     }
                     this.touchStart = 0
@@ -2523,17 +2516,19 @@
 
                 if (Responsive.getCurrentBreakpoint() === 'phone') {
                     this.miniCartToggleElement.querySelector('.header__cart-icon').setAttribute('aria-expanded', 'false');
-                    // this.miniCartElement.style.maxHeight = '';
+                   
                 } // Finally also set aria-hidden to false on controlled element
 
-                this.miniCartElement.style.transform='translateX(100%)'
+                this.miniCartSection.style.transform='translateX(100%)'
                 setTimeout(()=>{
-                    this.miniCartElement.setAttribute('aria-hidden', 'true');
+                    
+                    this.miniCartSection.setAttribute('aria-hidden', 'true');
                     this.isMiniCartOpen = false;
-                    // document.body.classList.remove('no-mobile-scroll');
+
+                  
                     document.documentElement.classList.remove('is-locked');
                     this.cartMask.classList.add('d-none')
-                    Accessibility.removeTrapFocus(this.miniCartElement, 'mini-cart');
+                    Accessibility.removeTrapFocus(this.miniCartSection, 'mini-cart');
                 },300)
 
             }

@@ -3206,47 +3206,75 @@ img.lazyload[data-sizes=auto] {
  * --------------------------------------------------------------------
  */
 
-
 .mini-cart {
+  position: relative;
+  width: 100%;
+  height: auto;
+ 
+}
+
+.mini-cart-heading{
+  position: relative;
+  padding: 0.2rem 0.6rem 0;
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+  .mini-cart-close{
+    position: absolute;
+    right: 10%;
+    width: 2.6rem;
+    height: 2.6rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 3rem;
+    background: #e3e3e3;
+    top: 0;
+  }
+
+.mini-cart-section{
   position: fixed;
-  width: 94vw;
-  height: 100vh;
-  right: 0;
   top: 0;
-  /* max-height: 0; */
-  /* This is needed to fix a bug on iOS, DO NOT REMOVE */
+  right: 0;
+  z-index: 99;
+  height: 100vh;
   background: var(--secondary-background);
   color: var(--text-color);
-  z-index: 1;
 
-  /* transform: scale(0.9); */
-  /* transition: opacity 0.25s ease-in-out, transform 0.25s ease-in-out, visibility 0.25s ease-in-out, max-height 0s linear 0.25s; */
   transform: translateX(100%);
   will-change: transform;
   overflow-y: auto;
   transition: transform 0.3s linear;
   visibility: hidden;
   opacity: 0;
+
 }
 
-.mini-cart::-webkit-scrollbar {
-  width: 0px;    
-}
-
-/* .mini-cart[aria-hidden=true] {
-  transform: translateX(100%);
-  transition: transform 0.3s linear;
-  visibility: hidden;
-  opacity: 0;
-} */
-
-.mini-cart[aria-hidden=false] {
+.mini-cart-section[aria-hidden=false] {
   visibility: visible;
   opacity: 1;
-  /* transform: scale(1); */
   transform: translateX(0%);
-  /* transition: opacity 0.4s cubic-bezier(0, 1, 0.4, 1), transform 0.4s cubic-bezier(0.18, 1.25, 0.4, 1), visibility 0.4s linear; */
-  /* transition: transform 0.3s linear; */
+}
+
+@media screen and (max-width: 640px){
+  .mini-cart-section{
+    width: 92%;
+  }
+}
+.mini-cart-recommendations{
+
+}
+.mini-cart-product_list{
+  flex-wrap: wrap;
+}
+.mini-cart-product_list>.product-item{
+width: 50%;
+}
+
+.mini-cart-section::-webkit-scrollbar {
+  width: 2px;    
 }
 
 .mini-cart .icon--nav-triangle-borderless {
@@ -3290,8 +3318,6 @@ img.lazyload[data-sizes=auto] {
 .mini-cart__line-item-list {
   overflow: auto;
   -webkit-overflow-scrolling: touch;
-  -ms-scroll-chaining: none;
-  overscroll-behavior: none;
 }
 
 .mini-cart__line-item {
@@ -3554,7 +3580,7 @@ display: none;
 
 .mini-cart__recap {
   /*   padding: 15px 20px 20px 20px; */
-  padding: 5px 10px 1rem;
+  padding: 5px 10px 0rem;
   border-top: 1px solid var(--border-color);
 }
 
@@ -3656,10 +3682,13 @@ scrollbar-width: none; /* firefox */
 }
 
 @media screen and (min-width: 641px) {
-  .mini-cart {
+  .mini-cart-section{
+    width: 470px;
     left: auto;
     right: 0;
-    width: 470px;
+
+  }
+  .mini-cart {
     border-radius: 3px;
     box-shadow: 0 1px 5px 2px rgba(0, 0, 0, 0.1);
   }
