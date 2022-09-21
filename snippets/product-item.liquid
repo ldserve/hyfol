@@ -23,6 +23,7 @@
 				{%- endif -%}
 			{%- endfor -%}
 
+			{%- comment -%}discount LABEL {%- endcomment -%}
 			{%- if settings.show_discount and product.price < product.compare_at_price -%}
 				{%- if settings.discount_mode == 'percentage' -%}
 					{%- assign savings = product.compare_at_price | minus: product.price | times: 100.0 | divided_by: product.compare_at_price | round | append: '%' -%}

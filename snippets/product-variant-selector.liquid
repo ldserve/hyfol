@@ -117,6 +117,10 @@
       </ul>
     </div>
   {%- endif -%}
+  
+    {%- comment -%}----------------活动标签---------------{%- endcomment -%}
+			{% render "activity-tag", class_name:"desktop-tag_img" , show_img_tag:true %}
+
 
     {% if block.settings.show_promotion %}
 		<div class="product-discount">

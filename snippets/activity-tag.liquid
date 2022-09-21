@@ -51,14 +51,14 @@
 			{% endfor %}
 
 				<a class="custom-activity-tag {{class_name}}" style="position: relative;" href="{{CustomPromotionUrItemUrl}}">
-					<img class="activity-background-img" src="https://cdn.shopify.com/s/files/1/0595/0691/7535/files/1b8e4b9dcaf3cf40c5a151ed9a65c9bf.jpg?v=1663729512" alt="">
+					<img class="activity-background-img" src="https://cdn.shopify.com/s/files/1/0595/0691/7535/files/1b8e4b9dcaf3cf40c5a151ed9a65c9bf_e66ef695-324e-4a2b-a0a9-f2984eda75c8.jpg?v=1663755768" alt="">
 					<div class="activity-text" >{{custom_tag}}</div>
 				</a>
 
 		{%- elsif tag_url != blank  -%}
 		{%- comment -%}透明背景活动TAG{%- endcomment -%}
 
-			<div class="activity-img-ui" >
+			<div class="activity-img-ui {{class_name}}" >
 				<img src="{{tag_url}}" alt="">
 				</div>
 
@@ -87,7 +87,7 @@
 			{%- endif -%}
 		{%- endif -%}
 
-		<div class="activity-tag-ui activity-tag-ui-right  activity-ui-fade-in {%if settings.tag_layout=='bookmark'%}activity-label{%endif%}"
+		<div class="activity-tag-ui activity-tag-ui-right  activity-ui-fade-in {%if settings.tag_layout=='bookmark'%}activity-label{%endif%} {{class_name}}"
 			style="{{gradient_colors}} opacity: 1; height: auto;" >
 			<div class="activity-ui-text">
 				<div class="activity-ui-text_msg">{{custom_tag}}</div>
