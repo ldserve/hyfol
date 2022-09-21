@@ -553,7 +553,7 @@
   "layout": "horizontal",
   "productId": {{ product.id | json }},
   "useRecommendations": "false",
-  "recommendationsCount": 20
+  "recommendationsCount": 10
 }
 {%- endcapture -%}
 
@@ -565,7 +565,7 @@
       <div class="product-recommendations pb-80">
           <div class="scroller">
             <div class="scroller__inner">
-              <div class="product-list product-list--vertical product-list--scrollable mini-cart-product_list">
+              <div class="product-list product-list--vertical product-list--scrollable mini-cart-product_list" style="flex-wrap: wrap;">
   
                   {%- for product in collections['custompromotion-buy-4-get-20-off'].products limit: 20 -%}
                     {%- render 'product-item', product: product,forloop:forloop,first_mkt_name:'You may also like' -%}

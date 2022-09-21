@@ -3242,7 +3242,6 @@ img.lazyload[data-sizes=auto] {
   height: 100vh;
   background: var(--secondary-background);
   color: var(--text-color);
-
   transform: translateX(100%);
   will-change: transform;
   overflow-y: auto;
@@ -3263,12 +3262,7 @@ img.lazyload[data-sizes=auto] {
     width: 92%;
   }
 }
-.mini-cart-recommendations{
 
-}
-.mini-cart-product_list{
-  flex-wrap: wrap;
-}
 .mini-cart-product_list>.product-item{
 width: 50%;
 }
