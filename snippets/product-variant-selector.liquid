@@ -117,6 +117,10 @@
       </ul>
     </div>
   {%- endif -%}
+  
+    {%- comment -%}----------------活动标签---------------{%- endcomment -%}
+			{% render "activity-tag", class_name:"desktop-tag_img" , show_img_tag:true %}
+
 
     {% if block.settings.show_promotion %}
 		<div class="product-discount">
@@ -127,15 +131,6 @@
 		</div>
 	{% endif %}
 
-  {% if block.settings.show_discount_image%}
-  {% if block.settings.discount_image !=blank %}
-  {%- capture supported_sizes -%}{%- render 'image-size', sizes: '300,400,500,600,700,800,900,1000,1100,1200,1300,1400,1500,1600,1700,1800,1900,2000', image: section.settings.image -%}{%- endcapture -%}
-  {%- assign image_url = block.settings.discount_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
-      <div>
-        <img data-src="{{ image_url }}" data-widths="[{{ supported_sizes }}]" data-sizes="auto" alt="" class="lazyload" style="width: 100%">
-      </div>
-  {% endif %}
-  {% endif %}
     <div class="product-form__price-info" style="display: {% if selected_variant.unit_price_measurement %}block{% else %}none{% endif %}">
       <div class="unit-price-measurement">
         <span class="unit-price-measurement__price">{{ selected_variant.unit_price | money }}</span>
@@ -433,3 +428,14 @@
     {%- endif -%}
   {%- endif -%}
 </div>
+
+{%- comment -%}---------discount 图片-----------{%- endcomment -%}
+{% if block.settings.show_discount_image%}
+{% if block.settings.discount_image !=blank %}
+{%- capture supported_sizes -%}{%- render 'image-size', sizes: '300,400,500,600,700,800,900,1000,1100,1200,1300,1400,1500,1600,1700,1800,1900,2000', image: section.settings.image -%}{%- endcapture -%}
+{%- assign image_url = block.settings.discount_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+    <div class="product-discount-img">
+      <img data-src="{{ image_url }}" data-widths="[{{ supported_sizes }}]" data-sizes="auto" alt="" class="lazyload" style="width: 100%">
+    </div>
+{% endif %}
+{% endif %}
