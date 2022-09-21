@@ -54,6 +54,9 @@
                             <img src="{{ primary_media | img_url: '600x' }}" alt="{{ primary_media.alt | escape }}">
                         </noscript>
                     </div>
+
+                    {%- comment -%}活动 tag {%- endcomment -%}
+                    {%- render 'activity-tag'  -%}
                 </a>
             </div>
             <div class="exhibition-right">
@@ -92,31 +95,8 @@
                         </span>
                         {%- endif -%}
                     </div>
-                {%- comment -%}显示活动标签 start{%- endcomment -%}
-                {% assign show_tag = false %}
-                {%- for tag in product.tags -%}
-                {%- if tag contains 'CustomPromotion' -%}
-                {%- assign show_tag = true -%}
-                {%- assign text = tag | split: '-' -%}
-                {%- assign sale_text_on_detail = text[1] -%}
-                {%- endif -%}
-                {%- endfor -%}
-                {% assign CustomPromotionUrlList = settings.CustomPromotionUrl | strip_html | split : ',' %}
-                {% for CustomPromotionUrItem in CustomPromotionUrlList %}
-                  {% assign CustomPromotionUrItemAll = CustomPromotionUrItem | split : '=' %}
-                  {% assign CustomPromotionUrItemName = CustomPromotionUrItemAll[0] | strip %}
-                  {% if CustomPromotionUrItemName == sale_text_on_detail %}
-                    {% assign CustomPromotionUrItemUrl = CustomPromotionUrItemAll[1] %}
-                    {%- break -%}
-                  {% endif %}
-                {% endfor %}
-                {%- if show_tag -%}
-                  <a class="product-line-item_tag link mini-cart-line-item_tag purchace-item_tag" {%if CustomPromotionUrItemUrl!=blank%}href="{{CustomPromotionUrItemUrl}}"{%endif%}>
-                    <span class="cart-line-item_variant--title ">{{ sale_text_on_detail }}</span>
-                  {%-	render 'icon',icon:'solid-arrow-right' -%}
-                  </a>
-                {%- endif -%}
-                {%- comment -%}END{%- endcomment -%}
+
+
                 </div>
 
                 <div class="product-form__variants ">

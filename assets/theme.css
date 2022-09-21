@@ -1210,6 +1210,7 @@ html {
 }
 .product-collocation{
   height:336px;
+  margin-top: 2rem;
 }
 
 .mini-cart__collocation .product-collocation{
@@ -4818,9 +4819,14 @@ scrollbar-width: none; /* firefox */
     width: 50%;
   }
 
-  .product-item-mask .product-item__info{
-height: 55px;
+  .product-discount-img {
+    margin: 1rem 0;
   }
+
+  .product-item-mask .product-item__info {
+    height: 55px;
+  }
+
   /*.product-list--collage {*/
   /*  border-width: 1px 0;*/
   /*}*/
@@ -9601,6 +9607,12 @@ select option {
   .product-gallery__carousel {
     margin-left: calc(-1 * var(--mobile-container-gutter));
     margin-right: calc(-1 * var(--mobile-container-gutter));
+  }
+  .product-gallery__carousel-wrapper {
+    margin-bottom: 0;
+  }
+  .shenceDetail  .card__section.card__section--tight{
+    padding-top: 0;
   }
 }
 
@@ -16209,7 +16221,7 @@ justify-content: space-between;
 }
 
 
-/* 自定义活动TAG */
+/*------- 自定义活动TAG -------*/
 .activity-tag-ui {
   display: inline-block;
   width: 100%;
@@ -16280,6 +16292,25 @@ justify-content: space-between;
   background: linear-gradient(to bottom, var(--gradient-color-start), var(--gradient-color-end))
 }
 
+.custom-activity-tag{
+  position: relative;
+  display: block;
+  margin-bottom:1rem ;
+}
+.activity-text{
+  position: absolute;
+  width: 100%;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #1079ce;
+  font-weight: 700;
+}
+
 .activity-img-ui{
   position: absolute;
   top: 0;
@@ -16291,7 +16322,18 @@ justify-content: space-between;
 .product-item__image-wrapper{
   position: relative;
 }
-@media (max-width: 649px) {
+
+
+
+
+@media screen and (min-width: 650px) {
+.desktop-tag_img{
+  width: 70%;
+  margin: auto;
+}
+}
+@media screen and (max-width: 649px) {
+
   .activity-ui-text {
     font-size: 0.8rem;
   }
