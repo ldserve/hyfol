@@ -547,15 +547,12 @@
   </form>
 
 
-  {%- assign use_recommendations = false -%}
-
-
 {%- capture section_settings -%}
 {
   "stackable": true,
   "layout": "horizontal",
   "productId": {{ product.id | json }},
-  "useRecommendations": {{ use_recommendations | json }},
+  "useRecommendations": "false",
   "recommendationsCount": 20
 }
 {%- endcapture -%}
