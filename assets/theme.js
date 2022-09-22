@@ -2491,6 +2491,13 @@
                 var path = event.path
 
                 if (type == "touchstart") {
+                    var i= 0
+                    var target 
+                    while (i<=path.length) {
+                        if(path[i]==this.element)target=path[i]
+                        i++
+                    }
+                    if(!target) return;
                     this.touchStart = pageX
                 }
 
@@ -3513,13 +3520,14 @@
                             maxAllowedWidth = parseInt(Math.min(currentWidth, 200)); // A single swatch takes 30px, so let's figure out how many we can fit completely
 
                         var maxFit = Math.floor(maxAllowedWidth / 45); // Now, we add a special class to the one after "maxFit"
-
+                        if(window.screen.availWidth<=640){
+                            maxFit = Math.floor(maxAllowedWidth / 28)
+                        }
+                        
                         fastdom.mutate(function () {
                             var colorSwatches = swatchList.querySelectorAll('.color-swatch'); // For each, we reset the attributes if needed
-
                             colorSwatches.forEach(function (colorSwatch, index) {
                                 colorSwatch.classList.remove('color-swatch--view-more');
-
                                 if (maxFit === index + 1 && maxFit !== colorSwatches.length) {
                                     colorSwatch.classList.add('color-swatch--view-more');
                                 }
@@ -14278,7 +14286,6 @@
                 }
 
                 event.preventDefault(); // Prevent form to be submitted
-
                 event.stopPropagation(); // First, we switch the status of the button
 
                 target.setAttribute('disabled', 'disabled');
@@ -14387,6 +14394,131 @@
 
         return CartSection;
     }();
+
+    var MiniCartection = /*#__PURE__*/function () {
+        function MiniCartection(element) {
+            _classCallCheck(this, MiniCartection);
+
+            this.element = element;
+            this.domDelegate = new Delegate(this.element);
+            this.delegateRoot = new Delegate(document.documentElement);
+            // this.options = JSON.parse(this.element.getAttribute('data-section-settings'));
+            this.productItemColorSwatch = new ProductItemColorSwatch(this.element);
+            this._attachListeners();
+
+        }
+
+        _createClass(MiniCartection, [{
+            key: "onUnload",
+            value: function onUnload() {
+                this.productItemColorSwatch.destroy()
+                this.domDelegate.destroy();
+            }
+        }, {
+            key: "_attachListeners",
+            value: function _attachListeners() {
+                this.domDelegate.on('click', '[data-action="add-to-cart"]', this._addToCart.bind(this));
+                // this.domDelegate.on('click', '[data-action="save-note"]', this._saveNote.bind(this));
+                this.domDelegate.on('click', '[data-secondary-action="open-quick-view"]', this._openQuickView.bind(this));
+                // this.delegateRoot.on('cart:rerendered', this._onCartRerendered.bind(this));
+            }
+        }, {
+            key: "_saveNote",
+            value: function _saveNote() {
+                var noteValue = this.element.querySelector('[name="note"]').value;
+                fetch("".concat(window.routes.cartUrl, "/update.js"), {
+                    body: JSON.stringify({
+                        note: noteValue
+                    }),
+                    credentials: 'same-origin',
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-Requested-With': 'XMLHttpRequest' // This is needed as currently there is a bug in Shopify that assumes this header
+
+                    }
+                }); // Hide or show the note edit button depending on content
+
+                this.element.querySelector('.cart-recap__note-edit').classList.toggle('is-visible', noteValue !== ''); // Close the button by sending a global event
+
+                document.dispatchEvent(new CustomEvent('collapsible:toggle', {
+                    detail: {
+                        id: 'order-note'
+                    }
+                }));
+            }
+        }, {
+            key: "_addToCart",
+            value: function _addToCart(event, target) {
+                var _this = this;
+
+                if (window.theme.cartType === 'page') {
+                    return;
+                }
+
+                event.preventDefault(); // Prevent form to be submitted
+                event.stopPropagation(); // First, we switch the status of the button
+
+                target.setAttribute('disabled', 'disabled');
+                document.dispatchEvent(new CustomEvent('theme:loading:start')); // Then we add the product in Ajax
+
+                var formElement = target.closest('form[action*="/cart/add"]');
+                fetch("".concat(window.routes.cartAddUrl, ".js"), {
+                    body: JSON.stringify(Form.serialize(formElement)),
+                    credentials: 'same-origin',
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'X-Requested-With': 'XMLHttpRequest' // This is needed as currently there is a bug in Shopify that assumes this header
+
+                    }
+                }).then(function (response) {
+                    if (response.ok) {
+                        target.removeAttribute('disabled'); // We simply trigger an event so the mini-cart can re-render
+
+                        _this.element.dispatchEvent(new CustomEvent('product:added', {
+                            bubbles: true,
+                            detail: {
+                                variant: null,
+                                quantity: parseInt(formElement.querySelector('[name="quantity"]').value)
+                            }
+                        }));
+                    } else {
+                        target.removeAttribute('disabled');
+                    }
+                });
+                event.preventDefault();
+            }
+        }, {
+            key: "_openQuickView",
+            value: function _openQuickView(event, target) {
+                var modal = document.getElementById(target.getAttribute('aria-controls'));
+                modal.classList.add('is-loading');
+                fetch("".concat(target.getAttribute('data-product-url'), "?view=quick-view"), {
+                    credentials: 'same-origin',
+                    method: 'GET'
+                }).then(function (response) {
+                    response.text().then(function (content) {
+                        modal.querySelector('.modal__inner').innerHTML = content;
+                        modal.classList.remove('is-loading'); // Register a new section to power the JS
+
+                        var modalProductSection = new ProductSection(modal.querySelector('[data-section-type="product"]')); // We set a listener so we can cleanup on close
+
+                        var doCleanUp = function doCleanUp() {
+                            modalProductSection.onUnload();
+                            modal.removeEventListener('modal:closed', doCleanUp);
+                        };
+
+                        modal.addEventListener('modal:closed', doCleanUp);
+                    });
+                });
+            }
+
+        }]);
+
+        return MiniCartection;
+    }();
+
 
     var CollectionListSection = /*#__PURE__*/function () {
         function CollectionListSection(element) {
@@ -19110,6 +19242,7 @@
             sections.register('slideshow', SlideshowSection);
             sections.register('text-with-icons', TextWithIconsSection);
             sections.register('video', VideoSection);
+            sections.register('mini-cart-recommendations', MiniCartection);
             /**
              * ----------------------------------------------------------------------------
              * RTE

@@ -1,4 +1,7 @@
+
+
 {%- comment -%}Color labels used to detect what is a color swatch{%- endcomment -%}
+
 {%- assign color_label = 'color,colour,couleur,cor,colore,farbe,색,色,カラー,färg,farve,szín,barva' | split: ',' -%}
 
 <div
@@ -31,10 +34,10 @@
 					{%- capture savings -%}
 						<span>{{ product.compare_at_price | minus: product.price | money }}</span>{%- endcapture -%}
 				{%- endif -%}
-
 				<span
 					class="product-label product-label--on-sale">{{ 'collection.product.discount_html' | t: savings: savings }}</span>
 			{%- endif -%}
+
 		{%- endunless -%}
 	{%- endcapture -%}
 
@@ -103,7 +106,9 @@
 						<img src="{{ primary_media | img_url: '600x' }}" alt="{{ primary_media.alt | escape }}">
 					</noscript>
 				</div>
+
 			{%- else -%}
+			
 				{%- capture supported_sizes -%}{%- render 'image-size', sizes: '200,300,400,500,600,700,800', image: primary_media.preview_image -%}{%- endcapture -%}
 				{%- assign image_url = primary_media | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
 				<div
@@ -475,7 +480,4 @@
 		{%- endif -%}
 	</div>
 
-	<!-- **BEGIN** Hextom USB Integration // Collection Include - DO NOT MODIFY -->
-    {% render 'hextom_usb_coll', product: product %}
-    <!-- **END** Hextom USB Integration // Collection Include - DO NOT MODIFY -->
 </div>

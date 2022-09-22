@@ -2,6 +2,8 @@
 
 <section class="mini-cart-section" aria-hidden="true" novalidate="novalidate" data-item-count="{{ cart.item_count }}">
 
+
+  {%- comment -%} cart {%- endcomment -%}
   <form method="post" action="{{ routes.cart_url }}" id="mini-cart" class="mini-cart" aria-hidden="true"
     novalidate="novalidate" data-item-count="{{ cart.item_count }}">
     <div class="h4 mini-cart-heading">SHOPPING CART <button class="mini-cart-close">{%- render 'icon', icon: 'close' -%}</button></div>
@@ -546,18 +548,8 @@
     
   </form>
 
-
-{%- capture section_settings -%}
-{
-  "stackable": true,
-  "layout": "horizontal",
-  "productId": {{ product.id | json }},
-  "useRecommendations": "false",
-  "recommendationsCount": 10
-}
-{%- endcapture -%}
-
-  <section class="section mini-cart-recommendations" data-section-id="{{ section.id }}" data-section-type="product-recommendations" data-section-settings='{{ section_settings }}' >
+  {%- comment -%}You May Also Like{%- endcomment -%}
+  <section class="section mini-cart-recommendations" data-section-id="{{ section.id }}" data-section-type="mini-cart-recommendations"  >
     <div class="recommendations__container">
         <header class="section__header">
           <h2  class=" heading h4 font_16">You May Also Like</h2>
