@@ -4252,6 +4252,8 @@
                 isSelect = isSelect || ['Default Title', 'ONE SIZE','one size','default title'].indexOf(this.currentVariant.option1)!==-1 || this.currentVariant.option2 === null && ['SIZE','size','Size'].indexOf(this.productOptionsWithValues.name)!==-1
 
                 if (!isSelect) {
+                    target = this.element.querySelector('.block-swatch-list')
+                    target && target.scrollIntoView({ block: "center", behavior: "smooth", inline: "center" })
                     window.screen.availWidth < 649 && alert('Please Select Size')
                     document.querySelector('.select-size-no').classList.remove('d-none')
                     return
