@@ -1400,7 +1400,7 @@
 
         data.first_variants_id = product.variants[0].id;
         data.ratingColor = this.ratingColor;
-        data.templateId = document.querySelector('.product-item .product-item__info form').getAttribute('id').split("--")[1];
+        data.templateId = document.querySelector('.product-list--collection .product-item .product-item__info form').getAttribute('id').split("--")[1];
         for (let i = 0, max = product.options[0].values.length; i < max; i++) {
           let color = {};
           let variants = product.options[0].values[i];
