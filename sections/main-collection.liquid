@@ -1196,13 +1196,13 @@
   }
 
 
-
   ~ function () {
     // 处理布局
-    let productList = document.querySelector('.product-list')
+    let productList = document.querySelector('.product-list.product-list--collection')
+
     let clientWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
     if (clientWidth <= 640) {
-      if(document.querySelector('.product-item').className.includes("product-item--vertical") == true){
+      if(document.querySelector('.product-list.product-list--collection').className.includes("product-item--vertical") == true){
         productList.style.width = '102%'
       }
     } else {
@@ -1469,7 +1469,7 @@
             let num = arr.length - i;
           }
         }
-        document.querySelector('.product-list').prepend(fragment);
+        document.querySelector('.product-list.product-list--collection').prepend(fragment);
       }).catch(e => {
         console.log(e)
       })
