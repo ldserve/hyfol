@@ -758,7 +758,7 @@
       "settings": {
         "linkImg_title": "",
         "linkImg_content": "",
-        "hidDesk": false,
+        "hidDesk": true,
         "sensorsName": "",
         "hidWeb": false,
         "line": false,
