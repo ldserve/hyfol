@@ -14496,14 +14496,15 @@
             value: function _openQuickView(event, target) {
                 var modal = document.getElementById(target.getAttribute('aria-controls'));
                 modal.classList.add('is-loading');
+                modal.setAttribute('aria-hidden',false)
                 fetch("".concat(target.getAttribute('data-product-url'), "?view=quick-view"), {
                     credentials: 'same-origin',
                     method: 'GET'
                 }).then(function (response) {
                     response.text().then(function (content) {
                         modal.querySelector('.modal__inner').innerHTML = content;
+                       
                         modal.classList.remove('is-loading'); // Register a new section to power the JS
-
                         var modalProductSection = new ProductSection(modal.querySelector('[data-section-type="product"]')); // We set a listener so we can cleanup on close
 
                         var doCleanUp = function doCleanUp() {

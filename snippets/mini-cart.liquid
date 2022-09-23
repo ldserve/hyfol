@@ -560,33 +560,14 @@
               <div class="product-list product-list--vertical product-list--scrollable mini-cart-product_list" style="flex-wrap: wrap;">
   
                   {%- for product in collections['custompromotion-buy-4-get-20-off'].products limit: 20 -%}
-                    {%- render 'product-item', product: product,forloop:forloop,first_mkt_name:'You may also like' -%}
+                    {%- render 'product-item', product: product,forloop:forloop,show_quick_view_button:true -%}
                   {%- endfor -%}
               </div>
             </div>
           </div>
       </div>
     </div>
-  
-    {%- comment -%}
-    --------------------------------------------------------------------------------------
-    QUICK VIEW CONTAINER
-    --------------------------------------------------------------------------------------
-    {%- endcomment -%}
-  
-    <div id="modal-quick-view-{{ section.id }}" class="modal" aria-hidden="true">
-      <div class="modal__dialog modal__dialog--stretch" role="dialog">
-        <button class="modal__close link" data-action="close-modal" title="{{ 'general.accessibility.close' | t | escape }}">
-          {%- render 'icon', icon: 'close' -%}
-        </button>
-  
-        <div class="modal__loader">
-          {%- render 'icon', icon: 'search-loader' -%}
-        </div>
-  
-        <div class="modal__inner"></div>
-      </div>
-    </div>
+ 
   </section>
   
 </section>
@@ -635,6 +616,33 @@
       sensors.track('RemoveFromCart', newData);
     }
   }
+  
+  ~function(){
+   var tempDiv= document.createElement('div')
+    var templateStr=`<div id="modal-quick-view-{{ section.id }}" class="modal" aria-hidden="true">
+      <div class="modal__dialog modal__dialog--stretch" role="dialog">
+        <button class="modal__close link" data-action="close-modal" title="{{ 'general.accessibility.close' | t | escape }}">
+          {%- render 'icon', icon: 'close' -%}
+        </button>
+        <div class="modal__loader">
+          {%- render 'icon', icon: 'search-loader' -%}
+        </div>
+        <div class="modal__inner"></div>
+      </div>
+    </div>`
+    tempDiv.innerHTML=templateStr
+    document.body.appendChild(tempDiv.lastChild)
+// fetch("".concat(target.getAttribute('data-product-url'), "?view=quick-view"), {
+//         credentials: 'same-origin',
+//       method: 'GET'
+//       }).then(function (response) {
+//         response.text().then(function (content) {
+//         modal.querySelector('.modal__inner').innerHTML = content;
+//       })
+//     })
+
+  }();
+  
 </script>
 <style>
   .car-bar-box {

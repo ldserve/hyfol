@@ -108,7 +108,7 @@
 				</div>
 
 			{%- else -%}
-			
+
 				{%- capture supported_sizes -%}{%- render 'image-size', sizes: '200,300,400,500,600,700,800', image: primary_media.preview_image -%}{%- endcapture -%}
 				{%- assign image_url = primary_media | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
 				<div
@@ -140,6 +140,7 @@
 			
 			{%- render "activity-tag",product:product -%}
 			{%- endif -%}
+
 		</a>
 	{%- endif -%}
 
@@ -480,4 +481,27 @@
 		{%- endif -%}
 	</div>
 
+				{%- comment -%}-------------快速加购图标------------{%- endcomment -%}
+				{%- if show_quick_view_button -%}
+				
+		
+				<style>
+					.mini-cart-quick_button{
+						position: absolute;
+						width: 2rem;
+						height: 2rem;
+						top: 50%;
+						right: 0;
+						z-index: 999;
+						background: #FFF;
+					}
+
+					.mini-cart-quick_button>.icon{
+						font-size: 1.6rem;
+					}
+				</style>
+				<button class="mini-cart-quick_button" 
+				data-secondary-action="open-quick-view" aria-controls="modal-quick-view-{{ section.id }}"
+				 data-product-url="{{ product.url }}">{%- render 'icon',icon:"bi-add-to-cart" -%}</button>
+				 {%- endif -%}
 </div>
