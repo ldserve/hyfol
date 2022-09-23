@@ -1,17 +1,18 @@
 
 
 <section class="mini-cart-section" aria-hidden="true" novalidate="novalidate" data-item-count="{{ cart.item_count }}">
-
+  
+  <div class="h4 mini-cart-heading">SHOPPING CART</div>
+  <button class="mini-cart-close">{%- render 'icon', icon: 'close' -%}</button>
 
   {%- comment -%} cart {%- endcomment -%}
   <form method="post" action="{{ routes.cart_url }}" id="mini-cart" class="mini-cart" aria-hidden="true"
     novalidate="novalidate" data-item-count="{{ cart.item_count }}">
-    <div class="h4 mini-cart-heading">SHOPPING CART <button class="mini-cart-close">{%- render 'icon', icon: 'close' -%}</button></div>
     {% assign cartNum = cart.item_count %}
     <input type="hidden" name="attributes[collection_products_per_page]" value="">
     <input type="hidden" name="attributes[collection_layout]" value="">
     {% assign full_reduction = settings.full_reduction  %}
-    {%- render 'icon', icon: 'nav-triangle-borderless' -%}
+    <!-- {%- render 'icon', icon: 'nav-triangle-borderless' -%} -->
   
     {%- capture shipping_alert -%}
     {%- if settings.cart_show_free_shipping_threshold -%}
@@ -552,7 +553,7 @@
   <section class="section mini-cart-recommendations" data-section-id="{{ section.id }}" data-section-type="mini-cart-recommendations"  >
     <div class="recommendations__container">
         <header class="section__header">
-          <h2  class=" heading h4 font_16">You May Also Like</h2>
+          <h2  class=" h4 font_16">You May Also Like</h2>
         </header>
       <div class="product-recommendations pb-80">
           <div class="scroller">

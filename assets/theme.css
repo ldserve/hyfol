@@ -3215,15 +3215,20 @@ img.lazyload[data-sizes=auto] {
 }
 
 .mini-cart-heading{
-  position: relative;
+  position: absolute;
+  top: 0;
+  left: 0;
+  line-height: 2.6rem;
   padding: 0.2rem 0.6rem 0;
   font-weight: 600;
   font-size: 1rem;
 }
 
   .mini-cart-close{
-    position: absolute;
-    right: 10%;
+    position: sticky;
+    right: 0;
+    left: 0;
+    margin-left: 90%;
     width: 2.6rem;
     height: 2.6rem;
     cursor: pointer;
@@ -3233,6 +3238,7 @@ img.lazyload[data-sizes=auto] {
     border-radius: 3rem;
     background: #e3e3e3;
     top: 0;
+    z-index: 999;
   }
 
 .mini-cart-section{
