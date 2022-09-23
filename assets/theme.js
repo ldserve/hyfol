@@ -2403,6 +2403,7 @@
 
             this.miniCartElement = this.element.querySelector('.mini-cart');
             this.miniCartSection = this.element.querySelector('.mini-cart-section');
+            this.miniCartQuick = document.getElementById('modal-quick-view-header')
             this.isMiniCartOpen = false;
 
             if (window.theme.pageType !== 'cart' && this.miniCartElement) {
@@ -2434,8 +2435,9 @@
                     this.delegateElement.on('keyup', this._checkMiniCartClose.bind(this));
                     this.delegateRoot.on('click', this._onWindowClick.bind(this));
                     // window.addEventListener('resize', this._calculateMiniCartHeightListener);
-                    this.delegateRoot.on('touchstart', this._onTouch.bind(this));
-                    this.delegateRoot.on('touchend', this._onTouch.bind(this));
+                    this.delegateElement.on('touchstart', this._onTouch.bind(this));
+                    this.delegateElement.on('touchend', this._onTouch.bind(this));
+         
                 }
                 
                 this.delegateRoot.on('click', '[data-action="decrease-quantity"]', this._updateQuantity.bind(this));
@@ -2489,28 +2491,30 @@
                 var availWidth = window.screen.availWidth
                 var pageX = touchObj.pageX
                 var path = event.path
-
                 if (type == "touchstart") {
-                    var i= 0
-                    var target 
-                    while (i<=path.length) {
-                        if(path[i]==this.element)target=path[i]
+                    var i = 0
+                    var target
+                    while (i <= path.length) {
+                        if (path[i] == this.element) target = path[i]
                         i++
                     }
-                    if(!target) return;
+                    if (!target) return;
                     this.touchStart = pageX
                 }
 
                 if (!this.touchStart) return;
                 var pageMove = (((pageX - this.touchStart) / availWidth) * 100).toFixed(1)
 
+
                 if (type == 'touchend') {
-                    var touchEnd = touchObj.pageX
                     if (pageMove >= 35) {
                         this._closeMiniCart()
+                    }else{
+                        this.miniCartSection.style.transform='translateX(0%)'
                     }
                     this.touchStart = 0
                 }
+                return
             }
         },
             {
@@ -2804,7 +2808,7 @@
         }, {
             key: "_onWindowClick",
             value: function _onWindowClick(event) {
-                if (this.miniCartElement && this.isMiniCartOpen && !this.element.contains(event.target)) {
+                if (this.miniCartElement && this.isMiniCartOpen && !this.element.contains(event.target) && !this.miniCartQuick.contains(event.target) ) {
                     this._closeMiniCart();
                 }
             }
@@ -14403,8 +14407,11 @@
 
             this.element = element;
             this.domDelegate = new Delegate(this.element);
-            this.delegateRoot = new Delegate(document.documentElement);
-            // this.options = JSON.parse(this.element.getAttribute('data-section-settings'));
+            this.dadelegateRoot = new Delegate(document.documentElement);
+
+            this.modal = document.getElementById(element.getAttribute('aria-controls'))
+            this.modalDelegate = new Delegate(this.modal)
+
             this.productItemColorSwatch = new ProductItemColorSwatch(this.element);
             this._attachListeners();
 
@@ -14415,55 +14422,29 @@
             value: function onUnload() {
                 this.productItemColorSwatch.destroy()
                 this.domDelegate.destroy();
+                this.modalDelegate.destroy();
             }
-        }, {
+        },{
             key: "_attachListeners",
             value: function _attachListeners() {
-                this.domDelegate.on('click', '[data-action="add-to-cart"]', this._addToCart.bind(this));
-                // this.domDelegate.on('click', '[data-action="save-note"]', this._saveNote.bind(this));
+                this.modalDelegate.on('click', this._addToCart.bind(this));
                 this.domDelegate.on('click', '[data-secondary-action="open-quick-view"]', this._openQuickView.bind(this));
-                // this.delegateRoot.on('cart:rerendered', this._onCartRerendered.bind(this));
+                this.modalDelegate.on('click', '[data-action="close-modal"]', this._closeModal.bind(this))
+                this.dadelegateRoot.on('click','',this._onWindowClick.bind(this))
+                
             }
-        }, {
-            key: "_saveNote",
-            value: function _saveNote() {
-                var noteValue = this.element.querySelector('[name="note"]').value;
-                fetch("".concat(window.routes.cartUrl, "/update.js"), {
-                    body: JSON.stringify({
-                        note: noteValue
-                    }),
-                    credentials: 'same-origin',
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'X-Requested-With': 'XMLHttpRequest' // This is needed as currently there is a bug in Shopify that assumes this header
-
-                    }
-                }); // Hide or show the note edit button depending on content
-
-                this.element.querySelector('.cart-recap__note-edit').classList.toggle('is-visible', noteValue !== ''); // Close the button by sending a global event
-
-                document.dispatchEvent(new CustomEvent('collapsible:toggle', {
-                    detail: {
-                        id: 'order-note'
-                    }
-                }));
-            }
-        }, {
+        },{
             key: "_addToCart",
             value: function _addToCart(event, target) {
                 var _this = this;
 
-                if (window.theme.cartType === 'page') {
-                    return;
-                }
-
+                console.log('addtocart');
+                console.log(target)
                 event.preventDefault(); // Prevent form to be submitted
                 event.stopPropagation(); // First, we switch the status of the button
 
                 target.setAttribute('disabled', 'disabled');
                 document.dispatchEvent(new CustomEvent('theme:loading:start')); // Then we add the product in Ajax
-
                 var formElement = target.closest('form[action*="/cart/add"]');
                 fetch("".concat(window.routes.cartAddUrl, ".js"), {
                     body: JSON.stringify(Form.serialize(formElement)),
@@ -14472,7 +14453,6 @@
                     headers: {
                         'Content-Type': 'application/json',
                         'X-Requested-With': 'XMLHttpRequest' // This is needed as currently there is a bug in Shopify that assumes this header
-
                     }
                 }).then(function (response) {
                     if (response.ok) {
@@ -14492,21 +14472,29 @@
                 event.preventDefault();
             }
         }, {
+            key: "_closeModal",
+            value: function (e, target) {
+                this.modal.setAttribute('aria-hidden', true)
+                var modalClose = new Event('modal:closed')
+                this.modal.dispatchEvent(modalClose)
+            }
+        },
+        {
             key: "_openQuickView",
             value: function _openQuickView(event, target) {
-                var modal = document.getElementById(target.getAttribute('aria-controls'));
+
+                var modal = this.modal;
                 modal.classList.add('is-loading');
-                modal.setAttribute('aria-hidden',false)
+                modal.setAttribute('aria-hidden', false)
+
                 fetch("".concat(target.getAttribute('data-product-url'), "?view=quick-view"), {
                     credentials: 'same-origin',
                     method: 'GET'
                 }).then(function (response) {
                     response.text().then(function (content) {
                         modal.querySelector('.modal__inner').innerHTML = content;
-                       
                         modal.classList.remove('is-loading'); // Register a new section to power the JS
                         var modalProductSection = new ProductSection(modal.querySelector('[data-section-type="product"]')); // We set a listener so we can cleanup on close
-
                         var doCleanUp = function doCleanUp() {
                             modalProductSection.onUnload();
                             modal.removeEventListener('modal:closed', doCleanUp);
@@ -14517,6 +14505,14 @@
                 });
             }
 
+        },{
+            key: "_onWindowClick",
+            value: function _onWindowClick(event,target) {
+       
+                if (target==this.modal){
+                this._closeModal()
+            }
+            }
         }]);
 
         return MiniCartection;

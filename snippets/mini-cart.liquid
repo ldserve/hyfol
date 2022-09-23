@@ -1,11 +1,18 @@
 
-
+<style>
+  #modal-quick-view-header .modal__dialog{
+    height: 100vh;
+  }
+  #modal-quick-view-header .size-chart-btn{
+    display: none;
+  }
+</style>
 <section class="mini-cart-section" aria-hidden="true" novalidate="novalidate" data-item-count="{{ cart.item_count }}">
   
   <div class="h4 mini-cart-heading">SHOPPING CART</div>
-  <button class="mini-cart-close">{%- render 'icon', icon: 'close' -%}</button>
+  <button class="mini-cart-close"><span class="close-line"></span></button>
 
-  {%- comment -%} cart {%- endcomment -%}
+  {%- comment -%}-------------------- cart ----------------------------{%- endcomment -%}
   <form method="post" action="{{ routes.cart_url }}" id="mini-cart" class="mini-cart" aria-hidden="true"
     novalidate="novalidate" data-item-count="{{ cart.item_count }}">
     {% assign cartNum = cart.item_count %}
@@ -550,9 +557,9 @@
   </form>
 
   {%- comment -%}You May Also Like{%- endcomment -%}
-  <section class="section mini-cart-recommendations" data-section-id="{{ section.id }}" data-section-type="mini-cart-recommendations"  >
+  <section class="section mini-cart-recommendations" data-section-id="{{ section.id }}" data-section-type="mini-cart-recommendations"  aria-controls="modal-quick-view-{{ section.id }}">
     <div class="recommendations__container">
-        <header class="section__header">
+        <header class="section__header" style="padding:0 5px ;">
           <h2  class=" h4 font_16">You May Also Like</h2>
         </header>
       <div class="product-recommendations pb-80">
@@ -560,8 +567,8 @@
             <div class="scroller__inner">
               <div class="product-list product-list--vertical product-list--scrollable mini-cart-product_list" style="flex-wrap: wrap;">
   
-                  {%- for product in collections['custompromotion-buy-4-get-20-off'].products limit: 20 -%}
-                    {%- render 'product-item', product: product,forloop:forloop,show_quick_view_button:true -%}
+                  {%- for product in collections['custompromotion-buy-4-get-20-off'].products limit: 45 -%}
+                    {%- render 'product-item', product: product,forloop:forloop,show_quick_view_button:false -%}
                   {%- endfor -%}
               </div>
             </div>
@@ -633,14 +640,6 @@
     </div>`
     tempDiv.innerHTML=templateStr
     document.body.appendChild(tempDiv.lastChild)
-// fetch("".concat(target.getAttribute('data-product-url'), "?view=quick-view"), {
-//         credentials: 'same-origin',
-//       method: 'GET'
-//       }).then(function (response) {
-//         response.text().then(function (content) {
-//         modal.querySelector('.modal__inner').innerHTML = content;
-//       })
-//     })
 
   }();
   
