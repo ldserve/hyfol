@@ -508,6 +508,254 @@
         "lpadding": 0
       }
     },
+    "166393398966f5d03e": {
+      "type": "linkImg",
+      "blocks": {
+        "1052d682-a7df-4548-8146-e85867c0ece4": {
+          "type": "link",
+          "settings": {
+            "heading": "poloshirt",
+            "sensorsLinkName": "poloshirt",
+            "link": "https:\/\/www.hyfol.com\/collections\/polo-shirts",
+            "left": 0,
+            "top": 0,
+            "width": 24,
+            "height": 56
+          }
+        },
+        "bb2ccc0f-f565-45cc-963e-97cd7e0e9a77": {
+          "type": "link",
+          "settings": {
+            "heading": "hoodies",
+            "sensorsLinkName": "hoodies",
+            "link": "https:\/\/www.hyfol.com\/collections\/hoodies-1",
+            "left": 27,
+            "top": 0,
+            "width": 23,
+            "height": 49
+          }
+        },
+        "059e58d5-1dfe-42b7-8cba-2f5430715ec4": {
+          "type": "link",
+          "settings": {
+            "heading": "raglan",
+            "sensorsLinkName": "raglan",
+            "link": "https:\/\/www.hyfol.com\/collections\/raglan-tees",
+            "left": 53,
+            "top": 0,
+            "width": 23,
+            "height": 52
+          }
+        },
+        "87f8f21f-4a8f-40f8-b638-90743353ce96": {
+          "type": "link",
+          "settings": {
+            "heading": "seeatshirts",
+            "sensorsLinkName": "seeatshirts",
+            "link": "https:\/\/www.hyfol.com\/collections\/sweatshirts-12-13",
+            "left": 77,
+            "top": 0,
+            "width": 56,
+            "height": 50
+          }
+        },
+        "20359bee-b71a-40ea-895d-66b32b730698": {
+          "type": "link",
+          "settings": {
+            "heading": "cargo",
+            "sensorsLinkName": "cargo",
+            "link": "https:\/\/www.hyfol.com\/collections\/cargo-shorts-1",
+            "left": 0,
+            "top": 57,
+            "width": 21,
+            "height": 39
+          }
+        },
+        "a8cbca28-ee67-429e-b39d-a12cf23e93b4": {
+          "type": "link",
+          "settings": {
+            "heading": "jogger",
+            "sensorsLinkName": "jogger",
+            "link": "https:\/\/www.hyfol.com\/collections\/jogger-pants",
+            "left": 25,
+            "top": 61,
+            "width": 21,
+            "height": 36
+          }
+        },
+        "14a5313b-cd54-4178-a946-315a9fdfd880": {
+          "type": "link",
+          "settings": {
+            "heading": "shoes",
+            "sensorsLinkName": "shoes",
+            "link": "https:\/\/www.hyfol.com\/collections\/shoes",
+            "left": 50,
+            "top": 56,
+            "width": 25,
+            "height": 42
+          }
+        },
+        "99fa6047-61d9-4ba8-99ad-c2f94a96c8e2": {
+          "type": "link",
+          "settings": {
+            "heading": "headwear",
+            "sensorsLinkName": "headwear",
+            "link": "https:\/\/www.hyfol.com\/collections\/cap-hat",
+            "left": 76,
+            "top": 62,
+            "width": 29,
+            "height": 43
+          }
+        }
+      },
+      "block_order": [
+        "1052d682-a7df-4548-8146-e85867c0ece4",
+        "bb2ccc0f-f565-45cc-963e-97cd7e0e9a77",
+        "059e58d5-1dfe-42b7-8cba-2f5430715ec4",
+        "87f8f21f-4a8f-40f8-b638-90743353ce96",
+        "20359bee-b71a-40ea-895d-66b32b730698",
+        "a8cbca28-ee67-429e-b39d-a12cf23e93b4",
+        "14a5313b-cd54-4178-a946-315a9fdfd880",
+        "99fa6047-61d9-4ba8-99ad-c2f94a96c8e2"
+      ],
+      "settings": {
+        "linkImg_title": "",
+        "linkImg_content": "",
+        "hidDesk": false,
+        "sensorsName": "",
+        "hidWeb": false,
+        "line": false,
+        "image": "shopify:\/\/shop_images\/07_07b8ddce-b40f-404c-9561-e6f63783b5e1.jpg",
+        "tpadding": 0,
+        "rpadding": 0,
+        "bpadding": 0,
+        "lpadding": 0
+      }
+    },
+    "1663934013a93a9889": {
+      "type": "linkImg",
+      "blocks": {
+        "a57fed2e-f643-449f-9676-b1e59bf7beab": {
+          "type": "link",
+          "settings": {
+            "heading": "poloshirt",
+            "sensorsLinkName": "poloshirt",
+            "link": "https:\/\/www.hyfol.com\/collections\/polo-shirts",
+            "left": 0,
+            "top": 0,
+            "width": 10,
+            "height": 10
+          }
+        },
+        "68d1d597-d68d-40b8-a69b-4650df6dd0e4": {
+          "type": "link",
+          "settings": {
+            "heading": "hoidies",
+            "sensorsLinkName": "hoidies",
+            "link": "https:\/\/www.hyfol.com\/collections\/hoodies-1",
+            "left": 0,
+            "top": 0,
+            "width": 10,
+            "height": 10
+          }
+        },
+        "eb0c793e-0e4f-4e5c-92bd-faf45cd233a6": {
+          "type": "link",
+          "settings": {
+            "heading": "raglan",
+            "sensorsLinkName": "raglan",
+            "link": "https:\/\/www.hyfol.com\/collections\/raglan-tees",
+            "left": 0,
+            "top": 0,
+            "width": 10,
+            "height": 10
+          }
+        },
+        "703cb61e-bb71-4d36-ae67-f8e45b7b1d0b": {
+          "type": "link",
+          "settings": {
+            "heading": "seeatshirts",
+            "sensorsLinkName": "seeatshirts",
+            "link": "https:\/\/www.hyfol.com\/collections\/sweatshirts-12-13",
+            "left": 0,
+            "top": 0,
+            "width": 10,
+            "height": 10
+          }
+        },
+        "059a10b2-d700-4489-8071-0f91413acddb": {
+          "type": "link",
+          "settings": {
+            "heading": "cargo",
+            "sensorsLinkName": "cargo",
+            "link": "https:\/\/www.hyfol.com\/collections\/cargo-shorts-1",
+            "left": 0,
+            "top": 0,
+            "width": 10,
+            "height": 10
+          }
+        },
+        "d3832b18-b464-4e71-a800-239d8c0bdf6e": {
+          "type": "link",
+          "settings": {
+            "heading": "jogger",
+            "sensorsLinkName": "jogger",
+            "link": "https:\/\/www.hyfol.com\/collections\/jogger-pants",
+            "left": 0,
+            "top": 0,
+            "width": 10,
+            "height": 10
+          }
+        },
+        "1046df33-60a7-4272-944c-7aed30dd5ef0": {
+          "type": "link",
+          "settings": {
+            "heading": "shoes",
+            "sensorsLinkName": "shoes",
+            "link": "https:\/\/www.hyfol.com\/collections\/shoes",
+            "left": 0,
+            "top": 0,
+            "width": 10,
+            "height": 10
+          }
+        },
+        "81098c5b-5074-43de-b712-fe69e9b9956b": {
+          "type": "link",
+          "settings": {
+            "heading": "headwer",
+            "sensorsLinkName": "headwer",
+            "link": "",
+            "left": 0,
+            "top": 0,
+            "width": 10,
+            "height": 10
+          }
+        }
+      },
+      "block_order": [
+        "a57fed2e-f643-449f-9676-b1e59bf7beab",
+        "68d1d597-d68d-40b8-a69b-4650df6dd0e4",
+        "eb0c793e-0e4f-4e5c-92bd-faf45cd233a6",
+        "703cb61e-bb71-4d36-ae67-f8e45b7b1d0b",
+        "059a10b2-d700-4489-8071-0f91413acddb",
+        "d3832b18-b464-4e71-a800-239d8c0bdf6e",
+        "1046df33-60a7-4272-944c-7aed30dd5ef0",
+        "81098c5b-5074-43de-b712-fe69e9b9956b"
+      ],
+      "settings": {
+        "linkImg_title": "",
+        "linkImg_content": "",
+        "hidDesk": true,
+        "sensorsName": "",
+        "hidWeb": false,
+        "line": true,
+        "image": "shopify:\/\/shop_images\/1_05_35f16fc3-3211-403a-bcbd-ab9b11e4660f.jpg",
+        "tpadding": 0,
+        "rpadding": 0,
+        "bpadding": 0,
+        "lpadding": 0
+      }
+    },
     "1651218774b7bce676": {
       "type": "transparent-collection",
       "settings": {
@@ -1128,6 +1376,8 @@
     "16585455879cf4cc45",
     "16500767332eb3ea11",
     "164742631051d4db44",
+    "166393398966f5d03e",
+    "1663934013a93a9889",
     "1651218774b7bce676",
     "1663932013ff20a453",
     "16585474086f148753",
