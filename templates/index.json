@@ -466,11 +466,11 @@
           "settings": {
             "heading": "bottom",
             "sensorsLinkName": "bottom",
-            "link": "https:\/\/www.hyfol.com\/collections\/bottoms-12-13",
-            "left": 0,
-            "top": 0,
-            "width": 0,
-            "height": 0
+            "link": "https:\/\/www.hyfol.com\/products\/sp220902vguq",
+            "left": 49,
+            "top": 58,
+            "width": 81,
+            "height": 50
           }
         },
         "596c0df9-c426-4eb0-b341-32e2a30109f3": {
@@ -479,11 +479,11 @@
           "settings": {
             "heading": "accessories",
             "sensorsLinkName": "accessories",
-            "link": "https:\/\/www.hyfol.com\/collections\/accessories-12-13",
-            "left": 50,
-            "top": 69,
-            "width": 59,
-            "height": 28
+            "link": "https:\/\/www.hyfol.com\/products\/sp220902vguq",
+            "left": 38,
+            "top": 85,
+            "width": 60,
+            "height": 61
           }
         }
       },
@@ -500,7 +500,7 @@
         "hidDesk": true,
         "sensorsName": "mobile分类导流区",
         "hidWeb": false,
-        "line": true,
+        "line": false,
         "image": "shopify:\/\/shop_images\/1_04.jpg",
         "tpadding": 0,
         "rpadding": 0,
