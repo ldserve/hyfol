@@ -623,7 +623,7 @@
         "linkImg_content": "",
         "hidDesk": false,
         "sensorsName": "",
-        "hidWeb": false,
+        "hidWeb": true,
         "line": false,
         "image": "shopify:\/\/shop_images\/07_07b8ddce-b40f-404c-9561-e6f63783b5e1.jpg",
         "tpadding": 0,
@@ -643,8 +643,8 @@
             "link": "https:\/\/www.hyfol.com\/collections\/polo-shirts",
             "left": 0,
             "top": 0,
-            "width": 10,
-            "height": 10
+            "width": 28,
+            "height": 40
           }
         },
         "68d1d597-d68d-40b8-a69b-4650df6dd0e4": {
@@ -653,10 +653,10 @@
             "heading": "hoidies",
             "sensorsLinkName": "hoidies",
             "link": "https:\/\/www.hyfol.com\/collections\/hoodies-1",
-            "left": 0,
+            "left": 35,
             "top": 0,
-            "width": 10,
-            "height": 10
+            "width": 31,
+            "height": 39
           }
         },
         "eb0c793e-0e4f-4e5c-92bd-faf45cd233a6": {
@@ -665,10 +665,10 @@
             "heading": "raglan",
             "sensorsLinkName": "raglan",
             "link": "https:\/\/www.hyfol.com\/collections\/raglan-tees",
-            "left": 0,
+            "left": 70,
             "top": 0,
-            "width": 10,
-            "height": 10
+            "width": 31,
+            "height": 39
           }
         },
         "703cb61e-bb71-4d36-ae67-f8e45b7b1d0b": {
@@ -678,9 +678,9 @@
             "sensorsLinkName": "seeatshirts",
             "link": "https:\/\/www.hyfol.com\/collections\/sweatshirts-12-13",
             "left": 0,
-            "top": 0,
-            "width": 10,
-            "height": 10
+            "top": 44,
+            "width": 32,
+            "height": 25
           }
         },
         "059a10b2-d700-4489-8071-0f91413acddb": {
@@ -689,10 +689,10 @@
             "heading": "cargo",
             "sensorsLinkName": "cargo",
             "link": "https:\/\/www.hyfol.com\/collections\/cargo-shorts-1",
-            "left": 0,
-            "top": 0,
-            "width": 10,
-            "height": 10
+            "left": 37,
+            "top": 42,
+            "width": 29,
+            "height": 22
           }
         },
         "d3832b18-b464-4e71-a800-239d8c0bdf6e": {
@@ -701,10 +701,10 @@
             "heading": "jogger",
             "sensorsLinkName": "jogger",
             "link": "https:\/\/www.hyfol.com\/collections\/jogger-pants",
-            "left": 0,
-            "top": 0,
-            "width": 10,
-            "height": 10
+            "left": 72,
+            "top": 45,
+            "width": 57,
+            "height": 21
           }
         },
         "1046df33-60a7-4272-944c-7aed30dd5ef0": {
@@ -714,9 +714,9 @@
             "sensorsLinkName": "shoes",
             "link": "https:\/\/www.hyfol.com\/collections\/shoes",
             "left": 0,
-            "top": 0,
-            "width": 10,
-            "height": 10
+            "top": 69,
+            "width": 30,
+            "height": 25
           }
         },
         "81098c5b-5074-43de-b712-fe69e9b9956b": {
@@ -724,11 +724,23 @@
           "settings": {
             "heading": "headwer",
             "sensorsLinkName": "headwer",
-            "link": "",
-            "left": 0,
-            "top": 0,
-            "width": 10,
-            "height": 10
+            "link": "https:\/\/www.hyfol.com\/collections\/cap-hat",
+            "left": 38,
+            "top": 69,
+            "width": 29,
+            "height": 43
+          }
+        },
+        "109f4489-84a2-4283-ac28-ee83ad0d262c": {
+          "type": "link",
+          "settings": {
+            "heading": "bestseller",
+            "sensorsLinkName": "bestseller",
+            "link": "https:\/\/www.hyfol.com\/collections\/hyfol-best-seller-1",
+            "left": 71,
+            "top": 67,
+            "width": 26,
+            "height": 33
           }
         }
       },
@@ -740,15 +752,16 @@
         "059a10b2-d700-4489-8071-0f91413acddb",
         "d3832b18-b464-4e71-a800-239d8c0bdf6e",
         "1046df33-60a7-4272-944c-7aed30dd5ef0",
-        "81098c5b-5074-43de-b712-fe69e9b9956b"
+        "81098c5b-5074-43de-b712-fe69e9b9956b",
+        "109f4489-84a2-4283-ac28-ee83ad0d262c"
       ],
       "settings": {
         "linkImg_title": "",
         "linkImg_content": "",
-        "hidDesk": true,
+        "hidDesk": false,
         "sensorsName": "",
         "hidWeb": false,
-        "line": true,
+        "line": false,
         "image": "shopify:\/\/shop_images\/1_05_35f16fc3-3211-403a-bcbd-ab9b11e4660f.jpg",
         "tpadding": 0,
         "rpadding": 0,
