@@ -18,7 +18,7 @@
           "settings": {
             "heading": "bestseller",
             "sensorsLinkName": "bestseller",
-            "link": "",
+            "link": "shopify:\/\/collections\/hyfol-best-seller-1",
             "left": 0,
             "top": 0,
             "width": 19,
@@ -30,7 +30,7 @@
           "settings": {
             "heading": "poloshirts",
             "sensorsLinkName": "poloshirts",
-            "link": "",
+            "link": "https:\/\/www.hyfol.com\/collections\/polo-shirts",
             "left": 20,
             "top": 0,
             "width": 19,
@@ -42,7 +42,7 @@
           "settings": {
             "heading": "raglans",
             "sensorsLinkName": "raglans",
-            "link": "",
+            "link": "https:\/\/www.hyfol.com\/collections\/raglan-tees",
             "left": 39,
             "top": 0,
             "width": 21,
@@ -117,7 +117,7 @@
           "settings": {
             "heading": "bestseller",
             "sensorsLinkName": "bestseller",
-            "link": "",
+            "link": "shopify:\/\/collections\/hyfol-best-seller-1",
             "left": 0,
             "top": 0,
             "width": 30,
@@ -129,7 +129,7 @@
           "settings": {
             "heading": "polo",
             "sensorsLinkName": "polo",
-            "link": "",
+            "link": "https:\/\/www.hyfol.com\/collections\/polo-shirts",
             "left": 31,
             "top": 0,
             "width": 32,
@@ -141,7 +141,7 @@
           "settings": {
             "heading": "raglan",
             "sensorsLinkName": "raglan",
-            "link": "",
+            "link": "https:\/\/www.hyfol.com\/collections\/raglan-tees",
             "left": 70,
             "top": 0,
             "width": 28,
