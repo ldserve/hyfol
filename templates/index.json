@@ -156,8 +156,8 @@
             "link": "https:\/\/www.hyfol.com\/collections\/cargo-shorts-1",
             "left": 0,
             "top": 49,
-            "width": 37,
-            "height": 23
+            "width": 40,
+            "height": 39
           }
         },
         "c3ee76eb-8c94-4e84-9861-e178884903c2": {
@@ -186,7 +186,7 @@
         "hidDesk": true,
         "sensorsName": "",
         "hidWeb": false,
-        "line": false,
+        "line": true,
         "image": "shopify:\/\/shop_images\/1_02_24aa25cc-c7a0-472a-870b-224e48997e96.jpg",
         "tpadding": 0,
         "rpadding": 0,
