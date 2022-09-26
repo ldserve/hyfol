@@ -120,27 +120,27 @@
             "left": 0,
             "top": 0,
             "width": 30,
-            "height": 45
+            "height": 40
           }
         },
         "cd289e85-02fb-459c-b865-cbfa0969699c": {
           "type": "link",
           "settings": {
-            "heading": "polo",
-            "sensorsLinkName": "polo",
-            "link": "https:\/\/www.hyfol.com\/collections\/polo-shirts",
-            "left": 31,
+            "heading": "newin",
+            "sensorsLinkName": "newin",
+            "link": "https:\/\/www.hyfol.com\/collections\/new-in-1",
+            "left": 36,
             "top": 0,
-            "width": 32,
+            "width": 29,
             "height": 42
           }
         },
         "558eeb86-a65a-45c8-af0f-7a76d5dda452": {
           "type": "link",
           "settings": {
-            "heading": "raglan",
-            "sensorsLinkName": "raglan",
-            "link": "https:\/\/www.hyfol.com\/collections\/raglan-tees",
+            "heading": "polo",
+            "sensorsLinkName": "polo",
+            "link": "https:\/\/www.hyfol.com\/collections\/polo-shirts",
             "left": 70,
             "top": 0,
             "width": 28,
@@ -150,25 +150,37 @@
         "73bced36-7b47-440f-b015-18a17727c28d": {
           "type": "link",
           "settings": {
-            "heading": "shorts",
-            "sensorsLinkName": "shorts",
-            "link": "https:\/\/www.hyfol.com\/collections\/cargo-shorts-1",
+            "heading": "raglan",
+            "sensorsLinkName": "raglan",
+            "link": "https:\/\/www.hyfol.com\/collections\/raglan-tees",
             "left": 0,
             "top": 49,
-            "width": 40,
+            "width": 32,
             "height": 39
           }
         },
         "c3ee76eb-8c94-4e84-9861-e178884903c2": {
           "type": "link",
           "settings": {
+            "heading": "shorts",
+            "sensorsLinkName": "shorts",
+            "link": "https:\/\/www.hyfol.com\/collections\/cargo-shorts-1",
+            "left": 33,
+            "top": 46,
+            "width": 38,
+            "height": 37
+          }
+        },
+        "cf80e001-bfb9-48b2-872d-9dc3c14f10f4": {
+          "type": "link",
+          "settings": {
             "heading": "hallowmas",
             "sensorsLinkName": "hallowmas",
             "link": "https:\/\/www.hyfol.com\/collections\/halloween-theme-clothing",
-            "left": 47,
-            "top": 46,
-            "width": 42,
-            "height": 37
+            "left": 75,
+            "top": 56,
+            "width": 24,
+            "height": 29
           }
         }
       },
@@ -177,7 +189,8 @@
         "cd289e85-02fb-459c-b865-cbfa0969699c",
         "558eeb86-a65a-45c8-af0f-7a76d5dda452",
         "73bced36-7b47-440f-b015-18a17727c28d",
-        "c3ee76eb-8c94-4e84-9861-e178884903c2"
+        "c3ee76eb-8c94-4e84-9861-e178884903c2",
+        "cf80e001-bfb9-48b2-872d-9dc3c14f10f4"
       ],
       "settings": {
         "linkImg_title": "",
@@ -186,7 +199,7 @@
         "sensorsName": "",
         "hidWeb": false,
         "line": false,
-        "image": "shopify:\/\/shop_images\/1_02_24aa25cc-c7a0-472a-870b-224e48997e96.jpg",
+        "image": "shopify:\/\/shop_images\/1_02_87bffe4f-1450-4153-a565-8ec986815fc9.jpg",
         "tpadding": 0,
         "rpadding": 0,
         "bpadding": 0,
