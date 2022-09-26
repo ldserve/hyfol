@@ -622,7 +622,7 @@
         "linkImg_title": "",
         "linkImg_content": "",
         "hidDesk": false,
-        "sensorsName": "",
+        "sensorsName": "pc分类导流区",
         "hidWeb": true,
         "line": false,
         "image": "shopify:\/\/shop_images\/07_d08c3c62-aa7a-45c5-841a-681002d82261.jpg",
@@ -759,7 +759,7 @@
         "linkImg_title": "",
         "linkImg_content": "",
         "hidDesk": true,
-        "sensorsName": "",
+        "sensorsName": "pc分类导流区",
         "hidWeb": false,
         "line": false,
         "image": "shopify:\/\/shop_images\/1_05_b2f958dc-894c-4a4e-862c-e982bdef5901.jpg",
@@ -950,220 +950,6 @@
         "tpadding": 5,
         "rpadding": 0,
         "bpadding": 0,
-        "lpadding": 0
-      }
-    },
-    "16534593657c96f64d": {
-      "type": "linkImg",
-      "disabled": true,
-      "blocks": {
-        "3ad9d572-559a-4d94-90b7-00090590bce8": {
-          "type": "link",
-          "settings": {
-            "heading": "flashdeal",
-            "sensorsLinkName": "flashdeal",
-            "link": "https:\/\/www.hyfol.com\/collections\/summer-clearance-up-to-50-off",
-            "left": 0,
-            "top": 0,
-            "width": 50,
-            "height": 100
-          }
-        },
-        "6f3b2d64-3421-4670-af94-3aa71eb6713e": {
-          "type": "link",
-          "settings": {
-            "heading": "under15",
-            "sensorsLinkName": "under15",
-            "link": "https:\/\/www.hyfol.com\/collections\/under-15",
-            "left": 51,
-            "top": 0,
-            "width": 50,
-            "height": 100
-          }
-        }
-      },
-      "block_order": [
-        "3ad9d572-559a-4d94-90b7-00090590bce8",
-        "6f3b2d64-3421-4670-af94-3aa71eb6713e"
-      ],
-      "settings": {
-        "linkImg_title": "",
-        "linkImg_content": "",
-        "hidDesk": false,
-        "sensorsName": "pc分类导流区",
-        "hidWeb": true,
-        "line": false,
-        "image": "shopify:\/\/shop_images\/2.gif",
-        "tpadding": 0,
-        "rpadding": 0,
-        "bpadding": 0,
-        "lpadding": 0
-      }
-    },
-    "165345938037a0eeec": {
-      "type": "linkImg",
-      "disabled": true,
-      "blocks": {
-        "0bf20aad-4075-440a-a970-028a6081aadc": {
-          "type": "link",
-          "settings": {
-            "heading": "summersale",
-            "sensorsLinkName": "summersale",
-            "link": "https:\/\/www.hyfol.com\/collections\/awesome-graphic-tees-sale-all-3-for-only-55-in-this-collection",
-            "left": 0,
-            "top": 0,
-            "width": 32,
-            "height": 100
-          }
-        },
-        "3b24ef8b-1ed9-4934-9fbf-4530d277b016": {
-          "type": "link",
-          "settings": {
-            "heading": "buy4get20off",
-            "sensorsLinkName": "buy4get20off",
-            "link": "https:\/\/www.hyfol.com\/collections\/custompromotion-buy-4-get-20-off",
-            "left": 35,
-            "top": 0,
-            "width": 32,
-            "height": 100
-          }
-        },
-        "2fca7951-1b2f-4892-9c1c-c36ec573d49b": {
-          "type": "link",
-          "settings": {
-            "heading": "hyfolbestselleer",
-            "sensorsLinkName": "hyfolbestselleer",
-            "link": "https:\/\/www.hyfol.com\/collections\/hyfol-best-seller-1",
-            "left": 68,
-            "top": 0,
-            "width": 42,
-            "height": 100
-          }
-        }
-      },
-      "block_order": [
-        "0bf20aad-4075-440a-a970-028a6081aadc",
-        "3b24ef8b-1ed9-4934-9fbf-4530d277b016",
-        "2fca7951-1b2f-4892-9c1c-c36ec573d49b"
-      ],
-      "settings": {
-        "linkImg_title": "",
-        "linkImg_content": "",
-        "hidDesk": false,
-        "sensorsName": "pc分类导流区",
-        "hidWeb": true,
-        "line": false,
-        "image": "shopify:\/\/shop_images\/pc-50_off.gif",
-        "tpadding": 0,
-        "rpadding": 0,
-        "bpadding": 0,
-        "lpadding": 0
-      }
-    },
-    "1653459372cee0bf93": {
-      "type": "linkImg",
-      "disabled": true,
-      "blocks": {
-        "aa961e8f-2fe0-4c2c-ab15-9f64f3dc8243": {
-          "type": "link",
-          "settings": {
-            "heading": "flashdeal",
-            "sensorsLinkName": "flashdeal",
-            "link": "https:\/\/www.hyfol.com\/collections\/summer-clearance-up-to-50-off",
-            "left": 0,
-            "top": 0,
-            "width": 48,
-            "height": 100
-          }
-        },
-        "9033daee-d820-4bd4-8cba-1c138eb7335e": {
-          "type": "link",
-          "settings": {
-            "heading": "under15",
-            "sensorsLinkName": "under15",
-            "link": "https:\/\/www.hyfol.com\/collections\/under-15",
-            "left": 52,
-            "top": 0,
-            "width": 52,
-            "height": 100
-          }
-        }
-      },
-      "block_order": [
-        "aa961e8f-2fe0-4c2c-ab15-9f64f3dc8243",
-        "9033daee-d820-4bd4-8cba-1c138eb7335e"
-      ],
-      "settings": {
-        "linkImg_title": "",
-        "linkImg_content": "",
-        "hidDesk": true,
-        "sensorsName": "mobile分类导流区",
-        "hidWeb": false,
-        "line": false,
-        "image": "shopify:\/\/shop_images\/1.gif",
-        "tpadding": 0,
-        "rpadding": 0,
-        "bpadding": 0,
-        "lpadding": 0
-      }
-    },
-    "16534593896dfc4330": {
-      "type": "linkImg",
-      "disabled": true,
-      "blocks": {
-        "5594db23-394f-486d-85ca-ff9e6b274cc7": {
-          "type": "link",
-          "settings": {
-            "heading": "summersale",
-            "sensorsLinkName": "summersale",
-            "link": "https:\/\/www.hyfol.com\/collections\/awesome-graphic-tees-sale-all-3-for-only-55-in-this-collection",
-            "left": 0,
-            "top": 0,
-            "width": 33,
-            "height": 100
-          }
-        },
-        "4c67b249-31bf-47f7-98c3-ccf6f39b331f": {
-          "type": "link",
-          "settings": {
-            "heading": "buy4get",
-            "sensorsLinkName": "buy4get",
-            "link": "https:\/\/www.hyfol.com\/collections\/custompromotion-buy-4-get-20-off",
-            "left": 34,
-            "top": 0,
-            "width": 32,
-            "height": 100
-          }
-        },
-        "804cebe0-e541-42d5-9f9a-e1f14a2a6b43": {
-          "type": "link",
-          "settings": {
-            "heading": "hyfolbestselleer",
-            "sensorsLinkName": "hyfolbestselleer",
-            "link": "https:\/\/www.hyfol.com\/collections\/hyfol-best-seller-1",
-            "left": 68,
-            "top": 0,
-            "width": 31,
-            "height": 100
-          }
-        }
-      },
-      "block_order": [
-        "5594db23-394f-486d-85ca-ff9e6b274cc7",
-        "4c67b249-31bf-47f7-98c3-ccf6f39b331f",
-        "804cebe0-e541-42d5-9f9a-e1f14a2a6b43"
-      ],
-      "settings": {
-        "linkImg_title": "",
-        "linkImg_content": "",
-        "hidDesk": true,
-        "sensorsName": "mobile分类导流区",
-        "hidWeb": false,
-        "line": false,
-        "image": "shopify:\/\/shop_images\/50_off_0c048804-70ce-4dc3-abec-268c14dcc898.gif",
-        "tpadding": 0,
-        "rpadding": 0,
-        "bpadding": 20,
         "lpadding": 0
       }
     },
@@ -1396,10 +1182,6 @@
     "16585474086f148753",
     "16474250424edba623",
     "1653297879b5b9419a",
-    "16534593657c96f64d",
-    "165345938037a0eeec",
-    "1653459372cee0bf93",
-    "16534593896dfc4330",
     "1640334828c8a975c8",
     "16486080199c077c37",
     "164854339383efd708",
