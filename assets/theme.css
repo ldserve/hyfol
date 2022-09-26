@@ -3786,7 +3786,7 @@ scrollbar-width: none; /* firefox */
   height: 1px;
 }
 
-.mini-cart-section .product-item {
+.mini-cart-recommendations .product-list--scrollable>.product-item {
   width: 33.333%;
 }
 
