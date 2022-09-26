@@ -3353,7 +3353,9 @@ width: 50%;
 
 .mini-cart__line-item-list {
   overflow: auto;
+  overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
+  max-width: 100%;
 }
 
 .mini-cart__line-item {
@@ -3380,7 +3382,7 @@ width: 50%;
 .mini-cart__image-wrapper {
   min-width: 80px;
   width: 80px;
-  margin-right: 20px;
+  margin-right: 10px;
 }
 
 .mini-cart__product-info {
@@ -3753,7 +3755,164 @@ scrollbar-width: none; /* firefox */
     right: 23px;
   }
 }
+#modal-quick-view-header .modal__dialog {
+  height: 100vh;
+  padding: 24px 10px 10px;
+  bottom: 0;
+}
 
+.mini-cart-quick_button {
+  position: absolute;
+  width: 2rem;
+  height: 2rem;
+  top: 50%;
+  right: 6px;
+  z-index: 999;
+  background: #e5e5e5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 1rem;
+}
+
+.mini-cart-quick_button>.icon {
+  width: 1.4rem;
+  height: 1.4rem;
+  margin: 0;
+}
+
+#modal-quick-view-header .hidden-phone::-webkit-scrollbar {
+  width: 1px;
+  height: 1px;
+}
+
+.mini-cart-section .product-item {
+  width: 33.333%;
+}
+
+.mini-cart-section .product-item__title {
+  display: none;
+}
+
+.mini-cart-payment_content {
+  display: flex;
+}
+
+.payment-icon_heading {
+  margin: 0.6rem 0 0;
+
+}
+
+.mini-cart-payment_content>.icon {
+  width: 4rem;
+  height: 3rem;
+  margin-right: 1rem;
+}
+
+@media screen and (max-width:640px) {
+  #modal-quick-view-header .modal__dialog {
+    height: 70vh;
+  }
+
+  #modal-quick-view-header .size-chart-btn {
+    display: none;
+  }
+
+  #modal-quick-view-header .shopify-payment-button,
+  #modal-quick-view-header .payment-list,
+  #modal-quick-view-header .mobile-tag_img,
+  #modal-quick-view-header .product-meta__share-buttons,
+  #modal-quick-view-header .card__section.card__section--tight,
+  #modal-quick-view-header .hidden-lap-and-up,
+  #modal-quick-view-header .product-meta__reference,
+  #modal-quick-view-header [data-sctype="addCart"]:nth-child(3) {
+    display: none !important;
+  }
+
+  #modal-quick-view-header .product-form__payment-container {
+    position: sticky;
+    background-color: ;
+    line-height: 48px;
+
+  }
+
+  #modal-quick-view-header .hidden-phone {
+    display: block !important;
+    overflow-x: auto;
+  }
+
+  #modal-quick-view-header .heading {
+    font-size: 1rem;
+    margin-bottom: 0.4rem;
+  }
+
+  #modal-quick-view-header .card__section.card__section--tight {
+    width: 40vw;
+  }
+
+  #modal-quick-view-header .price {
+    font-size: 1.2rem;
+    margin: 0;
+  }
+
+  #modal-quick-view-header .price--compare {
+    font-size: 1rem;
+  }
+
+  #modal-quick-view-header .quantity-selector {
+    height: 24px;
+  }
+
+  #modal-quick-view-header .procut-discount,
+  #modal-quick-view-header .product-form__variants {
+    margin-bottom: 0;
+  }
+
+  #modal-quick-view-header .card--collapsed {
+    margin: 16px 0 0 !important;
+  }
+
+  #modal-quick-view-header .product-form__info-list {
+    border-spacing: 0;
+    margin: 0 0 10px;
+  }
+
+  #modal-quick-view-header .product-gallery__thumbnail.is-nav-selected {
+    border: none;
+  }
+
+  #modal-quick-view-header .modal__close {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+  }
+
+  #modal-quick-view-header .product-gallery__thumbnail {
+    width: 40vw;
+    transition: none;
+  }
+
+  #modal-quick-view-header .product-meta__title {
+    font-weight: 400;
+    margin-right: 0;
+  }
+
+  #modal-quick-view-header .product-form__option {
+    margin-bottom: 0px;
+  }
+
+  .quick-view_link {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    text-align: right;
+  }
+
+  #modal-quick-view-header .product-form__info-item--quantity>* {
+    padding-top: 0;
+  }
+}
 /**
  * --------------------------------------------------------------------
  * Main cart general layout
@@ -14182,7 +14341,7 @@ shopify-payment-terms {
 .quantity-selector__button {
   display: flex;
   align-items: center;
-  padding: 0 12px;
+  padding: 0 6px;
   color: rgba(var(--text-color-rgb), 0.6);
   height: 100%;
   transition: color 0.2s ease-in-out;

@@ -2431,7 +2431,6 @@
 
                 if (window.theme.pageType !== 'cart' && window.theme.cartType !== 'page') {
                     this.delegateElement.on('click', '[data-action="toggle-mini-cart"]', this._toggleMiniCart.bind(this));
-                    this.delegateElement.on('click', '.mini-cart-close', this._toggleMiniCart.bind(this));
                     this.delegateElement.on('keyup', this._checkMiniCartClose.bind(this));
                     this.delegateRoot.on('click', this._onWindowClick.bind(this));
                     // window.addEventListener('resize', this._calculateMiniCartHeightListener);
@@ -14408,10 +14407,8 @@
             this.element = element;
             this.domDelegate = new Delegate(this.element);
             this.dadelegateRoot = new Delegate(document.documentElement);
-
             this.modal = document.getElementById(element.getAttribute('aria-controls'))
             this.modalDelegate = new Delegate(this.modal)
-
             this.productItemColorSwatch = new ProductItemColorSwatch(this.element);
             this._attachListeners();
 
@@ -14424,40 +14421,37 @@
                 this.domDelegate.destroy();
                 this.modalDelegate.destroy();
             }
-        },{
+        }, {
             key: "_attachListeners",
             value: function _attachListeners() {
-                this.modalDelegate.on('click', this._addToCart.bind(this));
                 this.domDelegate.on('click', '[data-secondary-action="open-quick-view"]', this._openQuickView.bind(this));
+                this.domDelegate.on('click', '.mini-cart-recommendations .product-item_mktClick', this._open.bind(this));
                 this.modalDelegate.on('click', '[data-action="close-modal"]', this._closeModal.bind(this))
-                this.dadelegateRoot.on('click','',this._onWindowClick.bind(this))
-                
+                this.dadelegateRoot.on('click', '', this._onWindowClick.bind(this))
             }
-        },{
+        }, {
             key: "_addToCart",
             value: function _addToCart(event, target) {
                 var _this = this;
+                target = event.target
+                event.preventDefault();
+                event.stopPropagation();
 
-                console.log('addtocart');
-                console.log(target)
-                event.preventDefault(); // Prevent form to be submitted
-                event.stopPropagation(); // First, we switch the status of the button
-
+                document.dispatchEvent(new CustomEvent('theme:loading:start'));
+                var formElement = target.closest('form[action*="/cart/add"]')
                 target.setAttribute('disabled', 'disabled');
-                document.dispatchEvent(new CustomEvent('theme:loading:start')); // Then we add the product in Ajax
-                var formElement = target.closest('form[action*="/cart/add"]');
                 fetch("".concat(window.routes.cartAddUrl, ".js"), {
                     body: JSON.stringify(Form.serialize(formElement)),
                     credentials: 'same-origin',
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
-                        'X-Requested-With': 'XMLHttpRequest' // This is needed as currently there is a bug in Shopify that assumes this header
+                        'X-Requested-With': 'XMLHttpRequest'
                     }
                 }).then(function (response) {
                     if (response.ok) {
-                        target.removeAttribute('disabled'); // We simply trigger an event so the mini-cart can re-render
-
+                        target.removeAttribute('disabled');
+                        _this._closeModal()
                         _this.element.dispatchEvent(new CustomEvent('product:added', {
                             bubbles: true,
                             detail: {
@@ -14468,6 +14462,7 @@
                     } else {
                         target.removeAttribute('disabled');
                     }
+                    _this._closeModal.bind(_this)
                 });
                 event.preventDefault();
             }
@@ -14477,47 +14472,66 @@
                 this.modal.setAttribute('aria-hidden', true)
                 var modalClose = new Event('modal:closed')
                 this.modal.dispatchEvent(modalClose)
+                this.addBtn.removeEventListener('click', this._addToCart)
             }
         },
         {
             key: "_openQuickView",
             value: function _openQuickView(event, target) {
-
+                var _this = this
                 var modal = this.modal;
+                var productUrl=target.getAttribute('data-product-url')
                 modal.classList.add('is-loading');
                 modal.setAttribute('aria-hidden', false)
 
-                fetch("".concat(target.getAttribute('data-product-url'), "?view=quick-view"), {
+                fetch("".concat(productUrl, "?view=quick-view"), {
                     credentials: 'same-origin',
                     method: 'GET'
                 }).then(function (response) {
                     response.text().then(function (content) {
                         modal.querySelector('.modal__inner').innerHTML = content;
-                        modal.classList.remove('is-loading'); // Register a new section to power the JS
-                        var modalProductSection = new ProductSection(modal.querySelector('[data-section-type="product"]')); // We set a listener so we can cleanup on close
+                        modal.classList.remove('is-loading');
+                        var modalProductSection = new ProductSection(modal.querySelector('[data-section-type="product"]'));
+                        _this.addBtn = modal.querySelector('[data-action="add-to-cart"]')
+                        _this.addBtn && _this.addBtn.addEventListener('click', _this._addToCart.bind(_this))
+                      
+                        var discount =modal.querySelector('.procut-discount')
+                       var link=document.createElement('a')
+                       link.innerHTML=`<span style="margin-right:5px;font-size:12px">Details</span><svg t="1618368571858" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2125" width="15" height="15"><path d="M312.49 96.36c8.19 0 16.38 3.12 22.63 9.37L734.14 504.75c12.5 12.5 12.5 32.76 0 45.26L335.12 949.02c-12.5 12.5-32.76 12.5-45.26 0s-12.5-32.76 0-45.25L666.25 527.38l-376.39-376.39c-12.5-12.5-12.5-32.76 0-45.25 6.25-6.26 14.44-9.38 22.63-9.38z" fill="#999999" p-id="2126"></path></svg>`
+                       link.href=productUrl
+                       link.className="quick-view_link"
+                       discount&&discount.appendChild(link)
+
                         var doCleanUp = function doCleanUp() {
                             modalProductSection.onUnload();
                             modal.removeEventListener('modal:closed', doCleanUp);
                         };
-
                         modal.addEventListener('modal:closed', doCleanUp);
                     });
                 });
             }
 
         },{
-            key: "_onWindowClick",
-            value: function _onWindowClick(event,target) {
-       
-                if (target==this.modal){
-                this._closeModal()
+            key:"_open",
+            value:function(ev,target){
+                var productItem=target.closest('.product-item')
+                var target=productItem.querySelector('.mini-cart-quick_button')
+                ev.preventDefault();
+                ev.stopPropagation();
+                this._openQuickView.call(this,ev,target)
             }
+        },{
+            key: "_onWindowClick",
+            value: function _onWindowClick(event, target) {
+                target = event.target
+                if (target == this.modal) {
+                    this._closeModal()
+                }
             }
         }]);
 
         return MiniCartection;
     }();
-
 
     var CollectionListSection = /*#__PURE__*/function () {
         function CollectionListSection(element) {
