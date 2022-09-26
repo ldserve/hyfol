@@ -21,69 +21,68 @@
             "link": "shopify:\/\/collections\/hyfol-best-seller-1",
             "left": 0,
             "top": 0,
-            "width": 19,
+            "width": 16,
             "height": 100
           }
         },
         "d65e4d92-d408-4840-974a-11db707ea743": {
           "type": "link",
           "settings": {
-            "heading": "poloshirts",
-            "sensorsLinkName": "poloshirts",
-            "link": "https:\/\/www.hyfol.com\/collections\/polo-shirts",
-            "left": 20,
+            "heading": "newin",
+            "sensorsLinkName": "newin",
+            "link": "https:\/\/www.hyfol.com\/collections\/new-in-1",
+            "left": 18,
             "top": 0,
-            "width": 19,
+            "width": 11,
             "height": 100
           }
         },
         "78cb2d5c-1f5d-4d02-bcd6-3fafec378475": {
           "type": "link",
           "settings": {
-            "heading": "raglans",
-            "sensorsLinkName": "raglans",
-            "link": "https:\/\/www.hyfol.com\/collections\/raglan-tees",
-            "left": 39,
+            "heading": "polo",
+            "sensorsLinkName": "polo",
+            "link": "https:\/\/www.hyfol.com\/collections\/polo-shirts",
+            "left": 31,
             "top": 0,
-            "width": 21,
+            "width": 16,
             "height": 100
           }
         },
         "a3ab2cb6-f89f-4bc1-b646-9fe4e3be3ccb": {
           "type": "link",
           "settings": {
-            "heading": "shorts",
-            "sensorsLinkName": "shorts",
-            "link": "https:\/\/www.hyfol.com\/collections\/cargo-shorts-1",
-            "left": 63,
+            "heading": "raglan",
+            "sensorsLinkName": "raglan",
+            "link": "https:\/\/www.hyfol.com\/collections\/raglan-tees",
+            "left": 50,
             "top": 0,
-            "width": 20,
+            "width": 17,
             "height": 100
           }
         },
         "df248fe6-62ab-4deb-9e61-43d26d4546de": {
           "type": "link",
           "settings": {
-            "heading": "hallowms",
-            "sensorsLinkName": "hallowms",
-            "link": "https:\/\/www.hyfol.com\/collections\/halloween-theme-clothing",
-            "left": 84,
+            "heading": "shorts",
+            "sensorsLinkName": "shorts",
+            "link": "https:\/\/www.hyfol.com\/collections\/cargo-shorts-1",
+            "left": 69,
             "top": 0,
-            "width": 30,
+            "width": 18,
             "height": 100
           }
         },
         "4e72a354-81ca-4018-a5e5-0e79fc495451": {
           "type": "link",
-          "disabled": true,
           "settings": {
-            "heading": "(´థ౪థ）σ",
-            "sensorsLinkName": "",
-            "link": "",
-            "left": 0,
+            "heading": "hallowms",
+            "sensorsLinkName": "hallowms",
+            "link": "https:\/\/www.hyfol.com\/collections\/halloween-theme-clothing",
+            "left": 89,
             "top": 0,
             "width": 10,
-            "height": 10
+            "height": 100
           }
         }
       },
@@ -102,7 +101,7 @@
         "sensorsName": "",
         "hidWeb": true,
         "line": false,
-        "image": "shopify:\/\/shop_images\/03_5dea5794-1d7b-41c0-a2c3-85f5ed80f97d.jpg",
+        "image": "shopify:\/\/shop_images\/04_76d91130-f9ea-45bc-bae0-01c1a5e2a89c.jpg",
         "tpadding": 0,
         "rpadding": 0,
         "bpadding": 0,
