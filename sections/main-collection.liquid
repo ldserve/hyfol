@@ -29,14 +29,14 @@
 {%- endif -%}
 {%- endfor -%}
 <style>
- 
   .product-item_activity .aspect-ratio {
     height: 100%;
-    padding-bottom: 100%;	
+    padding-bottom: 100%;
     background-color: #fff;
     width: 100%;
   }
-  .activity_banner{
+
+  .activity_banner {
     display: block;
     position: absolute;
     left: 0;
@@ -44,8 +44,25 @@
     width: 100%;
     height: 100%;
   }
- 
-  </style>
+  
+.loading-more{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #FFF;
+  }
+
+  .loading-dot {
+    margin-left: 1rem;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 6px;
+  }
+
+  .loading-dot>.icon {
+    font-size: 2rem;
+  }
+</style>
   
 {%- capture section_settings -%}
 {
@@ -690,18 +707,50 @@
               </div>
             {%- break -%}
             {%- endif -%}
-        {%- endfor -%}
-           {%- comment -%}----------------------- 活动 END-----------------------{%- endcomment -%}
+            {%- endfor -%}
+            {%- comment -%}------------------- 活动图片顶置 -----------------{%- endcomment -%}
+            {%- assign for_index = forloop.index -%}
+              {%- for block in section.blocks -%}
+                {%- assign activity_inser = block.settings.activity_inser -%}
+                {%- assign show_activity = false -%}
+                {%- assign collection_name_list = block.settings.activity_incolle | downcase | split:"," -%}
+                {%- if block.settings.activity_image ==blank -%} {%- assign show_activity = false -%}{%- endif -%}
+                {%- if collection_name_list contains collection_name -%}
+                  {%- assign show_activity = true -%}
+                {%- endif -%}
+                  {%- if  show_activity and activity_inser == for_index and block.settings.show_activity-%}
+                  <div class=" product-item product-item--vertical  1/3--tablet-and-up 1/4--desk product-item_activity" data-scenable="1"  style="justify-content:space-between ;">
+                  {%- assign image_url = block.settings.activity_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+                  {%- capture supported_sizes -%}{%- render 'image-size', sizes: '100,200,300,400,500,600,700', image: block.settings.activity_image -%}{%- endcapture -%}
+                    <div class="aspect-ratio " >
+                      <img class="image--fade-in lazyload"
+                        data-sizes="auto" data-widths="[{{ supported_sizes }}]" 
+                        alt="{{block.settings.activity_image.alt}}"
+                        data-src="{{image_url}}"/>
+                        <noscript>
+                        <img src="{{block.settings.activity_image | img_url}}" alt="{{block.settings.activity_image.alt}}">
+                      </noscript>
+                    </div>
+                    <a href="{{block.settings.activity_link1}}" class="activity_banner activity-image1" {% if block.settings.show_line_border %}style=" border:1px solid red;"{%- endif -%}></a>
+                  </div>
+                {%- break -%}
+                {%- endif -%}
+              {%- endfor -%}
+           {%- comment -%}----------------------- 活动图片 END-----------------------{%- endcomment -%}
 
           {% if render_item %}
           {%- render 'product-item', product: product, list: show_as_list, grid_classes: grid_classes,forloop:forloop -%}
           {% endif %}
-
           {%- endfor -%}
-          {%- comment -%} ------------------------END------------------ {%- endcomment -%}
         </div>
 
-        {%- render 'pagination', paginate: paginate -%}
+
+          {%- comment -%} ------------------------LOADING------------------ {%- endcomment -%}
+        <div class="pagination loading-more">
+          <div class="h4 loading-heading">loading more</div>
+          <span class="loading-dot active"> {%- render 'icon', icon: 'search-loader' -%}</span>
+        </div>
+        {%- render 'pagination', paginate: paginate ,class:"d-none"-%}
         {%- endif -%}
 
       </div>
@@ -972,6 +1021,7 @@
       <div class="modal__inner"></div>
     </div>
   </div>
+
 </section>
 
 {% schema %}

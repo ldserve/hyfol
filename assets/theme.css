@@ -3809,14 +3809,14 @@ scrollbar-width: none; /* firefox */
   margin-right: 1rem;
 }
 
+#modal-quick-view-header .size-chart-btn {
+  display: none;
+}
 @media screen and (max-width:640px) {
   #modal-quick-view-header .modal__dialog {
     height: 70vh;
   }
 
-  #modal-quick-view-header .size-chart-btn {
-    display: none;
-  }
 
   #modal-quick-view-header .shopify-payment-button,
   #modal-quick-view-header .payment-list,

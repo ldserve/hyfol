@@ -14621,8 +14621,68 @@
                 this.delegateElement.on('click', '[data-action="add-to-cart"]', this._addToCart.bind(this));
                 this.delegateElement.on('change', '[name^="filter."]', this._onFilterChanged.bind(this));
                 this.delegateElement.on('click', '[data-action="clear-filters"]', this._onFiltersCleared.bind(this));
+                window.addEventListener('scroll',this._throttle(this._onScroll.bind(this)))
             }
-        }, {
+        },{
+            key:"_throttle",
+            value:function _throttle(func) {
+                var timeout,event
+                var wait = 99;
+                
+                var run = function run() {
+                    timeout = null;
+                    func(event[0]);
+                };
+                var later = function later() {
+                    run()
+                };
+                return function () {
+                    event=arguments
+                    if (!timeout) timeout = setTimeout(later, wait);
+                    
+                };
+            }
+        },{
+            key:"_onScroll",
+            value: function _onScroll(ev) {
+                // 在DOM未完全挂载前不执行
+                if (document.readyState !== 'complete') return;
+                var scrollY = window.scrollY
+                var offsetHeight = this.element.offsetHeight
+                var offsetTop = this.element.offsetTop
+                var screen = window.screen.height
+                var currentOffset = offsetHeight - (scrollY + screen) + offsetTop
+                var itemHeight=this.element.querySelector('.product-item').offsetHeight*4
+               
+                if (currentOffset > itemHeight) return;
+                var nextPage = theme.currentPage + 1
+                var pages = theme.pages
+                var sectionID = this.element.getAttribute('data-section-id')
+                if (nextPage >= pages){
+                    this.element.querySelector('.loading-more').innerHTML='Loading completed'
+                    return
+                }
+                if (this.isFetch) return;
+                this.isFetch = true
+                var productContaine = this.element.querySelector('.product-list')
+                fetch(location.pathname + "?page=" + nextPage + "&section_id=" + sectionID).then(response => {
+                    if (!response.ok) return;
+                    response.text().then(content => {
+                        var productList
+                        var products = document.createElement('div')
+                        products.innerHTML = content
+                        products && (productList = utils.filterFindElements(products, '.product-item'))
+                        while (productList.length) {
+                            productContaine.appendChild(productList.shift())
+                        }
+                        this.productItemColorSwatch.recalculateSwatches()
+                        theme.currentPage = nextPage
+                        this.isFetch = false;
+                    })
+                })
+
+            }
+        },{
             key: "_openQuickView",
             value: function _openQuickView(event, target) {
                 var productUrl = new URL("".concat(window.location.origin).concat(target.getAttribute('data-product-url'))); // If we are on mobile or tablet, we redirect to product page directly
