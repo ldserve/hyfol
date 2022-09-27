@@ -10904,7 +10904,8 @@ shopify-payment-terms {
 }
 
 .variant-swatch__radio:checked+.variant-swatch__item {
-  border-color: var(--accent-color);
+  /* border-color: var(--accent-color); */
+  border-color:#000;
   border-radius: 3px;
 }
 
