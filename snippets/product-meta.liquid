@@ -13,69 +13,6 @@
 {%- else -%}
    {%- assign commodity_tag = product.tags -%}
 {%- endif -%}
-{%- if block.settings.show_share_buttons -%}
-  {%- capture share_buttons -%}
-    {%- assign share_url = shop.url | append: product.url | url_param_escape -%}
-    {%- assign twitter_text = product.title | url_param_escape -%}
-    {%- assign pinterest_description = product.description | strip_html | truncatewords: 15 | url_param_escape -%}
-    {%- assign pinterest_image = product.featured_media | img_url: '1024x' | prepend: 'https:' -%}
-
-    <ul 
-      class="social-media__item-list list--unstyled" 
-      role="list"
-      data-scenable="1"   
-      data-sctype="ShareSuccess"
-      data-scdata='{
-        "commodity_spuid": "{{product.handle}}",
-        "commodity_skuid":"{{ selected_variant.sku }}",
-        "commodity_name": "{{product.title | handleize }}",
-        "commodity_image_quantity":"{{product.images.size}}",
-        "first_commodity":"{{category.first_commodity}}",
-        "second_commodity":"{{category.second_commodity}}",
-        "third_commodity":"{{category.third_commodity}}",
-        "commodity_tag":"{{commodity_tag | handleize  }}",
-        "commodity_description_text":["{{product.description | handleize }}"],
-        "commodity_description_image":["{{ product.featured_image | image_url | split: "?" | first  }}"],
-        "original_price":"{{ product.selected_or_first_available_variant.compare_at_price }}",
-        "current_price":"{{ product.selected_or_first_available_variant.price }}",
-        "discount_price": "{{variant.compare_at_price}}",
-        "currency_unit": "USD"
-      }'
-    >
-      <li 
-        data-scenable="1"   
-        data-sctype="ShareCommodity"
-        data-scdata='{"share_medium": "Facebook"}'
-        class="social-media__item social-media__item--facebook">
-        <a href="https://www.facebook.com/sharer.php?u={{ share_url }}" target="_blank" rel="noopener" aria-label="{{ 'general.social.facebook_share' | t }}">{%- render 'icon', icon: 'facebook' -%}</a>
-      </li>
-
-      <li 
-        data-scenable="1"   
-        data-sctype="ShareCommodity"
-        data-scdata='{"share_medium": "Pinterest"}'
-        class="social-media__item social-media__item--pinterest">
-        <a href="https://pinterest.com/pin/create/button/?url={{ share_url }}{% if pinterest_image != blank %}&media={{ pinterest_image }}{% endif %}&description={{ pinterest_description }}" target="_blank" rel="noopener" aria-label="{{ 'general.social.pinterest_pin' | t }}">{%- render 'icon', icon: 'pinterest' -%}</a>
-      </li>
-
-      <li 
-        data-scenable="1"   
-        data-sctype="ShareCommodity"
-        data-scdata='{"share_medium": "Twitter"}'
-        class="social-media__item social-media__item--twitter">
-        <a href="https://twitter.com/share?{% if twitter_text != blank %}text={{twitter_text}}&{% endif %}url={{ share_url }}" target="_blank" rel="noopener" aria-label="{{ 'general.social.twitter_tweet' | t }}">{%- render 'icon', icon: 'twitter' -%}</a>
-      </li>
-
-      <li 
-        data-scenable="1"   
-        data-sctype="ShareCommodity"
-        data-scdata='{"share_medium": "Email"}'
-        class="social-media__item">
-        <a href="mailto:?&subject={{ product.title | escape }}&body={{ share_url }}" aria-label="{{ 'general.social.email_share' | t }}">{% render 'icon', icon: 'email' %}</a>
-      </li>
-    </ul>
-  {%- endcapture -%}
-{%- endif -%}
 
 <div class="product-meta">
   {%- if template.name == 'product' and template != 'product.quick-view' -%}
@@ -147,11 +84,6 @@
     </a>
   {%- endif -%}
 
-  {%- if block.settings.show_share_buttons -%}
-    <div class="product-meta__share-buttons hidden-phone">
-      {{ share_buttons }}
-    </div>
-  {%- endif -%}
 </div>
 
 <hr class="card__separator">

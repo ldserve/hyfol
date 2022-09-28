@@ -1,7 +1,11 @@
 {
   "current": {
-    "collocation_spus": "sp220113etrs,sp2204293w4u,SP211204ASG2",
+    "collocation_spus": "sp220420j1oo,sp2204293w4u,sp220602mmsl,sp2208231usy,t11861820nh,t11211529fh,sp220806adf9,sp22091786uq,sp211120t3qr,sp211221vw81",
+    "autoplay_time": "3",
     "full_reduction": "<p><strong>5% OFF 2 PIECES<\/strong>,<strong>10% OFF 3 PIECES,15% OFF 4 PIECES,20% OFF 5 PIECES,25% OFF 6 PIECES<\/strong>,<strong>30% OFF 7 PIECES<\/strong><\/p>",
+    "full_isOpenview": false,
+    "full_minus": "<p>ORDER 79 minus 10 CODE:HF10,ORDER 139 minus 15 CODE:HF15,ORDER 169 minus 20 CODE:HF20,ORDER 299 minus 50 CODE:HF50<\/p>",
+    "CustomPromotionUrl": "<p>Choose 3 for $59=https:\/\/www.hyfol.com\/collections\/summer-clearance-any-3-for-59,Buy 4 Get EXTRA 20% Off=https:\/\/www.hyfol.com\/collections\/custompromotion-buy-4-get-20-off,Choose 2 for $49.9=https:\/\/www.hyfol.com\/collections\/2-for-49-9,Buy 1 get 2nd 50% OFF=https:\/\/www.hyfol.com\/de\/collections\/2nd-50-off<\/p>",
     "showFlake": false,
     "show_car_bar": false,
     "car_bar_price1": 49,
@@ -10,6 +14,9 @@
     "car_bar_info2": "-$20",
     "car_bar_price3": 149,
     "car_bar_info3": "-$30",
+    "gradient_color_start": "#ebc918",
+    "gradient_color_end": "#ee362a",
+    "tag_layout": "label",
     "brazil_house_number": true,
     "heading_color": "#1b1b1b",
     "text_color": "#212121",
@@ -43,7 +50,7 @@
     "heading_font": "roboto_n9",
     "text_font": "roboto_n4",
     "underline_links": true,
-    "color_swatch_config": "GREEN:#777455\nLEMON YELLOW:#e9bc21\nDark Red:#362326\nJujube red:#772c30\nPurple Blue:#756fb1\nCamouflage:#7A8743\nApricot Yellow:#ebc46f\nLight Coffee:#d3cdc1\nDark Plum Red:#7d4866\nFruit Green:#518676\nAqua:#265069\nLake Blue:#265069\nLight Green:#8e9293\nLight gray:#818588\nBlack gray:#383838\nMint Green:#98d2c4\nWhite:#FFFFFF\nBlack:#000000\nBlue:#1D304E\nBirch:#D3CDC1\nWasabi:#518676\nCalx:#98a09f\nLavendar:#74607D\nToast Tan:#E0C535\nCrystal Blue:#5FA8C0\nSavvy Red:#7d1427\nNavy Blue:#30557F\nCoffee:#785F48\nMedium Grey:#4A4B4B\nDark Brown:#31261B\nOrange Red:#CE5E39\nDark Green:#4B554D\nBlack Grey:#4f4f52\nSilver White:#D5D5D5\nGrey White:#D9D9D5\nPink:#FFC0CB\nOlive Green:#4D4938\nPickled vegetable green:#908565\nGrey Green:#916D59\nGrass Green:#4C6349\nArmy Green:#767153\nSilver Grey:#C0C0C0\nBrown Yellow:#796B54\nKhaki:#C9A680\nLight Yellow:#D1C38F\nPurple:#800080\nOrange:#FFA500\nShallow Apricot:#E2DDC6\nGolden:#E1C893\nPurplish Red:#39171F\nBeige:#F5F5DC\nMedium Yellow:#A77F3F\nGolden Yellow:#FFD700\nFlower Grey:#7A8183\nApricot:#D0CBBD\nLight Grey:#7F8D93\nRoyal Blue:#1C3742\nSapphire Blue:#5798D8\nPink Purple:#AE8D8B\nSky Blue:#555C64\nBrown:#31261B\nLight Brown:#9D887B\nRice White:#E2D9C9\nTan:#D2B48C\nFluorescent green:#C2DEA3\nCamouflag:#7A8743\nEmerald Green:#85C325\nLight Blue:#A1DDE4\nPea Green:#E0DE78\nDark Blue:#021DA8\nBrick Red:#8D3439\nDark Grey:#57595D\nBrich:#D3CDC1\nGrey Blue:#7BB4B0\nSaffron:#F8D971\nPlum red:#822B46\nVallarta Blue:#4E90AD\nBlue gray:#4D8677\nBlue Purple:#1E3375\nBright Blue:#29389E\nBright Navy Blue:#21D425\nDark Coffee:#523F43\nLight Apricot:#b4b4b6\nLight purple blue:#d4b4df\nPruple Blue:#1E3375\nGrey Purple:#858380\nBrown camel:#61512d\nSea Blue:#3c69a1\nPink Blue长19879f\nBlue Grey:#32383d\nSoil Yellow:#a98c5f\nPink Green:#63e76a\nBright Red:#9b071a\nCamel:#baa59a\nDark Orange:#6d3428\nGreen Grey:#45433f\nLight Plum Red:#733d4b\nMilky White:#faf8eb\nTibetan Green:#202533\nRed Coffee:#592625\nNatural White:#eef0ef\nBeige Grey:#c1baaa\nDark apricot:#947a4a\nLight Beige:#d7c8b3\nDark Blue:#2b364b\nPhenanthrene Red:#a00122\nGoldene:#2ba6b",
+    "color_swatch_config": "GREEN:#777455\nLEMON YELLOW:#f9d131\nDark Red:#362326\nJujube red:#772c30\nPurple Blue:#756fb1\nCamouflage:#7A8743\nApricot Yellow:#ebc46f\nLight Coffee:#d3cdc1\nDark Plum Red:#7d4866\nFruit Green:#518676\nAqua:#265069\nLake Blue:#265069\nLight Green:#8e9293\nLight gray:#818588\nBlack gray:#383838\nMint Green:#98d2c4\nWhite:#FFFFFF\nBlack:#000000\nBlue:#1D304E\nBirch:#D3CDC1\nWasabi:#518676\nCalx:#98a09f\nLavendar:#74607D\nToast Tan:#E0C535\nCrystal Blue:#5FA8C0\nSavvy Red:#7d1427\nNavy Blue:#30557F\nCoffee:#785F48\nMedium Grey:#4A4B4B\nDark Brown:#31261B\nOrange Red:#CE5E39\nDark Green:#4B554D\nBlack Grey:#4f4f52\nSilver White:#D5D5D5\nGrey White:#D9D9D5\nPink:#FFC0CB\nOlive Green:#4D4938\nPickled vegetable green:#908565\nGrass Green:#4C6349\nArmy Green:#767153\nSilver Grey:#C0C0C0\nBrown Yellow:#796B54\nKhaki:#C9A680\nLight Yellow:#D1C38F\nPurple:#800080\nOrange:#FFA500\nShallow Apricot:#E2DDC6\nGolden:#E1C893\nPurplish Red:#39171F\nBeige:#F5F5DC\nMedium Yellow:#A77F3F\nGolden Yellow:#FFD700\nFlower Grey:#7A8183\nApricot:#D0CBBD\nLight Grey:#7F8D93\nRoyal Blue:#1C3742\nSapphire Blue:#5798D8\nPink Purple:#AE8D8B\nSky Blue:#555C64\nBrown:#31261B\nLight Brown:#9D887B\nRice White:#E2D9C9\nTan:#D2B48C\nFluorescent green:#C2DEA3\nCamouflag:#7A8743\nEmerald Green:#85C325\nLight Blue:#A1DDE4\nPea Green:#E0DE78\nDark Blue:#021DA8\nBrick Red:#8D3439\nDark Grey:#57595D\nBrich:#D3CDC1\nGrey Blue:#7BB4B0\nSaffron:#faa834\nPlum red:#822B46\nVallarta Blue:#4E90AD\nBlue gray:#4D8677\nBlue Purple:#1E3375\nBright Blue:#29389E\nBright Navy Blue:#21D425\nDark Coffee:#523F43\nLight Apricot:#b4b4b6\nLight purple blue:#d4b4df\nPruple Blue:#1E3375\nGrey Purple:#858380\nBrown camel:#61512d\nSea Blue:#3c69a1\nPink Blue长19879f\nBlue Grey:#32383d\nSoil Yellow:#a98c5f\nPink Green:#63e76a\nBright Red:#9b071a\nCamel:#baa59a\nDark Orange:#6d3428\nGreen Grey:#45433f\nLight Plum Red:#733d4b\nMilky White:#faf8eb\nTibetan Green:#202533\nRed Coffee:#592625\nNatural White:#eef0ef\nBeige Grey:#c1baaa\nDark apricot:#947a4a\nLight Beige:#d7c8b3\nDark Blue:#2b364b\nPhenanthrene Red:#a00122\nGoldene:#2ba6b\nGrey Green:#6c7c79\nGolden State Blue:#20376f\nBoston Green:#2e4639\nLa Purple:#412e69\nLa Gold:#dcab41\nPurple Red:#a32629",
     "animation_image_zoom": true,
     "search_mode": "product,article",
     "show_vendor": false,
@@ -60,7 +67,7 @@
     "cart_empty_button_link": "",
     "cart_show_checkout_button": true,
     "cart_show_free_shipping_threshold": true,
-    "cart_free_shipping_threshold": "60",
+    "cart_free_shipping_threshold": "69",
     "social_facebook": "https:\/\/www.facebook.com\/Hyfolofficial",
     "social_twitter": "",
     "social_pinterest": "",
@@ -110,7 +117,7 @@
             "type": "mega_menu",
             "settings": {
               "menu_item": "MEN",
-              "image_1": "shopify:\/\/shop_images\/man.jpg",
+              "image_1": "shopify:\/\/shop_images\/1_7f36ea00-0c19-4d22-9611-d1276d336751.jpg",
               "image_1_heading": "",
               "image_1_text": "",
               "image_1_link": "",
@@ -123,7 +130,7 @@
             "type": "mega_menu",
             "settings": {
               "menu_item": "WOMEN",
-              "image_1": "shopify:\/\/shop_images\/woman.jpg",
+              "image_1": "shopify:\/\/shop_images\/33.jpg",
               "image_1_heading": "",
               "image_1_text": "",
               "image_1_link": "",
@@ -136,7 +143,7 @@
             "type": "mega_menu",
             "settings": {
               "menu_item": "ACCESSORIES",
-              "image_1": "shopify:\/\/shop_images\/1_35ec4dd3-157e-4f55-ba59-d772df6532ab.jpg",
+              "image_1": "shopify:\/\/shop_images\/accessories_d5816af4-4ce6-43a5-a741-c0c273e7ad2e.jpg",
               "image_1_heading": "",
               "image_1_text": "",
               "image_1_link": "",
@@ -149,7 +156,7 @@
             "type": "mega_menu",
             "settings": {
               "menu_item": "SALE",
-              "image_1": "shopify:\/\/shop_images\/SALE.jpg",
+              "image_1": "shopify:\/\/shop_images\/3_b069e7ac-a441-429f-bc8a-31f6980026e6.jpg",
               "image_1_heading": "",
               "image_1_text": "",
               "image_1_link": "",
@@ -174,7 +181,7 @@
           "show_locale_selector": false,
           "show_currency_selector": false,
           "navigation_menu": "pc",
-          "navigation_mobile_menu": "pc",
+          "navigation_mobile_menu": "main-menu",
           "desktop_navigation_layout": "inline",
           "desktop_navigation_open_trigger": "hover",
           "show_navigation_social_media": false,
@@ -247,28 +254,29 @@
           "2caf8430-4f46-405e-b569-d4957d1bde1c": {
             "type": "announcement",
             "settings": {
-              "text": "FREE STANDARD SHIPPING ON ORDERS OVER $60",
+              "text": "FREE STANDARD SHIPPING ON ORDERS OVER $69",
               "link": ""
             }
           },
           "933aa31d-00c1-44a5-8b00-66ceefe87acd": {
             "type": "announcement",
             "settings": {
-              "text": "GRAPHIC TEES GET 3 FOR $39.9",
+              "text": "ALL TEES GET 3 FOR $59",
               "link": ""
             }
           },
           "ebf3f4ad-f1dc-464f-9e19-71c2a7fc4fc3": {
             "type": "announcement",
             "settings": {
-              "text": "BEACH SHORTS GET 2 FOR $35.9",
+              "text": "Winter Early Sale Buy 4 Get 20% Off",
               "link": ""
             }
           },
           "ccab5dcb-d3a7-4a2e-9c0e-6699c88abf2e": {
             "type": "announcement",
+            "disabled": true,
             "settings": {
-              "text": "FAMILY WEAR GET 5 FOR $59.9",
+              "text": "BUY CARGO SHORTS GET FREE BELT",
               "link": "shopify:\/\/collections\/fathers-day1"
             }
           }

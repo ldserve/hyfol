@@ -1,6 +1,9 @@
 {%- assign collocationLocation = collocationLocation -%}
 {% if collocationLocation == "mini-cart-collcation" %}
 {% assign variable = settings.collocation_spus%}
+{% assign time = time%}
+{% assign isAuto = isAuto%}
+
 {% else %}
 {%- assign variable = product.metafields.my_fields.collocation -%}
 {%- comment -%}
@@ -10,7 +13,7 @@
 {%- if variable !=blank -%}
 	{%- assign handles = variable | split:',' -%}
 	<div class="product-collocation">
-		<slide-show data-collocationNum="{{ handles.size }}">
+		<slide-show data-collocationNum="{{ handles.size }}" data-isAuto="{{isAuto}}" data-time="{{time}}">
 			<div class="collocation-container {{ collocationLocation }}">
 				{% if handles.size > 1 %}
 					<div class="switch-product">
@@ -49,5 +52,6 @@
       cursor: pointer;
       font-size: 20px;
     }
+	
 	</style>
 {%- endif -%}

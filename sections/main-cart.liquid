@@ -26,17 +26,24 @@
       position: fixed;
       z-index: 99;
       bottom: 0px;
-      right: 1px;
+      right: 0px;
       width: 100%;
-      background-color: #b82928;
+      /* background-color: #b82928; */
     }
-		.main__cart__time_reserved{
-			padding: 5px;
-			height: 80px;
-		}
+	.main__cart__time_reserved{
+		padding: 5px;
+		height: 80px;
+	}
     .main__cart__time_reserved .cart_reserved_message{
       margin: 0;
     }
+	.cart-recap .cart-recap__secure-payment{
+		display: none;
+	}
+	.cart-checkout_button{
+		padding: 0.4rem 2rem 0.6rem;
+		box-shadow: 0px 2px 6px #000;
+	}
   }
 </style>
 <section data-section-id="{{ section.id }}" data-section-type="cart" data-section-settings='{{ section_settings }}'
@@ -150,17 +157,16 @@
 														{%- endif -%}
 
 														{%- if gift_wrap_product.handle == line_item.product.handle -%}
-															<span class="line-item__title text--strong">{{ line_item.product.title }}<br/><span
-																	class="line_item_variant_title">{{ line_item.variant.title }}</span>
-<span class='booster-cart-item-success-notes' data-key='{{ line_item.key }}'></span><span
+															<span class="line-item__title text--strong">{{ line_item.product.title }}<br/>
+															<span class="line_item_variant_title">{{ line_item.variant.title }}</span>
+															<span class='booster-cart-item-success-notes' data-key='{{ line_item.key }}'></span><span
 																	class='booster-cart-item-upsell-notes' data-key='{{ line_item.key }}'></span></span>
 														{%- else -%}
 															<a href="{{ line_item.url }}"
-															   class="line-item__title link text--strong">{{ line_item.product.title }}<br/><span
-																	class="line_item_variant_title">{{ line_item.variant.title }}</span>
-																<span class='booster-cart-item-success-notes'
-																      data-key='{{ line_item.key }}'></span><span class='booster-cart-item-upsell-notes'
-																                                                  data-key='{{ line_item.key }}'></span></a>
+															   class="line-item__title link text--strong">{{ line_item.product.title }}<br/>
+																<span class="line_item_variant_title">{{ line_item.variant.title }}</span>
+																<span class='booster-cart-item-success-notes' data-key='{{ line_item.key }}'></span>
+																<span class='booster-cart-item-upsell-notes'  data-key='{{ line_item.key }}'></span></a>
 														{%- endif -%}
 
 														{%- if line_item.selling_plan_allocation -%}
@@ -181,7 +187,31 @@
 																{%- endfor -%}
 															</ul>
 														{%- endunless -%}
-
+														{%- comment -%}显示活动标签 start{%- endcomment -%}
+														{% assign show_tag = false %}
+														{%- for tag in line_item.product.tags -%}
+														{%- if tag contains 'CustomPromotion' -%}
+														{%- assign show_tag = true -%}
+														{%- assign text = tag | split: '-' -%}
+														{%- assign sale_text_on_detail = text[1] -%}
+														{%- endif -%}
+														{%- endfor -%}
+														{% assign CustomPromotionUrlList = settings.CustomPromotionUrl | strip_html | split : ',' %}
+														{% for CustomPromotionUrItem in CustomPromotionUrlList %}
+															{% assign CustomPromotionUrItemAll = CustomPromotionUrItem | split : '=' %}
+															{% assign CustomPromotionUrItemName = CustomPromotionUrItemAll[0] | strip %}
+															{% if CustomPromotionUrItemName == sale_text_on_detail %}
+																{% assign CustomPromotionUrItemUrl = CustomPromotionUrItemAll[1] %}
+																{%- break -%}
+															{% endif %}
+														{% endfor %}
+														{%- if show_tag -%}
+														<a class="product-line-item_tag  link" {%if CustomPromotionUrItemUrl!=blank%}href="{{CustomPromotionUrItemUrl}}"{%endif%}>
+															<span class="cart-line-item_variant--title ">{{ sale_text_on_detail }}</span>
+														{%-	render 'icon',icon:'solid-arrow-right' -%}
+														</a>
+														{%- endif -%}
+														{%- comment -%}END{%- endcomment -%}
 														<div class="line-item__price-list">
 															{%- if line_item.original_price > line_item.final_price -%}
 																{%- if line_item.final_price == 0 -%}
@@ -355,7 +385,7 @@
 														        data-quantity="{{ line_item.quantity | minus: 1 }}" data-line="{{ forloop.index }}"
 														        aria-label="{{ 'cart.items.decrease_quantity' | t }}"
 														        title="{{ 'cart.items.decrease_quantity' | t }}">{% render 'icon', icon: 'minus' %}</button>
-														<input aria-label="{{ 'product.form.quantity' | t }}" data-id="{{ line_item.variant_id }}"
+														<input aria-label="{{ 'product.form.quantity' | t }}" data-id="{{ line_item.product_id }}"
 														       data-scdata='{"is_quick_view":0,
                               "commodity_spuid": "{{ line_item.product.handle }}",
                                "commodity_name": "{{ line_item.title | handleize }}",
@@ -382,7 +412,7 @@
 														       onblur="mainBlur(this)">
 														<button type="button"
 														        data-scenable="1"
-														        data-sctype="addMainCart" data-id="{{ line_item.variant_id }}"
+														        data-sctype="addMainCart" data-id="{{ line_item.product_id }}"
 														        data-scdata='{"is_quick_view":0,
 							"commodity_spuid": "{{ line_item.product.handle }}",
                "commodity_name": "{{ line_item.title | handleize }}",
@@ -675,20 +705,24 @@
 
 										<input type="hidden" name="attributes[collection_products_per_page]" value="">
 										<input type="hidden" name="attributes[collection_layout]" value="">
-										<button data-scenable="1" data-sctype="Checkout" data-scsession='{"entrance":"CartPage_Checkout"}'
-										        type="submit" name="checkout"
-										        class="cart-recap__checkout button button--primary button--full button--large c202111301">
-											CHECK OUT
-											<svg t="1638259481918" class="icon" style="margin-top: -4px;" viewBox="0 0 1024 1024"
-											     version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="6850" width="200" height="200">
-												<path
-													d="M261.072 971.66499999c30.396 31.269 79.721 31.269 110.194 1e-8l391.71799999-403.211c30.38200001-31.325 30.38200001-82.114 1e-8-113.378l-391.718-403.197c-30.466-31.32500001-79.793-31.325-110.194-1e-8-30.449 31.28000001-30.449 82.058 0 113.39000001l336.64 346.497-336.64 346.458c-30.44799999 31.325-30.44799999 82.105 0 113.445v0z"
-													p-id="6851" fill="#ffffff"></path>
-											</svg>
-										</button>
+										<div class="c202111301 cart-checkout_button">
+											<button data-scenable="1" data-sctype="Checkout" data-scsession='{"entrance":"CartPage_Checkout"}'
+													type="submit" name="checkout"
+													class="cart-recap__checkout button button--primary button--full button--large ">
+												CHECK OUT
+												<svg t="1638259481918" class="icon" style="margin-top: -4px;" viewBox="0 0 1024 1024"
+													 version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="6850" width="200" height="200">
+													<path
+														d="M261.072 971.66499999c30.396 31.269 79.721 31.269 110.194 1e-8l391.71799999-403.211c30.38200001-31.325 30.38200001-82.114 1e-8-113.378l-391.718-403.197c-30.466-31.32500001-79.793-31.325-110.194-1e-8-30.449 31.28000001-30.449 82.058 0 113.39000001l336.64 346.497-336.64 346.458c-30.44799999 31.325-30.44799999 82.105 0 113.445v0z"
+														p-id="6851" fill="#ffffff"></path>
+												</svg>
+											</button>
+										</div>
+
+										<div data-pp-message data-pp-placement="product" data-pp-amount="{{cart.total_price| money_without_currency }}" data-pp-buyercountry="US" data-pp-style-align="center" class="message"></div>
+
 									</div>
 								</div>
-
 
 								{%- if section.settings.show_payment_icons -%}
 									<div class="cart-recap__secure-payment">
@@ -701,6 +735,7 @@
 													{{ type | payment_type_svg_tag: class: 'payment-list__item' }}
 												{%- endif -%}
 											{% endfor %}
+											<svg style="background: #FFFFFF" class="payment-list__item" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" x="0" y="0" viewBox="0 0 468 222.5" style="enable-background:new 0 0 468 222.5" xml:space="preserve"><style>.st0{fill-rule:evenodd;clip-rule:evenodd;fill:#635bff}</style><path class="st0" d="M414 113.4c0-25.6-12.4-45.8-36.1-45.8-23.8 0-38.2 20.2-38.2 45.6 0 30.1 17 45.3 41.4 45.3 11.9 0 20.9-2.7 27.7-6.5v-20c-6.8 3.4-14.6 5.5-24.5 5.5-9.7 0-18.3-3.4-19.4-15.2h48.9c0-1.3.2-6.5.2-8.9zm-49.4-9.5c0-11.3 6.9-16 13.2-16 6.1 0 12.6 4.7 12.6 16h-25.8zM301.1 67.6c-9.8 0-16.1 4.6-19.6 7.8l-1.3-6.2h-22v116.6l25-5.3.1-28.3c3.6 2.6 8.9 6.3 17.7 6.3 17.9 0 34.2-14.4 34.2-46.1-.1-29-16.6-44.8-34.1-44.8zm-6 68.9c-5.9 0-9.4-2.1-11.8-4.7l-.1-37.1c2.6-2.9 6.2-4.9 11.9-4.9 9.1 0 15.4 10.2 15.4 23.3 0 13.4-6.2 23.4-15.4 23.4zM223.8 61.7l25.1-5.4V36l-25.1 5.3zM223.8 69.3h25.1v87.5h-25.1zM196.9 76.7l-1.6-7.4h-21.6v87.5h25V97.5c5.9-7.7 15.9-6.3 19-5.2v-23c-3.2-1.2-14.9-3.4-20.8 7.4zM146.9 47.6l-24.4 5.2-.1 80.1c0 14.8 11.1 25.7 25.9 25.7 8.2 0 14.2-1.5 17.5-3.3V135c-3.2 1.3-19 5.9-19-8.9V90.6h19V69.3h-19l.1-21.7zM79.3 94.7c0-3.9 3.2-5.4 8.5-5.4 7.6 0 17.2 2.3 24.8 6.4V72.2c-8.3-3.3-16.5-4.6-24.8-4.6C67.5 67.6 54 78.2 54 95.9c0 27.6 38 23.2 38 35.1 0 4.6-4 6.1-9.6 6.1-8.3 0-18.9-3.4-27.3-8v23.8c9.3 4 18.7 5.7 27.3 5.7 20.8 0 35.1-10.3 35.1-28.2-.1-29.8-38.2-24.5-38.2-35.7z"/></svg>
 										</div>
 									</div>
 								{%- endif -%}
@@ -838,6 +873,12 @@
 <style>
   #shopify-section-{{ section.id }} .payment-list--centered {
     justify-content: left;
+  }
+  .message{
+	margin-top: 1.6rem;
+  }
+  .card__section{
+	padding-bottom: 0;
   }
 </style>
 <script>

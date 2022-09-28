@@ -12,9 +12,11 @@
   #shopify-section-{{ section.id }} div::-webkit-scrollbar {
     width: 0 !important
   }
-
+  .section-layout{
+	background-color: {{section.settings.backgroun}};
+  }
 </style>
-<section class="section" data-section-id="{{ section.id }}" data-section-type="featured-collection"
+<section class="section section-layout" data-section-id="{{ section.id }}" data-section-type="featured-collection"
 				 data-section-settings='{{ section_settings }}'>
 	{%- assign collection = section.settings.collection -%}
 	{%- if section.settings.title !=blank -%}
@@ -209,6 +211,10 @@
 	"id": "link_url",
 	"label": "Link URL",
 	"info": "If empty, the collection URL is used."
+	},{
+	"type": "color",
+	"id": "backgroun",
+	"label": "背景颜色"
 	}
 	],
 	"presets": [

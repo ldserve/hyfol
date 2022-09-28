@@ -20,7 +20,9 @@
       {%- if request.page_type == 'search' -%}
         <div class="scroller">
           <div class="scroller__inner">
-            <div class="product-list product-list--vertical product-list--scrollable">
+            {%- assign layout_mode = section.settings.product_layout -%}
+            <div class="product-list  product-list--vertical product-list--scrollable {% if layout_mode=='flex' %}mobile-layout{% endif %}" data-laout="{{layout_mode}}">
+             
               {%- comment -%}
               NOTE: we are doing an inner for loop to preserve the order (from most recently seen to oldest one), as search.results, out of the box,
                     will order by title, which is not really desirable. As the number of recently viewed products is kept small, I think the inner loop
@@ -101,6 +103,18 @@
       "id": "show_quick_buy",
       "label": "Show quick buy",
       "default": false
+    },{
+      "type":"select",
+      "id":"product_layout",
+      "label":"Mobile layout mode",
+      "options":[{
+        "value":"paging",
+        "label":"Paging"
+      },{
+        "value":"flex",
+        "label":"Flex"
+      }],
+      "default":"paging"
     }
     
   ],

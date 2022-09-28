@@ -54,6 +54,9 @@
                             <img src="{{ primary_media | img_url: '600x' }}" alt="{{ primary_media.alt | escape }}">
                         </noscript>
                     </div>
+
+                    {%- comment -%}活动 tag {%- endcomment -%}
+                    {%- render 'activity-tag',product:product  -%}
                 </a>
             </div>
             <div class="exhibition-right">
@@ -61,7 +64,7 @@
                 <h1 class="product-meta__title heading  collocation-product-meta__title">{{ product.title }}</h1>
                 {% endif %}
 
-                <div class="" style="border-bottom: 1px solid #bbb7b7 ; align-items: center;">
+                <div class="exhibition-right_price d-flex" >
                     <div class="price-list">
                         {%- if selected_variant.compare_at_price > selected_variant.price -%}
                         <span class="price price--highlight">
@@ -72,7 +75,7 @@
                             {{- selected_variant.price | money -}}
                             {%- endif -%}
                         </span>
-                        <span class="price price--compare original-price-bottom">
+                        <span class="price price--compare original-price-bottom price--original">
                             <span class="visually-hidden">{{ 'product.general.regular_price' | t }}</span>
 
                             {%- if settings.currency_code_enabled -%}
@@ -92,6 +95,8 @@
                         </span>
                         {%- endif -%}
                     </div>
+
+
                 </div>
 
                 <div class="product-form__variants ">
@@ -283,7 +288,9 @@
                     {%- endfor -%}
                     {%- if product.selected_or_first_available_variant.available -%}
                     <button type="submit" class="button button--primary mini-cart-add__button" data-scenable="1"
-                        data-sctype="collcation-addCart" data-scdata='{"is_quick_view":0,
+                        data-sctype="collcation-addCart" 
+                        data-productid="{{product.id}}"
+                        data-scdata='{"is_quick_view":0,
                                         "commodity_spuid": "{{product.handle}}",
                                         "commodity_skuid":"{{ product.selected_or_first_available_variant.sku }}",
                                         "commodity_name": "{{product.title | handleize }}",
@@ -309,7 +316,7 @@
                                         "collocation_spuid" :"", "entrance" :{%- if collocationLocation=="mini-cart-collcation" -%} "MiniCartPage_recommend_AddToCart" {%- else -%}"CommodityDetailPage_AddToCart" {%- endif -%}}' 
                                         data-action="add-to-cart" data-purchase>{{'product.form.add_to_cart' | t }}</button>
                     {%- else -%}
-                    <button type="submit" class="product-form__add-button button button--disabled" disabled >{{ 'product.form.sold_out' |  t }}</button>
+                    <button type="submit" class="product-form__add-button button button--disabled" disabled data-action="add-to-cart">{{ 'product.form.sold_out' |  t }}</button>
                     {%- endif -%}
                     <input type="hidden" name="id" data-sku="{{ selected_variant.sku }}" value="{{ selected_variant.id }}">
                     <input type="hidden" name="quantity" value="1">

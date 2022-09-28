@@ -1,21 +1,5 @@
 <script src="{{ 'request.js' | asset_url }}"></script>
 <script type="text/javascript">
-window.fbAsyncInit = function() {
-	FB.init({
-		appId      : '388834556261306',
-		cookie     : true,
-		xfbml      : true,
-		version    : 'v2.9'
-	}); 
-	FB.AppEvents.logPageView();   
-};
-(function(d, s, id){
-var js, fjs = d.getElementsByTagName(s)[0];
-if (d.getElementById(id)) {return;}
-js = d.createElement(s); js.id = id;
-js.src = "https://connect.facebook.net/en_US/sdk.js";
-fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));
 sensors.quick('isReady',function(){
 	sensors.setProfile({ latest_visit_time: getFormatDate() });/* 更新用户表最近一次访问时间 */
 	/* 注册事件代码 */
@@ -121,7 +105,7 @@ sensors.quick('isReady',function(){
 				sessionStorage.setItem("sensorsRegisterButtonClick", false);
 			})
 		};
-		
+
 		/* 订阅事件代码 */
 		if (document.querySelectorAll('.newsletter.newsletter--compact .form__submit').length >0) {
 			document.querySelector('.newsletter.newsletter--compact .form__submit').addEventListener('click', function (e) {
@@ -167,11 +151,11 @@ sensors.quick('isReady',function(){
 				fail_reason:document.querySelector('#footer-newsletter .alert--error').outerText,
 			});
 			sessionStorage.setItem("is_footer-newsletter_form__submit_click", false);
-		}	
+		}
 	} catch (error) {
 		console.log(error)
 	}
-	
+
 	/* 陈俊斌神策埋点代码start */
 	/*Checkout事件 theme主题里面只做入口储存 start*/
 	if ({{request.page_type | json}} == 'cart'){/*购物车页面*/
@@ -206,7 +190,7 @@ sensors.quick('isReady',function(){
 				newData.commodity_color = _arr[0]
 				newData.commodity_size = _arr[1]
 				newData.commodity_tag = newData.commodity_tag.split('-')
-				return newData 
+				return newData
 			},
 			callback:(el)=>{
 				ShareCommodity.updateFn();
@@ -244,14 +228,14 @@ sensors.quick('isReady',function(){
 					newData.share_medium = "Facebook"
 					newData.commodity_tag = newData.commodity_tag.split('-')
 					newData.site_category = getSiteCategory()
-					return newData 
+					return newData
 				},
 				callback:()=>{
 					ShareSuccess.updateFn();
 				}
-			})  
+			})
 		}
-                                                                                               
+
 	}
 	/* ShareCommodity 事件 end*/
 	/* 更新用户表 start*/
@@ -289,7 +273,7 @@ sensors.quick('isReady',function(){
 				}
 				profile_set.updateFn();
 			}
-		})  
+		})
 	}
 	/* 更新用户表 end*/
 	/* 陈俊斌神策埋点代码end */
