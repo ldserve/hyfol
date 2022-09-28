@@ -10646,7 +10646,7 @@ shopify-payment-terms {
 .color-swatch-list {
   margin:  0;
   /* We have to take into account the box-shadow and inner spacing added when an element is active */
-  text-align: center;
+  /* text-align: center; */
 }
 
 .color-swatch {
