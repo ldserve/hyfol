@@ -14645,6 +14645,12 @@
         },{
             key:"_onScroll",
             value: function _onScroll(ev) {
+                var loadingMore= this.element.querySelector('.loading-more')
+                if(!theme.currentPage ||!theme.pages){ 
+                    loadingMore&&(loadingMore.innerHTML='Loading completed')
+                    loadingMore&&loadingMore.classList.add("d-none")
+                    return
+                }
                 // 在DOM未完全挂载前不执行
                 if (document.readyState !== 'complete') return;
                 var scrollY = window.scrollY
@@ -14655,11 +14661,11 @@
                 var itemHeight=this.element.querySelector('.product-item').offsetHeight*4
                
                 if (currentOffset > itemHeight) return;
-                var nextPage = theme.currentPage + 1
-                var pages = theme.pages
+                var nextPage = (theme.currentPage + 1)||0
+                var pages = theme.pages||0
                 var sectionID = this.element.getAttribute('data-section-id')
-                if (nextPage >= pages){
-                    this.element.querySelector('.loading-more').innerHTML='Loading completed'
+                if (nextPage > pages){
+                    loadingMore&&(loadingMore.innerHTML='Loading completed')
                     return
                 }
                 if (this.isFetch) return;

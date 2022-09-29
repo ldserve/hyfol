@@ -15685,7 +15685,7 @@ shopify-payment-terms {
 }
 
 .d-none {
-  display: none;
+  display: none !important;
 }
 
 .font-60 {
