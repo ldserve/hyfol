@@ -292,7 +292,7 @@
         "79cd2bfc-0629-4c7d-b333-56a486e24cfb": {
           "type": "image",
           "settings": {
-            "sensorsName": "",
+            "sensorsName": "fallfor-you",
             "image": "shopify:\/\/shop_images\/banner_fe9bca90-7889-40bf-ae81-3b9495609296.jpg",
             "mobile_image": "shopify:\/\/shop_images\/1_8e08c179-b3fd-416e-9109-747db0831c7c.jpg",
             "show_overlay": false,
