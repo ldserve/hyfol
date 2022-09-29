@@ -42,8 +42,8 @@
           "type": "image",
           "settings": {
             "sensorsName": "finalsale",
-            "image": "shopify:\/\/shop_images\/pc_6dc1b90f-7dde-4227-a816-6d7570db1f03.jpg",
-            "mobile_image": "shopify:\/\/shop_images\/d029d786f93ec9dbc9e4e725e1a42317.jpg",
+            "image": "shopify:\/\/shop_images\/pc_ac69d630-9e42-4402-9f49-8ce2f627041b.jpg",
+            "mobile_image": "shopify:\/\/shop_images\/d029d786f93ec9dbc9e4e725e1a42317_6db06caf-e58b-4952-a7c3-c04c4e7637a2.jpg",
             "show_overlay": false,
             "overlay_opacity": 30,
             "text_color": "#ffffff",
