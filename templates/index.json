@@ -649,9 +649,9 @@
         "99fa6047-61d9-4ba8-99ad-c2f94a96c8e2": {
           "type": "link",
           "settings": {
-            "heading": "headwear",
-            "sensorsLinkName": "headwear",
-            "link": "https:\/\/www.hyfol.com\/collections\/cap-hat",
+            "heading": "accessories",
+            "sensorsLinkName": "accessories",
+            "link": "https:\/\/www.hyfol.com\/collections\/accessories-12-13",
             "left": 76,
             "top": 62,
             "width": 29,
@@ -739,7 +739,7 @@
           "settings": {
             "heading": "cargo",
             "sensorsLinkName": "cargo",
-            "link": "https:\/\/www.hyfol.com\/collections\/cargo-shorts-1",
+            "link": "https:\/\/www.hyfol.com\/collections\/cargo-pants",
             "left": 37,
             "top": 42,
             "width": 29,
@@ -749,9 +749,9 @@
         "d3832b18-b464-4e71-a800-239d8c0bdf6e": {
           "type": "link",
           "settings": {
-            "heading": "jogger",
-            "sensorsLinkName": "jogger",
-            "link": "https:\/\/www.hyfol.com\/",
+            "heading": "bestseller",
+            "sensorsLinkName": "bestseller",
+            "link": "https:\/\/www.hyfol.com\/collections\/hyfol-best-seller-1",
             "left": 72,
             "top": 45,
             "width": 57,
@@ -773,9 +773,9 @@
         "81098c5b-5074-43de-b712-fe69e9b9956b": {
           "type": "link",
           "settings": {
-            "heading": "headwer",
-            "sensorsLinkName": "headwer",
-            "link": "https:\/\/www.hyfol.com\/collections\/cap-hat",
+            "heading": "accessories",
+            "sensorsLinkName": "accessories",
+            "link": "https:\/\/www.hyfol.com\/collections\/accessories-12-13",
             "left": 38,
             "top": 69,
             "width": 29,
@@ -785,9 +785,9 @@
         "109f4489-84a2-4283-ac28-ee83ad0d262c": {
           "type": "link",
           "settings": {
-            "heading": "bestseller",
-            "sensorsLinkName": "bestseller",
-            "link": "https:\/\/www.hyfol.com\/collections\/hyfol-best-seller-1",
+            "heading": "newin",
+            "sensorsLinkName": "newin",
+            "link": "https:\/\/www.hyfol.com\/collections\/new-in-1",
             "left": 71,
             "top": 67,
             "width": 26,
