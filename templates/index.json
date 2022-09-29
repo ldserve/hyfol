@@ -17,9 +17,9 @@
         "1664249260b7761d46-0": {
           "type": "image",
           "settings": {
-            "sensorsName": "fallforyou",
-            "image": "shopify:\/\/shop_images\/pc_banner_32f6945b-87ca-4520-a3b8-8e5b262b5e91.jpg",
-            "mobile_image": "shopify:\/\/shop_images\/e315c28ce1022609c3d8f849b842e7f2_3a5eb57c-6f15-4adb-8c6d-e85a968fcc04.jpg",
+            "sensorsName": "halloween",
+            "image": "shopify:\/\/shop_images\/92024373babbbdfc4d40f0ec5ce0c1ab.jpg",
+            "mobile_image": "shopify:\/\/shop_images\/650e9223fe50b0cb99d3ba6996ea51a3.jpg",
             "show_overlay": false,
             "overlay_opacity": 30,
             "text_color": "#ffffff",
@@ -35,7 +35,7 @@
             "button_background": "#ffffff",
             "button_text_color": "#000000",
             "button_text": "",
-            "link": "https:\/\/www.hyfol.com\/collections\/fall-for-you"
+            "link": "https:\/\/www.hyfol.com\/collections\/halloween-theme-clothing"
           }
         },
         "1664249260b7761d46-1": {
@@ -86,7 +86,7 @@
             "link": "shopify:\/\/collections\/hyfol-best-seller-1",
             "left": 0,
             "top": 0,
-            "width": 16,
+            "width": 20,
             "height": 100
           }
         },
@@ -96,57 +96,57 @@
             "heading": "newin",
             "sensorsLinkName": "newin",
             "link": "https:\/\/www.hyfol.com\/collections\/new-in-1",
-            "left": 18,
+            "left": 23,
             "top": 0,
-            "width": 11,
+            "width": 9,
             "height": 100
           }
         },
         "78cb2d5c-1f5d-4d02-bcd6-3fafec378475": {
           "type": "link",
           "settings": {
-            "heading": "polo",
-            "sensorsLinkName": "polo",
-            "link": "https:\/\/www.hyfol.com\/collections\/polo-shirts",
-            "left": 31,
+            "heading": "halloween",
+            "sensorsLinkName": "halloween",
+            "link": "https:\/\/www.hyfol.com\/collections\/halloween-theme-clothing",
+            "left": 33,
             "top": 0,
-            "width": 16,
+            "width": 12,
             "height": 100
           }
         },
         "a3ab2cb6-f89f-4bc1-b646-9fe4e3be3ccb": {
           "type": "link",
           "settings": {
-            "heading": "raglan",
-            "sensorsLinkName": "raglan",
-            "link": "https:\/\/www.hyfol.com\/collections\/raglan-tees",
-            "left": 50,
+            "heading": "polo",
+            "sensorsLinkName": "polo",
+            "link": "https:\/\/www.hyfol.com\/collections\/polo-shirts",
+            "left": 47,
             "top": 0,
-            "width": 17,
+            "width": 15,
             "height": 100
           }
         },
         "df248fe6-62ab-4deb-9e61-43d26d4546de": {
           "type": "link",
           "settings": {
-            "heading": "shorts",
-            "sensorsLinkName": "shorts",
-            "link": "https:\/\/www.hyfol.com\/collections\/cargo-shorts-1",
-            "left": 69,
+            "heading": "paglantees",
+            "sensorsLinkName": "paglantees",
+            "link": "https:\/\/www.hyfol.com\/collections\/raglan-tees",
+            "left": 63,
             "top": 0,
-            "width": 18,
+            "width": 13,
             "height": 100
           }
         },
         "4e72a354-81ca-4018-a5e5-0e79fc495451": {
           "type": "link",
           "settings": {
-            "heading": "hallowms",
-            "sensorsLinkName": "hallowms",
-            "link": "https:\/\/www.hyfol.com\/collections\/halloween-theme-clothing",
-            "left": 89,
+            "heading": "cargopants",
+            "sensorsLinkName": "cargopants",
+            "link": "https:\/\/www.hyfol.com\/collections\/cargo-pants",
+            "left": 77,
             "top": 0,
-            "width": 10,
+            "width": 45,
             "height": 100
           }
         }
@@ -163,10 +163,10 @@
         "linkImg_title": "",
         "linkImg_content": "",
         "hidDesk": false,
-        "sensorsName": "",
+        "sensorsName": "mobile分类导流区",
         "hidWeb": true,
         "line": false,
-        "image": "shopify:\/\/shop_images\/04_49808f48-3356-46f7-a91c-440c1c283e98.jpg",
+        "image": "shopify:\/\/shop_images\/03_c971521a-cb4b-43ca-8392-29e730d92f18.jpg",
         "tpadding": 0,
         "rpadding": 0,
         "bpadding": 0,
@@ -261,10 +261,10 @@
         "linkImg_title": "",
         "linkImg_content": "",
         "hidDesk": true,
-        "sensorsName": "",
+        "sensorsName": "mobile分类导流区",
         "hidWeb": false,
         "line": false,
-        "image": "shopify:\/\/shop_images\/1_02_ab30c763-519b-4a5b-94b0-8e5f8ca3e1af.jpg",
+        "image": "shopify:\/\/shop_images\/1_02_45925197-901e-4a7e-a2c3-7705df371ad7.jpg",
         "tpadding": 0,
         "rpadding": 0,
         "bpadding": 0,
