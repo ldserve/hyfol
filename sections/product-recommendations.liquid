@@ -8,7 +8,7 @@
 
 {%- capture section_settings -%}
 {
-  "stackable": false,
+  "stackable": {{section.settings.stackable}},
   "layout": "vertical",
   "productId": {{ product.id | json }},
   "useRecommendations": {{ use_recommendations | json }},
@@ -33,7 +33,7 @@
       {%- if recommendations.performed or use_recommendations == false -%}
         <div class="scroller">
           <div class="scroller__inner">
-            <div class="product-list product-list--vertical product-list--scrollable">
+            <div class="product-list product-list--vertical {% if section.settings.stackable != true %}product-list--scrollable{% endif %}">
               {%- comment -%}
               If the merchant is explicitly using SuperFields, we use the hand-picked related products, otherwise we
               switch to the Shopify automatic recommendation
@@ -112,6 +112,11 @@
       "id": "title_color",
       "label": "标题字体颜色",
       "default": "#000000"
+    },{
+      "type":"checkbox",
+      "id":"stackable",
+      "label":"是否向下排列",
+      "default":false
     }
   ],
   "blocks": [
