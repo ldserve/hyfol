@@ -153,7 +153,8 @@
       "settings": {
         "heading": "You may also like",
         "show_quick_buy": true,
-        "title_color": "#000000"
+        "title_color": "#000000",
+        "stackable": false
       }
     },
     "1192462ce7ecb73678": {
