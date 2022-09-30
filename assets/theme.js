@@ -196,7 +196,7 @@
                 cardMedia: this.querySelector('.card__media'),
                 cartNode: this.querySelector('.ny-icon-cart'),
                 addColleNode: this.querySelector('.add-collect'),
-                removeColleNode: this.querySelector('.remove-collect'),
+                removeColleNode: this.querySelector('.remove-collect'), 
                 quickviewButton: this.querySelector('.openQuickView')
             }
             this.setupEventListeners()
@@ -216,7 +216,6 @@
 
         _openQuickView(event) {
             var modal = document.getElementById(event.target.getAttribute('aria-controls'));
-            console.log(modal);
             modal.classList.add('is-loading');
             var url = event.target.getAttribute('data-product-url').split("?")[0]
             fetch("".concat(url, "?view=quick-view"), {
@@ -258,7 +257,7 @@
                 productIds: [id]
             }
             if (customerId) {
-              false&&  post_data("customerCollectionProduct/selectProductIsCollection", searchData)
+              false&& post_data("customerCollectionProduct/selectProductIsCollection", searchData)
                     .then(res => {
                         if (res.success) {
                             this.elements.addColleNode.parentElement.style.display = 'flex'
@@ -287,7 +286,7 @@
                 productId: this.getAttribute('data-id'),
                 productSpu: this.getAttribute('data-spu')
             }
-          false&&  post_data("customerCollectionProduct/collectionProduct", collectData)
+      false&&  post_data("customerCollectionProduct/collectionProduct", collectData)
                 .then(res => {
                     if (res.success) {
                         this.style.display = 'none'
@@ -318,7 +317,7 @@
                         productSpu: this.getAttribute('data-spu')
                     }
 
-                  false&&  post_data("customerCollectionProduct/collectionProduct", collectData)
+                false&& post_data("customerCollectionProduct/collectionProduct", collectData)
                         .then(res => {
                             if (res.success) {
                                 this.style.display = 'none'

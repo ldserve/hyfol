@@ -3620,26 +3620,7 @@ display: none;
   line-height: 1;
 }
 
-.mini-cart__line-item-list{
-   max-height: 120px !important;
-}
 
-@media screen and (min-height: 740px) {
-  .mini-cart__line-item-list{
-    max-height: 210px !important;
- }
-
-}
-
-@media screen  and (min-width: 640px) {
-  .mini-cart__line-item-list{
-    max-height: 135px
- }
- .large_pad{
-   display: none;
- }
-
-}
 
 .mini-cart__recap {
   /*   padding: 15px 20px 20px 20px; */

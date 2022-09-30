@@ -13,7 +13,7 @@
 		display: grid;
 		grid: repeat(1, auto) / auto-flow auto;
 		color: #fff;
-		background:url({{ 'coupon.jpg' | asset_url }}) no-repeat 100% 100%;
+		background:url('https://cdn.shopify.com/s/files/1/0595/0691/7535/files/coup.jpg?v=1664507060') no-repeat 100% 100%;
 		grid-template-columns: 50% 1px auto;
 		padding: 1rem 2rem;
 
@@ -38,7 +38,9 @@
 		margin-right: 1.8rem;
 		cursor: pointer;
 	}
-
+	summary[aria-expanded="true"]{
+		border-bottom: 1px solid #000;
+	}
 	.vip-level__s1,
 	.vip-level__s2,
 	.vip-level__s3 {
@@ -470,8 +472,8 @@
 
 	.vip-page {
 		justify-content: space-between;
-		background: url({{ 'user_background.png' | asset_url }}) no-repeat -2rem 0rem;
-		/* background-repeat: no-repeat; */
+		/* background: url('https://cdn.shopify.com/s/files/1/0595/0691/7535/files/back.png?v=1664507351') no-repeat -2rem 0rem; */
+		background: url('https://cdn.shopify.com/s/files/1/0595/0691/7535/files/bg_main_s0-76143950f1.png?v=1664507536') no-repeat -2rem 0rem;
 		background-size: 106% 100%;
 		background-clip: border-box;
 		min-height: 200px;
@@ -571,7 +573,7 @@
 	}
 
 	.my-coupons__item {
-		background-image: url({{ 'coupon.jpg' | asset_url }});
+		background-image: url('https://cdn.shopify.com/s/files/1/0595/0691/7535/files/coup.jpg?v=1664507060');
 		background-position: center;
 		background-repeat: no-repeat;
 		background-size: 100% 100%;
@@ -647,7 +649,7 @@
 	.profile-nav>summary {
 		display: inline-block;
 		margin-right: 1rem;
-		padding: 1rem;
+		padding: 1rem 1rem 0;
 		cursor: pointer;
 	}
 
@@ -745,7 +747,22 @@
 		}
 	
 	}
+
+	.my-coupons_empty{
+		display: block !important;
+	}
+	.my-coupons_empty>.empty{
+		color: #000;
+		text-align: center;
+	}
+	.empty>.icon--package{
+		font-size: 5rem;
+	}
+	.page__item[aria-hidden="true"]{
+		display: none;
+	}
 </style>
+
 {%- comment -%}--------------------------Mobile--------------------------{%- endcomment -%}
 <section class="hidden-lap-and-up account">
 	<div class="header-me container">
@@ -828,37 +845,7 @@
 						</div>
 					</div>
 				</div>
-				{%- comment -%}
-				<div class="value-picker-wrapper hidden-tablet-and-up">
-					<button class="value-picker-button value-picker-button--pill" aria-haspopup="true"
-						aria-expanded="false" aria-controls="account-selector" data-action="open-value-picker">
-						{{- 'customer.general.orders' | t -}} {%- render 'icon', icon: 'arrow-bottom' -%}
-					</button>
 
-					<div id="account-selector" class="value-picker" aria-hidden="true">
-						<div class="value-picker__inner">
-							<header class="value-picker__header">
-								<span
-									class="value-picker__title text--strong">{{ 'customer.general.my_account' | t }}</span>
-								<button class="value-picker__close" data-action="close-value-picker"
-									aria-controls="account-selector"
-									aria-label="{{ 'general.accessibility.close' | t }}">{% render 'icon', icon: 'close' %}</button>
-							</header>
-							<div class="value-picker__choice-list">
-								<a href="{{ routes.account_url }}"
-									class="value-picker__choice-item is-selected">{{ 'customer.general.orders' | t }}
-									{% render 'icon', icon: 'check-2' %}</a>
-								<a href="{{ routes.account_addresses_url }}"
-									class="value-picker__choice-item">{{ 'customer.general.addresses' | t }}
-									{% render 'icon', icon: 'check-2' %}</a>
-								<a href="{{ routes.account_logout_url }}" class="value-picker__choice-item"
-									data-no-instant>{{ 'customer.general.logout' | t }}
-									{% render 'icon', icon: 'check-2' %}</a>
-							</div>
-						</div>
-					</div>
-				</div>
-				{%- endcomment -%}
 			</div>
 
 			<div class="layout__section ">
@@ -918,11 +905,10 @@
 				<div class="card my_orders account_right_content">
 
 					<div class="hidden-phone">
-						
 						{% render 'my-order-view' customer:customer%}
 					</div>
 
-					<div class="large_pad">
+					<div class="large_pad hidden-tablet-and-up ">
 						<div class="order-me container">
 							<h3 class="h3">{{- 'customer.general.orders' | t -}}</h3>
 							<div class="icon-box">
@@ -1000,8 +986,9 @@
 	
 				</div>
 				
-				{%- comment -%}--------------------vip规则说明-----------------------{%- endcomment -%}
+				{%- comment -%}--------------------VIP 信息和优惠券概览-----------------------{%- endcomment -%}
 				<div class="my_overview account_right_content">
+					{%- comment -%}规则说明{%- endcomment -%}
 					<div class="vip-rules" style="display:none;">
 					
 						<div class="close-rule__page">{% render 'icon',icon:'close' %} </div>
@@ -1021,11 +1008,9 @@
 						<div class="rule-tex">
 							Every tier is valid for 12 months from the date the HYFOL VIP member qualifies(exclude silver member). identity
 							validation is required every month.Data refreshes typically take up to 24 hours. Please check your level after
-							24
-							hours. Once you become a silver member,you will earn a life-long status. Please note that the level of your
+							24 hours. Once you become a silver member,you will earn a life-long status. Please note that the level of your
 							membership is based on the times of eligible purchases or the amount of eligible spending during the past 12
-							months
-							which is 45 days before the refresh date every month.
+							months which is 45 days before the refresh date every month.
 							<table border="1px" class="rule-table">
 								<thead>
 									<tr>
@@ -1088,14 +1073,13 @@
 							ofers are set out from time to time to your personal acCount.
 						</div>
 					</div>
-				
 
 					<div class="my-account">
 						<div class="vip-page ">
 							<div class="vip-overview">
 								<div class="vip-user d-flex">
 									<div class="vip-user__avatar">
-										<img class="lazyload" alt="fill" src="{{ 'user.png' | asset_url}}">
+										<img class="lazyload" alt="fill" src="https://cdn.shopify.com/s/files/1/0595/0691/7535/files/bd0d72d9c0dedca8253dc2549b1a1017.png?v=1664507136">
 									</div>
 									<div class="vip-user__name">
 										<span style="margin-bottom:6px; display: block;">{{customer.name}}</span>
@@ -1117,17 +1101,17 @@
 									<span class="vip-solid"></span>
 									<span class="vip-level__s1">
 										<img src="{{'s1.png' | asset_url}}" alt="">
-										<!-- <span class="vip-grade__name">Silver</span> -->
+										{%- comment -%}<span class="vip-grade__name">Silver</span>{%- endcomment -%}
 									</span>
 									<span class="vip-solid"></span>
 									<span class="vip-level__s2">
 										<img src="{{'s2.png' | asset_url}}" alt="">
-									<!-- <span class="vip-grade__name">Gold</span> -->
+										{%- comment -%}<span class="vip-grade__name">Gold</span>{%- endcomment -%}
 									</span>
 									<span class="vip-solid"></span>
 									<span class="vip-level__s3">
 										<img src="{{'s3.png' | asset_url}}" alt="">
-										<!-- <span class="vip-grade__name">Platinum</span> -->
+										{%- comment -%}<span class="vip-grade__name">Platinum</span>{%- endcomment -%}
 									</span>
 								</div>
 								<p class="vip-info__title">Welcome to the HYFOL VIP</p>
@@ -1175,14 +1159,15 @@
 	
 						<div class="my-coupons">
 							<h3 class="h3 my-coupons__title">Unused Coupons</h3>
-							<div class="my-coupons__list ">
-								
-						
+							<div class="my-coupons__list my-coupons_empty">
+							<div class="empty">
+								{%- render 'icon',icon:"package" -%}
+								<p>It is empty here :-(</p>
 							</div>
-						
-						
+							</div>
 						</div>
-						
+
+						{%- comment -%}订单导航{%- endcomment -%}
 						<div class="order-preview overview-box ">
 							<h3 class="h3">My Order</h3>
 							<order-item>
@@ -1259,6 +1244,7 @@
 								</div>
 							</order-item>
 						</div>
+
 					{%- comment -%}
 					<div class="overview-box points-box">
 						<h1>Points For</h1>
@@ -1278,6 +1264,7 @@
 					</div>	
 
 				</div>
+
 				{%- comment -%}---------------------优惠券--------------------------{%- endcomment -%}
 				<div class="my_coupons account_right_content backgrount_e">
 					<h3 class="my_coupons__title h3">My Coupons</h3>
@@ -1293,27 +1280,28 @@
 						<div class="unused__coupons page__item" data-index="1" aria-hidden="false">
 							<div class="my-coupons">
 								<!-- <h3 class="h3 my-coupons__title">Unused Coupons</h3> -->
-								<div class="my-coupons__list ">
-									
-							
-								</div>
-							
-							
+									<div class="my-coupons__list my-coupons_empty">
+										<div class="empty">
+											{%- render 'icon',icon:"package" -%}
+											<p>It is empty here :-(</p>
+										</div>
+									</div>
 							</div>
 						</div>
 						<div class="expired__coupons page__item" data-index="2" aria-hidden="true">
 							<div class="my-coupons">
 								<!-- <h3 class="h3 my-coupons__title">Unused Coupons</h3> -->
-								<div class="my-coupons__list ">
-									
-							
+								<div class="my-coupons__list my-coupons_empty">
+									<div class="empty">
+										{%- render 'icon',icon:"package" -%}
+										<p>It is empty here :-(</p>
+									</div>
 								</div>
-							
-							
 							</div>
 						</div>
 						</details-menu>
 				</div>
+
 				{%- comment -%}---------------------------------------{%- endcomment -%}
 				<div class="my_profiles account_right_content">
 					{%- comment -%}
@@ -1342,24 +1330,25 @@
 					</div>
 					{%- endcomment -%}
 				</div>
+
 				{%- comment -%}-------------------------积分概览------------------------{%- endcomment -%}
 				<div class="my_profile account_right_content">
 					<div class="profile-view backgrount_e">
 						<h3 class="h3" >My Profile</h3>
 						<div class="my-profile__view ">
 							<div class="profile-total">
-								<div><strong>100</strong></div>
-								<div>Total Points</div>
+								<div class="profile_total"><strong >0</strong></div>
+								<div class="profile_heading">Total Points</div>
 							</div>
 							<span style="background-color: #aaa;height: 100%;width: 1px;margin: 0 auto;"></span>
 							<div class="profile-expire">
-								<div><strong>0</strong></div>
+								<div class="profile_expire"><strong>0</strong></div>
 								<div>Points Expired soon</div>
 							</div>
 						</div>
 					</div>
 					
-					{%- comment -%}积分记录{%- endcomment -%}
+					{%- comment -%}-----------------积分记录----------------------{%- endcomment -%}
 					<div class="profile-record backgrount_e">
 						<h4 class="profile-story__title">Profile Detalls</h4>
 						<details-menu>
@@ -1388,12 +1377,12 @@
 										</tr>
 									</thead>
 									<tbody>
-										<tr>
-											<td>16/05/2022 02:00:00</td>
-											<td>Emaill Verification</td>
-											<td class="profile-amount">+ 100 </td>
-											<td>16/05/2022 02:00:00</td>
-										</tr>
+										<tr><td colspan="4"><div class="my-coupons_empty">
+											<div class="empty">
+												{%- render 'icon',icon:"package" -%}
+												<p>It is empty here :-(</p>
+											</div>
+										</div></td></tr>
 									</tbody>
 								</table>
 							</div>
@@ -1408,12 +1397,12 @@
 										</tr>
 									</thead>
 									<tbody>
-										<tr>
-											<td>16/05/2022 02:00:00</td>
-											<td>Emaill Verification</td>
-											<td>+ 100 </td>
-											<td>16/05/2022 02:00:00</td>
-										</tr>
+										<tr><td colspan="4"><div class="my-coupons_empty">
+											<div class="empty">
+												{%- render 'icon',icon:"package" -%}
+												<p>It is empty here :-(</p>
+											</div>
+										</div></td></tr>
 									</tbody>
 								</table>
 							</div>
@@ -1428,12 +1417,12 @@
 										</tr>
 									</thead>
 									<tbody>
-										<tr>
-											<td>16/05/2022 02:00:00</td>
-											<td>Emaill Verification</td>
-											<td>+ 100 </td>
-											<td>16/05/2022 02:00:00</td>
-										</tr>
+										<tr><td colspan="4"><div class="my-coupons_empty">
+											<div class="empty">
+												{%- render 'icon',icon:"package" -%}
+												<p>It is empty here :-(</p>
+											</div>
+										</div></td></tr>
 									</tbody>
 								</table>
 							</div>
@@ -1448,12 +1437,12 @@
 										</tr>
 									</thead>
 									<tbody>
-										<tr>
-											<td>16/05/2022 02:00:00</td>
-											<td>Emaill Verification</td>
-											<td>+ 100 </td>
-											<td>16/05/2022 02:00:00</td>
-										</tr>
+										<tr><td colspan="4"><div class="my-coupons_empty">
+											<div class="empty">
+												{%- render 'icon',icon:"package" -%}
+												<p>It is empty here :-(</p>
+											</div>
+										</div></td></tr>
 									</tbody>
 								</table>
 							</div>
@@ -2058,16 +2047,28 @@
 		</div>
 	</div>
 </section>
+
+
 <script>
-	async function post_data(url, data) {
-		const response = await fetch(`https://api.leandow-technology.com/api/${url}`, {
-			method: 'POST',
-			headers: {
-				'Content-Type': 'application/json',
-				"siteValue": "hyfol",
-			},
-			body: JSON.stringify(data)
-		});
+
+	let baseURL = 'http://api.leandow-technology.com/api/'
+	async function getData(url,data,token,method="POST",type="json") {
+		const headers={"siteValue": "hyfol"}
+		const options={
+			method:method,
+			headers
+		}
+
+		if(type=='json'){
+			headers['Content-Type']='application/json'
+			data && (options.body=JSON.stringify(data))
+		}
+		token && (headers['Authorization']=token)
+		if(type == 'formData'){
+			headers['Content-Type']='application/x-www-form-urlencoded'
+		}
+
+		const response = await fetch(baseURL.concat(url),options);
 		return response.json();
 	}
 
@@ -2079,7 +2080,7 @@
 			customerId: "{{customer.id}}",
 			size: 100
 		}
-		post_data("customerCollectionProduct/collectionProductList", collectList)
+		getData("customerCollectionProduct/collectionProductList", collectList)
 			.then(res => {
 				if (res.data.records.length < 1) {
 					document.querySelector('.collect-body').style.display = "block"
@@ -2134,7 +2135,7 @@
 	}
 	
 	if ("{{ customer.id}}") {
-		// getCollectList()
+		getCollectList()
 	}
 
 
@@ -2144,28 +2145,22 @@
 		}
 		document.querySelector(".wish_loading").style.display = "flex"
 		document.querySelector(".product-list--collection").style.display = "none"
-
 		document.querySelectorAll(".pagination__nav-item").forEach((item) => {
 			item.className = "pagination__nav-item link"
 		})
 		event.target.className = "pagination__nav-item link is-active"
-
-
 		const collectList = {
 			current: event.target.innerHTML * 1,
 			customerId: "{{customer.id}}",
 			size: 24
 		}
-		post_data("customerCollectionProduct/collectionProductList", collectList)
+		getData("customerCollectionProduct/collectionProductList", collectList)
 			.then(res => {
-
-
 				if (res.data.records.length < 1) {
 					document.querySelector('.collect-body').style.display = "block"
 					return
 				}
 				var ids = ""
-
 				res.data.records.forEach((item, index) => {
 					if (index === 0) {
 						ids = `id:${item.productId}`
@@ -2202,7 +2197,7 @@
 	}
 
 	~function () {
-		//**      ACCPOUNT CUSTOMERS          
+		//**  ACCPOUNT CUSTOMERS  ***//        
 		function bindEvent(container, target, call) {
 			let content = document.querySelector(container)
 			content.addEventListener('click', (e) => {
@@ -2213,6 +2208,7 @@
 
 		}
 
+		//编辑客户地址 
 		function deleteAddresses() {
 			function getFormData(form) {
 				var hash = [];
@@ -2225,7 +2221,6 @@
 						hash.push(formElement.name + '=' + formElement.value)
 					}
 				}
-
 				return hash.join('&');
 			}
 
@@ -2239,7 +2234,6 @@
 					body: formData
 				}).then(response => {
 					location.reload()
-
 				})
 
 			}
@@ -2255,165 +2249,197 @@
 		}
 		deleteAddresses()
 
+	//** 	个人中心   **//
+		async function getToken() {
+			let token
+			const customerJson = {
+				email: "{{ customer.email}}",
+				id: "{{ customer.id }}"
+				}
 
-	let baseURL = 'http://api.leandow-technology.com/api'
-			// token
-	async function getToken() {
-		const customerJson = {
-			"email": {{ customer.email | json}},
-			"id": {{ customer.id }}
-			}
-		let token=localStorage.getItem('customerToken')|| ''
-		if(token) return token
-		let url = baseURL.concat('/customerAccount/login')
-		const response=	await fetch(url, {
-			method: "POST",
-			body: JSON.stringify(customerJson),
-			headers: { 'content-type': 'application/json','siteValue':'hyfol'}
-		})
-		try {
-			if(response.status!==200)return 'error'
-			const data = await response.json()
-			if(data.code!==200)return 'error'
-			console.log('data',data,`-----tonken:${new Date().toLocaleString()}----`);
-			token = token || data.data
-			localStorage.setItem('customerToken',token)
-		} catch (error) {
-			token=''
-		}
-		return token	
-	}
-
-
-		function getPoint() {
-
-			let allPrice = 0
-
-			{% for order in customer.orders %}
-			{% if order.financial_status == 'fulfilled' %}
-			allPrice += ('{{ order.total_price }}' * 1) || 0
-			{% endif %}
-			{% endfor %}
-			let point = Math.round(allPrice / 100)
-			document.querySelector(".account-points").innerHTML = point
-		}
-		// getPoint()
-
-		function getCoupons() {
-			let url = '/customerAccount/getMyPriceRules'
-			const data = getToken()
-
-			fetch(baseURL.concat(url), {
-				method: "GET",
-				headers: { 'Authorization': data, 'content-type': "application/json",'siteValue':'hyfol' }
-			}).then(res=>res.json())
-			.then(data=>{
-				console.log('getCoupons',data)
-
-			
-
-			const couponView = document.querySelector('.my-account .my-coupons__list')
-			const unusedCoupons = document.querySelector('.unused__coupons .my-coupons__list')
-			const expiredCoupons = document.querySelector('.expired__coupons .my-coupons__list')
-
-			let couponList = data.map((item, i) => {
-				return `<div class="my-coupons__item">
-								<p>${item.couponName}</p>	
-								<p>${item.coupon}</p>	
-								<p>Code:${item.couponCode}</p>	
-									<ul class="coupons-date">
-										<li>${item.couponGetDate}~${item.couponClosingDate}</li>
-										<li>${item.scopeOfUse}</li>
-									</ul>
-									<span class="round-left"></span>
-									<span class="round-right"></span>
-								</div>`}).join('')
-			couponView.innerHTML = couponList
-			unusedCoupons.innerHTML = couponList
-			expiredCoupons.innerHTML = couponList
-		})
-		}
-		// getCoupons()
-
-	async function getMyCoupon() {
-			const token = await getToken()
-			if (token !== 'error') {
-				const response = await fetch(baseURL.concat('/customerAccount/getPriceRules'), {
-					method: "GET",
-					headers: { 'content-type': 'application/x-www-form-urlencoded', 'siteValue': 'hyfol','Authorization':token }
-				})
+			let url = baseURL.concat('customerAccount/login')
+			const response=	await fetch(url, {
+				method: "POST",
+				body: JSON.stringify(customerJson),
+				headers: { 'content-type': 'application/json','siteValue':'hyfol'}
+			})
+			try {
+				if(response.status!==200)return ''
 				const data = await response.json()
-				console.log('getMyCoupon', data);
+				if(data.code!==200) return ''
+				console.log(`-----tonken-----`,data);
+				token = token || data.data
+				const authorToken={
+					token:token,
+					date:Date.now()+300000
+				}
 
-			} else console.info(token)
+			} catch (error) {
+				token=''
+			}
+			return token	
 		}
+
+		async function getMyCoupon(token, type = "unused") {
+				const {data,code} = await getData('customerAccount/getMyPriceRules','',token,"GET")
+				console.log('getCoupons', data,code)
+				return data
+			}
+
+		async function getCoupons(token) {
+				if (token) {
+				const { data, code }= await getData('customerAccount/getPriceRules', '',token,"GET",'formData')
+					
+					const unusedData = await getMyCoupon(token)
+					const expireData = await getMyCoupon(token, 'expired')
+					if (code == 200) {
+						const couponView = document.querySelector('.my-account .my-coupons__list')
+						const unusedCoupons = document.querySelector('.unused__coupons .my-coupons__list')
+						const expiredCoupons = document.querySelector('.expired__coupons .my-coupons__list')
+						
+						if (data) {
+							couponView.classList.remove("my-coupons_empty")
+							let couponList = data.map((item, i) => {
+								return `<div class="my-coupons__item" data-index="${item.id}">
+									<p>${item.title[0]}</p>	
+									<p>${item.title[1]}</p>	
+									<p>Code:${item.id}</p>	
+										<ul class="coupons-date">
+											<li>${item.desc[0]}</li>
+											<li>${item.desc[1]}</li>
+										</ul>
+										<span class="round-left"></span>
+										<span class="round-right"></span>
+									</div>`}).join('')
+
+							couponView.innerHTML = couponList
+						}
+						if (unusedData) {
+							unusedCoupons.classList.remove("my-coupons_empty")
+							let unusedList = unusedData.map((item, i) => {
+								return `<div class="my-coupons__item" data-index="${item.id}">
+									<p>${item.title[0]}</p>	
+									<p>${item.title[1]}</p>	
+									<p>Code:${item.id}</p>	
+										<ul class="coupons-date">
+											<li>${item.desc[0]}</li>
+											<li>${item.desc[1]}</li>
+										</ul>
+										<span class="round-left"></span>
+										<span class="round-right"></span>
+									</div>`}).join('')
+							unusedList && (unusedCoupons.innerHTML = unusedList)
+						}
+						if (expireData) {
+							expiredCoupons.classList.remove("my-coupons_empty")
+							let expireList = expireData.map((item, i) => {
+								return `<div class="my-coupons__item" data-index="${item.id}">
+								<p>${item.title[0]}</p>	
+								<p>${item.title[1]}</p>	
+									<p>Code:${item.id}</p>	
+										<ul class="coupons-date">
+											<li>${item.desc[0]}</li>
+											<li>${item.desc[1]}</li>
+											</ul>
+											<span class="round-left"></span>
+											<span class="round-right"></span>
+											</div>`}).join('')
+
+							expireList && (expiredCoupons.innerHTML = expireList)
+						}
+					}
+
+					console.log('getMyCoupon', data);
+
+				} else console.info(token)
+			}
+
+		async function getPoint(token) {
+				const body = {
+					pageNum: 1,
+					pageSize: 10,
+					type: "all, earned, pointAmount, expired"
+				}
+				const data = await getData('customerAccount/getPointInfo',body, token )
+				const {pointsExpiredSoon, profileDetalls, totalPoints }=data.data
+				console.log('getPoint-responsse', data)
+
+				const totalContainer = document.querySelector('.profile_total')
+				const expireContainer = document.querySelector('.profile_expire')
+				const allProfile = document.querySelector('.profile-all tbody')
+				totalContainer.innerHTML = totalPoints || 0;
+				expireContainer.innerHTML = pointsExpiredSoon || 0;
+				// console.log('profileDetalls',profileDetalls)
+				const templateAll = profileDetalls.records.map(item => {
+					if (item.type == 'expired') {
+						return `<tr>
+							<td>${item.createTime}</td>
+							<td>${item.pointType}</td>
+							<td class="profile-amount">- ${item.pointAmount}</td>
+							<td>${item.expireTime}</td>
+						</tr>`
+					} else {
+						return `<tr>
+							<td>${item.createTime}</td>
+							<td>${item.pointType}</td>
+							<td class="profile-amount">+ ${item.pointAmount}</td>
+							<td>${item.expireTime}</td>
+						</tr>`
+					}
+				})
+				allProfile.innerHTML = templateAll.join('')
+			}
+
+		async function getVipExplain(token){
+			const response = await getData('customerAccount/getVipDesc','',token,"GET","formData")
+			console.log('getVip-responsse',response)
+		}
+
+		async function getCustomer(token) {
+
+				const data = await getData('customerAccount/selectCustomer','',token)
+
+				if (!data || data.code !== 200) {
+					return getCustomer()
+				}
+				const { siteType, totalPoint, totalSpent, vipType } = data.data
+				const pointContainer = document.querySelector('.vip-integral')
+				const userVip = document.querySelector('.vip-user__grade')
+				totalPoint && (pointContainer.innerHTML = totalPoint)
+				userVip && (userVip.innerHTML = (vipType || "Silver"))
+				console.log('getCustomer', data)
+
+
+			}
+
+		async function addPoint(token){
+			const  pointData={
+				expireTime:"2022-10-05 12:00:00",
+				pointAmount:10000,
+				pointType:"Emaill Verification"
+			}
+
+			const data = await getData('customerAccount/addPoint',pointData,token)
+			console.log('addPoint',data)
+		}
+
+		async function deductPoint(token){
+			const  pointData={expireTime:new Date(Date.now()+2592000000).toLocaleString(),pointAmount:10000,pointType:"Emaill Verification"}
+			const data = await getData('customerAccount/deductPoint',pointData,token)
+			console.log('deductPoint',data)
+		}
+
+
+		async function fn(){
+		const token= await getToken()
+		// addPoint(token)
+		// addPoint()
+		getCustomer(token)
 		// getMyCoupon()
+		getCoupons(token)
+		getPoint(token)
+		}fn();
 
-	async function getPoint(){
-		const token=await getToken()
-		
-		const response = await fetch(baseURL.concat('/customerAccount/getPointInfo'),{
-					method: "POST",
-					headers: { 'content-type': 'application/json', 'siteValue': 'hyfol','Authorization':token }
-				})
-		const data=await response.json()		
-		console.log('getPoint-responsse',data)
-	}
-	// getPoint()
-
-	async function getVip(){
-		const token=await getToken()
-		
-		const response = await fetch(baseURL.concat('/customerAccount/getVipDesc'),{
-					method: "GET",
-					headers: { 'content-type': 'application/x-www-form-urlencoded', 'siteValue': 'hyfol','Authorization':token }
-				})
-		const data=await response.json()		
-		console.log('getVip-responsse',data)
-	}
-	// getVip()
-
-	async function getCustomer(){
-		const token=await getToken()
-		
-		const response = await fetch(baseURL.concat('/customerAccount/selectCustomer'),{
-					method: "POST",
-					headers: { 'content-type': 'application/json', 'siteValue': 'hyfol','Authorization':token }
-				})
-		const data=await response.json()		
-		console.log('getCustomer',data)
-	}
-	// getCustomer()
-
-	async function addPoint(){
-		const token=await getToken()
-		const  pointData={expireTime:new Date(Date.now()+2592000000),pointAmount:10000,pointType:"Emaill Verification"}
-		const response = await fetch(baseURL.concat('/customerAccount/addPoint'),{
-					method: "POST",
-					body:JSON.stringify(pointData),
-					headers: { 'content-type': 'application/json', 'siteValue': 'hyfol','Authorization':token }
-				})
-		const data=await response.json()		
-		console.log('addPoint',data)
-	}
-	// addPoint()
-
-	async function deductPoint(){
-		const token=await getToken()
-		const  pointData={expireTime:new Date(Date.now()+2592000000),pointAmount:10000,pointType:"Emaill Verification"}
-		const response = await fetch(baseURL.concat('/customerAccount/deductPoint'),{
-					method: "POST",
-					body:JSON.stringify(pointData),
-					headers: { 'content-type': 'application/json', 'siteValue': 'hyfol','Authorization':token }
-				})
-		const data=await response.json()		
-		console.log('deductPoint',data)
-	}
-	// deductPoint()
-
-window.onload=function(){
-	addPoint()
-}
 
 		class DetailsMenu extends HTMLElement {
 			constructor() {
@@ -2443,7 +2469,6 @@ window.onload=function(){
 			}
 		}
 		customElements.define('details-menu', DetailsMenu);
-
 
 		const rules = document.querySelector('.vip-rules')
 		const user = document.querySelector('.my-account')
