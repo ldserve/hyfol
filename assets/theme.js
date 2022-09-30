@@ -5664,7 +5664,6 @@
                 if (this.isActive) {
                     return;
                 }
-                if (this.element.dataset.laout == "flex" && document.body.clientWidth < 1000) return
                 this.isActive = true;
                 this.element.classList.add('flickity-enabled');
 
@@ -16138,7 +16137,7 @@
             key: "_createSlideshow",
             value: function _createSlideshow() {
                 var _this2 = this;
-
+                if(this.options['mobileStackable'] && window.screen.availWidth<641)return;
                 if (!this.options['stackable']) {
                     this.flickityInstance = new js(this.element.querySelector('.product-list'), {
                         watchCSS: true,
@@ -16148,8 +16147,8 @@
                         groupCells: true,
                         cellAlign: 'left',
                         draggable: !window.matchMedia('(-moz-touch-enabled: 0), (hover: hover)').matches
-                    });
-                } // If the browser supports ResizeObserver we use it to detect when the size of the items in the carousel change,
+                    });}
+                 // If the browser supports ResizeObserver we use it to detect when the size of the items in the carousel change,
                 // and if that's the case we force Flickity to resize
 
 
@@ -16291,7 +16290,6 @@
             key: "_fetchProducts",
             value: function _fetchProducts() {
                 var _this = this;
-
                 var queryString = this._getSearchQueryString();
 
                 if (queryString === '') {
@@ -16305,24 +16303,22 @@
                     response.text().then(function (content) {
                         var tempElement = document.createElement('div');
                         tempElement.innerHTML = content; // Set the content
-
                         _this.element.querySelector('.recently-viewed-products-placeholder').innerHTML = tempElement.querySelector('[data-section-type="recently-viewed-products"] .recently-viewed-products-placeholder').innerHTML; // By default the section hide the products, so we force the section to be visible
-
                         _this.element.parentNode.style.display = 'block';
-
                         _this.productItemColorSwatch.recalculateSwatches(); // Create the slideshow
 
-
-                        _this.flickityInstance = new js(_this.element.querySelector('.product-list'), {
-                            watchCSS: true,
-                            pageDots: true,
-                            prevNextButtons: true,
-                            contain: true,
-                            groupCells: true,
-                            cellAlign: 'left',
-                            draggable: !window.matchMedia('(-moz-touch-enabled: 0), (hover: hover)').matches
-                        }); // If the browser supports ResizeObserver we use it to detect when the size of the items in the carousel change,
-                        // and if that's the case we force Flickity to resize
+                        if(_this.options['mobileStackable'] && window.screen.availWidth<641) return;
+                            _this.flickityInstance = new js(_this.element.querySelector('.product-list'), {
+                                watchCSS: true,
+                                pageDots: true,
+                                prevNextButtons: true,
+                                contain: true,
+                                groupCells: true,
+                                cellAlign: 'left',
+                                draggable: !window.matchMedia('(-moz-touch-enabled: 0), (hover: hover)').matches
+                            }); // If the browser supports ResizeObserver we use it to detect when the size of the items in the carousel change,
+                            // and if that's the case we force Flickity to resize
+                        
 
                         if (window.ResizeObserver && _this.flickityInstance) {
                             _this.resizeObserver = new ResizeObserver(function () {
