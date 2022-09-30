@@ -154,7 +154,7 @@
         "heading": "You may also like",
         "show_quick_buy": true,
         "title_color": "#000000",
-        "stackable": false
+        "stackable": true
       }
     },
     "1192462ce7ecb73678": {
@@ -169,7 +169,7 @@
         "title": "Recently viewed",
         "title_color": "#000000",
         "show_quick_buy": true,
-        "product_layout": "paging"
+        "product_grid": true
       }
     },
     "16476891022bcaf9d0": {
