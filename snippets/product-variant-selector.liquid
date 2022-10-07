@@ -357,7 +357,7 @@
                 {%- capture block_swatch_id -%}{{ option_name }}-{{ forloop.index }}{%- endcapture -%}
 
                 <div class="block-swatch">
-                  <input class="block-swatch__radio product-form__single-selector" type="radio" name="{{ option_name }}" id="{{ block_swatch_id }}" value="{{ value | escape }}"  data-option-position="{{ option.position }}" {% if template == 'product.quick-view' and option.selected_value==value %}checked{% endif %}>
+                  <input class="block-swatch__radio product-form__single-selector" type="radio" name="{{ option_name }}" id="{{ block_swatch_id }}" value="{{ value | escape }}"  data-option-position="{{ option.position }}">
                   <label class="block-swatch__item" for="{{ block_swatch_id }}" title="{{ value | escape }}">
                     <span class="block-swatch__item-text">{{ value }}</span>
                   </label>

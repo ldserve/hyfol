@@ -2463,8 +2463,9 @@
         }, {
             key: "_openMiniCart",
             value: function _openMiniCart() {
-                if (document.querySelector('.product-form__payment-container') && document.body.clientWidth <= 640) {
-                    document.querySelector('.product-form__payment-container').style.display = "none"
+                var btnContainer=document.querySelector('.product-form__payment-container')
+                if (btnContainer && document.body.clientWidth <= 640) {
+                    btnContainer.style.display = "none"
                 }
                 !this.cartMask&&(this.cartMask=document.querySelector('.mini-cart-mask'))
                 this.miniCartToggleElement.setAttribute('aria-expanded', 'true'); // If we are on mobile phone we also set the aria-expanded attribute to true on the icon state holder
@@ -2519,8 +2520,9 @@
             {
             key: "_closeMiniCart",
             value: function _closeMiniCart() {
-                if (document.querySelector('.product-form__payment-container') && document.body.clientWidth <= 640) {
-                    document.querySelector('.product-form__payment-container').style.display = "block"
+                var btnContainer = document.querySelector('.product-form__payment-container')
+                if ( btnContainer && document.body.clientWidth <= 640) {
+                    btnContainer.style.display = "block"
                 }
                 this.miniCartToggleElement.setAttribute('aria-expanded', 'false'); // If we are on mobile phone we also set the aria-expanded attribute to true on the icon state holder
 
@@ -3832,7 +3834,6 @@
                         _this.option3 = variant['option3'];
                     }
                 })
-                //    if(!this.options['isQuickView']) this.option2 =null;
                 this.storeAvailability = new StoreAvailability(this.element.querySelector('.product-meta__store-availability-container'));
             }
 
@@ -3872,26 +3873,12 @@
             value: function _onVariantChanged(previousVariant, newVariant) {
                 // 1st: the prices
                 this._updateProductPrices(newVariant, previousVariant); // 2th: update inventory
-
-
                 this._updateInventory(newVariant, previousVariant); // 3th: update SKU
-
-
                 this._updateSku(newVariant, previousVariant); // 4th: update the discount label (if necessary)
-
-
                 this._updateDiscountLabel(newVariant, previousVariant); // 5th: update the unit price (if necessary)
-
-
                 this._updateUnitPrice(newVariant, previousVariant); // 6th: update selectors
-
-
                 this._updateSelectors(newVariant, previousVariant); // 7th: the add to cart button
-
-
                 this._updateAddToCartButton(newVariant, previousVariant); // 8th: store availability
-
-
                 this.storeAvailability.updateWithVariant(newVariant); // Finally, we send an event so that other system could hook and do their own logic
 
                 this.element.dispatchEvent(new CustomEvent('variant:changed', {
@@ -4248,9 +4235,15 @@
                     return; // When using a cart type of page, we just simply redirect to the cart page
                 }
                 event.preventDefault(); // Prevent form to be submitted
+                //event.stopPropagation(); 
+                var formElement
+                if (target.hasAttribute('data-purchase')) {
+                    formElement = target.closest('form[action*="/cart/add"]')
+                } else {
+                    formElement = this.element.querySelector('form[action*="/cart/add"]');
+                }
                 var isSelect = false//是否选择尺码
-                var formtag = target.closest('form')
-                var sizeBlock = Array.from(formtag.querySelectorAll('.block-swatch__radio'))
+                var sizeBlock = Array.from(formElement.querySelectorAll('.block-swatch__radio[data-option-position="2"][checked]'))
                 isSelect = sizeBlock.some(item => item.checked && item.hasAttribute('checked'))
                 isSelect = isSelect || ['Default Title', 'ONE SIZE','one size','default title'].indexOf(this.currentVariant.option1)!==-1 || this.currentVariant.option2 === null && ['SIZE','size','Size'].indexOf(this.productOptionsWithValues.name)!==-1
 
@@ -4259,18 +4252,11 @@
                     target && target.scrollIntoView({ block: "center", behavior: "smooth", inline: "center" })
                     window.screen.availWidth < 649 && alert('Please Select Size')
                     document.querySelector('.select-size-no').classList.remove('d-none')
+                    event.stopPropagation()
                     return
                 }
-                //event.stopPropagation(); // First, we switch the status of the button
-                target.setAttribute('disabled', 'disabled');
+                target.setAttribute('disabled', 'disabled');// First, we switch the status of the button
                 document.dispatchEvent(new CustomEvent('theme:loading:start')); // Then we add the product in Ajax
-
-                var formElement
-                if (target.hasAttribute('data-purchase')) {
-                    formElement = target.closest('form[action*="/cart/add"]')
-                } else {
-                    formElement = this.element.querySelector('form[action*="/cart/add"]');
-                }
 
                 fetch("".concat(window.routes.cartAddUrl, ".js"), {
                     body: JSON.stringify(Form.serialize(formElement)),
@@ -4307,7 +4293,6 @@
                         });
                     }
                 });
-                event.preventDefault();
             }
             /**
              * ---------------------------------------------------------------------------------------------------
@@ -14429,49 +14414,11 @@
                 this.dadelegateRoot.on('click', '', this._onWindowClick.bind(this))
             }
         }, {
-            key: "_addToCart",
-            value: function _addToCart(event, target) {
-                var _this = this;
-                target = event.target
-                event.preventDefault();
-                event.stopPropagation();
-
-                document.dispatchEvent(new CustomEvent('theme:loading:start'));
-                var formElement = target.closest('form[action*="/cart/add"]')
-                target.setAttribute('disabled', 'disabled');
-                fetch("".concat(window.routes.cartAddUrl, ".js"), {
-                    body: JSON.stringify(Form.serialize(formElement)),
-                    credentials: 'same-origin',
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'X-Requested-With': 'XMLHttpRequest'
-                    }
-                }).then(function (response) {
-                    if (response.ok) {
-                        target.removeAttribute('disabled');
-                        _this._closeModal()
-                        _this.element.dispatchEvent(new CustomEvent('product:added', {
-                            bubbles: true,
-                            detail: {
-                                variant: null,
-                                quantity: parseInt(formElement.querySelector('[name="quantity"]').value)
-                            }
-                        }));
-                    } else {
-                        target.removeAttribute('disabled');
-                    }
-                    _this._closeModal.bind(_this)
-                });
-                event.preventDefault();
-            }
-        }, {
             key: "_closeModal",
             value: function (e, target) {
                 this.modal.setAttribute('aria-hidden', true)
-                var modalClose = new Event('modal:closed')
-                this.modal.dispatchEvent(modalClose)
-                this.addBtn.removeEventListener('click', this._addToCart)
+                // this.modal.dispatchEvent(new Event('modal:close') )
+                this.modal.querySelector('.modal__inner').innerHTML =''
             }
         },
         {
@@ -14479,7 +14426,8 @@
             value: function _openQuickView(event, target) {
                 var _this = this
                 var modal = this.modal;
-                var productUrl=target.getAttribute('data-product-url')
+                
+                var productUrl = target.getAttribute('data-product-url')
                 modal.classList.add('is-loading');
                 modal.setAttribute('aria-hidden', false)
 
@@ -14491,21 +14439,20 @@
                         modal.querySelector('.modal__inner').innerHTML = content;
                         modal.classList.remove('is-loading');
                         var modalProductSection = new ProductSection(modal.querySelector('[data-section-type="product"]'));
-                        _this.addBtn = modal.querySelector('[data-action="add-to-cart"]')
-                        _this.addBtn && _this.addBtn.addEventListener('click', _this._addToCart.bind(_this))
-                      
-                        var discount =modal.querySelector('.procut-discount')
-                       var link=document.createElement('a')
-                       link.innerHTML=`<span style="margin-right:5px;font-size:12px">Details</span><svg t="1618368571858" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2125" width="15" height="15"><path d="M312.49 96.36c8.19 0 16.38 3.12 22.63 9.37L734.14 504.75c12.5 12.5 12.5 32.76 0 45.26L335.12 949.02c-12.5 12.5-32.76 12.5-45.26 0s-12.5-32.76 0-45.25L666.25 527.38l-376.39-376.39c-12.5-12.5-12.5-32.76 0-45.25 6.25-6.26 14.44-9.38 22.63-9.38z" fill="#999999" p-id="2126"></path></svg>`
-                       link.href=productUrl
-                       link.className="quick-view_link"
-                       discount&&discount.appendChild(link)
 
-                        var doCleanUp = function doCleanUp() {
+                        var discount = modal.querySelector('.procut-discount')
+                        var link = document.createElement('a')
+                        link.innerHTML = `<span style="margin-right:5px;font-size:12px">Details</span><svg t="1618368571858" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2125" width="15" height="15"><path d="M312.49 96.36c8.19 0 16.38 3.12 22.63 9.37L734.14 504.75c12.5 12.5 12.5 32.76 0 45.26L335.12 949.02c-12.5 12.5-32.76 12.5-45.26 0s-12.5-32.76 0-45.25L666.25 527.38l-376.39-376.39c-12.5-12.5-12.5-32.76 0-45.25 6.25-6.26 14.44-9.38 22.63-9.38z" fill="#999999" p-id="2126"></path></svg>`
+                        link.href = productUrl
+                        link.className = "quick-view_link"
+                        discount && discount.appendChild(link)
+                        var modalCleanUp = function modalCleanUp() {
+                            _this._closeModal()
                             modalProductSection.onUnload();
-                            modal.removeEventListener('modal:closed', doCleanUp);
+                            document.querySelector('.mini-cart-section').scrollTop=0 
+                            document.removeEventListener('modal:close', modalCleanUp);
                         };
-                        modal.addEventListener('modal:closed', doCleanUp);
+                        document.addEventListener('modal:close', modalCleanUp);
                     });
                 });
             }
@@ -14605,7 +14552,6 @@
                 if (Shopify.designMode && event.detail.load) {
                     // We also force the layout and number of items per page in the editor, no matter if you have choose an explicit mode
                     this.element.querySelector(".collection__layout-button[data-layout-mode=\"".concat(this.options['defaultLayout'], "\"]")).click();
-
                     this._showingCountChanged(this.options['defaultProductsPerPage']);
                 }
             }
@@ -14707,9 +14653,12 @@
                     response.text().then(function (content) {
                         modal.querySelector('.modal__inner').innerHTML = content;
                         modal.classList.remove('is-loading'); // Register a new section to power the JS
-
                         var modalProductSection = new ProductSection(modal.querySelector('[data-section-type="product"]')); // We set a listener so we can cleanup on close
-
+                        var oldScript =modal.querySelector('[data-section-type="product"]+script')
+                        var newScript= document.createElement('script')
+                        oldScript &&( newScript.innerHTML=oldScript.innerText)
+                        modal.querySelector('.modal__inner').append(newScript)
+                        
                         var doCleanUp = function doCleanUp() {
                             modalProductSection.onUnload();
                             modalProductSection=null
@@ -14977,9 +14926,7 @@
                     return; // When using a cart type of page, we just simply redirect to the cart page
                 }
                 event.preventDefault(); // Prevent form to be submitted
-
                 event.stopPropagation(); // First, we switch the status of the button
-
                 target.setAttribute('disabled', 'disabled');
                 document.dispatchEvent(new CustomEvent('theme:loading:start')); // Then we add the product in Ajax
 
