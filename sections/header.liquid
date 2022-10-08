@@ -560,27 +560,28 @@
 					{%- endif -%}
 					{%- comment -%}----------购物车按钮----------{%- endcomment -%}
 					<div class="header__action-item header__action-item--cart">
-						<a class="header__action-item-link header__cart-toggle" href="{{ routes.cart_url }}"
-							 {% if settings.cart_type != 'page' and template != 'cart' %}aria-controls="mini-cart"
-							 aria-expanded="false" data-action="toggle-mini-cart"{% endif %} data-no-instant>
+						<a class="header__action-item-link header__cart-toggle" href="{{ routes.cart_url }}" 
+						{% if settings.cart_type !='page' and template !='cart' %}aria-controls="mini-cart" 
+						aria-expanded="false" data-action="toggle-mini-cart"
+							{% endif %} data-no-instant>
 							<div class="header__action-item-content">
-
+					
 								<div class="header__cart-icon icon-state" aria-expanded="false">
-                  <span class="icon-state__primary">
-                    {%- render 'icon', icon: 'cart' -%}
-                    <span class="header__cart-count">{{ cart.item_count }}</span>
+									<span class="icon-state__primary">
+										{%- render 'icon', icon: 'cart' -%}
+										<span class="header__cart-count">{{ cart.item_count }}</span>
 										<span class="header__cart__time_reserved">20:00</span>
-                  </span>
+									</span>
 									<span class="icon-state__secondary">{%- render 'icon', icon: 'close' -%}</span>
 								</div>
 								{%- comment -%}
-									<span class="hidden-pocket hidden-lap">{{ 'header.general.cart' | t }}</span>
+								<span class="hidden-pocket hidden-lap">{{ 'header.general.cart' | t }}</span>
 								{%- endcomment -%}
 							</div>
 						</a>
-
+					
 						{%- if settings.cart_type != 'page' and template != 'cart' -%}
-							{%- render 'mini-cart' full_reduction:section.settings.full_reduction-%}
+						{%- render 'mini-cart' full_reduction:section.settings.full_reduction-%}
 						{%- endif -%}
 					</div>
 				</div>
@@ -588,6 +589,7 @@
 		</div>
 	</header>
 
+	<div class="mini-cart-mask d-none"></div>
 </section>
 
 <style>
@@ -598,7 +600,7 @@
 
   #shopify-section-{{ section.id }} {
     position: relative;
-    z-index: 5;
+    z-index: 6;
 
 	{%- if section.settings.enable_sticky_header -%}
 	position: -webkit-sticky;
@@ -669,6 +671,14 @@
 		padding-top: 2px;
   }
 
+.mini-cart-mask{
+	position: absolute;
+	top: -100%;
+	left: 0;
+	width: 100vw;
+	height: 120vh;
+	background: rgba(0,0,0,0.6);
+}
 </style>
 
 <script>

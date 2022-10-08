@@ -28,6 +28,7 @@
         },
         "78a65596-bd80-4353-82c9-7ede27334ff0": {
           "type": "product_sellpoint",
+          "disabled": true,
           "settings": {
             "notsale_tag": "Nopromotion",
             "sale_text_on_detail": "<p><strong>5% OFF 2 PIECES    <\/strong>| <strong>10% OFF 3 PIECES <\/strong><\/p><p><strong>15% OFF 4 PIECES <\/strong>| <strong>20% OFF 5 PIECES <\/strong><\/p><p><strong>25% OFF 6 PIECES <\/strong>| <strong>30% OFF 7+ PIECES<\/strong><\/p><p><\/p>",
@@ -152,7 +153,8 @@
       "settings": {
         "heading": "You may also like",
         "show_quick_buy": true,
-        "title_color": "#000000"
+        "title_color": "#000000",
+        "stackable": true
       }
     },
     "1192462ce7ecb73678": {
@@ -167,7 +169,7 @@
         "title": "Recently viewed",
         "title_color": "#000000",
         "show_quick_buy": true,
-        "product_layout": "paging"
+        "product_grid": true
       }
     },
     "16476891022bcaf9d0": {

@@ -2402,6 +2402,8 @@
             }
 
             this.miniCartElement = this.element.querySelector('.mini-cart');
+            this.miniCartSection = this.element.querySelector('.mini-cart-section');
+            this.miniCartQuick = document.getElementById('modal-quick-view-header')
             this.isMiniCartOpen = false;
 
             if (window.theme.pageType !== 'cart' && this.miniCartElement) {
@@ -2420,20 +2422,23 @@
             value: function destroy() {
                 this.delegateElement.off();
                 this.delegateRoot.off();
-                window.removeEventListener('resize', this._calculateMiniCartHeightListener);
+                // window.removeEventListener('resize', this._calculateMiniCartHeightListener);
             }
         }, {
             key: "_attachListeners",
             value: function _attachListeners() {
-                this._calculateMiniCartHeightListener = this._calculateMiniCartHeight.bind(this);
+                // this._calculateMiniCartHeightListener = this._calculateMiniCartHeight.bind(this);
 
                 if (window.theme.pageType !== 'cart' && window.theme.cartType !== 'page') {
                     this.delegateElement.on('click', '[data-action="toggle-mini-cart"]', this._toggleMiniCart.bind(this));
                     this.delegateElement.on('keyup', this._checkMiniCartClose.bind(this));
                     this.delegateRoot.on('click', this._onWindowClick.bind(this));
-                    window.addEventListener('resize', this._calculateMiniCartHeightListener);
+                    // window.addEventListener('resize', this._calculateMiniCartHeightListener);
+                    this.delegateElement.on('touchstart', this._onTouch.bind(this));
+                    this.delegateElement.on('touchend', this._onTouch.bind(this));
+         
                 }
-
+                
                 this.delegateRoot.on('click', '[data-action="decrease-quantity"]', this._updateQuantity.bind(this));
                 this.delegateRoot.on('click', '[data-action="increase-quantity"]', this._updateQuantity.bind(this));
                 this.delegateRoot.on('change', '.quantity-selector:not(.quantity-selector--product) .quantity-selector__value', this._updateQuantity.bind(this));
@@ -2458,43 +2463,86 @@
         }, {
             key: "_openMiniCart",
             value: function _openMiniCart() {
-                if (document.querySelector('.product-form__payment-container') && document.body.clientWidth <= 640) {
-                    document.querySelector('.product-form__payment-container').style.display = "none"
+                var btnContainer=document.querySelector('.product-form__payment-container')
+                if (btnContainer && document.body.clientWidth <= 640) {
+                    btnContainer.style.display = "none"
                 }
-
+                !this.cartMask&&(this.cartMask=document.querySelector('.mini-cart-mask'))
                 this.miniCartToggleElement.setAttribute('aria-expanded', 'true'); // If we are on mobile phone we also set the aria-expanded attribute to true on the icon state holder
-
+                this.cartMask.classList.remove('d-none')
                 if (Responsive.getCurrentBreakpoint() === 'phone') {
                     this.miniCartToggleElement.querySelector('.header__cart-icon').setAttribute('aria-expanded', 'true');
                 } // Finally also set aria-hidden to false on controlled element
 
-
-                this.miniCartElement.setAttribute('aria-hidden', 'false');
+                this.miniCartSection.setAttribute('aria-hidden', 'false');
                 this.isMiniCartOpen = true;
+                this.miniCartSection.style.transform='translateX(0%)'
 
-                this._calculateMiniCartHeight(); // Trap the focus
+                // this._calculateMiniCartHeight(); // Trap the focus
 
-
-                Accessibility.trapFocus(this.miniCartElement, 'mini-cart');
-                document.body.classList.add('no-mobile-scroll');
+                Accessibility.trapFocus(this.miniCartSection, 'mini-cart');     
+                document.documentElement.classList.add('is-locked');
             }
         }, {
+            key:'_onTouch',
+            value: function _onTouchMove(event) {
+                var type = event.type
+                var touchObj = event.changedTouches[0]
+                var availWidth = window.screen.availWidth
+                var pageX = touchObj.pageX
+                var path = event.path
+                if (type == "touchstart") {
+                    var i = 0
+                    var target
+                    while (i <= path.length) {
+                        if (path[i] == this.element) target = path[i]
+                        i++
+                    }
+                    if (!target) return;
+                    this.touchStart = pageX
+                }
+
+                if (!this.touchStart) return;
+                var pageMove = (((pageX - this.touchStart) / availWidth) * 100).toFixed(1)
+
+
+                if (type == 'touchend') {
+                    if (pageMove >= 35) {
+                        this._closeMiniCart()
+                    }else{
+                        this.miniCartSection.style.transform='translateX(0%)'
+                    }
+                    this.touchStart = 0
+                }
+                return
+            }
+        },
+            {
             key: "_closeMiniCart",
             value: function _closeMiniCart() {
-                if (document.querySelector('.product-form__payment-container') && document.body.clientWidth <= 640) {
-                    document.querySelector('.product-form__payment-container').style.display = "block"
+                var btnContainer = document.querySelector('.product-form__payment-container')
+                if ( btnContainer && document.body.clientWidth <= 640) {
+                    btnContainer.style.display = "block"
                 }
                 this.miniCartToggleElement.setAttribute('aria-expanded', 'false'); // If we are on mobile phone we also set the aria-expanded attribute to true on the icon state holder
 
                 if (Responsive.getCurrentBreakpoint() === 'phone') {
                     this.miniCartToggleElement.querySelector('.header__cart-icon').setAttribute('aria-expanded', 'false');
-                    this.miniCartElement.style.maxHeight = '';
+                   
                 } // Finally also set aria-hidden to false on controlled element
 
-                this.miniCartElement.setAttribute('aria-hidden', 'true');
-                this.isMiniCartOpen = false;
-                document.body.classList.remove('no-mobile-scroll');
-                Accessibility.removeTrapFocus(this.miniCartElement, 'mini-cart');
+                this.miniCartSection.style.transform='translateX(100%)'
+                setTimeout(()=>{
+                    
+                    this.miniCartSection.setAttribute('aria-hidden', 'true');
+                    this.isMiniCartOpen = false;
+
+                  
+                    document.documentElement.classList.remove('is-locked');
+                    this.cartMask.classList.add('d-none')
+                    Accessibility.removeTrapFocus(this.miniCartSection, 'mini-cart');
+                },300)
+
             }
         }, {
             key: "_checkMiniCartClose",
@@ -2661,7 +2709,7 @@
 
                                 _this2._checkMiniCartScrollability();
 
-                                _this2._calculateMiniCartHeight();
+                                // _this2._calculateMiniCartHeight();
 
                                 _this2.element.dispatchEvent(new CustomEvent('cart:rerendered'));
                             } else {
@@ -2761,7 +2809,7 @@
         }, {
             key: "_onWindowClick",
             value: function _onWindowClick(event) {
-                if (this.miniCartElement && this.isMiniCartOpen && !this.element.contains(event.target)) {
+                if (this.miniCartElement && this.isMiniCartOpen && !this.element.contains(event.target) && !this.miniCartQuick.contains(event.target) ) {
                     this._closeMiniCart();
                 }
             }
@@ -3477,13 +3525,14 @@
                             maxAllowedWidth = parseInt(Math.min(currentWidth, 200)); // A single swatch takes 30px, so let's figure out how many we can fit completely
 
                         var maxFit = Math.floor(maxAllowedWidth / 45); // Now, we add a special class to the one after "maxFit"
-
+                        if(window.screen.availWidth<=640){
+                            maxFit = Math.floor(maxAllowedWidth / 28)
+                        }
+                        
                         fastdom.mutate(function () {
                             var colorSwatches = swatchList.querySelectorAll('.color-swatch'); // For each, we reset the attributes if needed
-
                             colorSwatches.forEach(function (colorSwatch, index) {
                                 colorSwatch.classList.remove('color-swatch--view-more');
-
                                 if (maxFit === index + 1 && maxFit !== colorSwatches.length) {
                                     colorSwatch.classList.add('color-swatch--view-more');
                                 }
@@ -3785,7 +3834,6 @@
                         _this.option3 = variant['option3'];
                     }
                 })
-                //    if(!this.options['isQuickView']) this.option2 =null;
                 this.storeAvailability = new StoreAvailability(this.element.querySelector('.product-meta__store-availability-container'));
             }
 
@@ -3825,26 +3873,12 @@
             value: function _onVariantChanged(previousVariant, newVariant) {
                 // 1st: the prices
                 this._updateProductPrices(newVariant, previousVariant); // 2th: update inventory
-
-
                 this._updateInventory(newVariant, previousVariant); // 3th: update SKU
-
-
                 this._updateSku(newVariant, previousVariant); // 4th: update the discount label (if necessary)
-
-
                 this._updateDiscountLabel(newVariant, previousVariant); // 5th: update the unit price (if necessary)
-
-
                 this._updateUnitPrice(newVariant, previousVariant); // 6th: update selectors
-
-
                 this._updateSelectors(newVariant, previousVariant); // 7th: the add to cart button
-
-
                 this._updateAddToCartButton(newVariant, previousVariant); // 8th: store availability
-
-
                 this.storeAvailability.updateWithVariant(newVariant); // Finally, we send an event so that other system could hook and do their own logic
 
                 this.element.dispatchEvent(new CustomEvent('variant:changed', {
@@ -4201,27 +4235,36 @@
                     return; // When using a cart type of page, we just simply redirect to the cart page
                 }
                 event.preventDefault(); // Prevent form to be submitted
+                //event.stopPropagation(); 
+                var formElement =target.hasAttribute('data-purchase')?target.closest('form[action*="/cart/add"]'):this.element.querySelector('form[action*="/cart/add"]');
                 var isSelect = false//是否选择尺码
-                var formtag = target.closest('form')
-                var sizeBlock = Array.from(formtag.querySelectorAll('.block-swatch__radio'))
-                isSelect = sizeBlock.some(item => item.checked && item.hasAttribute('checked'))
-                isSelect = isSelect || ['Default Title', 'ONE SIZE','one size','default title'].indexOf(this.currentVariant.option1)!==-1 || this.currentVariant.option2 === null && ['SIZE','size','Size'].indexOf(this.productOptionsWithValues.name)!==-1
+                try {
+                    _this4.productOptionsWithValues.forEach(i=>{
+                        var optionName =i.name.toLowerCase()
+                        if(optionName=='size'||optionName=="尺码"){
+                           var sizeBlock = Array.from(formElement.querySelectorAll('.block-swatch__radio[data-option-position="'.concat(i['position'],'"][checked]')))
+                            isSelect =  sizeBlock.some(item => item.checked && item.hasAttribute('checked'))
+                        }
+                    })
+                    var varianOption=_this4.productOptionsWithValues[0]
+                    var lengt=_this4.productOptionsWithValues.length
+                    var name =varianOption.name.toLowerCase()
+                    if (!isSelect && lengt == 1  && name === 'color' || name=="颜色"){//只有颜色
+                        isSelect = true
+                    }//默认变体
+                    isSelect = isSelect || ['one size', 'default title','title'].indexOf(name) !== -1
+                } catch (error) {  isSelect = true  }
 
                 if (!isSelect) {
+                    target = this.element.querySelector('.block-swatch-list')
+                    target && target.scrollIntoView({ block: "center", behavior: "smooth", inline: "center" })
                     window.screen.availWidth < 649 && alert('Please Select Size')
                     document.querySelector('.select-size-no').classList.remove('d-none')
+                    event.stopPropagation()
                     return
                 }
-                //event.stopPropagation(); // First, we switch the status of the button
-                target.setAttribute('disabled', 'disabled');
+                target.setAttribute('disabled', 'disabled');// First, we switch the status of the button
                 document.dispatchEvent(new CustomEvent('theme:loading:start')); // Then we add the product in Ajax
-
-                var formElement
-                if (target.hasAttribute('data-purchase')) {
-                    formElement = target.closest('form[action*="/cart/add"]')
-                } else {
-                    formElement = this.element.querySelector('form[action*="/cart/add"]');
-                }
 
                 fetch("".concat(window.routes.cartAddUrl, ".js"), {
                     body: JSON.stringify(Form.serialize(formElement)),
@@ -4258,7 +4301,6 @@
                         });
                     }
                 });
-                event.preventDefault();
             }
             /**
              * ---------------------------------------------------------------------------------------------------
@@ -5615,7 +5657,6 @@
                 if (this.isActive) {
                     return;
                 }
-                if (this.element.dataset.laout == "flex" && document.body.clientWidth < 1000) return
                 this.isActive = true;
                 this.element.classList.add('flickity-enabled');
 
@@ -14242,7 +14283,6 @@
                 }
 
                 event.preventDefault(); // Prevent form to be submitted
-
                 event.stopPropagation(); // First, we switch the status of the button
 
                 target.setAttribute('disabled', 'disabled');
@@ -14352,6 +14392,101 @@
         return CartSection;
     }();
 
+    var MiniCartection = /*#__PURE__*/function () {
+        function MiniCartection(element) {
+            _classCallCheck(this, MiniCartection);
+
+            this.element = element;
+            this.domDelegate = new Delegate(this.element);
+            this.dadelegateRoot = new Delegate(document.documentElement);
+            this.modal = document.getElementById(element.getAttribute('aria-controls'))
+            this.modalDelegate = new Delegate(this.modal)
+            this.productItemColorSwatch = new ProductItemColorSwatch(this.element);
+            this._attachListeners();
+
+        }
+
+        _createClass(MiniCartection, [{
+            key: "onUnload",
+            value: function onUnload() {
+                this.productItemColorSwatch.destroy()
+                this.domDelegate.destroy();
+                this.modalDelegate.destroy();
+            }
+        }, {
+            key: "_attachListeners",
+            value: function _attachListeners() {
+                this.domDelegate.on('click', '[data-secondary-action="open-quick-view"]', this._openQuickView.bind(this));
+                this.domDelegate.on('click', '.mini-cart-recommendations .product-item_mktClick', this._open.bind(this));
+                this.modalDelegate.on('click', '[data-action="close-modal"]', this._closeModal.bind(this))
+                this.dadelegateRoot.on('click', '', this._onWindowClick.bind(this))
+            }
+        }, {
+            key: "_closeModal",
+            value: function (e, target) {
+                this.modal.setAttribute('aria-hidden', true)
+                // this.modal.dispatchEvent(new Event('modal:close') )
+                this.modal.querySelector('.modal__inner').innerHTML =''
+            }
+        },
+        {
+            key: "_openQuickView",
+            value: function _openQuickView(event, target) {
+                var _this = this
+                var modal = this.modal;
+                
+                var productUrl = target.getAttribute('data-product-url')
+                modal.classList.add('is-loading');
+                modal.setAttribute('aria-hidden', false)
+
+                fetch("".concat(productUrl, "?view=quick-view"), {
+                    credentials: 'same-origin',
+                    method: 'GET'
+                }).then(function (response) {
+                    response.text().then(function (content) {
+                        modal.querySelector('.modal__inner').innerHTML = content;
+                        modal.classList.remove('is-loading');
+                        var modalProductSection = new ProductSection(modal.querySelector('[data-section-type="product"]'));
+
+                        var discount = modal.querySelector('.procut-discount')
+                        var link = document.createElement('a')
+                        link.innerHTML = `<span style="margin-right:5px;font-size:12px">Details</span><svg t="1618368571858" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2125" width="15" height="15"><path d="M312.49 96.36c8.19 0 16.38 3.12 22.63 9.37L734.14 504.75c12.5 12.5 12.5 32.76 0 45.26L335.12 949.02c-12.5 12.5-32.76 12.5-45.26 0s-12.5-32.76 0-45.25L666.25 527.38l-376.39-376.39c-12.5-12.5-12.5-32.76 0-45.25 6.25-6.26 14.44-9.38 22.63-9.38z" fill="#999999" p-id="2126"></path></svg>`
+                        link.href = productUrl
+                        link.className = "quick-view_link"
+                        discount && discount.appendChild(link)
+                        var modalCleanUp = function modalCleanUp() {
+                            _this._closeModal()
+                            modalProductSection.onUnload();
+                            document.querySelector('.mini-cart-section').scrollTop=0 
+                            document.removeEventListener('modal:close', modalCleanUp);
+                        };
+                        document.addEventListener('modal:close', modalCleanUp);
+                    });
+                });
+            }
+
+        },{
+            key:"_open",
+            value:function(ev,target){
+                var productItem=target.closest('.product-item')
+                var target=productItem.querySelector('.mini-cart-quick_button')
+                ev.preventDefault();
+                ev.stopPropagation();
+                this._openQuickView.call(this,ev,target)
+            }
+        },{
+            key: "_onWindowClick",
+            value: function _onWindowClick(event, target) {
+                target = event.target
+                if (target == this.modal) {
+                    this._closeModal()
+                }
+            }
+        }]);
+
+        return MiniCartection;
+    }();
+
     var CollectionListSection = /*#__PURE__*/function () {
         function CollectionListSection(element) {
             _classCallCheck(this, CollectionListSection);
@@ -14425,7 +14560,6 @@
                 if (Shopify.designMode && event.detail.load) {
                     // We also force the layout and number of items per page in the editor, no matter if you have choose an explicit mode
                     this.element.querySelector(".collection__layout-button[data-layout-mode=\"".concat(this.options['defaultLayout'], "\"]")).click();
-
                     this._showingCountChanged(this.options['defaultProductsPerPage']);
                 }
             }
@@ -14440,8 +14574,74 @@
                 this.delegateElement.on('click', '[data-action="add-to-cart"]', this._addToCart.bind(this));
                 this.delegateElement.on('change', '[name^="filter."]', this._onFilterChanged.bind(this));
                 this.delegateElement.on('click', '[data-action="clear-filters"]', this._onFiltersCleared.bind(this));
+                window.addEventListener('scroll',this._throttle(this._onScroll.bind(this)))
             }
-        }, {
+        },{
+            key:"_throttle",
+            value:function _throttle(func) {
+                var timeout,event
+                var wait = 99;
+                
+                var run = function run() {
+                    timeout = null;
+                    func(event[0]);
+                };
+                var later = function later() {
+                    run()
+                };
+                return function () {
+                    event=arguments
+                    if (!timeout) timeout = setTimeout(later, wait);
+                    
+                };
+            }
+        },{
+            key:"_onScroll",
+            value: function _onScroll(ev) {
+                var loadingMore= this.element.querySelector('.loading-more')
+                if(!theme.currentPage ||!theme.pages){ 
+                    loadingMore&&(loadingMore.innerHTML='Loading completed')
+                    loadingMore&&loadingMore.classList.add("d-none")
+                    return
+                }
+                // 在DOM未完全挂载前不执行
+                if (document.readyState !== 'complete') return;
+                var scrollY = window.scrollY
+                var offsetHeight = this.element.offsetHeight
+                var offsetTop = this.element.offsetTop
+                var screen = window.screen.height
+                var currentOffset = offsetHeight - (scrollY + screen) + offsetTop
+                var itemHeight=this.element.querySelector('.product-item').offsetHeight*4
+               
+                if (currentOffset > itemHeight) return;
+                var nextPage = (theme.currentPage + 1)||0
+                var pages = theme.pages||0
+                var sectionID = this.element.getAttribute('data-section-id')
+                if (nextPage > pages){
+                    loadingMore&&(loadingMore.innerHTML='Loading completed')
+                    return
+                }
+                if (this.isFetch) return;
+                this.isFetch = true
+                var productContaine = this.element.querySelector('.product-list')
+                fetch(location.pathname + "?page=" + nextPage + "&section_id=" + sectionID).then(response => {
+                    if (!response.ok) return;
+                    response.text().then(content => {
+                        var productList
+                        var products = document.createElement('div')
+                        products.innerHTML = content
+                        products && (productList = utils.filterFindElements(products, '.product-item'))
+                        while (productList.length) {
+                            productContaine.appendChild(productList.shift())
+                        }
+                        this.productItemColorSwatch.recalculateSwatches()
+                        theme.currentPage = nextPage
+                        this.isFetch = false;
+                    })
+                })
+
+            }
+        },{
             key: "_openQuickView",
             value: function _openQuickView(event, target) {
                 var productUrl = new URL("".concat(window.location.origin).concat(target.getAttribute('data-product-url'))); // If we are on mobile or tablet, we redirect to product page directly
@@ -14461,9 +14661,12 @@
                     response.text().then(function (content) {
                         modal.querySelector('.modal__inner').innerHTML = content;
                         modal.classList.remove('is-loading'); // Register a new section to power the JS
-
                         var modalProductSection = new ProductSection(modal.querySelector('[data-section-type="product"]')); // We set a listener so we can cleanup on close
-
+                        var oldScript =modal.querySelector('[data-section-type="product"]+script')
+                        var newScript= document.createElement('script')
+                        oldScript &&( newScript.innerHTML=oldScript.innerText)
+                        modal.querySelector('.modal__inner').append(newScript)
+                        
                         var doCleanUp = function doCleanUp() {
                             modalProductSection.onUnload();
                             modalProductSection=null
@@ -14731,9 +14934,7 @@
                     return; // When using a cart type of page, we just simply redirect to the cart page
                 }
                 event.preventDefault(); // Prevent form to be submitted
-
                 event.stopPropagation(); // First, we switch the status of the button
-
                 target.setAttribute('disabled', 'disabled');
                 document.dispatchEvent(new CustomEvent('theme:loading:start')); // Then we add the product in Ajax
 
@@ -15891,7 +16092,7 @@
             key: "_createSlideshow",
             value: function _createSlideshow() {
                 var _this2 = this;
-
+                if(this.options['mobileStackable'] && window.screen.availWidth<641)return;
                 if (!this.options['stackable']) {
                     this.flickityInstance = new js(this.element.querySelector('.product-list'), {
                         watchCSS: true,
@@ -15901,8 +16102,8 @@
                         groupCells: true,
                         cellAlign: 'left',
                         draggable: !window.matchMedia('(-moz-touch-enabled: 0), (hover: hover)').matches
-                    });
-                } // If the browser supports ResizeObserver we use it to detect when the size of the items in the carousel change,
+                    });}
+                 // If the browser supports ResizeObserver we use it to detect when the size of the items in the carousel change,
                 // and if that's the case we force Flickity to resize
 
 
@@ -16044,7 +16245,6 @@
             key: "_fetchProducts",
             value: function _fetchProducts() {
                 var _this = this;
-
                 var queryString = this._getSearchQueryString();
 
                 if (queryString === '') {
@@ -16058,24 +16258,22 @@
                     response.text().then(function (content) {
                         var tempElement = document.createElement('div');
                         tempElement.innerHTML = content; // Set the content
-
                         _this.element.querySelector('.recently-viewed-products-placeholder').innerHTML = tempElement.querySelector('[data-section-type="recently-viewed-products"] .recently-viewed-products-placeholder').innerHTML; // By default the section hide the products, so we force the section to be visible
-
                         _this.element.parentNode.style.display = 'block';
-
                         _this.productItemColorSwatch.recalculateSwatches(); // Create the slideshow
 
-
-                        _this.flickityInstance = new js(_this.element.querySelector('.product-list'), {
-                            watchCSS: true,
-                            pageDots: true,
-                            prevNextButtons: true,
-                            contain: true,
-                            groupCells: true,
-                            cellAlign: 'left',
-                            draggable: !window.matchMedia('(-moz-touch-enabled: 0), (hover: hover)').matches
-                        }); // If the browser supports ResizeObserver we use it to detect when the size of the items in the carousel change,
-                        // and if that's the case we force Flickity to resize
+                        if(_this.options['mobileStackable'] && window.screen.availWidth<641) return;
+                            _this.flickityInstance = new js(_this.element.querySelector('.product-list'), {
+                                watchCSS: true,
+                                pageDots: true,
+                                prevNextButtons: true,
+                                contain: true,
+                                groupCells: true,
+                                cellAlign: 'left',
+                                draggable: !window.matchMedia('(-moz-touch-enabled: 0), (hover: hover)').matches
+                            }); // If the browser supports ResizeObserver we use it to detect when the size of the items in the carousel change,
+                            // and if that's the case we force Flickity to resize
+                        
 
                         if (window.ResizeObserver && _this.flickityInstance) {
                             _this.resizeObserver = new ResizeObserver(function () {
@@ -19074,6 +19272,7 @@
             sections.register('slideshow', SlideshowSection);
             sections.register('text-with-icons', TextWithIconsSection);
             sections.register('video', VideoSection);
+            sections.register('mini-cart-recommendations', MiniCartection);
             /**
              * ----------------------------------------------------------------------------
              * RTE
