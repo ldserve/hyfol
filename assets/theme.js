@@ -4236,16 +4236,24 @@
                 }
                 event.preventDefault(); // Prevent form to be submitted
                 //event.stopPropagation(); 
-                var formElement
-                if (target.hasAttribute('data-purchase')) {
-                    formElement = target.closest('form[action*="/cart/add"]')
-                } else {
-                    formElement = this.element.querySelector('form[action*="/cart/add"]');
-                }
+                var formElement =target.hasAttribute('data-purchase')?target.closest('form[action*="/cart/add"]'):this.element.querySelector('form[action*="/cart/add"]');
                 var isSelect = false//是否选择尺码
-                var sizeBlock = Array.from(formElement.querySelectorAll('.block-swatch__radio[data-option-position="2"][checked]'))
-                isSelect = sizeBlock.some(item => item.checked && item.hasAttribute('checked'))
-                isSelect = isSelect || ['Default Title', 'ONE SIZE','one size','default title'].indexOf(this.currentVariant.option1)!==-1 || this.currentVariant.option2 === null && ['SIZE','size','Size'].indexOf(this.productOptionsWithValues.name)!==-1
+                try {
+                    _this4.productOptionsWithValues.forEach(i=>{
+                        var optionName =i.name.toLowerCase()
+                        if(optionName=='size'){
+                           var sizeBlock = Array.from(formElement.querySelectorAll('.block-swatch__radio[data-option-position="'.concat(i['position'],'"][checked]')))
+                            isSelect =  sizeBlock.some(item => item.checked && item.hasAttribute('checked'))
+                        }
+                    })
+                    var varianOption=_this4.productOptionsWithValues[0]
+                    var lengt=_this4.productOptionsWithValues.length
+                    var name =varianOption.name.toLowerCase()
+                    if (!isSelect && lengt == 1  && name === 'color' ){//只有颜色
+                        isSelect = true
+                    }//默认变体
+                    isSelect = isSelect || ['one size', 'default title','title'].indexOf(name) !== -1
+                } catch (error) {  isSelect = true  }
 
                 if (!isSelect) {
                     target = this.element.querySelector('.block-swatch-list')
