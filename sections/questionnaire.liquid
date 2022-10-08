@@ -218,6 +218,9 @@
     background-color: #FFF;
 }
 </style>
+
+<script src="{{ 'request.js' | asset_url }}"></script>
+
 <div class="questionnaire_mask d-none">
     <div class="questionnaire_content">
         <h1 class="h1 questionnaire-title">Inquiry FORM</h1>
@@ -299,10 +302,11 @@
                 !isSubmit && empty.classList.remove('d-none')
               const resData= []
               Array.prototype.forEach.call(formBox.elements,item=>{
-                if(item.type == 'text'||item.type == "select" || item.type=="radio"&&item.checked ||item.type == 'email') resData.push( {optionContent:item.value,questionId:item.name,userid});
+                if(item.type == 'text'||item.type == "select-one" || item.type=="radio"&&item.checked ||item.type == 'email') resData.push( {optionContent:item.value,questionId:item.name,userid});
                 })
-                isSubmit && fetch('http://api.leandow-technology.com/api/customerAccount/submitSurvey',{method:"POST",body:JSON.stringify(resData)}).then(res=>{
-                    console.log(res);
+                ajax_method('http://api.leandow-technology.com/api/customerAccount/submitSurvey',resData,'POST',(res)=>{
+                   const data = JSON.parse(res)
+                    console.log(data)
                 })
                 ev.preventDefault()
                 ev.stopPropagation()
