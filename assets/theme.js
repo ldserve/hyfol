@@ -4241,7 +4241,7 @@
                 try {
                     _this4.productOptionsWithValues.forEach(i=>{
                         var optionName =i.name.toLowerCase()
-                        if(optionName=='size'){
+                        if(optionName=='size'||optionName=="尺码"){
                            var sizeBlock = Array.from(formElement.querySelectorAll('.block-swatch__radio[data-option-position="'.concat(i['position'],'"][checked]')))
                             isSelect =  sizeBlock.some(item => item.checked && item.hasAttribute('checked'))
                         }
@@ -4249,7 +4249,7 @@
                     var varianOption=_this4.productOptionsWithValues[0]
                     var lengt=_this4.productOptionsWithValues.length
                     var name =varianOption.name.toLowerCase()
-                    if (!isSelect && lengt == 1  && name === 'color' ){//只有颜色
+                    if (!isSelect && lengt == 1  && name === 'color' || name=="颜色"){//只有颜色
                         isSelect = true
                     }//默认变体
                     isSelect = isSelect || ['one size', 'default title','title'].indexOf(name) !== -1
