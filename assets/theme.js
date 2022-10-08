@@ -4246,6 +4246,11 @@
                 var sizeBlock = Array.from(formElement.querySelectorAll('.block-swatch__radio[data-option-position="2"][checked]'))
                 isSelect = sizeBlock.some(item => item.checked && item.hasAttribute('checked'))
                 isSelect = isSelect || ['Default Title', 'ONE SIZE','one size','default title'].indexOf(this.currentVariant.option1)!==-1 || this.currentVariant.option2 === null && ['SIZE','size','Size'].indexOf(this.productOptionsWithValues.name)!==-1
+               if(!isSelect && _this4.productOptionsWithValues.length==1){//只有尺码的情况
+               var name= _this4.productOptionsWithValues[0].name.toLowerCase()
+               sizeBlock = Array.from(formElement.querySelectorAll('.block-swatch__radio[data-option-position="1"][checked]'))
+               isSelect=name==='size'&&sizeBlock.some(item => item.checked && item.hasAttribute('checked'))
+               }
 
                 if (!isSelect) {
                     target = this.element.querySelector('.block-swatch-list')
