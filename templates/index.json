@@ -81,8 +81,8 @@
         "9ac5cf43-f6a6-485d-b66c-b766639f9a35": {
           "type": "link",
           "settings": {
-            "heading": "bestseller",
-            "sensorsLinkName": "bestseller",
+            "heading": "bestseller1",
+            "sensorsLinkName": "bestseller1",
             "link": "shopify:\/\/collections\/hyfol-best-seller-1",
             "left": 0,
             "top": 0,
@@ -93,8 +93,8 @@
         "d65e4d92-d408-4840-974a-11db707ea743": {
           "type": "link",
           "settings": {
-            "heading": "newin",
-            "sensorsLinkName": "newin",
+            "heading": "newin1",
+            "sensorsLinkName": "newin1",
             "link": "https:\/\/www.hyfol.com\/collections\/new-in-1",
             "left": 23,
             "top": 0,
@@ -117,8 +117,8 @@
         "a3ab2cb6-f89f-4bc1-b646-9fe4e3be3ccb": {
           "type": "link",
           "settings": {
-            "heading": "polo",
-            "sensorsLinkName": "polo",
+            "heading": "polo1",
+            "sensorsLinkName": "polo1",
             "link": "https:\/\/www.hyfol.com\/collections\/polo-shirts",
             "left": 47,
             "top": 0,
@@ -129,8 +129,8 @@
         "df248fe6-62ab-4deb-9e61-43d26d4546de": {
           "type": "link",
           "settings": {
-            "heading": "paglantees",
-            "sensorsLinkName": "paglantees",
+            "heading": "raglantee1",
+            "sensorsLinkName": "raglantee1",
             "link": "https:\/\/www.hyfol.com\/collections\/raglan-tees",
             "left": 63,
             "top": 0,
@@ -141,8 +141,8 @@
         "4e72a354-81ca-4018-a5e5-0e79fc495451": {
           "type": "link",
           "settings": {
-            "heading": "cargopants",
-            "sensorsLinkName": "cargopants",
+            "heading": "cargopants1",
+            "sensorsLinkName": "cargopants1",
             "link": "https:\/\/www.hyfol.com\/collections\/cargo-pants",
             "left": 77,
             "top": 0,
@@ -179,8 +179,8 @@
         "eaf9ec19-1992-4f20-a1f4-91318771e673": {
           "type": "link",
           "settings": {
-            "heading": "bestseller",
-            "sensorsLinkName": "bestseller",
+            "heading": "bestseller1",
+            "sensorsLinkName": "bestseller1",
             "link": "shopify:\/\/collections\/hyfol-best-seller-1",
             "left": 0,
             "top": 0,
@@ -191,8 +191,8 @@
         "cd289e85-02fb-459c-b865-cbfa0969699c": {
           "type": "link",
           "settings": {
-            "heading": "newin",
-            "sensorsLinkName": "newin",
+            "heading": "newin1",
+            "sensorsLinkName": "newin1",
             "link": "https:\/\/www.hyfol.com\/collections\/new-in-1",
             "left": 38,
             "top": 0,
@@ -215,8 +215,8 @@
         "73bced36-7b47-440f-b015-18a17727c28d": {
           "type": "link",
           "settings": {
-            "heading": "polo",
-            "sensorsLinkName": "polo",
+            "heading": "polo1",
+            "sensorsLinkName": "polo1",
             "link": "https:\/\/www.hyfol.com\/collections\/polo-shirts",
             "left": 0,
             "top": 49,
@@ -239,8 +239,8 @@
         "cf80e001-bfb9-48b2-872d-9dc3c14f10f4": {
           "type": "link",
           "settings": {
-            "heading": "cargopants",
-            "sensorsLinkName": "cargopants",
+            "heading": "cargopants1",
+            "sensorsLinkName": "cargopants1",
             "link": "https:\/\/www.hyfol.com\/collections\/cargo-pants",
             "left": 66,
             "top": 56,
