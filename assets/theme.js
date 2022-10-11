@@ -4258,7 +4258,6 @@
                 if (!isSelect) {
                     target = this.element.querySelector('.block-swatch-list')
                     target && target.scrollIntoView({ block: "center", behavior: "smooth", inline: "center" })
-                    window.screen.availWidth < 649 &&!target.closest("#modal-quick-view-header")&& alert('Please Select Size')
                     document.querySelector('.select-size-no').classList.remove('d-none')
                     event.stopPropagation()
                     return
