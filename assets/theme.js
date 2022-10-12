@@ -1572,12 +1572,12 @@
                     collapsibleContent.style.overflow = 'hidden';
                 }
 
-                if (collapsibleContent.hasAttribute('aria-hidden')) {
+                if (collapsibleContent &&collapsibleContent.hasAttribute('aria-hidden')) {
                     collapsibleContent.setAttribute('aria-hidden', 'true');
                 }
 
                 toggleButton.setAttribute('aria-expanded', 'false');
-                Animation.slideUp(collapsibleContent);
+                collapsibleContent&& Animation.slideUp(collapsibleContent);
             }
         }]);
 
@@ -14170,6 +14170,7 @@
         }, {
             key: "_attachListeners",
             value: function _attachListeners() {
+                this.delegateElement.on('click','[data-secondary-action="open-quick-view"]',this._openQuickView.bind(this));
                 this._onVariantChangedListener = this._onVariantChanged.bind(this);
                 this.element.addEventListener('variant:changed', this._onVariantChangedListener);
             }
@@ -14207,6 +14208,37 @@
             value: function _onVariantChanged(event) {
                 this.productGallery.variantHasChanged(event.detail.variant);
             }
+        },{
+            key: "_openQuickView",
+            value: function _openQuickView(event, target) {
+                event.preventDefault()
+                var modal = document.getElementById(target.getAttribute('aria-controls'));
+                modal.classList.add('is-loading');
+                fetch("".concat(target.getAttribute('data-product-url'), "?view=quick-view"), {
+                    credentials: 'same-origin',
+                    method: 'GET'
+                }).then(function (response) {
+                    response.text().then(function (content) {
+                        modal.querySelector('.modal__inner').innerHTML = content;
+                        modal.classList.remove('is-loading'); // Register a new section to power the JS
+
+                        var modalProductSection = new ProductSection(modal.querySelector('[data-section-type="product"]')); // We set a listener so we can cleanup on close
+                        var discount = modal.querySelector('.procut-discount')
+                        var link = document.createElement('a')
+                        link.innerHTML = `<span style="margin-right:5px;font-size:12px">Details</span><svg t="1618368571858" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2125" width="15" height="15"><path d="M312.49 96.36c8.19 0 16.38 3.12 22.63 9.37L734.14 504.75c12.5 12.5 12.5 32.76 0 45.26L335.12 949.02c-12.5 12.5-32.76 12.5-45.26 0s-12.5-32.76 0-45.25L666.25 527.38l-376.39-376.39c-12.5-12.5-12.5-32.76 0-45.25 6.25-6.26 14.44-9.38 22.63-9.38z" fill="#999999" p-id="2126"></path></svg>`
+                        link.href = target.getAttribute('data-product-url')
+                        link.className = "quick-view_link"
+                        discount && discount.appendChild(link)
+                        var doCleanUp = function doCleanUp() {
+                            modalProductSection.onUnload();
+                            modal.removeEventListener('modal:closed', doCleanUp);
+                        };
+
+                        modal.addEventListener('modal:closed', doCleanUp);
+                    });
+                });
+            }
+
         }]);
 
         return ProductSection;
