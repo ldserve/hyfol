@@ -167,6 +167,7 @@
 {%- unless product.has_only_default_variant -%}
 
 <div class="product-form__variants" {{ block.shopify_attributes }}>
+  
   {%- comment -%}--------------- Style ----------------------{%- endcomment -%}
   {%- if product.metafields.custom.style != blank -%}
  
@@ -193,14 +194,21 @@
         {%- assign style_name = styles[0] -%}
         {%- assign style_link = styles[1] -%}
         {%- if style_link != blank -%}
-        <a href="{{all_products[style_link].url}}" class="block-swatch style-block-swatch {% if style1==style_name %}active{% endif %}">{{style_name}}</a>
+
+        {%- if style1==style_name -%}
+        <span class="block-swatch style-block-swatch active">{{style_name}}</span>
+        {%- else -%}
+        <a href="{{all_products[style_link].url}}" class="block-swatch style-block-swatch ">{{style_name}}</a>
+        {%- endif -%}
+
         {%- endif -%}
         {%- endfor -%}
       </div>
     </div>
     {%- endif -%}
-
-    {%- for option in product.options_with_values -%}
+{%- comment -%}------------------------ style END-------------------------------{%- endcomment -%}
+   
+  {%- for option in product.options_with_values -%}
       {%- assign downcase_option = option.name | downcase -%}
       {%- capture option_name -%}{{ section.id }}-{{ product.id }}-{{ forloop.index }}{%- endcapture -%}
 
@@ -309,11 +317,12 @@
                   {%- endif -%}
                 {%- endfor -%}
 							{%- endfor -%}
+              {%- comment -%}-----------------------产品搭配 ------------------------------{%- endcomment -%}
 							{%- assign collocation_list = product.metafields.my_fields.optionCollocation -%}
 							{%- assign handles = collocation_list | split:',' -%}
 							{% for handle in handles %}
 								{%- assign collocation_product = all_products[handle] -%}
-								{%- if collocation_product != blank -%}
+								{%- if collocation_product != blank and collocation_product.handle != product.handle -%}
 									<a class="variant-swatch ld-variant" href="{{ collocation_product.url }}">
 										<div class="variant-swatch__item">
 											<div class="aspect-ratio" style="padding-bottom: {{ 100.0 | divided_by:  collocation_product.featured_image.aspect_ratio }}%">
@@ -323,6 +332,7 @@
 									</a>
 								{%- endif -%}
 							{%- endfor -%}
+              {%- comment -%}----------------------------------------------------{%- endcomment -%}
             </div>
 
           {%- when 'block' -%}
