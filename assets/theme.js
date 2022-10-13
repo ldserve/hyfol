@@ -4257,7 +4257,7 @@
 
                 if (!isSelect) {
                     target = this.element.querySelector('.block-swatch-list')
-                    target && target.scrollIntoView({ block: "center", behavior: "smooth", inline: "center" })
+                    target && target.scrollIntoView({ block: "center", behavior: "smooth"})  
                     document.querySelector('.select-size-no').classList.remove('d-none')
                     event.stopPropagation()
                     return

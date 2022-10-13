@@ -8,14 +8,14 @@
 
 {%- assign custom = false -%}
 
-{% for tag in product.tags %}
+{%- for tag in product.tags -%}
 	{%- if tag contains 'CustomPromotion' -%}
 		{%- assign custom = true -%}
 		{%- assign text = tag | split: '-' -%}
 		{%- assign custom_tag = text[1] | strip -%}
-		{% break %}
+		{%- break -%}
 	{%- endif -%}
-{% endfor %}
+{%- endfor -%}
 
 
 {%- if custom -%}
@@ -31,28 +31,33 @@
 
 			{%- if custom_tag contains tag_item[0] -%}
 				{%- assign tag_url = tag_item[1] -%}
-				{% break %}
+				{%- break -%}
 			{%- endif -%}
 			
 		{%- endfor -%}
 
-
-			{% if show_img_tag %}
+			{%- if show_img_tag -%}
 			{%- comment -%}----详情页活动链接-------{%- endcomment -%}
+			{%- assign inspect_tag = "Buy 4 Get 20% Off,Buy 4 Get EXTRA 20% Off,Buy 4+ 20% Off" -%}
+			{%- assign inspect_arr = inspect_tag | split: ',' -%}
 
-			{% assign CustomPromotionUrlList = settings.CustomPromotionUrl | strip_html | split : ',' %}
-			{% for CustomPromotionUrItem in CustomPromotionUrlList %}
-				{% assign CustomPromotionUrItemAll = CustomPromotionUrItem | split : '=' %}
-				{% assign CustomPromotionUrItemName = CustomPromotionUrItemAll[0] | strip %}
-				{% if CustomPromotionUrItemName == custom_tag %}
-					{% assign CustomPromotionUrItemUrl = CustomPromotionUrItemAll[1] %}
+			{%- assign CustomPromotionUrlList = settings.CustomPromotionUrl | strip_html | split : ',' -%}
+			{%- for CustomPromotionUrItem in CustomPromotionUrlList -%}
+				{%- assign CustomPromotionUrItemAll = CustomPromotionUrItem | split : '=' -%}
+				{%- assign CustomPromotionUrItemName = CustomPromotionUrItemAll[0] | strip -%}
+				{%- if CustomPromotionUrItemName == custom_tag or inspect_tag contains CustomPromotionUrItemName  -%}
+					{%- assign CustomPromotionUrItemUrl = CustomPromotionUrItemAll[1] -%}
 					{%- break -%}
-				{% endif %}
-			{% endfor %}
+				{%- endif -%}
+			{%- endfor -%}
 
 				<a class="custom-activity-tag {{class_name}}" style="position: relative;" href="{{CustomPromotionUrItemUrl}}">
-					<img class="activity-background-img" src="https://cdn.shopify.com/s/files/1/0595/0691/7535/files/1_7e311649-c94f-4a57-9cbf-ddabc2a3117e.jpg?v=1664529245" alt="{{product.title}}">
+					{%- if inspect_arr contains custom_tag -%}
+					<img class="activity-background-img" src="https://cdn.shopify.com/s/files/1/0595/0691/7535/files/bg_1.jpg?v=1665656066" alt="{{product.title}}">
+					{%- else -%}
+					<img class="activity-background-img" src="https://cdn.shopify.com/s/files/1/0595/0691/7535/files/1_499b918d-2589-4803-bee0-6c020c20b326.jpg?v=1663814021" alt="{{product.title}}">
 					<div class="activity-text" >{{custom_tag}}</div>
+					{%- endif -%}
 				</a>
 
 		{%- elsif tag_url != blank  -%}
@@ -73,7 +78,7 @@
 			{%- if tag_heading contains custom_tag -%}
 				{%- assign color_list = tag_arr[1] | split: '&' -%}
 				{%- capture gradient_colors -%}--gradient-color-start: {{color_list[0]}}; --gradient-color-end: {{color_list[1]}};{%- endcapture -%}
-				{% break %}
+				{%- break -%}
 			{%- endif -%}
 		{%- endfor -%}
 
