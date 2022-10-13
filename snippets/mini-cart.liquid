@@ -210,6 +210,10 @@
                     {% endif %}
                   {% endfor %}
                   {%- if show_tag -%}
+
+                  {%- if sale_text_on_detail == "Buy 4 Get EXTRA 20% Off" -%}
+                    {%- assign sale_text_on_detail = "Buy more save 20%" -%}
+                  {%- endif -%}
                   <div>
                     <a class="product-line-item_tag  link mini-cart-line-item_tag" {%if CustomPromotionUrItemUrl!=blank%}href="{{CustomPromotionUrItemUrl}}"{%endif%}>
                       <span class="cart-line-item_variant--title ">{{ sale_text_on_detail }}</span>
