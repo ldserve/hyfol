@@ -839,8 +839,8 @@
       "type": "no_space_img",
       "settings": {
         "sensorsName": "finalsale",
-        "bg_image": "shopify:\/\/shop_images\/1362a9ac15070601200def89a4d5dd1e.jpg",
-        "web_bg_image": "shopify:\/\/shop_images\/c4059822eda80f3a71931f17ddb3dac3.jpg",
+        "bg_image": "shopify:\/\/shop_images\/fe33253dbf48d9c256b3a971245bf047.jpg",
+        "web_bg_image": "shopify:\/\/shop_images\/f2fc69686c2037eea2f76f9b8298acc4.jpg",
         "link": "https:\/\/www.hyfol.com\/collections\/summer-finalsale?page=1",
         "shadow": false
       }
@@ -902,9 +902,9 @@
         "6defe89d-34bf-47d9-a1f2-91004d693ed8": {
           "type": "link",
           "settings": {
-            "heading": "hooded",
-            "sensorsLinkName": "hooded",
-            "link": "https:\/\/www.hyfol.com\/collections\/hooded",
+            "heading": "plaid",
+            "sensorsLinkName": "plaid",
+            "link": "https:\/\/www.hyfol.com\/collections\/plaid",
             "left": 76,
             "top": 0,
             "width": 40,
@@ -925,7 +925,7 @@
         "sensorsName": "pc分类导流区",
         "hidWeb": true,
         "line": false,
-        "image": "shopify:\/\/shop_images\/pc__08_1d06cf2e-0034-4fe3-891d-100e4e323369.jpg",
+        "image": "shopify:\/\/shop_images\/11_c40bde12-b1d5-46a7-b97f-7f0b7fcdc7a3.jpg",
         "tpadding": 0,
         "rpadding": 0,
         "bpadding": 0,
@@ -974,9 +974,9 @@
         "dbe8a9a1-2bdd-4552-82ae-15b0ebb1e9cf": {
           "type": "link",
           "settings": {
-            "heading": "hooded",
-            "sensorsLinkName": "hooded",
-            "link": "https:\/\/www.hyfol.com\/collections\/hooded",
+            "heading": "plaid",
+            "sensorsLinkName": "plaid",
+            "link": "https:\/\/www.hyfol.com\/collections\/plaid",
             "left": 51,
             "top": 50,
             "width": 60,
@@ -997,7 +997,7 @@
         "sensorsName": "mobile分类导流区",
         "hidWeb": false,
         "line": false,
-        "image": "shopify:\/\/shop_images\/07_0b14ba47-312b-4ede-94e0-4134c932a299.jpg",
+        "image": "shopify:\/\/shop_images\/1_08_eb93db7d-6e88-4808-b884-bf7d608d72c2.jpg",
         "tpadding": 5,
         "rpadding": 0,
         "bpadding": 0,
