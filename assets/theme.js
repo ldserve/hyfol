@@ -13131,6 +13131,7 @@
             value: function variantHasChanged(newVariant) {
                 var _this = this;
                 if (!newVariant) return
+                if(!_this.dotThumbnailsCellsElements ||!_this.productThumbnailsCellsElements)return
                 // We may have selected a variant that will cause the set of images to change completely. To do that we need to iterate through all images,
                 // check for the attribute "data-group-name" and verify if some images need to be filtered or not
                 var shouldReload = false;
@@ -13139,7 +13140,6 @@
                         if (cell.hasAttribute('data-group-name')) {
                             // If it has an attribute, we get the group name, and match it against the option
                             var groupName = cell.getAttribute('data-group-name');
-
                             _this.options['productOptions'].forEach(function (option, optionIndex) {
                                 if (option.toLowerCase() === groupName) {
                                     // groupName from attribute is already lowercased in Liquid
