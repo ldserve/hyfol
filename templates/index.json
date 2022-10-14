@@ -292,9 +292,9 @@
         "79cd2bfc-0629-4c7d-b333-56a486e24cfb": {
           "type": "image",
           "settings": {
-            "sensorsName": "fallfor-you",
-            "image": "shopify:\/\/shop_images\/banner_fe9bca90-7889-40bf-ae81-3b9495609296.jpg",
-            "mobile_image": "shopify:\/\/shop_images\/1_8e08c179-b3fd-416e-9109-747db0831c7c.jpg",
+            "sensorsName": "plaid",
+            "image": "shopify:\/\/shop_images\/237d557249bd41e36aeea87d8f090d2a.jpg",
+            "mobile_image": "shopify:\/\/shop_images\/5dbbfe3298a1ddad9d392830e3e50d15.jpg",
             "show_overlay": false,
             "overlay_opacity": 30,
             "text_color": "#ffffff",
@@ -310,7 +310,31 @@
             "button_background": "#ffffff",
             "button_text_color": "#000000",
             "button_text": "",
-            "link": "https:\/\/www.hyfol.com\/collections\/fall-for-you"
+            "link": "https:\/\/www.hyfol.com\/collections\/plaid"
+          }
+        },
+        "1650101273ef0886ca-1": {
+          "type": "image",
+          "settings": {
+            "sensorsName": "cargopants",
+            "image": "shopify:\/\/shop_images\/0f719d71e9a8a2dbb649b4f3475ebf96_785593c0-92b7-4ee5-b7e5-3d6753e7fdd7.jpg",
+            "mobile_image": "shopify:\/\/shop_images\/2b2d82fd0d6a0f6a7e255749be197780.jpg",
+            "show_overlay": false,
+            "overlay_opacity": 30,
+            "text_color": "#ffffff",
+            "title": "",
+            "heading_text_font": "helvetica_n4",
+            "heading_text_font_size": 20,
+            "heading_text_color": "#ffffff",
+            "content": "",
+            "content_text_font": "helvetica_n4",
+            "content_text_font_size": 12,
+            "content_text_color": "#ffffff",
+            "content_position": "middle_center",
+            "button_background": "#ffffff",
+            "button_text_color": "#000000",
+            "button_text": "",
+            "link": "https:\/\/www.hyfol.com\/collections\/cargo-pants"
           }
         },
         "fb844d01-0475-4130-aeb7-a118c0a1b427": {
@@ -337,36 +361,12 @@
             "button_text": "",
             "link": "https:\/\/www.hyfol.com\/collections\/halloween-theme-clothing"
           }
-        },
-        "1650101273ef0886ca-1": {
-          "type": "image",
-          "settings": {
-            "sensorsName": "summer finalsale",
-            "image": "shopify:\/\/shop_images\/98874da468f857bd057140596b570989_7dd6f70d-0b77-421f-aa39-35710fd9ac08.jpg",
-            "mobile_image": "shopify:\/\/shop_images\/5_8eef0a3c-7682-4290-930b-d3d56c5681fa.jpg",
-            "show_overlay": false,
-            "overlay_opacity": 30,
-            "text_color": "#ffffff",
-            "title": "",
-            "heading_text_font": "helvetica_n4",
-            "heading_text_font_size": 20,
-            "heading_text_color": "#ffffff",
-            "content": "",
-            "content_text_font": "helvetica_n4",
-            "content_text_font_size": 12,
-            "content_text_color": "#ffffff",
-            "content_position": "middle_center",
-            "button_background": "#ffffff",
-            "button_text_color": "#000000",
-            "button_text": "",
-            "link": "https:\/\/www.hyfol.com\/collections\/cargo-pants"
-          }
         }
       },
       "block_order": [
         "79cd2bfc-0629-4c7d-b333-56a486e24cfb",
-        "fb844d01-0475-4130-aeb7-a118c0a1b427",
-        "1650101273ef0886ca-1"
+        "1650101273ef0886ca-1",
+        "fb844d01-0475-4130-aeb7-a118c0a1b427"
       ],
       "settings": {
         "edge_to_edge": true,
