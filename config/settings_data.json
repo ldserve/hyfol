@@ -182,7 +182,7 @@
           "show_locale_selector": false,
           "show_currency_selector": false,
           "navigation_menu": "pc",
-          "navigation_mobile_menu": "main-menu",
+          "navigation_mobile_menu": "mobile",
           "desktop_navigation_layout": "inline",
           "desktop_navigation_open_trigger": "hover",
           "show_navigation_social_media": false,
@@ -214,7 +214,7 @@
           "19a81811-3745-4280-bbc7-82cf671c27d7": {
             "type": "links",
             "settings": {
-              "menu": "help-center"
+              "menu": ""
             }
           },
           "footer-2": {
