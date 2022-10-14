@@ -215,9 +215,9 @@
         "73bced36-7b47-440f-b015-18a17727c28d": {
           "type": "link",
           "settings": {
-            "heading": "polo1",
-            "sensorsLinkName": "polo1",
-            "link": "https:\/\/www.hyfol.com\/collections\/polo-shirts",
+            "heading": "hoodies",
+            "sensorsLinkName": "hoodies",
+            "link": "https:\/\/www.hyfol.com\/collections\/hoodies-1",
             "left": 0,
             "top": 49,
             "width": 32,
@@ -227,9 +227,9 @@
         "c3ee76eb-8c94-4e84-9861-e178884903c2": {
           "type": "link",
           "settings": {
-            "heading": "raglantee",
-            "sensorsLinkName": "raglantee",
-            "link": "https:\/\/www.hyfol.com\/collections\/raglan-tees",
+            "heading": "sweatshirts",
+            "sensorsLinkName": "sweatshirts",
+            "link": "https:\/\/www.hyfol.com\/collections\/sweatshirts-12-13",
             "left": 33,
             "top": 46,
             "width": 30,
@@ -239,9 +239,9 @@
         "cf80e001-bfb9-48b2-872d-9dc3c14f10f4": {
           "type": "link",
           "settings": {
-            "heading": "cargopants1",
-            "sensorsLinkName": "cargopants1",
-            "link": "https:\/\/www.hyfol.com\/collections\/cargo-pants",
+            "heading": "jackets",
+            "sensorsLinkName": "jackets",
+            "link": "https:\/\/www.hyfol.com\/collections\/outerwear_hyfol",
             "left": 66,
             "top": 56,
             "width": 30,
@@ -264,7 +264,7 @@
         "sensorsName": "mobile分类导流区",
         "hidWeb": false,
         "line": false,
-        "image": "shopify:\/\/shop_images\/1_02_45925197-901e-4a7e-a2c3-7705df371ad7.jpg",
+        "image": "shopify:\/\/shop_images\/1_02_92b88b93-84e3-43c4-a910-b046afdd7194.jpg",
         "tpadding": 0,
         "rpadding": 0,
         "bpadding": 0,
