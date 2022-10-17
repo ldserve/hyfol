@@ -223,13 +223,20 @@
               "title": "FIND US ON",
               "subheading": "<p>Sign up for HYFOL style news<\/p>"
             }
+          },
+          "244b3e68-04f8-41ec-acf1-bff4665fe23c": {
+            "type": "links",
+            "settings": {
+              "menu": "b2b-business"
+            }
           }
         },
         "block_order": [
           "footer-0",
           "footer-1",
           "19a81811-3745-4280-bbc7-82cf671c27d7",
-          "footer-2"
+          "footer-2",
+          "244b3e68-04f8-41ec-acf1-bff4665fe23c"
         ],
         "settings": {
           "show_social_media": true,
