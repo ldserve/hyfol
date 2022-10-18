@@ -229,24 +229,24 @@
             <div class="input-group">
                 <label class="input-group-addon" form="questionnaire-first_name">First Name</label>
                 <input type="text" class="form-control" placeholder="First Name" id="questionnaire-first_name"
-                    name="first_name">
+                    data-name="first_name" name="1">
             </div>
             <div class="input-group">
                 <label class="input-group-addon" form="questionnaire-last_name">Last Name</label>
                 <input type="text" class="form-control" placeholder="Last Name" id="questionnaire-last_name"
-                    name="last_name">
+                    data-name="last_name" name="2">
             </div>
             <div class="input-group">
                 <label class="input-group-addon" form="questionnaire-email">Email<span
                         class="required must-info">*</span></label>
                 <input type="email" class="form-control" placeholder="your Email" id="questionnaire-email" required
-                    name="email">
+                    data-name="email" name="3">
                 <div class="required d-none required-empty">This question must be filled in</div>
                 <div class="required d-none required-error">Please enter a valid email address</div>
             </div>
             <div class="input-group">
                 <label class="input-group-addon" form="questionnaire-customize">Product I Want To Customize</label>
-                <select class="form-control" placeholder="Username" id="questionnaire-customize" name="customize" type="select">
+                <select class="form-control" placeholder="Username" id="questionnaire-customize" data-name="customize" name="4" type="select">
                     <option value="Top">Top</option>
                     <option value="Bottom">Bottom</option>
                     <option value="Hat">Hat</option>
@@ -254,7 +254,7 @@
             </div>
             <div class="input-group">
                 <label class="input-group-addon" form="questionnaire-quantity">Quantity I Need</label>
-                <select class="form-control" placeholder="Username" id="questionnaire-quantity" name="quantity" type="select">
+                <select class="form-control" placeholder="Username" id="questionnaire-quantity" data-name="quantity" data-name="5" type="select">
                     <option value="10-30">10-30</option>
                     <option value="30-50">30-50</option>
                     <option value="50-100">50-100</option>
@@ -265,11 +265,11 @@
                 <legend class="input-group-addon">Do you need us to provide design services?</legend>
                <div class="radio-group">
                    <label for="questionnaire-design_yes" class="input-group-addon">Yes</label>
-                   <input type="radio" class="form-control" value="Yes" name="design" id="questionnaire-design_yes">
+                   <input type="radio" class="form-control" value="Yes" data-name="design" name="6" id="questionnaire-design_yes">
                </div>
                <div class="radio-group">
                    <label for="questionnaire-design_no" class="input-group-addon">No</label>
-                   <input type="radio" class="form-control" value="No" name="design" id="questionnaire-design_no">
+                   <input type="radio" class="form-control" value="No" data-name="design" name="6" id="questionnaire-design_no">
                </div>
             </fieldset>
             <div class="input-group button-submit">
@@ -289,37 +289,56 @@
         const error = document.querySelector('.required-error')
         const body =document.body
         let isSubmit = false;
+        let isResquest=false
 
         body.addEventListener('click', ev => {
+            if(isResquest) return;
             let target = ev.target
-            if (target == maskBox || target.dataset.type == 'close') maskBox.classList.add('d-none'),body.classList.remove('promo-block__image-clip')
+            if (target == maskBox || target.dataset.type == 'close') maskBox.classList.add('d-none'),body.classList.remove('promo-block__image-clip');
             if(target.dataset.type=='showForm'){
                 body.classList.add('promo-block__image-clip')
                 maskBox.classList.remove('d-none')
                 body.classList.add('promo-block__image-clip')
             }
             if (target.dataset.type == 'submit') {//({optionContent:{},questionId:Date.now(),userid})
-                !isSubmit && empty.classList.remove('d-none')
-              const resData= []
-              Array.prototype.forEach.call(formBox.elements,item=>{
-                if(item.type == 'text'||item.type == "select-one" || item.type=="radio"&&item.checked ||item.type == 'email') resData.push( {optionContent:item.value,questionId:item.name,userid});
-                })
-                ajax_method('http://api.leandow-technology.com/api/customerAccount/submitSurvey',resData,'POST',(res)=>{
-                   const data = JSON.parse(res)
-                    console.log(data)
-                })
+            // !userid&&(window.location.href="https://www.hyfol.com/account/login")
+            userid=userid?userid:Date.now()
+            if(!isSubmit){
+                empty.classList.remove('d-none')
                 ev.preventDefault()
-                ev.stopPropagation()
+                return
+            }
+            isResquest=true
+            target.disabled=true
+              const resData= []
+              Array.prototype.forEach.call(formBox.elements,(item,i)=>{
+                if(item.type == 'text'||item.type == "select-one" || item.type=="radio"&&item.checked ||item.type == 'email') resData.push( {optionContent:item.value,questionId:parseInt(item.name)||i+1,userid:parseInt(userid)||Date.now()});
+                })
+                try {
+                    ajax_method('http://api.leandow-technology.com/api/customerAccount/submitSurvey',resData,'POST',(res)=>{
+                       const data = JSON.parse(res)
+                        data.success&& alert('Submitted successfully')||alert("Cannot submit repeatedly");
+                        isResquest=false
+                        target.disabled=false
+                        maskBox.classList.add('d-none'),body.classList.remove('promo-block__image-clip');
+                    })
+                } catch (error) {
+                    isResquest=false
+                    target.disabled=false
+                }
+                ev.preventDefault()
+                ev.stopPropagation() 
             }
         })
 
         formBox.addEventListener('blur', ev => {
             let target = ev.target
-            if (target.name == 'email') {
+            if (target.name == 'email' ||target.dataset.name=="email") {
                 let value = target.value
                 isSubmit = value && value.search(/^(([\w]{1,}\.){0,2})?([a-zA-Z\d][\w-]{2,})@(\w{2,})\.([a-z]{2,})(\.[a-z]{2,})?$/) !== -1
                 !value && !isSubmit && empty.classList.remove('d-none')
                 value && !isSubmit && (error.classList.remove('d-none'))
+            }else{
 
             }
             ev.preventDefault()
@@ -328,7 +347,7 @@
 
         formBox.addEventListener('focus', ev => {
             let target = ev.target
-            if (target.name == "email") {
+            if (target.dataset.name == "email") {
                 empty.classList.add('d-none')
                 error.classList.add('d-none')
             }
@@ -357,7 +376,7 @@
         const mobileBtnArr=[ btn1.cloneNode(true),btn2.cloneNode(true),btn3.cloneNode(true)]
         const inserBox1=document.querySelector('[data-desktop] .image_link')
         const inserBox2=document.querySelector('[data-mobile] .image_link')
-        const inserProduct =document.querySelector('.scroller')
+        const inserProduct =document.querySelector('[data-section-type="featured-collection"]')
         inserBox1.append(...btnArr)
         inserBox2.append(...mobileBtnArr)
         inserProduct.append( buttonBox)
