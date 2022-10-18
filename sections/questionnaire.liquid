@@ -320,7 +320,7 @@
                         data.success&& alert('Submitted successfully')||alert("Cannot submit repeatedly");
                         isResquest=false
                         target.disabled=false
-                        maskBox.classList.add('d-none'),body.classList.remove('promo-block__image-clip');
+                        data.success&& maskBox.classList.add('d-none')&&body.classList.remove('promo-block__image-clip');
                     })
                 } catch (error) {
                     isResquest=false
