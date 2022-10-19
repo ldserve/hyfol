@@ -7,7 +7,9 @@
 		display: block;
 		padding: 8px 20px;
 	} */
-
+.pagination__prev, .pagination__next,.pagination__nav-item{
+	color: #000;
+}
 	.my-profile__view {
 		text-align: center;
 		display: grid;
@@ -761,6 +763,12 @@
 	.page__item[aria-hidden="true"]{
 		display: none;
 	}
+	.collect .openQuickView{
+		display: none;
+	}
+	.collect .product-item__action-button--list-view-only{
+		display: block;
+	}
 </style>
 
 {%- comment -%}--------------------------Mobile--------------------------{%- endcomment -%}
@@ -1085,7 +1093,7 @@
 										<span style="margin-bottom:6px; display: block;">{{customer.name}}</span>
 										<div class="vip-icon__box">
 											{%- render 'icon',icon:'vip',class:'vip' -%}
-											<span class="vip-user__grade">Silver</span>
+											<span class="vip-user__grade"> </span>
 										</div>
 										<div class="vip-icon__box">
 											{% render "icon",icon:'integral' %}
@@ -2051,150 +2059,478 @@
 
 <script>
 
+	var Delegate = (function () {
+
+		function Delegate(root) {
+			this.listenerMap = [{}, {}];
+			if (root) {
+				this.root(root);
+			}
+
+			this.handle = Delegate.prototype.handle.bind(this); // Cache of event listeners removed during an event cycle
+			this._removedListeners = [];
+		}
+
+		Delegate.prototype.root = function (root) {
+			var listenerMap = this.listenerMap;
+			var eventType; // Remove master event listeners
+
+			if (this.rootElement) {
+				for (eventType in listenerMap[1]) {
+					if (listenerMap[1].hasOwnProperty(eventType)) {
+						this.rootElement.removeEventListener(eventType, this.handle, true);
+					}
+				}
+
+				for (eventType in listenerMap[0]) {
+					if (listenerMap[0].hasOwnProperty(eventType)) {
+						this.rootElement.removeEventListener(eventType, this.handle, false);
+					}
+				}
+			}
+
+			if (!root || !root.addEventListener) {
+				if (this.rootElement) {
+					delete this.rootElement;
+				}
+
+				return this;
+			}
+
+			this.rootElement = root; // Set up master event listeners
+
+			for (eventType in listenerMap[1]) {
+				if (listenerMap[1].hasOwnProperty(eventType)) {
+					this.rootElement.addEventListener(eventType, this.handle, true);
+				}
+			}
+
+			for (eventType in listenerMap[0]) {
+				if (listenerMap[0].hasOwnProperty(eventType)) {
+					this.rootElement.addEventListener(eventType, this.handle, false);
+				}
+			}
+
+			return this;
+		};
+
+		Delegate.prototype.captureForType = function (eventType) {
+			return ['blur', 'error', 'focus', 'load', 'resize', 'scroll'].indexOf(eventType) !== -1;
+		};
+
+		Delegate.prototype.on = function (eventType, selector, handler, useCapture) {
+			var root;
+			var listenerMap;
+			var matcher;
+			var matcherParam;
+
+			if (!eventType) {
+				throw new TypeError('Invalid event type: ' + eventType);
+			}
+
+
+			if (typeof selector === 'function') {
+				useCapture = handler;
+				handler = selector;
+				selector = null;
+			}
+
+			if (useCapture === undefined) {
+				useCapture = this.captureForType(eventType);
+			}
+
+			if (typeof handler !== 'function') {
+				throw new TypeError('Handler must be a type of Function');
+			}
+
+			root = this.rootElement;
+			listenerMap = this.listenerMap[useCapture ? 1 : 0];
+
+			if (!listenerMap[eventType]) {
+				if (root) {
+					root.addEventListener(eventType, this.handle, useCapture);
+				}
+
+				listenerMap[eventType] = [];
+			}
+
+			if (!selector) {
+				matcherParam = null;
+
+				matcher = matchesRoot.bind(this); // Compile a matcher for the given selector
+			} else if (/^[a-z]+$/i.test(selector)) {
+				matcherParam = selector;
+				matcher = matchesTag;
+			} else if (/^#[a-z0-9\-_]+$/i.test(selector)) {
+				matcherParam = selector.slice(1);
+				matcher = matchesId;
+			} else {
+				matcherParam = selector;
+				matcher = Element.prototype.matches;
+			} // Add to the list of listeners
+
+			listenerMap[eventType].push({
+				selector: selector,
+				handler: handler,
+				matcher: matcher,
+				matcherParam: matcherParam
+			});
+			return this;
+		};
+
+
+		Delegate.prototype.off = function (eventType, selector, handler, useCapture) {
+			var i;
+			var listener;
+			var listenerMap;
+			var listenerList;
+			var singleEventType; // Handler can be passed as
+			// the second or third argument
+
+			if (typeof selector === 'function') {
+				useCapture = handler;
+				handler = selector;
+				selector = null;
+			}
+
+
+			if (useCapture === undefined) {
+				this.off(eventType, selector, handler, true);
+				this.off(eventType, selector, handler, false);
+				return this;
+			}
+
+			listenerMap = this.listenerMap[useCapture ? 1 : 0];
+
+			if (!eventType) {
+				for (singleEventType in listenerMap) {
+					if (listenerMap.hasOwnProperty(singleEventType)) {
+						this.off(singleEventType, selector, handler);
+					}
+				}
+
+				return this;
+			}
+
+			listenerList = listenerMap[eventType];
+
+			if (!listenerList || !listenerList.length) {
+				return this;
+			}
+
+			for (i = listenerList.length - 1; i >= 0; i--) {
+				listener = listenerList[i];
+
+				if ((!selector || selector === listener.selector) && (!handler || handler === listener.handler)) {
+					this._removedListeners.push(listener);
+
+					listenerList.splice(i, 1);
+				}
+			} // All listeners removed
+
+
+			if (!listenerList.length) {
+				delete listenerMap[eventType]; // Remove the main handler
+
+				if (this.rootElement) {
+					this.rootElement.removeEventListener(eventType, this.handle, useCapture);
+				}
+			}
+
+			return this;
+		};
+
+		Delegate.prototype.handle = function (event) {
+			var i;
+			var l;
+			var type = event.type;
+			var root;
+			var phase;
+			var listener;
+			var returned;
+			var listenerList = [];
+			var target;
+			var eventIgnore = 'ftLabsDelegateIgnore';
+
+			if (event[eventIgnore] === true) {
+				return;
+			}
+
+			target = event.target; // Hardcode value of Node.TEXT_NODE
+			// as not defined in IE8
+
+			if (target.nodeType === 3) {
+				target = target.parentNode;
+			} // Handle SVG <use> elements in IE
+
+			if (target.correspondingUseElement) {
+				target = target.correspondingUseElement;
+			}
+
+			root = this.rootElement;
+			phase = event.eventPhase || (event.target !== event.currentTarget ? 3 : 2); // eslint-disable-next-line default-case
+
+			switch (phase) {
+				case 1:
+					//Event.CAPTURING_PHASE:
+					listenerList = this.listenerMap[1][type];
+					break;
+
+				case 2:
+					//Event.AT_TARGET:
+					if (this.listenerMap[0] && this.listenerMap[0][type]) {
+						listenerList = listenerList.concat(this.listenerMap[0][type]);
+					}
+
+					if (this.listenerMap[1] && this.listenerMap[1][type]) {
+						listenerList = listenerList.concat(this.listenerMap[1][type]);
+					}
+
+					break;
+
+				case 3:
+					//Event.BUBBLING_PHASE:
+					listenerList = this.listenerMap[0][type];
+					break;
+			}
+
+			var toFire = []; // Need to continuously check
+			// that the specific list is
+			// still populated in case one
+			// of the callbacks actually
+			// causes the list to be destroyed.
+
+			l = listenerList.length;
+
+			while (target && l) {
+				for (i = 0; i < l; i++) {
+					listener = listenerList[i]; // Bail from this loop if
+					// the length changed and
+					// no more listeners are
+					// defined between i and l.
+					if (!listener) {
+						break;
+					}
+
+					if (target.tagName && ["button", "input", "select", "textarea"].indexOf(target.tagName.toLowerCase()) > -1 && target.hasAttribute("disabled")) {
+						// Remove things that have previously fired
+						toFire = [];
+					} // Check for match and fire
+					// the event if there's one
+					//
+					// TODO:MCG:20120117: Need a way
+					// to check if event#stopImmediatePropagation
+					// was called. If so, break both loops.
+					else if (listener.matcher.call(target, listener.matcherParam, target)) {
+						toFire.push([event, target, listener]);
+					}
+				} // TODO:MCG:20120117: Need a way to
+				// check if event#stopPropagation
+				// was called. If so, break looping
+				// through the DOM. Stop if the
+				// delegation root has been reached
+				if (target === root) {
+					break;
+				}
+
+				l = listenerList.length; // Fall back to parentNode since SVG children have no parentElement in IE
+
+				target = target.parentElement || target.parentNode; // Do not traverse up to document root when using parentNode, though
+
+				if (target instanceof HTMLDocument) {
+					break;
+				}
+			}
+
+			var ret;
+
+			for (i = 0; i < toFire.length; i++) {
+				// Has it been removed during while the event function was fired
+				if (this._removedListeners.indexOf(toFire[i][2]) > -1) {
+					continue;
+				}
+
+				returned = this.fire.apply(this, toFire[i]); // Stop propagation to subsequent
+				// callbacks if the callback returned
+				// false
+
+				if (returned === false) {
+					toFire[i][0][eventIgnore] = true;
+					toFire[i][0].preventDefault();
+					ret = false;
+					break;
+				}
+			}
+
+			return ret;
+		};
+
+		Delegate.prototype.fire = function (event, target, listener) {
+			return listener.handler.call(target, event, target);
+		};
+
+		function matchesTag(tagName, element) {
+			return tagName.toLowerCase() === element.tagName.toLowerCase();
+		}
+
+		function matchesRoot(selector, element) {
+			if (this.rootElement === window) {
+				return (
+					element === document ||
+					element === document.documentElement ||
+					element === window
+				);
+			}
+
+			return this.rootElement === element;
+		}
+
+		function matchesId(id, element) {
+			return id === element.id;
+		}
+
+		Delegate.prototype.destroy = function () {
+			this.off();
+			this.root();
+		};
+		return Delegate
+	})();
+
+	const account = new Delegate(document.querySelector('#account'))
+
+	function ajax(url, data, token, method) {
+            const req = new XMLHttpRequest()
+            req.open(method, url)
+            req.setRequestHeader("Content-type", "application/json");
+            req.setRequestHeader("siteValue", "hyfol");
+            req.setRequestHeader("Authorization", token);
+            req.send(data)
+            return new Promise((resovle, reject) => {
+                req.onreadystatechange = function () {
+                    if(req.readyState==4){
+                        var data = JSON.parse(req.responseText)
+                        resovle(data)
+                    }
+                }
+            })
+
+        };
+
 	let baseURL = 'http://api.leandow-technology.com/api/'
-	async function getData(url,data,token,method="POST",type="json") {
-		const headers={"siteValue": "hyfol"}
-		const options={
-			method:method,
+	async function getData(url, data, token, method = "POST", type = "json") {
+		const headers = { "siteValue": "hyfol" }
+		const options = {
+			method: method,
 			headers
 		}
-
-		if(type=='json'){
-			headers['Content-Type']='application/json'
-			data && (options.body=JSON.stringify(data))
+		if (type == 'json') {
+			headers['Content-Type'] = 'application/json'
+			data && (options.body = JSON.stringify(data))
 		}
-		token && (headers['Authorization']=token)
-		if(type == 'formData'){
-			headers['Content-Type']='application/x-www-form-urlencoded'
+		token && (headers['Authorization'] = token)
+		if (type == 'formData') {
+			headers['Content-Type'] = 'application/x-www-form-urlencoded'
 		}
-
-		const response = await fetch(baseURL.concat(url),options);
-		return response.json();
+		try {
+			let response = await fetch(baseURL.concat(url), options);
+			return response.json();
+		} catch (error) {
+			return ajax(baseURL.concat(url), options.body, token, method)
+		}
 	}
 
-	function getCollectList(event) {
 
-		var pageSectionId = document.querySelector(".page__sub-header").parentElement.getAttribute("data-section-id")
-		const collectList = {
-			current: 1,
-			customerId: "{{customer.id}}",
-			size: 100
-		}
-		getData("customerCollectionProduct/collectionProductList", collectList)
-			.then(res => {
-				if (res.data.records.length < 1) {
-					document.querySelector('.collect-body').style.display = "block"
-					document.querySelector(".wish_loading").style.display = "none"
-					return
-				}
-				// document.querySelector(".collection-num").innerHTML = res.data.total
-				var ids = ""
-				res.data.records.forEach((item, index) => {
-					if (index === 0) {
-						ids = `id:${item.productId}`
-					} else {
-						ids = ids + " OR " + `id:${item.productId}`
-					}
-				});
-				fetch(`/search?q=${ids}&type=product`)
-					.then((rs) => {
-						return rs.text()
-					})
-					.then((rs) => {
+	var getCollectList = function () {
+		var productIds, currentPage, total, sectionId
+		
+		function getCollectList(event) {
+			var pageSectionId = document.querySelector(".page__sub-header").parentElement.getAttribute("data-section-id")
+			const collectList = {
+				current: 1,
+				customerId: "{{customer.id}}",
+				size: 100
+			}
+
+			getData("customerCollectionProduct/collectionProductList", collectList)
+				.then(res => {
+					if (res.data.records.length < 1) {
+						document.querySelector('.collect-body').style.display = "block"
 						document.querySelector(".wish_loading").style.display = "none"
-
-						let dom = new DOMParser().parseFromString(rs, 'text/html');
-
-						dom.querySelector(".collection__toolbar").style.display = "none"
-
-						document.querySelector('.collect').appendChild(dom.querySelector(
-							".collection__dynamic-part"))
-
-						document.querySelector('.collect').appendChild(dom.querySelector(
-							".modal__dialog").parentElement)
-
-						if (document.querySelector('.pagination__nav')) {
-							document.querySelector('.pagination__nav').querySelectorAll(".pagination__nav-item")
-								.forEach((item, index) => {
-									item.addEventListener("click", nextCollectList)
-								})
-						}
-
-
-						const removeNodes = document.querySelectorAll(".collect .add-collect")
-						document.querySelector(".collect-body").style.display = "none"
-						removeNodes.forEach((item, index) => {
-							item.addEventListener("click", () => {
-								document.querySelectorAll(
-									`.collect .product-list .product-item`)[index].style
-									.display = "none";
+						return
+					}
+					productIds = res.data.records
+					currentPage = 1
+					total = res.data.total
+					var ids = res.data.records.map(i => "id:".concat(i.productId))
+					ids = ids.join(' OR ')
+					// fetch(`/search?section_id=template--16541572563159__1651059386d9622f2b&q=${ids}&type=product`,{method:"GET", credentials: 'same-origin'})
+					fetch(`/search?q=${ids}&type=product`)
+						.then((res) => {
+							res.text().then((content) => {
+								document.querySelector('.collect-body').style.display = "none"
+								document.querySelector(".wish_loading").style.display = "none"
+								const dom = document.createElement('div')
+								dom.innerHTML = content
+								let heading = dom.querySelector(".collection__dynamic-part .collection__toolbar")
+								heading && heading.remove()
+								document.querySelector('.collect').appendChild(dom.querySelector(".collection__dynamic-part"))
+								document.querySelector('.collect').appendChild(dom.querySelector('[data-section-type="collection"] .modal'))
+								sectionId=dom.querySelector('[data-section-type="collection"]').getAttribute('data-section-id')
 							})
 						})
-					})
-			});
-	}
-	
-	if ("{{ customer.id}}") {
-		getCollectList()
-	}
+				})
+		}
 
-
-	function nextCollectList(event) {
-		if (event) {
+		async function nextCollectList(event, target) {
 			event.preventDefault()
-		}
-		document.querySelector(".wish_loading").style.display = "flex"
-		document.querySelector(".product-list--collection").style.display = "none"
-		document.querySelectorAll(".pagination__nav-item").forEach((item) => {
-			item.className = "pagination__nav-item link"
-		})
-		event.target.className = "pagination__nav-item link is-active"
-		const collectList = {
-			current: event.target.innerHTML * 1,
-			customerId: "{{customer.id}}",
-			size: 24
-		}
-		getData("customerCollectionProduct/collectionProductList", collectList)
-			.then(res => {
-				if (res.data.records.length < 1) {
-					document.querySelector('.collect-body').style.display = "block"
-					return
+			window.scroll(0, 0)
+
+			var currentIds,content,url
+			var nextPage=target.getAttribute('data-page')
+			var productList = document.querySelector(".product-list--collection")
+			document.querySelector(".wish_loading").style.display = "flex"
+			productList.style.display = "none"
+
+			if (sectionId && total <= productIds.length) {
+				currentIds = productIds
+				url='/search?section_id='.concat(sectionId,"&page=",nextPage,'&')
+			} else {
+				const collectList = {
+					current: nextPage,
+					customerId: "{{customer.id}}",
+					size: 24
 				}
-				var ids = ""
-				res.data.records.forEach((item, index) => {
-					if (index === 0) {
-						ids = `id:${item.productId}`
-					} else {
-						ids = ids + " OR " + `id:${item.productId}`
-					}
-				});
-				fetch(`/search?q=${ids}&type=product`)
-					.then((rs) => {
-						return rs.text()
-					})
-					.then((rs) => {
-						let dom = new DOMParser().parseFromString(rs, 'text/html');
+				var response = await getData("customerCollectionProduct/collectionProductList", collectList)
+				currentIds = response.data.records
+				url="/search?"
+			}
 
-						document.querySelector(".product-list").remove()
-						//  document.querySelector('.collection__dynamic-part').appendChild()
-						document.querySelector('.collection__dynamic-part').insertBefore(dom.querySelector(
-							".product-list"), document.querySelector(".collection__toolbar")
-							.nextSibling);
+			var ids = currentIds.map(i => "id:".concat(i.productId))
+			ids = ids.join(' OR ')
+			content = await fetch(url.concat(`q=${ids}&type=product`)).then(res => res.text())
+			document.querySelector(".wish_loading").style.display = "none"
+			const dom = document.createElement('div')
+			dom.innerHTML = content
+			let heading = dom.querySelector(".collection__dynamic-part .collection__toolbar")
+			heading && heading.remove()
+			var productContaner = document.querySelector('.collect ')
+			var oldProductList = document.querySelector('.collect .collection__dynamic-part')
+			var newProductList = dom.querySelector(".collection__dynamic-part")
+			productContaner && productContaner.replaceChild(newProductList, oldProductList)
 
-						const removeNodes = document.querySelectorAll(".collect .add-collect")
-						document.querySelector(".collect-body").style.display = "none"
-						removeNodes.forEach((item, index) => {
-							item.addEventListener("click", () => {
-								document.querySelectorAll(
-									`.collect .product-list .product-item`)[index].style
-									.display = "none";
-							})
-						})
-						document.querySelector(".wish_loading").style.display = "none"
-						document.querySelector(".product-list--collection").style.display = "flex"
-					})
-			});
-	}
+		}
+
+		if ("{{ customer.id}}") {
+			getCollectList()
+			account.on('click', '.pagination__nav-item.link,.pagination__next,.pagination__prev', nextCollectList)
+			account.on('click', '.collect_btn', (event, target) => {
+				event.preventDefault()
+				var productTtem = target.closest(".product-item")
+				productTtem && productTtem.remove();
+			})
+		}
+
+	}();
 
 	~function () {
 		//**  ACCPOUNT CUSTOMERS  ***//        
@@ -2249,58 +2585,60 @@
 		}
 		deleteAddresses()
 
-	//** 	个人中心   **//
+
+		//** 	个人中心   **//
 		async function getToken() {
 			let token
 			const customerJson = {
 				email: "{{ customer.email}}",
 				id: "{{ customer.id }}"
-				}
+			}
 
 			let url = baseURL.concat('customerAccount/login')
-			const response=	await fetch(url, {
+			const response = await fetch(url, {
 				method: "POST",
 				body: JSON.stringify(customerJson),
-				headers: { 'content-type': 'application/json','siteValue':'hyfol'}
+				headers: { 'content-type': 'application/json', 'siteValue': 'hyfol' }
 			})
 			try {
-				if(response.status!==200)return ''
+				if (response.status !== 200) return ''
 				const data = await response.json()
-				if(data.code!==200) return ''
-				console.log(`-----tonken-----`,data);
+				if (data.code !== 200) return ''
+				console.log(`-----tonken-----`, data);
 				token = token || data.data
-				const authorToken={
-					token:token,
-					date:Date.now()+300000
+				const authorToken = {
+					token: token,
+					date: Date.now() + 300000
 				}
 
 			} catch (error) {
-				token=''
+				token = ''
 			}
-			return token	
+			return token
 		}
 
-		async function getMyCoupon(token, type = "unused") {
-				const {data,code} = await getData('customerAccount/getMyPriceRules','',token,"GET")
-				console.log('getCoupons', data,code)
-				return data
-			}
+		async function getMyCoupon(token, type = "unused") {//自己的优惠券
+			const { data, code } = await getData('customerAccount/getMyPriceRules', {type:type}, token, "GET")
+			console.log('getCoupons', data, code)
+			return data
+		}
 
-		async function getCoupons(token) {
-				if (token) {
-				const { data, code }= await getData('customerAccount/getPriceRules', '',token,"GET",'formData')
-					
-					const unusedData = await getMyCoupon(token)
-					const expireData = await getMyCoupon(token, 'expired')
-					if (code == 200) {
-						const couponView = document.querySelector('.my-account .my-coupons__list')
-						const unusedCoupons = document.querySelector('.unused__coupons .my-coupons__list')
-						const expiredCoupons = document.querySelector('.expired__coupons .my-coupons__list')
-						
-						if (data) {
-							couponView.classList.remove("my-coupons_empty")
-							let couponList = data.map((item, i) => {
-								return `<div class="my-coupons__item" data-index="${item.id}">
+		async function getCoupons(token) {//获取优惠券
+			if (token) {
+
+				const { data, code } = await getData('customerAccount/getPriceRules', '', token, "GET", 'formData')
+
+				const unusedData = await getMyCoupon(token)
+				const expireData = await getMyCoupon(token, 'expired')
+				if (code == 200) {
+					const couponView = document.querySelector('.my-account .my-coupons__list')
+					const unusedCoupons = document.querySelector('.unused__coupons .my-coupons__list')
+					const expiredCoupons = document.querySelector('.expired__coupons .my-coupons__list')
+
+					if (data && false) {
+						couponView.classList.remove("my-coupons_empty")
+						let couponList = data.map((item, i) => {
+							return `<div class="my-coupons__item" data-index="${item.id}">
 									<p>${item.title[0]}</p>	
 									<p>${item.title[1]}</p>	
 									<p>Code:${item.id}</p>	
@@ -2312,12 +2650,13 @@
 										<span class="round-right"></span>
 									</div>`}).join('')
 
-							couponView.innerHTML = couponList
-						}
-						if (unusedData) {
-							unusedCoupons.classList.remove("my-coupons_empty")
-							let unusedList = unusedData.map((item, i) => {
-								return `<div class="my-coupons__item" data-index="${item.id}">
+						couponView.innerHTML = couponList
+					}
+
+					if (unusedData) {
+						unusedCoupons.classList.remove("my-coupons_empty")
+						let unusedList = unusedData.map((item, i) => {
+							return `<div class="my-coupons__item" data-index="${item.id}">
 									<p>${item.title[0]}</p>	
 									<p>${item.title[1]}</p>	
 									<p>Code:${item.id}</p>	
@@ -2328,12 +2667,13 @@
 										<span class="round-left"></span>
 										<span class="round-right"></span>
 									</div>`}).join('')
-							unusedList && (unusedCoupons.innerHTML = unusedList)
-						}
-						if (expireData) {
-							expiredCoupons.classList.remove("my-coupons_empty")
-							let expireList = expireData.map((item, i) => {
-								return `<div class="my-coupons__item" data-index="${item.id}">
+						unusedList && (unusedCoupons.innerHTML = unusedList)
+					}
+
+					if (expireData) {
+						expiredCoupons.classList.remove("my-coupons_empty")
+						let expireList = expireData.map((item, i) => {
+							return `<div class="my-coupons__item" data-index="${item.id}">
 								<p>${item.title[0]}</p>	
 								<p>${item.title[1]}</p>	
 									<p>Code:${item.id}</p>	
@@ -2345,101 +2685,116 @@
 											<span class="round-right"></span>
 											</div>`}).join('')
 
-							expireList && (expiredCoupons.innerHTML = expireList)
-						}
+						expireList && (expiredCoupons.innerHTML = expireList)
 					}
-
-					console.log('getMyCoupon', data);
-
-				} else console.info(token)
-			}
-
-		async function getPoint(token) {
-				const body = {
-					pageNum: 1,
-					pageSize: 10,
-					type: "all, earned, pointAmount, expired"
 				}
-				const data = await getData('customerAccount/getPointInfo',body, token )
-				const {pointsExpiredSoon, profileDetalls, totalPoints }=data.data
-				console.log('getPoint-responsse', data)
 
-				const totalContainer = document.querySelector('.profile_total')
-				const expireContainer = document.querySelector('.profile_expire')
-				const allProfile = document.querySelector('.profile-all tbody')
-				totalContainer.innerHTML = totalPoints || 0;
-				expireContainer.innerHTML = pointsExpiredSoon || 0;
-				// console.log('profileDetalls',profileDetalls)
-				const templateAll = profileDetalls.records.map(item => {
-					if (item.type == 'expired') {
-						return `<tr>
+				console.log('getMyCoupon', data);
+
+			} else console.info(token)
+		}
+
+		async function getPoint(token) {//获取积分记录
+			const body = {
+				pageNum: 1,
+				pageSize: 10,
+				type: "all, earned, pointAmount, expired"
+			}
+			const data = await getData('customerAccount/getPointInfo', body, token)
+			const { pointsExpiredSoon, profileDetalls, totalPoints } = data.data
+			const templateExp = []
+			const templateEarned = []
+			const totalContainer = document.querySelector('.profile_total')
+			const expireContainer = document.querySelector('.profile_expire')
+			const allProfile = document.querySelector('.profile-all tbody')
+			const expiredInfo = document.querySelector('.profile-expired tbody')
+			const earnedInfo = document.querySelector('.profile-earned tbody')
+			totalContainer.innerHTML = totalPoints || 0;
+			expireContainer.innerHTML = pointsExpiredSoon || 0;
+			const templateAll = profileDetalls.records.map(item => {
+				let tempStr
+				if (item.type == 'cost') {
+					tempStr = `<tr>
 							<td>${item.createTime}</td>
 							<td>${item.pointType}</td>
-							<td class="profile-amount">- ${item.pointAmount}</td>
+							<td class="profile-amount">${item.pointAmount}</td>
 							<td>${item.expireTime}</td>
 						</tr>`
-					} else {
-						return `<tr>
+					templateExp.push(tempStr)
+				} else if (item.type == 'earned') {
+					tempStr = `<tr>
 							<td>${item.createTime}</td>
 							<td>${item.pointType}</td>
 							<td class="profile-amount">+ ${item.pointAmount}</td>
 							<td>${item.expireTime}</td>
 						</tr>`
-					}
-				})
-				allProfile.innerHTML = templateAll.join('')
-			}
+					templateEarned.push(tempStr)
+				} else {
+					tempStr = `<tr>
+							<td>${item.createTime}</td>
+							<td>${item.pointType}</td>
+							<td class="profile-amount">${item.pointAmount}</td>
+							<td>${item.expireTime}</td>
+						</tr>`
+				}
 
-		async function getVipExplain(token){
-			const response = await getData('customerAccount/getVipDesc','',token,"GET","formData")
-			console.log('getVip-responsse',response)
+				return tempStr
+			})
+			allProfile.innerHTML = templateAll.join('')
+			expiredInfo.innerHTML = templateExp.join('')
+			earnedInfo.innerHTML = templateEarned.join('')
+
+		}
+
+		async function getVipExplain(token) {
+			const response = await getData('customerAccount/getVipDesc', '', token, "GET", "formData")
+			console.log('getVip-responsse', response)
 		}
 
 		async function getCustomer(token) {
 
-				const data = await getData('customerAccount/selectCustomer','',token)
+			const data = await getData('customerAccount/selectCustomer', '', token)
 
-				if (!data || data.code !== 200) {
-					return getCustomer()
-				}
-				const { siteType, totalPoint, totalSpent, vipType } = data.data
-				const pointContainer = document.querySelector('.vip-integral')
-				const userVip = document.querySelector('.vip-user__grade')
-				totalPoint && (pointContainer.innerHTML = totalPoint)
-				userVip && (userVip.innerHTML = (vipType || "Silver"))
-				console.log('getCustomer', data)
-
-
+			if (!data || data.code !== 200) {
+				return getCustomer()
 			}
+			const { siteType, totalPoint, totalSpent, vipType } = data.data
+			const pointContainer = document.querySelector('.vip-integral')
+			const userVip = document.querySelector('.vip-user__grade')
+			totalPoint && (pointContainer.innerHTML = totalPoint)
+			userVip && (userVip.innerHTML = vipType)
+			console.log('getCustomer', data)
 
-		async function addPoint(token){
-			const  pointData={
-				expireTime:"2022-10-05 12:00:00",
-				pointAmount:10000,
-				pointType:"Emaill Verification"
-			}
 
-			const data = await getData('customerAccount/addPoint',pointData,token)
-			console.log('addPoint',data)
 		}
 
-		async function deductPoint(token){
-			const  pointData={expireTime:new Date(Date.now()+2592000000).toLocaleString(),pointAmount:10000,pointType:"Emaill Verification"}
-			const data = await getData('customerAccount/deductPoint',pointData,token)
-			console.log('deductPoint',data)
+		async function addPoint(token) {
+			const pointData = {
+				expireTime: "2022-10-05 12:00:00",
+				pointAmount: 10000,
+				pointType: "Emaill Verification"
+			}
+
+			const data = await getData('customerAccount/addPoint', pointData, token)
+			console.log('addPoint', data)
+		}
+
+		async function deductPoint(token) {
+			const pointData = { expireTime: new Date(Date.now() + 2592000000).toLocaleString(), pointAmount: 10000, pointType: "Emaill Verification" }
+			const data = await getData('customerAccount/deductPoint', pointData, token)
+			console.log('deductPoint', data)
 		}
 
 
-		async function fn(){
-		const token= await getToken()
-		// addPoint(token)
-		// addPoint()
-		getCustomer(token)
-		// getMyCoupon()
-		getCoupons(token)
-		getPoint(token)
-		}fn();
-
+		async function fn() {
+			const token = await getToken()
+			// addPoint(token)
+			// addPoint()
+			getCustomer(token)
+			// getMyCoupon()
+			getCoupons(token)
+			getPoint(token)
+		} fn();
 
 		class DetailsMenu extends HTMLElement {
 			constructor() {

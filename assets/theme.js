@@ -197,8 +197,8 @@
                 addColleNode: this.querySelector('.add-collect'),
                 removeColleNode: this.querySelector('.remove-collect'), 
             }
-            this.setupEventListeners()
-            this.onload()
+            // this.setupEventListeners()
+            // this.onload()
         }
 
         setupEventListeners() {
@@ -214,23 +214,25 @@
             }
             
             if (customerId) {
-              false&& post_data("customerCollectionProduct/selectProductIsCollection", searchData)
+              post_data("customerCollectionProduct/selectProductIsCollection", searchData)
                     .then(res => {
                         if (res.success) {
-                            this.elements.addColleNode.parentElement.style.display = 'flex'
+                            // this.elements.addColleNode.parentElement.style.display = 'flex'
+                            var svg=  this.elements.removeColleNode
                             if (res.data[0].isCollection) {
-                                this.elements.addColleNode.style.display = 'block'
-                                this.elements.removeColleNode.style.display = "none"
+                                // this.elements.addColleNode.style.display = 'block'
+                                // this.elements.removeColleNode.style.display = "none"
+                                svg.children[1].setAttribute('d','M595.158637 306.43705c-31.37053 0-62.741061 11.111901-87.840374 30.792538-25.099314-19.680637-56.484294-30.792538-87.869275-30.792538-75.615838 0-134.845596 59.706601-134.845596 135.929332 0 81.337962 62.278667 143.833376 150.27799 223.191714a1354.835549 1354.835549 0 0 1 52.886292 50.299777c5.187481 5.25973 12.137838 8.149691 19.536139 8.149691 7.369401 0 14.305309-2.875512 19.492789-8.135242a1387.558581 1387.558581 0 0 1 52.900742-50.314226c87.999323-79.401688 150.306889-141.882652 150.306889-223.206164 0.01445-76.193831-59.215308-135.914882-134.845596-135.914882z')
+                                svg.setAttribute('data-select',true)
                             } else {
-                                this.elements.addColleNode.style.display = 'none'
-                                this.elements.removeColleNode.style.display = "block"
+                                svg.children[1].setAttribute('d','M595.158637 306.43705c-31.37053 0-62.741061 11.111901-87.840374 30.792538-25.099314-19.680637-56.484294-30.792538-87.869275-30.792538-75.615838 0-134.845596 59.706601-134.845596 135.929332 0 81.337962 62.278667 143.833376 150.27799 223.191714a1354.835549 1354.835549 0 0 1 52.886292 50.299777c5.187481 5.25973 12.137838 8.149691 19.536139 8.149691 7.369401 0 14.305309-2.875512 19.492789-8.135242a1387.558581 1387.558581 0 0 1 52.900742-50.314226c87.999323-79.401688 150.306889-141.882652 150.306889-223.206164 0.01445-76.193831-59.215308-135.914882-134.845596-135.914882z m-35.286427 335.669009a1380.395812 1380.395812 0 0 0-52.553947 49.967432 1369.058493 1369.058493 0 0 0-52.582847-49.981881c-80.774419-72.855925-137.952304-129.715915-137.952304-198.020151 0-59.258657 45.964835-105.685886 104.6166-105.685886 27.873677 0 55.776254 11.1986 76.612875 30.734739l9.305676 8.742133 9.305675-8.742133c20.807722-19.536139 48.724748-30.734739 76.583976-30.734739 58.695115 0 104.65995 46.427229 104.659949 105.685886-0.01445 68.304236-57.221234 125.164225-137.995653 198.0346z')
+                                svg.setAttribute('data-select',false)
+                                // this.elements.addColleNode.style.display = 'none'
+                                // this.elements.removeColleNode.style.display = "block"
                             }
                         }
                     });
-            } else {
-                this.elements.removeColleNode.style.display = 'block'
-                this.elements.removeColleNode.parentElement.style.display = 'flex'
-            }
+            } 
         }
         handleRemove() {
             const newTime = Date.parse(new Date())
@@ -2659,6 +2661,98 @@
     /**
      * This class handles both the mini cart and the dedicated cart page. It's not the cleanest code on earth but works well :)
      */
+
+     var Collect = /*#__PURE__*/function () {
+        function Collect(element) {
+            _classCallCheck(this, Collect);
+            this.element = element
+            this.children = Array.from(this.element.querySelectorAll('.product-item'))
+            this.delegateElement=new Delegate(this.element)
+            this._attachListeners();
+            this.load()
+        }
+        _createClass(Collect, [{
+            key: "destroy",
+            value: function () {
+                this.delegateElement.off()
+            }
+        }, {
+            key: "_attachListeners",
+            value: function () {
+                this.delegateElement.on('click','.collect_btn',this.selectItem.bind(this))
+            }
+        }, {
+            key: "load",
+            value: function () {
+                var _this=this
+                var childrens = this.children
+                var searchData = {
+                    customerId: customerId,
+                    productIds: []
+                }
+               childrens.forEach(i => {
+                    var id = i.getAttribute('data-procuct-id')
+                    id && searchData.productIds.push(id)
+                })
+
+                if (customerId) {
+                    fetch('https://api.leandow-technology.com/api/customerCollectionProduct/selectProductIsCollection', {
+                        method: "POST",
+                        headers: { 'Content-Type': 'application/json' ,"siteValue": "hyfol"},
+                        body: JSON.stringify(searchData)
+                    }).then(res => {
+                        res.json().then(({data,code,success}) => {
+                            console.log(data.find(item=>item.isCollection))
+                            success&&data.forEach(i=>{
+                                if(i.isCollection){
+                                  var btn= _this.element.querySelector('.collect_btn[data-id="'.concat(i.productId,'"]'))
+                                  btn && _this.createPath(btn,'add')
+                                }
+                            })
+                        })
+                    })
+                }
+            }
+        }, {
+            key: "selectItem",
+            value: function (ev, target) {
+                var _this=this
+                var sendData={
+                    "customerId":customerId,
+                    "productId": target.getAttribute("data-id"),
+                    "productSpu": target.getAttribute("data-spu")
+                }
+                fetch('https://api.leandow-technology.com/api/customerCollectionProduct/collectionProduct',{
+                    method:"POST",
+                    headers:{ 'Content-Type': 'application/json' ,"siteValue": "hyfol"},
+                    body:JSON.stringify(sendData)
+                }).then(res=>{res.json()
+                    .then(({data,code,success})=>{
+                        if(!success)return
+                        if(data=="收藏成功！"){
+                            _this.createPath(target,'add')
+                        }else{
+                            _this.createPath(target,'cancel')
+                        }
+                        console.log(data,target)
+                })})
+            }
+        },{
+            key:"createPath",
+            value:function(svg,type='add'){
+                if(type=='add'){
+                svg.children[1].setAttribute('d','M595.158637 306.43705c-31.37053 0-62.741061 11.111901-87.840374 30.792538-25.099314-19.680637-56.484294-30.792538-87.869275-30.792538-75.615838 0-134.845596 59.706601-134.845596 135.929332 0 81.337962 62.278667 143.833376 150.27799 223.191714a1354.835549 1354.835549 0 0 1 52.886292 50.299777c5.187481 5.25973 12.137838 8.149691 19.536139 8.149691 7.369401 0 14.305309-2.875512 19.492789-8.135242a1387.558581 1387.558581 0 0 1 52.900742-50.314226c87.999323-79.401688 150.306889-141.882652 150.306889-223.206164 0.01445-76.193831-59.215308-135.914882-134.845596-135.914882z')
+                svg.setAttribute('data-select',true)
+            }
+            else{//cancel
+                svg.children[1].setAttribute('d','M595.158637 306.43705c-31.37053 0-62.741061 11.111901-87.840374 30.792538-25.099314-19.680637-56.484294-30.792538-87.869275-30.792538-75.615838 0-134.845596 59.706601-134.845596 135.929332 0 81.337962 62.278667 143.833376 150.27799 223.191714a1354.835549 1354.835549 0 0 1 52.886292 50.299777c5.187481 5.25973 12.137838 8.149691 19.536139 8.149691 7.369401 0 14.305309-2.875512 19.492789-8.135242a1387.558581 1387.558581 0 0 1 52.900742-50.314226c87.999323-79.401688 150.306889-141.882652 150.306889-223.206164 0.01445-76.193831-59.215308-135.914882-134.845596-135.914882z m-35.286427 335.669009a1380.395812 1380.395812 0 0 0-52.553947 49.967432 1369.058493 1369.058493 0 0 0-52.582847-49.981881c-80.774419-72.855925-137.952304-129.715915-137.952304-198.020151 0-59.258657 45.964835-105.685886 104.6166-105.685886 27.873677 0 55.776254 11.1986 76.612875 30.734739l9.305676 8.742133 9.305675-8.742133c20.807722-19.536139 48.724748-30.734739 76.583976-30.734739 58.695115 0 104.65995 46.427229 104.659949 105.685886-0.01445 68.304236-57.221234 125.164225-137.995653 198.0346z')
+                svg.setAttribute('data-select',false)
+                }
+                return svg
+            }
+        }])
+        return Collect
+    }();
 
     var Cart = /*#__PURE__*/function () {
         function Cart(element, options) {
@@ -14183,6 +14277,7 @@
             this.element.querySelectorAll('[action*="/account/addresses"]').forEach(function (addressForm) {
                 new CountrySelector(addressForm.querySelector('[name="address[country]"]'), addressForm.querySelector('[name="address[province]"]'));
             });
+            this.productColorSwatch=new ProductItemColorSwatch(this.element)
             this.pageSelector = new ValuePicker('account-selector');
         }
 
@@ -14190,6 +14285,7 @@
             key: "_onUnload",
             value: function _onUnload() {
                 this.pageSelector.destroy();
+                this.productColorSwatch.destroy()
             }
         }]);
 
@@ -14797,6 +14893,7 @@
             this.displayByValuePicker = new ValuePicker('display-by-selector', {
                 onValueSelect: this._showingCountChanged.bind(this)
             });
+            this.collect=new Collect(this.element)
             this.sortByValuePicker = new ValuePicker('sort-by-selector', {
                 onValueSelect: this._sortByChanged.bind(this)
             });
@@ -14817,6 +14914,7 @@
                 this.displayByValuePicker.destroy();
                 this.sortByValuePicker.destroy();
                 this.productItemColorSwatch.destroy();
+                this.collect.destroy()
             }
         }, {
             key: "onSelect",

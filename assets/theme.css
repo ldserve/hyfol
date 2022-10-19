@@ -16331,9 +16331,12 @@ justify-content: space-between;
 
 .ld-collect .icon {
   /* display: inline-block; */
-  display: none;
+  /* display: none; */
   pointer-events:all;
   /* cursor: pointer; */
+}
+.collect_btn[data-select="true"]{
+  color: #E5404F;
 }
 
 .ld-collect .ld-collect-icon:hover {
