@@ -192,7 +192,7 @@
         "sensorsName": "pc分类导流区",
         "hidWeb": true,
         "line": false,
-        "image": "shopify:\/\/shop_images\/04_9566aec0-33ef-42b7-b376-b71d7810cd69.jpg",
+        "image": "shopify:\/\/shop_images\/04_66b6b42e-7f13-431e-82fe-d15f46fe988c.jpg",
         "tpadding": 0,
         "rpadding": 0,
         "bpadding": 0,
@@ -243,7 +243,7 @@
           "settings": {
             "heading": "for49",
             "sensorsLinkName": "for49",
-            "link": "https:\/\/www.hyfol.com\/collections\/hoodies-1",
+            "link": "https:\/\/www.hyfol.com\/collections\/4-for-49",
             "left": 62,
             "top": 0,
             "width": 20,
@@ -255,7 +255,7 @@
           "settings": {
             "heading": "flashsale",
             "sensorsLinkName": "flashsale",
-            "link": "",
+            "link": "https:\/\/www.hyfol.com\/collections\/flash-sale-1",
             "left": 84,
             "top": 0,
             "width": 19,
@@ -267,11 +267,11 @@
           "settings": {
             "heading": "hoodies",
             "sensorsLinkName": "hoodies",
-            "link": "",
+            "link": "https:\/\/www.hyfol.com\/collections\/hoodies-1",
             "left": 0,
-            "top": 0,
-            "width": 10,
-            "height": 10
+            "top": 44,
+            "width": 30,
+            "height": 41
           }
         },
         "c3ee76eb-8c94-4e84-9861-e178884903c2": {
@@ -280,10 +280,10 @@
             "heading": "sweatshirts",
             "sensorsLinkName": "sweatshirts",
             "link": "https:\/\/www.hyfol.com\/collections\/sweatshirts-12-13",
-            "left": 0,
-            "top": 0,
-            "width": 0,
-            "height": 0
+            "left": 31,
+            "top": 41,
+            "width": 29,
+            "height": 53
           }
         },
         "cf80e001-bfb9-48b2-872d-9dc3c14f10f4": {
@@ -292,10 +292,10 @@
             "heading": "jackets",
             "sensorsLinkName": "jackets",
             "link": "https:\/\/www.hyfol.com\/collections\/outerwear_hyfol",
-            "left": 0,
-            "top": 0,
-            "width": 0,
-            "height": 0
+            "left": 72,
+            "top": 48,
+            "width": 62,
+            "height": 67
           }
         }
       },
@@ -315,8 +315,8 @@
         "hidDesk": true,
         "sensorsName": "mobile分类导流区",
         "hidWeb": false,
-        "line": true,
-        "image": "shopify:\/\/shop_images\/1_02_a7bc0fdb-9410-4c08-8697-ba0feec1c684.jpg",
+        "line": false,
+        "image": "shopify:\/\/shop_images\/1_02_79e1a303-3821-4951-ae9f-cca0ca372320.jpg",
         "tpadding": 0,
         "rpadding": 0,
         "bpadding": 0,
