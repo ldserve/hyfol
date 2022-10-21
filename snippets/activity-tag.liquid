@@ -45,7 +45,7 @@
 			{%- for CustomPromotionUrItem in CustomPromotionUrlList -%}
 				{%- assign CustomPromotionUrItemAll = CustomPromotionUrItem | split : '=' -%}
 				{%- assign CustomPromotionUrItemName = CustomPromotionUrItemAll[0] | strip -%}
-				{%- if CustomPromotionUrItemName == custom_tag or inspect_tag contains CustomPromotionUrItemName  -%}
+				{%- if CustomPromotionUrItemName == custom_tag   -%}
 					{%- assign CustomPromotionUrItemUrl = CustomPromotionUrItemAll[1] -%}
 					{%- break -%}
 				{%- endif -%}
