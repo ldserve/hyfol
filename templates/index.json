@@ -144,10 +144,10 @@
             "heading": "hoodies",
             "sensorsLinkName": "hoodies",
             "link": "https:\/\/www.hyfol.com\/collections\/hoodies-1",
-            "left": 61,
-            "top": 0,
-            "width": 13,
-            "height": 100
+            "left": 0,
+            "top": 66,
+            "width": 27,
+            "height": 0
           }
         },
         "28ef0ff4-fc7d-4860-b32f-574710fa6e92": {
@@ -244,10 +244,10 @@
             "heading": "for49",
             "sensorsLinkName": "for49",
             "link": "https:\/\/www.hyfol.com\/collections\/hoodies-1",
-            "left": 100,
+            "left": 62,
             "top": 0,
-            "width": 34,
-            "height": 51
+            "width": 20,
+            "height": 39
           }
         },
         "529a5470-df8d-4911-bd59-930cb79342f5": {
@@ -255,6 +255,18 @@
           "settings": {
             "heading": "flashsale",
             "sensorsLinkName": "flashsale",
+            "link": "",
+            "left": 84,
+            "top": 0,
+            "width": 19,
+            "height": 40
+          }
+        },
+        "dc0f695d-1066-463a-84f0-69240ffd257f": {
+          "type": "link",
+          "settings": {
+            "heading": "hoodies",
+            "sensorsLinkName": "hoodies",
             "link": "",
             "left": 0,
             "top": 0,
@@ -268,10 +280,10 @@
             "heading": "sweatshirts",
             "sensorsLinkName": "sweatshirts",
             "link": "https:\/\/www.hyfol.com\/collections\/sweatshirts-12-13",
-            "left": 33,
-            "top": 46,
-            "width": 30,
-            "height": 37
+            "left": 0,
+            "top": 0,
+            "width": 0,
+            "height": 0
           }
         },
         "cf80e001-bfb9-48b2-872d-9dc3c14f10f4": {
@@ -280,10 +292,10 @@
             "heading": "jackets",
             "sensorsLinkName": "jackets",
             "link": "https:\/\/www.hyfol.com\/collections\/outerwear_hyfol",
-            "left": 66,
-            "top": 56,
-            "width": 30,
-            "height": 29
+            "left": 0,
+            "top": 0,
+            "width": 0,
+            "height": 0
           }
         }
       },
@@ -293,6 +305,7 @@
         "558eeb86-a65a-45c8-af0f-7a76d5dda452",
         "73bced36-7b47-440f-b015-18a17727c28d",
         "529a5470-df8d-4911-bd59-930cb79342f5",
+        "dc0f695d-1066-463a-84f0-69240ffd257f",
         "c3ee76eb-8c94-4e84-9861-e178884903c2",
         "cf80e001-bfb9-48b2-872d-9dc3c14f10f4"
       ],
@@ -302,7 +315,7 @@
         "hidDesk": true,
         "sensorsName": "mobile分类导流区",
         "hidWeb": false,
-        "line": false,
+        "line": true,
         "image": "shopify:\/\/shop_images\/1_02_a7bc0fdb-9410-4c08-8697-ba0feec1c684.jpg",
         "tpadding": 0,
         "rpadding": 0,
