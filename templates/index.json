@@ -86,7 +86,7 @@
             "link": "shopify:\/\/collections\/hyfol-best-seller-1",
             "left": 0,
             "top": 0,
-            "width": 20,
+            "width": 17,
             "height": 100
           }
         },
@@ -96,9 +96,9 @@
             "heading": "newin1",
             "sensorsLinkName": "newin1",
             "link": "https:\/\/www.hyfol.com\/collections\/new-in-1",
-            "left": 23,
+            "left": 18,
             "top": 0,
-            "width": 9,
+            "width": 8,
             "height": 100
           }
         },
@@ -108,45 +108,69 @@
             "heading": "halloween",
             "sensorsLinkName": "halloween",
             "link": "https:\/\/www.hyfol.com\/collections\/halloween-theme-clothing",
-            "left": 33,
+            "left": 28,
             "top": 0,
-            "width": 12,
+            "width": 9,
             "height": 100
           }
         },
         "a3ab2cb6-f89f-4bc1-b646-9fe4e3be3ccb": {
           "type": "link",
           "settings": {
-            "heading": "hoodie",
-            "sensorsLinkName": "hoodie",
-            "link": "https:\/\/www.hyfol.com\/collections\/hoodies-1",
-            "left": 47,
+            "heading": "for49",
+            "sensorsLinkName": "for49",
+            "link": "https:\/\/www.hyfol.com\/collections\/4-for-49",
+            "left": 40,
             "top": 0,
-            "width": 15,
+            "width": 9,
             "height": 100
           }
         },
         "df248fe6-62ab-4deb-9e61-43d26d4546de": {
           "type": "link",
           "settings": {
-            "heading": "sweatshirts",
-            "sensorsLinkName": "sweatshirts",
-            "link": "https:\/\/www.hyfol.com\/collections\/sweatshirts-12-13",
-            "left": 65,
+            "heading": "flashsale",
+            "sensorsLinkName": "flashsale",
+            "link": "https:\/\/www.hyfol.com\/collections\/flash-sale-1",
+            "left": 51,
             "top": 0,
-            "width": 13,
+            "width": 9,
             "height": 100
           }
         },
         "4e72a354-81ca-4018-a5e5-0e79fc495451": {
           "type": "link",
           "settings": {
-            "heading": "jackets",
-            "sensorsLinkName": "jackets",
-            "link": "https:\/\/www.hyfol.com\/collections\/outerwear_hyfol",
-            "left": 82,
+            "heading": "hoodies",
+            "sensorsLinkName": "hoodies",
+            "link": "https:\/\/www.hyfol.com\/collections\/hoodies-1",
+            "left": 61,
             "top": 0,
-            "width": 45,
+            "width": 13,
+            "height": 100
+          }
+        },
+        "28ef0ff4-fc7d-4860-b32f-574710fa6e92": {
+          "type": "link",
+          "settings": {
+            "heading": "sweatshirts",
+            "sensorsLinkName": "sweatshirts",
+            "link": "https:\/\/www.hyfol.com\/collections\/sweatshirts-12-13",
+            "left": 76,
+            "top": 0,
+            "width": 11,
+            "height": 100
+          }
+        },
+        "d310177d-53ac-459b-af14-f06f640d5dd0": {
+          "type": "link",
+          "settings": {
+            "heading": "jacket",
+            "sensorsLinkName": "jacket",
+            "link": "https:\/\/www.hyfol.com\/collections\/outerwear_hyfol",
+            "left": 89,
+            "top": 0,
+            "width": 11,
             "height": 100
           }
         }
@@ -157,7 +181,9 @@
         "78cb2d5c-1f5d-4d02-bcd6-3fafec378475",
         "a3ab2cb6-f89f-4bc1-b646-9fe4e3be3ccb",
         "df248fe6-62ab-4deb-9e61-43d26d4546de",
-        "4e72a354-81ca-4018-a5e5-0e79fc495451"
+        "4e72a354-81ca-4018-a5e5-0e79fc495451",
+        "28ef0ff4-fc7d-4860-b32f-574710fa6e92",
+        "d310177d-53ac-459b-af14-f06f640d5dd0"
       ],
       "settings": {
         "linkImg_title": "",
@@ -166,7 +192,7 @@
         "sensorsName": "pc分类导流区",
         "hidWeb": true,
         "line": false,
-        "image": "shopify:\/\/shop_images\/04_1c761d9c-d73b-4678-be4e-dc175e679e59.jpg",
+        "image": "shopify:\/\/shop_images\/04_9566aec0-33ef-42b7-b376-b71d7810cd69.jpg",
         "tpadding": 0,
         "rpadding": 0,
         "bpadding": 0,
