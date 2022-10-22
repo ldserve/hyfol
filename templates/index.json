@@ -899,6 +899,7 @@
     },
     "16585474086f148753": {
       "type": "transparent-collection",
+      "disabled": true,
       "settings": {
         "collection": "summer-finalsale",
         "sensorsName": "summer finalsale",
@@ -909,6 +910,21 @@
         "show_quick_buy": false,
         "link_title": "View all",
         "link_url": "https:\/\/www.hyfol.com\/collections\/summer-finalsale?page=1",
+        "backgroun": ""
+      }
+    },
+    "2085cc4d-3d60-4b10-bdbd-21379ff22696": {
+      "type": "transparent-collection",
+      "settings": {
+        "collection": "flash-sale-1",
+        "sensorsName": "FLASH SALE",
+        "title": "FLASH SALE",
+        "products_count": 12,
+        "layout": "vertical",
+        "stack_products": false,
+        "show_quick_buy": false,
+        "link_title": "View all",
+        "link_url": "",
         "backgroun": ""
       }
     },
@@ -1284,6 +1300,7 @@
     "1651218774b7bce676",
     "1663932013ff20a453",
     "16585474086f148753",
+    "2085cc4d-3d60-4b10-bdbd-21379ff22696",
     "16474250424edba623",
     "1653297879b5b9419a",
     "1640334828c8a975c8",
