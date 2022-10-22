@@ -481,10 +481,11 @@
 		{%- endif -%}
 	</div>
 
-				{%- comment -%}-------------快速加购图标------------{%- endcomment -%}
-				{%- if show_quick_view_button -%}
-				<button class="mini-cart-quick_button" 
-				data-secondary-action="open-quick-view" aria-controls="modal-quick-view-{{ section.id }}"
-				 data-product-url="{{ product.url }}">{%- render 'icon',icon:"cart" -%}</button>
-				 {%- endif -%}
+	{%- comment -%}-------------快速加购图标------------{%- endcomment -%}
+	{%- if show_quick_view_button -%}
+	<button class="mini-cart-quick_button" 
+	data-secondary-action="open-quick-view" aria-controls="modal-quick-view-{{ section.id }}"
+	data-product-url="{{ product.url }}">{%- render 'icon',icon:"cart" -%}</button>
+	{%- endif -%}
+
 </div>
