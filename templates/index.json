@@ -889,6 +889,7 @@
     },
     "1663932013ff20a453": {
       "type": "no_space_img",
+      "disabled": true,
       "settings": {
         "sensorsName": "finalsale",
         "bg_image": "shopify:\/\/shop_images\/fe33253dbf48d9c256b3a971245bf047.jpg",
