@@ -16,21 +16,40 @@
 	background-color: {{section.settings.backgroun}};
   }
 </style>
-<section class="section section-layout" data-section-id="{{ section.id }}" data-section-type="featured-collection"
-				 data-section-settings='{{ section_settings }}'>
-	{%- assign collection = section.settings.collection -%}
-	{%- if section.settings.title !=blank -%}
-		<div class="indexContainer">
-			<h2
-				class="section__title heading h3 section--text-centered">{{ section.settings.title }}</h2>
-		</div>
-	{%- endif -%}
 
-	<div
-		class="indexContainer {% if section.settings.layout != 'vertical' or section.settings.stack_products %}container--flush{% endif %}">
+{%- assign collection = section.settings.collection -%}
+{%- if collection.products[0].tags contains "Flash Sale" -%}
+{%- assign class_name = 'feature-flash' -%}
+{%- endif -%}
+
+<section class="section section-layout {{class_name}}" data-section-id="{{ section.id }}" data-section-type="featured-collection"
+		 data-section-settings='{{ section_settings }}'>
+
+	{%- comment -%}--------------Flash Sale-------------------------{%- endcomment -%}
+	<div class="indexContainer" style="position: relative;">
+
+		{%- if class_name != blank -%}
+		<div class="flash_sale-info">
+			<img src="https://cdn.shopify.com/s/files/1/0595/0691/7535/files/sale.png?v=1666324321" alt="sale" class="flash_sale_img">
+		</div>
+		{%- capture heading_h -%}<h2 class="section__title heading h3 section--text-centered">{{ section.settings.title }}</h2>{%- endcapture -%}
+		<div class="d-flex feature-flash_sale">
+			{{heading_h}}
+			<div class="" data-type="flash-sale">
+				<span class="sale_time">ENDS IN 
+				<span class="sale_time_count"></span>	
+				<span class="flash-sale_num"></span>
+				</span>
+			</div>
+		</div>
+		{%- else -%}
+		{{heading_h0}}
+		{%- endif -%}
+	</div>
+
+	<div class="indexContainer {% if section.settings.layout != 'vertical' or section.settings.stack_products %}container--flush{% endif %} {% if class_name != blank %}{{class_name}}{% endif %}">
 		{%- capture product_list -%}
-		<div
-			class="product-list product-list--{{ section.settings.layout }} {% if section.settings.stack_products %}product-list--stackable{% elsif section.settings.layout == 'vertical' %}product-list--scrollable{% endif %}">
+		<div class="product-list product-list--{{ section.settings.layout }} {% if section.settings.stack_products %}product-list--stackable{% elsif section.settings.layout == 'vertical' %}product-list--scrollable{% endif %}">
 			{%- assign use_placeholder = true -%}
 
 			{%- if collection == blank -%}

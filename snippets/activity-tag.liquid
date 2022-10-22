@@ -17,9 +17,19 @@
 	{%- endif -%}
 {%- endfor -%}
 
+{%- comment -%}Flash Salv{%- endcomment -%}
+	{%- assign show_flash = false -%}
+	{%- for cust_tag in product.tags -%}
+	{%- if cust_tag contains "Flash Sale" -%}
+	{%- assign custom = true -%}
+	{%- assign show_flash = true -%}
+	{%- break -%}
+	{%- endif -%}
+	{%- endfor -%}
+	
 
+{%- comment -%}自定义活动标签{%- endcomment -%}
 {%- if custom -%}
-
 	{%- assign custome_tags = settings.custome_tag_ui | strip_html | split: ',' -%}
 
 	{%- comment -%}------tag 标签图-------{%- endcomment -%}
@@ -36,8 +46,8 @@
 			
 		{%- endfor -%}
 
-			{%- if show_img_tag -%}
-			{%- comment -%}----详情页活动链接-------{%- endcomment -%}
+		{%- comment -%}----详情页活动链接-------{%- endcomment -%}
+		{%- if show_img_tag -%}
 			{%- assign inspect_tag = "Buy 4 Get 20% Off,Buy 4 Get EXTRA 20% Off,Buy 4+ 20% Off" -%}
 			{%- assign inspect_arr = inspect_tag | split: ',' -%}
 
@@ -45,24 +55,55 @@
 			{%- for CustomPromotionUrItem in CustomPromotionUrlList -%}
 				{%- assign CustomPromotionUrItemAll = CustomPromotionUrItem | split : '=' -%}
 				{%- assign CustomPromotionUrItemName = CustomPromotionUrItemAll[0] | strip -%}
-				{%- if CustomPromotionUrItemName == custom_tag or inspect_tag contains CustomPromotionUrItemName  -%}
+				{%- if CustomPromotionUrItemName == custom_tag   -%}
 					{%- assign CustomPromotionUrItemUrl = CustomPromotionUrItemAll[1] -%}
 					{%- break -%}
 				{%- endif -%}
 			{%- endfor -%}
 
-				<a class="custom-activity-tag {{class_name}}" style="position: relative;" href="{{CustomPromotionUrItemUrl}}">
-					{%- if inspect_arr contains custom_tag -%}
-					<img class="activity-background-img" src="https://cdn.shopifycdn.net/s/files/1/0595/0691/7535/files/bg3.jpg?v=1665748922" alt="{{product.title}}">
-					{%- else -%}
-					<img class="activity-background-img" src="https://cdn.shopify.com/s/files/1/0595/0691/7535/files/1_499b918d-2589-4803-bee0-6c020c20b326.jpg?v=1663814021" alt="{{product.title}}">
-					<div class="activity-text" >{{custom_tag}}</div>
-					{%- endif -%}
+			{%- if show_flash  -%}
+			{%- comment -%}详情页 Flash Sale{%- endcomment -%}
+				<a class="custom-activity-tag {{class_name}} flash-sale_link product-item__label_sale" style="position: relative;" data-type="flash-sale" href="https://www.hyfol.com/collections/flash-sale-1">
+				<div class="flash_sale"><svg t="1666171152781" class="icon " viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1906" width="32" height="32"><path d="M395.765333 586.570667h-171.733333c-22.421333 0-37.888-22.442667-29.909333-43.381334L364.768 95.274667A32 32 0 0 1 394.666667 74.666667h287.957333c22.72 0 38.208 23.018667 29.632 44.064l-99.36 243.882666h187.050667c27.509333 0 42.186667 32.426667 24.042666 53.098667l-458.602666 522.56c-22.293333 25.408-63.626667 3.392-54.976-29.28l85.354666-322.421333z" p-id="1907" data-spm-anchor-id="a313x.7781069.0.i4" class=""></path></svg> Flash Sale</div>
+				<div class="flash_sale_item">
+					<span>Ends in </span>
+					<span class="sale_time_count"></span>
+					<span class="flash-sale_num"></span>
+					{% render 'icon',icon:"arrow-right" %}
+				</div>
 				</a>
+			{%- else -%}
+			{%- comment -%}TAG 背景图{%- endcomment -%}
+			<a class="custom-activity-tag {{class_name}}" style="position: relative;" href="{{CustomPromotionUrItemUrl}}">
+				{%- if inspect_arr contains custom_tag -%}
+				<img class="activity-background-img" src="https://cdn.shopifycdn.net/s/files/1/0595/0691/7535/files/bg3.jpg?v=1665748922" alt="{{product.title}}">
+				{%- else -%}
+				
+				{%- if custom_tag == "Choose 3 for $59" -%}
+				<img class="activity-background-img" src="https://cdn.shopify.com/s/files/1/0595/0691/7535/files/choose-3-for-_59.jpg?v=1666145213" alt="{{product.title}}">
+				{%- elsif custom_tag == "Buy 1 get 2nd 50% OFF" -%}
+				<img class="activity-background-img" src="https://cdn.shopify.com/s/files/1/0595/0691/7535/files/2nd-50.jpg?v=1666145213" alt="{{product.title}}">
+				{%- else-%}
+				<img class="activity-background-img" src="https://cdn.shopify.com/s/files/1/0595/0691/7535/files/1_499b918d-2589-4803-bee0-6c020c20b326.jpg?v=1663814021" alt="{{product.title}}">
+				<div class="activity-text" >{{custom_tag}}</div>
+				{%- endif -%}
+
+				{%- endif -%}
+			</a>
+			{%- endif -%}
+			
+		{%- elsif  show_flash  -%}
+			{%- comment -%}产品列表 闪购图标{%- endcomment -%}
+			<div class="product-item__label_sale product-item__label-list">
+				{%- if product.price < product.compare_at_price -%}
+				<svg t="1666171152781" class="icon " viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1906" width="32" height="32"><path d="M395.765333 586.570667h-171.733333c-22.421333 0-37.888-22.442667-29.909333-43.381334L364.768 95.274667A32 32 0 0 1 394.666667 74.666667h287.957333c22.72 0 38.208 23.018667 29.632 44.064l-99.36 243.882666h187.050667c27.509333 0 42.186667 32.426667 24.042666 53.098667l-458.602666 522.56c-22.293333 25.408-63.626667 3.392-54.976-29.28l85.354666-322.421333z" p-id="1907" data-spm-anchor-id="a313x.7781069.0.i4" class=""></path></svg>
+				<br>{%- assign savings = product.compare_at_price | minus: product.price | times: 100.0 | divided_by: product.compare_at_price | round | append: '%' -%}
+				<span class="on-flash-sale">-{{  savings }}</span>
+				{%- endif -%}
+			</div>
 
 		{%- elsif tag_url != blank  -%}
 		{%- comment -%}透明背景活动TAG{%- endcomment -%}
-
 			<div class="activity-img-ui {{class_name}}" >
 				<img src="{{tag_url}}" alt="">
 				</div>

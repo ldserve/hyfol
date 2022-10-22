@@ -16583,34 +16583,129 @@ justify-content: space-between;
   margin: 1rem 0;
 }
 
-@media screen and (min-width: 650px) {
-.mobile-tag_img{
+/* flash sale */
+.flash-sale_link{
+  /* display: flex; */
   display: none;
+  justify-content: space-between;
+  font-weight: 600;
 }
+.product-item__label_sale{
+  background-color: #facf19;
 }
 
+.product-item__label_sale.product-item__label-list{
+  top: 0px;
+  right: 0px;
+  left: auto;
+  font-size: 1rem;
+  width: 48px;
+  /* font-weight: 600; */
+  text-align: center;
+  line-height: 1.4rem;
+}
+
+.collection-flash_sale{
+  text-align: center;
+  background-color: #facf19;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.collection-flash_sale img{
+  width: 70%;
+}
+.flash-sale_num>em{
+  background-color: #000;
+  padding: 2px;
+  color: #fff;
+  font-style: normal;
+}
+
+.sale_time em{
+  font-style: normal;
+  background-color: #000;
+  padding: 2px;
+  color: #facf19;
+  font-size: 1.2rem;
+  opacity: 0.9;
+}
+.feature-flash_sale{
+  justify-content: space-between;
+  padding: 5px;
+  color: #facf19;
+  margin-top:40px;
+}
+.feature-flash .price--highlight{
+  color:#facf19 !important;
+}
+.feature-flash,
+.feature-flash .product-item{
+  background: #a40001;
+}
+.flash_sale-info{
+  position: absolute;
+  bottom: 30px;
+ left: 0;
+ right: 0;
+ /* margin: auto; */
+text-align: center;
+}
+.flash_sale_img{
+  width: 24%;
+  max-width: 390px;
+}
+
+@media screen and (min-width: 650px) {
+  .mobile-tag_img {
+    display: none;
+  }
+  .desktop-tag_img.flash-sale_link {
+    display: flex;
+  }
+}
 
 @media screen and (max-width: 649px) {
-  .desktop-tag_img{
+  .flash-img_container{
+    width: 50%;
+  }
+  .desktop-tag_img {
     display: none;
+  }
+  .flash_sale_img{
+    width:58% ;
+  }
+  .flash_sale-info{
+    bottom: 40px;
   }
   .activity-ui-text {
     font-size: 0.8rem;
   }
-  .activity-ui-text_msg{
-    padding:0 0.2rem ;
+  .activity-ui-text_msg {
+    padding: 0 0.2rem;
   }
   .activity-tag-ui.activity-label {
     width: 2.7rem;
   }
-
   .activity-label .activity-ui-text {
     font-size: 0.6rem;
   }
-  .activity-label .activity-ui-text_msg{
+  .activity-label .activity-ui-text_msg {
     padding: 0 0.2rem;
   }
   .product-gallery>.activity-label {
     width: 3.8rem;
+  }
+  .mobile-tag_img.flash-sale_link {
+    display: flex;
+  }
+  .product-item__label_sale.product-item__label-list {
+    right: 3px;
+    width: 34px;
+    font-size: 0.8rem;
+    line-height: 1rem;
+  }
+  .flash-sale_link {
+    font-size: 0.9rem;
   }
 }

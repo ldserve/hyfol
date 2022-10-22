@@ -296,6 +296,19 @@
             "details_margin_botton": 14
           }
         },
+        "1180828e-dd48-41ed-a182-599df57b809f": {
+          "type": "text",
+          "settings": {
+            "title_text": "How will the service be charged?",
+            "centont_text": "<p>-We do charge $35 for a one-time design upon receiving your request. A few adjustments are allowed.<\/p><p>The design fee is non-refundable unless an order of &gt;50 pcs is placed. <\/p><p>-Also, we offer different tiers of discounts based on your order quantity. <\/p><p>Buy 10-20 pcs, get 25% off <\/p><p>Buy 21-49 pcs, get 30% off <\/p><p>Buy 50-99 pcs, get 35% off <\/p><p>Buy 100+ pcs, get 40% off<\/p>",
+            "title_size": 22,
+            "margin_top": 15,
+            "margin_botton": 5,
+            "border_top_size": 1,
+            "border_color": "#CCCCCC",
+            "details_margin_botton": 14
+          }
+        },
         "66b4f19c-e061-47e0-98ca-d6fe617b9cf7": {
           "type": "text",
           "settings": {
@@ -313,6 +326,7 @@
       "block_order": [
         "cc1a4018-6738-4f77-b38b-7c5b393f4bdd",
         "ea776825-66c6-403c-b59f-9a62b4f980f5",
+        "1180828e-dd48-41ed-a182-599df57b809f",
         "66b4f19c-e061-47e0-98ca-d6fe617b9cf7"
       ],
       "settings": {
@@ -335,6 +349,11 @@
         "link": "",
         "shadow": false
       }
+    },
+    "0119287e-fc21-4fce-8b1f-59f862d9c040": {
+      "type": "questionnaire",
+      "settings": {
+      }
     }
   },
   "order": [
@@ -351,6 +370,7 @@
     "1659321991c10f5bc2",
     "main",
     "1659336417e01aa356",
-    "1659339876ca738e1f"
+    "1659339876ca738e1f",
+    "0119287e-fc21-4fce-8b1f-59f862d9c040"
   ]
 }

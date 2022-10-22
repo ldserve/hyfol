@@ -140,8 +140,19 @@
   {%- endif -%}
   {%- endunless -%}
 
-  <div class="indexContainer" id="container">
+  {%- comment -%}Flash Sale{%- endcomment -%}
+  {%- if collection.products[0].tags contains "Flash Sale" -%}
+    <div class="collection-flash_sale" data-type="flash-sale">
+      <div class="flash-img_container"><img src="https://cdn.shopify.com/s/files/1/0595/0691/7535/files/tiem.png?v=1666332315" alt="tiem"></div>
+      <span class="sale_time">ENDS IN 
+        <span class="sale_time_count"></span>	
+        <span class="flash-sale_num"></span>
+      </span>
+    </div>
+  {%- endif -%}
+{%- comment -%}Flash Sale END{%- endcomment -%}
 
+  <div class="indexContainer" id="container">
 
     {%- comment -%}
     --------------------------------------------------------------------------------------

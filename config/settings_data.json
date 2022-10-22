@@ -17,7 +17,7 @@
     "gradient_color_start": "#ebc918",
     "gradient_color_end": "#ee362a",
     "tag_layout": "label",
-    "activity_img_tag": "Buy 4 Get EXTRA 20% Off=https:\/\/cdn.shopifycdn.net\/s\/files\/1\/0595\/0691\/7535\/files\/tag3.png?v=1665748921,Choose 3 for $59=https:\/\/cdn.shopify.com\/s\/files\/1\/0595\/0691\/7535\/files\/5.png?v=1663667594,Buy 1 get 2nd 50% OFF=https:\/\/cdn.shopify.com\/s\/files\/1\/0595\/0691\/7535\/files\/4.png?v=1663667594",
+    "activity_img_tag": "Buy 4 Get EXTRA 20% Off=https:\/\/cdn.shopifycdn.net\/s\/files\/1\/0595\/0691\/7535\/files\/tag3.png?v=1665748921,Choose 3 for $59=https:\/\/cdn.shopify.com\/s\/files\/1\/0595\/0691\/7535\/files\/5.png?v=1663667594,Buy 1 get 2nd 50% OFF=https:\/\/cdn.shopify.com\/s\/files\/1\/0595\/0691\/7535\/files\/4.png?v=1663667594,Choose 4 for $49=https:\/\/cdn.shopify.com\/s\/files\/1\/0595\/0691\/7535\/files\/4for49.png?v=1666348729",
     "brazil_house_number": true,
     "heading_color": "#1b1b1b",
     "text_color": "#212121",
@@ -223,13 +223,20 @@
               "title": "FIND US ON",
               "subheading": "<p>Sign up for HYFOL style news<\/p>"
             }
+          },
+          "244b3e68-04f8-41ec-acf1-bff4665fe23c": {
+            "type": "links",
+            "settings": {
+              "menu": "b2b-business"
+            }
           }
         },
         "block_order": [
           "footer-0",
           "footer-1",
           "19a81811-3745-4280-bbc7-82cf671c27d7",
-          "footer-2"
+          "footer-2",
+          "244b3e68-04f8-41ec-acf1-bff4665fe23c"
         ],
         "settings": {
           "show_social_media": true,
