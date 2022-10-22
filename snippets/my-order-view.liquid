@@ -6,29 +6,29 @@
 
     <ul class="d-flex orders-nav__list">
 
-        <li class="order-all orders-nav__item"  data-action="true" data-index="1">
+        <li class="order-all orders-nav__item"  data-action="true" data-index="1" aria-label="All">
             {%- render 'icon', icon: 'cjj_all' -%}
             <span>All</span>
         </li>
-        <li class="order-unpaid orders-nav__item"  data-action="false" data-index="2">
+        <li class="order-unpaid orders-nav__item"  data-action="false" data-index="2" aria-label="Unpaid">
             {%- render 'icon', icon: 'cjj_unpaid' -%}
             <span>Unpaid</span>
         </li>
         
-        <li class="order-shipped orders-nav__item" data-action="false" data-index="3">
+        <li class="order-shipped orders-nav__item" data-action="false" data-index="3" aria-label="Shipped">
             {%- render 'icon', icon: 'cjj_shipped' -%}
             <span>Shipped</span>
         </li>
     
-        <li class="order-processing orders-nav__item" data-action="false" data-index="4">
+        <li class="order-processing orders-nav__item" data-action="false" data-index="4" aria-label="Processing">
             {%- render 'icon', icon: 'cjj_processing' -%}
             <span>Processing</span>
         </li>
-        <li class="order-completed orders-nav__item" data-action="false" data-index="5">
+        <li class="order-completed orders-nav__item" data-action="false" data-index="5" aria-label="Completed">
             {%- render 'icon', icon: 'cjj_completed' -%}
             <span>Completed</span>
         </li>
-        <li class="order-payment orders-nav__item" data-action="false" data-index="6">
+        <li class="order-payment orders-nav__item" data-action="false" data-index="6" aria-label="Payment">
             {%- render 'icon', icon: 'cjj_payment' -%}
             <span>Payment</span>
         </li>

@@ -1,21 +1,16 @@
-
 <style>
-	/* .profiles-form > input {
-		border: 1px solid #666;
-		background-color: #eee;
-		width: 100%;
-		display: block;
-		padding: 8px 20px;
-	} */
-.pagination__prev, .pagination__next,.pagination__nav-item{
-	color: #000;
-}
+	.pagination__prev,
+	.pagination__next,
+	.pagination__nav-item {
+		color: #000;
+	}
+
 	.my-profile__view {
 		text-align: center;
 		display: grid;
 		grid: repeat(1, auto) / auto-flow auto;
 		color: #fff;
-		background:url('https://cdn.shopify.com/s/files/1/0595/0691/7535/files/coup.jpg?v=1664507060') no-repeat 100% 100%;
+		background: url('https://cdn.shopify.com/s/files/1/0595/0691/7535/files/coup.jpg?v=1664507060') no-repeat 100% 100%;
 		grid-template-columns: 50% 1px auto;
 		padding: 1rem 2rem;
 
@@ -36,13 +31,14 @@
 	}
 
 	.coupons-nav>summary {
-		/* display: inline-block; */
 		margin-right: 1.8rem;
 		cursor: pointer;
 	}
-	summary[aria-expanded="true"]{
+
+	summary[aria-expanded="true"] {
 		border-bottom: 1px solid #000;
 	}
+
 	.vip-level__s1,
 	.vip-level__s2,
 	.vip-level__s3 {
@@ -69,7 +65,8 @@
 		left: -0.8rem;
 		bottom: -1.6rem;
 	}
-	.page__item .my-coupons{
+
+	.page__item .my-coupons {
 		padding: 0 0rem 3rem;
 
 	}
@@ -143,17 +140,9 @@
 	}
 
 	.header-me .account-box {
-		/* height: 0;
-		overflow: hidden;
-		transition: all 0.4s ease; */
 		padding: 1rem 0;
 
 	}
-
-	/* #account-input:checked~.account-box {
-		height: 170px;
-		transition: all 0.4s ease;
-	} */
 
 	.header-me .logged>.tab {
 		transition: all 0.4s ease;
@@ -209,7 +198,7 @@
 	}
 
 	.order-me .icons {
-		width: 160%;
+		width: 144%;
 		display: flex;
 		justify-content: space-between;
 	}
@@ -474,7 +463,6 @@
 
 	.vip-page {
 		justify-content: space-between;
-		/* background: url('https://cdn.shopify.com/s/files/1/0595/0691/7535/files/back.png?v=1664507351') no-repeat -2rem 0rem; */
 		background: url('https://cdn.shopify.com/s/files/1/0595/0691/7535/files/bg_main_s0-76143950f1.png?v=1664507536') no-repeat -2rem 0rem;
 		background-size: 106% 100%;
 		background-clip: border-box;
@@ -535,14 +523,16 @@
 	}
 
 	.my-coupons .h3,
-	.order-preview .h3 ,
-	.profile-view .h3{
+	.order-preview .h3,
+	.profile-view .h3 {
 		text-align: center;
 		font-weight: 700;
 	}
-	.profile-story__title{
+
+	.profile-story__title {
 		font-weight: 700;
 	}
+
 	.my-coupons {
 		margin-top: 3rem;
 		background-color: #eee;
@@ -677,12 +667,16 @@
 		margin-top: 10px;
 		padding: 2rem;
 	}
-	.my_addresses .card{
-			background-color: #eee;
-		}
-		.product-list--collection,.product-list--collection .product-item{
-			background-color: #fff;
-		}
+
+	.my_addresses .card {
+		background-color: #eee;
+	}
+
+	.product-list--collection,
+	.product-list--collection .product-item {
+		background-color: #fff;
+	}
+
 	@media screen and (max-width: 999px) {
 		.profile-view {
 			padding: 30px 10px;
@@ -747,68 +741,77 @@
 		.order-me .h3 {
 			text-align: center;
 		}
-	
+
 	}
 
-	.my-coupons_empty{
+	.my-coupons_empty {
 		display: block !important;
 	}
-	.my-coupons_empty>.empty{
+
+	.my-coupons_empty>.empty {
 		color: #000;
 		text-align: center;
 	}
-	.empty>.icon--package{
+
+	.empty>.icon--package {
 		font-size: 5rem;
 	}
-	.page__item[aria-hidden="true"]{
+
+	.page__item[aria-hidden="true"] {
 		display: none;
 	}
-	.collect .openQuickView{
+
+	.collect .openQuickView {
 		display: none;
 	}
-	.collect .product-item__action-button--list-view-only{
+
+	.collect .product-item__action-button--list-view-only {
 		display: block;
+	}
+
+	.empty {
+		text-align: center;
+		color: #000;
 	}
 </style>
 
-{%- comment -%}--------------------------Mobile--------------------------{%- endcomment -%}
-<section class="hidden-lap-and-up account">
-	<div class="header-me container">
-		{%- if customer -%}
-
-		<div class="account-box">
-			<h3 class="mobile-account__title">My Service</h3>
-			<div class="card__linklist ">
-				<left-nav-list>
-					<div class="render_nav_list d-flex mobile-account__nav">
-						{%- for block in section.blocks -%}
-						{%- if block.settings.nav_show -%}
-						<div class="card__linklist-item link" style="cursor:pointer ;"
-							data-right="{{block.settings.nav_right}}">
-							<span> {%- render 'icon', icon: {{block.settings.nav_icon}} -%}</span>
-							<span> {{block.settings.nav_title}} </span>
-						</div>
-						{%- endif -%}
-						{%- endfor -%}
-						<a href="{{ routes.account_logout_url }}" class="card__linklist-item link" data-no-instant>{% render 'icon',
-							icon :"account-logout" %} {{ 'customer.general.logout' | t }}</a>
-					</div>
-				</left-nav-list>
+<section data-section-id="{{ section.id }}" data-section-type="account" id="account">
+	{%- comment -%}-------------------------- Mobile --------------------------{%- endcomment -%}
+	<div class="hidden-lap-and-up account">
+		<div class="header-me container">
+			{%- if customer -%}
+	
+			<div class="account-box">
+				<h3 class="mobile-account__title">My Service</h3>
+				<div class="card__linklist ">
+					 <div class="render_nav_list d-flex mobile-account__nav">
+	
+					  {%- for block in section.blocks -%}
+					  {%- if block.settings.nav_show -%}
+					  <div class="card__linklist-item link" style="cursor:pointer ;" data-right="{{block.settings.nav_right}}" data-action="left-nav" aria-label="{{block.settings.nav_title}}"> 
+						  <span> {%- render 'icon', icon: {{block.settings.nav_icon}} -%}</span>
+					  <span>{{block.settings.nav_title}}</span>
+					  </div>
+					  {%- endif -%}
+					  {%- endfor -%}
+	
+					  <a href="{{ routes.account_logout_url }}" class="card__linklist-item link"
+						   data-no-instant >{% render 'icon', icon :"account-logout" %} {{ 'customer.general.logout' | t }}</a>
+				  </div>
+				</div>
 			</div>
+	
+			{%- else -%}
+			<ul class="no-logged">
+				<li class="text-l"><a href="{{ routes.account_login_url }}?return_url={{ page.url }}">LOGIN &gt;</a></li>
+				<li class="text-r"><a href="{{ routes.account_register_url }}">CREATE ACCOUNT&gt;</a></li>
+			</ul>
+			{%- endif -%}
 		</div>
-
-		{%- else -%}
-		<ul class="no-logged">
-			<li class="text-l"><a href="{{ routes.account_login_url }}?return_url={{ page.url }}">LOGIN &gt;</a></li>
-			<li class="text-r"><a href="{{ routes.account_register_url }}">CREATE ACCOUNT&gt;</a></li>
-		</ul>
-		{%- endif -%}
+	
 	</div>
 
-</section>
-
-<section data-section-id="{{ section.id }}" data-section-type="account" id="account">
-	{%- comment -%}{%- endcomment -%}
+	{%- comment -%}-------------- desktop ----------------------{%- endcomment -%}
 	<div class="page__sub-header hidden-tablet">
 		<nav aria-label="{{ 'general.breadcrumb.title' | t }}" class="breadcrumb">
 			<ol class="breadcrumb__list" role="list">
@@ -831,25 +834,25 @@
 	</div>
 	<div class="container container--flush">
 		<div class="layout">
-			{%- comment -%}-----------------自定义导航栏-------------------{%- endcomment -%}
+			{%- comment -%}-----------------desktop 自定义导航栏 -------------------{%- endcomment -%}
 			<div class="layout__section layout__section--secondary hidden-phone">
 				<div class="card card--sticky hidden-pocket">
 					<div class="card__section card__section--tight">
 						<div class="card__linklist table-left-nav">
-						  <left-nav-list>
-							  <div class="render_nav_list ">
+							<div class="render_nav_list ">
+
 							{%- for block in section.blocks -%}
 							{%- if block.settings.nav_show -%}
-							<div class="card__linklist-item link" style="cursor:pointer ;" data-right="{{block.settings.nav_right}}"> 
+							<div class="card__linklist-item link" style="cursor:pointer ;" data-right="{{block.settings.nav_right}}" data-action="left-nav" aria-label="{{block.settings.nav_title}}"> 
 								<span> {%- render 'icon', icon: {{block.settings.nav_icon}} -%}</span>
 							<span>{{block.settings.nav_title}}</span>
 							</div>
 							{%- endif -%}
 							{%- endfor -%}
+
 							<a href="{{ routes.account_logout_url }}" class="card__linklist-item link"
-								 data-no-instant>{% render 'icon', icon :"account-logout" %} {{ 'customer.general.logout' | t }}</a>
+								 data-no-instant >{% render 'icon', icon :"account-logout" %} {{ 'customer.general.logout' | t }}</a>
 						</div>
-						</left-nav-list>
 						</div>
 					</div>
 				</div>
@@ -858,7 +861,7 @@
 
 			<div class="layout__section ">
 				{%- comment -%}-----------------------收藏列表-------------------{%- endcomment -%}
-				<div class="wish_list account_right_content">
+				<div class="wish_list account_right_content" data-type="accountPage">
 					<header>
 						<h1 class="center wish_title">MY WISHLIST</h1>
 					</header>
@@ -910,45 +913,48 @@
 				</div>
 
 				{%- comment -%}------------------------订单列表--------------------{%- endcomment -%}
-				<div class="card my_orders account_right_content">
-
+				<div class="card my_orders account_right_content"  data-type="accountPage">
+					{%- comment -%}-------------------------- desktop --------------{%- endcomment -%}
 					<div class="hidden-phone">
 						{% render 'my-order-view' customer:customer%}
 					</div>
 
+					{%- comment -%}------------------------mobile------------------------{%- endcomment -%}
 					<div class="large_pad hidden-tablet-and-up ">
 						<div class="order-me container">
 							<h3 class="h3">{{- 'customer.general.orders' | t -}}</h3>
 							<div class="icon-box">
 								<ul class="icons" id="orders-list">
-									<li data-item="orders-all" class="current">
+									<li data-item="orders-all" class="current" data-type="orders-list" aria-label="All">
 										{%- render 'icon', icon: 'cjj_all' -%}<br />
 										<span>All</span>
 									</li>
-									<li data-item="orders-unpaid">
+									<li data-item="orders-unpaid" data-type="orders-list"  aria-label="Unpaid">
 										{%- render 'icon', icon: 'cjj_unpaid' -%}<br />
 										<span>Unpaid</span>
 									</li>
-									<li data-item="orders-processing">
+									<li data-item="orders-processing" data-type="orders-list"  aria-label="Processing">
 										{%- render 'icon', icon: 'cjj_processing' -%}<br />
 										<span>Processing</span>
 									</li>
-									<li data-item="orders-shipped">
+									<li data-item="orders-shipped" data-type="orders-list" aria-label="Shipped">
 										{%- render 'icon', icon: 'cjj_shipped' -%}<br />
 										<span>Shipped</span>
 									</li>
-									<li data-item="orders-payment">
+									<li data-item="orders-payment" data-type="orders-list" aria-label="Payment">
 										{%- render 'icon', icon: 'cjj_payment' -%}<br />
 										<span>Payment</span>
 									</li>
-									<li data-item="orders-completed">
+									<li data-item="orders-completed" data-type="orders-list" aria-label="Completed">
 										{%- render 'icon', icon: 'cjj_completed' -%}<br />
 										<span>Completed</span>
 									</li>
-									<li data-item="post-sale">
+									{%- comment -%}
+									<li data-item="post-sale" data-type="orders-list" aria-label="Processing">
 										{%- render 'icon', icon: 'cjj_post_sale' -%}<br />
 										<span>Post-sale</span>
 									</li>
+									{%- endcomment -%}
 								</ul>
 							</div>
 					
@@ -995,7 +1001,7 @@
 				</div>
 				
 				{%- comment -%}--------------------VIP 信息和优惠券概览-----------------------{%- endcomment -%}
-				<div class="my_overview account_right_content">
+				<div class="my_overview account_right_content"  data-type="accountPage">
 					{%- comment -%}规则说明{%- endcomment -%}
 					<div class="vip-rules" style="display:none;">
 					
@@ -1178,10 +1184,9 @@
 						{%- comment -%}订单导航{%- endcomment -%}
 						<div class="order-preview overview-box ">
 							<h3 class="h3">My Order</h3>
-							<order-item>
 								<div class="icon-box">
 									<ul class="d-flex  account-overview__list icons">
-										<li class="order-preview__item">
+										<li class="order-preview__item" data-nav-type="All">
 											<span class="order-icon">
 												{%- render 'icon', icon: 'cjj_all' -%}
 												{%- comment -%}
@@ -1191,7 +1196,7 @@
 											<p>All</p>
 											</a>
 										</li>
-										<li class="order-preview__item">
+										<li class="order-preview__item" data-nav-type="Unpaid">
 											<span class="order-icon">
 												{%- render 'icon', icon: 'cjj_unpaid' -%}
 												{%- if order_unpaid!=0 -%}
@@ -1200,7 +1205,7 @@
 											</span>
 											<p>Unpaid</p>
 										</li>
-										<li class="order-preview__item">
+										<li class="order-preview__item"  data-nav-type="Processing">
 											<span class="order-icon">
 												{%- render 'icon', icon: 'cjj_processing' -%}
 												{%- if order_processing!=0 -%}
@@ -1209,7 +1214,7 @@
 											</span>
 											<p>Processing</p>
 										</li>
-										<li class="order-preview__item">
+										<li class="order-preview__item" data-nav-type="Shipped">
 											<span class="order-icon">
 												{%- render 'icon', icon: 'cjj_shipped' -%}
 												{%- if order_shipped!=0 -%}
@@ -1220,7 +1225,7 @@
 											<p>Shipped</p>
 										</li>
 					
-										<li class="order-preview__item">
+										<li class="order-preview__item" data-nav-type="Payment">
 											<span class="order-icon">
 												{%- render 'icon', icon: 'cjj_payment' -%}
 												{%- if order_payment!=0 -%}
@@ -1230,7 +1235,7 @@
 											</span>
 											<p>Payment</p>
 										</li>
-										<li class="order-preview__item">
+										<li class="order-preview__item" data-nav-type="Completed">
 											<span class="order-icon">
 												{%- render 'icon', icon: 'cjj_completed' -%}
 												{%- if order_completed!=0 -%}
@@ -1240,17 +1245,14 @@
 											</span>
 											<p>Completed</p>
 										</li>
-										<li class="order-preview__item">
-											<!-- <a href="mailto:contactus@hyfol.com" target="_blank" rel="noopener" aria-describedby="a11y-new-window-message"> -->
+										<li class="order-preview__item" data-nav-type="Post-sale">
 											<span class="order-icon">
 												{%- render 'icon', icon: 'cjj_post_sale' -%}<br />
 											</span>
 											<p>Post-sale</p>
-											<!-- </a> -->
 										</li>
 									</ul>
 								</div>
-							</order-item>
 						</div>
 
 					{%- comment -%}
@@ -1274,7 +1276,7 @@
 				</div>
 
 				{%- comment -%}---------------------优惠券--------------------------{%- endcomment -%}
-				<div class="my_coupons account_right_content backgrount_e">
+				<div class="my_coupons account_right_content backgrount_e"  data-type="accountPage">
 					<h3 class="my_coupons__title h3">My Coupons</h3>
 					<details-menu>
 						<div class="coupons-nav d-flex">
@@ -1311,7 +1313,7 @@
 				</div>
 
 				{%- comment -%}---------------------------------------{%- endcomment -%}
-				<div class="my_profiles account_right_content">
+				<div class="my_profiles account_right_content" data-type="accountPage">
 					{%- comment -%}
 					<div class="profile-view backgrount_e">
 						<h3 class="h3" style="text-align:center;">My Profile</h3>
@@ -1340,7 +1342,7 @@
 				</div>
 
 				{%- comment -%}-------------------------积分概览------------------------{%- endcomment -%}
-				<div class="my_profile account_right_content">
+				<div class="my_profile account_right_content" data-type="accountPage">
 					<div class="profile-view backgrount_e">
 						<h3 class="h3" >My Profile</h3>
 						<div class="my-profile__view ">
@@ -1459,7 +1461,7 @@
 				</div>
 				
 				{%- comment -%}----------------------------客户地址------------------------{%- endcomment -%}
-				<div class="my_addresses account_right_content ">
+				<div class="my_addresses account_right_content " data-type="accountPage">
 					<section data-section-id="{{ section.id }}" data-section-type="account">
 						<div class="container container--flush">
 							  <div class="card">
@@ -1502,6 +1504,7 @@
 										  type="button" class="link link--accented"
 										  aria-label="{{ 'customer.addresses.delete' | t }} {{ forloop.index }}"
 										  data-target="{{ customer.default_address.url }}"
+										  data-action="deleteAddresses"
 										  data-confirm-message="{{ 'customer.addresses.delete_confirm' | t }}"
 										>
 										  {{ 'customer.addresses.delete' | t }}
@@ -2040,7 +2043,7 @@
 
 				</div>
 				{%- comment -%}----------------------------联系我们-----------------------{%- endcomment -%}
-				<div class="my_postsale account_right_content">
+				<div class="my_postsale account_right_content" data-type="accountPage">
 					<div class="customers-services"  >
 						<div class="container">
 							<h3>
@@ -2058,587 +2061,548 @@
 
 
 <script>
+	~function () {
 
-	var Delegate = (function () {
+		var Delegate = (function () {
 
-		function Delegate(root) {
-			this.listenerMap = [{}, {}];
-			if (root) {
-				this.root(root);
+			function Delegate(root) {
+				this.listenerMap = [{}, {}];
+				if (root) {
+					this.root(root);
+				}
+				this.handle = Delegate.prototype.handle.bind(this); // Cache of event listeners removed during an event cycle
+				this._removedListeners = [];
 			}
 
-			this.handle = Delegate.prototype.handle.bind(this); // Cache of event listeners removed during an event cycle
-			this._removedListeners = [];
-		}
+			Delegate.prototype.root = function (root) {
+				var listenerMap = this.listenerMap;
+				var eventType; // Remove master event listeners
 
-		Delegate.prototype.root = function (root) {
-			var listenerMap = this.listenerMap;
-			var eventType; // Remove master event listeners
+				if (this.rootElement) {
+					for (eventType in listenerMap[1]) {
+						if (listenerMap[1].hasOwnProperty(eventType)) {
+							this.rootElement.removeEventListener(eventType, this.handle, true);
+						}
+					}
+					for (eventType in listenerMap[0]) {
+						if (listenerMap[0].hasOwnProperty(eventType)) {
+							this.rootElement.removeEventListener(eventType, this.handle, false);
+						}
+					}
+				}
 
-			if (this.rootElement) {
+				if (!root || !root.addEventListener) {
+					if (this.rootElement) {
+						delete this.rootElement;
+					}
+					return this;
+				}
+
+				this.rootElement = root; // Set up master event listeners
+
 				for (eventType in listenerMap[1]) {
 					if (listenerMap[1].hasOwnProperty(eventType)) {
-						this.rootElement.removeEventListener(eventType, this.handle, true);
+						this.rootElement.addEventListener(eventType, this.handle, true);
 					}
 				}
-
 				for (eventType in listenerMap[0]) {
 					if (listenerMap[0].hasOwnProperty(eventType)) {
-						this.rootElement.removeEventListener(eventType, this.handle, false);
-					}
-				}
-			}
-
-			if (!root || !root.addEventListener) {
-				if (this.rootElement) {
-					delete this.rootElement;
-				}
-
-				return this;
-			}
-
-			this.rootElement = root; // Set up master event listeners
-
-			for (eventType in listenerMap[1]) {
-				if (listenerMap[1].hasOwnProperty(eventType)) {
-					this.rootElement.addEventListener(eventType, this.handle, true);
-				}
-			}
-
-			for (eventType in listenerMap[0]) {
-				if (listenerMap[0].hasOwnProperty(eventType)) {
-					this.rootElement.addEventListener(eventType, this.handle, false);
-				}
-			}
-
-			return this;
-		};
-
-		Delegate.prototype.captureForType = function (eventType) {
-			return ['blur', 'error', 'focus', 'load', 'resize', 'scroll'].indexOf(eventType) !== -1;
-		};
-
-		Delegate.prototype.on = function (eventType, selector, handler, useCapture) {
-			var root;
-			var listenerMap;
-			var matcher;
-			var matcherParam;
-
-			if (!eventType) {
-				throw new TypeError('Invalid event type: ' + eventType);
-			}
-
-
-			if (typeof selector === 'function') {
-				useCapture = handler;
-				handler = selector;
-				selector = null;
-			}
-
-			if (useCapture === undefined) {
-				useCapture = this.captureForType(eventType);
-			}
-
-			if (typeof handler !== 'function') {
-				throw new TypeError('Handler must be a type of Function');
-			}
-
-			root = this.rootElement;
-			listenerMap = this.listenerMap[useCapture ? 1 : 0];
-
-			if (!listenerMap[eventType]) {
-				if (root) {
-					root.addEventListener(eventType, this.handle, useCapture);
-				}
-
-				listenerMap[eventType] = [];
-			}
-
-			if (!selector) {
-				matcherParam = null;
-
-				matcher = matchesRoot.bind(this); // Compile a matcher for the given selector
-			} else if (/^[a-z]+$/i.test(selector)) {
-				matcherParam = selector;
-				matcher = matchesTag;
-			} else if (/^#[a-z0-9\-_]+$/i.test(selector)) {
-				matcherParam = selector.slice(1);
-				matcher = matchesId;
-			} else {
-				matcherParam = selector;
-				matcher = Element.prototype.matches;
-			} // Add to the list of listeners
-
-			listenerMap[eventType].push({
-				selector: selector,
-				handler: handler,
-				matcher: matcher,
-				matcherParam: matcherParam
-			});
-			return this;
-		};
-
-
-		Delegate.prototype.off = function (eventType, selector, handler, useCapture) {
-			var i;
-			var listener;
-			var listenerMap;
-			var listenerList;
-			var singleEventType; // Handler can be passed as
-			// the second or third argument
-
-			if (typeof selector === 'function') {
-				useCapture = handler;
-				handler = selector;
-				selector = null;
-			}
-
-
-			if (useCapture === undefined) {
-				this.off(eventType, selector, handler, true);
-				this.off(eventType, selector, handler, false);
-				return this;
-			}
-
-			listenerMap = this.listenerMap[useCapture ? 1 : 0];
-
-			if (!eventType) {
-				for (singleEventType in listenerMap) {
-					if (listenerMap.hasOwnProperty(singleEventType)) {
-						this.off(singleEventType, selector, handler);
+						this.rootElement.addEventListener(eventType, this.handle, false);
 					}
 				}
 
 				return this;
-			}
+			};
 
-			listenerList = listenerMap[eventType];
+			Delegate.prototype.captureForType = function (eventType) {
+				return ['blur', 'error', 'focus', 'load', 'resize', 'scroll'].indexOf(eventType) !== -1;
+			};
 
-			if (!listenerList || !listenerList.length) {
+			Delegate.prototype.on = function (eventType, selector, handler, useCapture) {
+				var root;
+				var listenerMap;
+				var matcher;
+				var matcherParam;
+				if (!eventType) {
+					throw new TypeError('Invalid event type: ' + eventType);
+				}
+
+
+				if (typeof selector === 'function') {
+					useCapture = handler;
+					handler = selector;
+					selector = null;
+				}
+
+				if (useCapture === undefined) {
+					useCapture = this.captureForType(eventType);
+				}
+
+				if (typeof handler !== 'function') {
+					throw new TypeError('Handler must be a type of Function');
+				}
+
+				root = this.rootElement;
+				listenerMap = this.listenerMap[useCapture ? 1 : 0];
+				if (!listenerMap[eventType]) {
+					if (root) {
+						root.addEventListener(eventType, this.handle, useCapture);
+					}
+
+					listenerMap[eventType] = [];
+				}
+
+				if (!selector) {
+					matcherParam = null;
+
+					matcher = matchesRoot.bind(this); // Compile a matcher for the given selector
+				} else if (/^[a-z]+$/i.test(selector)) {
+					matcherParam = selector;
+					matcher = matchesTag;
+				} else if (/^#[a-z0-9\-_]+$/i.test(selector)) {
+					matcherParam = selector.slice(1);
+					matcher = matchesId;
+				} else {
+					matcherParam = selector;
+					matcher = Element.prototype.matches;
+				} // Add to the list of listeners
+
+				listenerMap[eventType].push({
+					selector: selector,
+					handler: handler,
+					matcher: matcher,
+					matcherParam: matcherParam
+				});
 				return this;
-			}
+			};
 
-			for (i = listenerList.length - 1; i >= 0; i--) {
-				listener = listenerList[i];
 
-				if ((!selector || selector === listener.selector) && (!handler || handler === listener.handler)) {
-					this._removedListeners.push(listener);
+			Delegate.prototype.off = function (eventType, selector, handler, useCapture) {
+				var i;
+				var listener;
+				var listenerMap;
+				var listenerList;
+				var singleEventType; // Handler can be passed as
+				// the second or third argument
 
-					listenerList.splice(i, 1);
+				if (typeof selector === 'function') {
+					useCapture = handler;
+					handler = selector;
+					selector = null;
 				}
-			} // All listeners removed
 
-
-			if (!listenerList.length) {
-				delete listenerMap[eventType]; // Remove the main handler
-
-				if (this.rootElement) {
-					this.rootElement.removeEventListener(eventType, this.handle, useCapture);
+				if (useCapture === undefined) {
+					this.off(eventType, selector, handler, true);
+					this.off(eventType, selector, handler, false);
+					return this;
 				}
-			}
+				listenerMap = this.listenerMap[useCapture ? 1 : 0];
 
-			return this;
-		};
-
-		Delegate.prototype.handle = function (event) {
-			var i;
-			var l;
-			var type = event.type;
-			var root;
-			var phase;
-			var listener;
-			var returned;
-			var listenerList = [];
-			var target;
-			var eventIgnore = 'ftLabsDelegateIgnore';
-
-			if (event[eventIgnore] === true) {
-				return;
-			}
-
-			target = event.target; // Hardcode value of Node.TEXT_NODE
-			// as not defined in IE8
-
-			if (target.nodeType === 3) {
-				target = target.parentNode;
-			} // Handle SVG <use> elements in IE
-
-			if (target.correspondingUseElement) {
-				target = target.correspondingUseElement;
-			}
-
-			root = this.rootElement;
-			phase = event.eventPhase || (event.target !== event.currentTarget ? 3 : 2); // eslint-disable-next-line default-case
-
-			switch (phase) {
-				case 1:
-					//Event.CAPTURING_PHASE:
-					listenerList = this.listenerMap[1][type];
-					break;
-
-				case 2:
-					//Event.AT_TARGET:
-					if (this.listenerMap[0] && this.listenerMap[0][type]) {
-						listenerList = listenerList.concat(this.listenerMap[0][type]);
+				if (!eventType) {
+					for (singleEventType in listenerMap) {
+						if (listenerMap.hasOwnProperty(singleEventType)) {
+							this.off(singleEventType, selector, handler);
+						}
 					}
+					return this;
+				}
 
-					if (this.listenerMap[1] && this.listenerMap[1][type]) {
-						listenerList = listenerList.concat(this.listenerMap[1][type]);
+				listenerList = listenerMap[eventType];
+				if (!listenerList || !listenerList.length) {
+					return this;
+				}
+
+				for (i = listenerList.length - 1; i >= 0; i--) {
+					listener = listenerList[i];
+					if ((!selector || selector === listener.selector) && (!handler || handler === listener.handler)) {
+						this._removedListeners.push(listener);
+						listenerList.splice(i, 1);
 					}
+				} // All listeners removed
 
-					break;
 
-				case 3:
-					//Event.BUBBLING_PHASE:
-					listenerList = this.listenerMap[0][type];
-					break;
-			}
+				if (!listenerList.length) {
+					delete listenerMap[eventType]; // Remove the main handler
+					if (this.rootElement) {
+						this.rootElement.removeEventListener(eventType, this.handle, useCapture);
+					}
+				}
 
-			var toFire = []; // Need to continuously check
-			// that the specific list is
-			// still populated in case one
-			// of the callbacks actually
-			// causes the list to be destroyed.
+				return this;
+			};
 
-			l = listenerList.length;
+			Delegate.prototype.handle = function (event) {
+				var i;
+				var l;
+				var type = event.type;
+				var root;
+				var phase;
+				var listener;
+				var returned;
+				var listenerList = [];
+				var target;
+				var eventIgnore = 'ftLabsDelegateIgnore';
 
-			while (target && l) {
-				for (i = 0; i < l; i++) {
-					listener = listenerList[i]; // Bail from this loop if
-					// the length changed and
-					// no more listeners are
-					// defined between i and l.
-					if (!listener) {
+				if (event[eventIgnore] === true) {
+					return;
+				}
+
+				target = event.target; // Hardcode value of Node.TEXT_NODE
+				// as not defined in IE8
+				if (target.nodeType === 3) {
+					target = target.parentNode;
+				} // Handle SVG <use> elements in IE
+
+				if (target.correspondingUseElement) {
+					target = target.correspondingUseElement;
+				}
+
+				root = this.rootElement;
+				phase = event.eventPhase || (event.target !== event.currentTarget ? 3 : 2); // eslint-disable-next-line default-case
+
+				switch (phase) {
+					case 1:
+						//Event.CAPTURING_PHASE:
+						listenerList = this.listenerMap[1][type];
+						break;
+
+					case 2:
+						//Event.AT_TARGET:
+						if (this.listenerMap[0] && this.listenerMap[0][type]) {
+							listenerList = listenerList.concat(this.listenerMap[0][type]);
+						}
+						if (this.listenerMap[1] && this.listenerMap[1][type]) {
+							listenerList = listenerList.concat(this.listenerMap[1][type]);
+						}
+
+						break;
+
+					case 3:
+						//Event.BUBBLING_PHASE:
+						listenerList = this.listenerMap[0][type];
+						break;
+				}
+
+				var toFire = []; // Need to continuously check
+				// that the specific list is
+				// still populated in case one
+				// of the callbacks actually
+				// causes the list to be destroyed.
+
+				l = listenerList.length;
+
+				while (target && l) {
+					for (i = 0; i < l; i++) {
+						listener = listenerList[i]; // Bail from this loop if
+						// the length changed and
+						// no more listeners are
+						// defined between i and l.
+						if (!listener) {
+							break;
+						}
+
+						if (target.tagName && ["button", "input", "select", "textarea"].indexOf(target.tagName.toLowerCase()) > -1 && target.hasAttribute("disabled")) {
+							// Remove things that have previously fired
+							toFire = [];
+						} // Check for match and fire
+						// the event if there's one
+						//
+						// TODO:MCG:20120117: Need a way
+						// to check if event#stopImmediatePropagation
+						// was called. If so, break both loops.
+						else if (listener.matcher.call(target, listener.matcherParam, target)) {
+							toFire.push([event, target, listener]);
+						}
+					} // TODO:MCG:20120117: Need a way to
+					// check if event#stopPropagation
+					// was called. If so, break looping
+					// through the DOM. Stop if the
+					// delegation root has been reached
+					if (target === root) {
 						break;
 					}
 
-					if (target.tagName && ["button", "input", "select", "textarea"].indexOf(target.tagName.toLowerCase()) > -1 && target.hasAttribute("disabled")) {
-						// Remove things that have previously fired
-						toFire = [];
-					} // Check for match and fire
-					// the event if there's one
-					//
-					// TODO:MCG:20120117: Need a way
-					// to check if event#stopImmediatePropagation
-					// was called. If so, break both loops.
-					else if (listener.matcher.call(target, listener.matcherParam, target)) {
-						toFire.push([event, target, listener]);
+					l = listenerList.length; // Fall back to parentNode since SVG children have no parentElement in IE
+					target = target.parentElement || target.parentNode; // Do not traverse up to document root when using parentNode, though
+					if (target instanceof HTMLDocument) {
+						break;
 					}
-				} // TODO:MCG:20120117: Need a way to
-				// check if event#stopPropagation
-				// was called. If so, break looping
-				// through the DOM. Stop if the
-				// delegation root has been reached
-				if (target === root) {
-					break;
 				}
 
-				l = listenerList.length; // Fall back to parentNode since SVG children have no parentElement in IE
+				var ret;
 
-				target = target.parentElement || target.parentNode; // Do not traverse up to document root when using parentNode, though
-
-				if (target instanceof HTMLDocument) {
-					break;
-				}
-			}
-
-			var ret;
-
-			for (i = 0; i < toFire.length; i++) {
-				// Has it been removed during while the event function was fired
-				if (this._removedListeners.indexOf(toFire[i][2]) > -1) {
-					continue;
-				}
-
-				returned = this.fire.apply(this, toFire[i]); // Stop propagation to subsequent
-				// callbacks if the callback returned
-				// false
-
-				if (returned === false) {
-					toFire[i][0][eventIgnore] = true;
-					toFire[i][0].preventDefault();
-					ret = false;
-					break;
-				}
-			}
-
-			return ret;
-		};
-
-		Delegate.prototype.fire = function (event, target, listener) {
-			return listener.handler.call(target, event, target);
-		};
-
-		function matchesTag(tagName, element) {
-			return tagName.toLowerCase() === element.tagName.toLowerCase();
-		}
-
-		function matchesRoot(selector, element) {
-			if (this.rootElement === window) {
-				return (
-					element === document ||
-					element === document.documentElement ||
-					element === window
-				);
-			}
-
-			return this.rootElement === element;
-		}
-
-		function matchesId(id, element) {
-			return id === element.id;
-		}
-
-		Delegate.prototype.destroy = function () {
-			this.off();
-			this.root();
-		};
-		return Delegate
-	})();
-
-	const account = new Delegate(document.querySelector('#account'))
-
-	function ajax(url, data, token, method) {
-            const req = new XMLHttpRequest()
-            req.open(method, url)
-            req.setRequestHeader("Content-type", "application/json");
-            req.setRequestHeader("siteValue", "hyfol");
-            req.setRequestHeader("Authorization", token);
-            req.send(data)
-            return new Promise((resovle, reject) => {
-                req.onreadystatechange = function () {
-                    if(req.readyState==4){
-                        var data = JSON.parse(req.responseText)
-                        resovle(data)
-                    }
-                }
-            })
-
-        };
-
-	let baseURL = 'http://api.leandow-technology.com/api/'
-	async function getData(url, data, token, method = "POST", type = "json") {
-		const headers = { "siteValue": "hyfol" }
-		const options = {
-			method: method,
-			headers
-		}
-		if (type == 'json') {
-			headers['Content-Type'] = 'application/json'
-			data && (options.body = JSON.stringify(data))
-		}
-		token && (headers['Authorization'] = token)
-		if (type == 'formData') {
-			headers['Content-Type'] = 'application/x-www-form-urlencoded'
-		}
-		try {
-			let response = await fetch(baseURL.concat(url), options);
-			return response.json();
-		} catch (error) {
-			return ajax(baseURL.concat(url), options.body, token, method)
-		}
-	}
-
-
-	var getCollectList = function () {
-		var productIds, currentPage, total, sectionId
-		
-		function getCollectList(event) {
-			var pageSectionId = document.querySelector(".page__sub-header").parentElement.getAttribute("data-section-id")
-			const collectList = {
-				current: 1,
-				customerId: "{{customer.id}}",
-				size: 100
-			}
-
-			getData("customerCollectionProduct/collectionProductList", collectList)
-				.then(res => {
-					if (res.data.records.length < 1) {
-						document.querySelector('.collect-body').style.display = "block"
-						document.querySelector(".wish_loading").style.display = "none"
-						return
-					}
-					productIds = res.data.records
-					currentPage = 1
-					total = res.data.total
-					var ids = res.data.records.map(i => "id:".concat(i.productId))
-					ids = ids.join(' OR ')
-					// fetch(`/search?section_id=template--16541572563159__1651059386d9622f2b&q=${ids}&type=product`,{method:"GET", credentials: 'same-origin'})
-					fetch(`/search?q=${ids}&type=product`)
-						.then((res) => {
-							res.text().then((content) => {
-								document.querySelector('.collect-body').style.display = "none"
-								document.querySelector(".wish_loading").style.display = "none"
-								const dom = document.createElement('div')
-								dom.innerHTML = content
-								let heading = dom.querySelector(".collection__dynamic-part .collection__toolbar")
-								heading && heading.remove()
-								document.querySelector('.collect').appendChild(dom.querySelector(".collection__dynamic-part"))
-								document.querySelector('.collect').appendChild(dom.querySelector('[data-section-type="collection"] .modal'))
-								sectionId=dom.querySelector('[data-section-type="collection"]').getAttribute('data-section-id')
-							})
-						})
-				})
-		}
-
-		async function nextCollectList(event, target) {
-			event.preventDefault()
-			window.scroll(0, 0)
-
-			var currentIds,content,url
-			var nextPage=target.getAttribute('data-page')
-			var productList = document.querySelector(".product-list--collection")
-			document.querySelector(".wish_loading").style.display = "flex"
-			productList.style.display = "none"
-
-			if (sectionId && total <= productIds.length) {
-				currentIds = productIds
-				url='/search?section_id='.concat(sectionId,"&page=",nextPage,'&')
-			} else {
-				const collectList = {
-					current: nextPage,
-					customerId: "{{customer.id}}",
-					size: 24
-				}
-				var response = await getData("customerCollectionProduct/collectionProductList", collectList)
-				currentIds = response.data.records
-				url="/search?"
-			}
-
-			var ids = currentIds.map(i => "id:".concat(i.productId))
-			ids = ids.join(' OR ')
-			content = await fetch(url.concat(`q=${ids}&type=product`)).then(res => res.text())
-			document.querySelector(".wish_loading").style.display = "none"
-			const dom = document.createElement('div')
-			dom.innerHTML = content
-			let heading = dom.querySelector(".collection__dynamic-part .collection__toolbar")
-			heading && heading.remove()
-			var productContaner = document.querySelector('.collect ')
-			var oldProductList = document.querySelector('.collect .collection__dynamic-part')
-			var newProductList = dom.querySelector(".collection__dynamic-part")
-			productContaner && productContaner.replaceChild(newProductList, oldProductList)
-
-		}
-
-		if ("{{ customer.id}}") {
-			getCollectList()
-			account.on('click', '.pagination__nav-item.link,.pagination__next,.pagination__prev', nextCollectList)
-			account.on('click', '.collect_btn', (event, target) => {
-				event.preventDefault()
-				var productTtem = target.closest(".product-item")
-				productTtem && productTtem.remove();
-			})
-		}
-
-	}();
-
-	~function () {
-		//**  ACCPOUNT CUSTOMERS  ***//        
-		function bindEvent(container, target, call) {
-			let content = document.querySelector(container)
-			content.addEventListener('click', (e) => {
-				if (!e.target.classList.contains(target)) return
-				e.preventDefault()
-				call && call(e, content, target)
-			})
-
-		}
-
-		//编辑客户地址 
-		function deleteAddresses() {
-			function getFormData(form) {
-				var hash = [];
-				for (var i = 0, len = form.elements.length; i < len; i++) {
-					var formElement = form.elements[i];
-					if (formElement.name === '' || formElement.disabled) {
+				for (i = 0; i < toFire.length; i++) {
+					// Has it been removed during while the event function was fired
+					if (this._removedListeners.indexOf(toFire[i][2]) > -1) {
 						continue;
 					}
-					if (formElement.name && !formElement.disabled && (formElement.checked || /select|textarea/i.test(formElement.nodeName) || /hidden|text|search|tel|url|email|password|datetime|date|month|week|time|datetime-local|number|range|color/i.test(formElement.type))) {
-						hash.push(formElement.name + '=' + formElement.value)
+
+					returned = this.fire.apply(this, toFire[i]); // Stop propagation to subsequent
+					// callbacks if the callback returned
+					// false
+
+					if (returned === false) {
+						toFire[i][0][eventIgnore] = true;
+						toFire[i][0].preventDefault();
+						ret = false;
+						break;
 					}
 				}
-				return hash.join('&');
+
+				return ret;
+			};
+
+			Delegate.prototype.fire = function (event, target, listener) {
+				return listener.handler.call(target, event, target);
+			};
+
+			function matchesTag(tagName, element) {
+				return tagName.toLowerCase() === element.tagName.toLowerCase();
 			}
 
-			document.querySelector('.form__submit[data-submitForm]').onclick = function (e) {
-				e.preventDefault()
-				const form = e.target.closest('form')
-				const formData = getFormData(form)
-				fetch('/account/addresses', {
-					method: "POST",
-					headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-					body: formData
-				}).then(response => {
-					location.reload()
+			function matchesRoot(selector, element) {
+				if (this.rootElement === window) {
+					return (
+						element === document ||
+						element === document.documentElement ||
+						element === window
+					);
+				}
+				return this.rootElement === element;
+			}
+
+			function matchesId(id, element) {
+				return id === element.id;
+			}
+
+			Delegate.prototype.destroy = function () {
+				this.off();
+				this.root();
+			};
+			return Delegate
+		})();
+
+		const account = new Delegate(document.querySelector('#account'))
+
+		function ajax(url, data, token, method) {
+			const req = new XMLHttpRequest()
+			req.open(method, url)
+			req.setRequestHeader("Content-type", "application/json");
+			req.setRequestHeader("siteValue", "hyfol");
+			token && req.setRequestHeader("Authorization", token);
+			req.send(data)
+			return new Promise((resovle, reject) => {
+				req.onreadystatechange = function () {
+					if (req.readyState == 4) {
+						try {
+							var data = JSON.parse(req.responseText)
+							resovle(data)
+						} catch (error) {
+							resovle(req.responseText)
+						}
+					}
+				}
+			})
+
+		};
+
+		let baseURL = 'http://api.leandow-technology.com/api/'
+		async function getData(url, data, token, method = "POST", type = "json") {
+			const headers = { "siteValue": "hyfol" }
+			const options = {
+				method: method,
+				headers
+			}
+			if (type == 'json') {
+				headers['Content-Type'] = 'application/json'
+				data && (options.body = JSON.stringify(data))
+			}
+			token && (headers['Authorization'] = token)
+			if (type == 'formData') {
+				headers['Content-Type'] = 'application/x-www-form-urlencoded'
+			}
+			try {
+				let response = await fetch(baseURL.concat(url), options);
+				return response.json();
+			} catch (error) {
+				return ajax(baseURL.concat(url), options.body, token, method)
+			}
+		}
+
+		/* 收藏 */
+		var getCollectList = function () {
+			var productIds, currentPage, total, sectionId
+
+			function getCollectList(event) {
+				var pageSectionId = document.querySelector(".page__sub-header").parentElement.getAttribute("data-section-id")
+				const collectList = {
+					current: 1,
+					customerId: "{{customer.id}}",
+					size: 100
+				}
+
+				getData("customerCollectionProduct/collectionProductList", collectList)
+					.then(res => {
+						if (res.data.records.length < 1) {
+							document.querySelector('.collect-body').style.display = "block"
+							document.querySelector(".wish_loading").style.display = "none"
+							return
+						}
+						productIds = res.data.records
+						currentPage = 1
+						total = res.data.total
+						var ids = res.data.records.map(i => "id:".concat(i.productId))
+						ids = ids.join(' OR ')
+						fetch(`/search?q=${ids}&type=product`)
+							.then((res) => {
+								res.text().then((content) => {
+									document.querySelector('.collect-body').style.display = "none"
+									document.querySelector(".wish_loading").style.display = "none"
+									const dom = document.createElement('div')
+									dom.innerHTML = content
+									let heading = dom.querySelector(".collection__dynamic-part .collection__toolbar")
+									heading && heading.remove()
+									document.querySelector('.collect').appendChild(dom.querySelector(".collection__dynamic-part"))
+									document.querySelector('.collect').appendChild(dom.querySelector('[data-section-type="collection"] .modal'))
+									sectionId = dom.querySelector('[data-section-type="collection"]').getAttribute('data-section-id')
+								})
+							})
+					})
+			}
+
+			async function nextCollectList(event, target) {
+				event.preventDefault()
+				window.scroll(0, 0)
+
+				var currentIds, content, url
+				var nextPage = target.getAttribute('data-page')
+				var productList = document.querySelector(".product-list--collection")
+				document.querySelector(".wish_loading").style.display = "flex"
+				productList.style.display = "none"
+
+				if (sectionId && total <= productIds.length) {
+					currentIds = productIds
+					url = '/search?section_id='.concat(sectionId, "&page=", nextPage, '&')
+				} else {
+					const collectList = {
+						current: nextPage,
+						customerId: "{{customer.id}}",
+						size: 24
+					}
+					var response = await getData("customerCollectionProduct/collectionProductList", collectList)
+					currentIds = response.data.records
+					url = "/search?"
+				}
+
+				var ids = currentIds.map(i => "id:".concat(i.productId))
+				ids = ids.join(' OR ')
+				content = await fetch(url.concat(`q=${ids}&type=product`)).then(res => res.text())
+				document.querySelector(".wish_loading").style.display = "none"
+				const dom = document.createElement('div')
+				dom.innerHTML = content
+				let heading = dom.querySelector(".collection__dynamic-part .collection__toolbar")
+				heading && heading.remove()
+				var productContaner = document.querySelector('.collect ')
+				var oldProductList = document.querySelector('.collect .collection__dynamic-part')
+				var newProductList = dom.querySelector(".collection__dynamic-part")
+				productContaner && productContaner.replaceChild(newProductList, oldProductList)
+
+			}
+
+			if ("{{ customer.id}}") {
+				getCollectList()
+				account.on('click', '.pagination__nav-item.link,.pagination__next,.pagination__prev', nextCollectList)
+				account.on('click', '.collect_btn', (event, target) => {
+					event.preventDefault()
+					var productTtem = target.closest(".product-item")
+					productTtem && productTtem.remove();
+				})
+			}
+
+		}();
+
+		function getFormData(form) {
+			var hash = [];
+			for (var i = 0, len = form.elements.length; i < len; i++) {
+				var formElement = form.elements[i];
+				if (formElement.name === '' || formElement.disabled) {
+					continue;
+				}
+				if (formElement.name && !formElement.disabled && (formElement.checked || /select|textarea/i.test(formElement.nodeName) || /hidden|text|search|tel|url|email|password|datetime|date|month|week|time|datetime-local|number|range|color/i.test(formElement.type))) {
+					hash.push(formElement.name + '=' + formElement.value)
+				}
+			}
+			return hash.join('&');
+		}
+
+		/* 个人中心 */
+		~function () {
+			//**  ACCPOUNT CUSTOMERS  ***//        
+			function bindEvent(container, target, call) {
+				let content = document.querySelector(container)
+				content.addEventListener('click', (e) => {
+					if (!e.target.classList.contains(target)) return
+					e.preventDefault()
+					call && call(e, content, target)
 				})
 
 			}
 
-			document.querySelector('.address-list').addEventListener('click', ({ target }) => {
-				if (!target.dataset.target) return
-				if (confirm("Are you sure you wish to delete this address?")) {
-					fetch(target.dataset.target, { method: "POST", headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: '_method=delete' }).then(response => {
-						location.reload()
-					})
-				}
-			})
-		}
-		deleteAddresses()
 
 
-		//** 	个人中心   **//
-		async function getToken() {
-			let token
-			const customerJson = {
-				email: "{{ customer.email}}",
-				id: "{{ customer.id }}"
-			}
-
-			let url = baseURL.concat('customerAccount/login')
-			const response = await fetch(url, {
-				method: "POST",
-				body: JSON.stringify(customerJson),
-				headers: { 'content-type': 'application/json', 'siteValue': 'hyfol' }
-			})
-			try {
-				if (response.status !== 200) return ''
-				const data = await response.json()
-				if (data.code !== 200) return ''
-				console.log(`-----tonken-----`, data);
-				token = token || data.data
-				const authorToken = {
-					token: token,
-					date: Date.now() + 300000
+			//** 	个人中心   **//
+			async function getToken() {
+				let token
+				const customerJson = {
+					email: "{{ customer.email}}",
+					id: "{{ customer.id }}"
 				}
 
-			} catch (error) {
-				token = ''
+				let url = baseURL.concat('customerAccount/login')
+				const response = await fetch(url, {
+					method: "POST",
+					body: JSON.stringify(customerJson),
+					headers: { 'content-type': 'application/json', 'siteValue': 'hyfol' }
+				})
+				try {
+					if (response.status !== 200) return ''
+					const data = await response.json()
+					if (data.code !== 200) return ''
+					// console.log(`-----tonken-----`, data);
+					token = token || data.data
+					const authorToken = {
+						token: token,
+						date: Date.now() + 300000
+					}
+
+				} catch (error) {
+					token = ''
+				}
+				return token
 			}
-			return token
-		}
 
-		async function getMyCoupon(token, type = "unused") {//自己的优惠券
-			const { data, code } = await getData('customerAccount/getMyPriceRules', {type:type}, token, "GET")
-			console.log('getCoupons', data, code)
-			return data
-		}
+			async function getMyCoupon(token, type = "unused") {//自己的优惠券
+				const { data, code } = await getData('customerAccount/getMyPriceRules', { type: type }, token, "GET")
+				// console.log('getCoupons', data, code)
+				return data
+			}
 
-		async function getCoupons(token) {//获取优惠券
-			if (token) {
+			async function getCoupons(token) {//获取优惠券
+				if (token) {
 
-				const { data, code } = await getData('customerAccount/getPriceRules', '', token, "GET", 'formData')
+					const { data, code } = await getData('customerAccount/getPriceRules', '', token, "GET", 'formData')
 
-				const unusedData = await getMyCoupon(token)
-				const expireData = await getMyCoupon(token, 'expired')
-				if (code == 200) {
-					const couponView = document.querySelector('.my-account .my-coupons__list')
-					const unusedCoupons = document.querySelector('.unused__coupons .my-coupons__list')
-					const expiredCoupons = document.querySelector('.expired__coupons .my-coupons__list')
+					const unusedData = await getMyCoupon(token)
+					const expireData = await getMyCoupon(token, 'expired')
+					if (code == 200) {
+						const couponView = document.querySelector('.my-account .my-coupons__list')
+						const unusedCoupons = document.querySelector('.unused__coupons .my-coupons__list')
+						const expiredCoupons = document.querySelector('.expired__coupons .my-coupons__list')
 
-					if (data && false) {
-						couponView.classList.remove("my-coupons_empty")
-						let couponList = data.map((item, i) => {
-							return `<div class="my-coupons__item" data-index="${item.id}">
+						if (data && false) {
+							couponView.classList.remove("my-coupons_empty")
+							let couponList = data.map((item, i) => {
+								return `<div class="my-coupons__item" data-index="${item.id}">
 									<p>${item.title[0]}</p>	
 									<p>${item.title[1]}</p>	
 									<p>Code:${item.id}</p>	
@@ -2650,13 +2614,13 @@
 										<span class="round-right"></span>
 									</div>`}).join('')
 
-						couponView.innerHTML = couponList
-					}
+							couponView.innerHTML = couponList
+						}
 
-					if (unusedData) {
-						unusedCoupons.classList.remove("my-coupons_empty")
-						let unusedList = unusedData.map((item, i) => {
-							return `<div class="my-coupons__item" data-index="${item.id}">
+						if (unusedData) {
+							unusedCoupons.classList.remove("my-coupons_empty")
+							let unusedList = unusedData.map((item, i) => {
+								return `<div class="my-coupons__item" data-index="${item.id}">
 									<p>${item.title[0]}</p>	
 									<p>${item.title[1]}</p>	
 									<p>Code:${item.id}</p>	
@@ -2667,13 +2631,13 @@
 										<span class="round-left"></span>
 										<span class="round-right"></span>
 									</div>`}).join('')
-						unusedList && (unusedCoupons.innerHTML = unusedList)
-					}
+							unusedList && (unusedCoupons.innerHTML = unusedList)
+						}
 
-					if (expireData) {
-						expiredCoupons.classList.remove("my-coupons_empty")
-						let expireList = expireData.map((item, i) => {
-							return `<div class="my-coupons__item" data-index="${item.id}">
+						if (expireData) {
+							expiredCoupons.classList.remove("my-coupons_empty")
+							let expireList = expireData.map((item, i) => {
+								return `<div class="my-coupons__item" data-index="${item.id}">
 								<p>${item.title[0]}</p>	
 								<p>${item.title[1]}</p>	
 									<p>Code:${item.id}</p>	
@@ -2685,275 +2649,435 @@
 											<span class="round-right"></span>
 											</div>`}).join('')
 
-						expireList && (expiredCoupons.innerHTML = expireList)
+							expireList && (expiredCoupons.innerHTML = expireList)
+						}
 					}
-				}
 
-				console.log('getMyCoupon', data);
+					// console.log('getCoupon', data);
 
-			} else console.info(token)
-		}
-
-		async function getPoint(token) {//获取积分记录
-			const body = {
-				pageNum: 1,
-				pageSize: 10,
-				type: "all, earned, pointAmount, expired"
+				} else console.info(token)
 			}
-			const data = await getData('customerAccount/getPointInfo', body, token)
-			const { pointsExpiredSoon, profileDetalls, totalPoints } = data.data
-			const templateExp = []
-			const templateEarned = []
-			const totalContainer = document.querySelector('.profile_total')
-			const expireContainer = document.querySelector('.profile_expire')
-			const allProfile = document.querySelector('.profile-all tbody')
-			const expiredInfo = document.querySelector('.profile-expired tbody')
-			const earnedInfo = document.querySelector('.profile-earned tbody')
-			totalContainer.innerHTML = totalPoints || 0;
-			expireContainer.innerHTML = pointsExpiredSoon || 0;
-			const templateAll = profileDetalls.records.map(item => {
-				let tempStr
-				if (item.type == 'cost') {
-					tempStr = `<tr>
+
+			async function getPoint(token) {//获取积分记录
+				const body = {
+					pageNum: 1,
+					pageSize: 10,
+					type: "all, earned, pointAmount, expired"
+				}
+				const data = await getData('customerAccount/getPointInfo', body, token)
+				const { pointsExpiredSoon, profileDetalls, totalPoints } = data.data
+				const templateExp = []
+				const templateEarned = []
+				const totalContainer = document.querySelector('.profile_total')
+				const expireContainer = document.querySelector('.profile_expire')
+				const allProfile = document.querySelector('.profile-all tbody')
+				const expiredInfo = document.querySelector('.profile-expired tbody')
+				const earnedInfo = document.querySelector('.profile-earned tbody')
+				totalContainer.innerHTML = totalPoints || 0;
+				expireContainer.innerHTML = pointsExpiredSoon || 0;
+				const templateAll = profileDetalls.records.map(item => {
+					let tempStr
+					if (item.type == 'cost') {
+						tempStr = `<tr>
 							<td>${item.createTime}</td>
 							<td>${item.pointType}</td>
 							<td class="profile-amount">${item.pointAmount}</td>
 							<td>${item.expireTime}</td>
 						</tr>`
-					templateExp.push(tempStr)
-				} else if (item.type == 'earned') {
-					tempStr = `<tr>
+						templateExp.push(tempStr)
+					} else if (item.type == 'earned') {
+						tempStr = `<tr>
 							<td>${item.createTime}</td>
 							<td>${item.pointType}</td>
 							<td class="profile-amount">+ ${item.pointAmount}</td>
 							<td>${item.expireTime}</td>
 						</tr>`
-					templateEarned.push(tempStr)
-				} else {
-					tempStr = `<tr>
+						templateEarned.push(tempStr)
+					} else {
+						tempStr = `<tr>
 							<td>${item.createTime}</td>
 							<td>${item.pointType}</td>
 							<td class="profile-amount">${item.pointAmount}</td>
 							<td>${item.expireTime}</td>
 						</tr>`
-				}
+					}
 
-				return tempStr
-			})
-			allProfile.innerHTML = templateAll.join('')
-			expiredInfo.innerHTML = templateExp.join('')
-			earnedInfo.innerHTML = templateEarned.join('')
-
-		}
-
-		async function getVipExplain(token) {
-			const response = await getData('customerAccount/getVipDesc', '', token, "GET", "formData")
-			console.log('getVip-responsse', response)
-		}
-
-		async function getCustomer(token) {
-
-			const data = await getData('customerAccount/selectCustomer', '', token)
-
-			if (!data || data.code !== 200) {
-				return getCustomer()
-			}
-			const { siteType, totalPoint, totalSpent, vipType } = data.data
-			const pointContainer = document.querySelector('.vip-integral')
-			const userVip = document.querySelector('.vip-user__grade')
-			totalPoint && (pointContainer.innerHTML = totalPoint)
-			userVip && (userVip.innerHTML = vipType)
-			console.log('getCustomer', data)
-
-
-		}
-
-		async function addPoint(token) {
-			const pointData = {
-				expireTime: "2022-10-05 12:00:00",
-				pointAmount: 10000,
-				pointType: "Emaill Verification"
-			}
-
-			const data = await getData('customerAccount/addPoint', pointData, token)
-			console.log('addPoint', data)
-		}
-
-		async function deductPoint(token) {
-			const pointData = { expireTime: new Date(Date.now() + 2592000000).toLocaleString(), pointAmount: 10000, pointType: "Emaill Verification" }
-			const data = await getData('customerAccount/deductPoint', pointData, token)
-			console.log('deductPoint', data)
-		}
-
-
-		async function fn() {
-			const token = await getToken()
-			// addPoint(token)
-			// addPoint()
-			getCustomer(token)
-			// getMyCoupon()
-			getCoupons(token)
-			getPoint(token)
-		} fn();
-
-		class DetailsMenu extends HTMLElement {
-			constructor() {
-				super();
-				this.addEventListener('click', (e) => {
-					e.preventDefault()
-					let target = e.target
-					if (!['summary'].includes(target.tagName.toLowerCase()) || target.getAttribute('aria-expanded') === 'true') return
-					this.onAcativ(target)
-
+					return tempStr
 				})
-			}
-
-			onAcativ(target) {
-				this.close(target)
-				const activePage = this.querySelector(`.page__item[data-index="${target.dataset.index}"]`)
-				activePage.setAttribute('aria-hidden', false)
-				target.setAttribute('aria-expanded', true)
+				allProfile.innerHTML = templateAll.join('')
+				expiredInfo.innerHTML = templateExp.join('')
+				earnedInfo.innerHTML = templateEarned.join('')
 
 			}
 
-			close() {
-				const oldActiveNav = this.querySelector('[aria-expanded="true"]')
-				const oldActivePage = this.querySelector('[aria-hidden="false"]')
-				oldActivePage.setAttribute('aria-hidden', true)
-				oldActiveNav.setAttribute('aria-expanded', false);
+			async function getVipExplain(token) {//规则
+				const response = await getData('customerAccount/getVipDesc', '', token, "GET", "formData")
+				// console.log('getVip-responsse', response)
 			}
-		}
-		customElements.define('details-menu', DetailsMenu);
 
-		const rules = document.querySelector('.vip-rules')
-		const user = document.querySelector('.my-account')
-		bindEvent('.my_overview', 'vip-rules__link', () => {
-			user.style.display = "none"
-			rules.style.display = 'block'
-			window.scroll(0, 0)
-		})
-		bindEvent('.my_overview', 'close-rule__page', () => {
-			rules.style.display = 'none'
-			user.style.display = "block"
-		})
+			async function getCustomer(token) {
 
-		//  END  
+				const data = await getData('customerAccount/selectCustomer', '', token)
 
-	}()
-</script>
+				if (!data || data.code !== 200) {
+					return getCustomer()
+				}
+				const { siteType, totalPoint, totalSpent, vipType } = data.data
+				const pointContainer = document.querySelector('.vip-integral')
+				const userVip = document.querySelector('.vip-user__grade')
+				totalPoint && (pointContainer.innerHTML = totalPoint)
+				userVip && (userVip.innerHTML = vipType)
+				// console.log('getCustomer', data)
 
-<script>
-	~ function () {
-		let getDataFlag = false;
-		let ajaxObj = ''
-		let currentPage = ''
-		function getData(url, fn) {
-			// if (getDataFlag) return;
-			getDataFlag = true;
-			let http = new XMLHttpRequest();
-			http.open('GET', url);
-			http.send();
-			http.onreadystatechange = () => {
-				if (http.readyState == 4) {
-					getDataFlag = false;
-					if (http.status == 200 && !getDataFlag) {
-						fn(http.responseText);
-					}
+
+			}
+
+			async function addPoint(token) {//add
+				const pointData = {
+					expireTime: "2022-10-05 12:00:00",
+					pointAmount: 10000,
+					pointType: "Emaill Verification"
+				}
+
+				const data = await getData('customerAccount/addPoint', pointData, token)
+				console.log('addPoint', data)
+			}
+
+			async function deductPoint(token) {
+				const pointData = { expireTime: new Date(Date.now() + 2592000000).toLocaleString(), pointAmount: 10000, pointType: "Emaill Verification" }
+				const data = await getData('customerAccount/deductPoint', pointData, token)
+				// console.log('deductPoint', data)
+			}
+
+			async function fn() {
+				const token = await getToken()
+				// addPoint(token)
+				// addPoint()
+				getCustomer(token)
+				// getMyCoupon()
+				getCoupons(token)
+				getPoint(token)
+			} fn();
+
+			class DetailsMenu extends HTMLElement {
+				constructor() {
+					super();
+					this.addEventListener('click', (e) => {
+						e.preventDefault()
+						let target = e.target
+						if (!['summary'].includes(target.tagName.toLowerCase()) || target.getAttribute('aria-expanded') === 'true') return
+						this.onAcativ(target)
+
+					})
+				}
+
+				onAcativ(target) {
+					this.close(target)
+					const activePage = this.querySelector(`.page__item[data-index="${target.dataset.index}"]`)
+					activePage.setAttribute('aria-hidden', false)
+					target.setAttribute('aria-expanded', true)
+
+				}
+
+				close() {
+					const oldActiveNav = this.querySelector('[aria-expanded="true"]')
+					const oldActivePage = this.querySelector('[aria-hidden="false"]')
+					oldActivePage.setAttribute('aria-hidden', true)
+					oldActiveNav.setAttribute('aria-expanded', false);
 				}
 			}
-			ajaxObj = http
-		}
+			customElements.define('details-menu', DetailsMenu);
 
-		function loading(bool) {
-			let loading = document.querySelector('#loading')
-			let body_me = document.querySelector('#body_me')
-			let nullbox = document.querySelector('#order_null')
-			if (bool) {
-				loading.style.display = 'block';
-				body_me.innerHTML = ''
-				nullbox.style.display = 'none'
-			} else {
-				loading.style.display = 'none';
+			const rules = document.querySelector('.vip-rules')
+			const user = document.querySelector('.my-account')
+			bindEvent('.my_overview', 'vip-rules__link', () => {
+				user.style.display = "none"
+				rules.style.display = 'block'
+				window.scroll(0, 0)
+			})
+			bindEvent('.my_overview', 'close-rule__page', () => {
+				rules.style.display = 'none'
+				user.style.display = "block"
+			})
+			//  END  
+		}()
+
+		function createClass(classObj, protoList) {
+			var pro = classObj.prototype
+			for (var i = 0; i < protoList.length; i++) {
+				var descriptor = protoList[i]
+				descriptor.enumerable = descriptor.enumerable || false;
+				descriptor.configurable = true;
+				if ("value" in descriptor) descriptor.writable = true;
+				pro && Object.defineProperty(pro, descriptor.key, descriptor)
 			}
+			return classObj
 		}
 
-		function upData(data) {
-			loading(false);
-			let body_me = document.querySelector('#body_me')
-			body_me.style.display = 'block'
-			body_me.innerHTML = data
-			isnull(data)
-		}
-
-		function isnull(data) {
-
-			let fag = new DOMParser().parseFromString(data, 'text/html').querySelectorAll('.card .order-box')
-			let nullbox = document.querySelector('#order_null')
-			let body_me = document.querySelector('#body_me')
-			if (!fag.length) {
-				nullbox.style.display = 'block'
-				body_me.style.display = 'none'
-			} else {
-				nullbox.style.display = 'none'
+		var AccountSetion = (function () {
+			function Account(element) {
+				this.element = element
+				this.accountGate = new Delegate(this.element)
+				this.navigation = this.element.querySelectorAll('.card__linklist-item')
+				this.mobileOrderNavs = this.element.querySelectorAll('[data-type="orders-list"]')
+				this.pcOrderNavs = this.element.querySelectorAll('.orders-nav__item')
+				this.accountPages = this.element.querySelectorAll('[data-type="accountPage"]')
+				this.init()
+				this.eventListener()
 			}
-		}
-
-		function event() {
-			let orders_list = document.querySelector("#orders-list")
-			let orders_li = document.querySelectorAll("#orders-list>li")
-			let post = document.querySelector('#post');
-			let body_me = document.querySelector('#body_me')
-			let nullbox = document.querySelector('#order_null')
-			orders_list.onclick = (ev) => {
-				let target = ev.target.tagName === "LI" ? ev.target : ev.target.parentElement;
-				let item = target.dataset.item;
-				if (currentPage === item) return
-				currentPage = item
-				if (target.tagName === "LI") {
-					for (let i = 0; i < orders_li.length; i++) {
-						orders_li[i].classList.remove('current')
-					}
-					target.classList.add('current')
-
-					try { ajaxObj.abort() } catch (error) { }
-					if (item !== 'post-sale') {
-						post.style.display = 'none'
-						loading(true);
-						let url = '?section_id=my-' + item;
-						getData(url, upData)
+			createClass(Account, [{
+				key: "init",
+				value: function () {
+					if (window.location.hash) {
+						this.pageSwitch()
 					} else {
-						loading(false);
-						post.style.display = 'block'
-						body_me.style.display = 'none'
+						this.element.querySelectorAll('[data-right="my_overview"]').forEach(i => {
+							i.className = "card__linklist-item link text--stronger "
+						})
+						document.querySelector(".my_overview").style.display = "block"
+					}
+					this.renderMobOrder()
+					this.changeMobileOrderView()
+				}
+			}, {
+				key: "eventListener",
+				value: function () {
+					this.accountGate.on('click', '[data-type="orders-list"]', this.changeMobOrderNav.bind(this))//mobile order list
+					this.accountGate.on('click', '.order-preview__item', this.orderQuickView.bind(this))//pc overview list
+					this.accountGate.on('click', '[data-action="left-nav"]', this.changeNavigate.bind(this))//pc left navlist
+					this.accountGate.on('click', '.form__submit[data-submitForm]', this.addAddresses.bind(this))//add
+					this.accountGate.on('click', '[data-action="deleteAddresses"]', this.romoveAddresses.bind(this)) //remove
+				}
+			}, {
+				key: "pageSwitch",
+				value: function (ev, target) {
+					var nowNav = window.location.hash.split("#")[1].replace(/\%20/g, " ")
+					var hashValue = nowNav.split('+')[0]
+					var navigations = this.navigation
+					for (let index = 0; index < navigations.length; index++) {
+						var element = navigations[index];
+						if (element.getAttribute('aria-label') == nowNav) {
+							document.querySelector('.breadcrumb__link[aria-current="page"]').innerHTML = nowNav
+							element.className = " card__linklist-item link text--stronger "
+							var enode = element.getAttribute("data-right")
+							document.querySelector("." + enode).style.display = "block"
+						} else {
+							element.className = " card__linklist-item "
+						}
+					}
+					if (hashValue == 'Orders') {
+						document.querySelectorAll('[aria-label="My Orders"]').forEach(i => {
+							i.className = " card__linklist-item link text--stronger "
+						})
+						document.querySelector('.my_orders').style.display = "block"
+					}
+					this.changePcOrderView()
+					window.scroll(0, 0)
+				}
+			}, {
+				key: "changeMobOrderNav",
+				value: function (ev, target) {
+					var navName = target.getAttribute('aria-label')
+					var url = window.location.hash.split("+")[1]
+					if (url == navName) return;
+					window.location.hash = "Orders+" + navName
+					this.changeMobileOrderView()
+					this.renderMobOrder()
+				}
+			}, {
+				key: "loading",
+				value: function (bool) {
+					let loading = document.querySelector('#loading')
+					let body_me = document.querySelector('#body_me')
+					let nullbox = document.querySelector('#order_null')
+					if (bool) {
+						loading.style.display = 'block';
+						body_me.innerHTML = ''
 						nullbox.style.display = 'none'
+					} else {
+						loading.style.display = 'none';
 					}
 				}
+			}, {
+				key: "romoveAddresses",
+				value: function (ev, target) {
+					if (!target.dataset.target) return
+					if (confirm("Are you sure you wish to delete this address?")) {
+						fetch(target.dataset.target, { method: "POST", headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: '_method=delete' }).then(response => {
+							location.reload()
+						})
+					}
+				}
+			}, {
+				key: "addAddresses",
+				value: function (ev, target) {
+					ev.preventDefault()
+					var form = e.target.closest('form')
+					var formData = getFormData(form)
+					fetch('/account/addresses', {
+						method: "POST",
+						headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+						body: formData
+					}).then(response => {
+						location.reload()
+					})
+				}
+			}, {
+				key: "orderQuickView",
+				value: function changeNav(ev, target) {
+					var navName = target.getAttribute('data-nav-type')
+					var navigations = this.navigation
+					window.location.hash = "Orders+" + navName
+					var url = navName.toLowerCase()
+					var list = this.accountPages
+					for (let i = 0; i < list.length; i++) {
+						list[i].style.display = "none"
+					}
+					window.scroll(0, 0)
 
-			}
-		}
+					if (navName === 'Post-sale') {
+						for (let i = 0; i < navigations.length; i++) {
+							var el = navigations[i];
+							if (el.getAttribute("data-right") == "my_postsale") {
+								el.className = "card__linklist-item link text--stronger "
+							} else {
+								el.className = "card__linklist-item "
+							}
+						}
+						document.querySelector(".my_postsale").style.display = "block"
+						return
+					}
 
-		window.onhashchange = function (e) {
-			try {
-				var url = window.location.hash.split("+")[1].toLowerCase()
-				document.querySelectorAll('#orders-list [data-item]').forEach(item => item.classList.remove('current'))
-				const nav = document.querySelector(`#orders-list [data-item="orders-${url}"]`)
-				nav.classList.add('current')
-				getData('?section_id=my-'+nav.dataset.item, upData)
-			} catch (error) {
-			}
+					for (let i = 0; i < navigations.length; i++) {
+						var el = navigations[i];
+						if (el.getAttribute("data-right") == "my_orders") {
+							el.className = "card__linklist-item link text--stronger "
+						} else {
+							el.className = "card__linklist-item "
+						}
+					}
 
-		}
+					document.querySelector(".my_orders").style.display = "block"
+					this.pcOrderNavs.forEach((item) => {
+						item.setAttribute("data-action", false)
+					})
 
-		function init() {
-			let url = '?section_id=my-orders-all';
-			let nullbox = document.querySelector('#order_null')
-			nullbox.style.display = 'none'
-			getData(url, upData)
-		}
-		event();
-		init();
-	}()
+					document.querySelector(".order-" + url).setAttribute("data-action", true)
+					var index = document.querySelector(".order-" + url).getAttribute("data-index")
+					document.querySelectorAll('.order-item__card').forEach((item) => {
+						if (item.getAttribute("data-index") == index) {
+							item.setAttribute("aria-hidden", false)
+						} else {
+							item.setAttribute("aria-hidden", true)
+						}
+					})
+				}
+			}, {
+				key: "orderNavChange",
+				value: function (ev, target) {
+					document.querySelector(".my_orders").style.display = "block"
+					this.pcOrderNavs.forEach((item) => {
+						item.setAttribute("data-action", false)
+					})
+				}
+			}, {
+				key: "changePcOrderView",
+				value: function () {
+					if (!location.hash) return;
+					var hash = location.hash.replace('#', '')
+					var hashName = hash.split("+")[0]
+					var hashKey = hash.replace('%20', ' ')
+					if (hashName != "Orders") return;
+					var hashValue = window.location.hash.split("+")[1]
+					var orderViews = this.element.querySelectorAll('.order-item__card')
+					var index
+					this.pcOrderNavs.forEach((item, i) => {
+						if (item.getAttribute('aria-label') == hashValue) {
+							item.setAttribute('data-action', true)
+							index = item.getAttribute('data-index')
+						} else {
+							item.setAttribute('data-action', false)
 
+						}
+					})
+					orderViews.forEach(i => {
+						if (i.getAttribute('data-index') == index) {
+							i.setAttribute('aria-hidden', false)
+						} else {
+							i.setAttribute('aria-hidden', true)
+						}
+					})
+				}
+			}, {
+				key: "changeMobileOrderView",
+				value: function (ev, target) {
+					if (!location.hash) return;
+					var hashName = window.location.hash.replace('#', '').split("+")[0]
+					if (hashName != "Orders") return;
+					var hashValue = window.location.hash.split("+")[1]
+					this.mobileOrderNavs.forEach(i => {
+						if (i.getAttribute('aria-label') == hashValue) {
+							i.classList.add('current')
+						} else {
+							i.classList.remove('current')
+						}
+					})
+
+				}
+			}, {
+				key: "changeNavigate",
+				value: function (ev, target) {
+					var searchValue = target.getAttribute('aria-label')
+					window.location.hash = searchValue
+					var list = this.accountPages
+					for (var i = 0; i < list.length; i++) {
+						list[i].style.display = "none"
+					}
+					this.pageSwitch()
+				}
+			}, {
+				key: "renderMobOrder",
+				value: function () {
+					this.loading(true)
+
+					let body_me = document.querySelector('#body_me')
+					let nullbox = document.querySelector('#order_null')
+					nullbox.style.display = 'none'
+
+					var url
+					var reg = /Orders+[\d\D]*/
+
+					if (reg.test(location.hash)) {
+						var hash = location.hash.split('+')[1].toLowerCase()
+						url = '?section_id=my-orders-' + hash;
+					} else {
+						url = '?section_id=my-orders-all';
+					}
+					fetch(url, {
+						credentials: 'same-origin',
+						method: "GET"
+					}).then(response => response.text().then(content => {
+						body_me.innerHTML = content
+						var fag = body_me.querySelectorAll('.card .order-box')
+						if (!fag.length) {
+							nullbox.style.display = 'block'
+							body_me.style.display = 'none'
+						} else {
+							nullbox.style.display = 'none'
+							body_me.style.display = 'block'
+						}
+						this.loading(false);
+					}))
+				}
+
+			}])
+
+			return Account
+		})();
+		var accountS = new AccountSetion(document.getElementById("account"))
+
+
+	}();
 </script>
 
 

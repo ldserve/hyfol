@@ -4,7 +4,7 @@
 }((function () {
     'use strict';
 
-    class LeftNavList extends HTMLElement {
+ /*    class LeftNavList extends HTMLElement {
         constructor() {
             super();
             this.navList = this.querySelector(".render_nav_list ")
@@ -20,11 +20,9 @@
             if (window.location.hash) {
 
                 var nowNav = window.location.hash.split("#")[1].replace(/\%20/g, " ")
-
                 this.navList.childNodes.forEach((item) => {
                     item.className = " card__linklist-item  "
                 })
-
 
                 var list = document.querySelector(".wish_list").parentElement.children
                 for (let i = 0; i < list.length; i++) {
@@ -73,96 +71,8 @@
            
         }
     }
-    customElements.define("left-nav-list", LeftNavList);
+    customElements.define("left-nav-list", LeftNavList); */
 
-    class OrderItem extends HTMLElement {
-        constructor() {
-            super();
-            this.iconList = this.querySelectorAll(".order-preview__item")
-            this.navList = document.querySelector('.table-left-nav').querySelector(".render_nav_list ")
-            this.init()
-        }
-        init() {
-            this.iconList.forEach((item, index) => {
-                // if(index != this.iconList.length-1){
-                item.addEventListener("click", this.changeNav)
-                // }
-            })
-            if (window.location.hash.split("+")[1]) {
-                this.changeNav()
-            }
-        }
-        changeNav() {
-
-            if (window.location.hash.split("+")[1]) {
-                //    console.log("初始化流程");
-            } else if (this.lastElementChild.textContent === 'Post-sale') {
-                var searchValue = this.lastElementChild.textContent
-                window.location.hash = searchValue
-                document.querySelector('.table-left-nav').querySelector(".render_nav_list ").childNodes.forEach((item) => {
-                    if (item.nodeType == 1 && item.getAttribute("data-right") == "my_postsale") {
-                        item.className = "card__linklist-item link text--stronger "
-                    } else {
-                        item.className = "card__linklist-item  "
-                    }
-                })
-                var list = document.querySelector(".wish_list").parentElement.children
-                for (let i = 0; i < list.length; i++) {
-                    list[i].style.display = "none"
-                }
-                window.scroll(0, 0)
-                document.querySelector(".my_postsale").style.display = "block"
-                return
-            }
-            else {
-                var searchValue = this.lastElementChild.textContent
-                window.location.hash = "Orders+" + searchValue
-            }
-            var url = window.location.hash.split("+")[1].toLowerCase()
-
-            document.querySelector('.table-left-nav').querySelector(".render_nav_list ").childNodes.forEach((item) => {
-                if (item.nodeType == 1 && item.getAttribute("data-right") == "my_orders") {
-                    item.className = "card__linklist-item link text--stronger "
-                } else {
-                    item.className = "card__linklist-item  "
-                }
-            })
-            document.querySelector('.card__linklist .render_nav_list').childNodes.forEach((item) => {
-                if (item.nodeType == 1 && item.getAttribute("data-right") == "my_orders") {
-                    item.className = "card__linklist-item link text--stronger "
-                } else {
-                    item.className = "card__linklist-item  "
-                }
-            })
-
-
-            var list = document.querySelector(".wish_list").parentElement.children
-            for (let i = 0; i < list.length; i++) {
-                list[i].style.display = "none"
-            }
-            window.scroll(0, 0)
-
-            document.querySelector(".my_orders").style.display = "block"
-            document.querySelectorAll(".orders-nav__item").forEach((item) => {
-                item.setAttribute("data-action", false)
-            })
-            document.querySelectorAll('.order-item__card').forEach((item) => {
-                item.setAttribute("aria-hidden", true)
-            })
-
-            document.querySelector(".order-" + url).setAttribute("data-action", true)
-            var index = document.querySelector(".order-" + url).getAttribute("data-index")
-            document.querySelectorAll('.order-item__card').forEach((item) => {
-                if (item.getAttribute("data-index") == index) {
-                    item.setAttribute("aria-hidden", false)
-                }
-
-            })
-           
-    
-        }
-    }
-    customElements.define("order-item", OrderItem);
 
     class SizeBlock extends HTMLElement {
         constructor() {
@@ -186,120 +96,6 @@
         }
     }
     customElements.define("size-block", SizeBlock);
-
-    class ProductItem extends HTMLElement {
-        constructor() {
-            super()
-            this.timer = 0
-            this.elements = {
-                cardMedia: this.querySelector(' .card__media'),
-                cartNode: this.querySelector('.ny-icon-cart'),
-                addColleNode: this.querySelector('.add-collect'),
-                removeColleNode: this.querySelector('.remove-collect'), 
-            }
-            // this.setupEventListeners()
-            // this.onload()
-        }
-
-        setupEventListeners() {
-            this.elements.addColleNode && this.elements.addColleNode.addEventListener('click', this.handleRemove)
-            this.elements.removeColleNode && this.elements.removeColleNode.addEventListener('click', this.handleAdd)
-        }
-
-        onload() {
-            const id = this.elements.removeColleNode.getAttribute("data-id")
-            var searchData = {
-                customerId: customerId,
-                productIds: [id]
-            }
-            
-            if (customerId) {
-              post_data("customerCollectionProduct/selectProductIsCollection", searchData)
-                    .then(res => {
-                        if (res.success) {
-                            // this.elements.addColleNode.parentElement.style.display = 'flex'
-                            var svg=  this.elements.removeColleNode
-                            if (res.data[0].isCollection) {
-                                // this.elements.addColleNode.style.display = 'block'
-                                // this.elements.removeColleNode.style.display = "none"
-                                svg.children[1].setAttribute('d','M595.158637 306.43705c-31.37053 0-62.741061 11.111901-87.840374 30.792538-25.099314-19.680637-56.484294-30.792538-87.869275-30.792538-75.615838 0-134.845596 59.706601-134.845596 135.929332 0 81.337962 62.278667 143.833376 150.27799 223.191714a1354.835549 1354.835549 0 0 1 52.886292 50.299777c5.187481 5.25973 12.137838 8.149691 19.536139 8.149691 7.369401 0 14.305309-2.875512 19.492789-8.135242a1387.558581 1387.558581 0 0 1 52.900742-50.314226c87.999323-79.401688 150.306889-141.882652 150.306889-223.206164 0.01445-76.193831-59.215308-135.914882-134.845596-135.914882z')
-                                svg.setAttribute('data-select',true)
-                            } else {
-                                svg.children[1].setAttribute('d','M595.158637 306.43705c-31.37053 0-62.741061 11.111901-87.840374 30.792538-25.099314-19.680637-56.484294-30.792538-87.869275-30.792538-75.615838 0-134.845596 59.706601-134.845596 135.929332 0 81.337962 62.278667 143.833376 150.27799 223.191714a1354.835549 1354.835549 0 0 1 52.886292 50.299777c5.187481 5.25973 12.137838 8.149691 19.536139 8.149691 7.369401 0 14.305309-2.875512 19.492789-8.135242a1387.558581 1387.558581 0 0 1 52.900742-50.314226c87.999323-79.401688 150.306889-141.882652 150.306889-223.206164 0.01445-76.193831-59.215308-135.914882-134.845596-135.914882z m-35.286427 335.669009a1380.395812 1380.395812 0 0 0-52.553947 49.967432 1369.058493 1369.058493 0 0 0-52.582847-49.981881c-80.774419-72.855925-137.952304-129.715915-137.952304-198.020151 0-59.258657 45.964835-105.685886 104.6166-105.685886 27.873677 0 55.776254 11.1986 76.612875 30.734739l9.305676 8.742133 9.305675-8.742133c20.807722-19.536139 48.724748-30.734739 76.583976-30.734739 58.695115 0 104.65995 46.427229 104.659949 105.685886-0.01445 68.304236-57.221234 125.164225-137.995653 198.0346z')
-                                svg.setAttribute('data-select',false)
-                                // this.elements.addColleNode.style.display = 'none'
-                                // this.elements.removeColleNode.style.display = "block"
-                            }
-                        }
-                    });
-            } 
-        }
-        handleRemove() {
-            const newTime = Date.parse(new Date())
-            if (newTime - this.timer < 2000) {
-                return
-            }
-            this.timer = newTime
-            var collectData = {
-                customerId: customerId,
-                productId: this.getAttribute('data-id'),
-                productSpu: this.getAttribute('data-spu')
-            }
-      false&&  post_data("customerCollectionProduct/collectionProduct", collectData)
-                .then(res => {
-                    if (res.success) {
-                        this.style.display = 'none'
-                        this.previousElementSibling.style.display = "block"
-                        // item.parentElement.lastElementChild.innerText = +(item.parentElement.lastElementChild.innerText) - 1
-                        const text = document.querySelector(".header__icon--collect span").innerText
-                        if (+(text) - 1 === 0) {
-                            document.querySelector(".header__icon--collect span").innerText = ""
-                            document.querySelector(".header__icon--collect span").style.display = "none"
-                            return
-                        }
-                        document.querySelector(".header__icon--collect span").innerText = +(text) - 1
-                    }
-                });
-        }
-
-        handleAdd() {
-            if (customerId) {
-                if (customerId) {
-                    const newTime = Date.parse(new Date())
-                    if (newTime - this.timer < 2000) {
-                        return
-                    }
-                    this.timer = newTime
-                    var collectData = {
-                        customerId: customerId,
-                        productId: this.getAttribute('data-id'),
-                        productSpu: this.getAttribute('data-spu')
-                    }
-
-                false&& post_data("customerCollectionProduct/collectionProduct", collectData)
-                        .then(res => {
-                            if (res.success) {
-                                this.style.display = 'none'
-                                this.nextElementSibling.style.display = "block"
-                                // item.parentElement.lastElementChild.innerText = +(item.parentElement.lastElementChild.innerText) + 1
-                                const text = document.querySelector(".header__icon--collect span").innerText
-                                if (!text) {
-                                    document.querySelector(".header__icon--collect span").innerText = 1
-                                    document.querySelector(".header__icon--collect span").style.display = "flex"
-                                    return
-                                }
-                                document.querySelector(".header__icon--collect span").innerText = +(text) + 1
-                            }
-                        });
-                }
-            } else {
-                window.location.href = "https://www.hyfol.com/account/login"
-            }
-        }
-    }
-
-    customElements.define('product-item', ProductItem)
-
 
     class SliderShow extends HTMLElement {
         constructor() {
@@ -2717,6 +2513,7 @@
             key: "selectItem",
             value: function (ev, target) {
                 var _this=this
+                if(!customerId){window.location.href="https://www.hyfol.com/account/login"; return }
                 var sendData={
                     "customerId":customerId,
                     "productId": target.getAttribute("data-id"),
