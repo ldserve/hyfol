@@ -16666,6 +16666,9 @@ text-align: center;
 }
 
 @media screen and (max-width: 649px) {
+  .flash-img_container{
+    width: 50%;
+  }
   .desktop-tag_img {
     display: none;
   }
