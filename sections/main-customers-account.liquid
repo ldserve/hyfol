@@ -2912,7 +2912,7 @@
 				key: "addAddresses",
 				value: function (ev, target) {
 					ev.preventDefault()
-					var form = e.target.closest('form')
+					var form = ev.target.closest('form')
 					var formData = getFormData(form)
 					fetch('/account/addresses', {
 						method: "POST",
