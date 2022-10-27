@@ -233,6 +233,22 @@ line_items: [
 {% endif %}
 
 <script>
+   const customerId= "{{ customer.id}}"   
+    async function post_data(url, data) {
+      const response = await fetch(`https://api.leandow-technology.com/api/${url}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          "siteValue":"hyfol"
+        },
+        body: JSON.stringify(data)
+      });
+      return response.json();
+    }
+
+</script>
+
+<script>  
   gtag('event', '{{ fa_event }}', {
  'send_to': 'AW-{{ fa_google_ads_audience_tag_id }}',
  {% if template contains 'product' or template contains 'cart' %}'value': {{ fa_product_price }},{% endif %}

@@ -1,242 +1,128 @@
-<section class="hidden-tablet hidden-tablet-and-up">
-	<div class="header-me container">
-		{%- if customer -%}
-			<input type="checkbox" id="account-input" class="account-input hidden">
-			<ul class="logged">
-				<li class=" text-l name"><span class="hi">Hi!&nbsp;</span>{{ customer.first_name }}</li>
-				<li class=" text-r tab"><label for="account-input">{%- render 'icon', icon: 'arrow-bottom' -%}</label></li>
-			</ul>
-			<div class="account-box">
-				<a href="{{ routes.account_url }}"
-					 class="value-picker__choice-item is-selected">{{ 'customer.general.orders' | t }} {% render 'icon', icon: 'check-2' %}</a>
-				<a href="{{ routes.account_addresses_url }}"
-					 class="value-picker__choice-item">{{ 'customer.general.addresses' | t }} {% render 'icon', icon: 'check-2' %}</a>
-				<a href="{{ routes.account_logout_url }}" class="value-picker__choice-item"
-					 data-no-instant>{{ 'customer.general.logout' | t }} {% render 'icon', icon: 'check-2' %}</a>
-			</div>
-		{%- else -%}
-			<ul class="no-logged">
-				<li class="text-l"><a href="{{ routes.account_login_url }}?return_url={{ page.url }}">LOGIN &gt;</a></li>
-				<li class="text-r"><a href="{{ routes.account_register_url }}">CREATE ACCOUNT&gt;</a></li>
-			</ul>
-		{%- endif -%}
-	</div>
-	<div class="order-me container">
-		<h2>{{- 'customer.general.orders' | t -}}</h2>
-
-		<div class="icon-box">
-			<ul class="icons" id="orders-list">
-				<li data-item="orders-all" class="current" >
-					{%- render 'icon', icon: 'cjj_all' -%}<br/>
-					<span>All</span>
-				</li>
-				<li data-item="orders-unpaid">
-					{%- render 'icon', icon: 'cjj_unpaid' -%}<br/>
-					<span>Unpaid</span>
-				</li>
-				<li data-item="orders-processing">
-					{%- render 'icon', icon: 'cjj_processing' -%}<br/>
-					<span>Processing</span>
-				</li>
-				<li data-item="orders-shipped">
-					{%- render 'icon', icon: 'cjj_shipped' -%}<br/>
-					<span>Shipped</span>
-				</li>
-				<li data-item="orders-payment">
-					{%- render 'icon', icon: 'cjj_payment' -%}<br/>
-					<span>Payment</span>
-				</li>
-				<li data-item="orders-completed">
-					{%- render 'icon', icon: 'cjj_completed' -%}<br/>
-					<span>Completed</span>
-				</li>
-				<li data-item="post-sale">
-					{%- render 'icon', icon: 'cjj_post_sale' -%}<br/>
-					<span>Post-sale</span>
-				</li>
-			</ul>
-		</div>
-
-	</div>
-	<div class="body-me loading" id="loading">
-		{%- render 'icon', icon: 'cjj_loading' -%}
-		<span class="loading-text">&nbsp;loading...</span>
-	</div>
-	<div class="card__section" id="order_null">
-			<div class="empty-state empty-state--extra-tight">
-				<div class="empty-state__icon">
-					{%- render 'icon', icon: 'package' -%}
-					<span class="empty-state__count">0</span>
-				</div>
-				<p class="empty-state__icon-description">{{ 'customer.general.no_orders' | t }}</p>
-				<div class="empty-state__button-container">
-					<a href="{{ routes.all_products_collection_url }}"
-						 class="empty-state__button button button--primary">{{ 'customer.general.no_orders_button' | t }}</a>
-				</div>
-			</div>
-		</div>
-
-	<div class="body-me" id="body_me">
-		<!--渲染订单区域-->
-	</div>
-	<div class="post" id="post">
-		<div class="container">
-			<h3>
-				{%- render 'icon', icon: 'bi-email' -%}&nbsp;&nbsp;
-				<a href="mailto:contactus@hyfol.com" target="_blank" rel="noopener" aria-describedby="a11y-new-window-message">contactus@hyfol.com</a>
-			</h3>
-		</div>
-	</div>
-	<div class="advert-me container">
-		<ul>
-			<li><a href="{{ routes.cart_url }}">SHOPPING CART</a></li>
-			<li><a href="{{ routes.root_url }}collections/hot-sale">HOT SALE</a></li>
-		</ul>
-	</div>
-</section>
-
-<section data-section-id="{{ section.id }}" data-section-type="account" class="hidden-phone">
-	<div class="container container--flush">
-		<div class="page__sub-header">
-			<nav aria-label="{{ 'general.breadcrumb.title' | t }}" class="breadcrumb">
-				<ol class="breadcrumb__list" role="list">
-					<li class="breadcrumb__item">
-						<a class="breadcrumb__link link"
-							 href="{{ routes.root_url }}">{{ 'general.breadcrumb.home' | t }}</a> {%- render 'icon', icon: 'arrow-right' -%}
-					</li>
-
-					<li class="breadcrumb__item">
-						<a class="breadcrumb__link link"
-							 href="{{ routes.account_url }}">{{ 'general.breadcrumb.account' | t }}</a> {%- render 'icon', icon: 'arrow-right' -%}
-					</li>
-
-					<li class="breadcrumb__item">
-						<span class="breadcrumb__link" aria-current="page">{{ 'customer.general.orders' | t }}</span>
-					</li>
-				</ol>
-			</nav>
-		</div>
-
-		<div class="layout">
-			<div class="layout__section layout__section--secondary">
-				<div class="card card--sticky hidden-pocket">
-					<div class="card__section card__section--tight">
-						<div class="card__linklist">
-							<a href="{{ routes.account_url }}"
-								 class="card__linklist-item link text--strong">{{ 'customer.general.orders' | t }}</a>
-							<a href="{{ routes.account_addresses_url }}"
-								 class="card__linklist-item link">{{ 'customer.general.addresses' | t }}</a>
-							<a href="{{ routes.account_logout_url }}" class="card__linklist-item link"
-								 data-no-instant>{{ 'customer.general.logout' | t }}</a>
-						</div>
-					</div>
-				</div>
-
-				<div class="value-picker-wrapper hidden-tablet-and-up">
-					<button class="value-picker-button value-picker-button--pill" aria-haspopup="true" aria-expanded="false"
-									aria-controls="account-selector" data-action="open-value-picker">
-						{{- 'customer.general.orders' | t -}} {%- render 'icon', icon: 'arrow-bottom' -%}
-					</button>
-
-					<div id="account-selector" class="value-picker" aria-hidden="true">
-						<div class="value-picker__inner">
-							<header class="value-picker__header">
-								<span class="value-picker__title text--strong">{{ 'customer.general.my_account' | t }}</span>
-								<button class="value-picker__close" data-action="close-value-picker" aria-controls="account-selector"
-												aria-label="{{ 'general.accessibility.close' | t }}">{% render 'icon', icon: 'close' %}</button>
-							</header>
-
-							<div class="value-picker__choice-list">
-								<a href="{{ routes.account_url }}"
-									 class="value-picker__choice-item is-selected">{{ 'customer.general.orders' | t }} {% render 'icon', icon: 'check-2' %}</a>
-								<a href="{{ routes.account_addresses_url }}"
-									 class="value-picker__choice-item">{{ 'customer.general.addresses' | t }} {% render 'icon', icon: 'check-2' %}</a>
-								<a href="{{ routes.account_logout_url }}" class="value-picker__choice-item"
-									 data-no-instant>{{ 'customer.general.logout' | t }} {% render 'icon', icon: 'check-2' %}</a>
-							</div>
-						</div>
-					</div>
-				</div>
-			</div>
-
-			<div class="layout__section">
-				<div class="card">
-					<div
-						class="{% if customer.orders.size == 0 %}card__section card__section--tight{% else %}card__header card__header--tight{% endif %}">
-						<h1
-							class="heading h1">{{ 'customer.general.orders' | t }} {% if customer.orders.size > 0 %}({{ customer.orders.size }}){% endif %}</h1>
-					</div>
-
-					{%- if customer.orders.size == 0 -%}
-						<div class="card__section">
-							<div class="empty-state empty-state--extra-tight">
-								<div class="empty-state__icon">
-									{%- render 'icon', icon: 'package' -%}
-									<span class="empty-state__count">0</span>
-								</div>
-
-								<p class="empty-state__icon-description">{{ 'customer.general.no_orders' | t }}</p>
-
-								<div class="empty-state__button-container">
-									<a href="{{ routes.all_products_collection_url }}"
-										 class="empty-state__button button button--primary">{{ 'customer.general.no_orders_button' | t }}</a>
-								</div>
-							</div>
-						</div>
-					{%- else -%}
-						{%- paginate customer.orders by 8 -%}
-							<div class="table-wrapper">
-								<table class="table table--loose">
-									<thead>
-									<tr>
-										<th>{{ 'customer.order.order' | t }}</th>
-										<th>{{ 'customer.order.date' | t }}</th>
-										<th>{{ 'customer.order.payment_status' | t }}</th>
-										<th>{{ 'customer.order.fulfillment_status' | t }}</th>
-										<th class="table__cell--right">{{ 'customer.order.total' | t }}</th>
-									</tr>
-									</thead>
-
-									<tbody>
-									{%- for order in customer.orders -%}
-										<tr>
-											<td><a href="{{ order.customer_url }}" class="link link--accented">{{ order.name }}</a></td>
-											<td>{{ order.created_at | date: format: 'month_day_year' }}</td>
-											<td>{{ order.financial_status_label }}</td>
-											<td>{{ order.fulfillment_status_label }}</td>
-											<td class="table__cell--right">{{ order.total_price | money }}</td>
-										</tr>
-									{%- endfor -%}
-									</tbody>
-								</table>
-							</div>
-
-						{%- render 'pagination', paginate: paginate -%}
-						{% assign dm_paginate_by = paginate.page_size %}{%- endpaginate -%}
-					{%- endif -%}
-				</div>
-			</div>
-		</div>
-	</div>
-</section>
-
-
 <style>
+	.pagination__prev,
+	.pagination__next,
+	.pagination__nav-item {
+		color: #000;
+	}
+
+	.my-profile__view {
+		text-align: center;
+		display: grid;
+		grid: repeat(1, auto) / auto-flow auto;
+		color: #fff;
+		background: url('https://cdn.shopify.com/s/files/1/0595/0691/7535/files/coup.jpg?v=1664507060') no-repeat 100% 100%;
+		grid-template-columns: 50% 1px auto;
+		padding: 1rem 2rem;
+
+	}
+
+	.profile-total,
+	.profile-expire {
+		padding: 1rem 0;
+	}
+
+
+	.my_coupons {
+		padding: 1rem 3rem;
+	}
+
+	.my_coupons__title {
+		text-align: center;
+	}
+
+	.coupons-nav>summary {
+		margin-right: 1.8rem;
+		cursor: pointer;
+	}
+
+	summary[aria-expanded="true"] {
+		border-bottom: 1px solid #000;
+	}
+
+	.vip-level__s1,
+	.vip-level__s2,
+	.vip-level__s3 {
+		position: relative;
+	}
+
+	.vip-level__s1::after {
+		content: 'Silver';
+		position: absolute;
+		left: -0.2rem;
+		bottom: -1.6rem;
+	}
+
+	.vip-level__s2::after {
+		content: 'Gold';
+		position: absolute;
+		left: -0.2rem;
+		bottom: -1.6rem;
+	}
+
+	.vip-level__s3::after {
+		content: 'Platinum';
+		position: absolute;
+		left: -0.8rem;
+		bottom: -1.6rem;
+	}
+
+	.page__item .my-coupons {
+		padding: 0 0rem 3rem;
+
+	}
+
+
+	.product-item__info {
+		background-color: #ffffff;
+	}
+
+	.product-item_text,
+	.product-item__info-inner .price {
+		color: #000000;
+	}
+
+	.product-item__swatch-list {
+		padding-bottom: 0px;
+		min-height: 50px;
+	}
+
+	.scroller__inner .price--compare,
+	.product-item__info-inner .price--compare {
+		text-decoration: line-through black;
+	}
+
+	.mobile-account__title {
+		text-align: center;
+		font-weight: 600;
+	}
+
+	.hidden-lap-and-up.account {
+		margin: 1rem 0;
+	}
+
+	.container.container--flush {
+		padding: 0;
+	}
+
 	#shopify-section-footer {
 		display: none;
 	}
+
 	body {
 		min-height: 100vh;
-		background: #f0f0f0;
+		background: #fff;
 	}
-	main ul, li {
+
+	main ul,
+	li {
 		list-style: none;
 		padding: 0;
 		margin: 0;
 	}
 
 	.header-me {
-		background-color: #fff;
+		background-color: #eee;
+		padding: 0 10px;
 	}
 
 	.header-me .logged .name {
@@ -244,36 +130,41 @@
 		font-weight: var(--heading-font-weight);
 		font-style: var(--heading-font-style);
 	}
+
 	.header-me .logged .tab label {
 		cursor: pointer;
 	}
+
 	.header-me .logged .hi {
 		color: var(--link-color);
 	}
+
 	.header-me .account-box {
-		height: 0;
-		overflow: hidden;
+		padding: 1rem 0;
+
+	}
+
+	.header-me .logged>.tab {
 		transition: all 0.4s ease;
 	}
-	#account-input:checked ~ .account-box {
-		height: 130px;
-		transition: all 0.4s ease;
-	}
-	.header-me .logged > .tab {
-		transition: all 0.4s ease;
-	}
-	#account-input:checked ~ .logged > .tab {
+
+	#account-input:checked~.logged>.tab {
 		transform: rotate(180deg);
-		-ms-transform: rotate(180deg); /* IE 9 */
-		-moz-transform: rotate(180deg); /* Firefox */
-		-webkit-transform: rotate(180deg); /* Safari 和 Chrome */
+		-ms-transform: rotate(180deg);
+		/* IE 9 */
+		-moz-transform: rotate(180deg);
+		/* Firefox */
+		-webkit-transform: rotate(180deg);
+		/* Safari 和 Chrome */
 		-o-transform: rotate(180deg);
 	}
+
 	.header-me .no-logged,
 	.header-me .logged {
 		display: flex;
 		padding: 20px 0;
 	}
+
 	.header-me .logged {
 		justify-content: space-between;
 	}
@@ -299,6 +190,7 @@
 		font-style: var(--heading-font-style);
 		padding: 10px 0;
 	}
+
 	.order-me .icon-box {
 		overflow-x: scroll;
 		width: 100%;
@@ -306,100 +198,121 @@
 	}
 
 	.order-me .icons {
-		width: 160%;
+		width: 144%;
 		display: flex;
 		justify-content: space-between;
 	}
+
 	.order-me .icons li {
 		cursor: pointer;
 	}
+
 	.order-me .icon {
 		font-size: 2em;
 	}
+
 	.order-me span {
 		font-size: 0.85rem;
 	}
+
 	.order-me .current {
 		color: #b82928;
 	}
+
 	.body-me {
 		margin-top: 10px;
-		background-color: #f0f0f0;
 	}
-	.body-me .card{
-	border: none;
+
+	.body-me .card {
+		border: none;
 	}
+
 	.body-me.loading {
 		color: #666666;
 		width: 100%;
 		height: 60px;
 		font-size: 2em;
 		text-align: center;
-		background-color: #FFFFFF;
 	}
-	.body-me.loading > svg {
+
+	.body-me.loading>svg {
 		animation: loading;
 		animation-duration: .3s;
 		animation-iteration-count: infinite;
 		animation-timing-function: linear;
 	}
-	.body-me.loading > .loading-text {
+
+	.body-me.loading>.loading-text {
 		font-size: 0.8rem;
 	}
+
 	@keyframes loading {
 		from {
 			transform: rotate(0);
 		}
+
 		to {
 			transform: rotate(45deg);
 		}
 	}
+
 	.body-me .card {
 		background-color: #f0f0f0;
 		padding: 10px;
 	}
+
 	.body-me .order-box {
 		margin-bottom: 10px;
 		border-radius: 5px;
 		padding: 20px;
 		background-color: #fff;
 	}
+
 	.body-me .order-title {
 		display: flex;
 		justify-content: space-between;
 	}
-	.body-me .order-title .title-info > span {
+
+	.body-me .order-title .title-info>span {
 		display: block;
 	}
+
 	.body-me .order-title .title-info-name {
 		font-family: var(--heading-font-family);
 		font-weight: var(--heading-font-weight);
 		font-style: var(--heading-font-style);
 	}
+
 	.body-me .order-title .title-info-data {
 		font-size: 0.8rem;
 		color: #666666;
 	}
+
 	.body-me .order-body {
 		padding-top: 10px;
 	}
+
 	.body-me .order-body li {
 		display: flex;
 		justify-content: space-between;
 		padding: 5px 0;
 	}
+
 	.body-me .order-body .pro-img {
 		width: 30%;
 	}
-	.body-me .order-body .pro-img > div {
+
+	.body-me .order-body .pro-img>div {
 		border: 1px solid #dddddd;
 		overflow: hidden;
 		border-radius: 10px;
 	}
+
 	.body-me .order-body .pro-info {
 		width: 70%;
 		padding: 0 10px;
 	}
+
 	.body-me .order-body .pro-info .info-title {
 		font-weight: 700;
 		overflow: hidden;
@@ -408,31 +321,37 @@
 		-webkit-box-orient: vertical;
 		-webkit-line-clamp: 2;
 	}
+
 	.body-me .order-body .pro-info .info-style {
 		display: flex;
 		justify-content: space-between;
 		color: #666666;
 	}
+
 	.body-me .order-footer {
 		text-align: right;
 	}
+
 	.body-me .order-footer .all-total {
 		font-family: var(--heading-font-family);
 		font-weight: var(--heading-font-weight);
 		font-style: var(--heading-font-style);
 		color: #B82928;
 	}
-	.post{
+
+	.post {
 		background-color: #fff;
 		text-align: center;
 		min-height: 100px;
 		margin-top: 10px;
 		display: none;
 	}
-	.post h3{
+
+	.post h3 {
 		line-height: 100px;
 		font-size: 1.3rem;
 	}
+
 	.icon-box li {
 		display: inline-block;
 		text-align: center;
@@ -445,6 +364,7 @@
 	.text-r {
 		text-align: right;
 	}
+
 	.hidden {
 		display: none;
 	}
@@ -454,9 +374,11 @@
 		margin-top: 10px;
 		min-height: 400px;
 	}
+
 	.advert-me ul {
 		padding: 50px 20px 0;
 	}
+
 	.advert-me li {
 		height: 50px;
 		line-height: 50px;
@@ -465,6 +387,7 @@
 		margin-bottom: 20px;
 		background-color: #707070;
 	}
+
 	.advert-me li a {
 		font-family: var(--heading-font-family);
 		font-weight: var(--heading-font-weight);
@@ -472,107 +395,2776 @@
 		color: #ffffff;
 		text-shadow: -2px 1px 3px rgba(0, 0, 0, .5);
 	}
+
+
+	.vip-overview__rule {
+		font-size: 14px;
+		color: #edede5;
+		padding: 1rem 1rem 0;
+
+	}
+
+	.vip-overview__rule p {
+		margin: 0;
+	}
+
+	.vip-rules__link {
+		text-decoration: underline;
+		cursor: pointer;
+		display: inline-block;
+		font-weight: 500;
+	}
+
+	.vip-icon__box {
+		display: inline-block;
+		background-color: #aaa;
+		border-radius: 1rem;
+		padding: 0 0.8rem;
+	}
+
+	.vip-icon__box .icon {
+		font-size: 1.6rem;
+	}
+
+	.vip-icon__box span {
+		padding: 0 6px;
+
+	}
+
+	.vip-level__s0 {
+		background-color: #000000;
+		border-radius: 50%;
+		width: 0.6rem;
+		height: 0.6rem;
+	}
+
+	.vip-solid {
+		background-color: #b8b8b8;
+		height: 1px;
+		width: 2rem;
+	}
+
+	.vip-grade {
+		padding: 1rem 0 2rem;
+		align-items: center;
+		justify-items: flex-start;
+	}
+
+	.vip-user__avatar {
+		width: 4rem;
+		height: 4rem;
+		border-radius: 50%;
+	}
+
+	.vip-user__name {
+		padding: 0 1rem;
+
+	}
+
+	.vip-page {
+		justify-content: space-between;
+		background: url('https://cdn.shopify.com/s/files/1/0595/0691/7535/files/bg_main_s0-76143950f1.png?v=1664507536') no-repeat -2rem 0rem;
+		background-size: 106% 100%;
+		background-clip: border-box;
+		min-height: 200px;
+		padding: 2rem 3rem;
+		display: grid;
+		grid: auto-flow auto / repeat(2, 50%);
+	}
+
+	.vip-grade img {
+		width: 2rem;
+		height: 2rem;
+	}
+
+	.vip-grade,
+	.vip-info__title {
+		margin-left: 2rem;
+	}
+
+	.vip-rules {
+		background-color: #eee;
+		z-index: 3;
+		color: #000000;
+		cursor: text;
+		padding: 1rem 2rem;
+	}
+
+	.vip-rules__title {
+		text-align: center;
+	}
+
+	.rule-table {
+		margin: 20px 0;
+	}
+
+	.rule-table td,
+	.rule-table th {
+		padding: 6px 10px;
+	}
+
+	.rule-table td:nth-child(1n+2),
+	.rule-table th:nth-child(1n+2) {
+		background-color: #c8c8c8;
+		text-align: center;
+	}
+
+	.rule-tex {
+		margin-bottom: 16px;
+	}
+
+	.close-rule__page {
+		float: right;
+		cursor: pointer;
+	}
+
+	.card.card--sticky {
+		background-color: #eee;
+	}
+
+	.my-coupons .h3,
+	.order-preview .h3,
+	.profile-view .h3 {
+		text-align: center;
+		font-weight: 700;
+	}
+
+	.profile-story__title {
+		font-weight: 700;
+	}
+
+	.my-coupons {
+		margin-top: 3rem;
+		background-color: #eee;
+		padding: 0 3rem 3rem;
+	}
+
+	.my-coupons__title {
+		padding: 1rem 0;
+	}
+
+	.coupons-date {
+		margin-top: 0.8rem;
+		font-size: 14px;
+	}
+
+	.coupons-date li {
+		list-style: disc;
+	}
+
+	.my-coupons__list {
+		display: grid;
+		grid: auto-flow auto / repeat(2, auto);
+		grid-column-gap: 4rem;
+		grid-row-gap: 3rem;
+		color: #fff;
+	}
+
+	.my-coupons__list p {
+		margin: 0;
+	}
+
+	.my-coupons__item {
+		background-image: url('https://cdn.shopify.com/s/files/1/0595/0691/7535/files/coup.jpg?v=1664507060');
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: 100% 100%;
+		background-clip: border-box;
+		padding: 0.6rem 4rem;
+		position: relative;
+		overflow: hidden;
+	}
+
+	.round-left,
+	.round-right {
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		margin: auto;
+		background-color: #eee;
+		width: 2rem;
+		height: 2rem;
+		border-radius: 50%;
+	}
+
+	.round-left {
+		left: -1rem;
+	}
+
+	.round-right {
+		right: -1rem;
+	}
+
+
+	#main {
+		background-color: #fff;
+	}
+
+	.backgrount_e {
+		background-color: #eee;
+	}
+
+	.profile-view {
+		padding: 30px 2rem;
+	}
+
+	.profile-record {
+		margin-top: 2rem;
+		padding: 2rem;
+	}
+
+	.profile-record h4 {
+		margin: 0;
+		font-size: 18px;
+	}
+
+	.page__item {
+		margin-top: 1rem;
+	}
+
+	.page__item th {
+		background-color: #d6d6d6;
+
+	}
+
+	.page__item th,
+	.page__item td {
+		text-align: center;
+		padding: 8px 0;
+
+	}
+
+	.page__item table {
+		width: 100%;
+	}
+
+	.profile-nav>summary {
+		display: inline-block;
+		margin-right: 1rem;
+		padding: 1rem 1rem 0;
+		cursor: pointer;
+	}
+
+	.profile-amount {
+		color: #1ea364;
+	}
+
+	.card__linklist {
+		overflow-x: auto;
+		padding-bottom: 1rem;
+	}
+
+	.mobile-account__nav {
+		width: 270%;
+		justify-content: space-between;
+
+	}
+
+	.customers-services {
+		background-color: #eee;
+		text-align: center;
+		min-height: 100px;
+		margin-top: 10px;
+		padding: 2rem;
+	}
+
+	.my_addresses .card {
+		background-color: #eee;
+	}
+
+	.product-list--collection,
+	.product-list--collection .product-item {
+		background-color: #fff;
+	}
+
+	@media screen and (max-width: 999px) {
+		.profile-view {
+			padding: 30px 10px;
+		}
+
+		.profile-record {
+			margin: 0;
+			padding: 10px;
+		}
+
+		.profile-nav>summary {
+			margin: 0;
+		}
+
+		.my-coupons {
+			margin-top: 1rem;
+		}
+
+		.my-coupons__list {
+			grid: auto-flow auto / repeat(1, auto);
+			grid-row-gap: 2rem;
+		}
+
+		.order-preview {
+			/* margin-top: 1.6rem; */
+			display: none;
+		}
+
+		.vip-page {
+			padding: 1rem 10px;
+			background: #eee;
+			grid: repeat(2, auto)/ auto-flow auto;
+			grid-row-gap: 1rem;
+		}
+
+		.vip-overview {
+			padding: 0 2rem
+		}
+
+		.vip-overview__rule {
+			padding: 1rem 2rem;
+			background: #636363;
+		}
+
+		.vip-upgrade__info {
+			display: flex;
+			flex-wrap: wrap;
+		}
+
+		.vip-upgrade__header {
+			font-weight: 600;
+		}
+
+		.my_coupons {
+			padding: 1rem 2.6rem;
+		}
+
+		.my_addresses .h1 {
+			text-align: center;
+		}
+
+		.order-me .h3 {
+			text-align: center;
+		}
+
+	}
+
+	.my-coupons_empty {
+		display: block !important;
+	}
+
+	.my-coupons_empty>.empty {
+		color: #000;
+		text-align: center;
+	}
+
+	.empty>.icon--package {
+		font-size: 5rem;
+	}
+
+	.page__item[aria-hidden="true"] {
+		display: none;
+	}
+
+	.collect .openQuickView {
+		display: none;
+	}
+
+	.collect .product-item__action-button--list-view-only {
+		display: block;
+	}
+
+	.empty {
+		text-align: center;
+		color: #000;
+	}
 </style>
+
+<section data-section-id="{{ section.id }}" data-section-type="account" id="account">
+	{%- comment -%}-------------------------- Mobile --------------------------{%- endcomment -%}
+	<div class="hidden-lap-and-up account">
+		<div class="header-me container">
+			{%- if customer -%}
+	
+			<div class="account-box">
+				<h3 class="mobile-account__title">My Service</h3>
+				<div class="card__linklist ">
+					 <div class="render_nav_list d-flex mobile-account__nav">
+	
+					  {%- for block in section.blocks -%}
+					  {%- if block.settings.nav_show -%}
+					  <div class="card__linklist-item link" style="cursor:pointer ;" data-right="{{block.settings.nav_right}}" data-action="left-nav" aria-label="{{block.settings.nav_title}}"> 
+						  <span> {%- render 'icon', icon: {{block.settings.nav_icon}} -%}</span>
+					  <span>{{block.settings.nav_title}}</span>
+					  </div>
+					  {%- endif -%}
+					  {%- endfor -%}
+	
+					  <a href="{{ routes.account_logout_url }}" class="card__linklist-item link"
+						   data-no-instant >{% render 'icon', icon :"account-logout" %} {{ 'customer.general.logout' | t }}</a>
+				  </div>
+				</div>
+			</div>
+	
+			{%- else -%}
+			<ul class="no-logged">
+				<li class="text-l"><a href="{{ routes.account_login_url }}?return_url={{ page.url }}">LOGIN &gt;</a></li>
+				<li class="text-r"><a href="{{ routes.account_register_url }}">CREATE ACCOUNT&gt;</a></li>
+			</ul>
+			{%- endif -%}
+		</div>
+	
+	</div>
+
+	{%- comment -%}-------------- desktop ----------------------{%- endcomment -%}
+	<div class="page__sub-header hidden-tablet">
+		<nav aria-label="{{ 'general.breadcrumb.title' | t }}" class="breadcrumb">
+			<ol class="breadcrumb__list" role="list">
+				<li class="breadcrumb__item">
+					<a class="breadcrumb__link link"
+						href="{{ routes.root_url }}">{{ 'general.breadcrumb.home' | t }}</a>
+					{%- render 'icon', icon: 'arrow-right' -%}
+				</li>
+				<li class="breadcrumb__item">
+					<a class="breadcrumb__link link"
+						href="{{ routes.account_url }}">{{ 'general.breadcrumb.account' | t }}</a>
+					{%- render 'icon', icon: 'arrow-right' -%}
+				</li>
+
+				<li class="breadcrumb__item">
+					<span class="breadcrumb__link" aria-current="page">Account Overview</span>
+				</li>
+			</ol>
+		</nav>
+	</div>
+	<div class="container container--flush">
+		<div class="layout">
+			{%- comment -%}-----------------desktop 自定义导航栏 -------------------{%- endcomment -%}
+			<div class="layout__section layout__section--secondary hidden-phone">
+				<div class="card card--sticky hidden-pocket">
+					<div class="card__section card__section--tight">
+						<div class="card__linklist table-left-nav">
+							<div class="render_nav_list ">
+
+							{%- for block in section.blocks -%}
+							{%- if block.settings.nav_show -%}
+							<div class="card__linklist-item link" style="cursor:pointer ;" data-right="{{block.settings.nav_right}}" data-action="left-nav" aria-label="{{block.settings.nav_title}}"> 
+								<span> {%- render 'icon', icon: {{block.settings.nav_icon}} -%}</span>
+							<span>{{block.settings.nav_title}}</span>
+							</div>
+							{%- endif -%}
+							{%- endfor -%}
+
+							<a href="{{ routes.account_logout_url }}" class="card__linklist-item link"
+								 data-no-instant >{% render 'icon', icon :"account-logout" %} {{ 'customer.general.logout' | t }}</a>
+						</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+			<div class="layout__section ">
+				{%- comment -%}-----------------------收藏列表-------------------{%- endcomment -%}
+				<div class="wish_list account_right_content" data-type="accountPage">
+					<header>
+						<h1 class="center wish_title">MY WISHLIST</h1>
+					</header>
+
+                    <div class="wish_loading">
+						<div class="body-me loading">
+						{%- render 'icon', icon: 'cjj_loading' -%}
+						<span class="loading-text">&nbsp;loading...</span>
+					</div>
+				</div>
+				
+					<div class="collect page-width">
+
+					</div>					
+
+					<div id="czquickview" class="modal" aria-hidden="true">
+						<div class="modal__dialog modal__dialog--stretch" role="dialog">
+						  <button class="modal__close link" data-action="close-modal" title="Close"><svg focusable="false" class="icon icon--close " viewBox="0 0 19 19" role="presentation">
+						<path d="M9.1923882 8.39339828l7.7781745-7.7781746 1.4142136 1.41421357-7.7781746 7.77817459 7.7781746 7.77817456L16.9705627 19l-7.7781745-7.7781746L1.41421356 19 0 17.5857864l7.7781746-7.77817456L0 2.02943725 1.41421356.61522369 9.1923882 8.39339828z" fill="currentColor" fill-rule="evenodd"></path>
+					</svg></button>
+					
+						  <div class="modal__loader"><svg focusable="false" class="icon icon--search-loader " viewBox="0 0 64 64" role="presentation">
+						<path opacity=".4" d="M23.8589104 1.05290547C40.92335108-3.43614731 58.45816642 6.79494359 62.94709453 23.8589104c4.48905278 17.06444068-5.74156424 34.59913135-22.80600493 39.08818413S5.54195825 57.2055303 1.05290547 40.1410896C-3.43602265 23.0771228 6.7944697 5.54195825 23.8589104 1.05290547zM38.6146353 57.1445143c13.8647142-3.64731754 22.17719655-17.89443541 18.529879-31.75914961-3.64743965-13.86517841-17.8944354-22.17719655-31.7591496-18.529879S3.20804604 24.7494569 6.8554857 38.6146353c3.64731753 13.8647142 17.8944354 22.17719655 31.7591496 18.529879z">
+						</path>
+						<path d="M1.05290547 40.1410896l5.80258022-1.5264543c3.64731754 13.8647142 17.89443541 22.17719655 31.75914961 18.529879l1.5264543 5.80258023C23.07664892 67.43614731 5.54195825 57.2055303 1.05290547 40.1410896z">
+						</path>
+					</svg></div>
+					
+						  <div class="modal__inner">
+							   <div class="abc"></div>
+						  </div>
+						</div>
+					  </div>
+
+					{%- if customer -%}
+					<div class="collect-body">
+						<div class=" collect-body-layout">
+						<div class="wish_center">
+							You currently have nothing saved to your Wishlist.<br />
+							Personalize your shopping experience with your Wishlist.
+						</div>
+						<div class="d-flex aic jcc sign-button">
+							<a href="/collections/shop" class="sign-button">Let's Get Started!</a>
+						</div>
+					</div>
+					</div>
+					{%- endif -%}
+
+				</div>
+
+				{%- comment -%}------------------------订单列表--------------------{%- endcomment -%}
+				<div class="card my_orders account_right_content"  data-type="accountPage">
+					{%- comment -%}-------------------------- desktop --------------{%- endcomment -%}
+					<div class="hidden-phone">
+						{% render 'my-order-view' customer:customer%}
+					</div>
+
+					{%- comment -%}------------------------mobile------------------------{%- endcomment -%}
+					<div class="large_pad hidden-tablet-and-up ">
+						<div class="order-me container">
+							<h3 class="h3">{{- 'customer.general.orders' | t -}}</h3>
+							<div class="icon-box">
+								<ul class="icons" id="orders-list">
+									<li data-item="orders-all" class="current" data-type="orders-list" aria-label="All">
+										{%- render 'icon', icon: 'cjj_all' -%}<br />
+										<span>All</span>
+									</li>
+									<li data-item="orders-unpaid" data-type="orders-list"  aria-label="Unpaid">
+										{%- render 'icon', icon: 'cjj_unpaid' -%}<br />
+										<span>Unpaid</span>
+									</li>
+									<li data-item="orders-processing" data-type="orders-list"  aria-label="Processing">
+										{%- render 'icon', icon: 'cjj_processing' -%}<br />
+										<span>Processing</span>
+									</li>
+									<li data-item="orders-shipped" data-type="orders-list" aria-label="Shipped">
+										{%- render 'icon', icon: 'cjj_shipped' -%}<br />
+										<span>Shipped</span>
+									</li>
+									<li data-item="orders-payment" data-type="orders-list" aria-label="Payment">
+										{%- render 'icon', icon: 'cjj_payment' -%}<br />
+										<span>Payment</span>
+									</li>
+									<li data-item="orders-completed" data-type="orders-list" aria-label="Completed">
+										{%- render 'icon', icon: 'cjj_completed' -%}<br />
+										<span>Completed</span>
+									</li>
+									{%- comment -%}
+									<li data-item="post-sale" data-type="orders-list" aria-label="Processing">
+										{%- render 'icon', icon: 'cjj_post_sale' -%}<br />
+										<span>Post-sale</span>
+									</li>
+									{%- endcomment -%}
+								</ul>
+							</div>
+					
+						</div>
+						<div class="body-me loading" id="loading">
+							{%- render 'icon', icon: 'cjj_loading' -%}
+							<span class="loading-text">&nbsp;loading...</span>
+						</div>
+						<div class="card__section" id="order_null">
+							<div class="empty-state empty-state--extra-tight">
+								<div class="empty-state__icon">
+									{%- render 'icon', icon: 'package' -%}
+									<span class="empty-state__count">0</span>
+								</div>
+								<p class="empty-state__icon-description">{{ 'customer.general.no_orders' | t }}</p>
+								<div class="empty-state__button-container">
+									<a href="{{ routes.all_products_collection_url }}"
+										class="empty-state__button button button--primary">{{ 'customer.general.no_orders_button' | t }}</a>
+								</div>
+							</div>
+						</div>
+					
+						<div class="body-me" id="body_me">
+							<!--渲染订单区域-->
+
+						</div>
+						<div class="post" id="post">
+							<div class="container">
+								<h3>
+									{%- render 'icon', icon: 'bi-email' -%}&nbsp;&nbsp;
+									<a href="mailto:contactus@hyfol.com" target="_blank" rel="noopener"
+										aria-describedby="a11y-new-window-message">contactus@hyfol.com</a>
+								</h3>
+							</div>
+						</div>
+						<div class="advert-me container">
+							<ul>
+								<li><a href="{{ routes.cart_url }}">SHOPPING CART</a></li>
+								<li><a href="{{ routes.root_url }}collections/hot-sale">HOT SALE</a></li>
+							</ul>
+						</div>
+					</div>
+	
+				</div>
+				
+				{%- comment -%}--------------------VIP 信息和优惠券概览-----------------------{%- endcomment -%}
+				<div class="my_overview account_right_content"  data-type="accountPage">
+					{%- comment -%}规则说明{%- endcomment -%}
+					<div class="vip-rules" style="display:none;">
+					
+						<div class="close-rule__page">{% render 'icon',icon:'close' %} </div>
+					
+						<h1 class="h1 vip-rules__title">About Rules</h1>
+						<h3 class="h3">1. Introduction</h3>
+						<div class="rule-tex">
+							There is no fee for the HYFOL VIP. HYFOL VIP membership is limited to individuals only and limited to one
+							account per individual.It is your identification that represent you are at legal ages to join our program
+							and responsibility for your membership to keep your email and contact details up to date in your Account.HYFOL
+							reserves the right to disqualify Members who have violated any Of theTerms and Conditions. Any
+							fraudulent activity or attempt to manipulate or abuse the program will result in the account being
+							removed from the program without notice. When a Membership is terminated, all outstanding coupons and
+							outstanding rewards associated with the Membership are forfeited.
+						</div>
+						<h3 class="h3">2. Membership</h3>
+						<div class="rule-tex">
+							Every tier is valid for 12 months from the date the HYFOL VIP member qualifies(exclude silver member). identity
+							validation is required every month.Data refreshes typically take up to 24 hours. Please check your level after
+							24 hours. Once you become a silver member,you will earn a life-long status. Please note that the level of your
+							membership is based on the times of eligible purchases or the amount of eligible spending during the past 12
+							months which is 45 days before the refresh date every month.
+							<table border="1px" class="rule-table">
+								<thead>
+									<tr>
+										<th> </th>
+										<th>Silver</th>
+										<th>Gold</th>
+										<th>Platinum</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<th>
+											Points Redeem
+										</th>
+										<td>{% render 'icon',icon:"check" %}</td>
+										<td>{% render 'icon',icon:"check" %}</td>
+										<td>{% render 'icon',icon:"check" %}</td>
+									</tr>
+									<tr>
+										<th>
+											Level-up Coupon
+										</th>
+										<td></td>
+										<td>{% render 'icon',icon:"check" %}</td>
+										<td>{% render 'icon',icon:"check" %}</td>
+									</tr>
+									<tr>
+										<th>
+											Free Shipping Card
+										</th>
+										<td></td>
+										<td>{% render 'icon',icon:"check" %}</td>
+										<td>{% render 'icon',icon:"check" %}</td>
+									</tr>
+									<tr>
+										<th>
+											Birthday Gifts
+										</th>
+										<td></td>
+										<td></td>
+										<td>{% render 'icon',icon:"check" %}</td>
+									</tr>
+									<tr>
+										<th>
+											Exclusive Promotions
+										</th>
+										<td></td>
+										<td></td>
+										<td>{% render 'icon',icon:"check" %}</td>
+									</tr>
+								</tbody>
+							</table>
+							<p style="color:#919191 ;">( The Eligible Purchases means purchases on the HYFOL website during the past 12
+								months which is 45 days
+								before 10h every month.)</p>
+						</div>
+						<h3 class="h3">3. Rewards </h3>
+						<div class="rule-tex">
+							Membership in the program may entitle you to various ofers in addition to rewards . The details of these
+							ofers are set out from time to time to your personal acCount.
+						</div>
+					</div>
+
+					<div class="my-account">
+						<div class="vip-page ">
+							<div class="vip-overview">
+								<div class="vip-user d-flex">
+									<div class="vip-user__avatar">
+										<img class="lazyload" alt="fill" src="https://cdn.shopify.com/s/files/1/0595/0691/7535/files/bd0d72d9c0dedca8253dc2549b1a1017.png?v=1664507136">
+									</div>
+									<div class="vip-user__name">
+										<span style="margin-bottom:6px; display: block;">{{customer.name}}</span>
+										<div class="vip-icon__box">
+											{%- render 'icon',icon:'vip',class:'vip' -%}
+											<span class="vip-user__grade"> </span>
+										</div>
+										<div class="vip-icon__box">
+											{% render "icon",icon:'integral' %}
+											<span class="vip-integral">0</span>
+										</div>
+							
+									</div>
+								</div>
+							
+								<div class="vip-grade d-flex">
+									<span class="vip-level__s0">
+									</span>
+									<span class="vip-solid"></span>
+									<span class="vip-level__s1">
+										<img src="{{'s1.png' | asset_url}}" alt="">
+										{%- comment -%}<span class="vip-grade__name">Silver</span>{%- endcomment -%}
+									</span>
+									<span class="vip-solid"></span>
+									<span class="vip-level__s2">
+										<img src="{{'s2.png' | asset_url}}" alt="">
+										{%- comment -%}<span class="vip-grade__name">Gold</span>{%- endcomment -%}
+									</span>
+									<span class="vip-solid"></span>
+									<span class="vip-level__s3">
+										<img src="{{'s3.png' | asset_url}}" alt="">
+										{%- comment -%}<span class="vip-grade__name">Platinum</span>{%- endcomment -%}
+									</span>
+								</div>
+								<p class="vip-info__title">Welcome to the HYFOL VIP</p>
+							</div>
+	
+							<div class="vip-overview__rule">
+								<p class="vip-upgrade__info">
+								<span class="vip-upgrade__header">Silver: </span>	US$0.1 or 1 order(s) are required to become a silver member
+								</p>
+								<p class="vip-upgrade__info">
+									<span class="vip-upgrade__header">Gold: </span>US$120 or 3 order(s) are required to become a gold member
+								</p>
+								<p class="vip-upgrade__info">
+								<span class="vip-upgrade__header">Platinum: </span>	US$500 or 5 order(s) are required to become a platinum member
+								</p>
+								<summary class="vip-rules__link">
+									About rules
+								</summary>
+							</div>
+						</div>
+						
+						{%- assign order_unpaid = 0 -%}
+						{%- assign order_processing = 0 -%}
+						{%- assign order_shipped = 0 -%}
+						{%- assign order_payment = 0 -%}
+						{%- assign order_completed = 0 -%}
+					
+						{%- for order in customer.orders -%}
+						{% if order.financial_status=='unpaid' or order.financial_status=='pending' %}
+						{%- assign order_unpaid = order_unpaid | plus: 1 -%}
+						{% endif%}
+						{% if order.fulfillment_status=='on hold' %}
+						{%- assign order_processing = order_processing | plus: 1 -%}
+						{% endif %}
+						{% if order.fulfillment_status=='in progress' %}
+						{%- assign order_shipped = order_shipped | plus: 1 -%}
+						{% endif%}
+						{% if order.financial_status=='paid' %}
+						{%- assign order_payment = order_payment | plus: 1 -%}
+						{% endif %}
+						{% if order.fulfillment_status=='fulfilled' %}
+						{%- assign order_completed = order_completed | plus: 1 -%}
+						{% endif%}
+						{%- endfor -%}
+	
+						<div class="my-coupons">
+							<h3 class="h3 my-coupons__title">Unused Coupons</h3>
+							<div class="my-coupons__list my-coupons_empty">
+							<div class="empty">
+								{%- render 'icon',icon:"package" -%}
+								<p>It is empty here :-(</p>
+							</div>
+							</div>
+						</div>
+
+						{%- comment -%}订单导航{%- endcomment -%}
+						<div class="order-preview overview-box ">
+							<h3 class="h3">My Order</h3>
+								<div class="icon-box">
+									<ul class="d-flex  account-overview__list icons">
+										<li class="order-preview__item" data-nav-type="All">
+											<span class="order-icon">
+												{%- render 'icon', icon: 'cjj_all' -%}
+												{%- comment -%}
+												<span class="empty-state__count redio-icon">{{customer.orders_count}}</span>
+												{%- endcomment -%}
+											</span>
+											<p>All</p>
+											</a>
+										</li>
+										<li class="order-preview__item" data-nav-type="Unpaid">
+											<span class="order-icon">
+												{%- render 'icon', icon: 'cjj_unpaid' -%}
+												{%- if order_unpaid!=0 -%}
+												<span class="empty-state__count redio-icon">{{order_unpaid}}</span>
+												{%- endif -%}
+											</span>
+											<p>Unpaid</p>
+										</li>
+										<li class="order-preview__item"  data-nav-type="Processing">
+											<span class="order-icon">
+												{%- render 'icon', icon: 'cjj_processing' -%}
+												{%- if order_processing!=0 -%}
+												<span class="empty-state__count redio-icon">{{order_processing}}</span>
+												{%- endif -%}
+											</span>
+											<p>Processing</p>
+										</li>
+										<li class="order-preview__item" data-nav-type="Shipped">
+											<span class="order-icon">
+												{%- render 'icon', icon: 'cjj_shipped' -%}
+												{%- if order_shipped!=0 -%}
+												<span class="empty-state__count redio-icon">{{order_shipped}}</span>
+					
+												{%- endif -%}
+											</span>
+											<p>Shipped</p>
+										</li>
+					
+										<li class="order-preview__item" data-nav-type="Payment">
+											<span class="order-icon">
+												{%- render 'icon', icon: 'cjj_payment' -%}
+												{%- if order_payment!=0 -%}
+												<span class="empty-state__count redio-icon">{{order_payment}}</span>
+					
+												{%- endif -%}
+											</span>
+											<p>Payment</p>
+										</li>
+										<li class="order-preview__item" data-nav-type="Completed">
+											<span class="order-icon">
+												{%- render 'icon', icon: 'cjj_completed' -%}
+												{%- if order_completed!=0 -%}
+												<span class="empty-state__count redio-icon">{{order_completed}}</span>
+					
+												{%- endif -%}
+											</span>
+											<p>Completed</p>
+										</li>
+										<li class="order-preview__item" data-nav-type="Post-sale">
+											<span class="order-icon">
+												{%- render 'icon', icon: 'cjj_post_sale' -%}<br />
+											</span>
+											<p>Post-sale</p>
+										</li>
+									</ul>
+								</div>
+						</div>
+
+					{%- comment -%}
+					<div class="overview-box points-box">
+						<h1>Points For</h1>
+						<div class="points-img">
+							{%- if section.settings.points_rule!= blank -%}
+							{%- assign points_image = section.settings.points_rule -%}
+							{%- capture supported_sizes -%}{%- render 'image-size', sizes: '200,300,400,500', image: points_image -%}{%-
+							endcapture -%}
+							{%- assign image_url = points_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+							<img class="lazyload" alt="{{ points_image.alt | escape }}" data-src="{{ image_url }}"
+								data-widths="[{{ supported_sizes }}]" data-sizes="auto">
+							{%- endif -%}
+				
+						</div>
+					</div>
+					{%- endcomment -%}
+					</div>	
+
+				</div>
+
+				{%- comment -%}---------------------优惠券--------------------------{%- endcomment -%}
+				<div class="my_coupons account_right_content backgrount_e"  data-type="accountPage">
+					<h3 class="my_coupons__title h3">My Coupons</h3>
+					<details-menu>
+						<div class="coupons-nav d-flex">
+							<summary aria-expanded="true" data-index="1">
+								Unused Coupons
+							</summary>
+							<summary aria-expanded="false" data-index="2">
+								Expired Coupons 
+							</summary>
+						</div>
+						<div class="unused__coupons page__item" data-index="1" aria-hidden="false">
+							<div class="my-coupons">
+								<!-- <h3 class="h3 my-coupons__title">Unused Coupons</h3> -->
+									<div class="my-coupons__list my-coupons_empty">
+										<div class="empty">
+											{%- render 'icon',icon:"package" -%}
+											<p>It is empty here :-(</p>
+										</div>
+									</div>
+							</div>
+						</div>
+						<div class="expired__coupons page__item" data-index="2" aria-hidden="true">
+							<div class="my-coupons">
+								<!-- <h3 class="h3 my-coupons__title">Unused Coupons</h3> -->
+								<div class="my-coupons__list my-coupons_empty">
+									<div class="empty">
+										{%- render 'icon',icon:"package" -%}
+										<p>It is empty here :-(</p>
+									</div>
+								</div>
+							</div>
+						</div>
+						</details-menu>
+				</div>
+
+				{%- comment -%}---------------------------------------{%- endcomment -%}
+				<div class="my_profiles account_right_content" data-type="accountPage">
+					{%- comment -%}
+					<div class="profile-view backgrount_e">
+						<h3 class="h3" style="text-align:center;">My Profile</h3>
+				
+						<div class="profiles-form">
+							<label for="my_name">The Name</label>
+							<input type="text" name="" id="my_name">
+							<label for="my_brithday">Birthday</label>
+							<input type="text" name="" id="my_brithday">
+							
+							Fill In For 30+Points
+							<div>
+								<input type="checkbox" name="" id="checkbox-y">
+								<label for="checkbox-y">选项</label>
+								<input type="checkbox" name="" id="checkbox-">
+								<label for="checkbox-">选项</label>
+								<input type="checkbox" name="" id="checkbox-z">
+								<label for="checkbox-z">选项</label>
+								<input type="checkbox" name="" id="checkbox-k">
+								<label for="checkbox-k">选项</label>
+
+							</div>
+						</div>
+					</div>
+					{%- endcomment -%}
+				</div>
+
+				{%- comment -%}-------------------------积分概览------------------------{%- endcomment -%}
+				<div class="my_profile account_right_content" data-type="accountPage">
+					<div class="profile-view backgrount_e">
+						<h3 class="h3" >My Profile</h3>
+						<div class="my-profile__view ">
+							<div class="profile-total">
+								<div class="profile_total"><strong >0</strong></div>
+								<div class="profile_heading">Total Points</div>
+							</div>
+							<span style="background-color: #aaa;height: 100%;width: 1px;margin: 0 auto;"></span>
+							<div class="profile-expire">
+								<div class="profile_expire"><strong>0</strong></div>
+								<div>Points Expired soon</div>
+							</div>
+						</div>
+					</div>
+					
+					{%- comment -%}-----------------积分记录----------------------{%- endcomment -%}
+					<div class="profile-record backgrount_e">
+						<h4 class="profile-story__title">Profile Detalls</h4>
+						<details-menu>
+							<div class="profile-nav">
+								<summary aria-expanded="true" data-index="1">
+									All
+								</summary>
+								<summary aria-expanded="false" data-index="2">
+									Earned
+								</summary>
+								<summary aria-expanded="false" data-index="3">
+									Point Amount
+								</summary>
+								<summary aria-expanded="false" data-index="4">
+									Expired
+								</summary>
+							</div>
+							<div class="profile-all page__item" data-index="1" aria-hidden="false">
+								<table border="1">
+									<thead>
+										<tr>
+											<th>Date And Time</th>
+											<th>Point Type</th>
+											<th>Point Amount</th>
+											<th>Expiration Date</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr><td colspan="4"><div class="my-coupons_empty">
+											<div class="empty">
+												{%- render 'icon',icon:"package" -%}
+												<p>It is empty here :-(</p>
+											</div>
+										</div></td></tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="profile-earned page__item" data-index="2" aria-hidden="true">
+								<table border="1">
+									<thead>
+										<tr>
+											<th>Date And Time</th>
+											<th>Point Type</th>
+											<th>Point Amount</th>
+											<th>Expiration Date</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr><td colspan="4"><div class="my-coupons_empty">
+											<div class="empty">
+												{%- render 'icon',icon:"package" -%}
+												<p>It is empty here :-(</p>
+											</div>
+										</div></td></tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="profile-point page__item" data-index="3" aria-hidden="true">
+								<table border="1">
+									<thead>
+										<tr>
+											<th>Date And Time</th>
+											<th>Point Type</th>
+											<th>Point Amount</th>
+											<th>Expiration Date</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr><td colspan="4"><div class="my-coupons_empty">
+											<div class="empty">
+												{%- render 'icon',icon:"package" -%}
+												<p>It is empty here :-(</p>
+											</div>
+										</div></td></tr>
+									</tbody>
+								</table>
+							</div>
+							<div class="profile-expired page__item" data-index="4" aria-hidden="true">
+								<table border="1">
+									<thead>
+										<tr>
+											<th>Date And Time</th>
+											<th>Point Type</th>
+											<th>Point Amount</th>
+											<th>Expiration Date</th>
+										</tr>
+									</thead>
+									<tbody>
+										<tr><td colspan="4"><div class="my-coupons_empty">
+											<div class="empty">
+												{%- render 'icon',icon:"package" -%}
+												<p>It is empty here :-(</p>
+											</div>
+										</div></td></tr>
+									</tbody>
+								</table>
+							</div>
+						</details-menu>
+					</div>
+				</div>
+				
+				{%- comment -%}----------------------------客户地址------------------------{%- endcomment -%}
+				<div class="my_addresses account_right_content " data-type="accountPage">
+					<section data-section-id="{{ section.id }}" data-section-type="account">
+						<div class="container container--flush">
+							  <div class="card">
+								<div class="card__section card__section--flex card__section--tight">
+								  <h1 class="card__title heading h1">{{ 'customer.general.addresses' | t }} {% if customer.addresses_count > 0 %}({{ customer.addresses_count }}){% endif %}</h1>
+								  {%- if customer.addresses_count > 0 -%}
+									<button class="button button--small button--primary" data-action="open-modal" aria-controls="modal-address-new">{{ 'customer.addresses.add_address' | t }}</button>
+								  {%- endif -%}
+								</div>
+					  
+								{%- if customer.addresses_count == 0 -%}
+								  <div class="card__section">
+									<div class="empty-state empty-state--extra-tight">
+									  <div class="empty-state__icon">
+										{%- render 'icon', icon: 'address' -%}
+										<span class="empty-state__count">0</span>
+									  </div>
+					  
+									  <p class="empty-state__icon-description">{{ 'customer.addresses.no_addresses' | t }}</p>
+					  
+									  <div class="empty-state__button-container">
+										<button class="empty-state__button button button--primary" data-action="open-modal" aria-controls="modal-address-new">{{ 'customer.addresses.no_addresses_button' | t }}</button>
+									  </div>
+									</div>
+								  </div>
+								  
+								{%- else -%}
+								  {%- paginate customer.addresses by 8 -%}
+									<div class="address-list">
+									  <div class="address-list__item" data-address>
+										<div class="address-list__item-top">
+										  <p class="heading h6">{{ 'customer.addresses.default_address' | t }}</p>
+										  {{- customer.default_address | format_address -}}
+										</div>
+					  
+										<div class="address-list__action-list">
+										  <button class="link link--accented" data-action="open-modal" aria-controls="modal-address-{{ customer.default_address.id }}">{{ 'customer.addresses.edit' | t }}</button>
+										  <!-- <button class="link link--accented" onclick="Shopify.CustomerAddress.destroy({{ customer.default_address.id }}); return false">{{ 'customer.addresses.delete' | t }}</button> -->
+										  <button
+										  type="button" class="link link--accented"
+										  aria-label="{{ 'customer.addresses.delete' | t }} {{ forloop.index }}"
+										  data-target="{{ customer.default_address.url }}"
+										  data-action="deleteAddresses"
+										  data-confirm-message="{{ 'customer.addresses.delete_confirm' | t }}"
+										>
+										  {{ 'customer.addresses.delete' | t }}
+										</button>
+										</div>
+									  </div>
+					  
+									  {%- assign address_count = paginate.current_offset | plus: 2 -%}
+					  
+									  {%- for address in customer.addresses -%}
+										{%- if address.id == customer.default_address.id -%}
+										  {%- continue -%}
+										{%- endif -%}
+					  
+										<div class="address-list__item">
+										  <div class="address-list__item-top">
+											<p class="heading h6">{{ 'customer.addresses.address_number' | t: number: address_count }}</p>
+											{{- address | format_address -}}
+										  </div>
+					  
+										<div class="address-list__action-list">
+											<button class="link link--accented" data-action="open-modal" aria-controls="modal-address-{{ address.id }}">{{
+												'customer.addresses.edit' | t }}</button>
+											<!-- <button class="link link--accented" onclick="Shopify.CustomerAddress.destroy({{ address.id }}); return false">{{ 'customer.addresses.delete' | t }}</button> -->
+											<button type="button" class="link link--accented 11111111111111"
+												aria-label="{{ 'customer.addresses.delete' | t }} {{ forloop.index }}" data-target="{{ address.url }}"
+												data-confirm-message="{{ 'customer.addresses.delete_confirm' | t }}">
+												{{ 'customer.addresses.delete' | t }}
+											</button>
+										</div>
+										</div>
+					  
+										{%- assign address_count = address_count | plus: 1 -%}
+									  {%- endfor -%}
+									</div>
+					  
+									{% render 'pagination', paginate: paginate %}
+								  {% assign dm_paginate_by = paginate.page_size %}{%- endpaginate -%}
+								{%- endif -%}
+							  </div>
+							  
+						</div>
+					  
+
+						{%- assign new_form_errored = false -%}
+					  
+						{%- capture form_status -%}
+						  {%- form 'customer_address', customer.new_address, class: 'form' -%}
+							{%- if form.errors -%}
+							  {%- assign new_form_errored = true -%}
+							{%- endif -%}
+						  {%- endform -%}
+						{%- endcapture -%}
+					  
+						<div id="modal-address-new" class="modal" aria-hidden="{% if new_form_errored %}false{% else %}true{% endif %}">
+						  <div class="modal__dialog" role="dialog">
+							<header class="modal__header">
+							  <h3 class="modal__title heading h2">{{ 'customer.addresses.add_address' | t }}</h3>
+							  <button class="modal__close link" data-action="close-modal" title="{{ 'general.accessibility.close' | t | escape }}">
+								{%- render 'icon', icon: 'close' -%}
+							  </button>
+							</header>
+					  
+							<div class="modal__content modal__content--ios-push">
+							  <p class="modal__description">{{ 'customer.addresses.form_subtitle' | t }}</p>
+					  
+							  {%- form 'customer_address', customer.new_address, class: 'form' -%}
+								{%- if form.errors -%}
+								  <div class="alert alert--error">
+									<ul class="alert__error-list" role="list">
+									  {%- for field in form.errors -%}
+										{%- if field == 'form' -%}
+										  <li class="alert__error-item">{{ form.errors.messages[field] }}</li>
+										{%- else -%}
+										  <li class="alert__error-item"><strong>{{ form.errors.translated_fields[field] }}</strong> {{ form.errors.messages[field] }}</li>
+										{%- endif -%}
+									  {%- endfor -%}
+									</ul>
+								  </div>
+								{%- endif -%}
+					  
+								{%- if request.locale.iso_code == 'ja' -%}
+								  <div class="form__input-wrapper form__input-wrapper--labelled">
+									<input id="address-new[last_name]" type="text" class="form__field form__field--text {% if form.last_name != blank %}is-filled{% endif %}" name="address[last_name]" value="{{ form.last_name }}" autofocus>
+									<label for="address-new[last_name]" class="form__floating-label">{{ 'customer.addresses.last_name' | t }}</label>
+								  </div>
+					  
+								  <div class="form__input-wrapper form__input-wrapper--labelled">
+									<input id="address-new[first_name]" type="text" class="form__field form__field--text {% if form.first_name != blank %}is-filled{% endif %}" name="address[first_name]" value="{{ form.first_name }}">
+									<label for="address-new[first_name]" class="form__floating-label">{{ 'customer.addresses.first_name' | t }}</label>
+								  </div>
+					  
+								  <div class="form__input-wrapper form__input-wrapper--labelled">
+									<input id="address-new[zip]" type="text" class="form__field form__field--text {% if form.zip != blank %}is-filled{% endif %}" name="address[zip]" value="{{ form.zip }}">
+									<label for="address-new[zip]" class="form__floating-label">{{ 'customer.addresses.zip' | t }}</label>
+								  </div>
+					  
+								  <div class="form__input-wrapper form__input-wrapper--labelled">
+									<div class="select-wrapper select-wrapper--primary is-filled">
+									  {%- render 'icon', icon: 'arrow-bottom' -%}
+									  <select name="address[country]" id="address-new[country]">{{ all_country_option_tags }}</select>
+									</div>
+					  
+									<label for="address-new[country]" class="form__floating-label">{{ 'customer.addresses.country' | t }}</label>
+								  </div>
+					  
+								  <div class="form__input-wrapper form__input-wrapper--labelled" style="display: none">
+									<div class="select-wrapper select-wrapper--primary is-filled">
+									  {%- render 'icon', icon: 'arrow-bottom' -%}
+									  <select name="address[province]" id="address-new[province]"></select>
+									</div>
+					  
+									<label for="address-new[province]" class="form__floating-label">{{ 'customer.addresses.province' | t }}</label>
+								  </div>
+					  
+								  <div class="form__input-wrapper form__input-wrapper--labelled">
+									<input id="address-new[city]" type="text" class="form__field form__field--text {% if form.city != blank %}is-filled{% endif %}" name="address[city]" value="{{ form.city }}">
+									<label for="address-new[city]" class="form__floating-label">{{ 'customer.addresses.city' | t }}</label>
+								  </div>
+					  
+								  <div class="form__input-wrapper form__input-wrapper--labelled">
+									<input id="address-new[address1]" type="text" class="form__field form__field--text {% if form.address1 != blank %}is-filled{% endif %}" name="address[address1]" value="{{ form.address1 }}">
+									<label for="address-new[address1]" class="form__floating-label">{{ 'customer.addresses.address1' | t }}</label>
+								  </div>
+					  
+								  <div class="form__input-wrapper form__input-wrapper--labelled">
+									<input id="address-new[address2]" type="text" class="form__field form__field--text {% if form.address2 != blank %}is-filled{% endif %}" name="address[address2]" value="{{ form.address2 }}">
+									<label for="address-new[address2]" class="form__floating-label">{{ 'customer.addresses.address2' | t }}</label>
+								  </div>
+					  
+								  <div class="form__input-wrapper form__input-wrapper--labelled">
+									<input id="address-new[company]" type="text" class="form__field form__field--text {% if form.company != blank %}is-filled{% endif %}" name="address[company]" value="{{ form.company }}">
+									<label for="address-new[company]" class="form__floating-label">{{ 'customer.addresses.company' | t }}</label>
+								  </div>
+					  
+								  <div class="form__input-wrapper form__input-wrapper--labelled">
+									<input id="address-new[phone]" type="text" class="form__field form__field--text {% if form.phone != blank %}is-filled{% endif %}" name="address[phone]" value="{{ form.phone }}">
+									<label for="address-new[phone]" class="form__floating-label">{{ 'customer.addresses.phone' | t }}</label>
+								  </div>
+								{%- else -%}
+								  <div class="form__input-wrapper form__input-wrapper--labelled">
+									<input id="address-new[first_name]" type="text" class="form__field form__field--text {% if form.first_name != blank %}is-filled{% endif %}" name="address[first_name]" value="{{ form.first_name }}" autofocus>
+									<label for="address-new[first_name]" class="form__floating-label">{{ 'customer.addresses.first_name' | t }}</label>
+								  </div>
+					  
+								  <div class="form__input-wrapper form__input-wrapper--labelled">
+									<input id="address-new[last_name]" type="text" class="form__field form__field--text {% if form.last_name != blank %}is-filled{% endif %}" name="address[last_name]" value="{{ form.last_name }}">
+									<label for="address-new[last_name]" class="form__floating-label">{{ 'customer.addresses.last_name' | t }}</label>
+								  </div>
+					  
+								  <div class="form__input-wrapper form__input-wrapper--labelled">
+									<input id="address-new[company]" type="text" class="form__field form__field--text {% if form.company != blank %}is-filled{% endif %}" name="address[company]" value="{{ form.company }}">
+									<label for="address-new[company]" class="form__floating-label">{{ 'customer.addresses.company' | t }}</label>
+								  </div>
+					  
+								  <div class="form__input-wrapper form__input-wrapper--labelled">
+									<input id="address-new[phone]" type="text" class="form__field form__field--text {% if form.phone != blank %}is-filled{% endif %}" name="address[phone]" value="{{ form.phone }}">
+									<label for="address-new[phone]" class="form__floating-label">{{ 'customer.addresses.phone' | t }}</label>
+								  </div>
+					  
+								  <div class="form__input-wrapper form__input-wrapper--labelled">
+									<input id="address-new[address1]" type="text" class="form__field form__field--text {% if form.address1 != blank %}is-filled{% endif %}" name="address[address1]" value="{{ form.address1 }}">
+									<label for="address-new[address1]" class="form__floating-label">{{ 'customer.addresses.address1' | t }}</label>
+								  </div>
+					  
+								  <div class="form__input-wrapper form__input-wrapper--labelled">
+									<input id="address-new[address2]" type="text" class="form__field form__field--text {% if form.address2 != blank %}is-filled{% endif %}" name="address[address2]" value="{{ form.address2 }}">
+									<label for="address-new[address2]" class="form__floating-label">{{ 'customer.addresses.address2' | t }}</label>
+								  </div>
+					  
+								  <div class="form__input-row">
+									<div class="form__input-wrapper form__input-wrapper--labelled">
+									  <input id="address-new[city]" type="text" class="form__field form__field--text {% if form.city != blank %}is-filled{% endif %}" name="address[city]" value="{{ form.city }}">
+									  <label for="address-new[city]" class="form__floating-label">{{ 'customer.addresses.city' | t }}</label>
+									</div>
+					  
+									<div class="form__input-wrapper form__input-wrapper--labelled">
+									  <input id="address-new[zip]" type="text" class="form__field form__field--text {% if form.zip != blank %}is-filled{% endif %}" name="address[zip]" value="{{ form.zip }}">
+									  <label for="address-new[zip]" class="form__floating-label">{{ 'customer.addresses.zip' | t }}</label>
+									</div>
+								  </div>
+					  
+								  <div class="form__input-wrapper form__input-wrapper--labelled">
+									<div class="select-wrapper select-wrapper--primary is-filled">
+									  {%- render 'icon', icon: 'arrow-bottom' -%}
+									  <select name="address[country]" id="address-new[country]">{{ all_country_option_tags }}</select>
+									</div>
+					  
+									<label for="address-new[country]" class="form__floating-label">{{ 'customer.addresses.country' | t }}</label>
+								  </div>
+					  
+								  <div class="form__input-wrapper form__input-wrapper--labelled" style="display: none">
+									<div class="select-wrapper select-wrapper--primary is-filled">
+									  {%- render 'icon', icon: 'arrow-bottom' -%}
+									  <select name="address[province]" id="address-new[province]"></select>
+									</div>
+					  
+									<label for="address-new[province]" class="form__floating-label">{{ 'customer.addresses.province' | t }}</label>
+								  </div>
+								{%- endif -%}
+					  
+								<div class="form__input-wrapper form__input-wrapper--labelled">
+								  <div class="checkbox-wrapper">
+									<input type="checkbox" class="checkbox" name="address[default]" id="address-new[default]" value="0">
+									{% render 'icon', icon: 'check' %}
+								  </div>
+					  
+								  <label for="address-new[default]">{{ 'customer.addresses.set_default' | t }}</label>
+								</div>
+					  
+								<button 
+								  class="form__submit button button--primary button--full"               
+								  data-scenable="1"   
+								  data-sctype="profile_set"
+								  data-submitForm
+								>{{ 'customer.addresses.add_address' | t }}</button>
+							  {%- endform -%}
+							</div>
+						  </div>
+						</div>
+					  
+					  
+						<div id="modal-address-{{ customer.default_address.id }}" class="modal" aria-hidden="true">
+						  <div class="modal__dialog" role="dialog">
+							<header class="modal__header">
+							  <h3 class="modal__title heading h2">{{ 'customer.addresses.edit_address' | t }}</h3>
+							  <button class="modal__close link" data-action="close-modal" title="{{ 'general.accessibility.close' | t | escape }}">
+								{%- render 'icon', icon: 'close' -%}
+							  </button>
+							</header>
+					  
+							<div class="modal__content modal__content--ios-push">
+							  <p class="modal__description">{{ 'customer.addresses.form_subtitle' | t }}</p>
+					  
+							  {% form 'customer_address', customer.default_address, class: 'form' %}
+								{%- if request.locale.iso_code == 'ja' -%}
+								  <div class="form__input-wrapper form__input-wrapper--labelled">
+									<input id="address-{{ address.id }}[last_name]" type="text" class="form__field form__field--text {% if form.last_name != blank %}is-filled{% endif %}" name="address[last_name]" value="{{ form.last_name }}" autofocus>
+									<label for="address-{{ address.id }}[last_name]" class="form__floating-label">{{ 'customer.addresses.last_name' | t }}</label>
+								  </div>
+					  
+								  <div class="form__input-wrapper form__input-wrapper--labelled">
+									<input id="address-{{ address.id }}[first_name]" type="text" class="form__field form__field--text {% if form.first_name != blank %}is-filled{% endif %}" name="address[first_name]" value="{{ form.first_name }}">
+									<label for="address-{{ address.id }}[first_name]" class="form__floating-label">{{ 'customer.addresses.first_name' | t }}</label>
+								  </div>
+					  
+								  <div class="form__input-wrapper form__input-wrapper--labelled">
+									<input id="address-{{ address.id }}[zip]" type="text" class="form__field form__field--text {% if form.zip != blank %}is-filled{% endif %}" name="address[zip]" value="{{ form.zip }}">
+									<label for="address-{{ address.id }}[zip]" class="form__floating-label">{{ 'customer.addresses.zip' | t }}</label>
+								  </div>
+					  
+								  <div class="form__input-wrapper form__input-wrapper--labelled">
+									<div class="select-wrapper select-wrapper--primary is-filled">
+									  {%- render 'icon', icon: 'arrow-bottom' -%}
+									  <select name="address[country]" id="address-{{ address.id }}[country]" data-default="{{ form.country }}">{{ all_country_option_tags }}</select>
+									</div>
+					  
+									<label for="address-{{ address.id }}[country]" class="form__floating-label">{{ 'customer.addresses.country' | t }}</label>
+								  </div>
+					  
+								  <div class="form__input-wrapper form__input-wrapper--labelled" style="display: none">
+									<div class="select-wrapper select-wrapper--primary is-filled">
+									  {%- render 'icon', icon: 'arrow-bottom' -%}
+									  <select name="address[province]" id="address-{{ address.id }}[province]" data-default="{{ form.province }}"></select>
+									</div>
+					  
+									<label for="address-{{ address.id }}[province]" class="form__floating-label">{{ 'customer.addresses.province' | t }}</label>
+								  </div>
+					  
+								  <div class="form__input-wrapper form__input-wrapper--labelled">
+									<input id="address-{{ address.id }}[city]" type="text" class="form__field form__field--text {% if form.city != blank %}is-filled{% endif %}" name="address[city]" value="{{ form.city }}">
+									<label for="address-{{ address.id }}[city]" class="form__floating-label">{{ 'customer.addresses.city' | t }}</label>
+								  </div>
+					  
+								  <div class="form__input-wrapper form__input-wrapper--labelled">
+									<input id="address-{{ address.id }}[address1]" type="text" class="form__field form__field--text {% if form.address1 != blank %}is-filled{% endif %}" name="address[address1]" value="{{ form.address1 }}">
+									<label for="address-{{ address.id }}[address1]" class="form__floating-label">{{ 'customer.addresses.address1' | t }}</label>
+								  </div>
+					  
+								  <div class="form__input-wrapper form__input-wrapper--labelled">
+									<input id="address-{{ address.id }}[address2]" type="text" class="form__field form__field--text {% if form.address2 != blank %}is-filled{% endif %}" name="address[address2]" value="{{ form.address2 }}">
+									<label for="address-{{ address.id }}[address2]" class="form__floating-label">{{ 'customer.addresses.address2' | t }}</label>
+								  </div>
+					  
+								  <div class="form__input-wrapper form__input-wrapper--labelled">
+									<input id="address-{{ address.id }}[company]" type="text" class="form__field form__field--text {% if form.company != blank %}is-filled{% endif %}" name="address[company]" value="{{ form.company }}">
+									<label for="address-{{ address.id }}[company]" class="form__floating-label">{{ 'customer.addresses.company' | t }}</label>
+								  </div>
+					  
+								  <div class="form__input-wrapper form__input-wrapper--labelled">
+									<input id="address-{{ address.id }}[phone]" type="text" class="form__field form__field--text {% if form.phone != blank %}is-filled{% endif %}" name="address[phone]" value="{{ form.phone }}">
+									<label for="address-{{ address.id }}[phone]" class="form__floating-label">{{ 'customer.addresses.phone' | t }}</label>
+								  </div>
+								{%- else -%}
+								  <div class="form__input-wrapper form__input-wrapper--labelled">
+									<input id="address-{{ address.id }}[first_name]" type="text" class="form__field form__field--text {% if form.first_name != blank %}is-filled{% endif %}" name="address[first_name]" value="{{ form.first_name }}" autofocus>
+									<label for="address-{{ address.id }}[first_name]" class="form__floating-label">{{ 'customer.addresses.first_name' | t }}</label>
+								  </div>
+					  
+								  <div class="form__input-wrapper form__input-wrapper--labelled">
+									<input id="address-{{ address.id }}[last_name]" type="text" class="form__field form__field--text {% if form.last_name != blank %}is-filled{% endif %}" name="address[last_name]" value="{{ form.last_name }}">
+									<label for="address-{{ address.id }}[last_name]" class="form__floating-label">{{ 'customer.addresses.last_name' | t }}</label>
+								  </div>
+					  
+								  <div class="form__input-wrapper form__input-wrapper--labelled">
+									<input id="address-{{ address.id }}[company]" type="text" class="form__field form__field--text {% if form.company != blank %}is-filled{% endif %}" name="address[company]" value="{{ form.company }}">
+									<label for="address-{{ address.id }}[company]" class="form__floating-label">{{ 'customer.addresses.company' | t }}</label>
+								  </div>
+					  
+								  <div class="form__input-wrapper form__input-wrapper--labelled">
+									<input id="address-{{ address.id }}[phone]" type="text" class="form__field form__field--text {% if form.phone != blank %}is-filled{% endif %}" name="address[phone]" value="{{ form.phone }}">
+									<label for="address-{{ address.id }}[phone]" class="form__floating-label">{{ 'customer.addresses.phone' | t }}</label>
+								  </div>
+					  
+								  <div class="form__input-wrapper form__input-wrapper--labelled">
+									<input id="address-{{ address.id }}[address1]" type="text" class="form__field form__field--text {% if form.address1 != blank %}is-filled{% endif %}" name="address[address1]" value="{{ form.address1 }}">
+									<label for="address-{{ address.id }}[address1]" class="form__floating-label">{{ 'customer.addresses.address1' | t }}</label>
+								  </div>
+					  
+								  <div class="form__input-wrapper form__input-wrapper--labelled">
+									<input id="address-{{ address.id }}[address2]" type="text" class="form__field form__field--text {% if form.address2 != blank %}is-filled{% endif %}" name="address[address2]" value="{{ form.address2 }}">
+									<label for="address-{{ address.id }}[address2]" class="form__floating-label">{{ 'customer.addresses.address2' | t }}</label>
+								  </div>
+					  
+								  <div class="form__input-row">
+									<div class="form__input-wrapper form__input-wrapper--labelled">
+									  <input id="address-{{ address.id }}[city]" type="text" class="form__field form__field--text {% if form.city != blank %}is-filled{% endif %}" name="address[city]" value="{{ form.city }}">
+									  <label for="address-{{ address.id }}[city]" class="form__floating-label">{{ 'customer.addresses.city' | t }}</label>
+									</div>
+					  
+									<div class="form__input-wrapper form__input-wrapper--labelled">
+									  <input id="address-{{ address.id }}[zip]" type="text" class="form__field form__field--text {% if form.zip != blank %}is-filled{% endif %}" name="address[zip]" value="{{ form.zip }}">
+									  <label for="address-{{ address.id }}[zip]" class="form__floating-label">{{ 'customer.addresses.zip' | t }}</label>
+									</div>
+								  </div>
+					  
+								  <div class="form__input-wrapper form__input-wrapper--labelled">
+									<div class="select-wrapper select-wrapper--primary is-filled">
+									  {%- render 'icon', icon: 'arrow-bottom' -%}
+									  <select name="address[country]" id="address-{{ address.id }}[country]" data-default="{{ form.country }}">{{ all_country_option_tags }}</select>
+									</div>
+					  
+									<label for="address-{{ address.id }}[country]" class="form__floating-label">{{ 'customer.addresses.country' | t }}</label>
+								  </div>
+					  
+								  <div class="form__input-wrapper form__input-wrapper--labelled" style="display: none">
+									<div class="select-wrapper select-wrapper--primary is-filled">
+									  {%- render 'icon', icon: 'arrow-bottom' -%}
+									  <select name="address[province]" id="address-{{ address.id }}[province]" data-default="{{ form.province }}"></select>
+									</div>
+					  
+									<label for="address-{{ address.id }}[province]" class="form__floating-label">{{ 'customer.addresses.province' | t }}</label>
+								  </div>
+								{%- endif -%}
+					  
+								<div class="form__input-wrapper form__input-wrapper--labelled">
+								  <div class="checkbox-wrapper">
+									<input type="checkbox" class="checkbox" id="address-{{ customer.default_address.id }}[default]" name="address[default]" value="1" checked>
+									{% render 'icon', icon: 'check' %}
+								  </div>
+					  
+								  <label for="address-{{ customer.default_address.id }}[default]">{{ 'customer.addresses.set_default' | t }}</label>
+								</div>
+					  
+								<button 
+								  class="form__submit button button--primary button--full"
+								  data-scenable="1"   
+								  data-sctype="profile_set"
+								>{{ 'customer.addresses.edit_address' | t }}</button>
+							  {% endform %}
+							</div>
+						  </div>
+						</div>
+					  
+					  
+						{%- paginate customer.addresses by 9 -%}
+						  {%- for address in customer.addresses -%}
+							{%- if address.id == customer.default_address.id -%}
+							  {%- continue -%}
+							{%- endif -%}
+					  
+							<div id="modal-address-{{ address.id }}" class="modal" aria-hidden="true">
+							  <div class="modal__dialog" role="dialog">
+								<header class="modal__header">
+								  <h3 class="modal__title heading h2">{{ 'customer.addresses.edit_address' | t }}</h3>
+								  <button class="modal__close link" data-action="close-modal" title="{{ 'general.accessibility.close' | t | escape }}">
+									{%- render 'icon', icon: 'close' -%}
+								  </button>
+								</header>
+					  
+								<div class="modal__content modal__content--ios-push">
+								  <p class="modal__description">{{ 'customer.addresses.form_subtitle' | t }}</p>
+					  
+								  {% form 'customer_address', address, class: 'form' %}
+									{%- if request.locale.iso_code == 'ja' -%}
+									  <div class="form__input-wrapper form__input-wrapper--labelled">
+										<input id="address-{{ address.id }}[last_name]" type="text" class="form__field form__field--text {% if form.last_name != blank %}is-filled{% endif %}" name="address[last_name]" value="{{ form.last_name }}" autofocus>
+										<label for="address-{{ address.id }}[last_name]" class="form__floating-label">{{ 'customer.addresses.last_name' | t }}</label>
+									  </div>
+					  
+									  <div class="form__input-wrapper form__input-wrapper--labelled">
+										<input id="address-{{ address.id }}[first_name]" type="text" class="form__field form__field--text {% if form.first_name != blank %}is-filled{% endif %}" name="address[first_name]" value="{{ form.first_name }}">
+										<label for="address-{{ address.id }}[first_name]" class="form__floating-label">{{ 'customer.addresses.first_name' | t }}</label>
+									  </div>
+					  
+									  <div class="form__input-wrapper form__input-wrapper--labelled">
+										<input id="address-{{ address.id }}[zip]" type="text" class="form__field form__field--text {% if form.zip != blank %}is-filled{% endif %}" name="address[zip]" value="{{ form.zip }}">
+										<label for="address-{{ address.id }}[zip]" class="form__floating-label">{{ 'customer.addresses.zip' | t }}</label>
+									  </div>
+					  
+									  <div class="form__input-wrapper form__input-wrapper--labelled">
+										<div class="select-wrapper select-wrapper--primary is-filled">
+										  {%- render 'icon', icon: 'arrow-bottom' -%}
+										  <select name="address[country]" id="address-{{ address.id }}[country]" data-default="{{ form.country }}">{{ all_country_option_tags }}</select>
+										</div>
+					  
+										<label for="address-{{ address.id }}[country]" class="form__floating-label">{{ 'customer.addresses.country' | t }}</label>
+									  </div>
+					  
+									  <div class="form__input-wrapper form__input-wrapper--labelled" style="display: none">
+										<div class="select-wrapper select-wrapper--primary is-filled">
+										  {%- render 'icon', icon: 'arrow-bottom' -%}
+										  <select name="address[province]" id="address-{{ address.id }}[province]" data-default="{{ form.province }}"></select>
+										</div>
+					  
+										<label for="address-{{ address.id }}[province]" class="form__floating-label">{{ 'customer.addresses.province' | t }}</label>
+									  </div>
+					  
+									  <div class="form__input-wrapper form__input-wrapper--labelled">
+										<input id="address-{{ address.id }}[city]" type="text" class="form__field form__field--text {% if form.city != blank %}is-filled{% endif %}" name="address[city]" value="{{ form.city }}">
+										<label for="address-{{ address.id }}[city]" class="form__floating-label">{{ 'customer.addresses.city' | t }}</label>
+									  </div>
+					  
+									  <div class="form__input-wrapper form__input-wrapper--labelled">
+										<input id="address-{{ address.id }}[address1]" type="text" class="form__field form__field--text {% if form.address1 != blank %}is-filled{% endif %}" name="address[address1]" value="{{ form.address1 }}">
+										<label for="address-{{ address.id }}[address1]" class="form__floating-label">{{ 'customer.addresses.address1' | t }}</label>
+									  </div>
+					  
+									  <div class="form__input-wrapper form__input-wrapper--labelled">
+										<input id="address-{{ address.id }}[address2]" type="text" class="form__field form__field--text {% if form.address2 != blank %}is-filled{% endif %}" name="address[address2]" value="{{ form.address2 }}">
+										<label for="address-{{ address.id }}[address2]" class="form__floating-label">{{ 'customer.addresses.address2' | t }}</label>
+									  </div>
+					  
+									  <div class="form__input-wrapper form__input-wrapper--labelled">
+										<input id="address-{{ address.id }}[company]" type="text" class="form__field form__field--text {% if form.company != blank %}is-filled{% endif %}" name="address[company]" value="{{ form.company }}">
+										<label for="address-{{ address.id }}[company]" class="form__floating-label">{{ 'customer.addresses.company' | t }}</label>
+									  </div>
+					  
+									  <div class="form__input-wrapper form__input-wrapper--labelled">
+										<input id="address-{{ address.id }}[phone]" type="text" class="form__field form__field--text {% if form.phone != blank %}is-filled{% endif %}" name="address[phone]" value="{{ form.phone }}">
+										<label for="address-{{ address.id }}[phone]" class="form__floating-label">{{ 'customer.addresses.phone' | t }}</label>
+									  </div>
+									{%- else -%}
+									  <div class="form__input-wrapper form__input-wrapper--labelled">
+										<input id="address-{{ address.id }}[first_name]" type="text" class="form__field form__field--text {% if form.first_name != blank %}is-filled{% endif %}" name="address[first_name]" value="{{ form.first_name }}" autofocus>
+										<label for="address-{{ address.id }}[first_name]" class="form__floating-label">{{ 'customer.addresses.first_name' | t }}</label>
+									  </div>
+					  
+									  <div class="form__input-wrapper form__input-wrapper--labelled">
+										<input id="address-{{ address.id }}[last_name]" type="text" class="form__field form__field--text {% if form.last_name != blank %}is-filled{% endif %}" name="address[last_name]" value="{{ form.last_name }}">
+										<label for="address-{{ address.id }}[last_name]" class="form__floating-label">{{ 'customer.addresses.last_name' | t }}</label>
+									  </div>
+					  
+									  <div class="form__input-wrapper form__input-wrapper--labelled">
+										<input id="address-{{ address.id }}[company]" type="text" class="form__field form__field--text {% if form.company != blank %}is-filled{% endif %}" name="address[company]" value="{{ form.company }}">
+										<label for="address-{{ address.id }}[company]" class="form__floating-label">{{ 'customer.addresses.company' | t }}</label>
+									  </div>
+					  
+									  <div class="form__input-wrapper form__input-wrapper--labelled">
+										<input id="address-{{ address.id }}[phone]" type="text" class="form__field form__field--text {% if form.phone != blank %}is-filled{% endif %}" name="address[phone]" value="{{ form.phone }}">
+										<label for="address-{{ address.id }}[phone]" class="form__floating-label">{{ 'customer.addresses.phone' | t }}</label>
+									  </div>
+					  
+									  <div class="form__input-wrapper form__input-wrapper--labelled">
+										<input id="address-{{ address.id }}[address1]" type="text" class="form__field form__field--text {% if form.address1 != blank %}is-filled{% endif %}" name="address[address1]" value="{{ form.address1 }}">
+										<label for="address-{{ address.id }}[address1]" class="form__floating-label">{{ 'customer.addresses.address1' | t }}</label>
+									  </div>
+					  
+									  <div class="form__input-wrapper form__input-wrapper--labelled">
+										<input id="address-{{ address.id }}[address2]" type="text" class="form__field form__field--text {% if form.address2 != blank %}is-filled{% endif %}" name="address[address2]" value="{{ form.address2 }}">
+										<label for="address-{{ address.id }}[address2]" class="form__floating-label">{{ 'customer.addresses.address2' | t }}</label>
+									  </div>
+					  
+									  <div class="form__input-row">
+										<div class="form__input-wrapper form__input-wrapper--labelled">
+										  <input id="address-{{ address.id }}[city]" type="text" class="form__field form__field--text {% if form.city != blank %}is-filled{% endif %}" name="address[city]" value="{{ form.city }}">
+										  <label for="address-{{ address.id }}[city]" class="form__floating-label">{{ 'customer.addresses.city' | t }}</label>
+										</div>
+					  
+										<div class="form__input-wrapper form__input-wrapper--labelled">
+										  <input id="address-{{ address.id }}[zip]" type="text" class="form__field form__field--text {% if form.zip != blank %}is-filled{% endif %}" name="address[zip]" value="{{ form.zip }}">
+										  <label for="address-{{ address.id }}[zip]" class="form__floating-label">{{ 'customer.addresses.zip' | t }}</label>
+										</div>
+									  </div>
+					  
+									  <div class="form__input-wrapper form__input-wrapper--labelled">
+										<div class="select-wrapper select-wrapper--primary is-filled">
+										  {%- render 'icon', icon: 'arrow-bottom' -%}
+										  <select name="address[country]" id="address-{{ address.id }}[country]" data-default="{{ form.country }}">{{ all_country_option_tags }}</select>
+										</div>
+					  
+										<label for="address-{{ address.id }}[country]" class="form__floating-label">{{ 'customer.addresses.country' | t }}</label>
+									  </div>
+					  
+									  <div class="form__input-wrapper form__input-wrapper--labelled" style="display: none">
+										<div class="select-wrapper select-wrapper--primary is-filled">
+										  {%- render 'icon', icon: 'arrow-bottom' -%}
+										  <select name="address[province]" id="address-{{ address.id }}[province]" data-default="{{ form.province }}"></select>
+										</div>
+					  
+										<label for="address-{{ address.id }}[province]" class="form__floating-label">{{ 'customer.addresses.province' | t }}</label>
+									  </div>
+									{%- endif -%}
+					  
+									<div class="form__input-wrapper form__input-wrapper--labelled">
+									  <div class="checkbox-wrapper">
+										<input type="checkbox" class="checkbox" id="address-{{ address.id }}[default]" name="address[default]" {% if address.id == customer.default_address.id %}value="1" checked{% endif %}>
+										{% render 'icon', icon: 'check' %}
+									  </div>
+					  
+									  <label for="address-{{ address.id }}[default]">{{ 'customer.addresses.set_default' | t }}</label>
+									</div>
+					  
+									<button 
+									  class="form__submit button button--primary button--full"
+									  data-scenable="1"   
+									  data-sctype="profile_set"
+									>{{ 'customer.addresses.edit_address' | t }}</button>
+								  {% endform %}
+								</div>
+							  </div>
+							</div>
+						  {%- endfor -%}
+						{% assign dm_paginate_by = paginate.page_size %}{%- endpaginate -%}
+					  </section>
+
+				</div>
+				{%- comment -%}----------------------------联系我们-----------------------{%- endcomment -%}
+				<div class="my_postsale account_right_content" data-type="accountPage">
+					<div class="customers-services"  >
+						<div class="container">
+							<h3>
+								{%- render 'icon', icon: 'bi-email' -%}&nbsp;&nbsp;
+								<a href="mailto:contactus@hyfol.com" target="_blank" rel="noopener"
+									aria-describedby="a11y-new-window-message">contactus@hyfol.com</a>
+							</h3>
+						</div>
+					</div>
+				</div>
+
+		</div>
+	</div>
+</section>
+
+
 <script>
+	~function () {
 
-  ~function () {
-    let getDataFlag = false;
+		var Delegate = (function () {
 
-    function getData(url, fn) {
-      if (getDataFlag) return;
-      getDataFlag = true;
-      let http = new XMLHttpRequest();
-      http.open('GET', url);
-      http.send();
-      http.onreadystatechange = () => {
-        if (http.readyState == 4) {
-          getDataFlag = false;
-          if (http.status == 200) {
-            fn(http.responseText);
-          }
-        }
-      }
-    }
+			function Delegate(root) {
+				this.listenerMap = [{}, {}];
+				if (root) {
+					this.root(root);
+				}
+				this.handle = Delegate.prototype.handle.bind(this); // Cache of event listeners removed during an event cycle
+				this._removedListeners = [];
+			}
 
-    function loading(bool) {
-      let loading = document.querySelector('#loading')
-      let body_me = document.querySelector('#body_me')
-      let nullbox=document.querySelector('#order_null')
-      if (bool) {
-        loading.style.display = 'block';
-        body_me.innerHTML = ''
-        nullbox.style.display='none'
-      } else {
-        loading.style.display = 'none';
-      }
-    }
+			Delegate.prototype.root = function (root) {
+				var listenerMap = this.listenerMap;
+				var eventType; // Remove master event listeners
 
-    function upData(data) {
-      loading(false);
-      let body_me = document.querySelector('#body_me')
-      body_me.style.display='block'
-      body_me.innerHTML = data
-			isnull()
-    }
+				if (this.rootElement) {
+					for (eventType in listenerMap[1]) {
+						if (listenerMap[1].hasOwnProperty(eventType)) {
+							this.rootElement.removeEventListener(eventType, this.handle, true);
+						}
+					}
+					for (eventType in listenerMap[0]) {
+						if (listenerMap[0].hasOwnProperty(eventType)) {
+							this.rootElement.removeEventListener(eventType, this.handle, false);
+						}
+					}
+				}
 
-    function isnull(){
-			let fag=document.querySelectorAll('.card .order-box')
-			let nullbox=document.querySelector('#order_null')
-			let body_me=document.querySelector('#body_me')
-      console.log(fag.length)
-      if(!fag.length){
-        nullbox.style.display='block'
-        body_me.style.display='none'
-			}else{
-        nullbox.style.display='none'
+				if (!root || !root.addEventListener) {
+					if (this.rootElement) {
+						delete this.rootElement;
+					}
+					return this;
+				}
+
+				this.rootElement = root; // Set up master event listeners
+
+				for (eventType in listenerMap[1]) {
+					if (listenerMap[1].hasOwnProperty(eventType)) {
+						this.rootElement.addEventListener(eventType, this.handle, true);
+					}
+				}
+				for (eventType in listenerMap[0]) {
+					if (listenerMap[0].hasOwnProperty(eventType)) {
+						this.rootElement.addEventListener(eventType, this.handle, false);
+					}
+				}
+
+				return this;
+			};
+
+			Delegate.prototype.captureForType = function (eventType) {
+				return ['blur', 'error', 'focus', 'load', 'resize', 'scroll'].indexOf(eventType) !== -1;
+			};
+
+			Delegate.prototype.on = function (eventType, selector, handler, useCapture) {
+				var root;
+				var listenerMap;
+				var matcher;
+				var matcherParam;
+				if (!eventType) {
+					throw new TypeError('Invalid event type: ' + eventType);
+				}
+
+
+				if (typeof selector === 'function') {
+					useCapture = handler;
+					handler = selector;
+					selector = null;
+				}
+
+				if (useCapture === undefined) {
+					useCapture = this.captureForType(eventType);
+				}
+
+				if (typeof handler !== 'function') {
+					throw new TypeError('Handler must be a type of Function');
+				}
+
+				root = this.rootElement;
+				listenerMap = this.listenerMap[useCapture ? 1 : 0];
+				if (!listenerMap[eventType]) {
+					if (root) {
+						root.addEventListener(eventType, this.handle, useCapture);
+					}
+
+					listenerMap[eventType] = [];
+				}
+
+				if (!selector) {
+					matcherParam = null;
+
+					matcher = matchesRoot.bind(this); // Compile a matcher for the given selector
+				} else if (/^[a-z]+$/i.test(selector)) {
+					matcherParam = selector;
+					matcher = matchesTag;
+				} else if (/^#[a-z0-9\-_]+$/i.test(selector)) {
+					matcherParam = selector.slice(1);
+					matcher = matchesId;
+				} else {
+					matcherParam = selector;
+					matcher = Element.prototype.matches;
+				} // Add to the list of listeners
+
+				listenerMap[eventType].push({
+					selector: selector,
+					handler: handler,
+					matcher: matcher,
+					matcherParam: matcherParam
+				});
+				return this;
+			};
+
+
+			Delegate.prototype.off = function (eventType, selector, handler, useCapture) {
+				var i;
+				var listener;
+				var listenerMap;
+				var listenerList;
+				var singleEventType; // Handler can be passed as
+				// the second or third argument
+
+				if (typeof selector === 'function') {
+					useCapture = handler;
+					handler = selector;
+					selector = null;
+				}
+
+				if (useCapture === undefined) {
+					this.off(eventType, selector, handler, true);
+					this.off(eventType, selector, handler, false);
+					return this;
+				}
+				listenerMap = this.listenerMap[useCapture ? 1 : 0];
+
+				if (!eventType) {
+					for (singleEventType in listenerMap) {
+						if (listenerMap.hasOwnProperty(singleEventType)) {
+							this.off(singleEventType, selector, handler);
+						}
+					}
+					return this;
+				}
+
+				listenerList = listenerMap[eventType];
+				if (!listenerList || !listenerList.length) {
+					return this;
+				}
+
+				for (i = listenerList.length - 1; i >= 0; i--) {
+					listener = listenerList[i];
+					if ((!selector || selector === listener.selector) && (!handler || handler === listener.handler)) {
+						this._removedListeners.push(listener);
+						listenerList.splice(i, 1);
+					}
+				} // All listeners removed
+
+
+				if (!listenerList.length) {
+					delete listenerMap[eventType]; // Remove the main handler
+					if (this.rootElement) {
+						this.rootElement.removeEventListener(eventType, this.handle, useCapture);
+					}
+				}
+
+				return this;
+			};
+
+			Delegate.prototype.handle = function (event) {
+				var i;
+				var l;
+				var type = event.type;
+				var root;
+				var phase;
+				var listener;
+				var returned;
+				var listenerList = [];
+				var target;
+				var eventIgnore = 'ftLabsDelegateIgnore';
+
+				if (event[eventIgnore] === true) {
+					return;
+				}
+
+				target = event.target; // Hardcode value of Node.TEXT_NODE
+				// as not defined in IE8
+				if (target.nodeType === 3) {
+					target = target.parentNode;
+				} // Handle SVG <use> elements in IE
+
+				if (target.correspondingUseElement) {
+					target = target.correspondingUseElement;
+				}
+
+				root = this.rootElement;
+				phase = event.eventPhase || (event.target !== event.currentTarget ? 3 : 2); // eslint-disable-next-line default-case
+
+				switch (phase) {
+					case 1:
+						//Event.CAPTURING_PHASE:
+						listenerList = this.listenerMap[1][type];
+						break;
+
+					case 2:
+						//Event.AT_TARGET:
+						if (this.listenerMap[0] && this.listenerMap[0][type]) {
+							listenerList = listenerList.concat(this.listenerMap[0][type]);
+						}
+						if (this.listenerMap[1] && this.listenerMap[1][type]) {
+							listenerList = listenerList.concat(this.listenerMap[1][type]);
+						}
+
+						break;
+
+					case 3:
+						//Event.BUBBLING_PHASE:
+						listenerList = this.listenerMap[0][type];
+						break;
+				}
+
+				var toFire = []; // Need to continuously check
+				// that the specific list is
+				// still populated in case one
+				// of the callbacks actually
+				// causes the list to be destroyed.
+
+				l = listenerList.length;
+
+				while (target && l) {
+					for (i = 0; i < l; i++) {
+						listener = listenerList[i]; // Bail from this loop if
+						// the length changed and
+						// no more listeners are
+						// defined between i and l.
+						if (!listener) {
+							break;
+						}
+
+						if (target.tagName && ["button", "input", "select", "textarea"].indexOf(target.tagName.toLowerCase()) > -1 && target.hasAttribute("disabled")) {
+							// Remove things that have previously fired
+							toFire = [];
+						} // Check for match and fire
+						// the event if there's one
+						//
+						// TODO:MCG:20120117: Need a way
+						// to check if event#stopImmediatePropagation
+						// was called. If so, break both loops.
+						else if (listener.matcher.call(target, listener.matcherParam, target)) {
+							toFire.push([event, target, listener]);
+						}
+					} // TODO:MCG:20120117: Need a way to
+					// check if event#stopPropagation
+					// was called. If so, break looping
+					// through the DOM. Stop if the
+					// delegation root has been reached
+					if (target === root) {
+						break;
+					}
+
+					l = listenerList.length; // Fall back to parentNode since SVG children have no parentElement in IE
+					target = target.parentElement || target.parentNode; // Do not traverse up to document root when using parentNode, though
+					if (target instanceof HTMLDocument) {
+						break;
+					}
+				}
+
+				var ret;
+
+				for (i = 0; i < toFire.length; i++) {
+					// Has it been removed during while the event function was fired
+					if (this._removedListeners.indexOf(toFire[i][2]) > -1) {
+						continue;
+					}
+
+					returned = this.fire.apply(this, toFire[i]); // Stop propagation to subsequent
+					// callbacks if the callback returned
+					// false
+
+					if (returned === false) {
+						toFire[i][0][eventIgnore] = true;
+						toFire[i][0].preventDefault();
+						ret = false;
+						break;
+					}
+				}
+
+				return ret;
+			};
+
+			Delegate.prototype.fire = function (event, target, listener) {
+				return listener.handler.call(target, event, target);
+			};
+
+			function matchesTag(tagName, element) {
+				return tagName.toLowerCase() === element.tagName.toLowerCase();
+			}
+
+			function matchesRoot(selector, element) {
+				if (this.rootElement === window) {
+					return (
+						element === document ||
+						element === document.documentElement ||
+						element === window
+					);
+				}
+				return this.rootElement === element;
+			}
+
+			function matchesId(id, element) {
+				return id === element.id;
+			}
+
+			Delegate.prototype.destroy = function () {
+				this.off();
+				this.root();
+			};
+			return Delegate
+		})();
+
+		const account = new Delegate(document.querySelector('#account'))
+
+		function ajax(url, data, token, method) {
+			const req = new XMLHttpRequest()
+			req.open(method, url)
+			req.setRequestHeader("Content-type", "application/json");
+			req.setRequestHeader("siteValue", "hyfol");
+			token && req.setRequestHeader("Authorization", token);
+			req.send(data)
+			return new Promise((resovle, reject) => {
+				req.onreadystatechange = function () {
+					if (req.readyState == 4) {
+						try {
+							var data = JSON.parse(req.responseText)
+							resovle(data)
+						} catch (error) {
+							resovle(req.responseText)
+						}
+					}
+				}
+			})
+
+		};
+
+		let baseURL = 'http://api.leandow-technology.com/api/'
+		async function getData(url, data, token, method = "POST", type = "json") {
+			const headers = { "siteValue": "hyfol" }
+			const options = {
+				method: method,
+				headers
+			}
+			if (type == 'json') {
+				headers['Content-Type'] = 'application/json'
+				data && (options.body = JSON.stringify(data))
+			}
+			token && (headers['Authorization'] = token)
+			if (type == 'formData') {
+				headers['Content-Type'] = 'application/x-www-form-urlencoded'
+			}
+			try {
+				let response = await fetch(baseURL.concat(url), options);
+				return response.json();
+			} catch (error) {
+				return ajax(baseURL.concat(url), options.body, token, method)
 			}
 		}
 
-    function event() {
-      let orders_list = document.querySelector("#orders-list")
-      let orders_li = document.querySelectorAll("#orders-list>li")
-      let post=document.querySelector('#post');
-      let body_me = document.querySelector('#body_me')
-      orders_list.onclick = (ev) => {
-        let target = ev.target;
-        if (target.tagName === "LI") {
-          for (let i = 0; i < orders_li.length; i++) {
-            orders_li[i].classList.remove('current')
-          }
-          target.classList.add('current')
-          let item = target.dataset.item;
-          if (item !== 'post-sale') {
-            post.style.display='none'
-            loading(true);
-            let url = '?section_id=my-'+ item;
-            getData(url, upData)
-          } else {
-            body_me.style.display='none'
-						post.style.display='block'
-          }
-        }
+		/* 收藏 */
+		var getCollectList = function () {
+			var productIds, currentPage, total, sectionId
 
-      }
-    }
+			function getCollectList(event) {
+				var pageSectionId = document.querySelector(".page__sub-header").parentElement.getAttribute("data-section-id")
+				const collectList = {
+					current: 1,
+					customerId: "{{customer.id}}",
+					size: 100
+				}
 
-    function init() {
-      let url = '?section_id=my-orders-all';
-      let nullbox=document.querySelector('#order_null')
-      nullbox.style.display='none'
-      getData(url, upData)
-    }
-    event();
-    init();
-  }()
+				getData("customerCollectionProduct/collectionProductList", collectList)
+					.then(res => {
+						if (res.data.records.length < 1) {
+							document.querySelector('.collect-body').style.display = "block"
+							document.querySelector(".wish_loading").style.display = "none"
+							return
+						}
+						productIds = res.data.records
+						currentPage = 1
+						total = res.data.total
+						var ids = res.data.records.map(i => "id:".concat(i.productId))
+						ids = ids.join(' OR ')
+						fetch(`/search?q=${ids}&type=product`)
+							.then((res) => {
+								res.text().then((content) => {
+									document.querySelector('.collect-body').style.display = "none"
+									document.querySelector(".wish_loading").style.display = "none"
+									const dom = document.createElement('div')
+									dom.innerHTML = content
+									let heading = dom.querySelector(".collection__dynamic-part .collection__toolbar")
+									heading && heading.remove()
+									document.querySelector('.collect').appendChild(dom.querySelector(".collection__dynamic-part"))
+									document.querySelector('.collect').appendChild(dom.querySelector('[data-section-type="collection"] .modal'))
+									sectionId = dom.querySelector('[data-section-type="collection"]').getAttribute('data-section-id')
+								})
+							})
+					})
+			}
 
+			async function nextCollectList(event, target) {
+				event.preventDefault()
+				window.scroll(0, 0)
+
+				var currentIds, content, url
+				var nextPage = target.getAttribute('data-page')
+				var productList = document.querySelector(".product-list--collection")
+				document.querySelector(".wish_loading").style.display = "flex"
+				productList.style.display = "none"
+
+				if (sectionId && total <= productIds.length) {
+					currentIds = productIds
+					url = '/search?section_id='.concat(sectionId, "&page=", nextPage, '&')
+				} else {
+					const collectList = {
+						current: nextPage,
+						customerId: "{{customer.id}}",
+						size: 24
+					}
+					var response = await getData("customerCollectionProduct/collectionProductList", collectList)
+					currentIds = response.data.records
+					url = "/search?"
+				}
+
+				var ids = currentIds.map(i => "id:".concat(i.productId))
+				ids = ids.join(' OR ')
+				content = await fetch(url.concat(`q=${ids}&type=product`)).then(res => res.text())
+				document.querySelector(".wish_loading").style.display = "none"
+				const dom = document.createElement('div')
+				dom.innerHTML = content
+				let heading = dom.querySelector(".collection__dynamic-part .collection__toolbar")
+				heading && heading.remove()
+				var productContaner = document.querySelector('.collect ')
+				var oldProductList = document.querySelector('.collect .collection__dynamic-part')
+				var newProductList = dom.querySelector(".collection__dynamic-part")
+				productContaner && productContaner.replaceChild(newProductList, oldProductList)
+
+			}
+
+			if ("{{ customer.id}}") {
+				getCollectList()
+				account.on('click', '.pagination__nav-item.link,.pagination__next,.pagination__prev', nextCollectList)
+				account.on('click', '.collect_btn', (event, target) => {
+					event.preventDefault()
+					var productTtem = target.closest(".product-item")
+					productTtem && productTtem.remove();
+				})
+			}
+
+		}();
+
+		function getFormData(form) {
+			var hash = [];
+			for (var i = 0, len = form.elements.length; i < len; i++) {
+				var formElement = form.elements[i];
+				if (formElement.name === '' || formElement.disabled) {
+					continue;
+				}
+				if (formElement.name && !formElement.disabled && (formElement.checked || /select|textarea/i.test(formElement.nodeName) || /hidden|text|search|tel|url|email|password|datetime|date|month|week|time|datetime-local|number|range|color/i.test(formElement.type))) {
+					hash.push(formElement.name + '=' + formElement.value)
+				}
+			}
+			return hash.join('&');
+		}
+
+		/* 个人中心 */
+		~function () {
+			//**  ACCPOUNT CUSTOMERS  ***//        
+			function bindEvent(container, target, call) {
+				let content = document.querySelector(container)
+				content.addEventListener('click', (e) => {
+					if (!e.target.classList.contains(target)) return
+					e.preventDefault()
+					call && call(e, content, target)
+				})
+
+			}
+
+
+
+			//** 	个人中心   **//
+			async function getToken() {
+				let token
+				const customerJson = {
+					email: "{{ customer.email}}",
+					id: "{{ customer.id }}"
+				}
+
+				let url = baseURL.concat('customerAccount/login')
+				const response = await fetch(url, {
+					method: "POST",
+					body: JSON.stringify(customerJson),
+					headers: { 'content-type': 'application/json', 'siteValue': 'hyfol' }
+				})
+				try {
+					if (response.status !== 200) return ''
+					const data = await response.json()
+					if (data.code !== 200) return ''
+					// console.log(`-----tonken-----`, data);
+					token = token || data.data
+					const authorToken = {
+						token: token,
+						date: Date.now() + 300000
+					}
+
+				} catch (error) {
+					token = ''
+				}
+				return token
+			}
+
+			async function getMyCoupon(token, type = "unused") {//自己的优惠券
+				const { data, code } = await getData('customerAccount/getMyPriceRules', { type: type }, token, "GET")
+				// console.log('getCoupons', data, code)
+				return data
+			}
+
+			async function getCoupons(token) {//获取优惠券
+				if (token) {
+
+					const { data, code } = await getData('customerAccount/getPriceRules', '', token, "GET", 'formData')
+
+					const unusedData = await getMyCoupon(token)
+					const expireData = await getMyCoupon(token, 'expired')
+					if (code == 200) {
+						const couponView = document.querySelector('.my-account .my-coupons__list')
+						const unusedCoupons = document.querySelector('.unused__coupons .my-coupons__list')
+						const expiredCoupons = document.querySelector('.expired__coupons .my-coupons__list')
+
+						if (data && false) {
+							couponView.classList.remove("my-coupons_empty")
+							let couponList = data.map((item, i) => {
+								return `<div class="my-coupons__item" data-index="${item.id}">
+									<p>${item.title[0]}</p>	
+									<p>${item.title[1]}</p>	
+									<p>Code:${item.id}</p>	
+										<ul class="coupons-date">
+											<li>${item.desc[0]}</li>
+											<li>${item.desc[1]}</li>
+										</ul>
+										<span class="round-left"></span>
+										<span class="round-right"></span>
+									</div>`}).join('')
+
+							couponView.innerHTML = couponList
+						}
+
+						if (unusedData) {
+							unusedCoupons.classList.remove("my-coupons_empty")
+							let unusedList = unusedData.map((item, i) => {
+								return `<div class="my-coupons__item" data-index="${item.id}">
+									<p>${item.title[0]}</p>	
+									<p>${item.title[1]}</p>	
+									<p>Code:${item.id}</p>	
+										<ul class="coupons-date">
+											<li>${item.desc[0]}</li>
+											<li>${item.desc[1]}</li>
+										</ul>
+										<span class="round-left"></span>
+										<span class="round-right"></span>
+									</div>`}).join('')
+							unusedList && (unusedCoupons.innerHTML = unusedList)
+						}
+
+						if (expireData) {
+							expiredCoupons.classList.remove("my-coupons_empty")
+							let expireList = expireData.map((item, i) => {
+								return `<div class="my-coupons__item" data-index="${item.id}">
+								<p>${item.title[0]}</p>	
+								<p>${item.title[1]}</p>	
+									<p>Code:${item.id}</p>	
+										<ul class="coupons-date">
+											<li>${item.desc[0]}</li>
+											<li>${item.desc[1]}</li>
+											</ul>
+											<span class="round-left"></span>
+											<span class="round-right"></span>
+											</div>`}).join('')
+
+							expireList && (expiredCoupons.innerHTML = expireList)
+						}
+					}
+
+					// console.log('getCoupon', data);
+
+				} else console.info(token)
+			}
+
+			async function getPoint(token) {//获取积分记录
+				const body = {
+					pageNum: 1,
+					pageSize: 10,
+					type: "all, earned, pointAmount, expired"
+				}
+				const data = await getData('customerAccount/getPointInfo', body, token)
+				const { pointsExpiredSoon, profileDetalls, totalPoints } = data.data
+				const templateExp = []
+				const templateEarned = []
+				const totalContainer = document.querySelector('.profile_total')
+				const expireContainer = document.querySelector('.profile_expire')
+				const allProfile = document.querySelector('.profile-all tbody')
+				const expiredInfo = document.querySelector('.profile-expired tbody')
+				const earnedInfo = document.querySelector('.profile-earned tbody')
+				totalContainer.innerHTML = totalPoints || 0;
+				expireContainer.innerHTML = pointsExpiredSoon || 0;
+				const templateAll = profileDetalls.records.map(item => {
+					let tempStr
+					if (item.type == 'cost') {
+						tempStr = `<tr>
+							<td>${item.createTime}</td>
+							<td>${item.pointType}</td>
+							<td class="profile-amount">${item.pointAmount}</td>
+							<td>${item.expireTime}</td>
+						</tr>`
+						templateExp.push(tempStr)
+					} else if (item.type == 'earned') {
+						tempStr = `<tr>
+							<td>${item.createTime}</td>
+							<td>${item.pointType}</td>
+							<td class="profile-amount">+ ${item.pointAmount}</td>
+							<td>${item.expireTime}</td>
+						</tr>`
+						templateEarned.push(tempStr)
+					} else {
+						tempStr = `<tr>
+							<td>${item.createTime}</td>
+							<td>${item.pointType}</td>
+							<td class="profile-amount">${item.pointAmount}</td>
+							<td>${item.expireTime}</td>
+						</tr>`
+					}
+
+					return tempStr
+				})
+				allProfile.innerHTML = templateAll.join('')
+				expiredInfo.innerHTML = templateExp.join('')
+				earnedInfo.innerHTML = templateEarned.join('')
+
+			}
+
+			async function getVipExplain(token) {//规则
+				const response = await getData('customerAccount/getVipDesc', '', token, "GET", "formData")
+				// console.log('getVip-responsse', response)
+			}
+
+			async function getCustomer(token) {
+
+				const data = await getData('customerAccount/selectCustomer', '', token)
+
+				if (!data || data.code !== 200) {
+					return getCustomer()
+				}
+				const { siteType, totalPoint, totalSpent, vipType } = data.data
+				const pointContainer = document.querySelector('.vip-integral')
+				const userVip = document.querySelector('.vip-user__grade')
+				totalPoint && (pointContainer.innerHTML = totalPoint)
+				userVip && (userVip.innerHTML = vipType)
+				// console.log('getCustomer', data)
+
+
+			}
+
+			async function addPoint(token) {//add
+				const pointData = {
+					expireTime: "2022-10-05 12:00:00",
+					pointAmount: 10000,
+					pointType: "Emaill Verification"
+				}
+
+				const data = await getData('customerAccount/addPoint', pointData, token)
+				console.log('addPoint', data)
+			}
+
+			async function deductPoint(token) {
+				const pointData = { expireTime: new Date(Date.now() + 2592000000).toLocaleString(), pointAmount: 10000, pointType: "Emaill Verification" }
+				const data = await getData('customerAccount/deductPoint', pointData, token)
+				// console.log('deductPoint', data)
+			}
+
+			async function fn() {
+				const token = await getToken()
+				// addPoint(token)
+				// addPoint()
+				getCustomer(token)
+				// getMyCoupon()
+				getCoupons(token)
+				getPoint(token)
+			} fn();
+
+			class DetailsMenu extends HTMLElement {
+				constructor() {
+					super();
+					this.addEventListener('click', (e) => {
+						e.preventDefault()
+						let target = e.target
+						if (!['summary'].includes(target.tagName.toLowerCase()) || target.getAttribute('aria-expanded') === 'true') return
+						this.onAcativ(target)
+
+					})
+				}
+
+				onAcativ(target) {
+					this.close(target)
+					const activePage = this.querySelector(`.page__item[data-index="${target.dataset.index}"]`)
+					activePage.setAttribute('aria-hidden', false)
+					target.setAttribute('aria-expanded', true)
+
+				}
+
+				close() {
+					const oldActiveNav = this.querySelector('[aria-expanded="true"]')
+					const oldActivePage = this.querySelector('[aria-hidden="false"]')
+					oldActivePage.setAttribute('aria-hidden', true)
+					oldActiveNav.setAttribute('aria-expanded', false);
+				}
+			}
+			customElements.define('details-menu', DetailsMenu);
+
+			const rules = document.querySelector('.vip-rules')
+			const user = document.querySelector('.my-account')
+			bindEvent('.my_overview', 'vip-rules__link', () => {
+				user.style.display = "none"
+				rules.style.display = 'block'
+				window.scroll(0, 0)
+			})
+			bindEvent('.my_overview', 'close-rule__page', () => {
+				rules.style.display = 'none'
+				user.style.display = "block"
+			})
+			//  END  
+		}()
+
+		function createClass(classObj, protoList) {
+			var pro = classObj.prototype
+			for (var i = 0; i < protoList.length; i++) {
+				var descriptor = protoList[i]
+				descriptor.enumerable = descriptor.enumerable || false;
+				descriptor.configurable = true;
+				if ("value" in descriptor) descriptor.writable = true;
+				pro && Object.defineProperty(pro, descriptor.key, descriptor)
+			}
+			return classObj
+		}
+
+		var AccountSetion = (function () {
+			function Account(element) {
+				this.element = element
+				this.accountGate = new Delegate(this.element)
+				this.navigation = this.element.querySelectorAll('.card__linklist-item')
+				this.mobileOrderNavs = this.element.querySelectorAll('[data-type="orders-list"]')
+				this.pcOrderNavs = this.element.querySelectorAll('.orders-nav__item')
+				this.accountPages = this.element.querySelectorAll('[data-type="accountPage"]')
+				this.init()
+				this.eventListener()
+			}
+			createClass(Account, [{
+				key: "init",
+				value: function () {
+					if (window.location.hash) {
+						this.pageSwitch()
+					} else {
+						this.element.querySelectorAll('[data-right="my_overview"]').forEach(i => {
+							i.className = "card__linklist-item link text--stronger "
+						})
+						document.querySelector(".my_overview").style.display = "block"
+					}
+					this.renderMobOrder()
+					this.changeMobileOrderView()
+				}
+			}, {
+				key: "eventListener",
+				value: function () {
+					this.accountGate.on('click', '[data-type="orders-list"]', this.changeMobOrderNav.bind(this))//mobile order list
+					this.accountGate.on('click', '.order-preview__item', this.orderQuickView.bind(this))//pc overview list
+					this.accountGate.on('click', '[data-action="left-nav"]', this.changeNavigate.bind(this))//pc left navlist
+					this.accountGate.on('click', '.form__submit[data-submitForm]', this.addAddresses.bind(this))//add
+					this.accountGate.on('click', '[data-action="deleteAddresses"]', this.romoveAddresses.bind(this)) //remove
+				}
+			}, {
+				key: "pageSwitch",
+				value: function (ev, target) {
+					var nowNav = window.location.hash.split("#")[1].replace(/\%20/g, " ")
+					var hashValue = nowNav.split('+')[0]
+					var navigations = this.navigation
+					for (let index = 0; index < navigations.length; index++) {
+						var element = navigations[index];
+						if (element.getAttribute('aria-label') == nowNav) {
+							document.querySelector('.breadcrumb__link[aria-current="page"]').innerHTML = nowNav
+							element.className = " card__linklist-item link text--stronger "
+							var enode = element.getAttribute("data-right")
+							document.querySelector("." + enode).style.display = "block"
+						} else {
+							element.className = " card__linklist-item "
+						}
+					}
+					if (hashValue == 'Orders') {
+						document.querySelectorAll('[aria-label="My Orders"]').forEach(i => {
+							i.className = " card__linklist-item link text--stronger "
+						})
+						document.querySelector('.my_orders').style.display = "block"
+					}
+					this.changePcOrderView()
+					window.scroll(0, 0)
+				}
+			}, {
+				key: "changeMobOrderNav",
+				value: function (ev, target) {
+					var navName = target.getAttribute('aria-label')
+					var url = window.location.hash.split("+")[1]
+					if (url == navName) return;
+					window.location.hash = "Orders+" + navName
+					this.changeMobileOrderView()
+					this.renderMobOrder()
+				}
+			}, {
+				key: "loading",
+				value: function (bool) {
+					let loading = document.querySelector('#loading')
+					let body_me = document.querySelector('#body_me')
+					let nullbox = document.querySelector('#order_null')
+					if (bool) {
+						loading.style.display = 'block';
+						body_me.innerHTML = ''
+						nullbox.style.display = 'none'
+					} else {
+						loading.style.display = 'none';
+					}
+				}
+			}, {
+				key: "romoveAddresses",
+				value: function (ev, target) {
+					if (!target.dataset.target) return
+					if (confirm("Are you sure you wish to delete this address?")) {
+						fetch(target.dataset.target, { method: "POST", headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: '_method=delete' }).then(response => {
+							location.reload()
+						})
+					}
+				}
+			}, {
+				key: "addAddresses",
+				value: function (ev, target) {
+					ev.preventDefault()
+					var form = ev.target.closest('form')
+					var formData = getFormData(form)
+					fetch('/account/addresses', {
+						method: "POST",
+						headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+						body: formData
+					}).then(response => {
+						location.reload()
+					})
+				}
+			}, {
+				key: "orderQuickView",
+				value: function changeNav(ev, target) {
+					var navName = target.getAttribute('data-nav-type')
+					var navigations = this.navigation
+					window.location.hash = "Orders+" + navName
+					var url = navName.toLowerCase()
+					var list = this.accountPages
+					for (let i = 0; i < list.length; i++) {
+						list[i].style.display = "none"
+					}
+					window.scroll(0, 0)
+
+					if (navName === 'Post-sale') {
+						for (let i = 0; i < navigations.length; i++) {
+							var el = navigations[i];
+							if (el.getAttribute("data-right") == "my_postsale") {
+								el.className = "card__linklist-item link text--stronger "
+							} else {
+								el.className = "card__linklist-item "
+							}
+						}
+						document.querySelector(".my_postsale").style.display = "block"
+						return
+					}
+
+					for (let i = 0; i < navigations.length; i++) {
+						var el = navigations[i];
+						if (el.getAttribute("data-right") == "my_orders") {
+							el.className = "card__linklist-item link text--stronger "
+						} else {
+							el.className = "card__linklist-item "
+						}
+					}
+
+					document.querySelector(".my_orders").style.display = "block"
+					this.pcOrderNavs.forEach((item) => {
+						item.setAttribute("data-action", false)
+					})
+
+					document.querySelector(".order-" + url).setAttribute("data-action", true)
+					var index = document.querySelector(".order-" + url).getAttribute("data-index")
+					document.querySelectorAll('.order-item__card').forEach((item) => {
+						if (item.getAttribute("data-index") == index) {
+							item.setAttribute("aria-hidden", false)
+						} else {
+							item.setAttribute("aria-hidden", true)
+						}
+					})
+				}
+			}, {
+				key: "orderNavChange",
+				value: function (ev, target) {
+					document.querySelector(".my_orders").style.display = "block"
+					this.pcOrderNavs.forEach((item) => {
+						item.setAttribute("data-action", false)
+					})
+				}
+			}, {
+				key: "changePcOrderView",
+				value: function () {
+					if (!location.hash) return;
+					var hash = location.hash.replace('#', '')
+					var hashName = hash.split("+")[0]
+					var hashKey = hash.replace('%20', ' ')
+					if (hashName != "Orders") return;
+					var hashValue = window.location.hash.split("+")[1]
+					var orderViews = this.element.querySelectorAll('.order-item__card')
+					var index
+					this.pcOrderNavs.forEach((item, i) => {
+						if (item.getAttribute('aria-label') == hashValue) {
+							item.setAttribute('data-action', true)
+							index = item.getAttribute('data-index')
+						} else {
+							item.setAttribute('data-action', false)
+
+						}
+					})
+					orderViews.forEach(i => {
+						if (i.getAttribute('data-index') == index) {
+							i.setAttribute('aria-hidden', false)
+						} else {
+							i.setAttribute('aria-hidden', true)
+						}
+					})
+				}
+			}, {
+				key: "changeMobileOrderView",
+				value: function (ev, target) {
+					if (!location.hash) return;
+					var hashName = window.location.hash.replace('#', '').split("+")[0]
+					if (hashName != "Orders") return;
+					var hashValue = window.location.hash.split("+")[1]
+					this.mobileOrderNavs.forEach(i => {
+						if (i.getAttribute('aria-label') == hashValue) {
+							i.classList.add('current')
+						} else {
+							i.classList.remove('current')
+						}
+					})
+
+				}
+			}, {
+				key: "changeNavigate",
+				value: function (ev, target) {
+					var searchValue = target.getAttribute('aria-label')
+					window.location.hash = searchValue
+					var list = this.accountPages
+					for (var i = 0; i < list.length; i++) {
+						list[i].style.display = "none"
+					}
+					this.pageSwitch()
+				}
+			}, {
+				key: "renderMobOrder",
+				value: function () {
+					this.loading(true)
+
+					let body_me = document.querySelector('#body_me')
+					let nullbox = document.querySelector('#order_null')
+					nullbox.style.display = 'none'
+
+					var url
+					var reg = /Orders+[\d\D]*/
+
+					if (reg.test(location.hash)) {
+						var hash = location.hash.split('+')[1].toLowerCase()
+						url = '?section_id=my-orders-' + hash;
+					} else {
+						url = '?section_id=my-orders-all';
+					}
+					fetch(url, {
+						credentials: 'same-origin',
+						method: "GET"
+					}).then(response => response.text().then(content => {
+						body_me.innerHTML = content
+						var fag = body_me.querySelectorAll('.card .order-box')
+						if (!fag.length) {
+							nullbox.style.display = 'block'
+							body_me.style.display = 'none'
+						} else {
+							nullbox.style.display = 'none'
+							body_me.style.display = 'block'
+						}
+						this.loading(false);
+					}))
+				}
+
+			}])
+
+			return Account
+		})();
+		var accountS = new AccountSetion(document.getElementById("account"))
+
+
+	}();
 </script>
+
 
 {% schema %}
 {
-	"name": "Account"
+		"name": "个人中心左侧导航",
+		"settings": [{
+			"type":"image_picker",
+			"id":"points_rule",
+			"label":"积分兑换规则图"
+		}],
+		"blocks": [{
+		"name": "nav_title",
+		"type": "trust",
+		"settings": [{
+			"type": "text",
+			"id": "nav_title",
+			"label": "Heading",
+			"default": "导航标题"
+		},
+		{
+			"type": "text",
+			"id": "nav_right",
+			"label": "右侧区域对应类名"
+		},
+		{
+			"type": "checkbox",
+			"id": "nav_show",
+			"label": "是否展示导航",
+			"default": true
+		},
+		{
+			"type":"select",
+			"id":"nav_icon",
+			"options": [{
+              "value": "none",
+              "label": "无"
+            },
+			{
+				"value":"account-text",
+				"label":"文本"
+			},
+			{
+				"value":"account-my",
+				"label":"用户"
+			},
+			{
+				"value":"account-logout",
+				"label":"退出"
+			},
+			{
+				"value":"account-palay",
+				"label":"支付"
+			},
+			{
+				"value":"account-collect",
+				"label":"收藏"
+			},
+			{
+				"value":"account-renz",
+				"label":"认证"
+			},
+			{
+				"value":"account-cart",
+				"label":"购物车"
+			},
+			{
+				"value":"account-setting",
+				"label":"设置"
+			},
+			{
+				"value":"cjj_post_sale",
+				"label":"客服"
+			},
+			{
+				"value":"coupon",
+				"label":"优惠券"
+			},
+			{
+				"value":"account-location",
+				"label":"定位"
+			}],
+			"default":"none",
+			"label":"选择图标"
+		}]
+		}]
+		
+
 }
 {% endschema %}
-<script>
-    console.log("order",{{customer.orders[0].id}})
-</script>
-

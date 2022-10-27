@@ -2053,7 +2053,9 @@ img.lazyload[data-sizes=auto] {
 }
 
 @media screen and (min-width: 1000px) {
-
+.account-overview__list{
+  flex-wrap: wrap;
+}
   .hidden-lap-and-up {
     display: none !important;
   }
@@ -2241,6 +2243,25 @@ img.lazyload[data-sizes=auto] {
   .scroller .block-list__item {
     width: 81%;
   }
+  .account-overview__list{
+    overflow-x: scroll;
+  }
+   .icons .order-preview__item svg{
+    font-size: 2rem;
+  }
+  .icons .order-preview__item{
+    padding: 0;
+    margin: 0;
+  }
+  order-item .icons{
+    justify-content: space-between;
+    padding: 0 0 0.6rem;
+    width: 160%;
+  }
+  order-item .icon-box{
+  overflow-x: scroll;
+  }
+
   .shipping_info{
     font-size: 13px;
   }
@@ -2249,6 +2270,10 @@ img.lazyload[data-sizes=auto] {
 @media screen and (min-width: 641px) and (max-width: 999px) {
   .scroller .block-list__item {
     width: 56%;
+  }
+
+  .account-overview__list {
+    flex-wrap: wrap;
   }
 
   .scroller .block-list::before {
@@ -2265,7 +2290,6 @@ img.lazyload[data-sizes=auto] {
   font-size: 18px;
 }
 }
-
 @media screen and (min-width: 641px) {
   .block-list {
     flex-direction: row;
@@ -3623,6 +3647,7 @@ display: none;
   font-size: calc(var(--base-text-font-size) - (var(--default-text-font-size) - 13px));
   line-height: 1;
 }
+
 
 
 .mini-cart__recap {
@@ -9109,6 +9134,15 @@ select option {
  * ORDER FOOT (used in order details in customer account)
  * --------------------------------------------------------------------
  */
+ 
+ .account-nav{
+   align-items: center;
+   cursor: pointer;
+
+ }
+ .account-nav svg{
+  margin: 0 0.5rem;
+ }
 
  .account-nav{
    align-items: center;
@@ -10983,6 +11017,10 @@ shopify-payment-terms {
   }
 }
 
+
+.icon-relative{
+  position: relative;
+}
 
 .icon-relative{
   position: relative;
@@ -16320,14 +16358,16 @@ justify-content: space-between;
 .remove-collect ,.add-collect{
   font-size: 50px;
 
-
 }
 
 .ld-collect .icon {
   /* display: inline-block; */
-  display: none;
+  /* display: none; */
   pointer-events:all;
   /* cursor: pointer; */
+}
+.collect_btn[data-select="true"]{
+  color: #E5404F;
 }
 
 .ld-collect .ld-collect-icon:hover {
