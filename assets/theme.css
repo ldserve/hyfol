@@ -16698,7 +16698,12 @@ text-align: center;
   }
   .mobile-tag_img.flash-sale_link {
     display: flex;
+    flex-wrap: wrap;
   }
+  .flash_sale_item{  
+  text-align: center;
+    flex: 1 0 auto;
+}
   .product-item__label_sale.product-item__label-list {
     right: 3px;
     width: 34px;
