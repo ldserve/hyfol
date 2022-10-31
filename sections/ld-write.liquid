@@ -30,7 +30,7 @@
                 <div class="spr-form-message spr-form-message-error" style="display: none;">Not all the fields have been filled out correctly!</div>
                 <fieldset class="spr-form-contact">
                   <div class="spr-form-contact-name">
-                    <label class="spr-form-label" for="review_author ">Name</label>
+                    <label class="spr-form-label" for="review_author " >Name</label>
                     <input class="spr-form-input spr-form-input-text " id="review_author " type="text"
                       name="author" value="" placeholder="Enter your name">
                   </div>
@@ -90,7 +90,7 @@
 
                 <fieldset class="spr-form-actions">
                   <button type="submitForm" class="spr-button spr-button-primary button button-primary btn btn-primary"
-                    data-action="submitReview">Submit Review</button>
+                    data-action="submitReview" >Submit Review</button>
                 </fieldset>
               </form>
             </div>
@@ -103,7 +103,7 @@
 
   <script>
     ~function () {
-      
+
       let defaultData = {
         "commentPage": {
           "records": [],
@@ -133,9 +133,9 @@
       }
 
       async function login() {
-        const body={ email: "{{customer.email}}", id: "{{customer.id}}" }
-        if(!body.id){
-          window.location.href="https://www.hyfol.com/account/login"
+        const body = { email: "{{customer.email}}", id: "{{customer.id}}" }
+        if (!body.id) {
+          window.location.href = "https://www.hyfol.com/account/login"
           return
         }
         const { data } = await fetch("http://api.leandow-technology.com/api/customerAccount/login", {
@@ -155,9 +155,9 @@
         if (fillName == 'full') fillItem = 'currentColor';
         else if (fillName == "half") fillItem = 'url(#rating-star-gradient-half)';
         return `<svg fill="none" focusable="false" role="presentation" class="icon rating__star ${className}" viewBox="0 0 896 832">
-              	      <path d="M896 320l-313.5-40.781L448 0 313.469 279.219 0 320l230.469 208.875L171 831.938l277-148.812 277.062 148.812L665.5 528.875z"
-              	      fill-rule="nonzero" fill="${fillItem}"></path>
-                      </svg>`
+                	      <path d="M896 320l-313.5-40.781L448 0 313.469 279.219 0 320l230.469 208.875L171 831.938l277-148.812 277.062 148.812L665.5 528.875z"
+                	      fill-rule="nonzero" fill="${fillItem}"></path>
+                        </svg>`
       }
 
       function renderRating(rating) {
@@ -197,8 +197,8 @@
           let count = Math.round(rating / total * 100) || 0
           let bar = renderRating(i)
           reviewsBar += `<div class="review-bar_item d-flex" data-rating="${i}"><span class="class="spr-starrating spr-summary-starrating">${bar}</span>
-                      <div class="d-flex rating-compute_count"><div class="use-review_box"><div class="use-review_content" style="width:${count}%"></div></div><span class="rating-percentage">${count}%</span><span class="rating-use_count">(${rating})</span></div>
-                      </div>`
+                        <div class="d-flex rating-compute_count"><div class="use-review_box"><div class="use-review_content" style="width:${count}%"></div></div><span class="rating-percentage">${count}%</span><span class="rating-use_count">(${rating})</span></div>
+                        </div>`
           i--
         }
         return reviewsBar
@@ -229,37 +229,37 @@
           let imgs = renderImg(imgList)
           let badge = author.match(/[a-zA-Z]/)[0].toUpperCase()
           return `<div class="spr-review" id="spr-review-${id}">
-                              <div class="spr-review-header">
-                                <div class="d-flex use-rating_container"><span class="spr-review-header-starratings rating-badge">${badge}</span><div><span class="spr-starratings spr-review-header-starratings"  role="img">${ratings}</span><span class="use-revieew_create">${createTime}</span><p class="spr-review-header-byline">${author}</p></div></div>
-                                <h3 class="spr-review-header-title">${title}</h3>
-                              </div>
-                              <div class="spr-review-content"><p class="spr-review-content-body">${body}</p></div>
-                              <div class="spr-review-footer">${imgs}</div>
-                            </div>`
+                                <div class="spr-review-header">
+                                  <div class="d-flex use-rating_container"><span class="spr-review-header-starratings rating-badge">${badge}</span><div><span class="spr-starratings spr-review-header-starratings"  role="img">${ratings}</span><span class="use-revieew_create">${createTime}</span><p class="spr-review-header-byline">${author}</p></div></div>
+                                  <h3 class="spr-review-header-title">${title}</h3>
+                                </div>
+                                <div class="spr-review-content"><p class="spr-review-content-body">${body}</p></div>
+                                <div class="spr-review-footer">${imgs}</div>
+                              </div>`
         }).join('')
 
         let reviewBar = renderReviewBar(data)
         if (!reviews.length) reviews = 'No reviews yet'
         let reviewTemplate = `<div class="spr-header">
-                                            <h2 class="spr-header-title">Customer Reviews</h2>
-                                            <div class="spr-summary rte">
-                                              <span class="spr-starrating spr-summary-starrating" aria-label="${rating} of 5 stars" role="img" >${strTemplate}</span>
-                                              <span class="spr-summary-caption"><span class="spr-summary-actions-togglereviews">Based on ${commentPage.total} reviews</span></span>
-                                              <span class="spr-summary-actions">
-                                                <a href="#" class="spr-summary-actions-newreview" data-action="open-madal" aria-controls="form_review_add">Write a Review</a>
-                                              </span>
+                                              <h2 class="spr-header-title">Customer Reviews</h2>
+                                              <div class="spr-summary rte">
+                                                <span class="spr-starrating spr-summary-starrating" aria-label="${rating} of 5 stars" role="img" >${strTemplate}</span>
+                                                <span class="spr-summary-caption"><span class="spr-summary-actions-togglereviews">Based on ${commentPage.total} reviews</span></span>
+                                                <span class="spr-summary-actions">
+                                                  <a href="#" class="spr-summary-actions-newreview" data-action="open-madal" aria-controls="form_review_add">Write a Review</a>
+                                                </span>
+                                              </div>
+                                              <div class="detail_reviewsbar">${reviewBar}</div>
                                             </div>
-                                            <div class="detail_reviewsbar">${reviewBar}</div>
-                                          </div>
-                                            <div class="spr-reviews" id="reviews">${reviews}</div>
-                                          </div>`
+                                              <div class="spr-reviews" id="reviews">${reviews}</div>
+                                            </div>`
         const reviewContent = document.createElement('div')
         reviewContent.className = 'spr-container'
         reviewContent.innerHTML = reviewTemplate
         const newReview = document.querySelector('.spr-content')
         const totalReviewsCount = document.querySelector('.product-meta__reviews-badge')
         totalReviewsCount.innerHTML = `<div class="rating"><div class="rating__stars" role="img" aria-label="${rating} of 5.0 stars">${strTemplate}</div>
-                    <span class="rating__caption">(${commentPage.total})</span></div>`
+                      <span class="rating__caption">(${commentPage.total})</span></div>`
         document.getElementById('shopify-product-reviews').insertBefore(reviewContent, newReview)
       }
 
@@ -267,16 +267,19 @@
       let root = document.querySelector('.product-review-section')
       let reviews = document.getElementById('reviews')
       const form = document.getElementById('new-review-form')
+      const formContainer=document.getElementById('form_review_add')
       const uploadFileView = root.querySelector('.upload-img_views')
       const uinfo = root.querySelector('.upload_info')
-      const errorInfor=root.querySelector('.spr-form-message-error')
+      const errorInfor = root.querySelector('.spr-form-message-error')
       const exSuffix = ['png', 'jpg', 'jpeg', 'gif', 'webp']
       let listenerMap = [{}, {}]
       let ratings = []
       let token;
       const filesList = []
+      const fileList = []
       let changeRating = 0
       let isOpen = false
+      let subimit=false
 
       function handle(ev) {
         let type = ev.type
@@ -374,6 +377,7 @@
             reader.onload = function (result) {
               result.id = Date.now()
               filesList.push(result.target)
+              fileList.push(file)
               renderUploadImg()
             }
           }
@@ -384,12 +388,15 @@
         ev.preventDefault()
         let idx = target.getAttribute('dataa-id') * 1
         filesList.splice(idx, 1)
+        fileList.splice(idx, 1)
         renderUploadImg()
       }
 
       async function submitForm(ev, target) {
         ev.preventDefault()
         ev.stopPropagation()
+        if (subimit) return;
+        subimit = true
         if (!token) token = await login();
         const elements = []
         const dataObj = {
@@ -397,7 +404,7 @@
           "rating": 0,
           "repliedAt": "",
           "reply": "",
-          "state":"published"
+          "state": "published"
         }
 
         form.elements.forEach(item => {
@@ -407,32 +414,27 @@
             dataObj[item.name] = item.value
           }
         });
+        target.setAttribute('disabled', '')
         dataObj.rating = changeRating
         dataObj.imgList = []
-        if (!token)  token = await login();
-        if (filesList.length) {
+        if (!token) token = await login();
+        if (fileList.length) {
           const formData = new FormData()
-          filesList.forEach(i => {
+          fileList.forEach(i => {
             formData.append('upFile', i, i.name)
           })
-          fetch('http://api.leandow-technology.com/api/customerAccount/uploads', {
+          const data = await fetch('http://api.leandow-technology.com/api/customerAccount/uploads', {
             method: "POST",
-            headers: {
-              "content-type": "application/x-www-form-urlencoded",
-              siteValue: 'hyfol',
-              Authorization: token
-            },
             body: formData
-          }).then(response=>response.json())
-          .then(content=>{
-            console.log('files',content)
-          }).catch(reason=>{
+          }).then(response => response.json()).catch(reason => {
 
           })
+          console.log(data);
+          data.success && (dataObj.imgList = data.data)
         }
 
-        if(dataObj.body&&dataObj.email &&dataObj.rating&&dataObj.author){
-          fetch('http://api.leandow-technology.com/api/customerAccount/addComment', {
+        if (dataObj.body && dataObj.email && dataObj.rating && dataObj.author) {
+          const data = await fetch('http://api.leandow-technology.com/api/customerAccount/addComment', {
             method: "POST",
             headers: {
               "content-type": "application/json",
@@ -440,14 +442,19 @@
               Authorization: token
             },
             body: JSON.stringify(dataObj)
-          }).then(respone=>respone.json()).then(content=>{
-            console.log('',content)
-          })
-          .catch(reason=>{
-
-          })
-        }else{
-          errorInfor.style.display='block'
+          }).then(respone => respone.json())
+            .catch(reason => {
+              subimit = false
+              target.removeAttribute('disabled')
+            })
+          formContainer && (formContainer.style.display="none")
+          console.log('data', data)
+          subimit = false
+          target.removeAttribute('disabled')
+        } else {
+          errorInfor.style.display = 'block'
+          target.removeAttribute('disabled')
+          subimit = false
         }
       }
 
