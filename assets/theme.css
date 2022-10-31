@@ -11629,11 +11629,7 @@ shopify-payment-terms {
  * --------------------------------------------------------------------
  */
 
-.spr-starrating.spr-starrating,
-.spr-starratings.spr-starratings {
-  margin: 0;
-  height: 14px;
-}
+
 
 .spr-icon.spr-icon::before {
   display: none;
@@ -11718,7 +11714,6 @@ shopify-payment-terms {
   color: var(--heading-color);
   font-size: calc(var(--base-text-font-size) - (var(--default-text-font-size) - 20px));
   line-height: 1.6;
-  margin-bottom: 7px;
   text-align: left;
 }
 
@@ -11746,7 +11741,7 @@ shopify-payment-terms {
 #shopify-product-reviews .spr-button {
   position: relative;
   display: inline-block;
-  padding: 0 30px;
+  padding: 0 10px;
   line-height: 48px;
   border-radius: 2px;
   text-align: center;
@@ -11778,43 +11773,28 @@ shopify-payment-terms {
 #shopify-product-reviews .spr-review {
   position: relative;
   border-top: none;
-  margin: 28px 0 0 0;
+  margin: 0 0 1rem;
   padding: 0;
 }
 
-#shopify-product-reviews .spr-review+.spr-review {
-  margin-top: 32px;
-}
-
-#shopify-product-reviews .spr-review-header-starratings {
-  margin-bottom: 12px;
-}
 
 #shopify-product-reviews .spr-review-header-title {
-  margin-bottom: 14px;
+  /* margin-bottom: 14px; */
   color: var(--heading-color);
   font-weight: var(--text-font-bolder-weight);
   font-size: 1rem;
   line-height: 1.75;
 }
 
-#shopify-product-reviews .spr-review-header-byline {
-  position: absolute;
-  margin: 0;
-  bottom: calc(1em + 12px);
-  left: 0;
-  opacity: 1;
-  font-size: calc(var(--base-text-font-size) - (var(--default-text-font-size) - 13px));
-}
 
 #shopify-product-reviews .spr-review-header-byline strong {
   font-weight: normal;
 }
 
-#shopify-product-reviews .spr-review-content,
+ #shopify-product-reviews .spr-review-content,
 #shopify-product-reviews .spr-review-reply {
-  margin-bottom: calc(1em + 22px);
-}
+  margin-bottom:0.4rem ;
+} 
 
 #shopify-product-reviews .spr-review-reply {
   margin-top: -1.4em;
@@ -12025,7 +12005,7 @@ shopify-payment-terms {
   }
 
   #shopify-product-reviews .spr-summary-actions {
-    margin-top: 20px;
+    margin-top: 12px;
   }
 }
 
@@ -12033,7 +12013,6 @@ shopify-payment-terms {
   #shopify-product-reviews .spr-header-title {
     font-size: calc(var(--base-text-font-size) - (var(--default-text-font-size) - 21px));
     line-height: 1.5;
-    margin-bottom: 15px;
   }
 
   #shopify-product-reviews.spr-reviews--has-reviews .spr-summary {
@@ -12056,7 +12035,8 @@ shopify-payment-terms {
   }
 
   #shopify-product-reviews .spr-review-header-title {
-    margin-bottom: 12px;
+    /* margin-bottom: 12px; */
+    margin-top: 0.4rem;
   }
 
   #shopify-product-reviews .spr-review-content,
@@ -12065,7 +12045,7 @@ shopify-payment-terms {
   }
 
   #shopify-product-reviews .spr-review-footer {
-    text-align: right;
+    text-align: left;
   }
 
   #shopify-product-reviews .spr-review-reportreview {
@@ -12073,8 +12053,11 @@ shopify-payment-terms {
   }
 
   #shopify-product-reviews .spr-review-header-byline {
-    bottom: 0;
+    bottom: -4px;
     font-size: calc(var(--base-text-font-size) - (var(--default-text-font-size) - 14px));
+    /* bottom: auto; */
+    /* top: 1.4rem; */
+    /* left: 3rem; */
   }
 
   #shopify-product-reviews .spr-pagination {

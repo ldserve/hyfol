@@ -51,7 +51,13 @@
       {%- endif -%}
 
     </div>
-    
+
+    <div class="product-meta__share-buttons desktop-product-meta__share-buttons">
+      <a href="#product-reviews" class="product-meta__reviews-badge link" data-offset="30">
+        
+      </a>
+    </div>
+    {%- comment -%}
     {%- assign product_meta_block = section.blocks | where: 'type', 'product_meta' | first -%}
     {%- if product_meta_block != blank and product_meta_block.settings.show_share_buttons -%}
     <div class="product-meta__share-buttons desktop-product-meta__share-buttons">
@@ -118,6 +124,7 @@
       </ul>
     </div>
   {%- endif -%}
+    {%- endcomment -%}
   
     {%- comment -%}----------------活动标签---------------{%- endcomment -%}
 			{% render "activity-tag", class_name:"desktop-tag_img" , show_img_tag:true %}
