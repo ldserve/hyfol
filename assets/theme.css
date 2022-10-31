@@ -3337,6 +3337,7 @@ img.lazyload[data-sizes=auto] {
   transform: translateX(100%);
   will-change: transform;
   overflow-y: auto;
+  overflow-x: hidden;
   transition: transform 0.3s linear;
   visibility: hidden;
   opacity: 0;
