@@ -4415,6 +4415,7 @@
                     if (!isSelect && lengt == 1  && name === 'color' || name=="颜色"){//只有颜色
                         isSelect = true
                     }//默认变体
+                   if(_this4.currentVariant.option2=="ONE SIZE") isSelect = true;
                     isSelect = isSelect || ['one size', 'default title','title'].indexOf(name) !== -1
                 } catch (error) {  isSelect = true  }
 
