@@ -19743,7 +19743,7 @@
         var count = i.querySelector('.sale_time_count')
         var mun = i.querySelector('.flash-sale_num')
         var countNum=(new Date().getMilliseconds()/100).toFixed(0)
-        if(!countNum)return;
+        if(!count)return;
         mun && setInterval(()=>{countNum--;countNum<0&&(countNum=9); mun.innerHTML="<em>"+countNum +"</em>"},100)
         setInterval(()=>count.innerHTML = getFormatDate(),1000)
     })
