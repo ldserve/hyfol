@@ -4415,6 +4415,7 @@
                     if (!isSelect && lengt == 1  && name === 'color' || name=="颜色"){//只有颜色
                         isSelect = true
                     }//默认变体
+                   if(_this4.currentVariant.option2=="ONE SIZE") isSelect = true;
                     isSelect = isSelect || ['one size', 'default title','title'].indexOf(name) !== -1
                 } catch (error) {  isSelect = true  }
 
@@ -19741,6 +19742,7 @@
    var saleContainers = document.querySelectorAll('[data-type="flash-sale"]')
     saleContainers.forEach(i=>{
         var count = i.querySelector('.sale_time_count')
+      if(!count)return;
         var mun = i.querySelector('.flash-sale_num')
         var countNum=(new Date().getMilliseconds()/100).toFixed(0)
         if(!count)return;

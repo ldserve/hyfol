@@ -3337,6 +3337,7 @@ img.lazyload[data-sizes=auto] {
   transform: translateX(100%);
   will-change: transform;
   overflow-y: auto;
+  overflow-x: hidden;
   transition: transform 0.3s linear;
   visibility: hidden;
   opacity: 0;
@@ -16678,7 +16679,25 @@ text-align: center;
   width: 24%;
   max-width: 390px;
 }
-
+.flash-sale_btn{
+  padding: 0px 6px;
+  line-height: 20px;
+  font-size: 12px;
+  border-radius: 10px;
+  text-decoration: underline;
+  text-underline-offset: 1px;
+  margin: auto 0;
+}
+.flash_sale_item {
+    display: flex;
+    align-content: center;
+    justify-content: space-around;
+    flex: 1;
+    text-align: center;
+}
+.flash-sale_num {
+    margin-left: 4px;
+}
 @media screen and (min-width: 650px) {
   .mobile-tag_img {
     display: none;
