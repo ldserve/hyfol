@@ -19742,6 +19742,7 @@
    var saleContainers = document.querySelectorAll('[data-type="flash-sale"]')
     saleContainers.forEach(i=>{
         var count = i.querySelector('.sale_time_count')
+      if(!count)return;
         var mun = i.querySelector('.flash-sale_num')
         var countNum=(new Date().getMilliseconds()/100).toFixed(0)
         mun && setInterval(()=>{countNum--;countNum<0&&(countNum=9); mun.innerHTML="<em>"+countNum +"</em>"},100)
