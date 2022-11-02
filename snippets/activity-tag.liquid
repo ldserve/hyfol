@@ -71,26 +71,29 @@
 			{%- endfor -%}
 
 			{%- if show_flash  -%}
-			{%- comment -%}详情页 Flash Sale{%- endcomment -%}
-				<a class="custom-activity-tag {{class_name}} flash-sale_link product-item__label_sale" style="position: relative;" data-type="flash-sale" href="https://www.hyfol.com/collections/flash-sale-1">
-				<div class="flash_sale"><svg t="1666171152781" class="icon " viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1906" width="32" height="32"><path d="M395.765333 586.570667h-171.733333c-22.421333 0-37.888-22.442667-29.909333-43.381334L364.768 95.274667A32 32 0 0 1 394.666667 74.666667h287.957333c22.72 0 38.208 23.018667 29.632 44.064l-99.36 243.882666h187.050667c27.509333 0 42.186667 32.426667 24.042666 53.098667l-458.602666 522.56c-22.293333 25.408-63.626667 3.392-54.976-29.28l85.354666-322.421333z" p-id="1907" data-spm-anchor-id="a313x.7781069.0.i4" class=""></path></svg> Flash Sale</div>
-				<div class="flash_sale_item">
-					<span>Ends in </span>
-					<span class="sale_time_count"></span>
-					<span class="flash-sale_num"></span>
-					{% render 'icon',icon:"arrow-right" %}
-				</div>
-				</a>
-			{%- elsif show_fsl  -%}
-			{%- comment -%}详情页 fsl{%- endcomment -%}
-				<a class="custom-activity-tag {{class_name}} flash-sale_link product-item__label_sale" style="position: relative;" data-type="flash-sale" href="https://www.hyfol.com/collections/fsl">
-				<div class="flash_sale"><svg t="1666171152781" class="icon " viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1906" width="32" height="32"><path d="M395.765333 586.570667h-171.733333c-22.421333 0-37.888-22.442667-29.909333-43.381334L364.768 95.274667A32 32 0 0 1 394.666667 74.666667h287.957333c22.72 0 38.208 23.018667 29.632 44.064l-99.36 243.882666h187.050667c27.509333 0 42.186667 32.426667 24.042666 53.098667l-458.602666 522.56c-22.293333 25.408-63.626667 3.392-54.976-29.28l85.354666-322.421333z" p-id="1907" data-spm-anchor-id="a313x.7781069.0.i4" class=""></path></svg> Flash Sale</div>
-				<div class="flash_sale_item">
-					<span>Use Code: <i>FSL</i> to Get $0.99/pcs | Limit 1 per User</span>
-				
-					{% render 'icon',icon:"arrow-right" %}
-				</div>
-				</a>
+              
+    			{%- if show_fsl  -%}
+    			{%- comment -%}详情页 fsl{%- endcomment -%}
+    				<a class="custom-activity-tag {{class_name}} flash-sale_link product-item__label_sale" style="position: relative;" data-type="flash-sale" href="https://www.hyfol.com/collections/flash-sale-1">
+    				<div class="flash_sale"><svg t="1666171152781" class="icon " viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1906" width="32" height="32"><path d="M395.765333 586.570667h-171.733333c-22.421333 0-37.888-22.442667-29.909333-43.381334L364.768 95.274667A32 32 0 0 1 394.666667 74.666667h287.957333c22.72 0 38.208 23.018667 29.632 44.064l-99.36 243.882666h187.050667c27.509333 0 42.186667 32.426667 24.042666 53.098667l-458.602666 522.56c-22.293333 25.408-63.626667 3.392-54.976-29.28l85.354666-322.421333z" p-id="1907" data-spm-anchor-id="a313x.7781069.0.i4" class=""></path></svg> Flash Sale</div>
+    				<div class="flash_sale_item">
+    					<span>Use Code: <i>FSL</i> to Get $0.99/pcs | Limit 1 per User</span>
+    					{% render 'icon',icon:"arrow-right" %}
+    				</div>
+    				</a>
+    			{%- else -%}
+    			{%- comment -%}详情页 Flash Sale{%- endcomment -%}
+    				<a class="custom-activity-tag {{class_name}} flash-sale_link product-item__label_sale" style="position: relative;" data-type="flash-sale" href="https://www.hyfol.com/collections/flash-sale-1">
+    				<div class="flash_sale"><svg t="1666171152781" class="icon " viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1906" width="32" height="32"><path d="M395.765333 586.570667h-171.733333c-22.421333 0-37.888-22.442667-29.909333-43.381334L364.768 95.274667A32 32 0 0 1 394.666667 74.666667h287.957333c22.72 0 38.208 23.018667 29.632 44.064l-99.36 243.882666h187.050667c27.509333 0 42.186667 32.426667 24.042666 53.098667l-458.602666 522.56c-22.293333 25.408-63.626667 3.392-54.976-29.28l85.354666-322.421333z" p-id="1907" data-spm-anchor-id="a313x.7781069.0.i4" class=""></path></svg> Flash Sale</div>
+    				<div class="flash_sale_item">
+    					<span>Ends in </span>
+    					<span class="sale_time_count"></span>
+    					<span class="flash-sale_num"></span>
+    					{% render 'icon',icon:"arrow-right" %}
+    				</div>
+    				</a>
+              	{%- endif -%}
+              
 			{%- else -%}
 			{%- comment -%}TAG 背景图{%- endcomment -%}
 			<a class="custom-activity-tag {{class_name}}" style="position: relative;" href="{{CustomPromotionUrItemUrl}}">
