@@ -524,7 +524,7 @@
 					weight: "50",
 					weightUnit: "kg",
 				}
-				const spu = '{{product.handle}}'
+				const spu ='SP220902NSUL'|| '{{product.handle}}'
 				fetch('http://api.leandow-technology.com/api/customerAccount/getModelInfoBySpu'.concat('?spu=', spu), {
 					method: "GET",
 					headers: { "siteValue": 'hyfol' }
