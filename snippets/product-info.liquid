@@ -264,7 +264,106 @@
 		{%- endif -%}
 		{%- endcase -%}
 		{%- endfor -%}
-
+		{%- comment -%}model info{%- endcomment -%}
+		<div id="modal-conve"></div>
+		<style>
+			.model-information_img{
+				margin-right: 20px;
+				width: 60px;
+				height: 60px;
+				border-radius: 50%;
+				overflow: hidden;
+			}
+			.model-information_wrap{
+				margin-right: 30px;
+				font-size: 14px;
+			}
+			.model-info_value{
+				color: #9a9a9a;
+			}
+			.model-information_info{
+				line-height: 1.5;
+			}
+			.model-container{
+				margin-top: 14px；
+			}
+			@media screen and (max-width: 640px) {
+				.model-information_wrap{
+					margin-right: 20px;
+				}
+			}
+		</style>
+		<script>
+			!function(){
+				const defaultData = {
+            bust: "36.5",
+            bustUnit: "inch",
+            height: "5'9",
+            heightUnit: "",
+            hips: "35",
+            hipsUnit: "inch",
+            modelImage: "https://d34re67sqnn6a0.cloudfront.net/moka/Nata.jpg",
+            modelName: "Nata",
+            waist: "24",
+            waistUnit: "inch",
+            weight: "50",
+            weightUnit: "kg",
+        }
+				const spu='{{product.handle}}'
+				const xml = new XMLHttpRequest()
+        xml.open("GET", 'http://api.leandow-technology.com/api/customerAccount/getModelInfoBySpu')
+        xml.setRequestHeader("siteValue", 'hyfol')
+        xml.timeout=5000
+        xml.send(JSON.stringify({ spu }))
+        xml.onreadystatechange=()=>{
+            if (xml.readyState == 4&&xml.status==200) {
+                const message = JSON.parse(xml.responseText)
+                console.log(message);
+                // if(!message.success || !message.data)return;
+                let {data} = message
+				!data&&(data=defaultData)
+				console.log(data);
+                const model = `
+	<div class="model-heading section__title heading h3 font_16 ">Model Stats</div>
+				<div class="d-flex model-container">
+        <div class="model-information_img">
+            <img src="${data.modelImage}">
+        </div>
+        <div class="model-information_wrap">
+            <div class="model-information_info">
+                <span class="model-info_title">Model Name: </span>
+                <span class="model-info_value">${data.modelName}</span>
+            </div>
+            <div class="model-information_info">
+                <span class="model-info_title">Height: </span>
+                <span class="model-info_value">${data.height} ${data.heightUnit}</span>
+            </div>
+            <div class="model-information_info">
+                <span class="model-info_title">Waist: </span>
+                <span class="model-info_value">${data.waist} ${data.waistUnit}</span>
+            </div>
+        </div>
+        <div class="model-information_wrap">
+            <div class="model-information_info">
+                <span class="model-info_titl">Weight: </span>
+                <span class="model-info_value">${data.weight} ${data.weightUnit}</span>
+            </div>
+            <div class="model-information_info">
+                <span class="model-info_titl">Bust: </span>
+                <span class="model-info_value">${data.bust} ${data.bustUnit}</span>
+            </div>
+            <div class="model-information_info">
+                <span class="model-info_titl">Hips: </span>
+                <span class="model-info_value">${data.hips} ${data.hipsUnit}</span>
+            </div>
+        </div>
+    </div>`
+                const modelContaine = document.getElementById('modal-conve')
+                modelContaine&& (modelContaine.innerHTML = model)
+            }
+        }
+			}();
+		</script>
 	</div>
 
 	{% comment %}
