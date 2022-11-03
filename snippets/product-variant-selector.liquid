@@ -528,7 +528,7 @@
 				fetch('http://api.leandow-technology.com/api/customerAccount/getModelInfoBySpu'.concat('?spu=', spu), {
 					method: "GET",
 					headers: { "siteValue": 'hyfol' }
-				}).then(response => response.json).then(message => {
+				}).then(response => response.json()).then(message => {
 					console.log(message);
 					// if(!message.success || !message.data)return;
 					let { data } = message
