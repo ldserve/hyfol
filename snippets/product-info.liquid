@@ -311,11 +311,10 @@
         }
 				const spu='{{product.handle}}'
 				const xml = new XMLHttpRequest()
-        xml.open("GET", 'http://api.leandow-technology.com/api/customerAccount/getModelInfoBySpu')
+        xml.open("GET", 'http://api.leandow-technology.com/api/customerAccount/getModelInfoBySpu'.concat('?spu=',spu))
         xml.setRequestHeader("siteValue", 'hyfol')
-        xml.setRequestHeader('content-type','application/json')
         xml.timeout=5000
-        xml.send(JSON.stringify({ spu }))
+        xml.send()
         xml.onreadystatechange=()=>{
             if (xml.readyState == 4&&xml.status==200) {
                 const message = JSON.parse(xml.responseText)
