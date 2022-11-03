@@ -295,7 +295,7 @@
 		</style>
 		<script>
 			!function(){
-				const defaultData = {
+			const defaultData = {
             bust: "36.5",
             bustUnit: "inch",
             height: "5'9",
@@ -313,6 +313,7 @@
 				const xml = new XMLHttpRequest()
         xml.open("GET", 'http://api.leandow-technology.com/api/customerAccount/getModelInfoBySpu')
         xml.setRequestHeader("siteValue", 'hyfol')
+        xml.setRequestHeader('content-type','application/json')
         xml.timeout=5000
         xml.send(JSON.stringify({ spu }))
         xml.onreadystatechange=()=>{
