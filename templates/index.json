@@ -1121,9 +1121,9 @@
         "0736ae2f-d8f9-4699-9348-1065c0a82879": {
           "type": "link",
           "settings": {
-            "heading": "camo",
-            "sensorsLinkName": "camo",
-            "link": "https:\/\/www.hyfol.com\/collections\/camo",
+            "heading": "workshirts",
+            "sensorsLinkName": "sweatshirts",
+            "link": "https:\/\/www.hyfol.com\/collections\/shirt",
             "left": 0,
             "top": 0,
             "width": 49,
@@ -1133,9 +1133,9 @@
         "17a0b0e4-b0fd-421f-ae02-f40770d11416": {
           "type": "link",
           "settings": {
-            "heading": "patrtotic",
-            "sensorsLinkName": "patrtotic",
-            "link": "https:\/\/www.hyfol.com\/collections\/american-flag",
+            "heading": "sweaters",
+            "sensorsLinkName": "sweaters",
+            "link": "https:\/\/www.hyfol.com\/collections\/sweaters",
             "left": 51,
             "top": 0,
             "width": 53,
