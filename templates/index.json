@@ -814,6 +814,21 @@
         "lpadding": 0
       }
     },
+    "1651218774b7bce676": {
+      "type": "transparent-collection",
+      "settings": {
+        "collection": "hyfol-best-seller-1",
+        "sensorsName": "BEST SELLERS",
+        "title": "BEST SELLERS",
+        "products_count": 12,
+        "layout": "vertical",
+        "stack_products": false,
+        "show_quick_buy": false,
+        "link_title": "View all",
+        "link_url": "",
+        "backgroun": ""
+      }
+    },
     "16500767332eb3ea11": {
       "type": "linkImg",
       "blocks": {
@@ -887,7 +902,7 @@
         "f9019732-d4c1-4468-9a73-ed6887b9c0c1"
       ],
       "settings": {
-        "linkImg_title": "",
+        "linkImg_title": "SHOP BY DEAL",
         "linkImg_content": "",
         "hidDesk": false,
         "sensorsName": "pc分类导流区",
@@ -973,7 +988,7 @@
         "596c0df9-c426-4eb0-b341-32e2a30109f3"
       ],
       "settings": {
-        "linkImg_title": "",
+        "linkImg_title": "SHOP BY DEAL",
         "linkImg_content": "",
         "hidDesk": true,
         "sensorsName": "mobile分类导流区",
@@ -984,21 +999,6 @@
         "rpadding": 0,
         "bpadding": 0,
         "lpadding": 0
-      }
-    },
-    "1651218774b7bce676": {
-      "type": "transparent-collection",
-      "settings": {
-        "collection": "hyfol-best-seller-1",
-        "sensorsName": "BEST SELLERS",
-        "title": "BEST SELLERS",
-        "products_count": 12,
-        "layout": "vertical",
-        "stack_products": false,
-        "show_quick_buy": false,
-        "link_title": "View all",
-        "link_url": "",
-        "backgroun": ""
       }
     },
     "1663932013ff20a453": {
@@ -1049,9 +1049,9 @@
         "ff6f97b8-1adb-4a65-93e8-533754b197fc": {
           "type": "link",
           "settings": {
-            "heading": "camo",
-            "sensorsLinkName": "camo",
-            "link": "https:\/\/www.hyfol.com\/collections\/camo",
+            "heading": "workshirts",
+            "sensorsLinkName": "workshirts",
+            "link": "https:\/\/www.hyfol.com\/collections\/shirt",
             "left": 0,
             "top": 0,
             "width": 24,
@@ -1061,9 +1061,9 @@
         "342f71ba-d412-42c7-a286-e1b97c3dc993": {
           "type": "link",
           "settings": {
-            "heading": "patrtotic",
-            "sensorsLinkName": "patrtotic",
-            "link": "https:\/\/www.hyfol.com\/collections\/american-flag",
+            "heading": "sweatshirts",
+            "sensorsLinkName": "sweatshirts",
+            "link": "https:\/\/www.hyfol.com\/collections\/sweatshirts-12-13",
             "left": 25,
             "top": 0,
             "width": 24,
@@ -1108,7 +1108,7 @@
         "sensorsName": "pc分类导流区",
         "hidWeb": true,
         "line": false,
-        "image": "shopify:\/\/shop_images\/11_c40bde12-b1d5-46a7-b97f-7f0b7fcdc7a3.jpg",
+        "image": "shopify:\/\/shop_images\/hyfol__06.jpg",
         "tpadding": 0,
         "rpadding": 0,
         "bpadding": 0,
@@ -1180,7 +1180,7 @@
         "sensorsName": "mobile分类导流区",
         "hidWeb": false,
         "line": false,
-        "image": "shopify:\/\/shop_images\/1_08_eb93db7d-6e88-4808-b884-bf7d608d72c2.jpg",
+        "image": "shopify:\/\/shop_images\/12_e8fd0328-6479-4248-b0d7-7713c58f8c50.jpg",
         "tpadding": 5,
         "rpadding": 0,
         "bpadding": 0,
@@ -1411,9 +1411,9 @@
     "16585455879cf4cc45",
     "166393398966f5d03e",
     "1663934013a93a9889",
+    "1651218774b7bce676",
     "16500767332eb3ea11",
     "164742631051d4db44",
-    "1651218774b7bce676",
     "1663932013ff20a453",
     "16585474086f148753",
     "2085cc4d-3d60-4b10-bdbd-21379ff22696",
