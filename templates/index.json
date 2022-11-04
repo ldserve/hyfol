@@ -683,9 +683,9 @@
         "a57fed2e-f643-449f-9676-b1e59bf7beab": {
           "type": "link",
           "settings": {
-            "heading": "poloshirt",
-            "sensorsLinkName": "poloshirt",
-            "link": "https:\/\/www.hyfol.com\/collections\/polo-shirts",
+            "heading": "hoodies",
+            "sensorsLinkName": "hoodies",
+            "link": "https:\/\/www.hyfol.com\/collections\/hoodies-1",
             "left": 0,
             "top": 0,
             "width": 28,
@@ -695,9 +695,9 @@
         "68d1d597-d68d-40b8-a69b-4650df6dd0e4": {
           "type": "link",
           "settings": {
-            "heading": "hoodies",
-            "sensorsLinkName": "hoodies",
-            "link": "https:\/\/www.hyfol.com\/collections\/hoodies-1",
+            "heading": "sweatshirts",
+            "sensorsLinkName": "sweatshirts",
+            "link": "https:\/\/www.hyfol.com\/collections\/sweatshirts-12-13",
             "left": 35,
             "top": 0,
             "width": 31,
@@ -707,9 +707,9 @@
         "eb0c793e-0e4f-4e5c-92bd-faf45cd233a6": {
           "type": "link",
           "settings": {
-            "heading": "raglan",
-            "sensorsLinkName": "raglan",
-            "link": "https:\/\/www.hyfol.com\/collections\/raglan-tees",
+            "heading": "jack",
+            "sensorsLinkName": "jack",
+            "link": "https:\/\/www.hyfol.com\/collections\/outerwear_hyfol",
             "left": 70,
             "top": 0,
             "width": 31,
@@ -719,9 +719,9 @@
         "703cb61e-bb71-4d36-ae67-f8e45b7b1d0b": {
           "type": "link",
           "settings": {
-            "heading": "sweatshirts",
-            "sensorsLinkName": "sweatshirts",
-            "link": "https:\/\/www.hyfol.com\/collections\/sweatshirts-12-13",
+            "heading": "accessories",
+            "sensorsLinkName": "accessories",
+            "link": "https:\/\/www.hyfol.com\/collections\/accessories-12-13",
             "left": 0,
             "top": 44,
             "width": 32,
@@ -731,9 +731,9 @@
         "059a10b2-d700-4489-8071-0f91413acddb": {
           "type": "link",
           "settings": {
-            "heading": "cargopants",
-            "sensorsLinkName": "cargopants",
-            "link": "https:\/\/www.hyfol.com\/collections\/cargo-pants",
+            "heading": "raglan",
+            "sensorsLinkName": "raglan",
+            "link": "https:\/\/www.hyfol.com\/collections\/raglan-tees",
             "left": 37,
             "top": 42,
             "width": 29,
@@ -743,9 +743,9 @@
         "d3832b18-b464-4e71-a800-239d8c0bdf6e": {
           "type": "link",
           "settings": {
-            "heading": "bestseller",
-            "sensorsLinkName": "bestseller",
-            "link": "https:\/\/www.hyfol.com\/collections\/hyfol-best-seller-1",
+            "heading": "cargopants",
+            "sensorsLinkName": "cargopants",
+            "link": "https:\/\/www.hyfol.com\/collections\/cargo-pants",
             "left": 72,
             "top": 45,
             "width": 57,
@@ -767,9 +767,9 @@
         "81098c5b-5074-43de-b712-fe69e9b9956b": {
           "type": "link",
           "settings": {
-            "heading": "accessories",
-            "sensorsLinkName": "accessories",
-            "link": "https:\/\/www.hyfol.com\/collections\/accessories-12-13",
+            "heading": "shirt",
+            "sensorsLinkName": "shirt",
+            "link": "https:\/\/www.hyfol.com\/collections\/shirt",
             "left": 38,
             "top": 69,
             "width": 29,
@@ -779,9 +779,9 @@
         "109f4489-84a2-4283-ac28-ee83ad0d262c": {
           "type": "link",
           "settings": {
-            "heading": "newin",
-            "sensorsLinkName": "newin",
-            "link": "https:\/\/www.hyfol.com\/collections\/new-in-1",
+            "heading": "polo",
+            "sensorsLinkName": "polo",
+            "link": "https:\/\/www.hyfol.com\/collections\/polo-shirts",
             "left": 71,
             "top": 67,
             "width": 26,
@@ -801,13 +801,13 @@
         "109f4489-84a2-4283-ac28-ee83ad0d262c"
       ],
       "settings": {
-        "linkImg_title": "",
+        "linkImg_title": "SHOP BY CATEGORY",
         "linkImg_content": "",
         "hidDesk": true,
         "sensorsName": "mobile分类导流区",
         "hidWeb": false,
         "line": false,
-        "image": "shopify:\/\/shop_images\/1_06.jpg",
+        "image": "shopify:\/\/shop_images\/05_68230f05-8550-4ae9-8111-603525750c5e.jpg",
         "tpadding": 0,
         "rpadding": 0,
         "bpadding": 0,
