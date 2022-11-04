@@ -465,7 +465,9 @@
         "show_quick_buy": false,
         "link_title": "View all",
         "link_url": "shopify:\/\/collections\/best-sellers-1",
-        "backgroun": ""
+        "backgroun": "",
+        "padding_top": 0,
+        "padding_bottom": 20
       }
     },
     "1650101273f11a55ef": {
@@ -713,7 +715,7 @@
         "hidWeb": true,
         "line": false,
         "image": "shopify:\/\/shop_images\/hyfol__02.jpg",
-        "tpadding": 0,
+        "tpadding": 13,
         "rpadding": 0,
         "bpadding": 0,
         "lpadding": 0
@@ -868,7 +870,9 @@
         "show_quick_buy": false,
         "link_title": "View all",
         "link_url": "",
-        "backgroun": ""
+        "backgroun": "",
+        "padding_top": 13,
+        "padding_bottom": 20
       }
     },
     "16500767332eb3ea11": {
@@ -1067,7 +1071,9 @@
         "show_quick_buy": false,
         "link_title": "View all",
         "link_url": "https:\/\/www.hyfol.com\/collections\/summer-finalsale?page=1",
-        "backgroun": ""
+        "backgroun": "",
+        "padding_top": 20,
+        "padding_bottom": 20
       }
     },
     "2085cc4d-3d60-4b10-bdbd-21379ff22696": {
@@ -1082,7 +1088,9 @@
         "show_quick_buy": false,
         "link_title": "View all",
         "link_url": "",
-        "backgroun": ""
+        "backgroun": "",
+        "padding_top": 20,
+        "padding_bottom": 20
       }
     },
     "16474250424edba623": {
