@@ -28,11 +28,11 @@
 	{%- comment -%}--------------Flash Sale-------------------------{%- endcomment -%}
 	<div class="indexContainer" style="position: relative;">
 
+		{%- capture heading_h -%}<h2 class="section__title heading h3 section--text-centered">{{ section.settings.title }}</h2>{%- endcapture -%}
 		{%- if class_name != blank -%}
 		<div class="flash_sale-info">
 			<img src="https://cdn.shopify.com/s/files/1/0595/0691/7535/files/sale.png?v=1666324321" alt="sale" class="flash_sale_img">
 		</div>
-		{%- capture heading_h -%}<h2 class="section__title heading h3 section--text-centered">{{ section.settings.title }}</h2>{%- endcapture -%}
 		<div class="d-flex feature-flash_sale">
 			{{heading_h}}
 			<div class="" data-type="flash-sale">
