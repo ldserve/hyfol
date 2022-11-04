@@ -460,8 +460,8 @@
           "type": "image",
           "settings": {
             "sensorsName": "plaid",
-            "image": "shopify:\/\/shop_images\/237d557249bd41e36aeea87d8f090d2a_897ff631-0bd7-4ddc-852c-a1088d54227c.jpg",
-            "mobile_image": "shopify:\/\/shop_images\/5dbbfe3298a1ddad9d392830e3e50d15_26bf12d4-da7d-4cf9-88f0-4026b12ad5eb.jpg",
+            "image": "shopify:\/\/shop_images\/237d557249bd41e36aeea87d8f090d2a_e017f1a3-06cf-4784-990b-807af36a5338.jpg",
+            "mobile_image": "shopify:\/\/shop_images\/5dbbfe3298a1ddad9d392830e3e50d15_b3a70361-e95d-40c6-bff5-183268c0e6b4.jpg",
             "show_overlay": false,
             "overlay_opacity": 30,
             "text_color": "#ffffff",
@@ -484,8 +484,8 @@
           "type": "image",
           "settings": {
             "sensorsName": "cargopants",
-            "image": "shopify:\/\/shop_images\/0f719d71e9a8a2dbb649b4f3475ebf96_785593c0-92b7-4ee5-b7e5-3d6753e7fdd7.jpg",
-            "mobile_image": "shopify:\/\/shop_images\/2b2d82fd0d6a0f6a7e255749be197780.jpg",
+            "image": "shopify:\/\/shop_images\/0f719d71e9a8a2dbb649b4f3475ebf96_b6b82f81-316c-415d-ac01-bb7be652511b.jpg",
+            "mobile_image": "shopify:\/\/shop_images\/2b2d82fd0d6a0f6a7e255749be197780_65229656-f644-4c7c-9c57-6981082667e4.jpg",
             "show_overlay": false,
             "overlay_opacity": 30,
             "text_color": "#ffffff",
