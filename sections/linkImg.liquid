@@ -17,7 +17,8 @@
 		
       <div class="linkImg_text">
 		{% if section.settings.linkImg_title != blank %}
-		<div class="linkImg_title section__title heading h3 section--text-centered">{{section.settings.linkImg_title}}</div>
+		{%- comment -%} linkImg_title {%- endcomment -%}
+		<div class=" section__title heading h3 section--text-centered">{{section.settings.linkImg_title}}</div>
 		{% endif %}
 		{% if section.settings.linkImg_content !=blank %}
 		<div class="linkImg_content">{{section.settings.linkImg_content}}</div>
