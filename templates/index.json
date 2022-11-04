@@ -200,7 +200,7 @@
         "link_color": "#000000",
         "link_radius": 18,
         "slid_padding": 10,
-        "link_items": 4
+        "link_items": 5
       }
     },
     "1663931750c3ec4ea5": {
@@ -953,7 +953,7 @@
         "image": "shopify:\/\/shop_images\/hyfol__04.jpg",
         "tpadding": 0,
         "rpadding": 0,
-        "bpadding": 20,
+        "bpadding": 40,
         "lpadding": 0
       }
     },
