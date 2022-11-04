@@ -825,44 +825,44 @@
             "link": "https:\/\/www.hyfol.com\/collections\/custompromotion-buy-4-get-20-off",
             "left": 0,
             "top": 0,
-            "width": 60,
-            "height": 49
+            "width": 26,
+            "height": 100
           }
         },
         "6c94ee37-e01c-4716-bc7e-67cc0981d68a": {
           "type": "link",
           "settings": {
-            "heading": "for59",
-            "sensorsLinkName": "for59",
-            "link": "https:\/\/www.hyfol.com\/collections\/summer-clearance-any-3-for-59",
-            "left": 64,
+            "heading": "for50",
+            "sensorsLinkName": "for50",
+            "link": "https:\/\/www.hyfol.com\/de\/collections\/2nd-50-off",
+            "left": 27,
             "top": 0,
-            "width": 36,
-            "height": 54
+            "width": 22,
+            "height": 100
           }
         },
         "c9e8ee81-fa7f-4664-a2d9-be156e428c8d": {
           "type": "link",
           "settings": {
-            "heading": "mystery",
-            "sensorsLinkName": "mystery",
-            "link": "https:\/\/www.hyfol.com\/products\/sp220902vguq",
-            "left": 0,
-            "top": 56,
-            "width": 33,
-            "height": 71
+            "heading": "for59",
+            "sensorsLinkName": "for59",
+            "link": "https:\/\/www.hyfol.com\/collections\/summer-clearance-any-3-for-59",
+            "left": 51,
+            "top": 0,
+            "width": 25,
+            "height": 100
           }
         },
         "1f197e6e-076a-4800-935a-1d35bc6020ce": {
           "type": "link",
           "settings": {
-            "heading": "summerfinalsale",
-            "sensorsLinkName": "summerfinalsale",
-            "link": "https:\/\/www.hyfol.com\/collections\/summer-finalsale?page=1",
-            "left": 44,
-            "top": 59,
-            "width": 59,
-            "height": 42
+            "heading": "for49",
+            "sensorsLinkName": "for49",
+            "link": "https:\/\/www.hyfol.com\/collections\/4-for-49",
+            "left": 77,
+            "top": 0,
+            "width": 100,
+            "height": 100
           }
         },
         "f9019732-d4c1-4468-9a73-ed6887b9c0c1": {
@@ -893,7 +893,7 @@
         "sensorsName": "pc分类导流区",
         "hidWeb": true,
         "line": false,
-        "image": "shopify:\/\/shop_images\/07_e5c57276-6682-441c-8af7-111333450cf0.jpg",
+        "image": "shopify:\/\/shop_images\/hyfol__04.jpg",
         "tpadding": 0,
         "rpadding": 0,
         "bpadding": 0,
