@@ -12,6 +12,10 @@
   #shopify-section-{{ section.id }} div::-webkit-scrollbar {
     width: 0 !important
   }
+  #shopify-section-{{ section.id }}  .section-layout{
+	padding-top: {{section.settings.padding_top}}px;
+	padding-bottom: {{section.settings.padding_bottom}}px;
+  }
   .section-layout{
 	background-color: {{section.settings.backgroun}};
   }
@@ -234,6 +238,25 @@
 	"type": "color",
 	"id": "backgroun",
 	"label": "背景颜色"
+	},
+	{
+	"type": "range",
+	"id": "padding_top",
+	"label": "顶部填充",
+	"min": 0,
+	"max": 100,
+	"step": 1,
+	"default": 20
+	},
+	,
+	{
+	"type": "range",
+	"id": "padding_bottom",
+	"label": "底部填充",
+	"min": 0,
+	"max": 100,
+	"step": 1,
+	"default": 20
 	}
 	],
 	"presets": [
