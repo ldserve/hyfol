@@ -435,6 +435,22 @@ line_items: [
 {%- render 'back-in-stock-helper' -%}
 <!-- End Back in Stock helper snippet -->
 
+
+{%- comment -%}---------------- FSL ---------------{%- endcomment -%}
+{%- capture tag_string -%}{%- endcapture -%}
+{%- for line_item in cart.items -%}
+{%- if forloop.first -%}
+{%- capture tag_string -%}{{line_item.product.tags  | join: ',' | downcase}}{%- endcapture -%}
+{%- else -%}
+{%- capture tag_string -%}{{tag_string}},{{line_item.product.tags  | join: ',' | downcase}}{%- endcapture -%}
+{%- endif -%}
+{%- endfor -%}
+{%- assign all_tags = tag_string | split: ',' | uniq | join: ',' -%}
+<script type="text/javascript" defer="defer" id="linItemTags">
+  var allProductTag=`{{all_tags}}`
+</script>
+{%- comment -%}-------------- FSL END ---------------------{%- endcomment -%}
+
 </body>
 {%- comment -%}PartnerBoost 营销代码{%- endcomment -%}
  <script>var bid=67931;</script>
