@@ -399,15 +399,8 @@
         subimit = true
         if (!token) token = await login();
         const elements = []
-        const dataObj = {
-          "location": "",
-          "rating": 0,
-          "repliedAt": "",
-          "reply": "",
-          "state": "published"
-        }
-
-        form.elements.forEach(item => {
+        const dataObj = {"location": "","rating": 0,"repliedAt": "","reply": "","state": "published"}
+        form.elements&&form.elements.forEach(item => {
           let tag = item.tagName.toLowerCase()
           if (['input', 'textarea'].includes(tag)) {
             elements.push(item)
@@ -429,7 +422,6 @@
           }).then(response => response.json()).catch(reason => {
 
           })
-          console.log(data);
           data.success && (dataObj.imgList = data.data)
         }
 
@@ -446,13 +438,16 @@
             .catch(reason => {
               subimit = false
               target.removeAttribute('disabled')
+              Message.error('Submitted successfully')
             })
           formContainer && (formContainer.style.display="none")
-          console.log('data', data)
+          // console.log('data', data)
+          Message.success('Submission failed.')
           subimit = false
           target.removeAttribute('disabled')
         } else {
           errorInfor.style.display = 'block'
+          Message.error('Not all the fields have been filled out correctly!')
           target.removeAttribute('disabled')
           subimit = false
         }
