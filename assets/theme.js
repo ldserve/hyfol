@@ -368,6 +368,7 @@
                     newData.commodity_color = colorChecked ? colorChecked.value : ""
                     newData.commodity_size = sizeChecked ? sizeChecked.value : ""
                     newData.site_category = getSiteCategory()
+                    try {  newData.entry_source=document.referrer||''} catch (error) {newData.entry_source=''}
                     return newData
                 }
             })
@@ -387,6 +388,7 @@
                     newData.commodity_color = colorChecked ? colorChecked.value : ""
                     newData.commodity_size = sizeChecked ? sizeChecked.value : ""
                     newData.site_category = getSiteCategory()
+                    try {  newData.entry_source=document.referrer||''} catch (error) {newData.entry_source=''}
                     return newData
                 }
             })
@@ -653,6 +655,7 @@
                     newData.commodity_color = colorChecked ? colorChecked.value : ""
                     newData.commodity_size = sizeChecked ? sizeChecked.value : ""
                     newData.site_category = getSiteCategory()
+                    try {  newData.entry_source=document.referrer||''} catch (error) {newData.entry_source=''}
                     return newData
                 }
             })
