@@ -16,11 +16,10 @@
       "blocks": {
         "1664249260b7761d46-0": {
           "type": "image",
-          "disabled": true,
           "settings": {
-            "sensorsName": "newin",
-            "image": "shopify:\/\/shop_images\/12_f083582e-e8a3-43ef-a99b-c9cab2c78d9a.jpg",
-            "mobile_image": "shopify:\/\/shop_images\/e315c28ce1022609c3d8f849b842e7f2_eedf9a92-e541-4aa7-a3df-b29ab8ea61c0.jpg",
+            "sensorsName": "giftguide",
+            "image": "shopify:\/\/shop_images\/pc_acd70bec-5653-48e0-848d-bb50a485fdc9.jpg",
+            "mobile_image": "shopify:\/\/shop_images\/8e231fac2a4af07979e5eb7c0c237154.jpg",
             "show_overlay": false,
             "overlay_opacity": 30,
             "text_color": "#ffffff",
@@ -36,7 +35,7 @@
             "button_background": "#ffffff",
             "button_text_color": "#000000",
             "button_text": "",
-            "link": "https:\/\/www.hyfol.com\/collections\/new-in-1"
+            "link": "https:\/\/www.hyfol.com\/collections\/giftguide"
           }
         },
         "1664249260b7761d46-1": {
