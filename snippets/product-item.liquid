@@ -4,7 +4,8 @@
 
 {%- assign color_label = 'color,colour,couleur,cor,colore,farbe,색,色,カラー,färg,farve,szín,barva' | split: ',' -%}
 
-
+{%- comment -%}
+{%- endcomment -%}
 <div
 	class="{% if show_mask %} ny-item-mask {% else %} product-item {% endif %}{% if horizontal %}product-item--horizontal{% elsif list %}product-item--list{% else %}product-item--vertical{% endif %} {% if section.id == 'blog-sidebar' %}product-item--compact{% endif %} {{ grid_classes }} {% if only_show_transparent %}product-item--transparent{% endif %}"
 	data-scenable="1"
@@ -65,6 +66,9 @@
 			href="{{ product.url }}"
 			 class="product-item__image-wrapper product-item_mktClick shence_commodityView {% if show_secondary_media %}product-item__image-wrapper--with-secondary{% endif %} icon-relative"
 			 data-scenable="1" data-expenable="1" data-bindexp="1" data-sctype="mktClick"
+			 {% if collection.title =='HOT SALE HYFOL 3' %}
+			data-expscdata='{"commodity_spuid":"{{- product.handle| handleize -}}","commodity_name":"{{ product.title | handleize }}","first_commodity":"{{product.metafields.my_fields.category.first_commodity}}","second_commodity":"{{product.metafields.my_fields.category.second_commodity}}","third_commodity":"{{product.metafields.my_fields.category.third_commodity}}","original_price":"{{product.compare_at_price_min}}","current_price":"{{- product.price -}}","currency_unit":"USD"}'
+			{% endif %}
 			 data-scdata='{"mkt_type":"product","first_mkt_name":"{{ first_mkt_name }}","first_mkt_id":"{{ section.id }}","second_mkt_rank":"{{ forloop.index }}","third_mkt_rank":"","mkt_material_url":"","mkt_material_name":"{{ mkt_material_name }}","commodity_spuid":"{{ product.handle }}","commodity_skuid":"{{ product.selected_or_first_available_variant.sku }}","commodity_name":"{{ product.title| handleize }}","original_price":"{{ product.selected_or_first_available_variant.compare_at_price }}","current_price":"{{ product.selected_or_first_available_variant.price }}","currency_unit":"USD","mkt_tag":[]}'>
 			{% if only_show_transparent  and product.metafields.my_fields.transparentimg1  != blank or only_show_transparent and product.metafields.my_fields.transparencydrawing[0].path != blank %}
 				{%- comment -%}
