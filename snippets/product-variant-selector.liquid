@@ -503,7 +503,9 @@
       .model-container {
         margin-top: 14px;
       }
-    
+    .model-info_title{
+      font-weight: 600;
+    }
       #modal-conve {
         margin-bottom: 1rem;
       }
@@ -546,15 +548,15 @@
         			</div>
         			<div class="model-information_wrap">
         				<div class="model-information_info">
-        					<span class="model-info_titl">Weight: </span>
+        					<span class="model-info_title">Weight: </span>
         					<span class="model-info_value">${data.weight} ${data.weightUnit}</span>
         				</div>
         				<div class="model-information_info">
-        					<span class="model-info_titl">Bust: </span>
+        					<span class="model-info_title">Bust: </span>
         					<span class="model-info_value">${data.bust} ${data.bustUnit}</span>
         				</div>
         				<div class="model-information_info">
-        					<span class="model-info_titl">Hips: </span>
+        					<span class="model-info_title">Hips: </span>
         					<span class="model-info_value">${data.hips} ${data.hipsUnit}</span>
         				</div>
         			</div>
@@ -565,7 +567,7 @@
         })
       }();
     </script>
-    
+
 {%- comment -%}---------discount 图片-----------{%- endcomment -%}
 {% if block.settings.show_discount_image%}
 {% if block.settings.discount_image !=blank %}
