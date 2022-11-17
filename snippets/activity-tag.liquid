@@ -14,9 +14,11 @@
 		{%- assign text = tag | split: '-' -%}
 		{%- assign custom_tag = text[1] | strip -%}
 		{%- break -%}
+		{%- elsif tag == "Flash Sale" -%}
+		{%- assign custom_tag = tag -%}
+		{%- break -%}
 	{%- endif -%}
 {%- endfor -%}
-
 {%- comment -%}Flash Salv{%- endcomment -%}
 	{%- assign show_flash = false -%}
 	{%- for cust_tag in product.tags -%}
@@ -43,11 +45,10 @@
 
 	{%- comment -%}------tag 标签图-------{%- endcomment -%}
 	{%- if settings.tag_layout=="label" -%}
-		{%- assign imgtag_list = settings.activity_img_tag | split: ',' -%}
+		{%- assign imgtag_list = settings.activity_img_tag | strip_html | split: ',' -%}
 
 		{%- for tag_str in imgtag_list -%}
-			{%- assign tag_item = tag_str | strip | strip_html | split: '=' -%}
-
+			{%- assign tag_item = tag_str | strip  | split: '=' -%}
 			{%- if custom_tag contains tag_item[0] -%}
 				{%- assign tag_url = tag_item[1] -%}
 				{%- break -%}
@@ -118,7 +119,7 @@
 			</a>
 			{%- endif -%}
 
-		{%- elsif  show_fsl  -%}
+		{%- elsif  show_fsl == "none" -%}
 			{%- comment -%}产品列表 fsl{%- endcomment -%}
 			<div class="product-item__label_sale product-item__label-list">
 				{%- if product.price < product.compare_at_price -%}
