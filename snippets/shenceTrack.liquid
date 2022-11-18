@@ -1,5 +1,12 @@
 <script src="{{ 'request.js' | asset_url }}"></script>
 <script type="text/javascript">
+	function postData(url,body) {
+		fetch(url,{
+			method:"POST",
+			headers:{"Content-type":"application/json"},
+			body:JSON.stringify(body)
+		})
+	}
 sensors.quick('isReady',function(){
 	sensors.setProfile({ latest_visit_time: getFormatDate() });/* 更新用户表最近一次访问时间 */
 	/* 注册事件代码 */

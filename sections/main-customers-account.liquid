@@ -21,7 +21,6 @@
 		padding: 1rem 0;
 	}
 
-
 	.my_coupons {
 		padding: 1rem 3rem;
 	}
@@ -573,6 +572,12 @@
 		padding: 0.6rem 4rem;
 		position: relative;
 		overflow: hidden;
+		-moz-user-select:none; 
+		-webkit-user-select:none; 
+		-ms-user-select:none; 
+		-khtml-user-select:none; 
+		-o-user-select:none; 
+		user-select:none; 
 	}
 
 	.round-left,
@@ -772,6 +777,12 @@
 	.empty {
 		text-align: center;
 		color: #000;
+	}
+	.coupon_code{
+	user-select:text;
+	}
+	.expired__coupons .my-coupons__item{
+		background-image:url(https://cdn.shopifycdn.net/s/files/1/0595/0691/7535/files/coup.png?v=1668759630)
 	}
 </style>
 
@@ -2059,7 +2070,16 @@
 	</div>
 </section>
 
-
+{%- capture discount_str -%}
+	{%- for order in customer.orders -%}
+	{%- for discount in order.discount_applications -%}
+	{%- if discount.type =="discount_code" -%}
+		{{discount.title}},
+	{%- endif -%}
+	{%- endfor -%}
+	{%- endfor -%}
+{%- endcapture -%}
+{%- assign discounts = discount_str | downcase -%}
 <script>
 	~function () {
 
@@ -2548,7 +2568,8 @@
 
 			}
 
-
+			let codeStr="{{discounts}}"
+			codeStr=codeStr&&codeStr.split(',')||[]
 
 			//** 	个人中心   **//
 			async function getToken() {
@@ -2581,81 +2602,41 @@
 				return token
 			}
 
-			async function getMyCoupon(token, type = "unused") {//自己的优惠券
-				const { data, code } = await getData('customerAccount/getMyPriceRules', { type: type }, token, "GET")
-				// console.log('getCoupons', data, code)
-				return data
-			}
-
-			async function getCoupons(token) {//获取优惠券
+			async function getCoupons(token) {//获取自己的优惠券
 				if (token) {
+					const { data, code,success } = await getData('customerAccount/getShopifyMyPriceRules', '', token, "GET", 'formData')
 
-					const { data, code } = await getData('customerAccount/getPriceRules', '', token, "GET", 'formData')
-
-					const unusedData = await getMyCoupon(token)
-					const expireData = await getMyCoupon(token, 'expired')
-					if (code == 200) {
+					// console.log(data,codeStr);
+					
+					if (code == 200 &&data&&data.length&& success) {
 						const couponView = document.querySelector('.my-account .my-coupons__list')
 						const unusedCoupons = document.querySelector('.unused__coupons .my-coupons__list')
 						const expiredCoupons = document.querySelector('.expired__coupons .my-coupons__list')
-
-						if (data && false) {
-							couponView.classList.remove("my-coupons_empty")
-							let couponList = data.map((item, i) => {
-								return `<div class="my-coupons__item" data-index="${item.id}">
-									<p>${item.title[0]}</p>	
-									<p>${item.title[1]}</p>	
-									<p>Code:${item.id}</p>	
+							const couponList =[]
+							const expireList=[]
+							 data.forEach((item, i) => {
+								const coupon=`<div class="my-coupons__item" data-index="${item.id}">
+									<p>${item.summary}</p>	
+									<p>Code: <span class="coupon_code">${item.title}</span></p>	
 										<ul class="coupons-date">
-											<li>${item.desc[0]}</li>
-											<li>${item.desc[1]}</li>
+											<li>${item.starts_at}</li>
+											<li>${item.ends_at}</li>
 										</ul>
 										<span class="round-left"></span>
 										<span class="round-right"></span>
-									</div>`}).join('')
+									</div>`
+								if(codeStr.indexOf(item.title.toLocaleLowerCase())!=-1 || item.status!="active"){
+									expireList.push(coupon)
+								}else{couponList.push(coupon)}
+								})
 
-							couponView.innerHTML = couponList
-						}
-
-						if (unusedData) {
-							unusedCoupons.classList.remove("my-coupons_empty")
-							let unusedList = unusedData.map((item, i) => {
-								return `<div class="my-coupons__item" data-index="${item.id}">
-									<p>${item.title[0]}</p>	
-									<p>${item.title[1]}</p>	
-									<p>Code:${item.id}</p>	
-										<ul class="coupons-date">
-											<li>${item.desc[0]}</li>
-											<li>${item.desc[1]}</li>
-										</ul>
-										<span class="round-left"></span>
-										<span class="round-right"></span>
-									</div>`}).join('')
-							unusedList && (unusedCoupons.innerHTML = unusedList)
-						}
-
-						if (expireData) {
-							expiredCoupons.classList.remove("my-coupons_empty")
-							let expireList = expireData.map((item, i) => {
-								return `<div class="my-coupons__item" data-index="${item.id}">
-								<p>${item.title[0]}</p>	
-								<p>${item.title[1]}</p>	
-									<p>Code:${item.id}</p>	
-										<ul class="coupons-date">
-											<li>${item.desc[0]}</li>
-											<li>${item.desc[1]}</li>
-											</ul>
-											<span class="round-left"></span>
-											<span class="round-right"></span>
-											</div>`}).join('')
-
-							expireList && (expiredCoupons.innerHTML = expireList)
-						}
+							couponView&&couponList.length&&(couponView.innerHTML = couponList.join(''))&&couponView.classList.remove("my-coupons_empty")
+							unusedCoupons && couponList.length&&(unusedCoupons.innerHTML = couponList.join(''))&&unusedCoupons.classList.remove("my-coupons_empty")
+							expireList && expireList.length&&(expiredCoupons.innerHTML = expireList.join(''))&&expiredCoupons.classList.remove("my-coupons_empty")
+							// expireList &&(expiredCoupons.innerHTML = couponList.join(''))&&expiredCoupons.classList.remove("my-coupons_empty")
+				
 					}
-
-					// console.log('getCoupon', data);
-
-				} else console.info(token)
+				} else console.info(token);
 			}
 
 			async function getPoint(token) {//获取积分记录
@@ -2730,17 +2711,6 @@
 				// console.log('getCustomer', data)
 
 
-			}
-
-			async function addPoint(token) {//add
-				const pointData = {
-					expireTime: "2022-10-05 12:00:00",
-					pointAmount: 10000,
-					pointType: "Emaill Verification"
-				}
-
-				const data = await getData('customerAccount/addPoint', pointData, token)
-				console.log('addPoint', data)
 			}
 
 			async function deductPoint(token) {
