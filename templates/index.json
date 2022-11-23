@@ -43,8 +43,8 @@
           "type": "image",
           "settings": {
             "sensorsName": "best",
-            "image": "shopify:\/\/shop_images\/7857c757078306979b25b6819bb45d4b.jpg",
-            "mobile_image": "shopify:\/\/shop_images\/d2b3cc93a2a5901c543a70ff922ba86c.jpg",
+            "image": "shopify:\/\/shop_images\/hyfol_pc.jpg",
+            "mobile_image": "shopify:\/\/shop_images\/hyfol_banner.jpg",
             "show_overlay": false,
             "overlay_opacity": 30,
             "text_color": "#ffffff",
@@ -60,7 +60,7 @@
             "button_background": "#ffffff",
             "button_text_color": "#000000",
             "button_text": "",
-            "link": "https:\/\/www.hyfol.com\/collections\/sweatshirts-12-13"
+            "link": "https:\/\/www.hyfol.com\/collections\/hoodies-1"
           }
         },
         "1664249260b7761d46-0": {
