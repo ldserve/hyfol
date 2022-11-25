@@ -268,6 +268,7 @@
           },
           "933aa31d-00c1-44a5-8b00-66ceefe87acd": {
             "type": "announcement",
+            "disabled": true,
             "settings": {
               "text": "ALL TEES GET 3 FOR $59",
               "link": ""
@@ -275,6 +276,7 @@
           },
           "ebf3f4ad-f1dc-464f-9e19-71c2a7fc4fc3": {
             "type": "announcement",
+            "disabled": true,
             "settings": {
               "text": "Winter Early Sale Buy 4 Get 20% Off",
               "link": ""
@@ -282,14 +284,14 @@
           },
           "ccab5dcb-d3a7-4a2e-9c0e-6699c88abf2e": {
             "type": "announcement",
-            "disabled": true,
             "settings": {
-              "text": "BUY CARGO SHORTS GET FREE BELT",
-              "link": "shopify:\/\/collections\/fathers-day1"
+              "text": "Black Friday Extra 30% Off Code: HF30",
+              "link": ""
             }
           },
           "35befae5-1ee9-4348-b0b9-da7aa6f44fc0": {
             "type": "announcement",
+            "disabled": true,
             "settings": {
               "text": "Join in lucky draw, to win your order for FREE!",
               "link": ""
@@ -305,7 +307,7 @@
           "35befae5-1ee9-4348-b0b9-da7aa6f44fc0"
         ],
         "settings": {
-          "show_announcement": true,
+          "show_announcement": false,
           "background": "#770202",
           "one_round": 8,
           "text_color": "#ffffff",
