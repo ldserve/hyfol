@@ -16,11 +16,10 @@
       "blocks": {
         "db88bd3b-2663-480e-a113-30f5edd187d0": {
           "type": "image",
-          "disabled": true,
           "settings": {
             "sensorsName": "facebook",
-            "image": "shopify:\/\/shop_images\/pc_a81ed47c-8053-4b69-9549-1d98e7d2802b.jpg",
-            "mobile_image": "shopify:\/\/shop_images\/banner_db626633-85ef-4a13-b041-4d906bc90196.jpg",
+            "image": "shopify:\/\/shop_images\/hyfol_pc_banner.jpg",
+            "mobile_image": "shopify:\/\/shop_images\/hyfol_banner_7945114a-8539-42a7-a052-b139f140a7f5.jpg",
             "show_overlay": false,
             "overlay_opacity": 30,
             "text_color": "#ffffff",
@@ -41,6 +40,7 @@
         },
         "046ee2d1-e8b7-41e0-a6c9-7cfc79e1429f": {
           "type": "image",
+          "disabled": true,
           "settings": {
             "sensorsName": "best",
             "image": "shopify:\/\/shop_images\/hyfol_pc.jpg",
