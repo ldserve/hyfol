@@ -19769,9 +19769,12 @@
 
     /* --- */
     var box=document.querySelector('.product-timeout')
-    function getUtc5(container){
+    function getUtc5(){
         var date = new Date()
-           var hours =Math.abs( date.getUTCHours()-5)
+           var hours = date.getUTCHours()-5
+           if(hours<0){
+            hours=24-Math.abs(hours)//美东时间
+           }
            hours=(23-hours).toString().padStart(2, '0')
            var minutes = (59 - date.getUTCMinutes()).toString().padStart(2, '0')
            var seconds = (59 - date.getUTCSeconds()).toString().padStart(2, '0')
