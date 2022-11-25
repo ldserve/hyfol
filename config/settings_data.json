@@ -307,7 +307,7 @@
           "35befae5-1ee9-4348-b0b9-da7aa6f44fc0"
         ],
         "settings": {
-          "show_announcement": false,
+          "show_announcement": true,
           "background": "#770202",
           "one_round": 8,
           "text_color": "#ffffff",
