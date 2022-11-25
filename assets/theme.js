@@ -19771,7 +19771,7 @@
     var box=document.querySelector('.product-timeout')
     function getUtc5(container){
         var date = new Date()
-           var hours = date.getUTCHours()-5
+           var hours =Math.abs( date.getUTCHours()-5)
            hours=(23-hours).toString().padStart(2, '0')
            var minutes = (59 - date.getUTCMinutes()).toString().padStart(2, '0')
            var seconds = (59 - date.getUTCSeconds()).toString().padStart(2, '0')
