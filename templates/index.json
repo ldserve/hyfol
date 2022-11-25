@@ -19,8 +19,8 @@
           "disabled": true,
           "settings": {
             "sensorsName": "facebook",
-            "image": "shopify:\/\/shop_images\/pc_a81ed47c-8053-4b69-9549-1d98e7d2802b.jpg",
-            "mobile_image": "shopify:\/\/shop_images\/banner_db626633-85ef-4a13-b041-4d906bc90196.jpg",
+            "image": "shopify:\/\/shop_images\/hyfol_pc_banner.jpg",
+            "mobile_image": "shopify:\/\/shop_images\/hyfol_banner_7945114a-8539-42a7-a052-b139f140a7f5.jpg",
             "show_overlay": false,
             "overlay_opacity": 30,
             "text_color": "#ffffff",
