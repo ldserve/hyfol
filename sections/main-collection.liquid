@@ -93,10 +93,11 @@
   </nav>
 </div>
 {%- unless collection.template_suffix == 'brand' -%}
-{%- if section.settings.show_collection_image and collection.image and collection.all_products_count > 0 -%}
+{%- if section.settings.show_collection_image and collection.image!=blank and collection.all_products_count > 0 -%}
 {%- if section.settings.collection_image_size == 'preserve_ratio' -%}
 {%- capture supported_sizes -%}{%- render 'image-size', sizes: '400,500,600,700,800,900,1000, 1200, 1400, 1600', image: collection.image -%}{%- endcapture -%}
 {%- assign image_url = collection.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+
 
 <div class="collection__image-wrapper collection__image-wrapper--preserve-ratio hidden-tablet-and-up">
   <div class="aspect-ratio" style="padding-bottom: {{ 100.0 | divided_by: collection.image.aspect_ratio }}%">
@@ -111,14 +112,24 @@
     data-bgset="{{ collection.image | img_url: '600x' }} 600w, {{ collection.image | img_url: '800x' }} 800w, {{ collection.image | img_url: '1000x' }} 1000w, {{ collection.image | img_url: '1200x' }} 1200w, {{ collection.image | img_url: '1500x' }} 1500w">
   </div>
 </div>
-{%- endif -%}
+{%- endif  -%}
+
+{%- elsif section.settings.collection_banner != blank -%}
+{%- assign image_url = section.settings.collection_banner | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+{%- capture supported_sizes -%}{%- render 'image-size', sizes: '400,500,600,700,800,900,1000, 1200, 1400, 1600', image: section.settings.collection_banner -%}{%- endcapture -%}
+<div class="collection__image-wrapper collection__image-wrapper--preserve-ratio hidden-tablet-and-up">
+  <div class="aspect-ratio" style="padding-bottom: {{ 100.0 | divided_by: section.settings.collection_banner.aspect_ratio }}%">
+    <img class="lazyload image--fade-in" data-src="{{ image_url }}" data-sizes="auto"
+      data-widths="[{{ supported_sizes }}]" alt="{{ section.settings.collection_banner.alt | escape }}">
+  </div>
+</div>
 {%- endif -%}
 {%- endunless -%}
 <section data-section-id="{{ section.id }}" onclick="closeFilter(event)" data-section-type="collection"
   data-section-settings='{{ section_settings }}'>
 
   {%- unless collection.template_suffix == 'brand' -%}
-  {%- if section.settings.show_collection_image and collection.image and collection.all_products_count > 0 -%}
+  {%- if section.settings.show_collection_image and collection.image !=blank and collection.all_products_count > 0 -%}
   {%- if section.settings.collection_image_size == 'preserve_ratio' -%}
   {%- capture supported_sizes -%}{%- render 'image-size', sizes: '400,500,600,700,800,900,1000, 1200, 1400, 1600', image: collection.image -%}{%- endcapture -%}
   {%- assign image_url = collection.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
@@ -137,6 +148,17 @@
     </div>
   </div>
   {%- endif -%}
+
+  {%- elsif section.settings.collection_banner != blank -%}
+  {%- capture supported_sizes -%}{%- render 'image-size', sizes: '400,500,600,700,800,900,1000, 1200, 1400, 1600', image: section.settings.collection_banner -%}{%- endcapture -%}
+  {%- assign image_url = section.settings.collection_banner | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+
+  <div class="collection__image-wrapper collection__image-wrapper--preserve-ratio hidden-phone">
+    <div class="aspect-ratio" style="padding-bottom: {{ 100.0 | divided_by:section.settings.collection_banner.aspect_ratio }}%">
+      <img class="lazyload image--fade-in" data-src="{{ image_url }}" data-sizes="auto"
+        data-widths="[{{ supported_sizes }}]" alt="{{section.settings.collection_banner.alt | escape }}">
+    </div>
+  </div>
   {%- endif -%}
   {%- endunless -%}
 
@@ -1074,6 +1096,12 @@
   }
   ],
   "default": "small"
+  },
+  {
+    "type":"image_picker",
+    "id":"collection_banner",
+    "label":"banner图",
+    "info":"优先使用集合图片，没有则使用当前选择"
   },
   {
   "type": "select",
