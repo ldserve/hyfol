@@ -335,7 +335,7 @@
       "secure_payments": "100% Secure Payments",
       "free_shipping": "You are eligible for free shipping!",
       "free_shipping_html": "You are eligible for <span class='text-prominent'>free shipping!<\/span>",
-      "free_shipping_remaining_html": "Spend {{remaining_amount}} more and get <span class='text-prominent'>free shipping!<\/span>",
+      "free_shipping_remaining_html": "Spend <span class='storn'>{{remaining_amount}}</span> more and get <span class='text-prominent'>free shipping!<\/span>",
       "amount_saved_html": "You saved {{amount_saved}}!",
       "free": "Free!",
       "taxes_and_shipping_at_checkout": "Taxes and shipping calculated at checkout",

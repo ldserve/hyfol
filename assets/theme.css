@@ -13496,14 +13496,19 @@ shopify-payment-terms {
   flex: 1 0 auto;
   width: 100%;
 }
-
+.storn{
+  font-weight: 600;
+  color: #cf0e0e;
+}
 .announcement-bar__content--center {
   text-align: center;
 }
 
 @media screen and (max-width: 640px) {
   .announcement-bar {
-    height: 1.5rem;
+    height: 3rem;
+    line-height: 3;
+    font-size: 15px;
   }
 
   .announcement-bar__inner {
