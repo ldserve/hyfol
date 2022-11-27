@@ -100,7 +100,7 @@
           {%- if cart.total_price < order_price -%}
 
           <span class="d-block step-discount" >
-            {%- render 'icon',icon:'discount' -%}spend <span class='wh-original-price  mini-car-font storn'>${{cart.total_price | minus: order_price | divided_by: 100  | round | abs  }}</span> more get <span class="text-prominent">get 30% off！Code: HY30 </span></span>
+            {%- render 'icon',icon:'discount' -%}spend <span class='wh-original-price  mini-car-font storn'>${{cart.total_price | minus: order_price | divided_by: 100  | round | abs  }}</span> more get <span class="text-prominent">get 30% off！Code: CY30 </span></span>
           {%- endif -%}
           {% endif %}
           </div>
