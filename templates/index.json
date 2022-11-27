@@ -16,6 +16,7 @@
       "blocks": {
         "db88bd3b-2663-480e-a113-30f5edd187d0": {
           "type": "image",
+          "disabled": true,
           "settings": {
             "sensorsName": "facebook",
             "image": "shopify:\/\/shop_images\/hyfol_pc_banner.jpg",
@@ -40,7 +41,6 @@
         },
         "046ee2d1-e8b7-41e0-a6c9-7cfc79e1429f": {
           "type": "image",
-          "disabled": true,
           "settings": {
             "sensorsName": "best",
             "image": "shopify:\/\/shop_images\/hyfol_banner_79b4a580-5e84-4550-b253-9560826f9c11.jpg",
