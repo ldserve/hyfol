@@ -526,8 +526,8 @@
         "703cb61e-bb71-4d36-ae67-f8e45b7b1d0b": {
           "type": "link",
           "settings": {
-            "heading": "accessories",
-            "sensorsLinkName": "accessories",
+            "heading": "Accessories",
+            "sensorsLinkName": "Accessories",
             "link": "https:\/\/www.hyfol.com\/collections\/accessories-12-13",
             "left": 0,
             "top": 44,
@@ -538,7 +538,7 @@
         "059a10b2-d700-4489-8071-0f91413acddb": {
           "type": "link",
           "settings": {
-            "heading": "raglan",
+            "heading": "Raglan",
             "sensorsLinkName": "Raglan",
             "link": "https:\/\/www.hyfol.com\/collections\/raglan-tees",
             "left": 37,
@@ -550,8 +550,8 @@
         "d3832b18-b464-4e71-a800-239d8c0bdf6e": {
           "type": "link",
           "settings": {
-            "heading": "cargopants",
-            "sensorsLinkName": "cargopants",
+            "heading": "Cargopants",
+            "sensorsLinkName": "Cargopants",
             "link": "https:\/\/www.hyfol.com\/collections\/cargo-pants",
             "left": 72,
             "top": 45,
@@ -562,8 +562,8 @@
         "1046df33-60a7-4272-944c-7aed30dd5ef0": {
           "type": "link",
           "settings": {
-            "heading": "shoes",
-            "sensorsLinkName": "shoes",
+            "heading": "Giftguide",
+            "sensorsLinkName": "Giftguide",
             "link": "https:\/\/www.hyfol.com\/collections\/giftguide",
             "left": 0,
             "top": 69,
@@ -574,8 +574,8 @@
         "81098c5b-5074-43de-b712-fe69e9b9956b": {
           "type": "link",
           "settings": {
-            "heading": "shirt",
-            "sensorsLinkName": "shirt",
+            "heading": "Shirt",
+            "sensorsLinkName": "Shirt",
             "link": "https:\/\/www.hyfol.com\/collections\/shirt",
             "left": 38,
             "top": 69,
@@ -586,8 +586,8 @@
         "109f4489-84a2-4283-ac28-ee83ad0d262c": {
           "type": "link",
           "settings": {
-            "heading": "polo",
-            "sensorsLinkName": "polo",
+            "heading": "Poloshirts",
+            "sensorsLinkName": "Poloshirts",
             "link": "https:\/\/www.hyfol.com\/collections\/polo-shirts",
             "left": 71,
             "top": 67,
