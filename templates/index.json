@@ -412,8 +412,8 @@
         "db7b2835-ac62-4cfe-9dd8-e9a142400dbe": {
           "type": "link",
           "settings": {
-            "heading": "workshirt",
-            "sensorsLinkName": "workshirt",
+            "heading": "WORKSHIRT",
+            "sensorsLinkName": "WORKSHIRT",
             "link": "https:\/\/www.hyfol.com\/collections\/shirt",
             "left": 22,
             "top": 50,
@@ -424,8 +424,8 @@
         "86db0e47-77e1-40ea-82b5-f61f2191cb43": {
           "type": "link",
           "settings": {
-            "heading": "shoes",
-            "sensorsLinkName": "shoes",
+            "heading": "GIFTGUIDE",
+            "sensorsLinkName": "GIFTGUIDE",
             "link": "https:\/\/www.hyfol.com\/collections\/giftguide",
             "left": 41,
             "top": 53,
@@ -436,8 +436,8 @@
         "7641577d-595e-4498-97d0-ba73dd679842": {
           "type": "link",
           "settings": {
-            "heading": "polosh",
-            "sensorsLinkName": "polosh",
+            "heading": "POLOSHIRTS",
+            "sensorsLinkName": "POLOSHIRTS",
             "link": "https:\/\/www.hyfol.com\/collections\/polo-shirts",
             "left": 63,
             "top": 48,
@@ -448,8 +448,8 @@
         "ae00cf28-20d4-4854-8bfd-db9c5aa3f82f": {
           "type": "link",
           "settings": {
-            "heading": "accessories",
-            "sensorsLinkName": "accessories",
+            "heading": "ACCESSORIES",
+            "sensorsLinkName": "ACCESSORIES",
             "link": "https:\/\/www.hyfol.com\/collections\/accessories-12-13",
             "left": 80,
             "top": 52,
