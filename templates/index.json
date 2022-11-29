@@ -845,8 +845,8 @@
         "342f71ba-d412-42c7-a286-e1b97c3dc993": {
           "type": "link",
           "settings": {
-            "heading": "sweatshirts",
-            "sensorsLinkName": "sweatshirts",
+            "heading": "SWEATSHIRT1",
+            "sensorsLinkName": "SWEATSHIRT1",
             "link": "https:\/\/www.hyfol.com\/collections\/sweatshirts-12-13",
             "left": 25,
             "top": 0,
@@ -858,7 +858,7 @@
           "type": "link",
           "settings": {
             "heading": "outwear",
-            "sensorsLinkName": "outwear",
+            "sensorsLinkName": "OUTWEAR1",
             "link": "https:\/\/www.hyfol.com\/collections\/mens-outwear",
             "left": 50,
             "top": 0,
@@ -870,7 +870,7 @@
           "type": "link",
           "settings": {
             "heading": "plaid",
-            "sensorsLinkName": "plaid",
+            "sensorsLinkName": "PLAID1",
             "link": "https:\/\/www.hyfol.com\/collections\/plaid",
             "left": 76,
             "top": 0,
@@ -917,8 +917,8 @@
         "17a0b0e4-b0fd-421f-ae02-f40770d11416": {
           "type": "link",
           "settings": {
-            "heading": "sweaters",
-            "sensorsLinkName": "sweaters",
+            "heading": "Sweaters1",
+            "sensorsLinkName": "Sweaters1",
             "link": "https:\/\/www.hyfol.com\/collections\/sweaters",
             "left": 51,
             "top": 0,
@@ -930,7 +930,7 @@
           "type": "link",
           "settings": {
             "heading": "outwear",
-            "sensorsLinkName": "outwear",
+            "sensorsLinkName": "Outwear1",
             "link": "https:\/\/www.hyfol.com\/collections\/mens-outwear",
             "left": 0,
             "top": 50,
