@@ -284,8 +284,9 @@
           },
           "ccab5dcb-d3a7-4a2e-9c0e-6699c88abf2e": {
             "type": "announcement",
+            "disabled": true,
             "settings": {
-              "text": "Black Friday Extra 30% Off Code: HF30",
+              "text": "Black Friday Extra 20% Off Code: HF30",
               "link": ""
             }
           },
