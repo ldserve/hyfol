@@ -19767,24 +19767,7 @@
         setInterval(()=>count.innerHTML = getFormatDate(),1000)
     })
 
-    /* --- */
-    var box=document.querySelector('.product-timeout')
-    function getUtc5(){
-        var date = new Date()
-           var hours = date.getUTCHours()-5
-           if(hours<0){
-            hours=24-Math.abs(hours)//美东时间
-           }
-           hours=(23-hours).toString().padStart(2, '0')
-           var minutes = (59 - date.getUTCMinutes()).toString().padStart(2, '0')
-           var seconds = (59 - date.getUTCSeconds()).toString().padStart(2, '0')
-           return "<em>".concat(hours, "</em>:<em>", minutes, "</em>:<em>", seconds, "</em>");
-    }
-    if(box){
-      var timeBox=box.querySelector('.sale_time_count')
-      timeBox&&setInterval(()=>timeBox.innerHTML=getUtc5(),1000)
-        // box.querySelector('.flash-sale_num')
-    }
+   
    }();
     window.Message = function () {
         const appendTo = document.body;

@@ -580,44 +580,7 @@
 {%- assign image_url = block.settings.discount_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
     <div class="product-discount-img">
       <img data-src="{{ image_url }}" data-widths="[{{ supported_sizes }}]" data-sizes="auto" alt="" class="lazyload" style="width: 100%">
-    
-      <div class="product-timeout" ><span class="sale_time_count"></span><span class="flash-sale_num"></span><div style="text-align: right;">ENDS IN </div></div>
     </div>
-    <style>
-      .product-discount-img {
-        position: relative;
-      }
-    
-      .product-timeout {
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        right: 0;
-        margin: auto 1rem;
-        color: #fff;
-        height: 60px;
-      }
-    
-      .product-timeout em {
-        font-style: normal;
-        background: #fcbc03;
-        color: #000;
-        padding: 4px;
-        margin-left: 4px;
-        border-radius: 2px;
-        font-weight: 700;
-      }
-    
-      @media screen and (max-width:640px) {
-        .product-timeout {
-          font-size: 12px;
-          height: 40px;
-          margin-right: 6px;
-        }
-        .product-timeout em {
-      padding: 2px;
-    }
-      }
-    </style>
+ 
 {% endif %}
 {% endif %}
