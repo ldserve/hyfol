@@ -86,14 +86,11 @@
             {% if cart.total_price < order_price %}
             {% break %}
             {% endif %}
-          {%- endfor -%}
-
-          {% assign order_price = 99 |times:100%}
-
-          {% if cart.total_price < order_price %}
-          <span class="d-block step-discount" data-action="{{order_price}},{{minus_monry}},{{cart.total_price | minus: order_price | abs}}">
-            {%- render 'icon',icon:'discount' -%}Spend <span class='wh-original-price  mini-car-font'>{{cart.total_price | minus: order_price | abs | round  | money_without_trailing_zeros }}</span> more & <span class="text-prominent">get {{minus_monry | money_without_trailing_zeros}} off！ {{code_text}}</span></span>
-          {% endif %}
+            {%- endfor -%}
+            {% if cart.total_price < order_price %}
+            <span class="d-block step-discount" data-action="{{order_price}},{{minus_monry}},{{cart.total_price | minus: order_price | abs}}">
+              {%- render 'icon',icon:'discount' -%}Spend <span class='wh-original-price  mini-car-font'>{{cart.total_price | minus: order_price | abs | round  | money_without_trailing_zeros }}</span> more & <span class="text-prominent">get {{minus_monry | money_without_trailing_zeros}} off！ {{code_text}}</span></span>
+            {% endif %}
           {% endif %}
           </div>
   
