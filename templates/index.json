@@ -227,256 +227,6 @@
         "link_items": 5
       }
     },
-    "1663931750c3ec4ea5": {
-      "type": "linkImg",
-      "disabled": true,
-      "blocks": {
-        "9ac5cf43-f6a6-485d-b66c-b766639f9a35": {
-          "type": "link",
-          "settings": {
-            "heading": "bestseller1",
-            "sensorsLinkName": "bestseller1",
-            "link": "shopify:\/\/collections\/hyfol-best-seller-1",
-            "left": 0,
-            "top": 0,
-            "width": 17,
-            "height": 100
-          }
-        },
-        "d65e4d92-d408-4840-974a-11db707ea743": {
-          "type": "link",
-          "settings": {
-            "heading": "newin1",
-            "sensorsLinkName": "newin1",
-            "link": "https:\/\/www.hyfol.com\/collections\/new-in-1",
-            "left": 18,
-            "top": 0,
-            "width": 8,
-            "height": 100
-          }
-        },
-        "78cb2d5c-1f5d-4d02-bcd6-3fafec378475": {
-          "type": "link",
-          "settings": {
-            "heading": "halloween",
-            "sensorsLinkName": "halloween",
-            "link": "https:\/\/www.hyfol.com\/collections\/halloween-theme-clothing",
-            "left": 28,
-            "top": 0,
-            "width": 11,
-            "height": 100
-          }
-        },
-        "a3ab2cb6-f89f-4bc1-b646-9fe4e3be3ccb": {
-          "type": "link",
-          "settings": {
-            "heading": "for49",
-            "sensorsLinkName": "for49",
-            "link": "https:\/\/www.hyfol.com\/collections\/4-for-49",
-            "left": 39,
-            "top": 0,
-            "width": 10,
-            "height": 100
-          }
-        },
-        "df248fe6-62ab-4deb-9e61-43d26d4546de": {
-          "type": "link",
-          "settings": {
-            "heading": "flashsale",
-            "sensorsLinkName": "flashsale",
-            "link": "https:\/\/www.hyfol.com\/collections\/flash-sale-1",
-            "left": 50,
-            "top": 0,
-            "width": 10,
-            "height": 100
-          }
-        },
-        "4e72a354-81ca-4018-a5e5-0e79fc495451": {
-          "type": "link",
-          "settings": {
-            "heading": "hoodies",
-            "sensorsLinkName": "hoodies",
-            "link": "https:\/\/www.hyfol.com\/collections\/hoodies-1",
-            "left": 61,
-            "top": 0,
-            "width": 12,
-            "height": 100
-          }
-        },
-        "28ef0ff4-fc7d-4860-b32f-574710fa6e92": {
-          "type": "link",
-          "settings": {
-            "heading": "sweatshirts",
-            "sensorsLinkName": "sweatshirts",
-            "link": "https:\/\/www.hyfol.com\/collections\/sweatshirts-12-13",
-            "left": 75,
-            "top": 0,
-            "width": 12,
-            "height": 100
-          }
-        },
-        "d310177d-53ac-459b-af14-f06f640d5dd0": {
-          "type": "link",
-          "settings": {
-            "heading": "jacket",
-            "sensorsLinkName": "jacket",
-            "link": "https:\/\/www.hyfol.com\/collections\/outerwear_hyfol",
-            "left": 89,
-            "top": 0,
-            "width": 11,
-            "height": 100
-          }
-        }
-      },
-      "block_order": [
-        "9ac5cf43-f6a6-485d-b66c-b766639f9a35",
-        "d65e4d92-d408-4840-974a-11db707ea743",
-        "78cb2d5c-1f5d-4d02-bcd6-3fafec378475",
-        "a3ab2cb6-f89f-4bc1-b646-9fe4e3be3ccb",
-        "df248fe6-62ab-4deb-9e61-43d26d4546de",
-        "4e72a354-81ca-4018-a5e5-0e79fc495451",
-        "28ef0ff4-fc7d-4860-b32f-574710fa6e92",
-        "d310177d-53ac-459b-af14-f06f640d5dd0"
-      ],
-      "settings": {
-        "linkImg_title": "",
-        "linkImg_content": "",
-        "hidDesk": false,
-        "sensorsName": "pc分类导流区",
-        "hidWeb": true,
-        "line": false,
-        "image": "shopify:\/\/shop_images\/04_66b6b42e-7f13-431e-82fe-d15f46fe988c.jpg",
-        "tpadding": 0,
-        "rpadding": 0,
-        "bpadding": 0,
-        "lpadding": 0
-      }
-    },
-    "1663931769bd8aed01": {
-      "type": "linkImg",
-      "disabled": true,
-      "blocks": {
-        "eaf9ec19-1992-4f20-a1f4-91318771e673": {
-          "type": "link",
-          "settings": {
-            "heading": "bestseller1",
-            "sensorsLinkName": "bestseller1",
-            "link": "shopify:\/\/collections\/hyfol-best-seller-1",
-            "left": 0,
-            "top": 0,
-            "width": 26,
-            "height": 45
-          }
-        },
-        "cd289e85-02fb-459c-b865-cbfa0969699c": {
-          "type": "link",
-          "settings": {
-            "heading": "newin1",
-            "sensorsLinkName": "newin1",
-            "link": "https:\/\/www.hyfol.com\/collections\/new-in-1",
-            "left": 27,
-            "top": 0,
-            "width": 14,
-            "height": 45
-          }
-        },
-        "558eeb86-a65a-45c8-af0f-7a76d5dda452": {
-          "type": "link",
-          "settings": {
-            "heading": "halloween",
-            "sensorsLinkName": "Halloween",
-            "link": "https:\/\/www.hyfol.com\/collections\/halloween-theme-clothing",
-            "left": 44,
-            "top": 0,
-            "width": 16,
-            "height": 42
-          }
-        },
-        "73bced36-7b47-440f-b015-18a17727c28d": {
-          "type": "link",
-          "settings": {
-            "heading": "for49",
-            "sensorsLinkName": "for49",
-            "link": "https:\/\/www.hyfol.com\/collections\/4-for-49",
-            "left": 62,
-            "top": 0,
-            "width": 20,
-            "height": 45
-          }
-        },
-        "529a5470-df8d-4911-bd59-930cb79342f5": {
-          "type": "link",
-          "settings": {
-            "heading": "flashsale",
-            "sensorsLinkName": "flashsale",
-            "link": "https:\/\/www.hyfol.com\/collections\/flash-sale-1",
-            "left": 81,
-            "top": 0,
-            "width": 18,
-            "height": 47
-          }
-        },
-        "dc0f695d-1066-463a-84f0-69240ffd257f": {
-          "type": "link",
-          "settings": {
-            "heading": "hoodies",
-            "sensorsLinkName": "hoodies",
-            "link": "https:\/\/www.hyfol.com\/collections\/hoodies-1",
-            "left": 2,
-            "top": 49,
-            "width": 30,
-            "height": 41
-          }
-        },
-        "c3ee76eb-8c94-4e84-9861-e178884903c2": {
-          "type": "link",
-          "settings": {
-            "heading": "sweatshirts",
-            "sensorsLinkName": "sweatshirts",
-            "link": "https:\/\/www.hyfol.com\/collections\/sweatshirts-12-13",
-            "left": 36,
-            "top": 49,
-            "width": 29,
-            "height": 43
-          }
-        },
-        "cf80e001-bfb9-48b2-872d-9dc3c14f10f4": {
-          "type": "link",
-          "settings": {
-            "heading": "jackets",
-            "sensorsLinkName": "jackets",
-            "link": "https:\/\/www.hyfol.com\/collections\/outerwear_hyfol",
-            "left": 71,
-            "top": 48,
-            "width": 62,
-            "height": 67
-          }
-        }
-      },
-      "block_order": [
-        "eaf9ec19-1992-4f20-a1f4-91318771e673",
-        "cd289e85-02fb-459c-b865-cbfa0969699c",
-        "558eeb86-a65a-45c8-af0f-7a76d5dda452",
-        "73bced36-7b47-440f-b015-18a17727c28d",
-        "529a5470-df8d-4911-bd59-930cb79342f5",
-        "dc0f695d-1066-463a-84f0-69240ffd257f",
-        "c3ee76eb-8c94-4e84-9861-e178884903c2",
-        "cf80e001-bfb9-48b2-872d-9dc3c14f10f4"
-      ],
-      "settings": {
-        "linkImg_title": "",
-        "linkImg_content": "",
-        "hidDesk": true,
-        "sensorsName": "mobile分类导流区",
-        "hidWeb": false,
-        "line": false,
-        "image": "shopify:\/\/shop_images\/1_02_79e1a303-3821-4951-ae9f-cca0ca372320.jpg",
-        "tpadding": 0,
-        "rpadding": 0,
-        "bpadding": 0,
-        "lpadding": 0
-      }
-    },
     "16474248460d0593be": {
       "type": "transparent-collection",
       "settings": {
@@ -584,17 +334,6 @@
         "cycle_speed": 3
       }
     },
-    "16585455879cf4cc45": {
-      "type": "no_space_img",
-      "disabled": true,
-      "settings": {
-        "sensorsName": "summer clearance",
-        "bg_image": "shopify:\/\/shop_images\/pc__03_2ff60edb-3cfc-4c86-b9f9-508285fd1f2e.jpg",
-        "web_bg_image": "shopify:\/\/shop_images\/02_f5e86cd6-1609-477a-8a5e-8cfce4d349f3.jpg",
-        "link": "https:\/\/www.hyfol.com\/collections\/summer-clearance-up-to-50-off",
-        "shadow": false
-      }
-    },
     "166393398966f5d03e": {
       "type": "linkImg",
       "blocks": {
@@ -613,8 +352,8 @@
         "c0e5d6ef-6e9d-4fe0-9a9c-6dbcef8c64bb": {
           "type": "link",
           "settings": {
-            "heading": "sweatshirts",
-            "sensorsLinkName": "sweatshirts",
+            "heading": "SWEATSHIRT",
+            "sensorsLinkName": "SWEATSHIRT",
             "link": "https:\/\/www.hyfol.com\/collections\/sweatshirts-12-13",
             "left": 21,
             "top": 0,
@@ -625,8 +364,8 @@
         "c4e78d72-c3f2-4290-9081-e9575565a07d": {
           "type": "link",
           "settings": {
-            "heading": "jackets",
-            "sensorsLinkName": "jackets",
+            "heading": "JACKETS",
+            "sensorsLinkName": "JACKETS",
             "link": "https:\/\/www.hyfol.com\/collections\/outerwear_hyfol",
             "left": 42,
             "top": 0,
@@ -637,8 +376,8 @@
         "0cacda68-24cc-451e-8813-cb0fbaa4fabc": {
           "type": "link",
           "settings": {
-            "heading": "cargopants",
-            "sensorsLinkName": "cargopants",
+            "heading": "CARGOPANTS",
+            "sensorsLinkName": "CARGOPANTS",
             "link": "https:\/\/www.hyfol.com\/collections\/cargo-pants",
             "left": 61,
             "top": 0,
@@ -649,8 +388,8 @@
         "309514d7-2933-482e-8425-5c939e826025": {
           "type": "link",
           "settings": {
-            "heading": "raglan",
-            "sensorsLinkName": "raglan",
+            "heading": "RAGLAN",
+            "sensorsLinkName": "RAGLAN",
             "link": "https:\/\/www.hyfol.com\/collections\/raglan-tees",
             "left": 82,
             "top": 0,
@@ -661,8 +400,8 @@
         "5b996521-5904-49ca-980f-13448cce9df9": {
           "type": "link",
           "settings": {
-            "heading": "bestseller",
-            "sensorsLinkName": "bestseller",
+            "heading": "BESTSSELLER",
+            "sensorsLinkName": "BESTSSELLER",
             "link": "https:\/\/www.hyfol.com\/collections\/hyfol-best-seller-1",
             "left": 0,
             "top": 47,
@@ -673,8 +412,8 @@
         "db7b2835-ac62-4cfe-9dd8-e9a142400dbe": {
           "type": "link",
           "settings": {
-            "heading": "workshirt",
-            "sensorsLinkName": "workshirt",
+            "heading": "WORKSHIRT",
+            "sensorsLinkName": "WORKSHIRT",
             "link": "https:\/\/www.hyfol.com\/collections\/shirt",
             "left": 22,
             "top": 50,
@@ -685,8 +424,8 @@
         "86db0e47-77e1-40ea-82b5-f61f2191cb43": {
           "type": "link",
           "settings": {
-            "heading": "shoes",
-            "sensorsLinkName": "shoes",
+            "heading": "GIFTGUIDE",
+            "sensorsLinkName": "GIFTGUIDE",
             "link": "https:\/\/www.hyfol.com\/collections\/giftguide",
             "left": 41,
             "top": 53,
@@ -697,8 +436,8 @@
         "7641577d-595e-4498-97d0-ba73dd679842": {
           "type": "link",
           "settings": {
-            "heading": "polosh",
-            "sensorsLinkName": "polosh",
+            "heading": "POLOSHIRTS",
+            "sensorsLinkName": "POLOSHIRTS",
             "link": "https:\/\/www.hyfol.com\/collections\/polo-shirts",
             "left": 63,
             "top": 48,
@@ -709,8 +448,8 @@
         "ae00cf28-20d4-4854-8bfd-db9c5aa3f82f": {
           "type": "link",
           "settings": {
-            "heading": "accessories",
-            "sensorsLinkName": "accessories",
+            "heading": "ACCESSORIES",
+            "sensorsLinkName": "ACCESSORIES",
             "link": "https:\/\/www.hyfol.com\/collections\/accessories-12-13",
             "left": 80,
             "top": 52,
@@ -751,8 +490,8 @@
         "a57fed2e-f643-449f-9676-b1e59bf7beab": {
           "type": "link",
           "settings": {
-            "heading": "hoodies",
-            "sensorsLinkName": "hoodies",
+            "heading": "Hoodies",
+            "sensorsLinkName": "Hoodies",
             "link": "https:\/\/www.hyfol.com\/collections\/hoodies-1",
             "left": 0,
             "top": 0,
@@ -763,8 +502,8 @@
         "68d1d597-d68d-40b8-a69b-4650df6dd0e4": {
           "type": "link",
           "settings": {
-            "heading": "sweatshirts",
-            "sensorsLinkName": "sweatshirts",
+            "heading": "Sweatshirts",
+            "sensorsLinkName": "Sweatshirts",
             "link": "https:\/\/www.hyfol.com\/collections\/sweatshirts-12-13",
             "left": 35,
             "top": 0,
@@ -775,8 +514,8 @@
         "eb0c793e-0e4f-4e5c-92bd-faf45cd233a6": {
           "type": "link",
           "settings": {
-            "heading": "jack",
-            "sensorsLinkName": "jack",
+            "heading": "Jackets",
+            "sensorsLinkName": "Jackets",
             "link": "https:\/\/www.hyfol.com\/collections\/outerwear_hyfol",
             "left": 70,
             "top": 0,
@@ -787,8 +526,8 @@
         "703cb61e-bb71-4d36-ae67-f8e45b7b1d0b": {
           "type": "link",
           "settings": {
-            "heading": "accessories",
-            "sensorsLinkName": "accessories",
+            "heading": "Accessories",
+            "sensorsLinkName": "Accessories",
             "link": "https:\/\/www.hyfol.com\/collections\/accessories-12-13",
             "left": 0,
             "top": 44,
@@ -799,8 +538,8 @@
         "059a10b2-d700-4489-8071-0f91413acddb": {
           "type": "link",
           "settings": {
-            "heading": "raglan",
-            "sensorsLinkName": "raglan",
+            "heading": "Raglan",
+            "sensorsLinkName": "Raglan",
             "link": "https:\/\/www.hyfol.com\/collections\/raglan-tees",
             "left": 37,
             "top": 42,
@@ -811,8 +550,8 @@
         "d3832b18-b464-4e71-a800-239d8c0bdf6e": {
           "type": "link",
           "settings": {
-            "heading": "cargopants",
-            "sensorsLinkName": "cargopants",
+            "heading": "Cargopants",
+            "sensorsLinkName": "Cargopants",
             "link": "https:\/\/www.hyfol.com\/collections\/cargo-pants",
             "left": 72,
             "top": 45,
@@ -823,8 +562,8 @@
         "1046df33-60a7-4272-944c-7aed30dd5ef0": {
           "type": "link",
           "settings": {
-            "heading": "shoes",
-            "sensorsLinkName": "shoes",
+            "heading": "Giftguide",
+            "sensorsLinkName": "Giftguide",
             "link": "https:\/\/www.hyfol.com\/collections\/giftguide",
             "left": 0,
             "top": 69,
@@ -835,8 +574,8 @@
         "81098c5b-5074-43de-b712-fe69e9b9956b": {
           "type": "link",
           "settings": {
-            "heading": "shirt",
-            "sensorsLinkName": "shirt",
+            "heading": "Shirt",
+            "sensorsLinkName": "Shirt",
             "link": "https:\/\/www.hyfol.com\/collections\/shirt",
             "left": 38,
             "top": 69,
@@ -847,8 +586,8 @@
         "109f4489-84a2-4283-ac28-ee83ad0d262c": {
           "type": "link",
           "settings": {
-            "heading": "polo",
-            "sensorsLinkName": "polo",
+            "heading": "Poloshirts",
+            "sensorsLinkName": "Poloshirts",
             "link": "https:\/\/www.hyfol.com\/collections\/polo-shirts",
             "left": 71,
             "top": 67,
@@ -941,9 +680,9 @@
         "1f197e6e-076a-4800-935a-1d35bc6020ce": {
           "type": "link",
           "settings": {
-            "heading": "for75",
-            "sensorsLinkName": "for75",
-            "link": "https:\/\/www.hyfol.com\/collections\/3-for-75",
+            "heading": "for5",
+            "sensorsLinkName": "for5",
+            "link": "https:\/\/www.hyfol.com\/collections\/under-15",
             "left": 77,
             "top": 0,
             "width": 100,
@@ -978,7 +717,7 @@
         "sensorsName": "pc分类导流区",
         "hidWeb": true,
         "line": false,
-        "image": "shopify:\/\/shop_images\/hyfol_75748ad4-443a-4def-9384-eb463561ff1b.jpg",
+        "image": "shopify:\/\/shop_images\/hyfol_b5ede4f8-c327-4fa5-b7c3-f86ba0fb53d9.jpg",
         "tpadding": 0,
         "rpadding": 0,
         "bpadding": 40,
@@ -1015,9 +754,9 @@
         "2af8f0c2-4de8-48e5-9005-8c9db641670b": {
           "type": "link",
           "settings": {
-            "heading": "for75",
-            "sensorsLinkName": "fo75",
-            "link": "https:\/\/www.hyfol.com\/collections\/3-for-75",
+            "heading": "for5",
+            "sensorsLinkName": "for5",
+            "link": "https:\/\/www.hyfol.com\/collections\/under-15",
             "left": 0,
             "top": 50,
             "width": 49,
@@ -1064,40 +803,11 @@
         "sensorsName": "mobile分类导流区",
         "hidWeb": false,
         "line": false,
-        "image": "shopify:\/\/shop_images\/hyfol_2cb4c93c-af1a-4599-aff2-1c365a0e1893.jpg",
+        "image": "shopify:\/\/shop_images\/hyfol_9f41bad3-347a-4795-ae78-20a038bac679.jpg",
         "tpadding": 0,
         "rpadding": 0,
         "bpadding": 0,
         "lpadding": 0
-      }
-    },
-    "1663932013ff20a453": {
-      "type": "no_space_img",
-      "disabled": true,
-      "settings": {
-        "sensorsName": "finalsale",
-        "bg_image": "shopify:\/\/shop_images\/fe33253dbf48d9c256b3a971245bf047.jpg",
-        "web_bg_image": "shopify:\/\/shop_images\/f2fc69686c2037eea2f76f9b8298acc4.jpg",
-        "link": "https:\/\/www.hyfol.com\/collections\/summer-finalsale?page=1",
-        "shadow": false
-      }
-    },
-    "16585474086f148753": {
-      "type": "transparent-collection",
-      "disabled": true,
-      "settings": {
-        "collection": "summer-finalsale",
-        "sensorsName": "summer finalsale",
-        "title": "flash  sale",
-        "products_count": 12,
-        "layout": "vertical",
-        "stack_products": false,
-        "show_quick_buy": false,
-        "link_title": "View all",
-        "link_url": "https:\/\/www.hyfol.com\/collections\/summer-finalsale?page=1",
-        "backgroun": "",
-        "padding_top": 20,
-        "padding_bottom": 20
       }
     },
     "2085cc4d-3d60-4b10-bdbd-21379ff22696": {
@@ -1123,8 +833,8 @@
         "ff6f97b8-1adb-4a65-93e8-533754b197fc": {
           "type": "link",
           "settings": {
-            "heading": "workshirts",
-            "sensorsLinkName": "workshirts",
+            "heading": "WORKSHIRTS1",
+            "sensorsLinkName": "WORKSHIRTS1",
             "link": "https:\/\/www.hyfol.com\/collections\/shirt",
             "left": 0,
             "top": 0,
@@ -1135,8 +845,8 @@
         "342f71ba-d412-42c7-a286-e1b97c3dc993": {
           "type": "link",
           "settings": {
-            "heading": "sweatshirts",
-            "sensorsLinkName": "sweatshirts",
+            "heading": "SWEATSHIRT1",
+            "sensorsLinkName": "SWEATSHIRT1",
             "link": "https:\/\/www.hyfol.com\/collections\/sweatshirts-12-13",
             "left": 25,
             "top": 0,
@@ -1147,8 +857,8 @@
         "9ff77147-50cf-4ea6-a2e8-88372aa19d4a": {
           "type": "link",
           "settings": {
-            "heading": "outwear",
-            "sensorsLinkName": "outwear",
+            "heading": "OUTWEAR1",
+            "sensorsLinkName": "OUTWEAR1",
             "link": "https:\/\/www.hyfol.com\/collections\/mens-outwear",
             "left": 50,
             "top": 0,
@@ -1159,8 +869,8 @@
         "6defe89d-34bf-47d9-a1f2-91004d693ed8": {
           "type": "link",
           "settings": {
-            "heading": "plaid",
-            "sensorsLinkName": "plaid",
+            "heading": "PLAID1",
+            "sensorsLinkName": "PLAID1",
             "link": "https:\/\/www.hyfol.com\/collections\/plaid",
             "left": 76,
             "top": 0,
@@ -1195,8 +905,8 @@
         "0736ae2f-d8f9-4699-9348-1065c0a82879": {
           "type": "link",
           "settings": {
-            "heading": "workshirts",
-            "sensorsLinkName": "sweatshirts",
+            "heading": "Workshirts1",
+            "sensorsLinkName": "Workshirts1",
             "link": "https:\/\/www.hyfol.com\/collections\/shirt",
             "left": 0,
             "top": 0,
@@ -1207,8 +917,8 @@
         "17a0b0e4-b0fd-421f-ae02-f40770d11416": {
           "type": "link",
           "settings": {
-            "heading": "sweaters",
-            "sensorsLinkName": "sweaters",
+            "heading": "Sweaters1",
+            "sensorsLinkName": "Sweaters1",
             "link": "https:\/\/www.hyfol.com\/collections\/sweaters",
             "left": 51,
             "top": 0,
@@ -1219,8 +929,8 @@
         "1a56e24f-fd33-4441-a6c2-3cf03868b44a": {
           "type": "link",
           "settings": {
-            "heading": "outwear",
-            "sensorsLinkName": "outwear",
+            "heading": "Outwear1",
+            "sensorsLinkName": "Outwear1",
             "link": "https:\/\/www.hyfol.com\/collections\/mens-outwear",
             "left": 0,
             "top": 50,
@@ -1231,8 +941,8 @@
         "dbe8a9a1-2bdd-4552-82ae-15b0ebb1e9cf": {
           "type": "link",
           "settings": {
-            "heading": "plaid",
-            "sensorsLinkName": "plaid",
+            "heading": "Plaid1",
+            "sensorsLinkName": "Plaid1",
             "link": "https:\/\/www.hyfol.com\/collections\/plaid",
             "left": 51,
             "top": 50,
@@ -1478,18 +1188,13 @@
     "1663931552c2584c97",
     "166424926021cbf149",
     "4abbc570-59ea-407d-9bc8-8da13344d02f",
-    "1663931750c3ec4ea5",
-    "1663931769bd8aed01",
     "16474248460d0593be",
     "1650101273f11a55ef",
-    "16585455879cf4cc45",
     "166393398966f5d03e",
     "1663934013a93a9889",
     "1651218774b7bce676",
     "16500767332eb3ea11",
     "164742631051d4db44",
-    "1663932013ff20a453",
-    "16585474086f148753",
     "2085cc4d-3d60-4b10-bdbd-21379ff22696",
     "16474250424edba623",
     "1653297879b5b9419a",
