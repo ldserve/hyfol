@@ -499,7 +499,7 @@
       },
       "general": {
         "continue_to_shipping_method": "Save Address",
-        "continue_to_payment_method": "Continue to checkout"
+        "continue_to_payment_method": "go to checkout"
       }
     },
     "addresses": {
