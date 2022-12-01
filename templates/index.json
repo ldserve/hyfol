@@ -16,11 +16,10 @@
       "blocks": {
         "db88bd3b-2663-480e-a113-30f5edd187d0": {
           "type": "image",
-          "disabled": true,
           "settings": {
             "sensorsName": "facebook",
-            "image": "shopify:\/\/shop_images\/hyfol_pc_banner.jpg",
-            "mobile_image": "shopify:\/\/shop_images\/hyfol_banner_7945114a-8539-42a7-a052-b139f140a7f5.jpg",
+            "image": "shopify:\/\/shop_images\/hyfol_73060822-f685-449d-a690-b9f17bf83136.jpg",
+            "mobile_image": "shopify:\/\/shop_images\/hyfol_banner_6808ec47-5664-4481-bd57-6bc530227dfa.jpg",
             "show_overlay": false,
             "overlay_opacity": 30,
             "text_color": "#ffffff",
@@ -36,11 +35,12 @@
             "button_background": "#ffffff",
             "button_text_color": "#000000",
             "button_text": "",
-            "link": "shopify:\/\/collections\/black-friday"
+            "link": "https:\/\/www.hyfol.com\/collections\/hyfol-best-seller-1"
           }
         },
         "046ee2d1-e8b7-41e0-a6c9-7cfc79e1429f": {
           "type": "image",
+          "disabled": true,
           "settings": {
             "sensorsName": "best",
             "image": "shopify:\/\/shop_images\/hyfol_banner_79b4a580-5e84-4550-b253-9560826f9c11.jpg",
@@ -65,6 +65,7 @@
         },
         "1664249260b7761d46-0": {
           "type": "image",
+          "disabled": true,
           "settings": {
             "sensorsName": "giftguide",
             "image": "shopify:\/\/shop_images\/pc_acd70bec-5653-48e0-848d-bb50a485fdc9.jpg",
@@ -89,6 +90,7 @@
         },
         "1664249260b7761d46-1": {
           "type": "image",
+          "disabled": true,
           "settings": {
             "sensorsName": "for75",
             "image": "shopify:\/\/shop_images\/f7c1c3cca76deb010f8152d95db6e7da_a6d9be2e-273d-43da-85d9-800b741377eb.jpg",
