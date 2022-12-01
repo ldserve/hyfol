@@ -251,18 +251,17 @@
       "announcement-bar": {
         "type": "announcement-bar",
         "blocks": {
-          "f7871216-4fbb-4392-b4a5-25a3e8dbe911": {
-            "type": "announcement",
-            "disabled": true,
-            "settings": {
-              "text": "20% OFF 5 PIECES | 25% OFF 6 PIECES | 30% OFF 7+ PIECES *",
-              "link": ""
-            }
-          },
           "2caf8430-4f46-405e-b569-d4957d1bde1c": {
             "type": "announcement",
             "settings": {
               "text": "Free Shipping On Orders Over $69",
+              "link": ""
+            }
+          },
+          "f7871216-4fbb-4392-b4a5-25a3e8dbe911": {
+            "type": "announcement",
+            "settings": {
+              "text": "EXTRA $10 OFF on Order Over $79  🇺🇸Code: HY10",
               "link": ""
             }
           },
@@ -300,8 +299,8 @@
           }
         },
         "block_order": [
-          "f7871216-4fbb-4392-b4a5-25a3e8dbe911",
           "2caf8430-4f46-405e-b569-d4957d1bde1c",
+          "f7871216-4fbb-4392-b4a5-25a3e8dbe911",
           "933aa31d-00c1-44a5-8b00-66ceefe87acd",
           "ebf3f4ad-f1dc-464f-9e19-71c2a7fc4fc3",
           "ccab5dcb-d3a7-4a2e-9c0e-6699c88abf2e",
