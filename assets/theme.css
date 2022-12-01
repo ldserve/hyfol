@@ -2888,6 +2888,7 @@ img.lazyload[data-sizes=auto] {
 .button--primary {
   background: var(--primary-button-background);
   color: var(--primary-button-text-color);
+  font-size: 17px;
 }
 
 .button--primary:hover {
@@ -3487,7 +3488,7 @@ width: 50%;
   line-height: 26px;
   font-size: 14px;
   padding: 0 10px;
-  background-color: #770202;
+  background-color: #FEC307;
 }
 .mini-cart-collcation{
    align-items: center;
