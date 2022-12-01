@@ -498,7 +498,7 @@
         "province_label": "State"
       },
       "general": {
-        "continue_to_shipping_method": "Continue to checkout",
+        "continue_to_shipping_method": "Save Address",
         "continue_to_payment_method": "Continue to checkout"
       }
     },
