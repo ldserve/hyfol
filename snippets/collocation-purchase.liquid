@@ -12,7 +12,7 @@ layout_:list,cart
 {% assign isAuto = isAuto%}
 
 {%- else -%}
-{%- if product.metafields.my_fields.collocation==blank -%}
+{%- if product.metafields.my_fields.collocation==blank or true -%}
 {%- assign variable ='SP221122TMR1,SP2209158SG5,SP220816CE8Y' -%}
 {%- else -%}
 {%- assign variable = product.metafields.my_fields.collocation -%}
