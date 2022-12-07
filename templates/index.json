@@ -427,7 +427,7 @@
           "settings": {
             "heading": "GIFTGUIDE",
             "sensorsLinkName": "GIFTGUIDE",
-            "link": "https:\/\/www.hyfol.com\/collections\/giftguide",
+            "link": "https:\/\/www.hyfol.com\/collections\/christmas-gift",
             "left": 41,
             "top": 53,
             "width": 21,
@@ -478,7 +478,7 @@
         "sensorsName": "pc分类导流区",
         "hidWeb": true,
         "line": false,
-        "image": "shopify:\/\/shop_images\/4_9b1c08cb-4bef-4e66-a629-5841ebc71ffb.jpg",
+        "image": "shopify:\/\/shop_images\/4_a7585112-7c36-4553-9e35-912f86fa0cbc.jpg",
         "tpadding": 13,
         "rpadding": 0,
         "bpadding": 0,
