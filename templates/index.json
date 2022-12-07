@@ -565,7 +565,7 @@
           "settings": {
             "heading": "Giftguide",
             "sensorsLinkName": "Giftguide",
-            "link": "https:\/\/www.hyfol.com\/collections\/giftguide",
+            "link": "https:\/\/www.hyfol.com\/collections\/christmas-gift",
             "left": 0,
             "top": 69,
             "width": 30,
@@ -615,7 +615,7 @@
         "sensorsName": "mobile分类导流区",
         "hidWeb": false,
         "line": false,
-        "image": "shopify:\/\/shop_images\/1__05.jpg",
+        "image": "shopify:\/\/shop_images\/05_bc4d8d60-146a-4fe0-8119-cbd99a28cafd.jpg",
         "tpadding": 0,
         "rpadding": 0,
         "bpadding": 0,
