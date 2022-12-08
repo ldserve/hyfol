@@ -149,8 +149,8 @@
         "template--15801670959319__4abbc570-59ea-407d-9bc8-8da13344d02f-1667555179fa2589e0-2": {
           "type": "link",
           "settings": {
-            "title": "4 FOR $49",
-            "link": "https:\/\/www.hyfol.com\/collections\/4-for-49",
+            "title": "Christmas",
+            "link": "https:\/\/www.hyfol.com\/collections\/christmas-gift",
             "show_hot": true
           }
         },
@@ -427,7 +427,7 @@
           "settings": {
             "heading": "GIFTGUIDE",
             "sensorsLinkName": "GIFTGUIDE",
-            "link": "https:\/\/www.hyfol.com\/collections\/giftguide",
+            "link": "https:\/\/www.hyfol.com\/collections\/christmas-gift",
             "left": 41,
             "top": 53,
             "width": 21,
@@ -478,7 +478,7 @@
         "sensorsName": "pc分类导流区",
         "hidWeb": true,
         "line": false,
-        "image": "shopify:\/\/shop_images\/4_9b1c08cb-4bef-4e66-a629-5841ebc71ffb.jpg",
+        "image": "shopify:\/\/shop_images\/05_0450c248-2e7a-4469-805f-62d08042f3dd.jpg",
         "tpadding": 13,
         "rpadding": 0,
         "bpadding": 0,
@@ -565,7 +565,7 @@
           "settings": {
             "heading": "Giftguide",
             "sensorsLinkName": "Giftguide",
-            "link": "https:\/\/www.hyfol.com\/collections\/giftguide",
+            "link": "https:\/\/www.hyfol.com\/collections\/christmas-gift",
             "left": 0,
             "top": 69,
             "width": 30,
@@ -615,7 +615,7 @@
         "sensorsName": "mobile分类导流区",
         "hidWeb": false,
         "line": false,
-        "image": "shopify:\/\/shop_images\/1__05.jpg",
+        "image": "shopify:\/\/shop_images\/05_dfa27e49-4618-4670-92f2-3fa458981599.jpg",
         "tpadding": 0,
         "rpadding": 0,
         "bpadding": 0,
