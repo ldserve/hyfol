@@ -14840,7 +14840,7 @@
                 if (this.isFetch) return;
                 this.isFetch = true
                 var productContaine = this.element.querySelector('.product-list')
-                fetch(location.pathname + "?page=" + nextPage + "&section_id=" + sectionID).then(response => {
+                fetch(location.pathname + location.search+"&page=" + nextPage + "&section_id=" + sectionID).then(response => {
                     if (!response.ok) return;
                     response.text().then(content => {
                         var productList
