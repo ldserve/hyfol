@@ -18,8 +18,8 @@
           "type": "image",
           "settings": {
             "sensorsName": "facebook",
-            "image": "shopify:\/\/shop_images\/hyfol_73060822-f685-449d-a690-b9f17bf83136.jpg",
-            "mobile_image": "shopify:\/\/shop_images\/hyfol_banner_6808ec47-5664-4481-bd57-6bc530227dfa.jpg",
+            "image": "shopify:\/\/shop_images\/banner_5b46104f-dec2-4fbf-b474-c958892e084f.jpg",
+            "mobile_image": "shopify:\/\/shop_images\/9e782f252be4a5169ae0224d842b654f.jpg",
             "show_overlay": false,
             "overlay_opacity": 30,
             "text_color": "#ffffff",
@@ -35,7 +35,7 @@
             "button_background": "#ffffff",
             "button_text_color": "#000000",
             "button_text": "",
-            "link": "https:\/\/www.hyfol.com\/collections\/hyfol-best-seller-1"
+            "link": "https:\/\/www.hyfol.com\/collections\/19-99-hoodies-and-sweatshirts"
           }
         },
         "046ee2d1-e8b7-41e0-a6c9-7cfc79e1429f": {
