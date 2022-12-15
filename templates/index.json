@@ -64,6 +64,7 @@
         },
         "1664249260b7761d46-0": {
           "type": "image",
+          "disabled": true,
           "settings": {
             "sensorsName": "Special Material",
             "image": "shopify:\/\/shop_images\/hyfol_f965727c-763d-4cd0-a123-9012f835bc6a.jpg",
@@ -251,8 +252,8 @@
           "type": "image",
           "settings": {
             "sensorsName": "plaid",
-            "image": "shopify:\/\/shop_images\/237d557249bd41e36aeea87d8f090d2a_e017f1a3-06cf-4784-990b-807af36a5338.jpg",
-            "mobile_image": "shopify:\/\/shop_images\/5dbbfe3298a1ddad9d392830e3e50d15_b3a70361-e95d-40c6-bff5-183268c0e6b4.jpg",
+            "image": "shopify:\/\/shop_images\/hyfol_f965727c-763d-4cd0-a123-9012f835bc6a.jpg",
+            "mobile_image": "shopify:\/\/shop_images\/hyfol_b5fdcd4b-f37e-4ce3-bac0-dd409fbd9c7b.jpg",
             "show_overlay": false,
             "overlay_opacity": 30,
             "text_color": "#ffffff",
@@ -268,7 +269,7 @@
             "button_background": "#ffffff",
             "button_text_color": "#000000",
             "button_text": "",
-            "link": "https:\/\/www.hyfol.com\/collections\/plaid"
+            "link": "shopify:\/\/collections\/special-fabric"
           }
         },
         "1650101273ef0886ca-1": {
