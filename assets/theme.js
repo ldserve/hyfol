@@ -19670,7 +19670,7 @@
                         // We may have an invalid selector, so if we catch it we just return
                         return;
                     }
-
+                    if(!element)return;
                     var offset = parseInt(target.getAttribute('data-offset') || 0),
                         toTop = 0;
 

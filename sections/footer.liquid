@@ -14,6 +14,15 @@
 			{%- if section.blocks.size > 0 -%}
       <div class="footer-top ">
         <div class="footer__block-list container">
+            <div class="footer__block-item footer__block-item--links">
+              <div id="block-244b3e68-04f8-41ec-acf1-bff4665fe23b" class="footer__collapsible">
+                <div class="footer__collapsible-content">
+                  <ul class="footer__linklist list--unstyled" role="list"><li>
+                        <a href="/account/login" class="footer__link-item link shence_commodityView" data-scenable="1" data-expenable="0" data-bindexp="0" style="display: inline-block;border-bottom: 1px solid #FFF;">Sign in / Register</a>
+                      </li></ul>
+                </div>
+            </div>
+          </div>
           {%- for block in section.blocks -%}
             {%- assign menuindex = forloop.index -%}
             {%- case block.type -%}
