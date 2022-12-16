@@ -2380,14 +2380,15 @@
 										<label for="address-{{ address.id }}[phone]" class="form__floating-label">{{
 											'customer.addresses.phone' | t }}</label>
 									</div>
-									
+
 									{%- else -%}
 									<div class="form__input-wrapper form__input-wrapper--labelled">
 										<input id="address-{{ address.id }}[first_name]" type="text"
 											class="form__field form__field--text {% if form.first_name != blank %}is-filled{% endif %}"
 											name="address[first_name]" value="{{ form.first_name }}" autofocus>
 										<label for="address-{{ address.id }}[first_name]"
-											class="form__floating-label">{{ 'customer.addresses.first_name' | t }}</label>
+											class="form__floating-label">{{ 'customer.addresses.first_name' | t
+											}}</label>
 									</div>
 
 									<div class="form__input-wrapper form__input-wrapper--labelled">
@@ -2896,21 +2897,21 @@
 
 		const dbo = `
 		mutation customerUpdate {
-  customerUpdate(customer: {firstName:"Jiang",lastName:"Jinshui"}, customerAccessToken: "4a48bd8caa2e6a4805bcfbe555524e65") {
-    customer {
-		firstName
-		lastName
-		updatedAt
-    }
-    customerAccessToken {
-		accessToken
-    }
-    customerUserErrors {
-      code
-	  field
-	  message
-    }
-  }}`
+		customerUpdate(customer: {firstName:"Jiang",lastName:"Jinshui"}, customerAccessToken: "4a48bd8caa2e6a4805bcfbe555524e65") {
+		customer {
+			firstName
+			lastName
+			updatedAt
+			}
+		customerAccessToken {
+			accessToken
+		}
+		customerUserErrors {
+		code
+		field
+		message
+		}
+		}}`
 		/* fetch('https://hyfol.myshopify.com/api/2022-10/graphql.json',{method:"POST",headers:{
 					"Content-Type":"application/graphql","X-Shopify-Storefront-Access-Token":"1d2374d2668239da8efd20c84e848d0d"
 				},body:dbo}).then(response=>response.json()).then(data=>console.log(data))
@@ -3084,6 +3085,11 @@
 						const expireList = []
 						const reg = /^[$0-9.]+%?/
 						data.forEach((item, i) => {
+							let C = ''
+							const codeStr = item.summary.replace(/^[0-9$.]+%?( off)?/, (a, b, c, d) => {
+								C = a.split(' ').shift() || "0%"
+								return `<span style=" font-size: 1rem; font-weight: 600;">${a}</span>`
+							})
 							const coupon = `<div class="my-coupons__item" data-index="${item.id}">
 						<div class="codeLeft">
 							<ul class="couponDos dostLeft">
@@ -3096,13 +3102,13 @@
 								<li class="couponDost"></li><li class="couponDost"></li>
 								<li class="couponDost"></li><li class="couponDost"></li>
 							</ul>
-							<p style="font-weight: 500;"><span style=" font-size: 1rem; font-weight: 600;">10% off</span> entire order</p>
+							<p style="font-weight: 500;">${codeStr}</p>
 							<p style="font-weight: 600;line-height:1;">Code: <span class="coupon_code">${item.title}</span></p>
 							<ul class="coupons-date" style=" font-weight: 500;"><li>minimum spend to use:none</li><li>${item.ends_at}</li></ul>
 						</div>
 						<div class="codeRight">
 							<span class="d-block" style="text-align: center;font-family: emoji;margin-top: 10px;">coupon</span>
-							<span class="d-flex space-between codeSave">save <span class="d-inline-block  codeAmount ">10%<span
+							<span class="d-flex space-between codeSave">save <span class="d-inline-block  codeAmount ">${C}<span
 							class="d-inline-block poa alert--center" style=" writing-mode: tb-rl; font-size: 1rem;top: 0; bottom: 0;margin: auto 0;right: 0;">off</span></span></span>
 						</div>
 					</div>`
@@ -3563,34 +3569,6 @@
 
 </script>
 {%- comment -%}
-,
-"blocks": [{
-"name": "nav_title",
-"type": "trust",
-"settings": [{
-"type": "text",
-"id": "nav_title",
-"label": "Heading",
-"default": "导航标题"
-},
-{
-"type": "text",
-"id": "nav_right",
-"label": "右侧区域对应类名"
-},
-{
-"type": "checkbox",
-"id": "nav_show",
-"label": "是否展示导航",
-"default": true
-},
-{
-"type":"select",
-"id":"nav_icon",
-"options": [{
-"value": "none",
-"label": "无"
-},
 {
 "value":"account-text",
 "label":"文本"
@@ -3608,37 +3586,15 @@
 "label":"支付"
 },
 {
-"value":"account-collect",
-"label":"收藏"
-},
-{
 "value":"account-renz",
 "label":"认证"
 },
-{
-"value":"account-cart",
-"label":"购物车"
-},
+
 {
 "value":"account-setting",
 "label":"设置"
 },
-{
-"value":"cjj_post_sale",
-"label":"客服"
-},
-{
-"value":"coupon",
-"label":"优惠券"
-},
-{
-"value":"account-location",
-"label":"定位"
-}],
-"default":"none",
-"label":"选择图标"
-}]
-}]
+
 
 
 {%- endcomment -%}
