@@ -535,7 +535,7 @@
 	.my-coupons {
 		margin-top: 3rem;
 		background-color: #eee;
-		padding: 0 3rem 3rem;
+		padding: 0 10px 3rem;
 	}
 
 	.my-coupons__title {
@@ -544,11 +544,12 @@
 
 	.coupons-date {
 		margin-top: 0.8rem;
-		font-size: 14px;
+		font-size: 12px;
 	}
 
 	.coupons-date li {
 		list-style: disc;
+		line-height: 1.4;
 	}
 
 	.my-coupons__list {
@@ -557,6 +558,8 @@
 		grid-column-gap: 4rem;
 		grid-row-gap: 3rem;
 		color: #fff;
+		justify-content: center;
+		align-items: center;
 	}
 
 	.my-coupons__list p {
@@ -564,42 +567,25 @@
 	}
 
 	.my-coupons__item {
-		background-image: url('https://cdn.shopify.com/s/files/1/0595/0691/7535/files/coup.jpg?v=1664507060');
+		/* background-image: url('https://cdn.shopify.com/s/files/1/0595/0691/7535/files/coup.jpg?v=1664507060');
 		background-position: center;
 		background-repeat: no-repeat;
 		background-size: 100% 100%;
 		background-clip: border-box;
-		padding: 0.6rem 4rem;
+		padding: 0.6rem 4rem; */
 		position: relative;
 		overflow: hidden;
-		-moz-user-select:none; 
-		-webkit-user-select:none; 
-		-ms-user-select:none; 
-		-khtml-user-select:none; 
-		-o-user-select:none; 
-		user-select:none; 
+		-moz-user-select: none;
+		-webkit-user-select: none;
+		-ms-user-select: none;
+		-khtml-user-select: none;
+		-o-user-select: none;
+		user-select: none;
+		display: grid;
+		grid-template-columns: 50% 50%;
+		color: #000;
+		width: 350px;
 	}
-
-	.round-left,
-	.round-right {
-		position: absolute;
-		top: 0;
-		bottom: 0;
-		margin: auto;
-		background-color: #eee;
-		width: 2rem;
-		height: 2rem;
-		border-radius: 50%;
-	}
-
-	.round-left {
-		left: -1rem;
-	}
-
-	.round-right {
-		right: -1rem;
-	}
-
 
 	#main {
 		background-color: #fff;
@@ -682,7 +668,7 @@
 		background-color: #fff;
 	}
 
-	@media screen and (max-width: 999px) {
+	@media screen and (max-width: 648px) {
 		.profile-view {
 			padding: 30px 10px;
 		}
@@ -747,6 +733,11 @@
 			text-align: center;
 		}
 
+		.my-coupons__item {
+			width: 320px;
+		}
+
+
 	}
 
 	.my-coupons_empty {
@@ -778,62 +769,275 @@
 		text-align: center;
 		color: #000;
 	}
-	.coupon_code{
-	user-select:text;
+
+	.coupon_code {
+		user-select: text;
+		text-transform: uppercase;
 	}
-	.expired__coupons .my-coupons__item{
-		background-image:url(https://cdn.shopifycdn.net/s/files/1/0595/0691/7535/files/coup.png?v=1668759630)
+
+	.expired__coupons .codeLeft {
+		background: rgb(143 143 143 / 90%);
+	}
+
+	.expired__coupons .codeRight {
+		background: rgb(55 55 55 / 82%);
+		color: #000;
+	}
+
+	.expired__coupons .codeSave {
+		background: rgb(110 110 110 / 88%);
+	}
+
+	.expired__coupons .codeAmount {
+		background: rgb(5, 5, 5, 0.3);
+		color: #000;
+	}
+
+	.couponDost {
+		background: #eee;
+		width: 10px;
+		height: 10px;
+		border-radius: 6px;
+	}
+
+	.couponDos {
+		position: absolute;
+		display: flex;
+		flex-direction: column;
+		justify-content: space-evenly;
+		top: 0;
+		bottom: 0;
+	}
+
+	.dostLeft {
+		left: -4px;
+	}
+
+	.dostRight {
+		right: -4px;
+	}
+
+	.codeAmount {
+		background: #050505;
+		color: #fcbe0f;
+		flex: 1;
+		margin-left: 10px;
+		position: relative;
+		padding: 0 6px;
+	}
+
+	.codeSave {
+		max-width: 82%;
+		margin: 0 auto;
+		background: #ffbd14;
+		padding: 2px;
+		color: #000;
+		padding-left: 4px;
+		line-height: 1.5;
+		border-radius: 6px;
+	}
+
+	.codeLeft {
+		background: #ffbd16;
+		padding-left: 24px;
+		font-size: 12px;
+		padding-top: 6px;
+		padding-bottom: 8px;
+	}
+
+	.codeRight {
+		color: #ffbd17;
+		text-transform: uppercase;
+		font-size: 1.4rem;
+		font-weight: 800;
+		background: #000;
+	}
+
+	.my-order__title {
+		padding: 0 0 1rem;
+		text-align: center;
+	}
+
+	.orders-nav {
+		justify-content: center;
+	}
+
+	.title-info-name {
+		cursor: pointer;
+
+	}
+
+	.order-render__view,
+	.order-item__card>.card__section,
+	.order-box {
+		background-color: #eee;
+	}
+
+	.info-title,
+	.info-style,
+	.title-info {
+		justify-content: space-between;
+	}
+
+	.title-state {
+		/* float: right; */
+		text-align: right;
+	}
+
+	.info-style {
+		color: #9d9898;
+	}
+
+	.pro-info__discount {
+		color: #cf0e0e;
+		font-size: 0.9rem;
+	}
+
+	.pro-info__text {
+		text-align: right;
+		margin-bottom: 0;
+	}
+
+	.pro-info__title,
+	.pro-info__paid {
+		font-weight: 600;
+	}
+
+	.info-price__scribe {
+		text-decoration: line-through;
+	}
+
+	.orders-nav__list {
+		justify-content: center;
+	}
+
+	.orders-nav__list svg {
+		font-size: 1.4rem;
+	}
+
+	.pro-info {
+		/* display: inline-block; */
+		padding: 0 2rem;
+		width: 100%;
+	}
+
+	.order-box {
+		padding: 1rem 1rem;
+		margin-bottom: 1rem;
+	}
+
+	.order-item__card-body {
+		padding: 1rem 0;
+		margin-bottom: 2rem;
+		border-bottom: 1px solid #ccc;
+	}
+
+	.orders-nav__item {
+		margin: 0 20px;
+		cursor: pointer;
+	}
+
+	.order-item__card[aria-hidden="true"] {
+		display: none;
+	}
+
+	.order-footer {
+		text-align: right;
+	}
+
+	.order-item__card[aria-hidden="false"] {
+		display: block;
+	}
+
+	.order-item__card {
+		background-color: #fff;
+	}
+
+	.orders-nav__item[data-action="true"] {
+		color: #770202;
+		border-bottom: 1px solid #770202;
+	}
+
+	.card__linklist-item>.icon {
+		margin-right: 4px;
 	}
 </style>
 
 <section data-section-id="{{ section.id }}" data-section-type="account" id="account">
-	{%- comment -%}-------------------------- Mobile --------------------------{%- endcomment -%}
+	{%- comment -%}------------------------------ Mobile Nav--------------------------{%- endcomment -%}
 	<div class="hidden-lap-and-up account">
 		<div class="header-me container">
 			{%- if customer -%}
-	
+
 			<div class="account-box">
 				<h3 class="mobile-account__title">My Service</h3>
 				<div class="card__linklist ">
-					 <div class="render_nav_list d-flex mobile-account__nav">
-	
-					  {%- for block in section.blocks -%}
-					  {%- if block.settings.nav_show -%}
-					  <div class="card__linklist-item link" style="cursor:pointer ;" data-right="{{block.settings.nav_right}}" data-action="left-nav" aria-label="{{block.settings.nav_title}}"> 
-						  <span> {%- render 'icon', icon: {{block.settings.nav_icon}} -%}</span>
-					  <span>{{block.settings.nav_title}}</span>
-					  </div>
-					  {%- endif -%}
-					  {%- endfor -%}
-	
-					  <a href="{{ routes.account_logout_url }}" class="card__linklist-item link"
-						   data-no-instant >{% render 'icon', icon :"account-logout" %} {{ 'customer.general.logout' | t }}</a>
-				  </div>
+					<div class="render_nav_list d-flex mobile-account__nav">
+
+						<div class="card__linklist-item link text--stronger" data-right="my_overview"
+							data-action="left-nav" aria-label="My Account">
+							{%- render 'icon', icon: 'account-text' -%}
+							<span>My Account</span>
+						</div>
+						<div class="card__linklist-item link" data-right="my_profile" data-action="left-nav"
+							aria-label="My Profile">
+							{%- render 'icon', icon: 'account-my' -%}
+							<span>My Profile</span>
+						</div>
+						<div class="card__linklist-item link" data-right="my_coupons" data-action="left-nav"
+							aria-label="My Coupons">
+							{%- render 'icon', icon: 'coupon' -%}
+							<span>My Coupons</span>
+						</div>
+						<div class="card__linklist-item link" data-right="my_orders" data-action="left-nav"
+							aria-label="My Orders">
+							{%- render 'icon', icon: 'account-cart' -%}
+							<span>My Orders</span>
+						</div>
+						<div class="card__linklist-item link" data-right="wish_list" data-action="left-nav"
+							aria-label="My Wishlist">
+							{%- render 'icon', icon: 'account-collect' -%}
+							<span>My Wishlist</span>
+						</div>
+						<div class="card__linklist-item link" data-right="my_addresses" data-action="left-nav"
+							aria-label="My Addresses">
+							{%- render 'icon', icon: 'account-location' -%}
+							<span>My Addresses</span>
+						</div>
+						<div class="card__linklist-item link" data-right="my_postsale" data-action="left-nav"
+							aria-label="Customers Services">
+							<span> {%- render 'icon', icon: 'cjj_post_sale' -%}</span>
+							<span>Customers Services</span>
+						</div>
+						<a href="{{ routes.account_logout_url }}" class="card__linklist-item link" data-no-instant>{%
+							render 'icon', icon :"account-logout" %} {{ 'customer.general.logout' | t }}</a>
+					</div>
 				</div>
 			</div>
-	
+
 			{%- else -%}
 			<ul class="no-logged">
-				<li class="text-l"><a href="{{ routes.account_login_url }}?return_url={{ page.url }}">LOGIN &gt;</a></li>
+				<li class="text-l"><a href="{{ routes.account_login_url }}?return_url={{ page.url }}">LOGIN &gt;</a>
+				</li>
 				<li class="text-r"><a href="{{ routes.account_register_url }}">CREATE ACCOUNT&gt;</a></li>
 			</ul>
 			{%- endif -%}
 		</div>
-	
+
 	</div>
 
-	{%- comment -%}-------------- desktop ----------------------{%- endcomment -%}
+	{%- comment -%}------------------------------- desktop crumbs---------------------------{%- endcomment -%}
 	<div class="page__sub-header hidden-tablet">
 		<nav aria-label="{{ 'general.breadcrumb.title' | t }}" class="breadcrumb">
 			<ol class="breadcrumb__list" role="list">
 				<li class="breadcrumb__item">
-					<a class="breadcrumb__link link"
-						href="{{ routes.root_url }}">{{ 'general.breadcrumb.home' | t }}</a>
+					<a class="breadcrumb__link link" href="{{ routes.root_url }}">{{ 'general.breadcrumb.home' | t
+						}}</a>
 					{%- render 'icon', icon: 'arrow-right' -%}
 				</li>
 				<li class="breadcrumb__item">
-					<a class="breadcrumb__link link"
-						href="{{ routes.account_url }}">{{ 'general.breadcrumb.account' | t }}</a>
+					<a class="breadcrumb__link link" href="{{ routes.account_url }}">{{ 'general.breadcrumb.account' | t
+						}}</a>
 					{%- render 'icon', icon: 'arrow-right' -%}
 				</li>
 
@@ -843,94 +1047,128 @@
 			</ol>
 		</nav>
 	</div>
+
+	{%- comment -%}-----------------------------------------container-------------------{%- endcomment -%}
 	<div class="container container--flush">
 		<div class="layout">
-			{%- comment -%}-----------------desktop 自定义导航栏 -------------------{%- endcomment -%}
+			{%- comment -%}------------------------Desktop Nav ----------------------{%- endcomment -%}
 			<div class="layout__section layout__section--secondary hidden-phone">
 				<div class="card card--sticky hidden-pocket">
 					<div class="card__section card__section--tight">
 						<div class="card__linklist table-left-nav">
 							<div class="render_nav_list ">
-
-							{%- for block in section.blocks -%}
-							{%- if block.settings.nav_show -%}
-							<div class="card__linklist-item link" style="cursor:pointer ;" data-right="{{block.settings.nav_right}}" data-action="left-nav" aria-label="{{block.settings.nav_title}}"> 
-								<span> {%- render 'icon', icon: {{block.settings.nav_icon}} -%}</span>
-							<span>{{block.settings.nav_title}}</span>
+								<div class="card__linklist-item link text--stronger" data-right="my_overview"
+									data-action="left-nav" aria-label="My Account">
+									{%- render 'icon', icon: 'account-text' -%}
+									<span>My Account</span>
+								</div>
+								<div class="card__linklist-item link" data-right="my_profile" data-action="left-nav"
+									aria-label="My Profile">
+									{%- render 'icon', icon: 'account-my' -%}
+									<span>My Profile</span>
+								</div>
+								<div class="card__linklist-item link" data-right="my_coupons" data-action="left-nav"
+									aria-label="My Coupons">
+									{%- render 'icon', icon: 'coupon' -%}
+									<span>My Coupons</span>
+								</div>
+								<div class="card__linklist-item link" data-right="my_orders" data-action="left-nav"
+									aria-label="My Orders">
+									{%- render 'icon', icon: 'account-cart' -%}
+									<span>My Orders</span>
+								</div>
+								<div class="card__linklist-item link" data-right="wish_list" data-action="left-nav"
+									aria-label="My Wishlist">
+									{%- render 'icon', icon: 'account-collect' -%}
+									<span>My Wishlist</span>
+								</div>
+								<div class="card__linklist-item link" data-right="my_addresses" data-action="left-nav"
+									aria-label="My Addresses">
+									{%- render 'icon', icon: 'account-location' -%}
+									<span>My Addresses</span>
+								</div>
+								<div class="card__linklist-item link" data-right="my_postsale" data-action="left-nav"
+									aria-label="Customers Services">
+									{%- render 'icon', icon: 'cjj_post_sale' -%}
+									<span>Customers Services</span>
+								</div>
+								<a href="{{ routes.account_logout_url }}" class="card__linklist-item link"
+									data-no-instant>{% render 'icon', icon :"account-logout" %} {{
+									'customer.general.logout' | t }}</a>
 							</div>
-							{%- endif -%}
-							{%- endfor -%}
-
-							<a href="{{ routes.account_logout_url }}" class="card__linklist-item link"
-								 data-no-instant >{% render 'icon', icon :"account-logout" %} {{ 'customer.general.logout' | t }}</a>
-						</div>
 						</div>
 					</div>
 				</div>
-
 			</div>
 
 			<div class="layout__section ">
-				{%- comment -%}-----------------------收藏列表-------------------{%- endcomment -%}
+				{%- comment -%}--------------------------收藏列表-------------------{%- endcomment -%}
 				<div class="wish_list account_right_content" data-type="accountPage">
 					<header>
 						<h1 class="center wish_title">MY WISHLIST</h1>
 					</header>
 
-                    <div class="wish_loading">
+					<div class="wish_loading">
 						<div class="body-me loading">
-						{%- render 'icon', icon: 'cjj_loading' -%}
-						<span class="loading-text">&nbsp;loading...</span>
+							{%- render 'icon', icon: 'cjj_loading' -%}
+							<span class="loading-text">&nbsp;loading...</span>
+						</div>
 					</div>
-				</div>
-				
-					<div class="collect page-width">
 
-					</div>					
+					<div class="collect page-width"></div>
 
 					<div id="czquickview" class="modal" aria-hidden="true">
 						<div class="modal__dialog modal__dialog--stretch" role="dialog">
-						  <button class="modal__close link" data-action="close-modal" title="Close"><svg focusable="false" class="icon icon--close " viewBox="0 0 19 19" role="presentation">
-						<path d="M9.1923882 8.39339828l7.7781745-7.7781746 1.4142136 1.41421357-7.7781746 7.77817459 7.7781746 7.77817456L16.9705627 19l-7.7781745-7.7781746L1.41421356 19 0 17.5857864l7.7781746-7.77817456L0 2.02943725 1.41421356.61522369 9.1923882 8.39339828z" fill="currentColor" fill-rule="evenodd"></path>
-					</svg></button>
-					
-						  <div class="modal__loader"><svg focusable="false" class="icon icon--search-loader " viewBox="0 0 64 64" role="presentation">
-						<path opacity=".4" d="M23.8589104 1.05290547C40.92335108-3.43614731 58.45816642 6.79494359 62.94709453 23.8589104c4.48905278 17.06444068-5.74156424 34.59913135-22.80600493 39.08818413S5.54195825 57.2055303 1.05290547 40.1410896C-3.43602265 23.0771228 6.7944697 5.54195825 23.8589104 1.05290547zM38.6146353 57.1445143c13.8647142-3.64731754 22.17719655-17.89443541 18.529879-31.75914961-3.64743965-13.86517841-17.8944354-22.17719655-31.7591496-18.529879S3.20804604 24.7494569 6.8554857 38.6146353c3.64731753 13.8647142 17.8944354 22.17719655 31.7591496 18.529879z">
-						</path>
-						<path d="M1.05290547 40.1410896l5.80258022-1.5264543c3.64731754 13.8647142 17.89443541 22.17719655 31.75914961 18.529879l1.5264543 5.80258023C23.07664892 67.43614731 5.54195825 57.2055303 1.05290547 40.1410896z">
-						</path>
-					</svg></div>
-					
-						  <div class="modal__inner">
-							   <div class="abc"></div>
-						  </div>
-						</div>
-					  </div>
+							<button class="modal__close link" data-action="close-modal" title="Close"><svg
+									focusable="false" class="icon icon--close " viewBox="0 0 19 19" role="presentation">
+									<path
+										d="M9.1923882 8.39339828l7.7781745-7.7781746 1.4142136 1.41421357-7.7781746 7.77817459 7.7781746 7.77817456L16.9705627 19l-7.7781745-7.7781746L1.41421356 19 0 17.5857864l7.7781746-7.77817456L0 2.02943725 1.41421356.61522369 9.1923882 8.39339828z"
+										fill="currentColor" fill-rule="evenodd"></path>
+								</svg>
+							</button>
 
-					{%- if customer -%}
-					<div class="collect-body">
-						<div class=" collect-body-layout">
-						<div class="wish_center">
-							You currently have nothing saved to your Wishlist.<br />
-							Personalize your shopping experience with your Wishlist.
-						</div>
-						<div class="d-flex aic jcc sign-button">
-							<a href="/collections/shop" class="sign-button">Let's Get Started!</a>
+							<div class="modal__loader"><svg focusable="false" class="icon icon--search-loader "
+									viewBox="0 0 64 64" role="presentation">
+									<path opacity=".4"
+										d="M23.8589104 1.05290547C40.92335108-3.43614731 58.45816642 6.79494359 62.94709453 23.8589104c4.48905278 17.06444068-5.74156424 34.59913135-22.80600493 39.08818413S5.54195825 57.2055303 1.05290547 40.1410896C-3.43602265 23.0771228 6.7944697 5.54195825 23.8589104 1.05290547zM38.6146353 57.1445143c13.8647142-3.64731754 22.17719655-17.89443541 18.529879-31.75914961-3.64743965-13.86517841-17.8944354-22.17719655-31.7591496-18.529879S3.20804604 24.7494569 6.8554857 38.6146353c3.64731753 13.8647142 17.8944354 22.17719655 31.7591496 18.529879z">
+									</path>
+									<path
+										d="M1.05290547 40.1410896l5.80258022-1.5264543c3.64731754 13.8647142 17.89443541 22.17719655 31.75914961 18.529879l1.5264543 5.80258023C23.07664892 67.43614731 5.54195825 57.2055303 1.05290547 40.1410896z">
+									</path>
+								</svg>
+							</div>
+
+							<div class="modal__inner">
+								<div class="abc"></div>
+							</div>
 						</div>
 					</div>
+
+					{%- if customer -%}
+					<div class="collect-body" style="display: none;">
+						<div class=" collect-body-layout">
+							<div class="wish_center">
+								You currently have nothing saved to your Wishlist.<br />
+								Personalize your shopping experience with your Wishlist.
+							</div>
+							<div class="d-flex aic jcc sign-button">
+								<a href="/collections/shop" class="sign-button">Let's Get Started!</a>
+							</div>
+						</div>
 					</div>
 					{%- endif -%}
 
 				</div>
 
-				{%- comment -%}------------------------订单列表--------------------{%- endcomment -%}
-				<div class="card my_orders account_right_content"  data-type="accountPage">
+				{%- comment -%}--------------------------订单列表--------------------{%- endcomment -%}
+
+				<div class="card my_orders account_right_content" data-type="accountPage">
 					{%- comment -%}-------------------------- desktop --------------{%- endcomment -%}
 					<div class="hidden-phone">
 						{% render 'my-order-view' customer:customer%}
 					</div>
 
-					{%- comment -%}------------------------mobile------------------------{%- endcomment -%}
+					{%- comment -%}----------------------------mobile------------------------{%- endcomment -%}
 					<div class="large_pad hidden-tablet-and-up ">
 						<div class="order-me container">
 							<h3 class="h3">{{- 'customer.general.orders' | t -}}</h3>
@@ -940,11 +1178,11 @@
 										{%- render 'icon', icon: 'cjj_all' -%}<br />
 										<span>All</span>
 									</li>
-									<li data-item="orders-unpaid" data-type="orders-list"  aria-label="Unpaid">
+									<li data-item="orders-unpaid" data-type="orders-list" aria-label="Unpaid">
 										{%- render 'icon', icon: 'cjj_unpaid' -%}<br />
 										<span>Unpaid</span>
 									</li>
-									<li data-item="orders-processing" data-type="orders-list"  aria-label="Processing">
+									<li data-item="orders-processing" data-type="orders-list" aria-label="Processing">
 										{%- render 'icon', icon: 'cjj_processing' -%}<br />
 										<span>Processing</span>
 									</li>
@@ -968,7 +1206,7 @@
 									{%- endcomment -%}
 								</ul>
 							</div>
-					
+
 						</div>
 						<div class="body-me loading" id="loading">
 							{%- render 'icon', icon: 'cjj_loading' -%}
@@ -983,15 +1221,13 @@
 								<p class="empty-state__icon-description">{{ 'customer.general.no_orders' | t }}</p>
 								<div class="empty-state__button-container">
 									<a href="{{ routes.all_products_collection_url }}"
-										class="empty-state__button button button--primary">{{ 'customer.general.no_orders_button' | t }}</a>
+										class="empty-state__button button button--primary">{{
+										'customer.general.no_orders_button' | t }}</a>
 								</div>
 							</div>
 						</div>
-					
-						<div class="body-me" id="body_me">
-							<!--渲染订单区域-->
 
-						</div>
+						<div class="body-me" id="body_me">{%- comment -%}<!--渲染订单区域-->{%- endcomment -%}</div>
 						<div class="post" id="post">
 							<div class="container">
 								<h3>
@@ -1008,33 +1244,42 @@
 							</ul>
 						</div>
 					</div>
-	
 				</div>
-				
-				{%- comment -%}--------------------VIP 信息和优惠券概览-----------------------{%- endcomment -%}
-				<div class="my_overview account_right_content"  data-type="accountPage">
+
+				{%- comment -%}------------------------VIP 信息和优惠券概览-----------------------{%- endcomment -%}
+				<div class="my_overview account_right_content" data-type="accountPage">
 					{%- comment -%}规则说明{%- endcomment -%}
 					<div class="vip-rules" style="display:none;">
-					
+
 						<div class="close-rule__page">{% render 'icon',icon:'close' %} </div>
-					
+
 						<h1 class="h1 vip-rules__title">About Rules</h1>
 						<h3 class="h3">1. Introduction</h3>
 						<div class="rule-tex">
-							There is no fee for the HYFOL VIP. HYFOL VIP membership is limited to individuals only and limited to one
-							account per individual.It is your identification that represent you are at legal ages to join our program
-							and responsibility for your membership to keep your email and contact details up to date in your Account.HYFOL
-							reserves the right to disqualify Members who have violated any Of theTerms and Conditions. Any
-							fraudulent activity or attempt to manipulate or abuse the program will result in the account being
-							removed from the program without notice. When a Membership is terminated, all outstanding coupons and
+							There is no fee for the HYFOL VIP. HYFOL VIP membership is limited to individuals only and
+							limited to one
+							account per individual.It is your identification that represent you are at legal ages to
+							join our program
+							and responsibility for your membership to keep your email and contact details up to date in
+							your Account.HYFOL
+							reserves the right to disqualify Members who have violated any Of theTerms and Conditions.
+							Any
+							fraudulent activity or attempt to manipulate or abuse the program will result in the account
+							being
+							removed from the program without notice. When a Membership is terminated, all outstanding
+							coupons and
 							outstanding rewards associated with the Membership are forfeited.
 						</div>
 						<h3 class="h3">2. Membership</h3>
 						<div class="rule-tex">
-							Every tier is valid for 12 months from the date the HYFOL VIP member qualifies(exclude silver member). identity
-							validation is required every month.Data refreshes typically take up to 24 hours. Please check your level after
-							24 hours. Once you become a silver member,you will earn a life-long status. Please note that the level of your
-							membership is based on the times of eligible purchases or the amount of eligible spending during the past 12
+							Every tier is valid for 12 months from the date the HYFOL VIP member qualifies(exclude
+							silver member). identity
+							validation is required every month.Data refreshes typically take up to 24 hours. Please
+							check your level after
+							24 hours. Once you become a silver member,you will earn a life-long status. Please note that
+							the level of your
+							membership is based on the times of eligible purchases or the amount of eligible spending
+							during the past 12
 							months which is 45 days before the refresh date every month.
 							<table border="1px" class="rule-table">
 								<thead>
@@ -1088,13 +1333,15 @@
 									</tr>
 								</tbody>
 							</table>
-							<p style="color:#919191 ;">( The Eligible Purchases means purchases on the HYFOL website during the past 12
+							<p style="color:#919191 ;">( The Eligible Purchases means purchases on the HYFOL website
+								during the past 12
 								months which is 45 days
 								before 10h every month.)</p>
 						</div>
 						<h3 class="h3">3. Rewards </h3>
 						<div class="rule-tex">
-							Membership in the program may entitle you to various ofers in addition to rewards . The details of these
+							Membership in the program may entitle you to various ofers in addition to rewards . The
+							details of these
 							ofers are set out from time to time to your personal acCount.
 						</div>
 					</div>
@@ -1104,7 +1351,8 @@
 							<div class="vip-overview">
 								<div class="vip-user d-flex">
 									<div class="vip-user__avatar">
-										<img class="lazyload" alt="fill" src="https://cdn.shopify.com/s/files/1/0595/0691/7535/files/bd0d72d9c0dedca8253dc2549b1a1017.png?v=1664507136">
+										<img class="lazyload" alt="fill"
+											src="https://cdn.shopify.com/s/files/1/0595/0691/7535/files/bd0d72d9c0dedca8253dc2549b1a1017.png?v=1664507136">
 									</div>
 									<div class="vip-user__name">
 										<span style="margin-bottom:6px; display: block;">{{customer.name}}</span>
@@ -1116,10 +1364,10 @@
 											{% render "icon",icon:'integral' %}
 											<span class="vip-integral">0</span>
 										</div>
-							
+
 									</div>
 								</div>
-							
+
 								<div class="vip-grade d-flex">
 									<span class="vip-level__s0">
 									</span>
@@ -1141,29 +1389,32 @@
 								</div>
 								<p class="vip-info__title">Welcome to the HYFOL VIP</p>
 							</div>
-	
+
 							<div class="vip-overview__rule">
 								<p class="vip-upgrade__info">
-								<span class="vip-upgrade__header">Silver: </span>	US$0.1 or 1 order(s) are required to become a silver member
+									<span class="vip-upgrade__header">Silver: </span> US$0.1 or 1 order(s) are required
+									to become a silver member
 								</p>
 								<p class="vip-upgrade__info">
-									<span class="vip-upgrade__header">Gold: </span>US$120 or 3 order(s) are required to become a gold member
+									<span class="vip-upgrade__header">Gold: </span>US$120 or 3 order(s) are required to
+									become a gold member
 								</p>
 								<p class="vip-upgrade__info">
-								<span class="vip-upgrade__header">Platinum: </span>	US$500 or 5 order(s) are required to become a platinum member
+									<span class="vip-upgrade__header">Platinum: </span> US$500 or 5 order(s) are
+									required to become a platinum member
 								</p>
 								<summary class="vip-rules__link">
 									About rules
 								</summary>
 							</div>
 						</div>
-						
+
 						{%- assign order_unpaid = 0 -%}
 						{%- assign order_processing = 0 -%}
 						{%- assign order_shipped = 0 -%}
 						{%- assign order_payment = 0 -%}
 						{%- assign order_completed = 0 -%}
-					
+
 						{%- for order in customer.orders -%}
 						{% if order.financial_status=='unpaid' or order.financial_status=='pending' %}
 						{%- assign order_unpaid = order_unpaid | plus: 1 -%}
@@ -1181,113 +1432,97 @@
 						{%- assign order_completed = order_completed | plus: 1 -%}
 						{% endif%}
 						{%- endfor -%}
-	
+
 						<div class="my-coupons">
 							<h3 class="h3 my-coupons__title">Unused Coupons</h3>
 							<div class="my-coupons__list my-coupons_empty">
-							<div class="empty">
-								{%- render 'icon',icon:"package" -%}
-								<p>It is empty here :-(</p>
-							</div>
+								<div class="empty">
+									{%- render 'icon',icon:"package" -%}
+									<p>It is empty here :-(</p>
+								</div>
 							</div>
 						</div>
-
-						{%- comment -%}订单导航{%- endcomment -%}
+						{%- comment -%}--------------------------订单导航-----------------------------------{%- endcomment
+						-%}
 						<div class="order-preview overview-box ">
 							<h3 class="h3">My Order</h3>
-								<div class="icon-box">
-									<ul class="d-flex  account-overview__list icons">
-										<li class="order-preview__item" data-nav-type="All">
-											<span class="order-icon">
-												{%- render 'icon', icon: 'cjj_all' -%}
-												{%- comment -%}
-												<span class="empty-state__count redio-icon">{{customer.orders_count}}</span>
-												{%- endcomment -%}
-											</span>
-											<p>All</p>
-											</a>
-										</li>
-										<li class="order-preview__item" data-nav-type="Unpaid">
-											<span class="order-icon">
-												{%- render 'icon', icon: 'cjj_unpaid' -%}
-												{%- if order_unpaid!=0 -%}
-												<span class="empty-state__count redio-icon">{{order_unpaid}}</span>
-												{%- endif -%}
-											</span>
-											<p>Unpaid</p>
-										</li>
-										<li class="order-preview__item"  data-nav-type="Processing">
-											<span class="order-icon">
-												{%- render 'icon', icon: 'cjj_processing' -%}
-												{%- if order_processing!=0 -%}
-												<span class="empty-state__count redio-icon">{{order_processing}}</span>
-												{%- endif -%}
-											</span>
-											<p>Processing</p>
-										</li>
-										<li class="order-preview__item" data-nav-type="Shipped">
-											<span class="order-icon">
-												{%- render 'icon', icon: 'cjj_shipped' -%}
-												{%- if order_shipped!=0 -%}
-												<span class="empty-state__count redio-icon">{{order_shipped}}</span>
-					
-												{%- endif -%}
-											</span>
-											<p>Shipped</p>
-										</li>
-					
-										<li class="order-preview__item" data-nav-type="Payment">
-											<span class="order-icon">
-												{%- render 'icon', icon: 'cjj_payment' -%}
-												{%- if order_payment!=0 -%}
-												<span class="empty-state__count redio-icon">{{order_payment}}</span>
-					
-												{%- endif -%}
-											</span>
-											<p>Payment</p>
-										</li>
-										<li class="order-preview__item" data-nav-type="Completed">
-											<span class="order-icon">
-												{%- render 'icon', icon: 'cjj_completed' -%}
-												{%- if order_completed!=0 -%}
-												<span class="empty-state__count redio-icon">{{order_completed}}</span>
-					
-												{%- endif -%}
-											</span>
-											<p>Completed</p>
-										</li>
-										<li class="order-preview__item" data-nav-type="Post-sale">
-											<span class="order-icon">
-												{%- render 'icon', icon: 'cjj_post_sale' -%}<br />
-											</span>
-											<p>Post-sale</p>
-										</li>
-									</ul>
-								</div>
+							<div class="icon-box">
+								<ul class="d-flex  account-overview__list icons">
+									<li class="order-preview__item" data-nav-type="All">
+										<span class="order-icon">
+											{%- render 'icon', icon: 'cjj_all' -%}
+											{%- comment -%}
+											<span class="empty-state__count redio-icon">{{customer.orders_count}}</span>
+											{%- endcomment -%}
+										</span>
+										<p>All</p>
+										</a>
+									</li>
+									<li class="order-preview__item" data-nav-type="Unpaid">
+										<span class="order-icon">
+											{%- render 'icon', icon: 'cjj_unpaid' -%}
+											{%- if order_unpaid!=0 -%}
+											<span class="empty-state__count redio-icon">{{order_unpaid}}</span>
+											{%- endif -%}
+										</span>
+										<p>Unpaid</p>
+									</li>
+									<li class="order-preview__item" data-nav-type="Processing">
+										<span class="order-icon">
+											{%- render 'icon', icon: 'cjj_processing' -%}
+											{%- if order_processing!=0 -%}
+											<span class="empty-state__count redio-icon">{{order_processing}}</span>
+											{%- endif -%}
+										</span>
+										<p>Processing</p>
+									</li>
+									<li class="order-preview__item" data-nav-type="Shipped">
+										<span class="order-icon">
+											{%- render 'icon', icon: 'cjj_shipped' -%}
+											{%- if order_shipped!=0 -%}
+											<span class="empty-state__count redio-icon">{{order_shipped}}</span>
+
+											{%- endif -%}
+										</span>
+										<p>Shipped</p>
+									</li>
+
+									<li class="order-preview__item" data-nav-type="Payment">
+										<span class="order-icon">
+											{%- render 'icon', icon: 'cjj_payment' -%}
+											{%- if order_payment!=0 -%}
+											<span class="empty-state__count redio-icon">{{order_payment}}</span>
+
+											{%- endif -%}
+										</span>
+										<p>Payment</p>
+									</li>
+									<li class="order-preview__item" data-nav-type="Completed">
+										<span class="order-icon">
+											{%- render 'icon', icon: 'cjj_completed' -%}
+											{%- if order_completed!=0 -%}
+											<span class="empty-state__count redio-icon">{{order_completed}}</span>
+											{%- endif -%}
+										</span>
+										<p>Completed</p>
+									</li>
+									<li class="order-preview__item" data-nav-type="Post-sale">
+										<span class="order-icon">
+											{%- render 'icon', icon: 'cjj_post_sale' -%}<br />
+										</span>
+										<p>Post-sale</p>
+									</li>
+								</ul>
+							</div>
 						</div>
 
-					{%- comment -%}
-					<div class="overview-box points-box">
-						<h1>Points For</h1>
-						<div class="points-img">
-							{%- if section.settings.points_rule!= blank -%}
-							{%- assign points_image = section.settings.points_rule -%}
-							{%- capture supported_sizes -%}{%- render 'image-size', sizes: '200,300,400,500', image: points_image -%}{%-
-							endcapture -%}
-							{%- assign image_url = points_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
-							<img class="lazyload" alt="{{ points_image.alt | escape }}" data-src="{{ image_url }}"
-								data-widths="[{{ supported_sizes }}]" data-sizes="auto">
-							{%- endif -%}
-				
-						</div>
 					</div>
-					{%- endcomment -%}
-					</div>	
 
 				</div>
 
-				{%- comment -%}---------------------优惠券--------------------------{%- endcomment -%}
-				<div class="my_coupons account_right_content backgrount_e"  data-type="accountPage">
+				{%- comment -%}--------------------------------------优惠券-------------------------------------------{%-
+				endcomment -%}
+				<div class="my_coupons account_right_content backgrount_e" data-type="accountPage">
 					<h3 class="my_coupons__title h3">My Coupons</h3>
 					<details-menu>
 						<div class="coupons-nav d-flex">
@@ -1295,18 +1530,19 @@
 								Unused Coupons
 							</summary>
 							<summary aria-expanded="false" data-index="2">
-								Expired Coupons 
+								Expired Coupons
 							</summary>
 						</div>
 						<div class="unused__coupons page__item" data-index="1" aria-hidden="false">
 							<div class="my-coupons">
-								<!-- <h3 class="h3 my-coupons__title">Unused Coupons</h3> -->
-									<div class="my-coupons__list my-coupons_empty">
-										<div class="empty">
-											{%- render 'icon',icon:"package" -%}
-											<p>It is empty here :-(</p>
-										</div>
+								{% comment %} <!-- <h3 class="h3 my-coupons__title">Unused Coupons</h3> --> {%
+								endcomment %}
+								<div class="my-coupons__list my-coupons_empty">
+									<div class="empty">
+										{%- render 'icon',icon:"package" -%}
+										<p>It is empty here :-(</p>
 									</div>
+								</div>
 							</div>
 						</div>
 						<div class="expired__coupons page__item" data-index="2" aria-hidden="true">
@@ -1320,7 +1556,7 @@
 								</div>
 							</div>
 						</div>
-						</details-menu>
+					</details-menu>
 				</div>
 
 				{%- comment -%}---------------------------------------{%- endcomment -%}
@@ -1328,13 +1564,13 @@
 					{%- comment -%}
 					<div class="profile-view backgrount_e">
 						<h3 class="h3" style="text-align:center;">My Profile</h3>
-				
+
 						<div class="profiles-form">
 							<label for="my_name">The Name</label>
 							<input type="text" name="" id="my_name">
 							<label for="my_brithday">Birthday</label>
 							<input type="text" name="" id="my_brithday">
-							
+
 							Fill In For 30+Points
 							<div>
 								<input type="checkbox" name="" id="checkbox-y">
@@ -1352,13 +1588,13 @@
 					{%- endcomment -%}
 				</div>
 
-				{%- comment -%}-------------------------积分概览------------------------{%- endcomment -%}
+				{%- comment -%}----------------------------积分概览------------------------{%- endcomment -%}
 				<div class="my_profile account_right_content" data-type="accountPage">
 					<div class="profile-view backgrount_e">
-						<h3 class="h3" >My Profile</h3>
+						<h3 class="h3">My Profile</h3>
 						<div class="my-profile__view ">
 							<div class="profile-total">
-								<div class="profile_total"><strong >0</strong></div>
+								<div class="profile_total"><strong>0</strong></div>
 								<div class="profile_heading">Total Points</div>
 							</div>
 							<span style="background-color: #aaa;height: 100%;width: 1px;margin: 0 auto;"></span>
@@ -1368,7 +1604,7 @@
 							</div>
 						</div>
 					</div>
-					
+
 					{%- comment -%}-----------------积分记录----------------------{%- endcomment -%}
 					<div class="profile-record backgrount_e">
 						<h4 class="profile-story__title">Profile Detalls</h4>
@@ -1398,12 +1634,16 @@
 										</tr>
 									</thead>
 									<tbody>
-										<tr><td colspan="4"><div class="my-coupons_empty">
-											<div class="empty">
-												{%- render 'icon',icon:"package" -%}
-												<p>It is empty here :-(</p>
-											</div>
-										</div></td></tr>
+										<tr>
+											<td colspan="4">
+												<div class="my-coupons_empty">
+													<div class="empty">
+														{%- render 'icon',icon:"package" -%}
+														<p>It is empty here :-(</p>
+													</div>
+												</div>
+											</td>
+										</tr>
 									</tbody>
 								</table>
 							</div>
@@ -1418,12 +1658,16 @@
 										</tr>
 									</thead>
 									<tbody>
-										<tr><td colspan="4"><div class="my-coupons_empty">
-											<div class="empty">
-												{%- render 'icon',icon:"package" -%}
-												<p>It is empty here :-(</p>
-											</div>
-										</div></td></tr>
+										<tr>
+											<td colspan="4">
+												<div class="my-coupons_empty">
+													<div class="empty">
+														{%- render 'icon',icon:"package" -%}
+														<p>It is empty here :-(</p>
+													</div>
+												</div>
+											</td>
+										</tr>
 									</tbody>
 								</table>
 							</div>
@@ -1438,12 +1682,16 @@
 										</tr>
 									</thead>
 									<tbody>
-										<tr><td colspan="4"><div class="my-coupons_empty">
-											<div class="empty">
-												{%- render 'icon',icon:"package" -%}
-												<p>It is empty here :-(</p>
-											</div>
-										</div></td></tr>
+										<tr>
+											<td colspan="4">
+												<div class="my-coupons_empty">
+													<div class="empty">
+														{%- render 'icon',icon:"package" -%}
+														<p>It is empty here :-(</p>
+													</div>
+												</div>
+											</td>
+										</tr>
 									</tbody>
 								</table>
 							</div>
@@ -1458,607 +1706,800 @@
 										</tr>
 									</thead>
 									<tbody>
-										<tr><td colspan="4"><div class="my-coupons_empty">
-											<div class="empty">
-												{%- render 'icon',icon:"package" -%}
-												<p>It is empty here :-(</p>
-											</div>
-										</div></td></tr>
+										<tr>
+											<td colspan="4">
+												<div class="my-coupons_empty">
+													<div class="empty">
+														{%- render 'icon',icon:"package" -%}
+														<p>It is empty here :-(</p>
+													</div>
+												</div>
+											</td>
+										</tr>
 									</tbody>
 								</table>
 							</div>
 						</details-menu>
 					</div>
 				</div>
-				
+
 				{%- comment -%}----------------------------客户地址------------------------{%- endcomment -%}
 				<div class="my_addresses account_right_content " data-type="accountPage">
 					<section data-section-id="{{ section.id }}" data-section-type="account">
 						<div class="container container--flush">
-							  <div class="card">
+							<div class="card">
 								<div class="card__section card__section--flex card__section--tight">
-								  <h1 class="card__title heading h1">{{ 'customer.general.addresses' | t }} {% if customer.addresses_count > 0 %}({{ customer.addresses_count }}){% endif %}</h1>
-								  {%- if customer.addresses_count > 0 -%}
-									<button class="button button--small button--primary" data-action="open-modal" aria-controls="modal-address-new">{{ 'customer.addresses.add_address' | t }}</button>
-								  {%- endif -%}
+									<h1 class="card__title heading h1">{{ 'customer.general.addresses' | t }} {% if
+										customer.addresses_count > 0 %}({{ customer.addresses_count }}){% endif %}</h1>
+									{%- if customer.addresses_count > 0 -%}
+									<button class="button button--small button--primary" data-action="open-modal"
+										aria-controls="modal-address-new">{{ 'customer.addresses.add_address' | t
+										}}</button>
+									{%- endif -%}
 								</div>
-					  
+
 								{%- if customer.addresses_count == 0 -%}
-								  <div class="card__section">
+								<div class="card__section">
 									<div class="empty-state empty-state--extra-tight">
-									  <div class="empty-state__icon">
-										{%- render 'icon', icon: 'address' -%}
-										<span class="empty-state__count">0</span>
-									  </div>
-					  
-									  <p class="empty-state__icon-description">{{ 'customer.addresses.no_addresses' | t }}</p>
-					  
-									  <div class="empty-state__button-container">
-										<button class="empty-state__button button button--primary" data-action="open-modal" aria-controls="modal-address-new">{{ 'customer.addresses.no_addresses_button' | t }}</button>
-									  </div>
+										<div class="empty-state__icon">
+											{%- render 'icon', icon: 'address' -%}
+											<span class="empty-state__count">0</span>
+										</div>
+
+										<p class="empty-state__icon-description">{{ 'customer.addresses.no_addresses' |
+											t }}</p>
+
+										<div class="empty-state__button-container">
+											<button class="empty-state__button button button--primary"
+												data-action="open-modal" aria-controls="modal-address-new">{{
+												'customer.addresses.no_addresses_button' | t }}</button>
+										</div>
 									</div>
-								  </div>
-								  
+								</div>
+
 								{%- else -%}
-								  {%- paginate customer.addresses by 8 -%}
-									<div class="address-list">
-									  <div class="address-list__item" data-address>
+								{%- paginate customer.addresses by 8 -%}
+								<div class="address-list">
+									<div class="address-list__item" data-address>
 										<div class="address-list__item-top">
-										  <p class="heading h6">{{ 'customer.addresses.default_address' | t }}</p>
-										  {{- customer.default_address | format_address -}}
+											<p class="heading h6">{{ 'customer.addresses.default_address' | t }}</p>
+											{{- customer.default_address | format_address -}}
 										</div>
-					  
+
 										<div class="address-list__action-list">
-										  <button class="link link--accented" data-action="open-modal" aria-controls="modal-address-{{ customer.default_address.id }}">{{ 'customer.addresses.edit' | t }}</button>
-										  <!-- <button class="link link--accented" onclick="Shopify.CustomerAddress.destroy({{ customer.default_address.id }}); return false">{{ 'customer.addresses.delete' | t }}</button> -->
-										  <button
-										  type="button" class="link link--accented"
-										  aria-label="{{ 'customer.addresses.delete' | t }} {{ forloop.index }}"
-										  data-target="{{ customer.default_address.url }}"
-										  data-action="deleteAddresses"
-										  data-confirm-message="{{ 'customer.addresses.delete_confirm' | t }}"
-										>
-										  {{ 'customer.addresses.delete' | t }}
-										</button>
-										</div>
-									  </div>
-					  
-									  {%- assign address_count = paginate.current_offset | plus: 2 -%}
-					  
-									  {%- for address in customer.addresses -%}
-										{%- if address.id == customer.default_address.id -%}
-										  {%- continue -%}
-										{%- endif -%}
-					  
-										<div class="address-list__item">
-										  <div class="address-list__item-top">
-											<p class="heading h6">{{ 'customer.addresses.address_number' | t: number: address_count }}</p>
-											{{- address | format_address -}}
-										  </div>
-					  
-										<div class="address-list__action-list">
-											<button class="link link--accented" data-action="open-modal" aria-controls="modal-address-{{ address.id }}">{{
+											<button class="link link--accented" data-action="open-modal"
+												aria-controls="modal-address-{{ customer.default_address.id }}">{{
 												'customer.addresses.edit' | t }}</button>
-											<!-- <button class="link link--accented" onclick="Shopify.CustomerAddress.destroy({{ address.id }}); return false">{{ 'customer.addresses.delete' | t }}</button> -->
-											<button type="button" class="link link--accented 11111111111111"
-												aria-label="{{ 'customer.addresses.delete' | t }} {{ forloop.index }}" data-target="{{ address.url }}"
+											<!-- <button class="link link--accented" onclick="Shopify.CustomerAddress.destroy({{ customer.default_address.id }}); return false">{{ 'customer.addresses.delete' | t }}</button> -->
+											<button type="button" class="link link--accented"
+												aria-label="{{ 'customer.addresses.delete' | t }} {{ forloop.index }}"
+												data-target="{{ customer.default_address.url }}"
+												data-action="deleteAddresses"
 												data-confirm-message="{{ 'customer.addresses.delete_confirm' | t }}">
 												{{ 'customer.addresses.delete' | t }}
 											</button>
 										</div>
-										</div>
-					  
-										{%- assign address_count = address_count | plus: 1 -%}
-									  {%- endfor -%}
 									</div>
-					  
-									{% render 'pagination', paginate: paginate %}
-								  {% assign dm_paginate_by = paginate.page_size %}{%- endpaginate -%}
+
+									{%- assign address_count = paginate.current_offset | plus: 2 -%}
+
+									{%- for address in customer.addresses -%}
+									{%- if address.id == customer.default_address.id -%}
+									{%- continue -%}
+									{%- endif -%}
+
+									<div class="address-list__item">
+										<div class="address-list__item-top">
+											<p class="heading h6">{{ 'customer.addresses.address_number' | t: number:
+												address_count }}</p>
+											{{- address | format_address -}}
+										</div>
+
+										<div class="address-list__action-list">
+											<button class="link link--accented" data-action="open-modal"
+												aria-controls="modal-address-{{ address.id }}">{{
+												'customer.addresses.edit' | t }}</button>
+											<!-- <button class="link link--accented" onclick="Shopify.CustomerAddress.destroy({{ address.id }}); return false">{{ 'customer.addresses.delete' | t }}</button> -->
+											<button type="button" class="link link--accented 11111111111111"
+												aria-label="{{ 'customer.addresses.delete' | t }} {{ forloop.index }}"
+												data-target="{{ address.url }}"
+												data-confirm-message="{{ 'customer.addresses.delete_confirm' | t }}">
+												{{ 'customer.addresses.delete' | t }}
+											</button>
+										</div>
+									</div>
+
+									{%- assign address_count = address_count | plus: 1 -%}
+									{%- endfor -%}
+								</div>
+
+								{% render 'pagination', paginate: paginate %}
+								{% assign dm_paginate_by = paginate.page_size %}{%- endpaginate -%}
 								{%- endif -%}
-							  </div>
-							  
+							</div>
+
 						</div>
-					  
+
 
 						{%- assign new_form_errored = false -%}
-					  
+
 						{%- capture form_status -%}
-						  {%- form 'customer_address', customer.new_address, class: 'form' -%}
-							{%- if form.errors -%}
-							  {%- assign new_form_errored = true -%}
-							{%- endif -%}
-						  {%- endform -%}
+						{%- form 'customer_address', customer.new_address, class: 'form' -%}
+						{%- if form.errors -%}
+						{%- assign new_form_errored = true -%}
+						{%- endif -%}
+						{%- endform -%}
 						{%- endcapture -%}
-					  
-						<div id="modal-address-new" class="modal" aria-hidden="{% if new_form_errored %}false{% else %}true{% endif %}">
-						  <div class="modal__dialog" role="dialog">
-							<header class="modal__header">
-							  <h3 class="modal__title heading h2">{{ 'customer.addresses.add_address' | t }}</h3>
-							  <button class="modal__close link" data-action="close-modal" title="{{ 'general.accessibility.close' | t | escape }}">
-								{%- render 'icon', icon: 'close' -%}
-							  </button>
-							</header>
-					  
-							<div class="modal__content modal__content--ios-push">
-							  <p class="modal__description">{{ 'customer.addresses.form_subtitle' | t }}</p>
-					  
-							  {%- form 'customer_address', customer.new_address, class: 'form' -%}
-								{%- if form.errors -%}
-								  <div class="alert alert--error">
-									<ul class="alert__error-list" role="list">
-									  {%- for field in form.errors -%}
-										{%- if field == 'form' -%}
-										  <li class="alert__error-item">{{ form.errors.messages[field] }}</li>
-										{%- else -%}
-										  <li class="alert__error-item"><strong>{{ form.errors.translated_fields[field] }}</strong> {{ form.errors.messages[field] }}</li>
-										{%- endif -%}
-									  {%- endfor -%}
-									</ul>
-								  </div>
-								{%- endif -%}
-					  
-								{%- if request.locale.iso_code == 'ja' -%}
-								  <div class="form__input-wrapper form__input-wrapper--labelled">
-									<input id="address-new[last_name]" type="text" class="form__field form__field--text {% if form.last_name != blank %}is-filled{% endif %}" name="address[last_name]" value="{{ form.last_name }}" autofocus>
-									<label for="address-new[last_name]" class="form__floating-label">{{ 'customer.addresses.last_name' | t }}</label>
-								  </div>
-					  
-								  <div class="form__input-wrapper form__input-wrapper--labelled">
-									<input id="address-new[first_name]" type="text" class="form__field form__field--text {% if form.first_name != blank %}is-filled{% endif %}" name="address[first_name]" value="{{ form.first_name }}">
-									<label for="address-new[first_name]" class="form__floating-label">{{ 'customer.addresses.first_name' | t }}</label>
-								  </div>
-					  
-								  <div class="form__input-wrapper form__input-wrapper--labelled">
-									<input id="address-new[zip]" type="text" class="form__field form__field--text {% if form.zip != blank %}is-filled{% endif %}" name="address[zip]" value="{{ form.zip }}">
-									<label for="address-new[zip]" class="form__floating-label">{{ 'customer.addresses.zip' | t }}</label>
-								  </div>
-					  
-								  <div class="form__input-wrapper form__input-wrapper--labelled">
-									<div class="select-wrapper select-wrapper--primary is-filled">
-									  {%- render 'icon', icon: 'arrow-bottom' -%}
-									  <select name="address[country]" id="address-new[country]">{{ all_country_option_tags }}</select>
-									</div>
-					  
-									<label for="address-new[country]" class="form__floating-label">{{ 'customer.addresses.country' | t }}</label>
-								  </div>
-					  
-								  <div class="form__input-wrapper form__input-wrapper--labelled" style="display: none">
-									<div class="select-wrapper select-wrapper--primary is-filled">
-									  {%- render 'icon', icon: 'arrow-bottom' -%}
-									  <select name="address[province]" id="address-new[province]"></select>
-									</div>
-					  
-									<label for="address-new[province]" class="form__floating-label">{{ 'customer.addresses.province' | t }}</label>
-								  </div>
-					  
-								  <div class="form__input-wrapper form__input-wrapper--labelled">
-									<input id="address-new[city]" type="text" class="form__field form__field--text {% if form.city != blank %}is-filled{% endif %}" name="address[city]" value="{{ form.city }}">
-									<label for="address-new[city]" class="form__floating-label">{{ 'customer.addresses.city' | t }}</label>
-								  </div>
-					  
-								  <div class="form__input-wrapper form__input-wrapper--labelled">
-									<input id="address-new[address1]" type="text" class="form__field form__field--text {% if form.address1 != blank %}is-filled{% endif %}" name="address[address1]" value="{{ form.address1 }}">
-									<label for="address-new[address1]" class="form__floating-label">{{ 'customer.addresses.address1' | t }}</label>
-								  </div>
-					  
-								  <div class="form__input-wrapper form__input-wrapper--labelled">
-									<input id="address-new[address2]" type="text" class="form__field form__field--text {% if form.address2 != blank %}is-filled{% endif %}" name="address[address2]" value="{{ form.address2 }}">
-									<label for="address-new[address2]" class="form__floating-label">{{ 'customer.addresses.address2' | t }}</label>
-								  </div>
-					  
-								  <div class="form__input-wrapper form__input-wrapper--labelled">
-									<input id="address-new[company]" type="text" class="form__field form__field--text {% if form.company != blank %}is-filled{% endif %}" name="address[company]" value="{{ form.company }}">
-									<label for="address-new[company]" class="form__floating-label">{{ 'customer.addresses.company' | t }}</label>
-								  </div>
-					  
-								  <div class="form__input-wrapper form__input-wrapper--labelled">
-									<input id="address-new[phone]" type="text" class="form__field form__field--text {% if form.phone != blank %}is-filled{% endif %}" name="address[phone]" value="{{ form.phone }}">
-									<label for="address-new[phone]" class="form__floating-label">{{ 'customer.addresses.phone' | t }}</label>
-								  </div>
-								{%- else -%}
-								  <div class="form__input-wrapper form__input-wrapper--labelled">
-									<input id="address-new[first_name]" type="text" class="form__field form__field--text {% if form.first_name != blank %}is-filled{% endif %}" name="address[first_name]" value="{{ form.first_name }}" autofocus>
-									<label for="address-new[first_name]" class="form__floating-label">{{ 'customer.addresses.first_name' | t }}</label>
-								  </div>
-					  
-								  <div class="form__input-wrapper form__input-wrapper--labelled">
-									<input id="address-new[last_name]" type="text" class="form__field form__field--text {% if form.last_name != blank %}is-filled{% endif %}" name="address[last_name]" value="{{ form.last_name }}">
-									<label for="address-new[last_name]" class="form__floating-label">{{ 'customer.addresses.last_name' | t }}</label>
-								  </div>
-					  
-								  <div class="form__input-wrapper form__input-wrapper--labelled">
-									<input id="address-new[company]" type="text" class="form__field form__field--text {% if form.company != blank %}is-filled{% endif %}" name="address[company]" value="{{ form.company }}">
-									<label for="address-new[company]" class="form__floating-label">{{ 'customer.addresses.company' | t }}</label>
-								  </div>
-					  
-								  <div class="form__input-wrapper form__input-wrapper--labelled">
-									<input id="address-new[phone]" type="text" class="form__field form__field--text {% if form.phone != blank %}is-filled{% endif %}" name="address[phone]" value="{{ form.phone }}">
-									<label for="address-new[phone]" class="form__floating-label">{{ 'customer.addresses.phone' | t }}</label>
-								  </div>
-					  
-								  <div class="form__input-wrapper form__input-wrapper--labelled">
-									<input id="address-new[address1]" type="text" class="form__field form__field--text {% if form.address1 != blank %}is-filled{% endif %}" name="address[address1]" value="{{ form.address1 }}">
-									<label for="address-new[address1]" class="form__floating-label">{{ 'customer.addresses.address1' | t }}</label>
-								  </div>
-					  
-								  <div class="form__input-wrapper form__input-wrapper--labelled">
-									<input id="address-new[address2]" type="text" class="form__field form__field--text {% if form.address2 != blank %}is-filled{% endif %}" name="address[address2]" value="{{ form.address2 }}">
-									<label for="address-new[address2]" class="form__floating-label">{{ 'customer.addresses.address2' | t }}</label>
-								  </div>
-					  
-								  <div class="form__input-row">
-									<div class="form__input-wrapper form__input-wrapper--labelled">
-									  <input id="address-new[city]" type="text" class="form__field form__field--text {% if form.city != blank %}is-filled{% endif %}" name="address[city]" value="{{ form.city }}">
-									  <label for="address-new[city]" class="form__floating-label">{{ 'customer.addresses.city' | t }}</label>
-									</div>
-					  
-									<div class="form__input-wrapper form__input-wrapper--labelled">
-									  <input id="address-new[zip]" type="text" class="form__field form__field--text {% if form.zip != blank %}is-filled{% endif %}" name="address[zip]" value="{{ form.zip }}">
-									  <label for="address-new[zip]" class="form__floating-label">{{ 'customer.addresses.zip' | t }}</label>
-									</div>
-								  </div>
-					  
-								  <div class="form__input-wrapper form__input-wrapper--labelled">
-									<div class="select-wrapper select-wrapper--primary is-filled">
-									  {%- render 'icon', icon: 'arrow-bottom' -%}
-									  <select name="address[country]" id="address-new[country]">{{ all_country_option_tags }}</select>
-									</div>
-					  
-									<label for="address-new[country]" class="form__floating-label">{{ 'customer.addresses.country' | t }}</label>
-								  </div>
-					  
-								  <div class="form__input-wrapper form__input-wrapper--labelled" style="display: none">
-									<div class="select-wrapper select-wrapper--primary is-filled">
-									  {%- render 'icon', icon: 'arrow-bottom' -%}
-									  <select name="address[province]" id="address-new[province]"></select>
-									</div>
-					  
-									<label for="address-new[province]" class="form__floating-label">{{ 'customer.addresses.province' | t }}</label>
-								  </div>
-								{%- endif -%}
-					  
-								<div class="form__input-wrapper form__input-wrapper--labelled">
-								  <div class="checkbox-wrapper">
-									<input type="checkbox" class="checkbox" name="address[default]" id="address-new[default]" value="0">
-									{% render 'icon', icon: 'check' %}
-								  </div>
-					  
-								  <label for="address-new[default]">{{ 'customer.addresses.set_default' | t }}</label>
-								</div>
-					  
-								<button 
-								  class="form__submit button button--primary button--full"               
-								  data-scenable="1"   
-								  data-sctype="profile_set"
-								  data-submitForm
-								>{{ 'customer.addresses.add_address' | t }}</button>
-							  {%- endform -%}
-							</div>
-						  </div>
-						</div>
-					  
-					  
-						<div id="modal-address-{{ customer.default_address.id }}" class="modal" aria-hidden="true">
-						  <div class="modal__dialog" role="dialog">
-							<header class="modal__header">
-							  <h3 class="modal__title heading h2">{{ 'customer.addresses.edit_address' | t }}</h3>
-							  <button class="modal__close link" data-action="close-modal" title="{{ 'general.accessibility.close' | t | escape }}">
-								{%- render 'icon', icon: 'close' -%}
-							  </button>
-							</header>
-					  
-							<div class="modal__content modal__content--ios-push">
-							  <p class="modal__description">{{ 'customer.addresses.form_subtitle' | t }}</p>
-					  
-							  {% form 'customer_address', customer.default_address, class: 'form' %}
-								{%- if request.locale.iso_code == 'ja' -%}
-								  <div class="form__input-wrapper form__input-wrapper--labelled">
-									<input id="address-{{ address.id }}[last_name]" type="text" class="form__field form__field--text {% if form.last_name != blank %}is-filled{% endif %}" name="address[last_name]" value="{{ form.last_name }}" autofocus>
-									<label for="address-{{ address.id }}[last_name]" class="form__floating-label">{{ 'customer.addresses.last_name' | t }}</label>
-								  </div>
-					  
-								  <div class="form__input-wrapper form__input-wrapper--labelled">
-									<input id="address-{{ address.id }}[first_name]" type="text" class="form__field form__field--text {% if form.first_name != blank %}is-filled{% endif %}" name="address[first_name]" value="{{ form.first_name }}">
-									<label for="address-{{ address.id }}[first_name]" class="form__floating-label">{{ 'customer.addresses.first_name' | t }}</label>
-								  </div>
-					  
-								  <div class="form__input-wrapper form__input-wrapper--labelled">
-									<input id="address-{{ address.id }}[zip]" type="text" class="form__field form__field--text {% if form.zip != blank %}is-filled{% endif %}" name="address[zip]" value="{{ form.zip }}">
-									<label for="address-{{ address.id }}[zip]" class="form__floating-label">{{ 'customer.addresses.zip' | t }}</label>
-								  </div>
-					  
-								  <div class="form__input-wrapper form__input-wrapper--labelled">
-									<div class="select-wrapper select-wrapper--primary is-filled">
-									  {%- render 'icon', icon: 'arrow-bottom' -%}
-									  <select name="address[country]" id="address-{{ address.id }}[country]" data-default="{{ form.country }}">{{ all_country_option_tags }}</select>
-									</div>
-					  
-									<label for="address-{{ address.id }}[country]" class="form__floating-label">{{ 'customer.addresses.country' | t }}</label>
-								  </div>
-					  
-								  <div class="form__input-wrapper form__input-wrapper--labelled" style="display: none">
-									<div class="select-wrapper select-wrapper--primary is-filled">
-									  {%- render 'icon', icon: 'arrow-bottom' -%}
-									  <select name="address[province]" id="address-{{ address.id }}[province]" data-default="{{ form.province }}"></select>
-									</div>
-					  
-									<label for="address-{{ address.id }}[province]" class="form__floating-label">{{ 'customer.addresses.province' | t }}</label>
-								  </div>
-					  
-								  <div class="form__input-wrapper form__input-wrapper--labelled">
-									<input id="address-{{ address.id }}[city]" type="text" class="form__field form__field--text {% if form.city != blank %}is-filled{% endif %}" name="address[city]" value="{{ form.city }}">
-									<label for="address-{{ address.id }}[city]" class="form__floating-label">{{ 'customer.addresses.city' | t }}</label>
-								  </div>
-					  
-								  <div class="form__input-wrapper form__input-wrapper--labelled">
-									<input id="address-{{ address.id }}[address1]" type="text" class="form__field form__field--text {% if form.address1 != blank %}is-filled{% endif %}" name="address[address1]" value="{{ form.address1 }}">
-									<label for="address-{{ address.id }}[address1]" class="form__floating-label">{{ 'customer.addresses.address1' | t }}</label>
-								  </div>
-					  
-								  <div class="form__input-wrapper form__input-wrapper--labelled">
-									<input id="address-{{ address.id }}[address2]" type="text" class="form__field form__field--text {% if form.address2 != blank %}is-filled{% endif %}" name="address[address2]" value="{{ form.address2 }}">
-									<label for="address-{{ address.id }}[address2]" class="form__floating-label">{{ 'customer.addresses.address2' | t }}</label>
-								  </div>
-					  
-								  <div class="form__input-wrapper form__input-wrapper--labelled">
-									<input id="address-{{ address.id }}[company]" type="text" class="form__field form__field--text {% if form.company != blank %}is-filled{% endif %}" name="address[company]" value="{{ form.company }}">
-									<label for="address-{{ address.id }}[company]" class="form__floating-label">{{ 'customer.addresses.company' | t }}</label>
-								  </div>
-					  
-								  <div class="form__input-wrapper form__input-wrapper--labelled">
-									<input id="address-{{ address.id }}[phone]" type="text" class="form__field form__field--text {% if form.phone != blank %}is-filled{% endif %}" name="address[phone]" value="{{ form.phone }}">
-									<label for="address-{{ address.id }}[phone]" class="form__floating-label">{{ 'customer.addresses.phone' | t }}</label>
-								  </div>
-								{%- else -%}
-								  <div class="form__input-wrapper form__input-wrapper--labelled">
-									<input id="address-{{ address.id }}[first_name]" type="text" class="form__field form__field--text {% if form.first_name != blank %}is-filled{% endif %}" name="address[first_name]" value="{{ form.first_name }}" autofocus>
-									<label for="address-{{ address.id }}[first_name]" class="form__floating-label">{{ 'customer.addresses.first_name' | t }}</label>
-								  </div>
-					  
-								  <div class="form__input-wrapper form__input-wrapper--labelled">
-									<input id="address-{{ address.id }}[last_name]" type="text" class="form__field form__field--text {% if form.last_name != blank %}is-filled{% endif %}" name="address[last_name]" value="{{ form.last_name }}">
-									<label for="address-{{ address.id }}[last_name]" class="form__floating-label">{{ 'customer.addresses.last_name' | t }}</label>
-								  </div>
-					  
-								  <div class="form__input-wrapper form__input-wrapper--labelled">
-									<input id="address-{{ address.id }}[company]" type="text" class="form__field form__field--text {% if form.company != blank %}is-filled{% endif %}" name="address[company]" value="{{ form.company }}">
-									<label for="address-{{ address.id }}[company]" class="form__floating-label">{{ 'customer.addresses.company' | t }}</label>
-								  </div>
-					  
-								  <div class="form__input-wrapper form__input-wrapper--labelled">
-									<input id="address-{{ address.id }}[phone]" type="text" class="form__field form__field--text {% if form.phone != blank %}is-filled{% endif %}" name="address[phone]" value="{{ form.phone }}">
-									<label for="address-{{ address.id }}[phone]" class="form__floating-label">{{ 'customer.addresses.phone' | t }}</label>
-								  </div>
-					  
-								  <div class="form__input-wrapper form__input-wrapper--labelled">
-									<input id="address-{{ address.id }}[address1]" type="text" class="form__field form__field--text {% if form.address1 != blank %}is-filled{% endif %}" name="address[address1]" value="{{ form.address1 }}">
-									<label for="address-{{ address.id }}[address1]" class="form__floating-label">{{ 'customer.addresses.address1' | t }}</label>
-								  </div>
-					  
-								  <div class="form__input-wrapper form__input-wrapper--labelled">
-									<input id="address-{{ address.id }}[address2]" type="text" class="form__field form__field--text {% if form.address2 != blank %}is-filled{% endif %}" name="address[address2]" value="{{ form.address2 }}">
-									<label for="address-{{ address.id }}[address2]" class="form__floating-label">{{ 'customer.addresses.address2' | t }}</label>
-								  </div>
-					  
-								  <div class="form__input-row">
-									<div class="form__input-wrapper form__input-wrapper--labelled">
-									  <input id="address-{{ address.id }}[city]" type="text" class="form__field form__field--text {% if form.city != blank %}is-filled{% endif %}" name="address[city]" value="{{ form.city }}">
-									  <label for="address-{{ address.id }}[city]" class="form__floating-label">{{ 'customer.addresses.city' | t }}</label>
-									</div>
-					  
-									<div class="form__input-wrapper form__input-wrapper--labelled">
-									  <input id="address-{{ address.id }}[zip]" type="text" class="form__field form__field--text {% if form.zip != blank %}is-filled{% endif %}" name="address[zip]" value="{{ form.zip }}">
-									  <label for="address-{{ address.id }}[zip]" class="form__floating-label">{{ 'customer.addresses.zip' | t }}</label>
-									</div>
-								  </div>
-					  
-								  <div class="form__input-wrapper form__input-wrapper--labelled">
-									<div class="select-wrapper select-wrapper--primary is-filled">
-									  {%- render 'icon', icon: 'arrow-bottom' -%}
-									  <select name="address[country]" id="address-{{ address.id }}[country]" data-default="{{ form.country }}">{{ all_country_option_tags }}</select>
-									</div>
-					  
-									<label for="address-{{ address.id }}[country]" class="form__floating-label">{{ 'customer.addresses.country' | t }}</label>
-								  </div>
-					  
-								  <div class="form__input-wrapper form__input-wrapper--labelled" style="display: none">
-									<div class="select-wrapper select-wrapper--primary is-filled">
-									  {%- render 'icon', icon: 'arrow-bottom' -%}
-									  <select name="address[province]" id="address-{{ address.id }}[province]" data-default="{{ form.province }}"></select>
-									</div>
-					  
-									<label for="address-{{ address.id }}[province]" class="form__floating-label">{{ 'customer.addresses.province' | t }}</label>
-								  </div>
-								{%- endif -%}
-					  
-								<div class="form__input-wrapper form__input-wrapper--labelled">
-								  <div class="checkbox-wrapper">
-									<input type="checkbox" class="checkbox" id="address-{{ customer.default_address.id }}[default]" name="address[default]" value="1" checked>
-									{% render 'icon', icon: 'check' %}
-								  </div>
-					  
-								  <label for="address-{{ customer.default_address.id }}[default]">{{ 'customer.addresses.set_default' | t }}</label>
-								</div>
-					  
-								<button 
-								  class="form__submit button button--primary button--full"
-								  data-scenable="1"   
-								  data-sctype="profile_set"
-								>{{ 'customer.addresses.edit_address' | t }}</button>
-							  {% endform %}
-							</div>
-						  </div>
-						</div>
-					  
-					  
-						{%- paginate customer.addresses by 9 -%}
-						  {%- for address in customer.addresses -%}
-							{%- if address.id == customer.default_address.id -%}
-							  {%- continue -%}
-							{%- endif -%}
-					  
-							<div id="modal-address-{{ address.id }}" class="modal" aria-hidden="true">
-							  <div class="modal__dialog" role="dialog">
+
+						<div id="modal-address-new" class="modal"
+							aria-hidden="{% if new_form_errored %}false{% else %}true{% endif %}">
+							<div class="modal__dialog" role="dialog">
 								<header class="modal__header">
-								  <h3 class="modal__title heading h2">{{ 'customer.addresses.edit_address' | t }}</h3>
-								  <button class="modal__close link" data-action="close-modal" title="{{ 'general.accessibility.close' | t | escape }}">
-									{%- render 'icon', icon: 'close' -%}
-								  </button>
+									<h3 class="modal__title heading h2">{{ 'customer.addresses.add_address' | t }}</h3>
+									<button class="modal__close link" data-action="close-modal"
+										title="{{ 'general.accessibility.close' | t | escape }}">
+										{%- render 'icon', icon: 'close' -%}
+									</button>
 								</header>
-					  
+
 								<div class="modal__content modal__content--ios-push">
-								  <p class="modal__description">{{ 'customer.addresses.form_subtitle' | t }}</p>
-					  
-								  {% form 'customer_address', address, class: 'form' %}
-									{%- if request.locale.iso_code == 'ja' -%}
-									  <div class="form__input-wrapper form__input-wrapper--labelled">
-										<input id="address-{{ address.id }}[last_name]" type="text" class="form__field form__field--text {% if form.last_name != blank %}is-filled{% endif %}" name="address[last_name]" value="{{ form.last_name }}" autofocus>
-										<label for="address-{{ address.id }}[last_name]" class="form__floating-label">{{ 'customer.addresses.last_name' | t }}</label>
-									  </div>
-					  
-									  <div class="form__input-wrapper form__input-wrapper--labelled">
-										<input id="address-{{ address.id }}[first_name]" type="text" class="form__field form__field--text {% if form.first_name != blank %}is-filled{% endif %}" name="address[first_name]" value="{{ form.first_name }}">
-										<label for="address-{{ address.id }}[first_name]" class="form__floating-label">{{ 'customer.addresses.first_name' | t }}</label>
-									  </div>
-					  
-									  <div class="form__input-wrapper form__input-wrapper--labelled">
-										<input id="address-{{ address.id }}[zip]" type="text" class="form__field form__field--text {% if form.zip != blank %}is-filled{% endif %}" name="address[zip]" value="{{ form.zip }}">
-										<label for="address-{{ address.id }}[zip]" class="form__floating-label">{{ 'customer.addresses.zip' | t }}</label>
-									  </div>
-					  
-									  <div class="form__input-wrapper form__input-wrapper--labelled">
-										<div class="select-wrapper select-wrapper--primary is-filled">
-										  {%- render 'icon', icon: 'arrow-bottom' -%}
-										  <select name="address[country]" id="address-{{ address.id }}[country]" data-default="{{ form.country }}">{{ all_country_option_tags }}</select>
-										</div>
-					  
-										<label for="address-{{ address.id }}[country]" class="form__floating-label">{{ 'customer.addresses.country' | t }}</label>
-									  </div>
-					  
-									  <div class="form__input-wrapper form__input-wrapper--labelled" style="display: none">
-										<div class="select-wrapper select-wrapper--primary is-filled">
-										  {%- render 'icon', icon: 'arrow-bottom' -%}
-										  <select name="address[province]" id="address-{{ address.id }}[province]" data-default="{{ form.province }}"></select>
-										</div>
-					  
-										<label for="address-{{ address.id }}[province]" class="form__floating-label">{{ 'customer.addresses.province' | t }}</label>
-									  </div>
-					  
-									  <div class="form__input-wrapper form__input-wrapper--labelled">
-										<input id="address-{{ address.id }}[city]" type="text" class="form__field form__field--text {% if form.city != blank %}is-filled{% endif %}" name="address[city]" value="{{ form.city }}">
-										<label for="address-{{ address.id }}[city]" class="form__floating-label">{{ 'customer.addresses.city' | t }}</label>
-									  </div>
-					  
-									  <div class="form__input-wrapper form__input-wrapper--labelled">
-										<input id="address-{{ address.id }}[address1]" type="text" class="form__field form__field--text {% if form.address1 != blank %}is-filled{% endif %}" name="address[address1]" value="{{ form.address1 }}">
-										<label for="address-{{ address.id }}[address1]" class="form__floating-label">{{ 'customer.addresses.address1' | t }}</label>
-									  </div>
-					  
-									  <div class="form__input-wrapper form__input-wrapper--labelled">
-										<input id="address-{{ address.id }}[address2]" type="text" class="form__field form__field--text {% if form.address2 != blank %}is-filled{% endif %}" name="address[address2]" value="{{ form.address2 }}">
-										<label for="address-{{ address.id }}[address2]" class="form__floating-label">{{ 'customer.addresses.address2' | t }}</label>
-									  </div>
-					  
-									  <div class="form__input-wrapper form__input-wrapper--labelled">
-										<input id="address-{{ address.id }}[company]" type="text" class="form__field form__field--text {% if form.company != blank %}is-filled{% endif %}" name="address[company]" value="{{ form.company }}">
-										<label for="address-{{ address.id }}[company]" class="form__floating-label">{{ 'customer.addresses.company' | t }}</label>
-									  </div>
-					  
-									  <div class="form__input-wrapper form__input-wrapper--labelled">
-										<input id="address-{{ address.id }}[phone]" type="text" class="form__field form__field--text {% if form.phone != blank %}is-filled{% endif %}" name="address[phone]" value="{{ form.phone }}">
-										<label for="address-{{ address.id }}[phone]" class="form__floating-label">{{ 'customer.addresses.phone' | t }}</label>
-									  </div>
-									{%- else -%}
-									  <div class="form__input-wrapper form__input-wrapper--labelled">
-										<input id="address-{{ address.id }}[first_name]" type="text" class="form__field form__field--text {% if form.first_name != blank %}is-filled{% endif %}" name="address[first_name]" value="{{ form.first_name }}" autofocus>
-										<label for="address-{{ address.id }}[first_name]" class="form__floating-label">{{ 'customer.addresses.first_name' | t }}</label>
-									  </div>
-					  
-									  <div class="form__input-wrapper form__input-wrapper--labelled">
-										<input id="address-{{ address.id }}[last_name]" type="text" class="form__field form__field--text {% if form.last_name != blank %}is-filled{% endif %}" name="address[last_name]" value="{{ form.last_name }}">
-										<label for="address-{{ address.id }}[last_name]" class="form__floating-label">{{ 'customer.addresses.last_name' | t }}</label>
-									  </div>
-					  
-									  <div class="form__input-wrapper form__input-wrapper--labelled">
-										<input id="address-{{ address.id }}[company]" type="text" class="form__field form__field--text {% if form.company != blank %}is-filled{% endif %}" name="address[company]" value="{{ form.company }}">
-										<label for="address-{{ address.id }}[company]" class="form__floating-label">{{ 'customer.addresses.company' | t }}</label>
-									  </div>
-					  
-									  <div class="form__input-wrapper form__input-wrapper--labelled">
-										<input id="address-{{ address.id }}[phone]" type="text" class="form__field form__field--text {% if form.phone != blank %}is-filled{% endif %}" name="address[phone]" value="{{ form.phone }}">
-										<label for="address-{{ address.id }}[phone]" class="form__floating-label">{{ 'customer.addresses.phone' | t }}</label>
-									  </div>
-					  
-									  <div class="form__input-wrapper form__input-wrapper--labelled">
-										<input id="address-{{ address.id }}[address1]" type="text" class="form__field form__field--text {% if form.address1 != blank %}is-filled{% endif %}" name="address[address1]" value="{{ form.address1 }}">
-										<label for="address-{{ address.id }}[address1]" class="form__floating-label">{{ 'customer.addresses.address1' | t }}</label>
-									  </div>
-					  
-									  <div class="form__input-wrapper form__input-wrapper--labelled">
-										<input id="address-{{ address.id }}[address2]" type="text" class="form__field form__field--text {% if form.address2 != blank %}is-filled{% endif %}" name="address[address2]" value="{{ form.address2 }}">
-										<label for="address-{{ address.id }}[address2]" class="form__floating-label">{{ 'customer.addresses.address2' | t }}</label>
-									  </div>
-					  
-									  <div class="form__input-row">
-										<div class="form__input-wrapper form__input-wrapper--labelled">
-										  <input id="address-{{ address.id }}[city]" type="text" class="form__field form__field--text {% if form.city != blank %}is-filled{% endif %}" name="address[city]" value="{{ form.city }}">
-										  <label for="address-{{ address.id }}[city]" class="form__floating-label">{{ 'customer.addresses.city' | t }}</label>
-										</div>
-					  
-										<div class="form__input-wrapper form__input-wrapper--labelled">
-										  <input id="address-{{ address.id }}[zip]" type="text" class="form__field form__field--text {% if form.zip != blank %}is-filled{% endif %}" name="address[zip]" value="{{ form.zip }}">
-										  <label for="address-{{ address.id }}[zip]" class="form__floating-label">{{ 'customer.addresses.zip' | t }}</label>
-										</div>
-									  </div>
-					  
-									  <div class="form__input-wrapper form__input-wrapper--labelled">
-										<div class="select-wrapper select-wrapper--primary is-filled">
-										  {%- render 'icon', icon: 'arrow-bottom' -%}
-										  <select name="address[country]" id="address-{{ address.id }}[country]" data-default="{{ form.country }}">{{ all_country_option_tags }}</select>
-										</div>
-					  
-										<label for="address-{{ address.id }}[country]" class="form__floating-label">{{ 'customer.addresses.country' | t }}</label>
-									  </div>
-					  
-									  <div class="form__input-wrapper form__input-wrapper--labelled" style="display: none">
-										<div class="select-wrapper select-wrapper--primary is-filled">
-										  {%- render 'icon', icon: 'arrow-bottom' -%}
-										  <select name="address[province]" id="address-{{ address.id }}[province]" data-default="{{ form.province }}"></select>
-										</div>
-					  
-										<label for="address-{{ address.id }}[province]" class="form__floating-label">{{ 'customer.addresses.province' | t }}</label>
-									  </div>
-									{%- endif -%}
-					  
-									<div class="form__input-wrapper form__input-wrapper--labelled">
-									  <div class="checkbox-wrapper">
-										<input type="checkbox" class="checkbox" id="address-{{ address.id }}[default]" name="address[default]" {% if address.id == customer.default_address.id %}value="1" checked{% endif %}>
-										{% render 'icon', icon: 'check' %}
-									  </div>
-					  
-									  <label for="address-{{ address.id }}[default]">{{ 'customer.addresses.set_default' | t }}</label>
+									<p class="modal__description">{{ 'customer.addresses.form_subtitle' | t }}</p>
+
+									{%- form 'customer_address', customer.new_address, class: 'form' -%}
+									{%- if form.errors -%}
+									<div class="alert alert--error">
+										<ul class="alert__error-list" role="list">
+											{%- for field in form.errors -%}
+											{%- if field == 'form' -%}
+											<li class="alert__error-item">{{ form.errors.messages[field] }}</li>
+											{%- else -%}
+											<li class="alert__error-item"><strong>{{
+													form.errors.translated_fields[field] }}</strong> {{
+												form.errors.messages[field] }}</li>
+											{%- endif -%}
+											{%- endfor -%}
+										</ul>
 									</div>
-					  
-									<button 
-									  class="form__submit button button--primary button--full"
-									  data-scenable="1"   
-									  data-sctype="profile_set"
-									>{{ 'customer.addresses.edit_address' | t }}</button>
-								  {% endform %}
+									{%- endif -%}
+
+									{%- if request.locale.iso_code == 'ja' -%}
+									<div class="form__input-wrapper form__input-wrapper--labelled">
+										<input id="address-new[last_name]" type="text"
+											class="form__field form__field--text {% if form.last_name != blank %}is-filled{% endif %}"
+											name="address[last_name]" value="{{ form.last_name }}" autofocus>
+										<label for="address-new[last_name]" class="form__floating-label">{{
+											'customer.addresses.last_name' | t }}</label>
+									</div>
+
+									<div class="form__input-wrapper form__input-wrapper--labelled">
+										<input id="address-new[first_name]" type="text"
+											class="form__field form__field--text {% if form.first_name != blank %}is-filled{% endif %}"
+											name="address[first_name]" value="{{ form.first_name }}">
+										<label for="address-new[first_name]" class="form__floating-label">{{
+											'customer.addresses.first_name' | t }}</label>
+									</div>
+
+									<div class="form__input-wrapper form__input-wrapper--labelled">
+										<input id="address-new[zip]" type="text"
+											class="form__field form__field--text {% if form.zip != blank %}is-filled{% endif %}"
+											name="address[zip]" value="{{ form.zip }}">
+										<label for="address-new[zip]" class="form__floating-label">{{
+											'customer.addresses.zip' | t }}</label>
+									</div>
+
+									<div class="form__input-wrapper form__input-wrapper--labelled">
+										<div class="select-wrapper select-wrapper--primary is-filled">
+											{%- render 'icon', icon: 'arrow-bottom' -%}
+											<select name="address[country]" id="address-new[country]">{{
+												all_country_option_tags }}</select>
+										</div>
+
+										<label for="address-new[country]" class="form__floating-label">{{
+											'customer.addresses.country' | t }}</label>
+									</div>
+
+									<div class="form__input-wrapper form__input-wrapper--labelled"
+										style="display: none">
+										<div class="select-wrapper select-wrapper--primary is-filled">
+											{%- render 'icon', icon: 'arrow-bottom' -%}
+											<select name="address[province]" id="address-new[province]"></select>
+										</div>
+
+										<label for="address-new[province]" class="form__floating-label">{{
+											'customer.addresses.province' | t }}</label>
+									</div>
+
+									<div class="form__input-wrapper form__input-wrapper--labelled">
+										<input id="address-new[city]" type="text"
+											class="form__field form__field--text {% if form.city != blank %}is-filled{% endif %}"
+											name="address[city]" value="{{ form.city }}">
+										<label for="address-new[city]" class="form__floating-label">{{
+											'customer.addresses.city' | t }}</label>
+									</div>
+
+									<div class="form__input-wrapper form__input-wrapper--labelled">
+										<input id="address-new[address1]" type="text"
+											class="form__field form__field--text {% if form.address1 != blank %}is-filled{% endif %}"
+											name="address[address1]" value="{{ form.address1 }}">
+										<label for="address-new[address1]" class="form__floating-label">{{
+											'customer.addresses.address1' | t }}</label>
+									</div>
+
+									<div class="form__input-wrapper form__input-wrapper--labelled">
+										<input id="address-new[address2]" type="text"
+											class="form__field form__field--text {% if form.address2 != blank %}is-filled{% endif %}"
+											name="address[address2]" value="{{ form.address2 }}">
+										<label for="address-new[address2]" class="form__floating-label">{{
+											'customer.addresses.address2' | t }}</label>
+									</div>
+
+									<div class="form__input-wrapper form__input-wrapper--labelled">
+										<input id="address-new[company]" type="text"
+											class="form__field form__field--text {% if form.company != blank %}is-filled{% endif %}"
+											name="address[company]" value="{{ form.company }}">
+										<label for="address-new[company]" class="form__floating-label">{{
+											'customer.addresses.company' | t }}</label>
+									</div>
+
+									<div class="form__input-wrapper form__input-wrapper--labelled">
+										<input id="address-new[phone]" type="text"
+											class="form__field form__field--text {% if form.phone != blank %}is-filled{% endif %}"
+											name="address[phone]" value="{{ form.phone }}">
+										<label for="address-new[phone]" class="form__floating-label">{{
+											'customer.addresses.phone' | t }}</label>
+									</div>
+									{%- else -%}
+									<div class="form__input-wrapper form__input-wrapper--labelled">
+										<input id="address-new[first_name]" type="text"
+											class="form__field form__field--text {% if form.first_name != blank %}is-filled{% endif %}"
+											name="address[first_name]" value="{{ form.first_name }}" autofocus>
+										<label for="address-new[first_name]" class="form__floating-label">{{
+											'customer.addresses.first_name' | t }}</label>
+									</div>
+
+									<div class="form__input-wrapper form__input-wrapper--labelled">
+										<input id="address-new[last_name]" type="text"
+											class="form__field form__field--text {% if form.last_name != blank %}is-filled{% endif %}"
+											name="address[last_name]" value="{{ form.last_name }}">
+										<label for="address-new[last_name]" class="form__floating-label">{{
+											'customer.addresses.last_name' | t }}</label>
+									</div>
+
+									<div class="form__input-wrapper form__input-wrapper--labelled">
+										<input id="address-new[company]" type="text"
+											class="form__field form__field--text {% if form.company != blank %}is-filled{% endif %}"
+											name="address[company]" value="{{ form.company }}">
+										<label for="address-new[company]" class="form__floating-label">{{
+											'customer.addresses.company' | t }}</label>
+									</div>
+
+									<div class="form__input-wrapper form__input-wrapper--labelled">
+										<input id="address-new[phone]" type="text"
+											class="form__field form__field--text {% if form.phone != blank %}is-filled{% endif %}"
+											name="address[phone]" value="{{ form.phone }}">
+										<label for="address-new[phone]" class="form__floating-label">{{
+											'customer.addresses.phone' | t }}</label>
+									</div>
+
+									<div class="form__input-wrapper form__input-wrapper--labelled">
+										<input id="address-new[address1]" type="text"
+											class="form__field form__field--text {% if form.address1 != blank %}is-filled{% endif %}"
+											name="address[address1]" value="{{ form.address1 }}">
+										<label for="address-new[address1]" class="form__floating-label">{{
+											'customer.addresses.address1' | t }}</label>
+									</div>
+
+									<div class="form__input-wrapper form__input-wrapper--labelled">
+										<input id="address-new[address2]" type="text"
+											class="form__field form__field--text {% if form.address2 != blank %}is-filled{% endif %}"
+											name="address[address2]" value="{{ form.address2 }}">
+										<label for="address-new[address2]" class="form__floating-label">{{
+											'customer.addresses.address2' | t }}</label>
+									</div>
+
+									<div class="form__input-row">
+										<div class="form__input-wrapper form__input-wrapper--labelled">
+											<input id="address-new[city]" type="text"
+												class="form__field form__field--text {% if form.city != blank %}is-filled{% endif %}"
+												name="address[city]" value="{{ form.city }}">
+											<label for="address-new[city]" class="form__floating-label">{{
+												'customer.addresses.city' | t }}</label>
+										</div>
+
+										<div class="form__input-wrapper form__input-wrapper--labelled">
+											<input id="address-new[zip]" type="text"
+												class="form__field form__field--text {% if form.zip != blank %}is-filled{% endif %}"
+												name="address[zip]" value="{{ form.zip }}">
+											<label for="address-new[zip]" class="form__floating-label">{{
+												'customer.addresses.zip' | t }}</label>
+										</div>
+									</div>
+
+									<div class="form__input-wrapper form__input-wrapper--labelled">
+										<div class="select-wrapper select-wrapper--primary is-filled">
+											{%- render 'icon', icon: 'arrow-bottom' -%}
+											<select name="address[country]" id="address-new[country]">{{
+												all_country_option_tags }}</select>
+										</div>
+
+										<label for="address-new[country]" class="form__floating-label">{{
+											'customer.addresses.country' | t }}</label>
+									</div>
+
+									<div class="form__input-wrapper form__input-wrapper--labelled"
+										style="display: none">
+										<div class="select-wrapper select-wrapper--primary is-filled">
+											{%- render 'icon', icon: 'arrow-bottom' -%}
+											<select name="address[province]" id="address-new[province]"></select>
+										</div>
+
+										<label for="address-new[province]" class="form__floating-label">{{
+											'customer.addresses.province' | t }}</label>
+									</div>
+									{%- endif -%}
+
+									<div class="form__input-wrapper form__input-wrapper--labelled">
+										<div class="checkbox-wrapper">
+											<input type="checkbox" class="checkbox" name="address[default]"
+												id="address-new[default]" value="0">
+											{% render 'icon', icon: 'check' %}
+										</div>
+
+										<label for="address-new[default]">{{ 'customer.addresses.set_default' | t
+											}}</label>
+									</div>
+
+									<button class="form__submit button button--primary button--full" data-scenable="1"
+										data-sctype="profile_set" data-submitForm>{{ 'customer.addresses.add_address' |
+										t }}</button>
+									{%- endform -%}
 								</div>
-							  </div>
 							</div>
-						  {%- endfor -%}
+						</div>
+
+
+						<div id="modal-address-{{ customer.default_address.id }}" class="modal" aria-hidden="true">
+							<div class="modal__dialog" role="dialog">
+								<header class="modal__header">
+									<h3 class="modal__title heading h2">{{ 'customer.addresses.edit_address' | t }}</h3>
+									<button class="modal__close link" data-action="close-modal"
+										title="{{ 'general.accessibility.close' | t | escape }}">
+										{%- render 'icon', icon: 'close' -%}
+									</button>
+								</header>
+
+								<div class="modal__content modal__content--ios-push">
+									<p class="modal__description">{{ 'customer.addresses.form_subtitle' | t }}</p>
+
+									{% form 'customer_address', customer.default_address, class: 'form' %}
+									{%- if request.locale.iso_code == 'ja' -%}
+									<div class="form__input-wrapper form__input-wrapper--labelled">
+										<input id="address-{{ address.id }}[last_name]" type="text"
+											class="form__field form__field--text {% if form.last_name != blank %}is-filled{% endif %}"
+											name="address[last_name]" value="{{ form.last_name }}" autofocus>
+										<label for="address-{{ address.id }}[last_name]" class="form__floating-label">{{
+											'customer.addresses.last_name' | t }}</label>
+									</div>
+
+									<div class="form__input-wrapper form__input-wrapper--labelled">
+										<input id="address-{{ address.id }}[first_name]" type="text"
+											class="form__field form__field--text {% if form.first_name != blank %}is-filled{% endif %}"
+											name="address[first_name]" value="{{ form.first_name }}">
+										<label for="address-{{ address.id }}[first_name]"
+											class="form__floating-label">{{ 'customer.addresses.first_name' | t
+											}}</label>
+									</div>
+
+									<div class="form__input-wrapper form__input-wrapper--labelled">
+										<input id="address-{{ address.id }}[zip]" type="text"
+											class="form__field form__field--text {% if form.zip != blank %}is-filled{% endif %}"
+											name="address[zip]" value="{{ form.zip }}">
+										<label for="address-{{ address.id }}[zip]" class="form__floating-label">{{
+											'customer.addresses.zip' | t }}</label>
+									</div>
+
+									<div class="form__input-wrapper form__input-wrapper--labelled">
+										<div class="select-wrapper select-wrapper--primary is-filled">
+											{%- render 'icon', icon: 'arrow-bottom' -%}
+											<select name="address[country]" id="address-{{ address.id }}[country]"
+												data-default="{{ form.country }}">{{ all_country_option_tags }}</select>
+										</div>
+
+										<label for="address-{{ address.id }}[country]" class="form__floating-label">{{
+											'customer.addresses.country' | t }}</label>
+									</div>
+
+									<div class="form__input-wrapper form__input-wrapper--labelled"
+										style="display: none">
+										<div class="select-wrapper select-wrapper--primary is-filled">
+											{%- render 'icon', icon: 'arrow-bottom' -%}
+											<select name="address[province]" id="address-{{ address.id }}[province]"
+												data-default="{{ form.province }}"></select>
+										</div>
+
+										<label for="address-{{ address.id }}[province]" class="form__floating-label">{{
+											'customer.addresses.province' | t }}</label>
+									</div>
+
+									<div class="form__input-wrapper form__input-wrapper--labelled">
+										<input id="address-{{ address.id }}[city]" type="text"
+											class="form__field form__field--text {% if form.city != blank %}is-filled{% endif %}"
+											name="address[city]" value="{{ form.city }}">
+										<label for="address-{{ address.id }}[city]" class="form__floating-label">{{
+											'customer.addresses.city' | t }}</label>
+									</div>
+
+									<div class="form__input-wrapper form__input-wrapper--labelled">
+										<input id="address-{{ address.id }}[address1]" type="text"
+											class="form__field form__field--text {% if form.address1 != blank %}is-filled{% endif %}"
+											name="address[address1]" value="{{ form.address1 }}">
+										<label for="address-{{ address.id }}[address1]" class="form__floating-label">{{
+											'customer.addresses.address1' | t }}</label>
+									</div>
+
+									<div class="form__input-wrapper form__input-wrapper--labelled">
+										<input id="address-{{ address.id }}[address2]" type="text"
+											class="form__field form__field--text {% if form.address2 != blank %}is-filled{% endif %}"
+											name="address[address2]" value="{{ form.address2 }}">
+										<label for="address-{{ address.id }}[address2]" class="form__floating-label">{{
+											'customer.addresses.address2' | t }}</label>
+									</div>
+
+									<div class="form__input-wrapper form__input-wrapper--labelled">
+										<input id="address-{{ address.id }}[company]" type="text"
+											class="form__field form__field--text {% if form.company != blank %}is-filled{% endif %}"
+											name="address[company]" value="{{ form.company }}">
+										<label for="address-{{ address.id }}[company]" class="form__floating-label">{{
+											'customer.addresses.company' | t }}</label>
+									</div>
+
+									<div class="form__input-wrapper form__input-wrapper--labelled">
+										<input id="address-{{ address.id }}[phone]" type="text"
+											class="form__field form__field--text {% if form.phone != blank %}is-filled{% endif %}"
+											name="address[phone]" value="{{ form.phone }}">
+										<label for="address-{{ address.id }}[phone]" class="form__floating-label">{{
+											'customer.addresses.phone' | t }}</label>
+									</div>
+									{%- else -%}
+									<div class="form__input-wrapper form__input-wrapper--labelled">
+										<input id="address-{{ address.id }}[first_name]" type="text"
+											class="form__field form__field--text {% if form.first_name != blank %}is-filled{% endif %}"
+											name="address[first_name]" value="{{ form.first_name }}" autofocus>
+										<label for="address-{{ address.id }}[first_name]"
+											class="form__floating-label">{{ 'customer.addresses.first_name' | t
+											}}</label>
+									</div>
+
+									<div class="form__input-wrapper form__input-wrapper--labelled">
+										<input id="address-{{ address.id }}[last_name]" type="text"
+											class="form__field form__field--text {% if form.last_name != blank %}is-filled{% endif %}"
+											name="address[last_name]" value="{{ form.last_name }}">
+										<label for="address-{{ address.id }}[last_name]" class="form__floating-label">{{
+											'customer.addresses.last_name' | t }}</label>
+									</div>
+
+									<div class="form__input-wrapper form__input-wrapper--labelled">
+										<input id="address-{{ address.id }}[company]" type="text"
+											class="form__field form__field--text {% if form.company != blank %}is-filled{% endif %}"
+											name="address[company]" value="{{ form.company }}">
+										<label for="address-{{ address.id }}[company]" class="form__floating-label">{{
+											'customer.addresses.company' | t }}</label>
+									</div>
+
+									<div class="form__input-wrapper form__input-wrapper--labelled">
+										<input id="address-{{ address.id }}[phone]" type="text"
+											class="form__field form__field--text {% if form.phone != blank %}is-filled{% endif %}"
+											name="address[phone]" value="{{ form.phone }}">
+										<label for="address-{{ address.id }}[phone]" class="form__floating-label">{{
+											'customer.addresses.phone' | t }}</label>
+									</div>
+
+									<div class="form__input-wrapper form__input-wrapper--labelled">
+										<input id="address-{{ address.id }}[address1]" type="text"
+											class="form__field form__field--text {% if form.address1 != blank %}is-filled{% endif %}"
+											name="address[address1]" value="{{ form.address1 }}">
+										<label for="address-{{ address.id }}[address1]" class="form__floating-label">{{
+											'customer.addresses.address1' | t }}</label>
+									</div>
+
+									<div class="form__input-wrapper form__input-wrapper--labelled">
+										<input id="address-{{ address.id }}[address2]" type="text"
+											class="form__field form__field--text {% if form.address2 != blank %}is-filled{% endif %}"
+											name="address[address2]" value="{{ form.address2 }}">
+										<label for="address-{{ address.id }}[address2]" class="form__floating-label">{{
+											'customer.addresses.address2' | t }}</label>
+									</div>
+
+									<div class="form__input-row">
+										<div class="form__input-wrapper form__input-wrapper--labelled">
+											<input id="address-{{ address.id }}[city]" type="text"
+												class="form__field form__field--text {% if form.city != blank %}is-filled{% endif %}"
+												name="address[city]" value="{{ form.city }}">
+											<label for="address-{{ address.id }}[city]" class="form__floating-label">{{
+												'customer.addresses.city' | t }}</label>
+										</div>
+
+										<div class="form__input-wrapper form__input-wrapper--labelled">
+											<input id="address-{{ address.id }}[zip]" type="text"
+												class="form__field form__field--text {% if form.zip != blank %}is-filled{% endif %}"
+												name="address[zip]" value="{{ form.zip }}">
+											<label for="address-{{ address.id }}[zip]" class="form__floating-label">{{
+												'customer.addresses.zip' | t }}</label>
+										</div>
+									</div>
+
+									<div class="form__input-wrapper form__input-wrapper--labelled">
+										<div class="select-wrapper select-wrapper--primary is-filled">
+											{%- render 'icon', icon: 'arrow-bottom' -%}
+											<select name="address[country]" id="address-{{ address.id }}[country]"
+												data-default="{{ form.country }}">{{ all_country_option_tags }}</select>
+										</div>
+
+										<label for="address-{{ address.id }}[country]" class="form__floating-label">{{
+											'customer.addresses.country' | t }}</label>
+									</div>
+
+									<div class="form__input-wrapper form__input-wrapper--labelled"
+										style="display: none">
+										<div class="select-wrapper select-wrapper--primary is-filled">
+											{%- render 'icon', icon: 'arrow-bottom' -%}
+											<select name="address[province]" id="address-{{ address.id }}[province]"
+												data-default="{{ form.province }}"></select>
+										</div>
+
+										<label for="address-{{ address.id }}[province]" class="form__floating-label">{{
+											'customer.addresses.province' | t }}</label>
+									</div>
+									{%- endif -%}
+
+									<div class="form__input-wrapper form__input-wrapper--labelled">
+										<div class="checkbox-wrapper">
+											<input type="checkbox" class="checkbox"
+												id="address-{{ customer.default_address.id }}[default]"
+												name="address[default]" value="1" checked>
+											{% render 'icon', icon: 'check' %}
+										</div>
+
+										<label for="address-{{ customer.default_address.id }}[default]">{{
+											'customer.addresses.set_default' | t }}</label>
+									</div>
+
+									<button class="form__submit button button--primary button--full" data-scenable="1"
+										data-sctype="profile_set">{{ 'customer.addresses.edit_address' | t }}</button>
+									{% endform %}
+								</div>
+							</div>
+						</div>
+
+
+						{%- paginate customer.addresses by 9 -%}
+						{%- for address in customer.addresses -%}
+						{%- if address.id == customer.default_address.id -%}
+						{%- continue -%}
+						{%- endif -%}
+
+						<div id="modal-address-{{ address.id }}" class="modal" aria-hidden="true">
+							<div class="modal__dialog" role="dialog">
+								<header class="modal__header">
+									<h3 class="modal__title heading h2">{{ 'customer.addresses.edit_address' | t }}</h3>
+									<button class="modal__close link" data-action="close-modal"
+										title="{{ 'general.accessibility.close' | t | escape }}">
+										{%- render 'icon', icon: 'close' -%}
+									</button>
+								</header>
+
+								<div class="modal__content modal__content--ios-push">
+									<p class="modal__description">{{ 'customer.addresses.form_subtitle' | t }}</p>
+
+									{% form 'customer_address', address, class: 'form' %}
+									{%- if request.locale.iso_code == 'ja' -%}
+									<div class="form__input-wrapper form__input-wrapper--labelled">
+										<input id="address-{{ address.id }}[last_name]" type="text"
+											class="form__field form__field--text {% if form.last_name != blank %}is-filled{% endif %}"
+											name="address[last_name]" value="{{ form.last_name }}" autofocus>
+										<label for="address-{{ address.id }}[last_name]" class="form__floating-label">{{
+											'customer.addresses.last_name' | t }}</label>
+									</div>
+
+									<div class="form__input-wrapper form__input-wrapper--labelled">
+										<input id="address-{{ address.id }}[first_name]" type="text"
+											class="form__field form__field--text {% if form.first_name != blank %}is-filled{% endif %}"
+											name="address[first_name]" value="{{ form.first_name }}">
+										<label for="address-{{ address.id }}[first_name]"
+											class="form__floating-label">{{ 'customer.addresses.first_name' | t
+											}}</label>
+									</div>
+
+									<div class="form__input-wrapper form__input-wrapper--labelled">
+										<input id="address-{{ address.id }}[zip]" type="text"
+											class="form__field form__field--text {% if form.zip != blank %}is-filled{% endif %}"
+											name="address[zip]" value="{{ form.zip }}">
+										<label for="address-{{ address.id }}[zip]" class="form__floating-label">{{
+											'customer.addresses.zip' | t }}</label>
+									</div>
+
+									<div class="form__input-wrapper form__input-wrapper--labelled">
+										<div class="select-wrapper select-wrapper--primary is-filled">
+											{%- render 'icon', icon: 'arrow-bottom' -%}
+											<select name="address[country]" id="address-{{ address.id }}[country]"
+												data-default="{{ form.country }}">{{ all_country_option_tags }}</select>
+										</div>
+
+										<label for="address-{{ address.id }}[country]" class="form__floating-label">{{
+											'customer.addresses.country' | t }}</label>
+									</div>
+
+									<div class="form__input-wrapper form__input-wrapper--labelled"
+										style="display: none">
+										<div class="select-wrapper select-wrapper--primary is-filled">
+											{%- render 'icon', icon: 'arrow-bottom' -%}
+											<select name="address[province]" id="address-{{ address.id }}[province]"
+												data-default="{{ form.province }}"></select>
+										</div>
+
+										<label for="address-{{ address.id }}[province]" class="form__floating-label">{{
+											'customer.addresses.province' | t }}</label>
+									</div>
+
+									<div class="form__input-wrapper form__input-wrapper--labelled">
+										<input id="address-{{ address.id }}[city]" type="text"
+											class="form__field form__field--text {% if form.city != blank %}is-filled{% endif %}"
+											name="address[city]" value="{{ form.city }}">
+										<label for="address-{{ address.id }}[city]" class="form__floating-label">{{
+											'customer.addresses.city' | t }}</label>
+									</div>
+
+									<div class="form__input-wrapper form__input-wrapper--labelled">
+										<input id="address-{{ address.id }}[address1]" type="text"
+											class="form__field form__field--text {% if form.address1 != blank %}is-filled{% endif %}"
+											name="address[address1]" value="{{ form.address1 }}">
+										<label for="address-{{ address.id }}[address1]" class="form__floating-label">{{
+											'customer.addresses.address1' | t }}</label>
+									</div>
+
+									<div class="form__input-wrapper form__input-wrapper--labelled">
+										<input id="address-{{ address.id }}[address2]" type="text"
+											class="form__field form__field--text {% if form.address2 != blank %}is-filled{% endif %}"
+											name="address[address2]" value="{{ form.address2 }}">
+										<label for="address-{{ address.id }}[address2]" class="form__floating-label">{{
+											'customer.addresses.address2' | t }}</label>
+									</div>
+
+									<div class="form__input-wrapper form__input-wrapper--labelled">
+										<input id="address-{{ address.id }}[company]" type="text"
+											class="form__field form__field--text {% if form.company != blank %}is-filled{% endif %}"
+											name="address[company]" value="{{ form.company }}">
+										<label for="address-{{ address.id }}[company]" class="form__floating-label">{{
+											'customer.addresses.company' | t }}</label>
+									</div>
+
+									<div class="form__input-wrapper form__input-wrapper--labelled">
+										<input id="address-{{ address.id }}[phone]" type="text"
+											class="form__field form__field--text {% if form.phone != blank %}is-filled{% endif %}"
+											name="address[phone]" value="{{ form.phone }}">
+										<label for="address-{{ address.id }}[phone]" class="form__floating-label">{{
+											'customer.addresses.phone' | t }}</label>
+									</div>
+									
+									{%- else -%}
+									<div class="form__input-wrapper form__input-wrapper--labelled">
+										<input id="address-{{ address.id }}[first_name]" type="text"
+											class="form__field form__field--text {% if form.first_name != blank %}is-filled{% endif %}"
+											name="address[first_name]" value="{{ form.first_name }}" autofocus>
+										<label for="address-{{ address.id }}[first_name]"
+											class="form__floating-label">{{ 'customer.addresses.first_name' | t }}</label>
+									</div>
+
+									<div class="form__input-wrapper form__input-wrapper--labelled">
+										<input id="address-{{ address.id }}[last_name]" type="text"
+											class="form__field form__field--text {% if form.last_name != blank %}is-filled{% endif %}"
+											name="address[last_name]" value="{{ form.last_name }}">
+										<label for="address-{{ address.id }}[last_name]" class="form__floating-label">{{
+											'customer.addresses.last_name' | t }}</label>
+									</div>
+
+									<div class="form__input-wrapper form__input-wrapper--labelled">
+										<input id="address-{{ address.id }}[company]" type="text"
+											class="form__field form__field--text {% if form.company != blank %}is-filled{% endif %}"
+											name="address[company]" value="{{ form.company }}">
+										<label for="address-{{ address.id }}[company]" class="form__floating-label">{{
+											'customer.addresses.company' | t }}</label>
+									</div>
+
+									<div class="form__input-wrapper form__input-wrapper--labelled">
+										<input id="address-{{ address.id }}[phone]" type="text"
+											class="form__field form__field--text {% if form.phone != blank %}is-filled{% endif %}"
+											name="address[phone]" value="{{ form.phone }}">
+										<label for="address-{{ address.id }}[phone]" class="form__floating-label">{{
+											'customer.addresses.phone' | t }}</label>
+									</div>
+
+									<div class="form__input-wrapper form__input-wrapper--labelled">
+										<input id="address-{{ address.id }}[address1]" type="text"
+											class="form__field form__field--text {% if form.address1 != blank %}is-filled{% endif %}"
+											name="address[address1]" value="{{ form.address1 }}">
+										<label for="address-{{ address.id }}[address1]" class="form__floating-label">{{
+											'customer.addresses.address1' | t }}</label>
+									</div>
+
+									<div class="form__input-wrapper form__input-wrapper--labelled">
+										<input id="address-{{ address.id }}[address2]" type="text"
+											class="form__field form__field--text {% if form.address2 != blank %}is-filled{% endif %}"
+											name="address[address2]" value="{{ form.address2 }}">
+										<label for="address-{{ address.id }}[address2]" class="form__floating-label">{{
+											'customer.addresses.address2' | t }}</label>
+									</div>
+
+									<div class="form__input-row">
+										<div class="form__input-wrapper form__input-wrapper--labelled">
+											<input id="address-{{ address.id }}[city]" type="text"
+												class="form__field form__field--text {% if form.city != blank %}is-filled{% endif %}"
+												name="address[city]" value="{{ form.city }}">
+											<label for="address-{{ address.id }}[city]" class="form__floating-label">{{
+												'customer.addresses.city' | t }}</label>
+										</div>
+
+										<div class="form__input-wrapper form__input-wrapper--labelled">
+											<input id="address-{{ address.id }}[zip]" type="text"
+												class="form__field form__field--text {% if form.zip != blank %}is-filled{% endif %}"
+												name="address[zip]" value="{{ form.zip }}">
+											<label for="address-{{ address.id }}[zip]" class="form__floating-label">{{
+												'customer.addresses.zip' | t }}</label>
+										</div>
+									</div>
+
+									<div class="form__input-wrapper form__input-wrapper--labelled">
+										<div class="select-wrapper select-wrapper--primary is-filled">
+											{%- render 'icon', icon: 'arrow-bottom' -%}
+											<select name="address[country]" id="address-{{ address.id }}[country]"
+												data-default="{{ form.country }}">{{ all_country_option_tags }}</select>
+										</div>
+
+										<label for="address-{{ address.id }}[country]" class="form__floating-label">{{
+											'customer.addresses.country' | t }}</label>
+									</div>
+
+									<div class="form__input-wrapper form__input-wrapper--labelled"
+										style="display: none">
+										<div class="select-wrapper select-wrapper--primary is-filled">
+											{%- render 'icon', icon: 'arrow-bottom' -%}
+											<select name="address[province]" id="address-{{ address.id }}[province]"
+												data-default="{{ form.province }}"></select>
+										</div>
+
+										<label for="address-{{ address.id }}[province]" class="form__floating-label">{{
+											'customer.addresses.province' | t }}</label>
+									</div>
+									{%- endif -%}
+
+									<div class="form__input-wrapper form__input-wrapper--labelled">
+										<div class="checkbox-wrapper">
+											<input type="checkbox" class="checkbox"
+												id="address-{{ address.id }}[default]" name="address[default]" {% if
+												address.id==customer.default_address.id %}value="1" checked{% endif %}>
+											{% render 'icon', icon: 'check' %}
+										</div>
+
+										<label for="address-{{ address.id }}[default]">{{
+											'customer.addresses.set_default' | t }}</label>
+									</div>
+
+									<button class="form__submit button button--primary button--full" data-scenable="1"
+										data-sctype="profile_set">{{ 'customer.addresses.edit_address' | t }}</button>
+									{% endform %}
+								</div>
+							</div>
+						</div>
+						{%- endfor -%}
 						{% assign dm_paginate_by = paginate.page_size %}{%- endpaginate -%}
-					  </section>
+					</section>
 
 				</div>
 				{%- comment -%}----------------------------联系我们-----------------------{%- endcomment -%}
 				<div class="my_postsale account_right_content" data-type="accountPage">
-					<div class="customers-services"  >
+					<div class="customers-services">
 						<div class="container">
-							<h3>
-								{%- render 'icon', icon: 'bi-email' -%}&nbsp;&nbsp;
+							<h3>{%- render 'icon', icon: 'bi-email' -%}&nbsp;&nbsp;
 								<a href="mailto:contactus@hyfol.com" target="_blank" rel="noopener"
 									aria-describedby="a11y-new-window-message">contactus@hyfol.com</a>
 							</h3>
@@ -2066,20 +2507,24 @@
 					</div>
 				</div>
 
+			</div>
 		</div>
 	</div>
+
 </section>
 
+
 {%- capture discount_str -%}
-	{%- for order in customer.orders -%}
-	{%- for discount in order.discount_applications -%}
-	{%- if discount.type =="discount_code" -%}
-		{{discount.title}},
-	{%- endif -%}
-	{%- endfor -%}
-	{%- endfor -%}
+{%- for order in customer.orders -%}
+{%- for discount in order.discount_applications -%}
+{%- if discount.type =="discount_code" -%}
+{{discount.title}},
+{%- endif -%}
+{%- endfor -%}
+{%- endfor -%}
 {%- endcapture -%}
 {%- assign discounts = discount_str | downcase -%}
+
 <script>
 	~function () {
 
@@ -2449,6 +2894,30 @@
 			}
 		}
 
+		const dbo = `
+		mutation customerUpdate {
+  customerUpdate(customer: {firstName:"Jiang",lastName:"Jinshui"}, customerAccessToken: "4a48bd8caa2e6a4805bcfbe555524e65") {
+    customer {
+		firstName
+		lastName
+		updatedAt
+    }
+    customerAccessToken {
+		accessToken
+    }
+    customerUserErrors {
+      code
+	  field
+	  message
+    }
+  }}`
+		/* fetch('https://hyfol.myshopify.com/api/2022-10/graphql.json',{method:"POST",headers:{
+					"Content-Type":"application/graphql","X-Shopify-Storefront-Access-Token":"1d2374d2668239da8efd20c84e848d0d"
+				},body:dbo}).then(response=>response.json()).then(data=>console.log(data))
+		
+			 */
+
+
 		/* 收藏 */
 		var getCollectList = function () {
 			var productIds, currentPage, total, sectionId
@@ -2463,6 +2932,7 @@
 
 				getData("customerCollectionProduct/collectionProductList", collectList)
 					.then(res => {
+
 						if (res.data.records.length < 1) {
 							document.querySelector('.collect-body').style.display = "block"
 							document.querySelector(".wish_loading").style.display = "none"
@@ -2568,8 +3038,8 @@
 
 			}
 
-			let codeStr="{{discounts}}"
-			codeStr=codeStr&&codeStr.split(',')||[]
+			let codeStr = "{{discounts}}"
+			codeStr = codeStr && codeStr.split(',') || []
 
 			//** 	个人中心   **//
 			async function getToken() {
@@ -2604,37 +3074,46 @@
 
 			async function getCoupons(token) {//获取自己的优惠券
 				if (token) {
-					const { data, code,success } = await getData('customerAccount/getShopifyMyPriceRules', '', token, "GET", 'formData')
-
-					// console.log(data,codeStr);
-					
-					if (code == 200 &&data&&data.length&& success) {
+					const { data, code, success } = await getData('customerAccount/getShopifyMyPriceRules', '', token, "GET", 'formData')
+					// console.log(data)
+					if (code == 200 && data && data.length && success) {
 						const couponView = document.querySelector('.my-account .my-coupons__list')
 						const unusedCoupons = document.querySelector('.unused__coupons .my-coupons__list')
 						const expiredCoupons = document.querySelector('.expired__coupons .my-coupons__list')
-							const couponList =[]
-							const expireList=[]
-							 data.forEach((item, i) => {
-								const coupon=`<div class="my-coupons__item" data-index="${item.id}">
-									<p>${item.summary}</p>	
-									<p>Code: <span class="coupon_code">${item.title}</span></p>	
-										<ul class="coupons-date">
-											<li>${item.starts_at}</li>
-											<li>${item.ends_at}</li>
-										</ul>
-										<span class="round-left"></span>
-										<span class="round-right"></span>
-									</div>`
-								if(codeStr.indexOf(item.title.toLocaleLowerCase())!=-1 || item.status!="active"){
-									expireList.push(coupon)
-								}else{couponList.push(coupon)}
-								})
+						const couponList = []
+						const expireList = []
+						const reg = /^[$0-9.]+%?/
+						data.forEach((item, i) => {
+							const coupon = `<div class="my-coupons__item" data-index="${item.id}">
+						<div class="codeLeft">
+							<ul class="couponDos dostLeft">
+								<li class="couponDost"></li><li class="couponDost"></li>
+								<li class="couponDost"></li><li class="couponDost"></li>
+								<li class="couponDost"></li><li class="couponDost"></li>
+							</ul>
+							<ul class="couponDos dostRight">
+								<li class="couponDost"></li><li class="couponDost"></li>
+								<li class="couponDost"></li><li class="couponDost"></li>
+								<li class="couponDost"></li><li class="couponDost"></li>
+							</ul>
+							<p style="font-weight: 500;"><span style=" font-size: 1rem; font-weight: 600;">10% off</span> entire order</p>
+							<p style="font-weight: 600;line-height:1;">Code: <span class="coupon_code">${item.title}</span></p>
+							<ul class="coupons-date" style=" font-weight: 500;"><li>minimum spend to use:none</li><li>${item.ends_at}</li></ul>
+						</div>
+						<div class="codeRight">
+							<span class="d-block" style="text-align: center;font-family: emoji;margin-top: 10px;">coupon</span>
+							<span class="d-flex space-between codeSave">save <span class="d-inline-block  codeAmount ">10%<span
+							class="d-inline-block poa alert--center" style=" writing-mode: tb-rl; font-size: 1rem;top: 0; bottom: 0;margin: auto 0;right: 0;">off</span></span></span>
+						</div>
+					</div>`
+							if (codeStr.indexOf(item.title.toLocaleLowerCase()) != -1 || item.status != "active") {
+								expireList.push(coupon)
+							} else { couponList.push(coupon) }
+						})
+						couponView && couponList.length && (couponView.innerHTML = couponList.join('')) && couponView.classList.remove("my-coupons_empty")
+						unusedCoupons && couponList.length && (unusedCoupons.innerHTML = couponList.join('')) && unusedCoupons.classList.remove("my-coupons_empty")
+						expireList && expireList.length && (expiredCoupons.innerHTML = expireList.join('')) && expiredCoupons.classList.remove("my-coupons_empty")
 
-							couponView&&couponList.length&&(couponView.innerHTML = couponList.join(''))&&couponView.classList.remove("my-coupons_empty")
-							unusedCoupons && couponList.length&&(unusedCoupons.innerHTML = couponList.join(''))&&unusedCoupons.classList.remove("my-coupons_empty")
-							expireList && expireList.length&&(expiredCoupons.innerHTML = expireList.join(''))&&expiredCoupons.classList.remove("my-coupons_empty")
-							// expireList &&(expiredCoupons.innerHTML = couponList.join(''))&&expiredCoupons.classList.remove("my-coupons_empty")
-				
 					}
 				} else console.info(token);
 			}
@@ -2707,10 +3186,8 @@
 				const pointContainer = document.querySelector('.vip-integral')
 				const userVip = document.querySelector('.vip-user__grade')
 				totalPoint && (pointContainer.innerHTML = totalPoint)
-				userVip && (userVip.innerHTML = vipType)
+				userVip && (userVip.innerHTML = vipType || "copper")
 				// console.log('getCustomer', data)
-
-
 			}
 
 			async function deductPoint(token) {
@@ -3009,14 +3486,11 @@
 				key: "renderMobOrder",
 				value: function () {
 					this.loading(true)
-
 					let body_me = document.querySelector('#body_me')
 					let nullbox = document.querySelector('#order_null')
 					nullbox.style.display = 'none'
-
 					var url
 					var reg = /Orders+[\d\D]*/
-
 					if (reg.test(location.hash)) {
 						var hash = location.hash.split('+')[1].toLowerCase()
 						url = '?section_id=my-orders-' + hash;
@@ -3047,94 +3521,134 @@
 		var accountS = new AccountSetion(document.getElementById("account"))
 
 
-	}();
+		function getSectionInnerHTML(html, selector = '.shopify-section') {
+			return new DOMParser()
+				.parseFromString(html, 'text/html')
+				.querySelector(selector).innerHTML;
+		}
+		const orderBox = document.querySelector('.order-view__box')
+		orderBox.addEventListener('click', e => {
+			const target = e.target
+			if (target.dataset.action !== 'false' && target.parentElement.dataset.action !== 'false') return
+			const nav = target.dataset.action ? target : target.parentElement
+			const preNav = orderBox.querySelector('.orders-nav__item[data-action="true"]')
+			const preView = document.querySelector('.order-item__card[aria-hidden="false"]')
+			const openOrederView = document.querySelector(`.order-item__card[data-index="${nav.dataset.index}"]`)
+			preNav.dataset.action = false
+			nav.dataset.action = true
+			preView.setAttribute('aria-hidden', true)
+			openOrederView.setAttribute("aria-hidden", false)
+			let hashUrl = target.textContent.replace(/\s*|[\r\n]/g, '')
+			window.location.hash = "Orders+" + hashUrl
+		})
+
+		document.querySelector('.order__render-view').addEventListener('click', e => {
+			if (e.target.classList.contains('title-info-name')) {
+				const target = e.target
+				const orderUrl = target.dataset.url
+
+				fetch(orderUrl, {
+					credentials: 'same-origin',
+					method: 'GET'
+				}).then(response => response.text())
+					.then(html => {
+						document.querySelector('.card.my_orders').innerHTML = getSectionInnerHTML(html, '.order-summary')
+						window.scroll(0, 0)
+					})
+			}
+		})
+
+
+	}()
+
 </script>
+{%- comment -%}
+,
+"blocks": [{
+"name": "nav_title",
+"type": "trust",
+"settings": [{
+"type": "text",
+"id": "nav_title",
+"label": "Heading",
+"default": "导航标题"
+},
+{
+"type": "text",
+"id": "nav_right",
+"label": "右侧区域对应类名"
+},
+{
+"type": "checkbox",
+"id": "nav_show",
+"label": "是否展示导航",
+"default": true
+},
+{
+"type":"select",
+"id":"nav_icon",
+"options": [{
+"value": "none",
+"label": "无"
+},
+{
+"value":"account-text",
+"label":"文本"
+},
+{
+"value":"account-my",
+"label":"用户"
+},
+{
+"value":"account-logout",
+"label":"退出"
+},
+{
+"value":"account-palay",
+"label":"支付"
+},
+{
+"value":"account-collect",
+"label":"收藏"
+},
+{
+"value":"account-renz",
+"label":"认证"
+},
+{
+"value":"account-cart",
+"label":"购物车"
+},
+{
+"value":"account-setting",
+"label":"设置"
+},
+{
+"value":"cjj_post_sale",
+"label":"客服"
+},
+{
+"value":"coupon",
+"label":"优惠券"
+},
+{
+"value":"account-location",
+"label":"定位"
+}],
+"default":"none",
+"label":"选择图标"
+}]
+}]
 
 
+{%- endcomment -%}
 {% schema %}
 {
-		"name": "个人中心左侧导航",
-		"settings": [{
-			"type":"image_picker",
-			"id":"points_rule",
-			"label":"积分兑换规则图"
-		}],
-		"blocks": [{
-		"name": "nav_title",
-		"type": "trust",
-		"settings": [{
-			"type": "text",
-			"id": "nav_title",
-			"label": "Heading",
-			"default": "导航标题"
-		},
-		{
-			"type": "text",
-			"id": "nav_right",
-			"label": "右侧区域对应类名"
-		},
-		{
-			"type": "checkbox",
-			"id": "nav_show",
-			"label": "是否展示导航",
-			"default": true
-		},
-		{
-			"type":"select",
-			"id":"nav_icon",
-			"options": [{
-              "value": "none",
-              "label": "无"
-            },
-			{
-				"value":"account-text",
-				"label":"文本"
-			},
-			{
-				"value":"account-my",
-				"label":"用户"
-			},
-			{
-				"value":"account-logout",
-				"label":"退出"
-			},
-			{
-				"value":"account-palay",
-				"label":"支付"
-			},
-			{
-				"value":"account-collect",
-				"label":"收藏"
-			},
-			{
-				"value":"account-renz",
-				"label":"认证"
-			},
-			{
-				"value":"account-cart",
-				"label":"购物车"
-			},
-			{
-				"value":"account-setting",
-				"label":"设置"
-			},
-			{
-				"value":"cjj_post_sale",
-				"label":"客服"
-			},
-			{
-				"value":"coupon",
-				"label":"优惠券"
-			},
-			{
-				"value":"account-location",
-				"label":"定位"
-			}],
-			"default":"none",
-			"label":"选择图标"
-		}]
-		}]
-		
-
+"name": "个人中心左侧导航",
+"settings": [{
+"type":"image_picker",
+"id":"points_rule",
+"label":"积分兑换规则图"
+}]
 }
 {% endschema %}
