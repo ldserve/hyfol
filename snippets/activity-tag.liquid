@@ -12,7 +12,7 @@
     {%- assign text = tag | split: '-' -%}
     {%- assign custom_tag = text[1] | strip -%}
     {%- break -%}
-  {%- elsif tag == 'Flash Sale' -%}
+  {%- elsif tag == 'Flash Sale' or tag == 'flashsale' -%}
     {%- assign custom_tag = tag -%}
     {%- break -%}
   {%- endif -%}
