@@ -1,53 +1,52 @@
 <section class="mini-cart-section" aria-hidden="true" novalidate="novalidate" data-item-count="{{ cart.item_count }}">
-
   {% style %}
-  .progress-now{
-  width:calc( 70% + 30% * {{cart.total_price}} /{{settings.cart_free_shipping_threshold | times: 100}} );
-  max-width:100%
-  }
-  .car-bar-box {
-  border-bottom: 1px solid var(--border-color);
-  margin-bottom: 10px;
-  }
-  .mini-cart_gift{padding:0 10px;}
-  #gift-container{
-  padding:10px;
-  box-shadow: inset 0 0 3px #837878;
-  margin-bottom:1rem;
-  }
-  .gift-size-variants>option{
-    background:#FFF;
-  }
-  .gift-btn[aria-expanded="false"]+#gift-container{display:none;}
-  .gift-btn[aria-expanded="true"]+#gift-container{display:block;}
-  .gift-size-variants{
-  margin:0 auto;
-  font-size:1.2rem;
-  width: 50%;
-  }
-  .gift-btn, .addGift{ width: 100%; padding:0; margin-bottom:1rem;text-transform: none;}
-  .addGift{
-  line-height: 2;
-  margin: 1rem auto;
-  width: 70%;
-  padding: 0 1rem;
-  display: block;
-  }
-  .gift-btn{
-    background: #000;
-    color: #FFF;
-    line-height: 2.6;
-  }
-  .gift-sale_price{
-  text-align:center;
-  color:#CF0E0E;
-  }
-  .gift-title{font-size: 1rem;font-weight: 500; text-align: center;}
-  .gift-img{margin:0 auto;}
-  @media screen and (max-width: 641px) {
-    .gift-btn, .addGift{font-size:0.9rem;}
-  }
-  {% endstyle %}
+    .progress-now{
+    width:calc( 70% + 30% * {{cart.total_price}} /{{settings.cart_free_shipping_threshold | times: 100}} );
+    max-width:100%
+    }
+    .car-bar-box {
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 10px;
+    }
+    .mini-cart_gift{padding:0 10px;}
+    #gift-container{
+    padding:10px;
+    box-shadow: inset 0 0 3px #837878;
+    margin-bottom:1rem;
+    }
+    .gift-size-variants>option{
+      background:#FFF;
+    }
+    .gift-btn[aria-expanded="false"]+#gift-container{display:none;}
+    .gift-btn[aria-expanded="true"]+#gift-container{display:block;}
+    .gift-size-variants{
+    margin:0 auto;
+    font-size:1.2rem;
+    width: 50%;
+    }
+    .gift-btn, .addGift{ width: 100%; padding:0; margin-bottom:1rem;text-transform: none;}
+    .addGift{
+    line-height: 2;
+    margin: 1rem auto;
+    width: 70%;
+    padding: 0 1rem;
+    display: block;
+    }
+    .gift-btn{
+      background: #000;
+      color: #FFF;
+      line-height: 2.6;
+    }
+    .gift-sale_price{
+    text-align:center;
+    color:#CF0E0E;
+    }
+    .gift-title{font-size: 1rem;font-weight: 500; text-align: center;}
+    .gift-img{margin:0 auto;}
+    @media screen and (max-width: 641px) {
+      .gift-btn, .addGift{font-size:0.9rem;}
+    }
+    {% endstyle %} 
   <div class="h4 mini-cart-heading">SHOPPING CART</div>
   <button class="mini-cart-close" data-action="toggle-mini-cart"><span class="close-line"></span></button>
 
@@ -92,29 +91,23 @@
 
     {%- else -%}
     <div class="mini-cart__inner">
+        {%- comment -%}包邮进度条{%- endcomment -%}
 
-      {% assign cartNum = cart.item_count %}
-
-      {%- comment -%}--------------------------包邮进度条-----------------------------{%- endcomment -%}
-
-      <div class="shipping-bar">
-        <div class="shipping-bar-top">
-          {%- render:'icon',icon:'cjj_postage' -%}
-          {%- if settings.cart_show_free_shipping_threshold -%}
-          {%- assign threshold_in_cents = settings.cart_free_shipping_threshold | times: 100 -%}
-          {%- if cart.total_price >= threshold_in_cents -%}
-          <span class="page__description d-inline-block" style="margin: 0!important;font-weight: 500;">{{
-            'cart.general.free_shipping_html' | t}}</span>
-          {%- else -%}
-          {%- capture remaining_amount -%}<span><span class="wh-original-cart-total"><span
-                class='wh-original-price  mini-car-font'>{{ cart.total_price | minus: threshold_in_cents | abs | money
-                }}</span></span><span class="wh-cart-total"></span>
-            <div class="additional-notes d-inline-block"><span class="wh-minimums-note"></span><span
-                class="wh-extra-note"></span></div>
-          </span>{%- endcapture -%}
-          <span class="page__description d-inline-block mini_cart_free_shipping">{{
-            'cart.general.free_shipping_remaining_html' | t: remaining_amount: remaining_amount }}</span>
-          {%- endif -%}
+        <div class="shipping-bar" >
+          <div class="shipping-bar-top">
+            {%- render:'icon',icon:'cjj_postage' -%}
+            {%- if settings.cart_show_free_shipping_threshold -%}
+            {%- assign threshold_in_cents = settings.cart_free_shipping_threshold | times: 100 -%}
+            {%- if cart.total_price >= threshold_in_cents -%}
+              <span class="page__description d-inline-block" style="margin: 0!important;font-weight: 500;">{{ 'cart.general.free_shipping_html' | t}}</span>
+            {%- else -%}
+              {%- capture remaining_amount -%}<span><span class="wh-original-cart-total"><span
+                    class='wh-original-price  mini-car-font'>{{ cart.total_price | minus: threshold_in_cents | abs | money }}</span></span><span
+                  class="wh-cart-total"></span><div class="additional-notes d-inline-block"><span
+                    class="wh-minimums-note"></span><span class="wh-extra-note"></span></div></span>{%- endcapture -%}
+              <span
+                class="page__description d-inline-block mini_cart_free_shipping">{{ 'cart.general.free_shipping_remaining_html' | t: remaining_amount: remaining_amount }}</span>
+            {%- endif -%}
           {%- endif -%}
 
           {%- comment -%}-------------------满减活动阶梯--------------------{%- endcomment -%}
@@ -221,9 +214,46 @@
             </select>
             <button type="button" class="button button--primary  addGift" data-action="gift-addToCart">ADD TO CART</button>
           </div>
+       </div>
+  
+       <div class="mini-car-title"> Your Cart </div>
+        {%- comment -%}---------------------------- Free Gift Tee-----------------------------------{%- endcomment -%}
+      {%- if cart.total_price>=9900 -%}
+      {%- assign show_gift = true -%}
+
+      {%- for line_item in cart.items -%}
+        {%- if line_item.line_level_discount_allocations != blank -%}
+          {%- for discount_allocation in line_item.line_level_discount_allocations -%}
+           {%- if discount_allocation.discount_application.title=="Spend $99 or more and get a Free Mystery Tee!" -%}
+            {%- assign show_gift = false -%}
+           {% break %}
+           {%- endif -%}
+          {%- endfor -%}
+        {%- endif -%}
+      {%- endfor -%}
+
+        {%- if show_gift -%}
+        <div class="mini-cart_gift">
+          <button type="button" class="button gift-btn" data-action="toggle-collapsible"
+            aria-expanded="true" aria-controls="gift-container">You're Qualified for a Free Mystery Tee!</button>
+          <div id="gift-container" >
+            {%- assign free_gift = all_products['sp220902vguq'] -%}
+            <h4 class="gift-title h5">{{free_gift.title}}</h4>
+
+            <img class="d-block gift-img" src="{{free_gift.featured_image |img_url: 'medium'}}" alt="Free Gift">
+            <span class="gift-sale_price d-block"><s>{{free_gift.price |money_without_trailing_zeros}}</s> FREE</span>
+            <select class="gift-size-variants d-block" id="gift_select">
+              <option value="" selected>Select Your Size</option>
+              {%- for item in free_gift.variants -%}
+              <option value="{{item.id}}">{{item.option2}}</option>
+              {%- endfor -%}
+            </select>
+            <button type="button" class="button button--primary  addGift" data-action="gift-addToCart">ADD TO CART</button>
+          </div>
         </div>
         {%- endif -%}
       {%- endif -%}
+
       <div class="mini-cart__content">
 
         {%- comment -%}
@@ -729,8 +759,7 @@
     newData.second_commodity = ""
     newData.third_commodity = ""
   } else {
-    const category = {{ product.metafields.my_fields.category | json
-  }}
+    const category = {{ product.metafields.my_fields.category | json}}
   newData.first_commodity = category.first_commodity
   newData.second_commodity = category.second_commodity
   newData.third_commodity = category.third_commodity
