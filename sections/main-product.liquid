@@ -2,10 +2,30 @@
 {%- assign variant_selector_block = section.blocks | where: 'type', 'variant_selector' | first -%}
 {%- assign buy_buttons_block = section.blocks | where: 'type', 'buy_buttons' | first -%}
 <style>
-	#shopify-section- {{section.id}} .color-swatch-list {
+	#shopify-section-{{section.id}} .color-swatch-list {
 		text-align: unset;
 	}
-
+	/*GIFt*/
+	.free-gift_bar{
+		position: fixed;
+		padding: 1.5rem 1rem;
+		bottom: 40px;
+		background: #2f2d16;
+		color: #FFF;
+		z-index: 3;
+		left: 50%;
+		transform: translateX(-50%);
+		font-size: 1.4rem;
+		border-radius: 0.6rem;
+	}
+	.free-info--close{
+	    position: absolute;
+		left: -8px;
+		top: -20px;
+		font-size: 1rem;
+		pointer-events: all;
+		cursor: pointer;
+	}
 	/*尺码表样式 start*/
 	#sizeGuideModal .modal__inner .modal__inner__top {
 		padding: 10px 30px;
@@ -156,6 +176,20 @@
 		#sizeGuideModal .sizeGuideModal__tips__item {
 			margin-bottom: 10px;
 		}
+	/* gift*/
+	.free-gift_bar{
+		left: 0;
+		transform: none;
+		font-size: 0.8rem;
+		bottom: 4rem;
+		right: 0;
+		margin: 0 1rem;
+		padding: 1rem;
+	}
+	.free-info--close{
+		top: -11px;
+		font-size: 0.8rem;
+	}
 	}
 
 	/*尺码表样式 end*/
@@ -174,6 +208,7 @@
 	.product-form__add-button.button--primary{
 		font-size: 17px;
 	}
+
 </style>
 
 {%- capture section_settings -%}
@@ -232,6 +267,35 @@
 			{%- endfor -%}
 <section data-section-id="{{ section.id }}" data-section-type="product" data-section-settings='{{ section_settings }}' >
 	
+{%- comment -%}--------------------------------礼物提示信息 ----------------------------------{%- endcomment -%}
+{%- assign current_price = 9900 | money -%}
+{%- capture gift_info  -%}YOU'RE ELIGIBLE FOR A FREE MYSTERY TEE! <a class="gift__cart-toggle" href="#" aria-controls="mini-cart" aria-expanded="false" data-action="toggle-mini-cart" style="border-bottom: 1px solid;">CLICK HERE</a>{%- endcapture-%}
+{%- if cart.total_price<9900 -%} 
+{%- assign current_price=9900 | minus: cart.total_price | money -%}
+{%- capture gift_info -%}YOU'RE {{current_price}} AWAY FROM A FREE MYSTERY TEE!{%- endcapture -%}
+ {%- endif -%}
+
+ {%- assign show_gift = true -%}
+      
+ {%- for line_item in cart.items -%}
+   {%- if line_item.line_level_discount_allocations != blank -%}
+	 {%- for discount_allocation in line_item.line_level_discount_allocations -%}
+	  {%- if discount_allocation.discount_application.title=="Spend $99 or more and get a Free Mystery Tee!" -%}
+	   {%- assign show_gift = false -%}
+	  {% break %}
+	  {%- endif -%}
+	 {%- endfor -%}
+   {%- endif -%}
+ {%- endfor -%}
+
+ {%- if show_gift -%}
+<div class="free-gift_bar" style="display: none;"><div class="free-gift_info" style="position: relative;"><p style=" margin: 0;">{{gift_info}}</p>
+    <svg onclick="onShowInfo(this)" focusable="false" class="icon free-info--close" viewBox="0 0 19 19" role="presentation" >
+	<path d="M9.1923882 8.39339828l7.7781745-7.7781746 1.4142136 1.41421357-7.7781746 7.77817459 7.7781746 7.77817456L16.9705627 19l-7.7781745-7.7781746L1.41421356 19 0 17.5857864l7.7781746-7.77817456L0 2.02943725 1.41421356.61522369 9.1923882 8.39339828z" fill="currentColor" fill-rule="evenodd"></path>
+</svg>
+</div></div>
+{%- endif -%}
+
 	{%- if template != 'product.quick-view' -%}
 	<div class="page__sub-header">
 		<nav aria-label="{{ 'general.breadcrumb.title' | t }}" class="breadcrumb">
@@ -611,7 +675,7 @@
 
 	</div>
 	{%- else -%}
-
+{%- comment -%}------------------------------------QUICKVIE--------------------------------------{%- endcomment -%}
 	{%- comment -%}We display the quick view within the product template so we can re-use the same settings{%- endcomment -%}
 	{% if template == 'product.quick-view' %}
 	{%- assign isQuickView=true -%}
@@ -828,6 +892,12 @@
 
 </section>
 <script>
+	function onShowInfo(ev){
+	const bar=ev.closest(".free-gift_bar")
+	if(!bar)return;
+	bar.style.display="none"
+	sessionStorage.setItem("show_free_gift",false)
+	}
 	window.ShopifyXR = window.ShopifyXR || function () {
 		(ShopifyXR.q = ShopifyXR.q || []).push(arguments)
 	};
@@ -905,6 +975,11 @@
 	let a = 1
 	initSizeGuideTable()
         /*尺码表 end*/
+	const giftBar=document.querySelector('.free-gift_bar')
+	const isActive=sessionStorage.getItem('show_free_gift')
+	if(!giftBar)return;
+	!isActive&&(giftBar.style.display='block')
+	isActive=="false"&&(giftBar.style.display='none')
     }) ();
 	pintrk('track', 'viewcategory');
 </script>
