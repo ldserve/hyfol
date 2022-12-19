@@ -269,7 +269,7 @@
 	
 {%- comment -%}--------------------------------礼物提示信息 ----------------------------------{%- endcomment -%}
 {%- assign current_price = 9900 | money -%}
-{%- capture gift_info  -%}YOU'RE ELIGIBLE FOR A FREE MYSTERY TEE! <a class="gift__cart-toggle" href="#" aria-controls="mini-cart" aria-expanded="false" data-action="toggle-mini-cart" style="border-bottom: 1px solid;">CLICK HERE</a>{%- endcapture-%}
+{%- capture gift_info  -%}YOU'RE ELIGIBLE FOR A FREE MYSTERY TEE!{%- endcapture-%}
 {%- if cart.total_price<9900 -%} 
 {%- assign current_price=9900 | minus: cart.total_price | money -%}
 {%- capture gift_info -%}YOU'RE {{current_price}} AWAY FROM A FREE MYSTERY TEE!{%- endcapture -%}
