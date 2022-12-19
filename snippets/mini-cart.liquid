@@ -1,6 +1,53 @@
 
 <section class="mini-cart-section" aria-hidden="true" novalidate="novalidate" data-item-count="{{ cart.item_count }}">
-  
+  {% style %}
+    .progress-now{
+    width:calc( 70% + 30% * {{cart.total_price}} /{{settings.cart_free_shipping_threshold | times: 100}} );
+    max-width:100%
+    }
+    .car-bar-box {
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 10px;
+    }
+    .mini-cart_gift{padding:0 10px;}
+    #gift-container{
+    padding:10px;
+    box-shadow: inset 0 0 3px #837878;
+    margin-bottom:1rem;
+    }
+    .gift-size-variants>option{
+      background:#FFF;
+    }
+    .gift-btn[aria-expanded="false"]+#gift-container{display:none;}
+    .gift-btn[aria-expanded="true"]+#gift-container{display:block;}
+    .gift-size-variants{
+    margin:0 auto;
+    font-size:1.2rem;
+    width: 50%;
+    }
+    .gift-btn, .addGift{ width: 100%; padding:0; margin-bottom:1rem;text-transform: none;}
+    .addGift{
+    line-height: 2;
+    margin: 1rem auto;
+    width: 70%;
+    padding: 0 1rem;
+    display: block;
+    }
+    .gift-btn{
+      background: #000;
+      color: #FFF;
+      line-height: 2.6;
+    }
+    .gift-sale_price{
+    text-align:center;
+    color:#CF0E0E;
+    }
+    .gift-title{font-size: 1rem;font-weight: 500; text-align: center;}
+    .gift-img{margin:0 auto;}
+    @media screen and (max-width: 641px) {
+      .gift-btn, .addGift{font-size:0.9rem;}
+    }
+    {% endstyle %} 
   <div class="h4 mini-cart-heading">SHOPPING CART</div>
   <button class="mini-cart-close" data-action="toggle-mini-cart"><span class="close-line"></span></button>
 
@@ -51,14 +98,7 @@
     {%- else -%}
     <div class="mini-cart__inner">
         {%- comment -%}包邮进度条{%- endcomment -%}
-        {% style %}
-          .progress-now{
-              width:calc( 70% + 30% * {{cart.total_price}} /{{settings.cart_free_shipping_threshold | times: 100}} );
-              max-width:100%
-          }
-    
-     
-        {% endstyle %}
+
         <div class="shipping-bar" >
           <div class="shipping-bar-top">
             {%- render:'icon',icon:'cjj_postage' -%}
@@ -140,6 +180,43 @@
        </div>
   
        <div class="mini-car-title"> Your Cart </div>
+        {%- comment -%}---------------------------- Free Gift Tee-----------------------------------{%- endcomment -%}
+      {%- if cart.total_price>=9900 -%}
+      {%- assign show_gift = true -%}
+
+      {%- for line_item in cart.items -%}
+        {%- if line_item.line_level_discount_allocations != blank -%}
+          {%- for discount_allocation in line_item.line_level_discount_allocations -%}
+           {%- if discount_allocation.discount_application.title=="Spend $99 or more and get a Free Mystery Tee!" -%}
+            {%- assign show_gift = false -%}
+           {% break %}
+           {%- endif -%}
+          {%- endfor -%}
+        {%- endif -%}
+      {%- endfor -%}
+
+        {%- if show_gift -%}
+        <div class="mini-cart_gift">
+          <button type="button" class="button gift-btn" data-action="toggle-collapsible"
+            aria-expanded="true" aria-controls="gift-container">You're Qualified for a Free Mystery Tee!</button>
+          <div id="gift-container" >
+            {%- assign free_gift = all_products['sp220902vguq'] -%}
+            <h4 class="gift-title h5">{{free_gift.title}}</h4>
+
+            <img class="d-block gift-img" src="{{free_gift.featured_image |img_url: 'medium'}}" alt="Free Gift">
+            <span class="gift-sale_price d-block"><s>{{free_gift.price |money_without_trailing_zeros}}</s> FREE</span>
+            <select class="gift-size-variants d-block" id="gift_select">
+              <option value="" selected>Select Your Size</option>
+              {%- for item in free_gift.variants -%}
+              <option value="{{item.id}}">{{item.option2}}</option>
+              {%- endfor -%}
+            </select>
+            <button type="button" class="button button--primary  addGift" data-action="gift-addToCart">ADD TO CART</button>
+          </div>
+        </div>
+        {%- endif -%}
+      {%- endif -%}
+
       <div class="mini-cart__content">
         
    
@@ -576,51 +653,51 @@
 <script>
   function inputBlur(el) {
     const newData = JSON.parse(el.getAttribute('data-scdata'))
-    const id=el.getAttribute('data-id')
+    const id = el.getAttribute('data-id')
     const num = (+el.value) - (+newData.commodity_quantity);
-    if (!{{product.metafields.my_fields.category | json}}) {
-      newData.first_commodity = ""
-      newData.second_commodity = ""
-      newData.third_commodity = ""
-    } else {
-      const category = {{product.metafields.my_fields.category |  json}}
-      newData.first_commodity = category.first_commodity
-      newData.second_commodity = category.second_commodity
-      newData.third_commodity = category.third_commodity
+    if (!{{ product.metafields.my_fields.category | json }}) {
+    newData.first_commodity = ""
+    newData.second_commodity = ""
+    newData.third_commodity = ""
+  } else {
+    const category = {{ product.metafields.my_fields.category | json}}
+  newData.first_commodity = category.first_commodity
+  newData.second_commodity = category.second_commodity
+  newData.third_commodity = category.third_commodity
     }
-    if (newData.original_price) {
-      newData.original_price = Number((newData.original_price / 100).toFixed(2));
-    }
-    if (newData.current_price) {
-      newData.current_price = Number((newData.current_price / 100).toFixed(2));
-    }
-    if (newData.discount_price) {
-      newData.discount_price = Number((newData.discount_price / 100).toFixed(2));
-    }
-    if (newData.bonus_amount) {
-      newData.bonus_amount = Number((newData.bonus_amount / 100).toFixed(2));
-    }
-    newData.compliment_commodities = newData.compliment_commodities.split(',')
-    newData.commodity_tag = newData.commodity_tag.split(',')
-    newData.site_category = getSiteCategory()
-    if (num == 0) {
-      return
-    }
-    if (num > 0) {
-      newData.commodity_quantity = num
-      sensors.track('AddToCart', newData);
-      sensors.setProfile({last_addtocart_time:getFormatDate()})
-      gtag("event","conversion",{"send_to":"AW-319309832/2I9aCIf48eYCEIiQoZgB","transaction_id":""});
-      pintrk("track","addtocart",{value:newData.current_price,order_quantity:newData.commodity_quantity,currency:"USD",line_items:[{product_id:id,product_category:newData.commodity_type}]});
-    } else {
-      newData.commodity_quantity = -num
-      sensors.track('RemoveFromCart', newData);
-    }
+  if (newData.original_price) {
+    newData.original_price = Number((newData.original_price / 100).toFixed(2));
   }
-  
-  ~function(){
-   var tempDiv= document.createElement('div')
-    var templateStr=`<div id="modal-quick-view-{{ section.id }}" class="modal" aria-hidden="true">
+  if (newData.current_price) {
+    newData.current_price = Number((newData.current_price / 100).toFixed(2));
+  }
+  if (newData.discount_price) {
+    newData.discount_price = Number((newData.discount_price / 100).toFixed(2));
+  }
+  if (newData.bonus_amount) {
+    newData.bonus_amount = Number((newData.bonus_amount / 100).toFixed(2));
+  }
+  newData.compliment_commodities = newData.compliment_commodities.split(',')
+  newData.commodity_tag = newData.commodity_tag.split(',')
+  newData.site_category = getSiteCategory()
+  if (num == 0) {
+    return
+  }
+  if (num > 0) {
+    newData.commodity_quantity = num
+    sensors.track('AddToCart', newData);
+    sensors.setProfile({ last_addtocart_time: getFormatDate() })
+    gtag("event", "conversion", { "send_to": "AW-319309832/2I9aCIf48eYCEIiQoZgB", "transaction_id": "" });
+    pintrk("track", "addtocart", { value: newData.current_price, order_quantity: newData.commodity_quantity, currency: "USD", line_items: [{ product_id: id, product_category: newData.commodity_type }] });
+  } else {
+    newData.commodity_quantity = -num
+    sensors.track('RemoveFromCart', newData);
+  }
+  }
+
+  ~function () {
+    var tempDiv = document.createElement('div')
+    var templateStr = `<div id="modal-quick-view-{{ section.id }}" class="modal" aria-hidden="true">
       <div class="modal__dialog modal__dialog--stretch" role="dialog">
         <button class="modal__close link" data-action="close-modal" title="{{ 'general.accessibility.close' | t | escape }}">
           {%- render 'icon', icon: 'close' -%}
@@ -631,17 +708,9 @@
         <div class="modal__inner"></div>
       </div>
     </div>`
-    tempDiv.innerHTML=templateStr
+    tempDiv.innerHTML = templateStr
     document.body.appendChild(tempDiv.lastChild)
 
   }();
-  
+
 </script>
-<style>
-  .car-bar-box {
-    border-bottom: 1px solid var(--border-color);
-    margin-bottom: 10px;
-  }
-  
- 
-</style>
