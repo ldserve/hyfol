@@ -19,7 +19,7 @@
           "settings": {
             "sensorsName": "Special Material",
             "image": "shopify:\/\/shop_images\/b7d47683fa56c3e79d66aa608b1255f5.jpg",
-            "mobile_image": "shopify:\/\/shop_images\/e70439bb14502168a446065500b713b3_a22ca13d-9149-4cdf-ba36-ed125ef35c1b.jpg",
+            "mobile_image": "shopify:\/\/shop_images\/3_f62726f3-fcc5-4876-94a7-fc4be95be5cd.jpg",
             "show_overlay": false,
             "overlay_opacity": 30,
             "text_color": "#ffffff",
@@ -42,8 +42,8 @@
           "type": "image",
           "settings": {
             "sensorsName": "facebook",
-            "image": "shopify:\/\/shop_images\/banner_5b46104f-dec2-4fbf-b474-c958892e084f.jpg",
-            "mobile_image": "shopify:\/\/shop_images\/9e782f252be4a5169ae0224d842b654f.jpg",
+            "image": "shopify:\/\/shop_images\/banner_0a41490a-01df-430c-beeb-b12a5a2a4e76.jpg",
+            "mobile_image": "shopify:\/\/shop_images\/2_cbf2a9df-3a0e-435d-aed2-3cb71e018481.jpg",
             "show_overlay": false,
             "overlay_opacity": 30,
             "text_color": "#ffffff",
@@ -67,7 +67,7 @@
           "settings": {
             "sensorsName": "best",
             "image": "shopify:\/\/shop_images\/Paypal.jpg",
-            "mobile_image": "shopify:\/\/shop_images\/Paypal_c4aa8735-c35a-4411-8cad-b882a993bfff.jpg",
+            "mobile_image": "shopify:\/\/shop_images\/1_2da911bb-93d9-484f-b6b2-ec909f8427df.jpg",
             "show_overlay": false,
             "overlay_opacity": 30,
             "text_color": "#ffffff",
