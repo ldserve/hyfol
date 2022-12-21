@@ -2,7 +2,7 @@
 {%- assign variant_selector_block = section.blocks | where: 'type', 'variant_selector' | first -%}
 {%- assign buy_buttons_block = section.blocks | where: 'type', 'buy_buttons' | first -%}
 <style>
-  #shopify-section-{{section.id}} .color-swatch-list {
+  #shopify-section- {{section.id}} .color-swatch-list {
   	text-align: unset;
   }
 
@@ -156,7 +156,6 @@
   	#sizeGuideModal .sizeGuideModal__tips__item {
   		margin-bottom: 10px;
   	}
-
   }
 
   /*尺码表样式 end*/
@@ -701,7 +700,6 @@
       </div>
     </div>
   {%- else -%}
-    {%- comment -%}------------------------------------QUICKVIE--------------------------------------{%- endcomment -%}
     {%- comment -%}We display the quick view within the product template so we can re-use the same settings{%- endcomment -%}
     {% if template == 'product.quick-view' %}
       {%- assign isQuickView = true -%}
@@ -919,7 +917,6 @@
 </section>
 <script>
   
-
 	window.ShopifyXR = window.ShopifyXR || function () {
 		(ShopifyXR.q = ShopifyXR.q || []).push(arguments)
 	};
@@ -997,7 +994,6 @@
 	let a = 1
 	initSizeGuideTable()
         /*尺码表 end*/
-	
     }) ();
 	pintrk('track', 'viewcategory');
 
