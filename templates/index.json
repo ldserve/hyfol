@@ -16,6 +16,7 @@
       "blocks": {
         "1664249260b7761d46-0": {
           "type": "image",
+          "disabled": true,
           "settings": {
             "sensorsName": "Special Material",
             "image": "shopify:\/\/shop_images\/b7d47683fa56c3e79d66aa608b1255f5.jpg",
