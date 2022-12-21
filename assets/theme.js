@@ -2604,8 +2604,6 @@
                     this.delegateElement.on('touchend', this._onTouch.bind(this));
                     
                 }
-                
-                this.delegateRoot.on('click', '[data-action="gift-addToCart"]', this._giftAddToCart.bind(this))
                 this.delegateRoot.on('click', '[data-action="decrease-quantity"]', this._updateQuantity.bind(this));
                 this.delegateRoot.on('click', '[data-action="increase-quantity"]', this._updateQuantity.bind(this));
                 this.delegateRoot.on('change', '.quantity-selector:not(.quantity-selector--product) .quantity-selector__value', this._updateQuantity.bind(this));
@@ -2649,41 +2647,6 @@
 
                 Accessibility.trapFocus(this.miniCartSection, 'mini-cart');     
                 document.documentElement.classList.add('is-locked');
-            }
-        }, 
-        {
-            key:"_giftAddToCart",
-            value:function(ev,target){
-               const select=document.getElementById('gift_select') 
-               const _this=this
-               ev.preventDefault()
-               if(!select.value)return false;
-               target.setAttribute('disabled', 'disabled');
-               document.dispatchEvent(new CustomEvent('theme:loading:start')); // Then we add the product in Ajax
-               fetch("".concat(window.routes.cartAddUrl, ".js"), {
-                   body: JSON.stringify({form_type:"product",id:select.value,quantity:1,utf8:"✓"}),
-                   credentials: 'same-origin',
-                   method: 'POST',
-                   headers: {
-                       'Content-Type': 'application/json',
-                       'X-Requested-With': 'XMLHttpRequest' // This is needed as currently there is a bug in Shopify that assumes this header
-                   }
-               }).then(function (response) {
-                   target.removeAttribute('disabled');
-                   if (response.ok) {
-                       // We simply trigger an event so the mini-cart can re-render
-                       _this.element.dispatchEvent(new CustomEvent('product:added', {
-                           bubbles: true,
-                           detail: {
-                               button: target,
-                               variant: null,
-                               quantity:1
-                           }
-                       }));
-                   } else {
-                       document.dispatchEvent(new CustomEvent('theme:loading:end'));
-                   }
-               });
             }
         },{
             key:'_onTouch',
