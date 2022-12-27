@@ -16,11 +16,10 @@
       "blocks": {
         "1664249260b7761d46-0": {
           "type": "image",
-          "disabled": true,
           "settings": {
-            "sensorsName": "Special Material",
-            "image": "shopify:\/\/shop_images\/b7d47683fa56c3e79d66aa608b1255f5.jpg",
-            "mobile_image": "shopify:\/\/shop_images\/3_f62726f3-fcc5-4876-94a7-fc4be95be5cd.jpg",
+            "sensorsName": "bestseller",
+            "image": "shopify:\/\/shop_images\/hyfol_e7c25212-fc5d-4821-b096-f2d480e7c997.jpg",
+            "mobile_image": "shopify:\/\/shop_images\/hyfol_b5a80854-12c4-4530-8d38-3fb0488b31b7.jpg",
             "show_overlay": false,
             "overlay_opacity": 30,
             "text_color": "#ffffff",
