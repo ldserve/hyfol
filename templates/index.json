@@ -42,8 +42,8 @@
           "type": "image",
           "settings": {
             "sensorsName": "facebook",
-            "image": "shopify:\/\/shop_images\/banner_0a41490a-01df-430c-beeb-b12a5a2a4e76.jpg",
-            "mobile_image": "shopify:\/\/shop_images\/2_cbf2a9df-3a0e-435d-aed2-3cb71e018481.jpg",
+            "image": "shopify:\/\/shop_images\/banner_4596ca7a-b93b-418b-b305-c0be966efe70.jpg",
+            "mobile_image": "shopify:\/\/shop_images\/2_85247143-1510-4ef8-8544-33320a60d0b1.jpg",
             "show_overlay": false,
             "overlay_opacity": 30,
             "text_color": "#ffffff",
