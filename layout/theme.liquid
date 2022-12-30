@@ -297,16 +297,18 @@ line_items: [
 {%- include 'orichi_multi_pixel' -%}
 {%- include "omega_multi_pixel" -%}
 
-		<!-- Bind 营销代码 Start -->
+		{% comment %} <!-- Bind 营销代码 Start --> {% endcomment %}
 <script>(function(w,d,t,r,u){var f,n,i;w[u]=w[u]||[],f=function(){var o={ti:"136017208"};o.q=w[u],w[u]=new UET(o),w[u].push("pageLoad")},n=d.createElement(t),n.src=r,n.async=1,n.onload=n.onreadystatechange=function(){var s=this.readyState;s&&s!=="loaded"&&s!=="complete"||(f(),n.onload=n.onreadystatechange=null)},i=d.getElementsByTagName(t)[0],i.parentNode.insertBefore(n,i)})(window,document,"script","//bat.bing.com/bat.js","uetq");</script>
     <!-- Bind 营销代码 END -->
+   
     {%- comment -%}
     <!-- PLM -->
     <script src="https://www.paypal.com/sdk/js?client-id=AaoMEq4pF7_1JBTPdRANwtH_MdqLAgscO0ivoPn1JlNmpA3YdqEuxxUY2gUg9vszi8RWrvPHSoTV8tjQ&components=messages" data-namespace="paypal_sdk" async></script>
     <!-- PLM END -->
     {%- endcomment -%}
-<!-- Bind 营销代码 END -->
-		<!-- outbrain 营销代码 Start -->
+  {% comment %} <!-- Bind 营销代码 END --> {% endcomment %}
+    
+		{% comment %} <!-- outbrain 营销代码 Start --> {% endcomment %}
 		<script data-obct type = "text/javascript">
       /** DO NOT MODIFY THIS CODE**/
       !function(_window, _document) {
@@ -335,13 +337,17 @@ line_items: [
 
       obApi('track', 'PAGE_VIEW');
 		</script>
-		<!-- outbrain 营销代码 end -->
+		{% comment %} <!-- outbrain 营销代码 end --> {% endcomment %}
 
     {%- comment -%}REVIES{%- endcomment -%}
     {%- if request.page_type == 'product' -%}
     <link rel="stylesheet" href="{{'review.css' | asset_url}}">
     {%- endif -%}
-    
+
+    {%- comment -%}----Customers-------{%- endcomment -%}
+    {%- if request.page_type contains 'customers' -%}
+    <link rel="stylesheet" href="{{'account.css' | asset_url}}">
+    {%- endif -%}
 	</head>
 
   <body class="warehouse--v1 {% if settings.animation_image_zoom %}features--animate-zoom{% endif%} template-{{ request.page_type | handle }} {% if request.page_type contains '/' %}template-{{ request.page_type | split: '/' | last | handle }}{% endif %}" data-instant-intensity="viewport">

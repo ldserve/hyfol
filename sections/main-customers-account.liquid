@@ -1,967 +1,3 @@
-<style>
-	.pagination__prev,
-	.pagination__next,
-	.pagination__nav-item {
-		color: #000;
-	}
-
-	.my-profile__view {
-		text-align: center;
-		display: grid;
-		grid: repeat(1, auto) / auto-flow auto;
-		color: #fff;
-		background: url('https://cdn.shopify.com/s/files/1/0595/0691/7535/files/coup.jpg?v=1664507060') no-repeat 100% 100%;
-		grid-template-columns: 50% 1px auto;
-		padding: 1rem 2rem;
-
-	}
-
-	.profile-total,
-	.profile-expire {
-		padding: 1rem 0;
-	}
-
-	.my_coupons {
-		padding: 1rem 3rem;
-	}
-
-	.my_coupons__title {
-		text-align: center;
-	}
-
-	.coupons-nav>summary {
-		margin-right: 1.8rem;
-		cursor: pointer;
-	}
-
-	summary[aria-expanded="true"] {
-		border-bottom: 1px solid #000;
-	}
-
-	.vip-level__s1,
-	.vip-level__s2,
-	.vip-level__s3 {
-		position: relative;
-	}
-
-	.vip-level__s1::after {
-		content: 'Silver';
-		position: absolute;
-		left: -0.2rem;
-		bottom: -1.6rem;
-	}
-
-	.vip-level__s2::after {
-		content: 'Gold';
-		position: absolute;
-		left: -0.2rem;
-		bottom: -1.6rem;
-	}
-
-	.vip-level__s3::after {
-		content: 'Platinum';
-		position: absolute;
-		left: -0.8rem;
-		bottom: -1.6rem;
-	}
-
-	.page__item .my-coupons {
-		padding: 0 0rem 3rem;
-
-	}
-
-
-	.product-item__info {
-		background-color: #ffffff;
-	}
-
-	.product-item_text,
-	.product-item__info-inner .price {
-		color: #000000;
-	}
-
-	.product-item__swatch-list {
-		padding-bottom: 0px;
-		min-height: 50px;
-	}
-
-	.scroller__inner .price--compare,
-	.product-item__info-inner .price--compare {
-		text-decoration: line-through black;
-	}
-
-	.mobile-account__title {
-		text-align: center;
-		font-weight: 600;
-	}
-
-	.hidden-lap-and-up.account {
-		margin: 1rem 0;
-	}
-
-	.container.container--flush {
-		padding: 0;
-	}
-
-	#shopify-section-footer {
-		display: none;
-	}
-
-	body {
-		min-height: 100vh;
-		background: #fff;
-	}
-
-	main ul,
-	li {
-		list-style: none;
-		padding: 0;
-		margin: 0;
-	}
-
-	.header-me {
-		background-color: #eee;
-		padding: 0 10px;
-	}
-
-	.header-me .logged .name {
-		font-family: var(--heading-font-family);
-		font-weight: var(--heading-font-weight);
-		font-style: var(--heading-font-style);
-	}
-
-	.header-me .logged .tab label {
-		cursor: pointer;
-	}
-
-	.header-me .logged .hi {
-		color: var(--link-color);
-	}
-
-	.header-me .account-box {
-		padding: 1rem 0;
-
-	}
-
-	.header-me .logged>.tab {
-		transition: all 0.4s ease;
-	}
-
-	#account-input:checked~.logged>.tab {
-		transform: rotate(180deg);
-		-ms-transform: rotate(180deg);
-		/* IE 9 */
-		-moz-transform: rotate(180deg);
-		/* Firefox */
-		-webkit-transform: rotate(180deg);
-		/* Safari 和 Chrome */
-		-o-transform: rotate(180deg);
-	}
-
-	.header-me .no-logged,
-	.header-me .logged {
-		display: flex;
-		padding: 20px 0;
-	}
-
-	.header-me .logged {
-		justify-content: space-between;
-	}
-
-	.header-me .no-logged li {
-		flex: 1 0 auto;
-	}
-
-	.header-me .no-logged li a {
-		font-family: var(--heading-font-family);
-		font-weight: var(--heading-font-weight);
-		font-style: var(--heading-font-style);
-	}
-
-	.order-me {
-		background-color: #fff;
-		margin-top: 10px;
-	}
-
-	.order-me h2 {
-		font-family: var(--heading-font-family);
-		font-weight: var(--heading-font-weight);
-		font-style: var(--heading-font-style);
-		padding: 10px 0;
-	}
-
-	.order-me .icon-box {
-		overflow-x: scroll;
-		width: 100%;
-		padding-bottom: 10px;
-	}
-
-	.order-me .icons {
-		width: 144%;
-		display: flex;
-		justify-content: space-between;
-	}
-
-	.order-me .icons li {
-		cursor: pointer;
-	}
-
-	.order-me .icon {
-		font-size: 2em;
-	}
-
-	.order-me span {
-		font-size: 0.85rem;
-	}
-
-	.order-me .current {
-		color: #b82928;
-	}
-
-	.body-me {
-		margin-top: 10px;
-	}
-
-	.body-me .card {
-		border: none;
-	}
-
-	.body-me.loading {
-		color: #666666;
-		width: 100%;
-		height: 60px;
-		font-size: 2em;
-		text-align: center;
-	}
-
-	.body-me.loading>svg {
-		animation: loading;
-		animation-duration: .3s;
-		animation-iteration-count: infinite;
-		animation-timing-function: linear;
-	}
-
-	.body-me.loading>.loading-text {
-		font-size: 0.8rem;
-	}
-
-	@keyframes loading {
-		from {
-			transform: rotate(0);
-		}
-
-		to {
-			transform: rotate(45deg);
-		}
-	}
-
-	.body-me .card {
-		background-color: #f0f0f0;
-		padding: 10px;
-	}
-
-	.body-me .order-box {
-		margin-bottom: 10px;
-		border-radius: 5px;
-		padding: 20px;
-		background-color: #fff;
-	}
-
-	.body-me .order-title {
-		display: flex;
-		justify-content: space-between;
-	}
-
-	.body-me .order-title .title-info>span {
-		display: block;
-	}
-
-	.body-me .order-title .title-info-name {
-		font-family: var(--heading-font-family);
-		font-weight: var(--heading-font-weight);
-		font-style: var(--heading-font-style);
-	}
-
-	.body-me .order-title .title-info-data {
-		font-size: 0.8rem;
-		color: #666666;
-	}
-
-	.body-me .order-body {
-		padding-top: 10px;
-	}
-
-	.body-me .order-body li {
-		display: flex;
-		justify-content: space-between;
-		padding: 5px 0;
-	}
-
-	.body-me .order-body .pro-img {
-		width: 30%;
-	}
-
-	.body-me .order-body .pro-img>div {
-		border: 1px solid #dddddd;
-		overflow: hidden;
-		border-radius: 10px;
-	}
-
-	.body-me .order-body .pro-info {
-		width: 70%;
-		padding: 0 10px;
-	}
-
-	.body-me .order-body .pro-info .info-title {
-		font-weight: 700;
-		overflow: hidden;
-		text-overflow: ellipsis;
-		display: -webkit-box;
-		-webkit-box-orient: vertical;
-		-webkit-line-clamp: 2;
-	}
-
-	.body-me .order-body .pro-info .info-style {
-		display: flex;
-		justify-content: space-between;
-		color: #666666;
-	}
-
-	.body-me .order-footer {
-		text-align: right;
-	}
-
-	.body-me .order-footer .all-total {
-		font-family: var(--heading-font-family);
-		font-weight: var(--heading-font-weight);
-		font-style: var(--heading-font-style);
-		color: #B82928;
-	}
-
-	.post {
-		background-color: #fff;
-		text-align: center;
-		min-height: 100px;
-		margin-top: 10px;
-		display: none;
-	}
-
-	.post h3 {
-		line-height: 100px;
-		font-size: 1.3rem;
-	}
-
-	.icon-box li {
-		display: inline-block;
-		text-align: center;
-	}
-
-	.text-l {
-		text-align: left;
-	}
-
-	.text-r {
-		text-align: right;
-	}
-
-	.hidden {
-		display: none;
-	}
-
-	.advert-me {
-		background-color: #fff;
-		margin-top: 10px;
-		min-height: 400px;
-	}
-
-	.advert-me ul {
-		padding: 50px 20px 0;
-	}
-
-	.advert-me li {
-		height: 50px;
-		line-height: 50px;
-		width: 100%;
-		text-align: center;
-		margin-bottom: 20px;
-		background-color: #707070;
-	}
-
-	.advert-me li a {
-		font-family: var(--heading-font-family);
-		font-weight: var(--heading-font-weight);
-		font-style: var(--heading-font-style);
-		color: #ffffff;
-		text-shadow: -2px 1px 3px rgba(0, 0, 0, .5);
-	}
-
-
-	.vip-overview__rule {
-		font-size: 14px;
-		color: #edede5;
-		padding: 1rem 1rem 0;
-
-	}
-
-	.vip-overview__rule p {
-		margin: 0;
-	}
-
-	.vip-rules__link {
-		text-decoration: underline;
-		cursor: pointer;
-		display: inline-block;
-		font-weight: 500;
-	}
-
-	.vip-icon__box {
-		display: inline-block;
-		background-color: #aaa;
-		border-radius: 1rem;
-		padding: 0 0.8rem;
-	}
-
-	.vip-icon__box .icon {
-		font-size: 1.6rem;
-	}
-
-	.vip-icon__box span {
-		padding: 0 6px;
-
-	}
-
-	.vip-level__s0 {
-		background-color: #000000;
-		border-radius: 50%;
-		width: 0.6rem;
-		height: 0.6rem;
-	}
-
-	.vip-solid {
-		background-color: #b8b8b8;
-		height: 1px;
-		width: 2rem;
-	}
-
-	.vip-grade {
-		padding: 1rem 0 2rem;
-		align-items: center;
-		justify-items: flex-start;
-	}
-
-	.vip-user__avatar {
-		width: 4rem;
-		height: 4rem;
-		border-radius: 50%;
-	}
-
-	.vip-user__name {
-		padding: 0 1rem;
-
-	}
-
-	.vip-page {
-		justify-content: space-between;
-		background: url('https://cdn.shopify.com/s/files/1/0595/0691/7535/files/bg_main_s0-76143950f1.png?v=1664507536') no-repeat -2rem 0rem;
-		background-size: 106% 100%;
-		background-clip: border-box;
-		min-height: 200px;
-		padding: 2rem 3rem;
-		display: grid;
-		grid: auto-flow auto / repeat(2, 50%);
-	}
-
-	.vip-grade img {
-		width: 2rem;
-		height: 2rem;
-	}
-
-	.vip-grade,
-	.vip-info__title {
-		margin-left: 2rem;
-	}
-
-	.vip-rules {
-		background-color: #eee;
-		z-index: 3;
-		color: #000000;
-		cursor: text;
-		padding: 1rem 2rem;
-	}
-
-	.vip-rules__title {
-		text-align: center;
-	}
-
-	.rule-table {
-		margin: 20px 0;
-	}
-
-	.rule-table td,
-	.rule-table th {
-		padding: 6px 10px;
-	}
-
-	.rule-table td:nth-child(1n+2),
-	.rule-table th:nth-child(1n+2) {
-		background-color: #c8c8c8;
-		text-align: center;
-	}
-
-	.rule-tex {
-		margin-bottom: 16px;
-	}
-
-	.close-rule__page {
-		float: right;
-		cursor: pointer;
-	}
-
-	.card.card--sticky {
-		background-color: #eee;
-	}
-
-	.my-coupons .h3,
-	.order-preview .h3,
-	.profile-view .h3 {
-		text-align: center;
-		font-weight: 700;
-	}
-
-	.profile-story__title {
-		font-weight: 700;
-	}
-
-	.my-coupons {
-		margin-top: 3rem;
-		background-color: #eee;
-		padding: 0 10px 3rem;
-	}
-
-	.my-coupons__title {
-		padding: 1rem 0;
-	}
-
-	.coupons-date {
-		margin-top: 0.8rem;
-		font-size: 12px;
-	}
-
-	.coupons-date li {
-		list-style: disc;
-		line-height: 1.4;
-	}
-
-	.my-coupons__list {
-		display: grid;
-		grid: auto-flow auto / repeat(2, auto);
-		grid-column-gap: 4rem;
-		grid-row-gap: 3rem;
-		color: #fff;
-		justify-content: center;
-		align-items: center;
-	}
-
-	.my-coupons__list p {
-		margin: 0;
-	}
-
-	.my-coupons__item {
-		/* background-image: url('https://cdn.shopify.com/s/files/1/0595/0691/7535/files/coup.jpg?v=1664507060');
-		background-position: center;
-		background-repeat: no-repeat;
-		background-size: 100% 100%;
-		background-clip: border-box;
-		padding: 0.6rem 4rem; */
-		position: relative;
-		overflow: hidden;
-		-moz-user-select: none;
-		-webkit-user-select: none;
-		-ms-user-select: none;
-		-khtml-user-select: none;
-		-o-user-select: none;
-		user-select: none;
-		display: grid;
-		grid-template-columns: 50% 50%;
-		color: #000;
-		width: 350px;
-	}
-
-	#main {
-		background-color: #fff;
-	}
-
-	.backgrount_e {
-		background-color: #eee;
-	}
-
-	.profile-view {
-		padding: 30px 2rem;
-	}
-
-	.profile-record {
-		margin-top: 2rem;
-		padding: 2rem;
-	}
-
-	.profile-record h4 {
-		margin: 0;
-		font-size: 18px;
-	}
-
-	.page__item {
-		margin-top: 1rem;
-	}
-
-	.page__item th {
-		background-color: #d6d6d6;
-
-	}
-
-	.page__item th,
-	.page__item td {
-		text-align: center;
-		padding: 8px 0;
-
-	}
-
-	.page__item table {
-		width: 100%;
-	}
-
-	.profile-nav>summary {
-		display: inline-block;
-		margin-right: 1rem;
-		padding: 1rem 1rem 0;
-		cursor: pointer;
-	}
-
-	.profile-amount {
-		color: #1ea364;
-	}
-
-	.card__linklist {
-		overflow-x: auto;
-		padding-bottom: 1rem;
-	}
-
-	.mobile-account__nav {
-		width: 270%;
-		justify-content: space-between;
-
-	}
-
-	.customers-services {
-		background-color: #eee;
-		text-align: center;
-		min-height: 100px;
-		margin-top: 10px;
-		padding: 2rem;
-	}
-
-	.my_addresses .card {
-		background-color: #eee;
-	}
-
-	.product-list--collection,
-	.product-list--collection .product-item {
-		background-color: #fff;
-	}
-
-	@media screen and (max-width: 648px) {
-		.profile-view {
-			padding: 30px 10px;
-		}
-
-		.profile-record {
-			margin: 0;
-			padding: 10px;
-		}
-
-		.profile-nav>summary {
-			margin: 0;
-		}
-
-		.my-coupons {
-			margin-top: 1rem;
-		}
-
-		.my-coupons__list {
-			grid: auto-flow auto / repeat(1, auto);
-			grid-row-gap: 2rem;
-		}
-
-		.order-preview {
-			/* margin-top: 1.6rem; */
-			display: none;
-		}
-
-		.vip-page {
-			padding: 1rem 10px;
-			background: #eee;
-			grid: repeat(2, auto)/ auto-flow auto;
-			grid-row-gap: 1rem;
-		}
-
-		.vip-overview {
-			padding: 0 2rem
-		}
-
-		.vip-overview__rule {
-			padding: 1rem 2rem;
-			background: #636363;
-		}
-
-		.vip-upgrade__info {
-			display: flex;
-			flex-wrap: wrap;
-		}
-
-		.vip-upgrade__header {
-			font-weight: 600;
-		}
-
-		.my_coupons {
-			padding: 1rem 2.6rem;
-		}
-
-		.my_addresses .h1 {
-			text-align: center;
-		}
-
-		.order-me .h3 {
-			text-align: center;
-		}
-
-		.my-coupons__item {
-			width: 320px;
-		}
-
-
-	}
-
-	.my-coupons_empty {
-		display: block !important;
-	}
-
-	.my-coupons_empty>.empty {
-		color: #000;
-		text-align: center;
-	}
-
-	.empty>.icon--package {
-		font-size: 5rem;
-	}
-
-	.page__item[aria-hidden="true"] {
-		display: none;
-	}
-
-	.collect .openQuickView {
-		display: none;
-	}
-
-	.collect .product-item__action-button--list-view-only {
-		display: block;
-	}
-
-	.empty {
-		text-align: center;
-		color: #000;
-	}
-
-	.coupon_code {
-		user-select: text;
-		text-transform: uppercase;
-	}
-
-	.expired__coupons .codeLeft {
-		background: rgb(143 143 143 / 90%);
-	}
-
-	.expired__coupons .codeRight {
-		background: rgb(55 55 55 / 82%);
-		color: #000;
-	}
-
-	.expired__coupons .codeSave {
-		background: rgb(110 110 110 / 88%);
-	}
-
-	.expired__coupons .codeAmount {
-		background: rgb(5, 5, 5, 0.3);
-		color: #000;
-	}
-
-	.couponDost {
-		background: #eee;
-		width: 10px;
-		height: 10px;
-		border-radius: 6px;
-	}
-
-	.couponDos {
-		position: absolute;
-		display: flex;
-		flex-direction: column;
-		justify-content: space-evenly;
-		top: 0;
-		bottom: 0;
-	}
-
-	.dostLeft {
-		left: -4px;
-	}
-
-	.dostRight {
-		right: -4px;
-	}
-
-	.codeAmount {
-		background: #050505;
-		color: #fcbe0f;
-		flex: 1;
-		margin-left: 10px;
-		position: relative;
-		padding: 0 6px;
-	}
-
-	.codeSave {
-		max-width: 82%;
-		margin: 0 auto;
-		background: #ffbd14;
-		padding: 2px;
-		color: #000;
-		padding-left: 4px;
-		line-height: 1.5;
-		border-radius: 6px;
-	}
-
-	.codeLeft {
-		background: #ffbd16;
-		padding-left: 24px;
-		font-size: 12px;
-		padding-top: 6px;
-		padding-bottom: 8px;
-	}
-
-	.codeRight {
-		color: #ffbd17;
-		text-transform: uppercase;
-		font-size: 1.4rem;
-		font-weight: 800;
-		background: #000;
-	}
-
-	.my-order__title {
-		padding: 0 0 1rem;
-		text-align: center;
-	}
-
-	.orders-nav {
-		justify-content: center;
-	}
-
-	.title-info-name {
-		cursor: pointer;
-
-	}
-
-	.order-render__view,
-	.order-item__card>.card__section,
-	.order-box {
-		background-color: #eee;
-	}
-
-	.info-title,
-	.info-style,
-	.title-info {
-		justify-content: space-between;
-	}
-
-	.title-state {
-		/* float: right; */
-		text-align: right;
-	}
-
-	.info-style {
-		color: #9d9898;
-	}
-
-	.pro-info__discount {
-		color: #cf0e0e;
-		font-size: 0.9rem;
-	}
-
-	.pro-info__text {
-		text-align: right;
-		margin-bottom: 0;
-	}
-
-	.pro-info__title,
-	.pro-info__paid {
-		font-weight: 600;
-	}
-
-	.info-price__scribe {
-		text-decoration: line-through;
-	}
-
-	.orders-nav__list {
-		justify-content: center;
-	}
-
-	.orders-nav__list svg {
-		font-size: 1.4rem;
-	}
-
-	.pro-info {
-		/* display: inline-block; */
-		padding: 0 2rem;
-		width: 100%;
-	}
-
-	.order-box {
-		padding: 1rem 1rem;
-		margin-bottom: 1rem;
-	}
-
-	.order-item__card-body {
-		padding: 1rem 0;
-		margin-bottom: 2rem;
-		border-bottom: 1px solid #ccc;
-	}
-
-	.orders-nav__item {
-		margin: 0 20px;
-		cursor: pointer;
-	}
-
-	.order-item__card[aria-hidden="true"] {
-		display: none;
-	}
-
-	.order-footer {
-		text-align: right;
-	}
-
-	.order-item__card[aria-hidden="false"] {
-		display: block;
-	}
-
-	.order-item__card {
-		background-color: #fff;
-	}
-
-	.orders-nav__item[data-action="true"] {
-		color: #770202;
-		border-bottom: 1px solid #770202;
-	}
-
-	.card__linklist-item>.icon {
-		margin-right: 4px;
-	}
-</style>
 
 <section data-section-id="{{ section.id }}" data-section-type="account" id="account">
 	{%- comment -%}------------------------------ Mobile Nav--------------------------{%- endcomment -%}
@@ -1003,6 +39,15 @@
 							aria-label="My Addresses">
 							{%- render 'icon', icon: 'account-location' -%}
 							<span>My Addresses</span>
+						</div>
+						<div class="card__linklist-item link" data-right="redemptions" data-action="left-nav"
+							aria-label="redemptions">
+							<svg t="1672224750449" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2724" width="32" height="32"><path d="M982.528 472.064c-2.56-59.392-62.464-97.792-140.288-117.76V196.096c0-1.536-0.512-2.56-1.024-4.096 0-2.56 1.024-4.608 1.024-6.656 0-125.952-251.392-159.232-400.384-159.232S41.472 59.392 41.472 184.832c0 2.56 0.512 4.608 1.024 6.656 0 1.536-1.024 2.56-1.024 4.096v600.576c0 0.512 0.512 1.536 0.512 2.048 0 1.024-0.512 1.536-0.512 2.048 0 125.952 251.904 159.232 400.384 159.232 12.8 0 26.624-0.512 40.448-1.024 73.216 35.84 186.88 38.4 218.112 38.4 47.104 0 282.624-6.144 282.624-122.88 0-0.512-0.512-1.024-0.512-1.536 0-0.512 0.512-1.024 0.512-1.536V474.112c-0.512-0.512-0.512-1.536-0.512-2.048zM841.728 460.8c14.336 5.12 25.6 10.24 32.256 14.848-6.656 4.608-17.92 9.728-32.256 14.848-24.064 8.704-58.368 16.384-102.4 19.968-8.192 0.512-16.896 1.024-25.6 1.024-4.608 0-9.216 0.512-13.824 0.512-92.672 0-152.576-22.016-174.08-36.352 21.504-14.336 81.408-36.352 174.08-36.352 13.824 0 27.136 0.512 39.424 1.536 30.208 2.048 55.808 6.656 76.8 11.776 9.728 3.072 17.92 5.632 25.6 8.192zM441.344 128c166.4 0 266.24 36.352 292.864 56.832-26.624 20.992-126.464 56.832-292.864 56.832s-265.728-35.84-292.864-56.832c27.136-20.48 126.464-56.832 292.864-56.832z m-24.064 729.6c-164.352-3.584-258.048-42.496-273.92-60.928v-89.088c78.848 32.256 188.416 45.056 273.92 47.104v102.912z m0-205.312c-164.352-3.584-258.048-42.496-273.92-60.928V502.272c78.848 32.256 188.416 45.056 273.92 47.104v102.912z m5.632-205.312c-167.424-3.072-263.168-41.984-279.04-60.928V296.96c86.528 35.328 209.92 47.616 297.984 47.616 88.064 0 211.456-11.776 297.984-47.616v41.984c-13.312-1.024-26.112-1.536-39.424-1.536-121.856 0-250.88 34.816-277.504 109.568z m457.216 416.768c-13.312 8.704-46.08 19.968-96.256 26.624-24.064 3.072-52.224 5.632-83.968 5.632-97.28 0-160.768-18.944-180.224-32.256v-90.112c69.632 21.504 154.112 23.552 180.224 23.552 8.192 0 22.016 0 39.424-1.024h0.512c27.136-1.536 62.976-4.608 98.816-11.776 1.024 0 2.048-0.512 3.584-0.512 12.8-2.56 26.112-6.144 38.4-9.728v89.6z m0-200.704c-7.168 4.608-19.968 10.24-38.4 15.36-17.408 4.608-39.936 9.216-66.56 12.288-11.264 1.536-23.04 2.56-35.84 3.072-12.288 0.512-25.6 1.024-39.424 1.024-97.28 0-160.768-18.944-180.224-31.744v-77.312c51.2 19.456 115.2 28.672 177.664 28.672h2.56c13.312 0 26.112-0.512 39.424-1.536 35.328-2.048 70.144-7.168 102.4-15.36v-2.048 1.536c13.312-3.584 26.112-7.68 38.4-12.288v78.336z" fill="" p-id="2725" data-spm-anchor-id="a313x.7781069.0.i2" class="selected"></path></svg>
+							<span>Redemptions for point</span>
+						</div>
+						<div class="card__linklist-item link" data-right="recommend" data-action="left-nav" aria-label="recommend">
+							<svg t="1672199086461" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3920" width="32" height="32"><path d="M256 960a128 128 0 0 1-128-128V466.645333A85.376 85.376 0 0 1 64 384v-106.666667a85.333333 85.333333 0 0 1 85.333333-85.333333h290.901334l-68.629334-68.629333a8.533333 8.533333 0 0 1 0-12.074667l33.194667-33.173333a8.533333 8.533333 0 0 1 12.053333 0l84.48 84.48 84.48-84.48a8.533333 8.533333 0 0 1 12.053334 0l33.194666 33.173333a8.533333 8.533333 0 0 1 0 12.074667l-68.650666 68.608L874.666667 192a85.333333 85.333333 0 0 1 85.333333 85.333333v106.666667a85.376 85.376 0 0 1-64 82.645333V832a128 128 0 0 1-128 128H256z m213.333333-490.666667H192v362.666667a64 64 0 0 0 60.245333 63.893333L256 896h213.333333V469.333333z m362.666667 0H533.333333v426.666667h234.666667a64 64 0 0 0 63.893333-60.245333L832 832V469.333333zM469.333333 256H149.333333a21.333333 21.333333 0 0 0-21.184 18.837333L128 277.333333v106.666667a21.333333 21.333333 0 0 0 18.837333 21.184L149.333333 405.333333h320v-149.333333z m405.333334 0H533.333333v149.333333h341.333334a21.333333 21.333333 0 0 0 21.184-18.837333L896 384v-106.666667a21.333333 21.333333 0 0 0-18.837333-21.184L874.666667 256z" fill="#333333" p-id="3921"></path></svg>
+							<span>Refer a Friend</span>
 						</div>
 						<div class="card__linklist-item link" data-right="my_postsale" data-action="left-nav"
 							aria-label="Customers Services">
@@ -1086,6 +131,15 @@
 									aria-label="My Addresses">
 									{%- render 'icon', icon: 'account-location' -%}
 									<span>My Addresses</span>
+								</div>
+								<div class="card__linklist-item link" data-right="recommend" data-action="left-nav" aria-label="recommend">
+									<svg t="1672199086461" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3920" width="32" height="32"><path d="M256 960a128 128 0 0 1-128-128V466.645333A85.376 85.376 0 0 1 64 384v-106.666667a85.333333 85.333333 0 0 1 85.333333-85.333333h290.901334l-68.629334-68.629333a8.533333 8.533333 0 0 1 0-12.074667l33.194667-33.173333a8.533333 8.533333 0 0 1 12.053333 0l84.48 84.48 84.48-84.48a8.533333 8.533333 0 0 1 12.053334 0l33.194666 33.173333a8.533333 8.533333 0 0 1 0 12.074667l-68.650666 68.608L874.666667 192a85.333333 85.333333 0 0 1 85.333333 85.333333v106.666667a85.376 85.376 0 0 1-64 82.645333V832a128 128 0 0 1-128 128H256z m213.333333-490.666667H192v362.666667a64 64 0 0 0 60.245333 63.893333L256 896h213.333333V469.333333z m362.666667 0H533.333333v426.666667h234.666667a64 64 0 0 0 63.893333-60.245333L832 832V469.333333zM469.333333 256H149.333333a21.333333 21.333333 0 0 0-21.184 18.837333L128 277.333333v106.666667a21.333333 21.333333 0 0 0 18.837333 21.184L149.333333 405.333333h320v-149.333333z m405.333334 0H533.333333v149.333333h341.333334a21.333333 21.333333 0 0 0 21.184-18.837333L896 384v-106.666667a21.333333 21.333333 0 0 0-18.837333-21.184L874.666667 256z" fill="#333333" p-id="3921"></path></svg>
+									<span>Refer a Friend</span>
+								</div>
+								<div class="card__linklist-item link" data-right="redemptions" data-action="left-nav"
+								aria-label="redemptions">
+								<svg t="1672224750449" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2724" width="32" height="32"><path d="M982.528 472.064c-2.56-59.392-62.464-97.792-140.288-117.76V196.096c0-1.536-0.512-2.56-1.024-4.096 0-2.56 1.024-4.608 1.024-6.656 0-125.952-251.392-159.232-400.384-159.232S41.472 59.392 41.472 184.832c0 2.56 0.512 4.608 1.024 6.656 0 1.536-1.024 2.56-1.024 4.096v600.576c0 0.512 0.512 1.536 0.512 2.048 0 1.024-0.512 1.536-0.512 2.048 0 125.952 251.904 159.232 400.384 159.232 12.8 0 26.624-0.512 40.448-1.024 73.216 35.84 186.88 38.4 218.112 38.4 47.104 0 282.624-6.144 282.624-122.88 0-0.512-0.512-1.024-0.512-1.536 0-0.512 0.512-1.024 0.512-1.536V474.112c-0.512-0.512-0.512-1.536-0.512-2.048zM841.728 460.8c14.336 5.12 25.6 10.24 32.256 14.848-6.656 4.608-17.92 9.728-32.256 14.848-24.064 8.704-58.368 16.384-102.4 19.968-8.192 0.512-16.896 1.024-25.6 1.024-4.608 0-9.216 0.512-13.824 0.512-92.672 0-152.576-22.016-174.08-36.352 21.504-14.336 81.408-36.352 174.08-36.352 13.824 0 27.136 0.512 39.424 1.536 30.208 2.048 55.808 6.656 76.8 11.776 9.728 3.072 17.92 5.632 25.6 8.192zM441.344 128c166.4 0 266.24 36.352 292.864 56.832-26.624 20.992-126.464 56.832-292.864 56.832s-265.728-35.84-292.864-56.832c27.136-20.48 126.464-56.832 292.864-56.832z m-24.064 729.6c-164.352-3.584-258.048-42.496-273.92-60.928v-89.088c78.848 32.256 188.416 45.056 273.92 47.104v102.912z m0-205.312c-164.352-3.584-258.048-42.496-273.92-60.928V502.272c78.848 32.256 188.416 45.056 273.92 47.104v102.912z m5.632-205.312c-167.424-3.072-263.168-41.984-279.04-60.928V296.96c86.528 35.328 209.92 47.616 297.984 47.616 88.064 0 211.456-11.776 297.984-47.616v41.984c-13.312-1.024-26.112-1.536-39.424-1.536-121.856 0-250.88 34.816-277.504 109.568z m457.216 416.768c-13.312 8.704-46.08 19.968-96.256 26.624-24.064 3.072-52.224 5.632-83.968 5.632-97.28 0-160.768-18.944-180.224-32.256v-90.112c69.632 21.504 154.112 23.552 180.224 23.552 8.192 0 22.016 0 39.424-1.024h0.512c27.136-1.536 62.976-4.608 98.816-11.776 1.024 0 2.048-0.512 3.584-0.512 12.8-2.56 26.112-6.144 38.4-9.728v89.6z m0-200.704c-7.168 4.608-19.968 10.24-38.4 15.36-17.408 4.608-39.936 9.216-66.56 12.288-11.264 1.536-23.04 2.56-35.84 3.072-12.288 0.512-25.6 1.024-39.424 1.024-97.28 0-160.768-18.944-180.224-31.744v-77.312c51.2 19.456 115.2 28.672 177.664 28.672h2.56c13.312 0 26.112-0.512 39.424-1.536 35.328-2.048 70.144-7.168 102.4-15.36v-2.048 1.536c13.312-3.584 26.112-7.68 38.4-12.288v78.336z" fill="" p-id="2725" data-spm-anchor-id="a313x.7781069.0.i2" class="selected"></path></svg>
+								<span>Redemptions for point</span>
 								</div>
 								<div class="card__linklist-item link" data-right="my_postsale" data-action="left-nav"
 									aria-label="Customers Services">
@@ -1520,8 +574,7 @@
 
 				</div>
 
-				{%- comment -%}--------------------------------------优惠券-------------------------------------------{%-
-				endcomment -%}
+				{%- comment -%}--------------------------------------优惠券-------------------------------------------{%- endcomment -%}
 				<div class="my_coupons account_right_content backgrount_e" data-type="accountPage">
 					<h3 class="my_coupons__title h3">My Coupons</h3>
 					<details-menu>
@@ -1535,8 +588,7 @@
 						</div>
 						<div class="unused__coupons page__item" data-index="1" aria-hidden="false">
 							<div class="my-coupons">
-								{% comment %} <!-- <h3 class="h3 my-coupons__title">Unused Coupons</h3> --> {%
-								endcomment %}
+								{% comment %} <!-- <h3 class="h3 my-coupons__title">Unused Coupons</h3> --> {% endcomment %}
 								<div class="my-coupons__list my-coupons_empty">
 									<div class="empty">
 										{%- render 'icon',icon:"package" -%}
@@ -1559,8 +611,8 @@
 					</details-menu>
 				</div>
 
-				{%- comment -%}---------------------------------------{%- endcomment -%}
-				<div class="my_profiles account_right_content" data-type="accountPage">
+				{%- comment -%}--------------------  分享与邀请 -------------------{%- endcomment -%}
+				<div class="recommend account_right_content" data-type="accountPage">
 					{%- comment -%}
 					<div class="profile-view backgrount_e">
 						<h3 class="h3" style="text-align:center;">My Profile</h3>
@@ -1586,6 +638,21 @@
 						</div>
 					</div>
 					{%- endcomment -%}
+				</div>
+				{%- comment -%}--------------------  积分兑换 -------------------{%- endcomment -%}
+				<div class="redemptions account_right_content" data-type="accountPage" >
+					<h5 class="h3 heading" style=" text-align: center; ">Redemptions for point</h5>
+					<div class="discount_list d-flex">
+
+						{% comment %} <div class="discount_item">
+							<div calss="coupon_content d-flex"><span style="font-weight: 600;font-size: 1rem;">$10 discount</span>
+								<span class="" style="list-style-type: square;">minimum spend to use:&nbsp;none</span>
+								<span calss="">long-term</span>
+							</div>
+							<span class="coupon_dashed"></span>
+							<span calss="" style="padding: 6px;border-radius: 6px;cursor: pointer;">300 point</span>
+						</div> {% endcomment %}
+					</div>
 				</div>
 
 				{%- comment -%}----------------------------积分概览------------------------{%- endcomment -%}
@@ -2750,19 +1817,12 @@
 				}
 
 				var toFire = []; // Need to continuously check
-				// that the specific list is
-				// still populated in case one
-				// of the callbacks actually
-				// causes the list to be destroyed.
 
 				l = listenerList.length;
 
 				while (target && l) {
 					for (i = 0; i < l; i++) {
 						listener = listenerList[i]; // Bail from this loop if
-						// the length changed and
-						// no more listeners are
-						// defined between i and l.
 						if (!listener) {
 							break;
 						}
@@ -2771,19 +1831,10 @@
 							// Remove things that have previously fired
 							toFire = [];
 						} // Check for match and fire
-						// the event if there's one
-						//
-						// TODO:MCG:20120117: Need a way
-						// to check if event#stopImmediatePropagation
-						// was called. If so, break both loops.
 						else if (listener.matcher.call(target, listener.matcherParam, target)) {
 							toFire.push([event, target, listener]);
 						}
-					} // TODO:MCG:20120117: Need a way to
-					// check if event#stopPropagation
-					// was called. If so, break looping
-					// through the DOM. Stop if the
-					// delegation root has been reached
+					} 
 					if (target === root) {
 						break;
 					}
@@ -2915,9 +1966,8 @@
 		/* fetch('https://hyfol.myshopify.com/api/2022-10/graphql.json',{method:"POST",headers:{
 					"Content-Type":"application/graphql","X-Shopify-Storefront-Access-Token":"1d2374d2668239da8efd20c84e848d0d"
 				},body:dbo}).then(response=>response.json()).then(data=>console.log(data))
-		
+	
 			 */
-
 
 		/* 收藏 */
 		var getCollectList = function () {
@@ -3026,6 +2076,9 @@
 			return hash.join('&');
 		}
 
+		let codeStr = "{{discounts}}"
+		codeStr = codeStr && codeStr.split(',') || []
+
 		/* 个人中心 */
 		~function () {
 			//**  ACCPOUNT CUSTOMERS  ***//        
@@ -3039,178 +2092,13 @@
 
 			}
 
-			let codeStr = "{{discounts}}"
-			codeStr = codeStr && codeStr.split(',') || []
-
-			//** 	个人中心   **//
-			async function getToken() {
-				let token
-				const customerJson = {
-					email: "{{ customer.email}}",
-					id: "{{ customer.id }}"
-				}
-
-				let url = baseURL.concat('customerAccount/login')
-				const response = await fetch(url, {
-					method: "POST",
-					body: JSON.stringify(customerJson),
-					headers: { 'content-type': 'application/json', 'siteValue': 'hyfol' }
-				})
-				try {
-					if (response.status !== 200) return ''
-					const data = await response.json()
-					if (data.code !== 200) return ''
-					// console.log(`-----tonken-----`, data);
-					token = token || data.data
-					const authorToken = {
-						token: token,
-						date: Date.now() + 300000
-					}
-
-				} catch (error) {
-					token = ''
-				}
-				return token
-			}
-
-			async function getCoupons(token) {//获取自己的优惠券
-				if (token) {
-					const { data, code, success } = await getData('customerAccount/getShopifyMyPriceRules', '', token, "GET", 'formData')
-					// console.log(data)
-					if (code == 200 && data && data.length && success) {
-						const couponView = document.querySelector('.my-account .my-coupons__list')
-						const unusedCoupons = document.querySelector('.unused__coupons .my-coupons__list')
-						const expiredCoupons = document.querySelector('.expired__coupons .my-coupons__list')
-						const couponList = []
-						const expireList = []
-						const reg = /^[$0-9.]+%?/
-						data.forEach((item, i) => {
-							let C = ''
-							const codeStr = item.summary.replace(/^[0-9$.]+%?( off)?/, (a, b, c, d) => {
-								C = a.split(' ').shift() || "0%"
-								return `<span style=" font-size: 1rem; font-weight: 600;">${a}</span>`
-							})
-							const coupon = `<div class="my-coupons__item" data-index="${item.id}">
-						<div class="codeLeft">
-							<ul class="couponDos dostLeft">
-								<li class="couponDost"></li><li class="couponDost"></li>
-								<li class="couponDost"></li><li class="couponDost"></li>
-								<li class="couponDost"></li><li class="couponDost"></li>
-							</ul>
-							<ul class="couponDos dostRight">
-								<li class="couponDost"></li><li class="couponDost"></li>
-								<li class="couponDost"></li><li class="couponDost"></li>
-								<li class="couponDost"></li><li class="couponDost"></li>
-							</ul>
-							<p style="font-weight: 500;">${codeStr}</p>
-							<p style="font-weight: 600;line-height:1;">Code: <span class="coupon_code">${item.title}</span></p>
-							<ul class="coupons-date" style=" font-weight: 500;"><li>minimum spend to use:none</li><li>${item.ends_at}</li></ul>
-						</div>
-						<div class="codeRight">
-							<span class="d-block" style="text-align: center;font-family: emoji;margin-top: 10px;">coupon</span>
-							<span class="d-flex space-between codeSave">save <span class="d-inline-block  codeAmount ">${C}<span
-							class="d-inline-block poa alert--center" style=" writing-mode: tb-rl; font-size: 1rem;top: 0; bottom: 0;margin: auto 0;right: 0;">off</span></span></span>
-						</div>
-					</div>`
-							if (codeStr.indexOf(item.title.toLocaleLowerCase()) != -1 || item.status != "active") {
-								expireList.push(coupon)
-							} else { couponList.push(coupon) }
-						})
-						couponView && couponList.length && (couponView.innerHTML = couponList.join('')) && couponView.classList.remove("my-coupons_empty")
-						unusedCoupons && couponList.length && (unusedCoupons.innerHTML = couponList.join('')) && unusedCoupons.classList.remove("my-coupons_empty")
-						expireList && expireList.length && (expiredCoupons.innerHTML = expireList.join('')) && expiredCoupons.classList.remove("my-coupons_empty")
-
-					}
-				} else console.info(token);
-			}
-
-			async function getPoint(token) {//获取积分记录
-				const body = {
-					pageNum: 1,
-					pageSize: 10,
-					type: "all, earned, pointAmount, expired"
-				}
-				const data = await getData('customerAccount/getPointInfo', body, token)
-				const { pointsExpiredSoon, profileDetalls, totalPoints } = data.data
-				const templateExp = []
-				const templateEarned = []
-				const totalContainer = document.querySelector('.profile_total')
-				const expireContainer = document.querySelector('.profile_expire')
-				const allProfile = document.querySelector('.profile-all tbody')
-				const expiredInfo = document.querySelector('.profile-expired tbody')
-				const earnedInfo = document.querySelector('.profile-earned tbody')
-				totalContainer.innerHTML = totalPoints || 0;
-				expireContainer.innerHTML = pointsExpiredSoon || 0;
-				const templateAll = profileDetalls.records.map(item => {
-					let tempStr
-					if (item.type == 'cost') {
-						tempStr = `<tr>
-							<td>${item.createTime}</td>
-							<td>${item.pointType}</td>
-							<td class="profile-amount">${item.pointAmount}</td>
-							<td>${item.expireTime}</td>
-						</tr>`
-						templateExp.push(tempStr)
-					} else if (item.type == 'earned') {
-						tempStr = `<tr>
-							<td>${item.createTime}</td>
-							<td>${item.pointType}</td>
-							<td class="profile-amount">+ ${item.pointAmount}</td>
-							<td>${item.expireTime}</td>
-						</tr>`
-						templateEarned.push(tempStr)
-					} else {
-						tempStr = `<tr>
-							<td>${item.createTime}</td>
-							<td>${item.pointType}</td>
-							<td class="profile-amount">${item.pointAmount}</td>
-							<td>${item.expireTime}</td>
-						</tr>`
-					}
-
-					return tempStr
-				})
-				allProfile.innerHTML = templateAll.join('')
-				expiredInfo.innerHTML = templateExp.join('')
-				earnedInfo.innerHTML = templateEarned.join('')
-
-			}
-
-			async function getVipExplain(token) {//规则
-				const response = await getData('customerAccount/getVipDesc', '', token, "GET", "formData")
-				// console.log('getVip-responsse', response)
-			}
-
-			async function getCustomer(token) {
-
-				const data = await getData('customerAccount/selectCustomer', '', token)
-
-				if (!data || data.code !== 200) {
-					return getCustomer()
-				}
-				const { siteType, totalPoint, totalSpent, vipType } = data.data
-				const pointContainer = document.querySelector('.vip-integral')
-				const userVip = document.querySelector('.vip-user__grade')
-				totalPoint && (pointContainer.innerHTML = totalPoint)
-				userVip && (userVip.innerHTML = vipType || "copper")
-				// console.log('getCustomer', data)
-			}
-
 			async function deductPoint(token) {
 				const pointData = { expireTime: new Date(Date.now() + 2592000000).toLocaleString(), pointAmount: 10000, pointType: "Emaill Verification" }
 				const data = await getData('customerAccount/deductPoint', pointData, token)
 				// console.log('deductPoint', data)
 			}
 
-			async function fn() {
-				const token = await getToken()
-				// addPoint(token)
-				// addPoint()
-				getCustomer(token)
-				// getMyCoupon()
-				getCoupons(token)
-				getPoint(token)
-			} fn();
+	
 
 			class DetailsMenu extends HTMLElement {
 				constructor() {
@@ -3289,6 +2177,7 @@
 						})
 						document.querySelector(".my_overview").style.display = "block"
 					}
+					this.getToken()
 					this.renderMobOrder()
 					this.changeMobileOrderView()
 				}
@@ -3301,6 +2190,170 @@
 					this.accountGate.on('click', '.form__submit[data-submitForm]', this.addAddresses.bind(this))//add
 					this.accountGate.on('click', '[data-action="deleteAddresses"]', this.romoveAddresses.bind(this)) //remove
 				}
+			}, {
+				key: "getToken",
+				value: function getToken() {
+					const _this = this
+					let url = baseURL.concat('customerAccount/login')
+					const customerJson = {
+						email: "{{ customer.email}}",
+						id: "{{ customer.id }}"
+					}
+					fetch(url, {
+						method: "POST",
+						body: JSON.stringify(customerJson),
+						headers: { 'content-type': 'application/json', 'siteValue': 'hyfol' }
+					}).then(response => response.json()).then(data => {
+						if (!data.success) return;
+						_this.token = data.data || ""
+						if (!_this.token) return _this.getToken();
+						_this.getCustomer(_this.token)
+						_this.getCoupons(_this.token)
+						_this.getPrice(_this.token)
+						_this.getPoint(_this.token)
+					})
+				}
+			},
+			{
+				key: "getCoupons",
+				value: function getCoupons(token) {
+					//获取自己的优惠券
+					getData('customerAccount/getShopifyMyPriceRules', '', token, "GET", 'formData').then(({ data, code, success }) => {
+						if (code == 200 && data && data.length && success) {
+							const couponView = document.querySelector('.my-account .my-coupons__list')
+							const unusedCoupons = document.querySelector('.unused__coupons .my-coupons__list')
+							const expiredCoupons = document.querySelector('.expired__coupons .my-coupons__list')
+							const couponList = []
+							const expireList = []
+							const reg = /^[$0-9.]+%?/
+							data.forEach((item, i) => {
+								let C = ''
+								const codeHtml = item.summary.replace(/^[0-9$.]+%?( off)?/, (a, b, c, d) => {
+									C = a.split(' ').shift() || "0%"
+									return `<span style=" font-size: 1rem; font-weight: 600;">${a}</span>`
+								})
+								const coupon = `<div class="my-coupons__item" data-index="${item.id}">
+												<div class="codeLeft">
+													<ul class="couponDos dostLeft">
+														<li class="couponDost"></li><li class="couponDost"></li>
+														<li class="couponDost"></li><li class="couponDost"></li>
+														<li class="couponDost"></li><li class="couponDost"></li>
+													</ul>
+													<ul class="couponDos dostRight">
+														<li class="couponDost"></li><li class="couponDost"></li>
+														<li class="couponDost"></li><li class="couponDost"></li>
+														<li class="couponDost"></li><li class="couponDost"></li>
+													</ul>
+													<p style="font-weight: 500;">${codeHtml}</p>
+													<p style="font-weight: 600;line-height:1;">Code: <span class="coupon_code">${item.title}</span></p>
+													<ul class="coupons-date" style=" font-weight: 500;"><li>minimum spend to use:none</li><li>${item.ends_at}</li></ul>
+												</div>
+												<div class="codeRight">
+													<span class="d-block" style="text-align: center;font-family: emoji;margin-top: 10px;">coupon</span>
+													<span class="d-flex space-between codeSave">save <span class="d-inline-block  codeAmount ">${C}<span
+													class="d-inline-block poa alert--center" style=" writing-mode: tb-rl; font-size: 1rem;top: 0; bottom: 0;margin: auto 0;right: 0;">off</span></span></span>
+												</div>
+											</div>`
+								if (codeStr.indexOf(item.title.toLocaleLowerCase()) != -1 || item.status != "active") {
+									expireList.push(coupon)
+								} else { couponList.push(coupon) }
+							})
+							couponView && couponList.length && (couponView.innerHTML = couponList.join('')) && couponView.classList.remove("my-coupons_empty")
+							unusedCoupons && couponList.length && (unusedCoupons.innerHTML = couponList.join('')) && unusedCoupons.classList.remove("my-coupons_empty")
+							expireList && expireList.length && (expiredCoupons.innerHTML = expireList.join('')) && expiredCoupons.classList.remove("my-coupons_empty")
+
+						}
+					})
+				}
+			}, {
+				key: "getPoint",
+				value: function getPoint(token) {
+					//获取积分记录
+					const body = {
+						pageNum: 1,
+						pageSize: 10,
+						type: "all, earned, pointAmount, expired"
+					}
+					getData('customerAccount/getPointInfo', body, token).then((data) => {
+						const { pointsExpiredSoon, profileDetalls, totalPoints } = data.data
+						const templateExp = []
+						const templateEarned = []
+						const totalContainer = document.querySelector('.profile_total')
+						const expireContainer = document.querySelector('.profile_expire')
+						const allProfile = document.querySelector('.profile-all tbody')
+						const expiredInfo = document.querySelector('.profile-expired tbody')
+						const earnedInfo = document.querySelector('.profile-earned tbody')
+						totalContainer.innerHTML = totalPoints || 0;
+						expireContainer.innerHTML = pointsExpiredSoon || 0;
+						const templateAll = profileDetalls.records.map(item => {
+							let tempStr
+							if (item.type == 'cost') {
+								tempStr = `<tr>
+								<td>${item.createTime}</td>
+								<td>${item.pointType}</td>
+								<td class="profile-amount">${item.pointAmount}</td>
+								<td>${item.expireTime}</td>
+							</tr>`
+								templateExp.push(tempStr)
+							} else if (item.type == 'earned') {
+								tempStr = `<tr>
+								<td>${item.createTime}</td>
+								<td>${item.pointType}</td>
+								<td class="profile-amount">+ ${item.pointAmount}</td>
+								<td>${item.expireTime}</td>
+							</tr>`
+								templateEarned.push(tempStr)
+							} else {
+								tempStr = `<tr>
+								<td>${item.createTime}</td>
+								<td>${item.pointType}</td>
+								<td class="profile-amount">${item.pointAmount}</td>
+								<td>${item.expireTime}</td>
+							</tr>`
+							}
+
+							return tempStr
+						})
+						allProfile.innerHTML = templateAll.join('')
+						expiredInfo.innerHTML = templateExp.join('')
+						earnedInfo.innerHTML = templateEarned.join('')
+					})
+				}
+
+			}, {
+				key: "getCustomer",
+				value: function getCustomer(token) {
+
+					getData('customerAccount/selectCustomer', '', token).then(data => {
+						const { siteType, totalPoint, totalSpent, vipType } = data.data
+						const pointContainer = document.querySelector('.vip-integral')
+						const userVip = document.querySelector('.vip-user__grade')
+						totalPoint && (pointContainer.innerHTML = totalPoint)
+						userVip && (userVip.innerHTML = vipType || "copper")
+					})
+
+				}
+
+			}, {
+				key: "getPrice",
+				value: function getPrice(token) {
+					getData('customerAccount/getPriceRulesTemplateList', '', token, "GET", "formData").then(({ data, success }) => {
+						if (!success) return;
+						const discountBox = document.querySelector('.discount_list')
+						const list = data.map(n => {
+							return `<div class="discount_item"><div class="coupon_content d-flex"><span style="font-weight: 600;font-size: 1rem;">${n.title}</span>
+							<span class="" style="list-style-type: square;">minimum spend to use:&nbsp;${n.prerequisiteSubtotalRange || 'none'}</span>
+							<span class="">${n.validDay || "long-term"}</span></div>
+							<span class="coupon_dashed"></span>
+							<button class="convertible_code" data-id="${n.id}" style="padding: 6px;border-radius: 6px;">${n.pointNum} point</button>
+							</div>`
+						})
+						discountBox.innerHTML = list.join('')
+						console.log("coupon", data)
+
+					})
+				}
+
 			}, {
 				key: "pageSwitch",
 				value: function (ev, target) {
@@ -3496,7 +2549,7 @@
 					let nullbox = document.querySelector('#order_null')
 					nullbox.style.display = 'none'
 					var url
-					var reg = /Orders+[\d\D]*/
+					var reg = /Orders+[\d\D]+/
 					if (reg.test(location.hash)) {
 						var hash = location.hash.split('+')[1].toLowerCase()
 						url = '?section_id=my-orders-' + hash;
@@ -3532,12 +2585,22 @@
 				.parseFromString(html, 'text/html')
 				.querySelector(selector).innerHTML;
 		}
-		const orderBox = document.querySelector('.order-view__box')
-		orderBox.addEventListener('click', e => {
-			const target = e.target
+		
+
+		account.on('click','.convertible_code',async (e,target)=>{
+				const id=target.getAttribute('data-id')
+				if(!id)return;
+				let url='customerAccount/pointExchangePriceRulesTemplate'
+				url+="?id="+id
+			const {success,data}=await getData(url,'',token,"GET",'fornData')
+			console.log(data)
+
+		})
+
+		account.on('click','.orders-nav__item',(e,target)=>{
 			if (target.dataset.action !== 'false' && target.parentElement.dataset.action !== 'false') return
 			const nav = target.dataset.action ? target : target.parentElement
-			const preNav = orderBox.querySelector('.orders-nav__item[data-action="true"]')
+			const preNav = document.querySelector('.orders-nav__item[data-action="true"]')
 			const preView = document.querySelector('.order-item__card[aria-hidden="false"]')
 			const openOrederView = document.querySelector(`.order-item__card[data-index="${nav.dataset.index}"]`)
 			preNav.dataset.action = false
@@ -3546,24 +2609,21 @@
 			openOrederView.setAttribute("aria-hidden", false)
 			let hashUrl = target.textContent.replace(/\s*|[\r\n]/g, '')
 			window.location.hash = "Orders+" + hashUrl
+
 		})
 
-		document.querySelector('.order__render-view').addEventListener('click', e => {
-			if (e.target.classList.contains('title-info-name')) {
-				const target = e.target
-				const orderUrl = target.dataset.url
-
-				fetch(orderUrl, {
-					credentials: 'same-origin',
-					method: 'GET'
-				}).then(response => response.text())
-					.then(html => {
-						document.querySelector('.card.my_orders').innerHTML = getSectionInnerHTML(html, '.order-summary')
-						window.scroll(0, 0)
-					})
-			}
+		account.on('click','.title-info-name',(target,e)=>{
+			const orderUrl = target.dataset.url
+			if(!orderUrl)return
+			fetch(orderUrl, {
+				credentials: 'same-origin',
+				method: 'GET'
+			}).then(response => response.text())
+				.then(html => {
+					document.querySelector('.card.my_orders').innerHTML = getSectionInnerHTML(html, '.order-summary')
+					window.scroll(0, 0)
+				})
 		})
-
 
 	}()
 

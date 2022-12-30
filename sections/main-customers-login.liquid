@@ -206,7 +206,7 @@
         target.setAttribute('aria-active', true)
       })
       const B = L.querySelector('.form__submit')
-      B && B.addEventListener('click', ev => {
+{% comment %}       B && B.addEventListener('click', ev => {
         const F = new FormData(L)
         if (!F.get('customer[email]')) return;
         if (!F.get('customer[password]')) return;
@@ -223,7 +223,7 @@
             }
           }
         }`}).then(response => response.json()).then(({ data }) => { const access = data.customerAccessTokenCreate.customerAccessToken; access && localStorage.setItem('accessToken', access.accessToken) })
-      })
+      }) {% endcomment %}
     }();
   </script>
 </section>
