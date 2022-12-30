@@ -42,8 +42,8 @@
           "type": "image",
           "settings": {
             "sensorsName": "facebook",
-            "image": "shopify:\/\/shop_images\/banner_0a41490a-01df-430c-beeb-b12a5a2a4e76.jpg",
-            "mobile_image": "shopify:\/\/shop_images\/2_cbf2a9df-3a0e-435d-aed2-3cb71e018481.jpg",
+            "image": "shopify:\/\/shop_images\/banner_4596ca7a-b93b-418b-b305-c0be966efe70.jpg",
+            "mobile_image": "shopify:\/\/shop_images\/2_85247143-1510-4ef8-8544-33320a60d0b1.jpg",
             "show_overlay": false,
             "overlay_opacity": 30,
             "text_color": "#ffffff",
@@ -148,8 +148,8 @@
         "template--15801670959319__4abbc570-59ea-407d-9bc8-8da13344d02f-1667555179fa2589e0-2": {
           "type": "link",
           "settings": {
-            "title": "Christmas",
-            "link": "https:\/\/www.hyfol.com\/collections\/christmas-gift",
+            "title": "active wear",
+            "link": "https:\/\/www.hyfol.com\/collections\/active-wear",
             "show_hot": true
           }
         },
@@ -247,6 +247,30 @@
     "1650101273f11a55ef": {
       "type": "slideshow",
       "blocks": {
+        "fb844d01-0475-4130-aeb7-a118c0a1b427": {
+          "type": "image",
+          "settings": {
+            "sensorsName": "hallwmas",
+            "image": "shopify:\/\/shop_images\/hyfol_fee58686-19f7-4a56-9130-cd68f48586e8.jpg",
+            "mobile_image": "shopify:\/\/shop_images\/hyfol_037d0430-e1df-4049-981a-eb3e75c50e66.jpg",
+            "show_overlay": false,
+            "overlay_opacity": 30,
+            "text_color": "#ffffff",
+            "title": "",
+            "heading_text_font": "helvetica_n4",
+            "heading_text_font_size": 20,
+            "heading_text_color": "#ffffff",
+            "content": "",
+            "content_text_font": "helvetica_n4",
+            "content_text_font_size": 12,
+            "content_text_color": "#ffffff",
+            "content_position": "middle_center",
+            "button_background": "#ffffff",
+            "button_text_color": "#000000",
+            "button_text": "",
+            "link": "https:\/\/www.hyfol.com\/collections\/active-wear"
+          }
+        },
         "79cd2bfc-0629-4c7d-b333-56a486e24cfb": {
           "type": "image",
           "settings": {
@@ -294,37 +318,12 @@
             "button_text": "",
             "link": "https:\/\/www.hyfol.com\/collections\/cargo-pants"
           }
-        },
-        "fb844d01-0475-4130-aeb7-a118c0a1b427": {
-          "type": "image",
-          "disabled": true,
-          "settings": {
-            "sensorsName": "hallwmas",
-            "image": "shopify:\/\/shop_images\/banner_9c2e0729-d0fd-4432-a54a-e3e79fb29aa3.jpg",
-            "mobile_image": "shopify:\/\/shop_images\/banner_dcc69faa-6395-40b5-880c-9ce2f39d6be8.jpg",
-            "show_overlay": false,
-            "overlay_opacity": 30,
-            "text_color": "#ffffff",
-            "title": "",
-            "heading_text_font": "helvetica_n4",
-            "heading_text_font_size": 20,
-            "heading_text_color": "#ffffff",
-            "content": "",
-            "content_text_font": "helvetica_n4",
-            "content_text_font_size": 12,
-            "content_text_color": "#ffffff",
-            "content_position": "middle_center",
-            "button_background": "#ffffff",
-            "button_text_color": "#000000",
-            "button_text": "",
-            "link": "https:\/\/www.hyfol.com\/collections\/halloween-theme-clothing"
-          }
         }
       },
       "block_order": [
+        "fb844d01-0475-4130-aeb7-a118c0a1b427",
         "79cd2bfc-0629-4c7d-b333-56a486e24cfb",
-        "1650101273ef0886ca-1",
-        "fb844d01-0475-4130-aeb7-a118c0a1b427"
+        "1650101273ef0886ca-1"
       ],
       "settings": {
         "edge_to_edge": true,
