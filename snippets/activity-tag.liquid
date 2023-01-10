@@ -12,26 +12,30 @@
     {%- assign text = tag | split: '-' -%}
     {%- assign custom_tag = text[1] | strip -%}
     {%- break -%}
-  {%- elsif tag == 'Flash Sale' or tag == 'flashsale' -%}
+  {%- elsif tag == 'Flash Sale' or tag == 'flash sale' or tag =="flash deal limited" -%}
     {%- assign custom_tag = tag -%}
     {%- break -%}
   {%- endif -%}
 {%- endfor -%}
-{%- comment -%}Flash Salv{%- endcomment -%}
+
+{%- comment -%}Flash Sale{%- endcomment -%}
 {%- assign show_flash = false -%}
 {%- for cust_tag in product.tags -%}
-  {%- if cust_tag contains 'Flash Sale' -%}
+  {%- assign dow_tag = cust_tag |downcase -%}
+  {%- if dow_tag contains 'flash sale' -%}
     {%- assign custom = true -%}
     {%- assign show_flash = true -%}
     {%- break -%}
   {%- endif -%}
 {%- endfor -%}
 
-{%- comment -%} FSL{%- endcomment -%}
+{%- comment -%} FSL 限购产品{%- endcomment -%}
 {%- assign show_fsl = false -%}
 {%- for cust_tag in product.tags -%}
-  {%- if cust_tag contains 'FSL' -%}
+  {%- assign dow_limit_tag = cust_tag |downcase -%}
+  {%- if dow_limit_tag contains 'flash deal limited' -%}
     {%- assign custom = true -%}
+    {%- assign show_flash = true -%}
     {%- assign show_fsl = true -%}
     {%- break -%}
   {%- endif -%}
@@ -41,13 +45,17 @@
 {%- if custom -%}
   {%- assign custome_tags = settings.custome_tag_ui | strip_html | split: ',' -%}
 
-  {%- comment -%}------tag 标签图-------{%- endcomment -%}
+
+  {%- comment -%}------集合页标签图-------{%- endcomment -%}
   {%- if settings.tag_layout == 'label' -%}
     {%- assign imgtag_list = settings.activity_img_tag | strip_html | split: ',' -%}
 
     {%- for tag_str in imgtag_list -%}
       {%- assign tag_item = tag_str | strip | split: '=' -%}
-      {%- if custom_tag contains tag_item[0] -%}
+      {%- assign custom_tag_url_name = tag_item[0] | downcase -%}
+      {%- assign current_custom_tag_dow = custom_tag |downcase -%}
+
+      {%- if current_custom_tag_dow contains custom_tag_url_name -%}
         {%- assign tag_url = tag_item[1] -%}
         {%- break -%}
       {%- endif -%}
@@ -68,36 +76,39 @@
         {%- endif -%}
       {%- endfor -%}
 
+      {%- comment -%}Flash sale 产品{%- endcomment -%}
       {%- if show_flash -%}
-        {%- if show_fsl -%}
-          {%- comment -%}详情页 fsl{%- endcomment -%}
-          <a
-            class="custom-activity-tag {{class_name}} flash-sale_link product-item__label_sale"
-            style="position: relative;"
-            data-type="flash-sale"
-            href="https://www.hyfol.com/collections/series#1"
-          >
-            <div class="flash_sale">
-              <svg
-                t="1666171152781"
-                class="icon "
-                viewBox="0 0 1024 1024"
-                version="1.1"
-                xmlns="http://www.w3.org/2000/svg"
-                p-id="1906"
-                width="32"
-                height="32"
-              >
-                <path d="M395.765333 586.570667h-171.733333c-22.421333 0-37.888-22.442667-29.909333-43.381334L364.768 95.274667A32 32 0 0 1 394.666667 74.666667h287.957333c22.72 0 38.208 23.018667 29.632 44.064l-99.36 243.882666h187.050667c27.509333 0 42.186667 32.426667 24.042666 53.098667l-458.602666 522.56c-22.293333 25.408-63.626667 3.392-54.976-29.28l85.354666-322.421333z" p-id="1907" data-spm-anchor-id="a313x.7781069.0.i4" class=""></path>
-              </svg>
-              Flash Sale
-            </div>
-            <div class="flash_sale_item">
-              <span style=" flex: 1;">Limit 1 per Order {% render 'icon', icon: 'arrow-right' %}</span>
 
-              <span class="button button--primary flash-sale_btn">VIEW MORE</span>
-            </div>
-          </a>
+        {%- if show_fsl -%}
+            {%- comment -%}详情页 fsl 限购产品{%- endcomment -%}
+            <a
+              class="custom-activity-tag {{class_name}} flash-sale_link product-item__label_sale"
+              style="position: relative;"
+              data-type="flash-sale"
+              href="https://www.hyfol.com/collections/series#1"
+            >
+              <div class="flash_sale">
+                <svg
+                  t="1666171152781"
+                  class="icon "
+                  viewBox="0 0 1024 1024"
+                  version="1.1"
+                  xmlns="http://www.w3.org/2000/svg"
+                  p-id="1906"
+                  width="32"
+                  height="32"
+                >
+                  <path d="M395.765333 586.570667h-171.733333c-22.421333 0-37.888-22.442667-29.909333-43.381334L364.768 95.274667A32 32 0 0 1 394.666667 74.666667h287.957333c22.72 0 38.208 23.018667 29.632 44.064l-99.36 243.882666h187.050667c27.509333 0 42.186667 32.426667 24.042666 53.098667l-458.602666 522.56c-22.293333 25.408-63.626667 3.392-54.976-29.28l85.354666-322.421333z" p-id="1907" data-spm-anchor-id="a313x.7781069.0.i4" class=""></path>
+                </svg>
+                Flash Sale
+              </div>
+              <div class="flash_sale_item">
+                <span style=" flex: 1;">Limit 1 per Order {% render 'icon', icon: 'arrow-right' %}</span>
+
+                <span class="button button--primary flash-sale_btn">VIEW MORE</span>
+              </div>
+            </a>
+
         {%- else -%}
           {%- comment -%}详情页 Flash Sale{%- endcomment -%}
           <a
@@ -132,7 +143,8 @@
         {%- endif -%}
 
       {%- else -%}
-        {%- comment -%}TAG 背景图{%- endcomment -%}
+
+        {%- comment -%}--------------TAG 背景图-----------------{%- endcomment -%}
         <a class="custom-activity-tag {{class_name}}" style="position: relative;" href="{{CustomPromotionUrItemUrl}}">
           {%- if inspect_arr contains custom_tag -%}
             <img
@@ -178,7 +190,7 @@
       {%- endif -%}
 
     {%- elsif show_fsl == 'none' -%}
-      {%- comment -%}产品列表 fsl{%- endcomment -%}
+      {%- comment -%}---------------产品列表 fsl-------------{%- endcomment -%}
       <div class="product-item__label_sale product-item__label-list">
         {%- if product.price < product.compare_at_price -%}
           <svg
@@ -194,13 +206,7 @@
             <path d="M395.765333 586.570667h-171.733333c-22.421333 0-37.888-22.442667-29.909333-43.381334L364.768 95.274667A32 32 0 0 1 394.666667 74.666667h287.957333c22.72 0 38.208 23.018667 29.632 44.064l-99.36 243.882666h187.050667c27.509333 0 42.186667 32.426667 24.042666 53.098667l-458.602666 522.56c-22.293333 25.408-63.626667 3.392-54.976-29.28l85.354666-322.421333z" p-id="1907" data-spm-anchor-id="a313x.7781069.0.i4" class=""></path>
           </svg>
           <br>
-          {%- assign savings = product.compare_at_price
-            | minus: product.price
-            | times: 100.0
-            | divided_by: product.compare_at_price
-            | round
-            | append: '%'
-          -%}
+          {%- assign savings = product.compare_at_price  | minus: product.price | times: 100.0  | divided_by: product.compare_at_price  | round | append: '%' -%}
           <span class="on-flash-sale">-{{ savings }}</span>
         {%- endif -%}
       </div>
