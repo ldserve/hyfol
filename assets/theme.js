@@ -4,76 +4,6 @@
 }((function () {
     'use strict';
 
- /*    class LeftNavList extends HTMLElement {
-        constructor() {
-            super();
-            this.navList = this.querySelector(".render_nav_list ")
-            this.init()
-        }
-        init() {
-            this.navList.childNodes.forEach((item, index) => {
-                item.addEventListener("click", this.changeNav)
-            })
-            this.querySelector(".card__linklist-item").className = " card__linklist-item link text--stronger "
-            document.querySelector(".my_overview").style.display = "block"
-
-            if (window.location.hash) {
-
-                var nowNav = window.location.hash.split("#")[1].replace(/\%20/g, " ")
-                this.navList.childNodes.forEach((item) => {
-                    item.className = " card__linklist-item  "
-                })
-
-                var list = document.querySelector(".wish_list").parentElement.children
-                for (let i = 0; i < list.length; i++) {
-                    list[i].style.display = "none"
-                }
-
-                document.querySelectorAll(".card__linklist-item").forEach((item) => {
-                    if (item.lastElementChild.innerHTML == nowNav) {
-                        document.querySelector('.breadcrumb__link[aria-current="page"]').innerHTML = nowNav
-                        item.className = " card__linklist-item link text--stronger "
-                        var enode = item.getAttribute("data-right")
-                        document.querySelector("." + enode).style.display = "block"
-                    }
-                })
-            }
-
-
-        }
-        changeNav = (e) => {
-
-
-            this.navList.childNodes.forEach((item) => {
-                item.className = " card__linklist-item  "
-            })
-
-            if (e.target.parentElement.getAttribute("data-right") == null) {
-                e.target.className = " card__linklist-item link text--stronger "
-                var enode = e.target.getAttribute("data-right")
-                var searchValue = e.target.lastElementChild.innerHTML
-
-            } else {
-                e.target.parentElement.className = " card__linklist-item link text--stronger "
-                var enode = e.target.parentElement.getAttribute("data-right")
-                var searchValue = e.target.parentElement.lastElementChild.innerHTML
-
-            }
-            window.location.hash = searchValue
-           
-            var list = document.querySelector("." + enode).parentElement.children
-            for (let i = 0; i < list.length; i++) {
-                list[i].style.display = "none"
-            }
-            window.scroll(0, 0)
-            document.querySelector("." + enode).style.display = "block"
-            document.querySelector('.breadcrumb__link[aria-current="page"]').innerHTML = searchValue
-           
-        }
-    }
-    customElements.define("left-nav-list", LeftNavList); */
-
-
     class SizeBlock extends HTMLElement {
         constructor() {
             super();
@@ -2769,10 +2699,10 @@
                 /* Flash sale */
                 var productData=target.getAttribute('data-scdata')
                 try { var {commodity_tag} =JSON.parse(productData)
-                    if(target.getAttribute('data-action')=="increase-quantity" && commodity_tag.indexOf('flash-sale')!=-1){
+                    if(target.getAttribute('data-action')=="increase-quantity" && commodity_tag.indexOf('flash-deal-limited')!=-1){
                             Message.error("You already have this item's max quantity (1) in your cart.")
                             return false
-                        }else if(target.getAttribute('data-action')=="decrease-quantity" && commodity_tag.indexOf('flash-sale')!=-1)allProductTag='';} catch (error) {}
+                        }else if(target.getAttribute('data-action')=="decrease-quantity" && commodity_tag.indexOf('flash-deal-limited')!=-1)allProductTag='';} catch (error) {}
                 document.dispatchEvent(new CustomEvent('theme:loading:start'));
                 fetch("".concat(window.routes.cartChangeUrl, ".js"), {
                     body: JSON.stringify({
@@ -4433,10 +4363,10 @@
                 var productData=target.getAttribute('data-scdata')
                 try {
                     var {commodity_tag}=JSON.parse(productData)
-                    if(allProductTag && commodity_tag.indexOf('flash-sale')!=-1 && allProductTag.indexOf('flash-sale')!=-1){
+                    if(allProductTag && commodity_tag.indexOf('flash-deal-limited')!=-1 && allProductTag.indexOf('flash-deal-limited')!=-1){
                       Message.error("You already have this item's max quantity (1) in your cart.")
                         return false
-                    }else if(commodity_tag.indexOf("flash-sale")!=-1)allProductTag=commodity_tag;
+                    }else if(commodity_tag.indexOf("flash-deal-limited")!=-1)allProductTag=commodity_tag;
                 } catch (error) {}
                 target.setAttribute('disabled', 'disabled');// First, we switch the status of the button
                 document.dispatchEvent(new CustomEvent('theme:loading:start')); // Then we add the product in Ajax
