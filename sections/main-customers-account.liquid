@@ -205,6 +205,8 @@
 											<td>{{ order.financial_status_label }}</td>
 											<td>{{ order.fulfillment_status_label }}</td>
 											<td class="table__cell--right">{{ order.total_price | money }}</td>
+                                          <td>{{ order.financial_status }}</td>
+                                          <td>{{ order.fulfillment_status }}</td>
 										</tr>
 									{%- endfor -%}
 									</tbody>
