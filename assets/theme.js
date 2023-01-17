@@ -4,76 +4,6 @@
 }((function () {
     'use strict';
 
- /*    class LeftNavList extends HTMLElement {
-        constructor() {
-            super();
-            this.navList = this.querySelector(".render_nav_list ")
-            this.init()
-        }
-        init() {
-            this.navList.childNodes.forEach((item, index) => {
-                item.addEventListener("click", this.changeNav)
-            })
-            this.querySelector(".card__linklist-item").className = " card__linklist-item link text--stronger "
-            document.querySelector(".my_overview").style.display = "block"
-
-            if (window.location.hash) {
-
-                var nowNav = window.location.hash.split("#")[1].replace(/\%20/g, " ")
-                this.navList.childNodes.forEach((item) => {
-                    item.className = " card__linklist-item  "
-                })
-
-                var list = document.querySelector(".wish_list").parentElement.children
-                for (let i = 0; i < list.length; i++) {
-                    list[i].style.display = "none"
-                }
-
-                document.querySelectorAll(".card__linklist-item").forEach((item) => {
-                    if (item.lastElementChild.innerHTML == nowNav) {
-                        document.querySelector('.breadcrumb__link[aria-current="page"]').innerHTML = nowNav
-                        item.className = " card__linklist-item link text--stronger "
-                        var enode = item.getAttribute("data-right")
-                        document.querySelector("." + enode).style.display = "block"
-                    }
-                })
-            }
-
-
-        }
-        changeNav = (e) => {
-
-
-            this.navList.childNodes.forEach((item) => {
-                item.className = " card__linklist-item  "
-            })
-
-            if (e.target.parentElement.getAttribute("data-right") == null) {
-                e.target.className = " card__linklist-item link text--stronger "
-                var enode = e.target.getAttribute("data-right")
-                var searchValue = e.target.lastElementChild.innerHTML
-
-            } else {
-                e.target.parentElement.className = " card__linklist-item link text--stronger "
-                var enode = e.target.parentElement.getAttribute("data-right")
-                var searchValue = e.target.parentElement.lastElementChild.innerHTML
-
-            }
-            window.location.hash = searchValue
-           
-            var list = document.querySelector("." + enode).parentElement.children
-            for (let i = 0; i < list.length; i++) {
-                list[i].style.display = "none"
-            }
-            window.scroll(0, 0)
-            document.querySelector("." + enode).style.display = "block"
-            document.querySelector('.breadcrumb__link[aria-current="page"]').innerHTML = searchValue
-           
-        }
-    }
-    customElements.define("left-nav-list", LeftNavList); */
-
-
     class SizeBlock extends HTMLElement {
         constructor() {
             super();
@@ -13624,7 +13554,7 @@
                             if (this.flickityInstance) {
                                 //  console.log(target);
                                 this.flickityInstance.selectCell("[data-media-id=\"".concat(target.getAttribute('data-media-id'), "\"]"));
-                                console.log("[data-media-id=\"".concat(target.getAttribute('data-media-id'), "\"]"));
+                               // console.log("[data-media-id=\"".concat(target.getAttribute('data-media-id'), "\"]"));
                                 if (Responsive.matchesBreakpoint('lap-and-up')) {
                                     var slides = this.element.querySelectorAll('.product-gallery__carousel-item');
                                     slides.forEach(function (slide) {
@@ -13642,7 +13572,7 @@
         {
             key: "_onNextClicked",
             value: function _onNextClicked(event, target) {
-                var activeIndex
+                var activeIndex=0
                 this.flickityInstance.cells.forEach((item, index) => {
                     if (item.element.className.indexOf("is-selected") != -1) {
                         //真节点

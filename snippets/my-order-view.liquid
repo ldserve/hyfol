@@ -6,29 +6,29 @@
 
         <ul class="d-flex orders-nav__list">
 
-            <li class="order-all orders-nav__item"  data-action="true" data-index="1" aria-label="All">
+            <li class="order-all orders-nav__item"  data-action="true" data-index="1" data-change="All">
                 {%- render 'icon', icon: 'cjj_all' -%}
                 <span>All</span>
             </li>
-            <li class="order-unpaid orders-nav__item"  data-action="false" data-index="2" aria-label="Unpaid">
+            <li class="order-unpaid orders-nav__item"  data-action="false" data-index="2" data-change="Unpaid">
                 {%- render 'icon', icon: 'cjj_unpaid' -%}
                 <span>Unpaid</span>
             </li>
             
-            <li class="order-shipped orders-nav__item" data-action="false" data-index="3" aria-label="Shipped">
+            <li class="order-shipped orders-nav__item" data-action="false" data-index="3" data-change="Shipped">
                 {%- render 'icon', icon: 'cjj_shipped' -%}
                 <span>Shipped</span>
             </li>
         
-            <li class="order-processing orders-nav__item" data-action="false" data-index="4" aria-label="Processing">
+            <li class="order-processing orders-nav__item" data-action="false" data-index="4" data-change="Processing">
                 {%- render 'icon', icon: 'cjj_processing' -%}
                 <span>Processing</span>
             </li>
-            <li class="order-completed orders-nav__item" data-action="false" data-index="5" aria-label="Completed">
+            <li class="order-completed orders-nav__item" data-action="false" data-index="5" data-change="Completed">
                 {%- render 'icon', icon: 'cjj_completed' -%}
                 <span>Completed</span>
             </li>
-            <li class="order-payment orders-nav__item" data-action="false" data-index="6" aria-label="Payment">
+            <li class="order-payment orders-nav__item" data-action="false" data-index="6" data-change="Payment">
                 {%- render 'icon', icon: 'cjj_payment' -%}
                 <span>Payment</span>
             </li>
