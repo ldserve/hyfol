@@ -1,75 +1,6 @@
 
 <section data-section-id="{{ section.id }}" data-section-type="account" id="account">
-	{%- comment -%}------------------------------ Mobile Nav--------------------------{%- endcomment -%}
-	<div class="hidden-lap-and-up account">
-		<div class="header-me container">
-			{%- if customer -%}
-
-			<div class="account-box">
-				<h3 class="mobile-account__title">My Service</h3>
-				<div class="card__linklist ">
-					<div class="render_nav_list d-flex mobile-account__nav">
-
-						<div class="card__linklist-item link text--stronger" data-right="my_overview"
-							data-action="left-nav" data-change="My Account">
-							{%- render 'icon', icon: 'account-text' -%}
-							<span>My Account</span>
-						</div>
-						<div class="card__linklist-item link" data-right="my_profile" data-action="left-nav"
-							data-change="My Profile">
-							{%- render 'icon', icon: 'account-my' -%}
-							<span>My Profile</span>
-						</div>
-						<div class="card__linklist-item link" data-right="my_coupons" data-action="left-nav"
-							data-change="My Coupons">
-							{%- render 'icon', icon: 'coupon' -%}
-							<span>My Coupons</span>
-						</div>
-						<div class="card__linklist-item link" data-right="my_orders" data-action="left-nav"
-							data-change="My Orders">
-							{%- render 'icon', icon: 'account-cart' -%}
-							<span>My Orders</span>
-						</div>
-						<div class="card__linklist-item link" data-right="wish_list" data-action="left-nav"
-							data-change="My Wishlist">
-							{%- render 'icon', icon: 'account-collect' -%}
-							<span>My Wishlist</span>
-						</div>
-						<div class="card__linklist-item link" data-right="my_addresses" data-action="left-nav"
-							data-change="My Addresses">
-							{%- render 'icon', icon: 'account-location' -%}
-							<span>My Addresses</span>
-						</div>
-						<div class="card__linklist-item link" data-right="redemptions" data-action="left-nav"
-							data-change="redemptions">
-							<svg t="1672224750449" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2724" width="32" height="32"><path d="M982.528 472.064c-2.56-59.392-62.464-97.792-140.288-117.76V196.096c0-1.536-0.512-2.56-1.024-4.096 0-2.56 1.024-4.608 1.024-6.656 0-125.952-251.392-159.232-400.384-159.232S41.472 59.392 41.472 184.832c0 2.56 0.512 4.608 1.024 6.656 0 1.536-1.024 2.56-1.024 4.096v600.576c0 0.512 0.512 1.536 0.512 2.048 0 1.024-0.512 1.536-0.512 2.048 0 125.952 251.904 159.232 400.384 159.232 12.8 0 26.624-0.512 40.448-1.024 73.216 35.84 186.88 38.4 218.112 38.4 47.104 0 282.624-6.144 282.624-122.88 0-0.512-0.512-1.024-0.512-1.536 0-0.512 0.512-1.024 0.512-1.536V474.112c-0.512-0.512-0.512-1.536-0.512-2.048zM841.728 460.8c14.336 5.12 25.6 10.24 32.256 14.848-6.656 4.608-17.92 9.728-32.256 14.848-24.064 8.704-58.368 16.384-102.4 19.968-8.192 0.512-16.896 1.024-25.6 1.024-4.608 0-9.216 0.512-13.824 0.512-92.672 0-152.576-22.016-174.08-36.352 21.504-14.336 81.408-36.352 174.08-36.352 13.824 0 27.136 0.512 39.424 1.536 30.208 2.048 55.808 6.656 76.8 11.776 9.728 3.072 17.92 5.632 25.6 8.192zM441.344 128c166.4 0 266.24 36.352 292.864 56.832-26.624 20.992-126.464 56.832-292.864 56.832s-265.728-35.84-292.864-56.832c27.136-20.48 126.464-56.832 292.864-56.832z m-24.064 729.6c-164.352-3.584-258.048-42.496-273.92-60.928v-89.088c78.848 32.256 188.416 45.056 273.92 47.104v102.912z m0-205.312c-164.352-3.584-258.048-42.496-273.92-60.928V502.272c78.848 32.256 188.416 45.056 273.92 47.104v102.912z m5.632-205.312c-167.424-3.072-263.168-41.984-279.04-60.928V296.96c86.528 35.328 209.92 47.616 297.984 47.616 88.064 0 211.456-11.776 297.984-47.616v41.984c-13.312-1.024-26.112-1.536-39.424-1.536-121.856 0-250.88 34.816-277.504 109.568z m457.216 416.768c-13.312 8.704-46.08 19.968-96.256 26.624-24.064 3.072-52.224 5.632-83.968 5.632-97.28 0-160.768-18.944-180.224-32.256v-90.112c69.632 21.504 154.112 23.552 180.224 23.552 8.192 0 22.016 0 39.424-1.024h0.512c27.136-1.536 62.976-4.608 98.816-11.776 1.024 0 2.048-0.512 3.584-0.512 12.8-2.56 26.112-6.144 38.4-9.728v89.6z m0-200.704c-7.168 4.608-19.968 10.24-38.4 15.36-17.408 4.608-39.936 9.216-66.56 12.288-11.264 1.536-23.04 2.56-35.84 3.072-12.288 0.512-25.6 1.024-39.424 1.024-97.28 0-160.768-18.944-180.224-31.744v-77.312c51.2 19.456 115.2 28.672 177.664 28.672h2.56c13.312 0 26.112-0.512 39.424-1.536 35.328-2.048 70.144-7.168 102.4-15.36v-2.048 1.536c13.312-3.584 26.112-7.68 38.4-12.288v78.336z" fill="" p-id="2725" data-spm-anchor-id="a313x.7781069.0.i2" class="selected"></path></svg>
-							<span>Redemptions for point</span>
-						</div>
-						<div class="card__linklist-item link" data-right="recommend" data-action="left-nav" data-change="recommend">
-							<svg t="1672199086461" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3920" width="32" height="32"><path d="M256 960a128 128 0 0 1-128-128V466.645333A85.376 85.376 0 0 1 64 384v-106.666667a85.333333 85.333333 0 0 1 85.333333-85.333333h290.901334l-68.629334-68.629333a8.533333 8.533333 0 0 1 0-12.074667l33.194667-33.173333a8.533333 8.533333 0 0 1 12.053333 0l84.48 84.48 84.48-84.48a8.533333 8.533333 0 0 1 12.053334 0l33.194666 33.173333a8.533333 8.533333 0 0 1 0 12.074667l-68.650666 68.608L874.666667 192a85.333333 85.333333 0 0 1 85.333333 85.333333v106.666667a85.376 85.376 0 0 1-64 82.645333V832a128 128 0 0 1-128 128H256z m213.333333-490.666667H192v362.666667a64 64 0 0 0 60.245333 63.893333L256 896h213.333333V469.333333z m362.666667 0H533.333333v426.666667h234.666667a64 64 0 0 0 63.893333-60.245333L832 832V469.333333zM469.333333 256H149.333333a21.333333 21.333333 0 0 0-21.184 18.837333L128 277.333333v106.666667a21.333333 21.333333 0 0 0 18.837333 21.184L149.333333 405.333333h320v-149.333333z m405.333334 0H533.333333v149.333333h341.333334a21.333333 21.333333 0 0 0 21.184-18.837333L896 384v-106.666667a21.333333 21.333333 0 0 0-18.837333-21.184L874.666667 256z" fill="#333333" p-id="3921"></path></svg>
-							<span>Refer a Friend</span>
-						</div>
-						<div class="card__linklist-item link" data-right="my_postsale" data-action="left-nav"
-							data-change="Customers Services">
-							<span> {%- render 'icon', icon: 'cjj_post_sale' -%}</span>
-							<span>Customers Services</span>
-						</div>
-						<a href="{{ routes.account_logout_url }}" class="card__linklist-item link" data-no-instant>{%
-							render 'icon', icon :"account-logout" %} {{ 'customer.general.logout' | t }}</a>
-					</div>
-				</div>
-			</div>
-
-			{%- else -%}
-			<ul class="no-logged">
-				<li class="text-l"><a href="{{ routes.account_login_url }}?return_url={{ page.url }}">LOGIN &gt;</a>
-				</li>
-				<li class="text-r"><a href="{{ routes.account_register_url }}">CREATE ACCOUNT&gt;</a></li>
-			</ul>
-			{%- endif -%}
-		</div>
-
-	</div>
+	
 
 	{%- comment -%}------------------------------- desktop crumbs---------------------------{%- endcomment -%}
 	<div class="page__sub-header hidden-tablet">
@@ -96,42 +27,44 @@
 	{%- comment -%}-----------------------------------------container-------------------{%- endcomment -%}
 	<div class="container container--flush">
 		<div class="layout">
+			
+
 			{%- comment -%}------------------------Desktop Nav ----------------------{%- endcomment -%}
 			<div class="layout__section layout__section--secondary hidden-phone">
 				<div class="card card--sticky hidden-pocket">
 					<div class="card__section card__section--tight">
 						<div class="card__linklist table-left-nav">
 							<div class="render_nav_list ">
-								<div class="card__linklist-item link text--stronger" data-right="my_overview"
+								{% comment %} <div class="card__linklist-item link text--stronger" data-right="my_overview"
 									data-action="left-nav" data-change="My Account">
 									{%- render 'icon', icon: 'account-text' -%}
 									<span>My Account</span>
-								</div>
+								</div> {% endcomment %}
 								<div class="card__linklist-item link" data-right="my_profile" data-action="left-nav"
-									data-change="My Profile">
+									data-change="Profile">
 									{%- render 'icon', icon: 'account-my' -%}
-									<span>My Profile</span>
+									<span>Profile</span>
 								</div>
 								<div class="card__linklist-item link" data-right="my_coupons" data-action="left-nav"
-									data-change="My Coupons">
+									data-change="Coupons">
 									{%- render 'icon', icon: 'coupon' -%}
-									<span>My Coupons</span>
+									<span>Coupons</span>
 								</div>
 								<div class="card__linklist-item link" data-right="my_orders" data-action="left-nav"
-									data-change="My Orders">
+									data-change="Orders">
 									{%- render 'icon', icon: 'account-cart' -%}
-									<span>My Orders</span>
+									<span>Orders</span>
 								</div>
-								<div class="card__linklist-item link" data-right="wish_list" data-action="left-nav"
+								{% comment %} <div class="card__linklist-item link" data-right="wish_list" data-action="left-nav"
 									data-change="My Wishlist">
 									{%- render 'icon', icon: 'account-collect' -%}
 									<span>My Wishlist</span>
-								</div>
-								<div class="card__linklist-item link" data-right="my_addresses" data-action="left-nav"
+								</div> {% endcomment %}
+								{% comment %} <div class="card__linklist-item link" data-right="my_addresses" data-action="left-nav"
 									data-change="My Addresses">
 									{%- render 'icon', icon: 'account-location' -%}
 									<span>My Addresses</span>
-								</div>
+								</div> {% endcomment %}
 								<div class="card__linklist-item link" data-right="recommend" data-action="left-nav" data-change="recommend">
 									<svg t="1672199086461" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3920" width="32" height="32"><path d="M256 960a128 128 0 0 1-128-128V466.645333A85.376 85.376 0 0 1 64 384v-106.666667a85.333333 85.333333 0 0 1 85.333333-85.333333h290.901334l-68.629334-68.629333a8.533333 8.533333 0 0 1 0-12.074667l33.194667-33.173333a8.533333 8.533333 0 0 1 12.053333 0l84.48 84.48 84.48-84.48a8.533333 8.533333 0 0 1 12.053334 0l33.194666 33.173333a8.533333 8.533333 0 0 1 0 12.074667l-68.650666 68.608L874.666667 192a85.333333 85.333333 0 0 1 85.333333 85.333333v106.666667a85.376 85.376 0 0 1-64 82.645333V832a128 128 0 0 1-128 128H256z m213.333333-490.666667H192v362.666667a64 64 0 0 0 60.245333 63.893333L256 896h213.333333V469.333333z m362.666667 0H533.333333v426.666667h234.666667a64 64 0 0 0 63.893333-60.245333L832 832V469.333333zM469.333333 256H149.333333a21.333333 21.333333 0 0 0-21.184 18.837333L128 277.333333v106.666667a21.333333 21.333333 0 0 0 18.837333 21.184L149.333333 405.333333h320v-149.333333z m405.333334 0H533.333333v149.333333h341.333334a21.333333 21.333333 0 0 0 21.184-18.837333L896 384v-106.666667a21.333333 21.333333 0 0 0-18.837333-21.184L874.666667 256z" fill="#333333" p-id="3921"></path></svg>
 									<span>Refer a Friend</span>
@@ -139,81 +72,268 @@
 								<div class="card__linklist-item link" data-right="redemptions" data-action="left-nav"
 								data-change="redemptions">
 								<svg t="1672224750449" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2724" width="32" height="32"><path d="M982.528 472.064c-2.56-59.392-62.464-97.792-140.288-117.76V196.096c0-1.536-0.512-2.56-1.024-4.096 0-2.56 1.024-4.608 1.024-6.656 0-125.952-251.392-159.232-400.384-159.232S41.472 59.392 41.472 184.832c0 2.56 0.512 4.608 1.024 6.656 0 1.536-1.024 2.56-1.024 4.096v600.576c0 0.512 0.512 1.536 0.512 2.048 0 1.024-0.512 1.536-0.512 2.048 0 125.952 251.904 159.232 400.384 159.232 12.8 0 26.624-0.512 40.448-1.024 73.216 35.84 186.88 38.4 218.112 38.4 47.104 0 282.624-6.144 282.624-122.88 0-0.512-0.512-1.024-0.512-1.536 0-0.512 0.512-1.024 0.512-1.536V474.112c-0.512-0.512-0.512-1.536-0.512-2.048zM841.728 460.8c14.336 5.12 25.6 10.24 32.256 14.848-6.656 4.608-17.92 9.728-32.256 14.848-24.064 8.704-58.368 16.384-102.4 19.968-8.192 0.512-16.896 1.024-25.6 1.024-4.608 0-9.216 0.512-13.824 0.512-92.672 0-152.576-22.016-174.08-36.352 21.504-14.336 81.408-36.352 174.08-36.352 13.824 0 27.136 0.512 39.424 1.536 30.208 2.048 55.808 6.656 76.8 11.776 9.728 3.072 17.92 5.632 25.6 8.192zM441.344 128c166.4 0 266.24 36.352 292.864 56.832-26.624 20.992-126.464 56.832-292.864 56.832s-265.728-35.84-292.864-56.832c27.136-20.48 126.464-56.832 292.864-56.832z m-24.064 729.6c-164.352-3.584-258.048-42.496-273.92-60.928v-89.088c78.848 32.256 188.416 45.056 273.92 47.104v102.912z m0-205.312c-164.352-3.584-258.048-42.496-273.92-60.928V502.272c78.848 32.256 188.416 45.056 273.92 47.104v102.912z m5.632-205.312c-167.424-3.072-263.168-41.984-279.04-60.928V296.96c86.528 35.328 209.92 47.616 297.984 47.616 88.064 0 211.456-11.776 297.984-47.616v41.984c-13.312-1.024-26.112-1.536-39.424-1.536-121.856 0-250.88 34.816-277.504 109.568z m457.216 416.768c-13.312 8.704-46.08 19.968-96.256 26.624-24.064 3.072-52.224 5.632-83.968 5.632-97.28 0-160.768-18.944-180.224-32.256v-90.112c69.632 21.504 154.112 23.552 180.224 23.552 8.192 0 22.016 0 39.424-1.024h0.512c27.136-1.536 62.976-4.608 98.816-11.776 1.024 0 2.048-0.512 3.584-0.512 12.8-2.56 26.112-6.144 38.4-9.728v89.6z m0-200.704c-7.168 4.608-19.968 10.24-38.4 15.36-17.408 4.608-39.936 9.216-66.56 12.288-11.264 1.536-23.04 2.56-35.84 3.072-12.288 0.512-25.6 1.024-39.424 1.024-97.28 0-160.768-18.944-180.224-31.744v-77.312c51.2 19.456 115.2 28.672 177.664 28.672h2.56c13.312 0 26.112-0.512 39.424-1.536 35.328-2.048 70.144-7.168 102.4-15.36v-2.048 1.536c13.312-3.584 26.112-7.68 38.4-12.288v78.336z" fill="" p-id="2725" data-spm-anchor-id="a313x.7781069.0.i2" class="selected"></path></svg>
-								<span>Redemptions for point</span>
+								<span>Redemption for coupon</span>
 								</div>
 								<div class="card__linklist-item link" data-right="my_postsale" data-action="left-nav"
-									data-change="Customers Services">
+									data-change="Customer Services">
 									{%- render 'icon', icon: 'cjj_post_sale' -%}
-									<span>Customers Services</span>
+									<span>Customer Services</span>
 								</div>
-								<a href="{{ routes.account_logout_url }}" class="card__linklist-item link"
+								{% comment %} <a href="{{ routes.account_logout_url }}" class="card__linklist-item link"
 									data-no-instant>{% render 'icon', icon :"account-logout" %} {{
-									'customer.general.logout' | t }}</a>
+									'customer.general.logout' | t }}</a> {% endcomment %}
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-
+			
 			<div class="layout__section ">
-				{%- comment -%}--------------------------收藏列表-------------------{%- endcomment -%}
-				<div class="wish_list account_right_content" data-type="accountPage">
-					<header>
-						<h1 class="center wish_title">MY WISHLIST</h1>
-					</header>
+				<h3 class="mobile-account__title pc-account__title">My Account</h3>
+				<div class="account-info customer_name">{{customer.first_name}} {{customer.last_name}}</div>
+				<div class="account-info customer_email">{{customer.email}}</div>
+		
+			{% comment %} -------------------------会员信息----------------------- {% endcomment %}
+				<div class="my-account">
+					<div class="vip-page ">
+						<div class="vip-overview">
+							<div class="vip-user d-flex">
+								<div class="vip-user__avatar">
+									<img class="lazyload" alt="fill"
+										src="https://cdn.shopify.com/s/files/1/0595/0691/7535/files/bd0d72d9c0dedca8253dc2549b1a1017.png?v=1664507136">
+								</div>
+								<div class="vip-user__name">
+									<span style="margin-bottom:6px; display: block;">{{customer.name}}</span>
+									<div class="vip-icon__box view_myvip">
+										{%- render 'icon',icon:'vip',class:'vip' -%}
+										<span class="vip-user__grade">copper</span>
+									</div>
+									<div class="vip-icon__box view_mypoint">
+										{% render "icon",icon:'integral' %}
+										<span class="vip-integral">0</span>
+									</div>
 
-					<div class="wish_loading">
-						<div class="body-me loading">
-							{%- render 'icon', icon: 'cjj_loading' -%}
-							<span class="loading-text">&nbsp;loading...</span>
+								</div>
+							</div>
+
+							<div class="vip-grade d-flex">
+								<span class="vip-level__s0">
+								</span>
+								<span class="vip-solid"></span>
+								<span class="vip-level__s1">
+									<img src="{{'s1.png' | asset_url}}" alt="">
+								</span>
+								<span class="vip-solid"></span>
+								<span class="vip-level__s2">
+									<img src="{{'s2.png' | asset_url}}" alt="">
+								</span>
+								<span class="vip-solid"></span>
+								<span class="vip-level__s3">
+									<img src="{{'s3.png' | asset_url}}" alt="">
+								</span>
+							</div>
+							<p class="vip-info__title">Welcome to the HYFOL VIP</p>
+						</div>
+
+						<div class="vip-overview__rule">
+							<p class="vip-upgrade__info">
+								<span class="vip-upgrade__header">Copper: </span> No consumption
+							</p>
+							<p class="vip-upgrade__info">
+								<span class="vip-upgrade__header">Silver: </span> US$0.1 or 1 order(s) are required
+								to become a silver member
+							</p>
+							<p class="vip-upgrade__info">
+								<span class="vip-upgrade__header">Gold: </span>US$120 or 3 order(s) are required to
+								become a gold member
+							</p>
+							<p class="vip-upgrade__info">
+								<span class="vip-upgrade__header">Platinum: </span> US$500 or 5 order(s) are
+								required to become a platinum member
+							</p>
+							<div class="vip-rules__link" data-action="open-modal" aria-controls="account-vip-rurles">
+								About rules
+							</div>
 						</div>
 					</div>
 
-					<div class="collect page-width"></div>
+				<!--	{%- assign order_unpaid = 0 -%}
+					{%- assign order_processing = 0 -%}
+					{%- assign order_shipped = 0 -%}
+					{%- assign order_payment = 0 -%}
+					{%- assign order_completed = 0 -%}
 
-					<div id="czquickview" class="modal" aria-hidden="true">
-						<div class="modal__dialog modal__dialog--stretch" role="dialog">
-							<button class="modal__close link" data-action="close-modal" title="Close"><svg
-									focusable="false" class="icon icon--close " viewBox="0 0 19 19" role="presentation">
-									<path
-										d="M9.1923882 8.39339828l7.7781745-7.7781746 1.4142136 1.41421357-7.7781746 7.77817459 7.7781746 7.77817456L16.9705627 19l-7.7781745-7.7781746L1.41421356 19 0 17.5857864l7.7781746-7.77817456L0 2.02943725 1.41421356.61522369 9.1923882 8.39339828z"
-										fill="currentColor" fill-rule="evenodd"></path>
-								</svg>
-							</button>
+					{%- for order in customer.orders -%}
+					{% if order.financial_status=='unpaid' or order.financial_status=='pending' %}
+					{%- assign order_unpaid = order_unpaid | plus: 1 -%}
+					{% endif%}
+					{% if order.fulfillment_status=='on hold' %}
+					{%- assign order_processing = order_processing | plus: 1 -%}
+					{% endif %}
+					{% if order.fulfillment_status=='in progress' %}
+					{%- assign order_shipped = order_shipped | plus: 1 -%}
+					{% endif%}
+					{% if order.financial_status=='paid' %}
+					{%- assign order_payment = order_payment | plus: 1 -%}
+					{% endif %}
+					{% if order.fulfillment_status=='fulfilled' %}
+					{%- assign order_completed = order_completed | plus: 1 -%}
+					{% endif%}
+					{%- endfor -%}
 
-							<div class="modal__loader"><svg focusable="false" class="icon icon--search-loader "
-									viewBox="0 0 64 64" role="presentation">
-									<path opacity=".4"
-										d="M23.8589104 1.05290547C40.92335108-3.43614731 58.45816642 6.79494359 62.94709453 23.8589104c4.48905278 17.06444068-5.74156424 34.59913135-22.80600493 39.08818413S5.54195825 57.2055303 1.05290547 40.1410896C-3.43602265 23.0771228 6.7944697 5.54195825 23.8589104 1.05290547zM38.6146353 57.1445143c13.8647142-3.64731754 22.17719655-17.89443541 18.529879-31.75914961-3.64743965-13.86517841-17.8944354-22.17719655-31.7591496-18.529879S3.20804604 24.7494569 6.8554857 38.6146353c3.64731753 13.8647142 17.8944354 22.17719655 31.7591496 18.529879z">
-									</path>
-									<path
-										d="M1.05290547 40.1410896l5.80258022-1.5264543c3.64731754 13.8647142 17.89443541 22.17719655 31.75914961 18.529879l1.5264543 5.80258023C23.07664892 67.43614731 5.54195825 57.2055303 1.05290547 40.1410896z">
-									</path>
-								</svg>
-							</div>
-
-							<div class="modal__inner">
-								<div class="abc"></div>
-							</div>
-						</div>
-					</div>
-
-					{%- if customer -%}
-					<div class="collect-body" style="display: none;">
-						<div class=" collect-body-layout">
-							<div class="wish_center">
-								You currently have nothing saved to your Wishlist.<br />
-								Personalize your shopping experience with your Wishlist.
-							</div>
-							<div class="d-flex aic jcc sign-button">
-								<a href="/collections/shop" class="sign-button">Let's Get Started!</a>
+					<div class="my-coupons">
+						<h3 class="h3 my-coupons__title">Unused Coupons</h3>
+						<div class="my-coupons__list my-coupons_empty">
+							<div class="empty">
+								{%- render 'icon',icon:"package" -%}
+								<p>It is empty here :-(</p>
 							</div>
 						</div>
 					</div>
-					{%- endif -%}
+					{%- comment -%}--------------------------订单导航-----------------------------------{%- endcomment-%}
+					<div class="order-preview overview-box ">
+						<h3 class="h3">My Order</h3>
+						<div class="icon-box">
+							<ul class="d-flex  account-overview__list icons">
+								<li class="order-preview__item" data-nav-type="All">
+									<span class="order-icon">
+										{%- render 'icon', icon: 'cjj_all' -%}
+										{%- comment -%}
+										<span class="empty-state__count redio-icon">{{customer.orders_count}}</span>
+										{%- endcomment -%}
+									</span>
+									<p>All</p>
+									</a>
+								</li>
+								<li class="order-preview__item" data-nav-type="Unpaid">
+									<span class="order-icon">
+										{%- render 'icon', icon: 'cjj_unpaid' -%}
+										{%- if order_unpaid!=0 -%}
+										<span class="empty-state__count redio-icon">{{order_unpaid}}</span>
+										{%- endif -%}
+									</span>
+									<p>Unpaid</p>
+								</li>
+								<li class="order-preview__item" data-nav-type="Processing">
+									<span class="order-icon">
+										{%- render 'icon', icon: 'cjj_processing' -%}
+										{%- if order_processing!=0 -%}
+										<span class="empty-state__count redio-icon">{{order_processing}}</span>
+										{%- endif -%}
+									</span>
+									<p>Processing</p>
+								</li>
+								<li class="order-preview__item" data-nav-type="Shipped">
+									<span class="order-icon">
+										{%- render 'icon', icon: 'cjj_shipped' -%}
+										{%- if order_shipped!=0 -%}
+										<span class="empty-state__count redio-icon">{{order_shipped}}</span>
+
+										{%- endif -%}
+									</span>
+									<p>Shipped</p>
+								</li>
+
+								<li class="order-preview__item" data-nav-type="Payment">
+									<span class="order-icon">
+										{%- render 'icon', icon: 'cjj_payment' -%}
+										{%- if order_payment!=0 -%}
+										<span class="empty-state__count redio-icon">{{order_payment}}</span>
+
+										{%- endif -%}
+									</span>
+									<p>Payment</p>
+								</li>
+								<li class="order-preview__item" data-nav-type="Completed">
+									<span class="order-icon">
+										{%- render 'icon', icon: 'cjj_completed' -%}
+										{%- if order_completed!=0 -%}
+										<span class="empty-state__count redio-icon">{{order_completed}}</span>
+										{%- endif -%}
+									</span>
+									<p>Completed</p>
+								</li>
+								<li class="order-preview__item" data-nav-type="Post-sale">
+									<span class="order-icon">
+										{%- render 'icon', icon: 'cjj_post_sale' -%}<br />
+									</span>
+									<p>Post-sale</p>
+								</li>
+							</ul>
+						</div>
+					</div> -->
 
 				</div>
-
+			
+			{%- comment -%}------------------------------ Mobile Nav--------------------------{%- endcomment -%}
+			<div class="hidden-lap-and-up account">
+				<div class="header-me container">
+					{%- if customer -%}
+	
+					<div class="account-box">
+						<div class="card__linklist ">
+							<div class="render_nav_list d-flex mobile-account__nav">
+	
+								{% comment %} <div class="card__linklist-item link text--stronger" data-right="my_overview"
+									data-action="left-nav" data-change="My Account">
+									{%- render 'icon', icon: 'account-text' -%}
+									<span>My Account</span>
+								</div> {% endcomment %}
+								<div class="card__linklist-item link" data-right="my_profile" data-action="left-nav"
+									data-change="Profile">
+									{%- render 'icon', icon: 'account-my' -%}
+									<span>Profile</span>
+								</div>
+								<div class="card__linklist-item link" data-right="my_coupons" data-action="left-nav"
+									data-change="Coupons">
+									{%- render 'icon', icon: 'coupon' -%}
+									<span>Coupons</span>
+								</div>
+								<div class="card__linklist-item link" data-right="my_orders" data-action="left-nav"
+									data-change="Orders">
+									{%- render 'icon', icon: 'account-cart' -%}
+									<span>Orders</span>
+								</div>
+								{% comment %} <div class="card__linklist-item link" data-right="wish_list" data-action="left-nav"
+									data-change="My Wishlist">
+									{%- render 'icon', icon: 'account-collect' -%}
+									<span>My Wishlist</span>
+								</div> {% endcomment %}
+								{% comment %} <div class="card__linklist-item link" data-right="my_addresses" data-action="left-nav"
+									data-change="My Addresses">
+									{%- render 'icon', icon: 'account-location' -%}
+									<span>My Addresses</span>
+								</div> {% endcomment %}
+								<div class="card__linklist-item link" data-right="redemptions" data-action="left-nav"
+									data-change="redemptions">
+									<svg t="1672224750449" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2724" width="32" height="32"><path d="M982.528 472.064c-2.56-59.392-62.464-97.792-140.288-117.76V196.096c0-1.536-0.512-2.56-1.024-4.096 0-2.56 1.024-4.608 1.024-6.656 0-125.952-251.392-159.232-400.384-159.232S41.472 59.392 41.472 184.832c0 2.56 0.512 4.608 1.024 6.656 0 1.536-1.024 2.56-1.024 4.096v600.576c0 0.512 0.512 1.536 0.512 2.048 0 1.024-0.512 1.536-0.512 2.048 0 125.952 251.904 159.232 400.384 159.232 12.8 0 26.624-0.512 40.448-1.024 73.216 35.84 186.88 38.4 218.112 38.4 47.104 0 282.624-6.144 282.624-122.88 0-0.512-0.512-1.024-0.512-1.536 0-0.512 0.512-1.024 0.512-1.536V474.112c-0.512-0.512-0.512-1.536-0.512-2.048zM841.728 460.8c14.336 5.12 25.6 10.24 32.256 14.848-6.656 4.608-17.92 9.728-32.256 14.848-24.064 8.704-58.368 16.384-102.4 19.968-8.192 0.512-16.896 1.024-25.6 1.024-4.608 0-9.216 0.512-13.824 0.512-92.672 0-152.576-22.016-174.08-36.352 21.504-14.336 81.408-36.352 174.08-36.352 13.824 0 27.136 0.512 39.424 1.536 30.208 2.048 55.808 6.656 76.8 11.776 9.728 3.072 17.92 5.632 25.6 8.192zM441.344 128c166.4 0 266.24 36.352 292.864 56.832-26.624 20.992-126.464 56.832-292.864 56.832s-265.728-35.84-292.864-56.832c27.136-20.48 126.464-56.832 292.864-56.832z m-24.064 729.6c-164.352-3.584-258.048-42.496-273.92-60.928v-89.088c78.848 32.256 188.416 45.056 273.92 47.104v102.912z m0-205.312c-164.352-3.584-258.048-42.496-273.92-60.928V502.272c78.848 32.256 188.416 45.056 273.92 47.104v102.912z m5.632-205.312c-167.424-3.072-263.168-41.984-279.04-60.928V296.96c86.528 35.328 209.92 47.616 297.984 47.616 88.064 0 211.456-11.776 297.984-47.616v41.984c-13.312-1.024-26.112-1.536-39.424-1.536-121.856 0-250.88 34.816-277.504 109.568z m457.216 416.768c-13.312 8.704-46.08 19.968-96.256 26.624-24.064 3.072-52.224 5.632-83.968 5.632-97.28 0-160.768-18.944-180.224-32.256v-90.112c69.632 21.504 154.112 23.552 180.224 23.552 8.192 0 22.016 0 39.424-1.024h0.512c27.136-1.536 62.976-4.608 98.816-11.776 1.024 0 2.048-0.512 3.584-0.512 12.8-2.56 26.112-6.144 38.4-9.728v89.6z m0-200.704c-7.168 4.608-19.968 10.24-38.4 15.36-17.408 4.608-39.936 9.216-66.56 12.288-11.264 1.536-23.04 2.56-35.84 3.072-12.288 0.512-25.6 1.024-39.424 1.024-97.28 0-160.768-18.944-180.224-31.744v-77.312c51.2 19.456 115.2 28.672 177.664 28.672h2.56c13.312 0 26.112-0.512 39.424-1.536 35.328-2.048 70.144-7.168 102.4-15.36v-2.048 1.536c13.312-3.584 26.112-7.68 38.4-12.288v78.336z" fill="" p-id="2725" data-spm-anchor-id="a313x.7781069.0.i2" class="selected"></path></svg>
+									<span>Redemptions for coupon</span>
+								</div>
+								<div class="card__linklist-item link" data-right="recommend" data-action="left-nav" data-change="recommend">
+									<svg t="1672199086461" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="3920" width="32" height="32"><path d="M256 960a128 128 0 0 1-128-128V466.645333A85.376 85.376 0 0 1 64 384v-106.666667a85.333333 85.333333 0 0 1 85.333333-85.333333h290.901334l-68.629334-68.629333a8.533333 8.533333 0 0 1 0-12.074667l33.194667-33.173333a8.533333 8.533333 0 0 1 12.053333 0l84.48 84.48 84.48-84.48a8.533333 8.533333 0 0 1 12.053334 0l33.194666 33.173333a8.533333 8.533333 0 0 1 0 12.074667l-68.650666 68.608L874.666667 192a85.333333 85.333333 0 0 1 85.333333 85.333333v106.666667a85.376 85.376 0 0 1-64 82.645333V832a128 128 0 0 1-128 128H256z m213.333333-490.666667H192v362.666667a64 64 0 0 0 60.245333 63.893333L256 896h213.333333V469.333333z m362.666667 0H533.333333v426.666667h234.666667a64 64 0 0 0 63.893333-60.245333L832 832V469.333333zM469.333333 256H149.333333a21.333333 21.333333 0 0 0-21.184 18.837333L128 277.333333v106.666667a21.333333 21.333333 0 0 0 18.837333 21.184L149.333333 405.333333h320v-149.333333z m405.333334 0H533.333333v149.333333h341.333334a21.333333 21.333333 0 0 0 21.184-18.837333L896 384v-106.666667a21.333333 21.333333 0 0 0-18.837333-21.184L874.666667 256z" fill="#333333" p-id="3921"></path></svg>
+									<span>Refer a Friend</span>
+								</div>
+								<div class="card__linklist-item link" data-right="my_postsale" data-action="left-nav"
+									data-change="Customer Services">
+									 {%- render 'icon', icon: 'cjj_post_sale' -%}
+									<span>Customer Services</span>
+								</div>
+								{% comment %} <a href="{{ routes.account_logout_url }}" class="card__linklist-item link" data-no-instant>{%
+									render 'icon', icon :"account-logout" %} {{ 'customer.general.logout' | t }}</a> {% endcomment %}
+							</div>
+						</div>
+					</div>
+	
+					{%- else -%}
+					<ul class="no-logged">
+						<li class="text-l"><a href="{{ routes.account_login_url }}?return_url={{ page.url }}">LOGIN &gt;</a>
+						</li>
+						<li class="text-r"><a href="{{ routes.account_register_url }}">CREATE ACCOUNT&gt;</a></li>
+					</ul>
+					{%- endif -%}
+				</div>
+	
+			</div>
 			
 				{%- comment -%}--------------------------订单列表--------------------{%- endcomment -%}
 
@@ -224,7 +344,7 @@
 					</div>
 
 					{%- comment -%}----------------------------mobile------------------------{%- endcomment -%}
-					<div class="large_pad hidden-tablet-and-up ">
+					<div class="large_pad   hidden-tablet-and-up">{% comment %} hidden-tablet-and-up {% endcomment %}
 						<div class="order-me container">
 							<h3 class="h3">{{- 'customer.general.orders' | t -}}</h3>
 							<div class="icon-box">
@@ -238,27 +358,21 @@
 										<span>Unpaid</span>
 									</li>
 									<li data-item="orders-processing" data-type="orders-list" data-change="Processing">
-										{%- render 'icon', icon: 'cjj_processing' -%}<br />
-										<span>Processing</span>
+										{%- render 'icon', icon: 'cjj_payment' -%}<br />
+										<span>Confirmed</span>
 									</li>
 									<li data-item="orders-shipped" data-type="orders-list" data-change="Shipped">
 										{%- render 'icon', icon: 'cjj_shipped' -%}<br />
 										<span>Shipped</span>
 									</li>
-									<li data-item="orders-payment" data-type="orders-list" data-change="Payment">
-										{%- render 'icon', icon: 'cjj_payment' -%}<br />
-										<span>Payment</span>
-									</li>
 									<li data-item="orders-completed" data-type="orders-list" data-change="Completed">
 										{%- render 'icon', icon: 'cjj_completed' -%}<br />
 										<span>Completed</span>
 									</li>
-									{%- comment -%}
-									<li data-item="post-sale" data-type="orders-list" data-change="Processing">
-										{%- render 'icon', icon: 'cjj_post_sale' -%}<br />
-										<span>Post-sale</span>
+									<li data-item="orders-payment" data-type="orders-list" data-change="returns">
+										{%- render 'icon', icon: 'cjj_processing' -%}<br />
+										<span>Returns</span>
 									</li>
-									{%- endcomment -%}
 								</ul>
 							</div>
 
@@ -301,12 +415,12 @@
 					</div>
 				</div>
 
-				{%- comment -%}------------------------VIP 信息和优惠券概览-----------------------{%- endcomment -%}
-				<div class="my_overview account_right_content" data-type="accountPage">
+				{%- comment -%}------------------------vip规则弹窗-----------------------{%- endcomment -%}
+				<div class="modal" aria-hidden="true" id="account-vip-rurles">
 					{%- comment -%}规则说明{%- endcomment -%}
-					<div class="vip-rules" style="display:none;">
+					<div class="vip-rules" >
 
-						<div class="close-rule__page">{% render 'icon',icon:'close' %} </div>
+						<div class="close-rule__page" data-action="close-modal">{% render 'icon',icon:'close' %} </div>
 
 						<h1 class="h1 vip-rules__title">About Rules</h1>
 						<h3 class="h3">1. Introduction</h3>
@@ -401,7 +515,7 @@
 						</div>
 					</div>
 
-					<div class="my-account">
+				<!--	<div class="my-account">
 						<div class="vip-page ">
 							<div class="vip-overview">
 								<div class="vip-user d-flex">
@@ -429,17 +543,14 @@
 									<span class="vip-solid"></span>
 									<span class="vip-level__s1">
 										<img src="{{'s1.png' | asset_url}}" alt="">
-										{%- comment -%}<span class="vip-grade__name">Silver</span>{%- endcomment -%}
 									</span>
 									<span class="vip-solid"></span>
 									<span class="vip-level__s2">
 										<img src="{{'s2.png' | asset_url}}" alt="">
-										{%- comment -%}<span class="vip-grade__name">Gold</span>{%- endcomment -%}
 									</span>
 									<span class="vip-solid"></span>
 									<span class="vip-level__s3">
 										<img src="{{'s3.png' | asset_url}}" alt="">
-										{%- comment -%}<span class="vip-grade__name">Platinum</span>{%- endcomment -%}
 									</span>
 								</div>
 								<p class="vip-info__title">Welcome to the HYFOL VIP</p>
@@ -572,7 +683,8 @@
 						</div>
 
 					</div>
-
+-->
+			
 				</div>
 
 				{%- comment -%}--------------------------------------优惠券-------------------------------------------{%- endcomment -%}
@@ -621,9 +733,8 @@
 						<div class="rulesContainer" style=" text-align: right; color: #000;">
 							<button class="rulesBtn" data-action="open-modal"
 								aria-controls="referMask">Rules</button>
-
-								<img  class="hidden-phone" src="https://cdn.shopify.com/s/files/1/0595/0691/7535/files/3098dde95942af4963ce37d9121f7293.jpg?v=1673836099" alt="hyfol">
-								<img class="hidden-tablet hidden-lap hidden-desk" src="https://cdn.shopify.com/s/files/1/0595/0691/7535/files/e64ba840c8b684f2b92a9c61cb44d691.jpg?v=1673836099" alt="hyfol">
+								{% comment %} <img  class="hidden-phone" src="https://cdn.shopify.com/s/files/1/0595/0691/7535/files/3098dde95942af4963ce37d9121f7293.jpg?v=1673836099" alt="hyfol">
+								<img class="hidden-tablet hidden-lap hidden-desk" src="https://cdn.shopify.com/s/files/1/0595/0691/7535/files/e64ba840c8b684f2b92a9c61cb44d691.jpg?v=1673836099" alt="hyfol"> {% endcomment %}
 
 								<div class="share_poster" data-action="open-modal" aria-controls="shareMask">
 									<img class="hidden-phone" src="https://cdn.shopify.com/s/files/1/0595/0691/7535/files/58e6ef1880818b42cf035f8430fbc8e9.jpg?v=1673835999" alt="hyfol">
@@ -706,7 +817,7 @@
 					</div>
 				</div>
 				
-			{%- comment -%}--------------------  积分兑换 -------------------{%- endcomment -%}
+				{%- comment -%}--------------------  积分兑换 -------------------{%- endcomment -%}
 				<div class="redemptions account_right_content" data-type="accountPage">
 					<h5 class="h3 heading" style=" text-align: center; ">Redemptions for point</h5>
 					<div class="discount_list d-flex">
@@ -721,7 +832,7 @@
 					</div>
 				</div>
 
-				{%- comment -%}----------------------------积分概览------------------------{%- endcomment -%}
+				{%- comment -%}---------------------------我的简历---------------------------{%- endcomment -%}
 				<div class="my_profile account_right_content" data-type="accountPage">
 					<div class="profile-view backgrount_e">
 						<h3 class="h3">My Profile</h3>
@@ -739,15 +850,15 @@
 					</div>
 					<div class="birthday backgrount_e" style="margin-top: 2rem;padding: 2rem;">
 						<h3 class="h3" style="text-align: center;">My Birthday</h3>
-						<p style="text-align: center;">enter your birthday get 100 point</p>
+						<p style="text-align: center;">Enter your birthday get 100 point</p>
 						<div class="d-flex" style="max-width: 360px;margin: 0 auto;">
 							<input type="date" id="birthdayDate" class="form__field form__field--text input refer" name="date"
-							 pattern="\d{4}-\d{2}-\d{2}" max="{{'now' |date: '%Y-%m-%d' }}" min="1970-01-01">
+							 pattern="\d{4}-\d{2}-\d{2}" max="{{'now' |date: '%Y-%m-%d' }}" min="1970-01-01" style="line-height: 1;">
 							<button class="button refer" style="background: #000;color: #FFF;" data-action="birthdaySubmit">
 								submit
 							</button>
 						</div>
-					</div>
+				</div>
 					{%- comment -%}-----------------积分记录----------------------{%- endcomment -%}
 					<div class="profile-record backgrount_e">
 						<h4 class="profile-story__title">Point Detalls</h4>
@@ -866,10 +977,9 @@
 							</div>
 						</details-menu>
 					</div>
-				</div>
 
 				{%- comment -%}----------------------------客户地址------------------------{%- endcomment -%}
-				<div class="my_addresses account_right_content " data-type="accountPage">
+				<div class="my_addresses " >
 					<section data-section-id="{{ section.id }}" data-section-type="account">
 						<div class="container container--flush">
 							<div class="card">
@@ -948,6 +1058,7 @@
 											<button type="button" class="link link--accented "
 												aria-label="{{ 'customer.addresses.delete' | t }} {{ forloop.index }}"
 												data-target="{{ address.url }}"
+												data-action="deleteAddresses"
 												data-confirm-message="{{ 'customer.addresses.delete_confirm' | t }}">
 												{{ 'customer.addresses.delete' | t }}
 											</button>
@@ -1641,6 +1752,67 @@
 					</section>
 
 				</div>
+
+				{%- comment -%}--------------------------收藏列表-------------------{%- endcomment -%}
+				<div class="wish_list ">
+					<header>
+						<h1 class="center wish_title">MY WISHLIST</h1>
+					</header>
+
+					<div class="wish_loading">
+						<div class="body-me loading">
+							{%- render 'icon', icon: 'cjj_loading' -%}
+							<span class="loading-text">&nbsp;loading...</span>
+						</div>
+					</div>
+
+					<div class="collect page-width"></div>
+
+					<div id="czquickview" class="modal" aria-hidden="true">
+						<div class="modal__dialog modal__dialog--stretch" role="dialog">
+							<button class="modal__close link" data-action="close-modal" title="Close"><svg
+									focusable="false" class="icon icon--close " viewBox="0 0 19 19" role="presentation">
+									<path
+										d="M9.1923882 8.39339828l7.7781745-7.7781746 1.4142136 1.41421357-7.7781746 7.77817459 7.7781746 7.77817456L16.9705627 19l-7.7781745-7.7781746L1.41421356 19 0 17.5857864l7.7781746-7.77817456L0 2.02943725 1.41421356.61522369 9.1923882 8.39339828z"
+										fill="currentColor" fill-rule="evenodd"></path>
+								</svg>
+							</button>
+
+							<div class="modal__loader"><svg focusable="false" class="icon icon--search-loader "
+									viewBox="0 0 64 64" role="presentation">
+									<path opacity=".4"
+										d="M23.8589104 1.05290547C40.92335108-3.43614731 58.45816642 6.79494359 62.94709453 23.8589104c4.48905278 17.06444068-5.74156424 34.59913135-22.80600493 39.08818413S5.54195825 57.2055303 1.05290547 40.1410896C-3.43602265 23.0771228 6.7944697 5.54195825 23.8589104 1.05290547zM38.6146353 57.1445143c13.8647142-3.64731754 22.17719655-17.89443541 18.529879-31.75914961-3.64743965-13.86517841-17.8944354-22.17719655-31.7591496-18.529879S3.20804604 24.7494569 6.8554857 38.6146353c3.64731753 13.8647142 17.8944354 22.17719655 31.7591496 18.529879z">
+									</path>
+									<path
+										d="M1.05290547 40.1410896l5.80258022-1.5264543c3.64731754 13.8647142 17.89443541 22.17719655 31.75914961 18.529879l1.5264543 5.80258023C23.07664892 67.43614731 5.54195825 57.2055303 1.05290547 40.1410896z">
+									</path>
+								</svg>
+							</div>
+
+							<div class="modal__inner">
+								<div class="abc"></div>
+							</div>
+						</div>
+					</div>
+
+					{%- if customer -%}
+					<div class="collect-body" style="display: none;">
+						<div class=" collect-body-layout">
+							<div class="wish_center">
+								You currently have nothing saved to your Wishlist.<br />
+								Personalize your shopping experience with your Wishlist.
+							</div>
+							<div class="d-flex aic jcc sign-button">
+								<a href="/collections/shop" class="sign-button">Let's Get Started!</a>
+							</div>
+						</div>
+					</div>
+					{%- endif -%}
+
+				</div>
+
+				</div>
+
 				{%- comment -%}----------------------------联系我们-----------------------{%- endcomment -%}
 				<div class="my_postsale account_right_content" data-type="accountPage">
 					<div class="customers-services">
@@ -1670,63 +1842,7 @@
 {%- endfor -%}
 {%- endcapture -%}
 {%- assign discounts = discount_str | downcase -%}
-		{% comment %}
-		const upd = `
-		mutation customerUpdate {
-		customerUpdate(customer: {firstName:"bob",lastName:"Jhon"}, customerAccessToken: "${localStorage.getItem("accessToken")}") {
-		customer {
-			firstName
-			lastName
-			updatedAt
-			}
-		customerAccessToken {
-			accessToken
-		}
-		customerUserErrors {
-		code
-		field
-		message
-		}
-		}}`
-		const del = `mutation customerAccessTokenDelete($customerAccessToken: String!) {
-			customerAccessTokenDelete(customerAccessToken: $customerAccessToken) {
-			  deletedAccessToken
-			  deletedCustomerAccessTokenId
-			  userErrors {
-				field
-				message
-			  }
-			}
-		  }`
-		const log = `mutation customerAccessTokenCreate {
-			customerAccessTokenCreate(input:{email:"1352234513@qq.com",password:"123456"}) {
-			  customerAccessToken {
-				accessToken
-			  }
-			  customerUserErrors {
-				 message
-			  }
-			}
-		  }`
-		 fetch('https://hyfol.myshopify.com/api/2022-10/graphql.json', {
-			method: "POST", headers: {
-				"Content-Type": "application/graphql", "X-Shopify-Storefront-Access-Token": "1d2374d2668239da8efd20c84e848d0d"
-			}, body: upd
-		}).then(response => response.json()).then(data => {
-			console.log(data)
-			console.log(localStorage.getItem('accessToken'))
-		})
-				async function deductPoint(token) {
-			const pointData = { expireTime: '2022-12-31 12:00:00', pointAmount: 10000, pointType: "Emaill Verification" }
-			const data = await getData('customerAccount/addPoint', pointData, token)
-			console.log('addPoint', data)
-		}
-		async function dedtPoint(token) {
-			const pointData = { expireTime: '2022-12-31 12:00:00', pointAmount: 6000, pointType: "time out" }
-			const data = await getData('customerAccount/deductPoint', pointData, token)
-			console.log('deductPoint', data)
-		}
-		{% endcomment %}
+	 
 <script>
 	~function () {
 
@@ -2033,7 +2149,10 @@
 		})();
 
 		const account = new Delegate(document.querySelector('#account'))
-
+		account.on('click',(ev,target)=>{
+			const ru =document.querySelector('.show_rurle')
+			ru&&ru.classList.remove('show_rurle')
+		})
 		const element = document.querySelector('.loading-mask')
 		document.addEventListener('page:loading:start', (ev) => {
 			element.classList.remove('d-none')
@@ -2244,21 +2363,6 @@
 		}
 		customElements.define('details-menu', DetailsMenu);
 
-		//**  ACCPOUNT CUSTOMERS  ***//        
-		const rules = document.querySelector('.vip-rules')
-		const user = document.querySelector('.my-account')
-
-		account.on('click','.vip-rules__link',(e,ta)=>{
-			user.style.display = "none"
-			rules.style.display = 'block'
-			window.scroll(0, 0)
-		})
-		account.on('click','.my_overview .close-rule__page', (e,ta) => {
-			rules.style.display = 'none'
-			user.style.display = "block"
-		})
-		//  END  
-
 		function createClass(classObj, protoList) {
 			var pro = classObj.prototype
 			for (var i = 0; i < protoList.length; i++) {
@@ -2285,14 +2389,16 @@
 			createClass(Account, [{
 				key: "init",
 				value: function () {
-					if (window.location.hash) {
+					if(!location.hash)location.hash="Orders+All";
+					this.pageSwitch()
+					/*if (window.location.hash) {
 						this.pageSwitch()
 					} else {
 						this.element.querySelectorAll('[data-right="my_overview"]').forEach(i => {
 							i.className = "card__linklist-item link text--stronger "
 						})
 						document.querySelector(".my_overview").style.display = "block"
-					}
+					}*/
 					this.getToken()
 					this.renderMobOrder()
 					this.changeMobileOrderView()
@@ -2313,6 +2419,8 @@
 					this.accountGate.on('click', this._select.bind(this), true) // select
 					this.accountGate.on('click', '[data-action="submitEmai"]', this._submit.bind(this)) // submit
 					this.accountGate.on('click', '[data-action="birthdaySubmit"]', this._submitBir.bind(this)) // submit
+					this.accountGate.on('click', '.view_mypoint', this._view.bind(this)) // view
+					this.accountGate.on('click', '.view_myvip', this._viewVip.bind(this)) // view vip
 				}
 			}, {
 				key: "getToken",
@@ -2353,6 +2461,7 @@
 								let C = ''
 								const codeHtml = item.summary.replace(/^[0-9$.]+%?( off)?/, (a, b, c, d) => {
 									C = a.split(' ').shift() || "0%"
+									C=C.replace('.00','')
 									return `<span style=" font-size: 1rem; font-weight: 600;">${a}</span>`
 								})
 								const coupon = `<div class="my-coupons__item" data-index="${item.id}">
@@ -2489,7 +2598,7 @@
 						const discountBox = document.querySelector('.discount_list')
 						const list = data.map(n => {
 							return `<div class="discount_item"><div class="coupon_content d-flex"><span style="font-weight: 600;font-size: 1rem;">${n.title}</span>
-							<span class="" style="list-style-type: square;">minimum spend to use:&nbsp;${n.prerequisiteSubtotalRange || 'none'}</span>
+							<span class="" style="list-style-type: square;">None minimum spend to use</span>
 							<span class="">${n.validDay || "long-term"}</span></div>
 							<span class="coupon_dashed"></span>
 							<button class="convertible_code" data-id="${n.id}" style="padding: 6px;border-radius: 6px;">${n.pointNum} point</button>
@@ -2502,12 +2611,12 @@
 			}, {
 				key: "pageSwitch",
 				value: function (ev, target) {
-					var nowNav = window.location.hash.split("#")[1].replace(/\%20/g, " ")
+					var nowNav = window.location.hash.replace(/#|(%20)/g, " ").trim()
 					var hashValue = nowNav.split('+')[0]
 					var navigations = this.navigation
 					for (let index = 0; index < navigations.length; index++) {
 						var element = navigations[index];
-						if (element.getAttribute('data-change') == nowNav) {
+						if (element.getAttribute('data-change') == hashValue) {
 							document.querySelector('.breadcrumb__link[aria-current="page"]').innerHTML = nowNav
 							element.className = " card__linklist-item link text--stronger "
 							var enode = element.getAttribute("data-right")
@@ -2517,7 +2626,7 @@
 						}
 					}
 					if (hashValue == 'Orders') {
-						document.querySelectorAll('[data-change="My Orders"]').forEach(i => {
+						document.querySelectorAll('[data-change="Orders"]').forEach(i => {
 							i.className = " card__linklist-item link text--stronger "
 						})
 						document.querySelector('.my_orders').style.display = "block"
@@ -2553,9 +2662,11 @@
 				key: "romoveAddresses",
 				value: function (ev, target) {
 					if (!target.dataset.target) return
+					document.dispatchEvent(new CustomEvent('page:loading:start'))
 					if (confirm("Are you sure you wish to delete this address?")) {
 						fetch(target.dataset.target, { method: "POST", headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: '_method=delete' }).then(response => {
-							location.reload()
+							document.dispatchEvent(new CustomEvent('page:loading:end'))
+						location.reload()
 						})
 					}
 				}
@@ -2565,11 +2676,13 @@
 					ev.preventDefault()
 					var form = ev.target.closest('form')
 					var formData = getFormData(form)
+					document.dispatchEvent(new CustomEvent('page:loading:start'))
 					fetch('/account/addresses', {
 						method: "POST",
 						headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
 						body: formData
 					}).then(response => {
+						document.dispatchEvent(new CustomEvent('page:loading:end'))
 						location.reload()
 					})
 				}
@@ -2637,18 +2750,17 @@
 					if (!location.hash) return;
 					var hash = location.hash.replace('#', '')
 					var hashName = hash.split("+")[0]
-					var hashKey = hash.replace('%20', ' ')
+					//var hashKey = hash.replace('%20', ' ')
 					if (hashName != "Orders") return;
-					var hashValue = window.location.hash.split("+")[1]
+					var hashValue = window.location.hash.split("+")[1]||"All"
 					var orderViews = this.element.querySelectorAll('.order-item__card')
-					var index
+					var index;
 					this.pcOrderNavs.forEach((item, i) => {
-						if (item.getAttribute('data-change') == hashValue) {
+						if (item.getAttribute('data-change') == hashValue ) {
 							item.setAttribute('data-action', true)
 							index = item.getAttribute('data-index')
 						} else {
 							item.setAttribute('data-action', false)
-
 						}
 					})
 					orderViews.forEach(i => {
@@ -2735,17 +2847,17 @@
 			}, {
 				key: "changeOrderNav",
 				value: function (e, target) {
-					if (target.dataset.action !== 'false' && target.parentElement.dataset.action !== 'false') return
-					const nav = target.dataset.action ? target : target.parentElement
-					const preNav = document.querySelector('.orders-nav__item[data-action="true"]')
-					const preView = document.querySelector('.order-item__card[aria-hidden="false"]')
-					const openOrederView = document.querySelector(`.order-item__card[data-index="${nav.dataset.index}"]`)
-					preNav.dataset.action = false
-					nav.dataset.action = true
-					preView.setAttribute('aria-hidden', true)
-					openOrederView.setAttribute("aria-hidden", false)
-					let hashUrl = target.textContent.replace(/\s*|[\r\n]/g, '');
-					window.location.hash = "Orders+" + hashUrl
+						if (target.dataset.action !== 'false' && target.parentElement.dataset.action !== 'false') return
+						const nav = target.dataset.action ? target : target.parentElement
+						const preNav = document.querySelector('.orders-nav__item[data-action="true"]')
+						const preView = document.querySelector('.order-item__card[aria-hidden="false"]')
+						const openOrederView = document.querySelector(`.order-item__card[data-index="${nav.dataset.index}"]`)
+						nav.dataset.action = true;
+						preNav && preNav.setAttribute('data-action',false);
+						preView && preView.setAttribute('aria-hidden', true);
+						openOrederView.setAttribute("aria-hidden", false);
+						let hashUrl = target.textContent.replace(/\s*|[\r\n]/g, '');
+						window.location.hash = "Orders+" + hashUrl;
 				}
 			}, {
 				key: "convertible",
@@ -2842,6 +2954,22 @@
 							hisContaine.innerHTML = `<ul class="d-flex historyList" data-total="${data.total}">${E.join('')}</ul>`
 						}
 					})
+				}
+			},{
+				key:"_view",
+				value:function(ev,target){
+					location.hash="Profile"
+					var list = this.accountPages
+					for (var i = 0; i < list.length; i++) {
+						list[i].style.display = "none"
+					}
+					this.pageSwitch();
+				}
+			},{
+				key:"_viewVip",
+				value:function(ev,target){
+				const rule=	document.querySelector('.vip-overview__rule')
+				rule.classList.toggle('show_rurle',!rule.classList.contains('show_rurle'))
 				}
 			}])
 

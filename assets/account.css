@@ -89,10 +89,6 @@
 		text-decoration: line-through black;
 	}
 
-	.mobile-account__title {
-		text-align: center;
-		font-weight: 600;
-	}
 
 	.hidden-lap-and-up.account {
 		margin: 1rem 0;
@@ -468,6 +464,7 @@
 		padding: 2rem 3rem;
 		display: grid;
 		grid: auto-flow auto / repeat(2, 50%);
+		position: relative;
 	}
 
 	.vip-grade img {
@@ -642,7 +639,9 @@
 		/* width: 270%; */
 		/* width: 340%; */
 		flex-wrap: wrap;
-		justify-content: space-between;
+		/* justify-content: space-between; */
+		grid-row-gap: 1rem;
+		grid-column-gap: 0.9rem;
 
 	}
 
@@ -778,7 +777,7 @@
 	}
 
 	.my-order__title {
-		padding: 0 0 1rem;
+		padding: 1rem 0;
 		text-align: center;
 	}
 
@@ -881,7 +880,7 @@
 	}
 
 	.card__linklist-item>.icon {
-		margin-right: 4px;
+		font-size: 1.2rem;
 	}
 
 	/* 优惠劵兑换 */
@@ -1006,7 +1005,7 @@
 		position: relative;
 		text-align: center;
 		max-width: 390px;
-		margin: 2rem auto 0;
+		margin: 0 auto;
 	}
 
 	.invitation_info {
@@ -1160,8 +1159,8 @@
 	.rulesBtn {
 		text-decoration: underline;
 		position: absolute;
-		right: 1rem;
-		bottom: 50%;
+		right: 6rem;
+		bottom: 30%;
 		color: #FFF;
 	}
 
@@ -1169,7 +1168,49 @@
 		text-align: center;
 	}
 
+	.pc-account__title {
+		font-weight: 900;
+		font-size: 1.4rem;
+		text-align: center;
+		margin: 0;
+	}
+
+	.vip-rules {
+		position: absolute;
+		top: 10%;
+		bottom: 0;
+		left: 0;
+		width: 80%;
+		right: 0;
+		margin: auto;
+		overflow-y: auto;
+	}
+
+	.wish_title {
+		font-size: 1.2rem;
+		font-weight: 900;
+		text-align: center;
+	}
+
+	.account-info {
+		padding: 0 1rem;
+	}
+
+	.customer_name {
+		font-weight: 600;
+	}
+
 	@media screen and (max-width: 648px) {
+		.card__linklist-item {
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+		}
+
+		.vip-rules {
+			width: 100%;
+		}
+
 		.shareLink {
 			bottom: -1rem;
 		}
@@ -1208,7 +1249,7 @@
 		}
 
 		.vip-overview {
-			padding: 0 2rem
+			padding: 0 1rem
 		}
 
 		.vip-overview__rule {
@@ -1247,6 +1288,19 @@
 		}
 
 		.rulesBtn {
-			bottom: 64%;
+			bottom: 38%;
+			right: 2rem;
+		}
+
+		.vip-overview__rule {
+			display: none;
+		}
+
+		.show_rurle {
+			display: block;
+			position: absolute;
+			left: 0;
+			bottom: -90%;
+			z-index: 2;
 		}
 	}

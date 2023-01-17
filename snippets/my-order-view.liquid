@@ -1,39 +1,39 @@
 
 <div class="order-render__view">
-    <h1 class="heading h1 my-order__title">My Order</h1>
+    <h1 class="heading h3 my-order__title">My Order</h1>
 
     <div class="order-view__box">
 
         <ul class="d-flex orders-nav__list">
-
-            <li class="order-all orders-nav__item"  data-action="true" data-index="1" data-change="All">
+        
+            <li class="order-all orders-nav__item" data-action="true" data-index="1" data-change="All">
                 {%- render 'icon', icon: 'cjj_all' -%}
                 <span>All</span>
             </li>
-            <li class="order-unpaid orders-nav__item"  data-action="false" data-index="2" data-change="Unpaid">
+            <li class="order-unpaid orders-nav__item" data-action="false" data-index="2" data-change="Unpaid">
                 {%- render 'icon', icon: 'cjj_unpaid' -%}
                 <span>Unpaid</span>
             </li>
-            
+        
             <li class="order-shipped orders-nav__item" data-action="false" data-index="3" data-change="Shipped">
                 {%- render 'icon', icon: 'cjj_shipped' -%}
                 <span>Shipped</span>
             </li>
         
-            <li class="order-processing orders-nav__item" data-action="false" data-index="4" data-change="Processing">
-                {%- render 'icon', icon: 'cjj_processing' -%}
-                <span>Processing</span>
-            </li>
-            <li class="order-completed orders-nav__item" data-action="false" data-index="5" data-change="Completed">
+            <li class="order-completed orders-nav__item" data-action="false" data-index="4" data-change="Completed">
                 {%- render 'icon', icon: 'cjj_completed' -%}
                 <span>Completed</span>
             </li>
-            <li class="order-payment orders-nav__item" data-action="false" data-index="6" data-change="Payment">
+            <li class="order-payment orders-nav__item" data-action="false" data-index="5" data-change="Payment">
                 {%- render 'icon', icon: 'cjj_payment' -%}
-                <span>Payment</span>
+                <span>Confirmed</span>
+            </li>
+            <li class="order-processing orders-nav__item" data-action="false" data-index="6"
+                data-change="Returns">
+                {%- render 'icon', icon: 'cjj_processing' -%}
+                <span>Returns</span>
             </li>
         </ul>
-    
         <div class="order__render-view">
 
             <div class="card order-item__card" aria-hidden="false" data-index="1">
@@ -112,13 +112,15 @@
                 {%- endpaginate -%}
                 {%- endif -%}
             </div>
+
+            {% comment %}--------------------未付款--------------------  {% endcomment %}
             <div class="card order-item__card"  aria-hidden="true" data-index="2">
                 {%- assign empty_state = true -%}
                 {%- if customer.orders_count == 0 -%}
                     
                 {%- paginate customer.orders by 8 -%}
                 {%- for order in customer.orders -%}
-                {% if order.financial_status=='pending' %}
+                {% if order.financial_status=='pending' or order.financial_status=="unpaid" %}
                 {%- assign empty_state = false -%}
                 <div class="order-box">
                     <div class="order-title">
@@ -193,13 +195,18 @@
                 </div>
                 {%- endif -%}
             </div>
+
+            {% comment %} -------------------------履行----------------------- {% endcomment %}
             <div class="card order-item__card"  aria-hidden="true" data-index="3">
                 {%- assign empty_state = true -%}
                 {%- if customer.orders_count != 0 -%}
                 {%- paginate customer.orders by 8 -%}
-                {%- for order in customer.orders -%}
-                {% if order.financial_status=='in progress' %}
+               
+                    {%- for order in customer.orders -%}
+                {%- if order.financial_status=='paid' and order.fulfillment_status=="fulfilled" -%}
                 {%- assign empty_state = false -%}
+    
+
                 <div class="order-box">
                     <div class="order-title">
                         <div class="title-info d-flex">
@@ -273,12 +280,14 @@
                 </div>
                 {%- endif -%}
             </div>
+
+        {% comment %} --------------------------已完成------------------------ {% endcomment %}
             <div class="card order-item__card"  aria-hidden="true" data-index="4">
                 {%- assign empty_state = true -%}
                 {%- if customer.orders_count != 0 -%}
                 {%- paginate customer.orders by 8 -%}
                 {%- for order in customer.orders -%}
-                {% if order.financial_status=='on hold' %}
+                {% if order.financial_status=='paid' and order.fulfillment_status=='complete'%}
                 {%- assign empty_state = false -%}
                 <div class="order-box">
                     <div class="order-title">
@@ -353,12 +362,13 @@
                 </div>
                 {%- endif -%}
             </div>
+        {%- comment -%}------------------------未履行---------------------------{%- endcomment -%}
             <div class="card order-item__card"  aria-hidden="true" data-index="5">
                 {%- assign empty_state = true -%}
                 {%- if customer.orders_count != 0 -%}
                 {%- paginate customer.orders by 8 -%}
                 {%- for order in customer.orders -%}
-                {% if order.financial_status=='fulfilled' %}
+                {% if order.financial_status=='paid' and order.fulfillment_status=="unfulfilled"%}
                 {%- assign empty_state = false -%}
                 <div class="order-box">
                     <div class="order-title">
@@ -433,6 +443,7 @@
                 </div>
                 {%- endif -%}
             </div>
+            {%- comment -%}-----------------------退款----------------------{%- endcomment -%}
             <div class="card order-item__card"  aria-hidden="true" data-index="6">
                 {%- assign empty_state = true -%}
 
@@ -440,7 +451,7 @@
                     {%- paginate customer.orders by 8 -%}
 
                     {%- for order in customer.orders -%}
-                        {% if order.financial_status=='paid' %}
+                        {% if order.financial_status=='refunded' %}
                         {%- assign empty_state = false -%}
                         <div class="order-box">
                             <div class="order-title">
