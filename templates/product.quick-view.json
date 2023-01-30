@@ -27,15 +27,9 @@
       ],
       "settings": {
       }
-    },
-    "alireviews-widget-95112": {
-      "type": "alireviews-widget-95112",
-      "settings": {
-      }
     }
   },
   "order": [
-    "main",
-    "alireviews-widget-95112"
+    "main"
   ]
 }

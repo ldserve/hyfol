@@ -32,12 +32,47 @@
         "upsell_products_count": 4
       }
     },
+    "1657104594e23caf5d": {
+      "type": "featured-collection",
+      "settings": {
+        "collection": "custompromotion-buy-4-get-20-off",
+        "title": "Buy 4 Get 20% Off",
+        "section_title_layout": "left",
+        "products_count": 12,
+        "layout": "vertical",
+        "stack_products": false,
+        "show_quick_buy": false,
+        "link_title": "View all",
+        "link_url": "",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "background": ""
+      }
+    },
+    "1661422901a3ed5616": {
+      "type": "featured-collection",
+      "settings": {
+        "collection": "summer-clearance-any-3-for-59",
+        "title": "Summer Clearance 3 For $59",
+        "section_title_layout": "left",
+        "products_count": 12,
+        "layout": "vertical",
+        "stack_products": false,
+        "show_quick_buy": false,
+        "link_title": "View all",
+        "link_url": "",
+        "padding_top": 0,
+        "padding_bottom": 0,
+        "background": ""
+      }
+    },
     "recently-viewed-products": {
       "type": "recently-viewed-products",
       "settings": {
-        "title": "Recently viewed",
+        "title": "JUST LANDED",
         "title_color": "#000000",
-        "show_quick_buy": false
+        "show_quick_buy": false,
+        "product_layout": "flex"
       }
     },
     "1657335361b9c0e6f5": {
@@ -78,27 +113,14 @@
       ],
       "settings": {
       }
-    },
-    "1657104594e23caf5d": {
-      "type": "featured-collection",
-      "disabled": true,
-      "settings": {
-        "collection": "",
-        "title": "Featured collection",
-        "products_count": 12,
-        "layout": "vertical",
-        "stack_products": false,
-        "show_quick_buy": false,
-        "link_title": "View all",
-        "link_url": "https:\/\/www.hyfol.com\/collections\/new-in-1"
-      }
     }
   },
   "order": [
     "main",
+    "1657104594e23caf5d",
+    "1661422901a3ed5616",
     "recently-viewed-products",
     "1657335361b9c0e6f5",
-    "164855003715c57e88",
-    "1657104594e23caf5d"
+    "164855003715c57e88"
   ]
 }

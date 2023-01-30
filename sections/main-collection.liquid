@@ -28,7 +28,42 @@
 {%- assign active_filters_count = active_filters_count | plus: 1 -%}
 {%- endif -%}
 {%- endfor -%}
+<style>
+  .product-item_activity .aspect-ratio {
+    height: 100%;
+    padding-bottom: 100%;
+    background-color: #fff;
+    width: 100%;
+  }
 
+  .activity_banner {
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+  }
+  
+.loading-more{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #FFF;
+  }
+
+  .loading-dot {
+    margin-left: 1rem;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 6px;
+  }
+
+  .loading-dot>.icon {
+    font-size: 2rem;
+  }
+</style>
+  
 {%- capture section_settings -%}
 {
 "currentSortBy": {{ sort_by | json }},
@@ -58,10 +93,11 @@
   </nav>
 </div>
 {%- unless collection.template_suffix == 'brand' -%}
-{%- if section.settings.show_collection_image and collection.image and collection.all_products_count > 0 -%}
+{%- if section.settings.show_collection_image and collection.image!=blank and collection.all_products_count > 0 -%}
 {%- if section.settings.collection_image_size == 'preserve_ratio' -%}
 {%- capture supported_sizes -%}{%- render 'image-size', sizes: '400,500,600,700,800,900,1000, 1200, 1400, 1600', image: collection.image -%}{%- endcapture -%}
 {%- assign image_url = collection.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+
 
 <div class="collection__image-wrapper collection__image-wrapper--preserve-ratio hidden-tablet-and-up">
   <div class="aspect-ratio" style="padding-bottom: {{ 100.0 | divided_by: collection.image.aspect_ratio }}%">
@@ -76,14 +112,24 @@
     data-bgset="{{ collection.image | img_url: '600x' }} 600w, {{ collection.image | img_url: '800x' }} 800w, {{ collection.image | img_url: '1000x' }} 1000w, {{ collection.image | img_url: '1200x' }} 1200w, {{ collection.image | img_url: '1500x' }} 1500w">
   </div>
 </div>
-{%- endif -%}
+{%- endif  -%}
+
+{%- elsif section.settings.collection_banner != blank -%}
+{%- assign image_url = section.settings.collection_banner | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+{%- capture supported_sizes -%}{%- render 'image-size', sizes: '400,500,600,700,800,900,1000, 1200, 1400, 1600', image: section.settings.collection_banner -%}{%- endcapture -%}
+<div class="collection__image-wrapper collection__image-wrapper--preserve-ratio hidden-tablet-and-up">
+  <div class="aspect-ratio" style="padding-bottom: {{ 100.0 | divided_by: section.settings.collection_banner.aspect_ratio }}%">
+    <img class="lazyload image--fade-in" data-src="{{ image_url }}" data-sizes="auto"
+      data-widths="[{{ supported_sizes }}]" alt="{{ section.settings.collection_banner.alt | escape }}">
+  </div>
+</div>
 {%- endif -%}
 {%- endunless -%}
 <section data-section-id="{{ section.id }}" onclick="closeFilter(event)" data-section-type="collection"
   data-section-settings='{{ section_settings }}'>
 
   {%- unless collection.template_suffix == 'brand' -%}
-  {%- if section.settings.show_collection_image and collection.image and collection.all_products_count > 0 -%}
+  {%- if section.settings.show_collection_image and collection.image !=blank and collection.all_products_count > 0 -%}
   {%- if section.settings.collection_image_size == 'preserve_ratio' -%}
   {%- capture supported_sizes -%}{%- render 'image-size', sizes: '400,500,600,700,800,900,1000, 1200, 1400, 1600', image: collection.image -%}{%- endcapture -%}
   {%- assign image_url = collection.image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
@@ -102,11 +148,33 @@
     </div>
   </div>
   {%- endif -%}
+
+  {%- elsif section.settings.collection_banner != blank -%}
+  {%- capture supported_sizes -%}{%- render 'image-size', sizes: '400,500,600,700,800,900,1000, 1200, 1400, 1600', image: section.settings.collection_banner -%}{%- endcapture -%}
+  {%- assign image_url = section.settings.collection_banner | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+
+  <div class="collection__image-wrapper collection__image-wrapper--preserve-ratio hidden-phone">
+    <div class="aspect-ratio" style="padding-bottom: {{ 100.0 | divided_by:section.settings.collection_banner.aspect_ratio }}%">
+      <img class="lazyload image--fade-in" data-src="{{ image_url }}" data-sizes="auto"
+        data-widths="[{{ supported_sizes }}]" alt="{{section.settings.collection_banner.alt | escape }}">
+    </div>
+  </div>
   {%- endif -%}
   {%- endunless -%}
 
-  <div class="indexContainer" id="container">
+  {%- comment -%}Flash Sale{%- endcomment -%}
+  {%- if collection.products[0].tags contains "Flash Sale" -%}
+    <div class="collection-flash_sale" data-type="flash-sale">
+      <div class="flash-img_container"><img src="https://cdn.shopify.com/s/files/1/0595/0691/7535/files/tiem.png?v=1666332315" alt="tiem"></div>
+      <span class="sale_time">ENDS IN 
+        <span class="sale_time_count"></span>	
+        <span class="flash-sale_num"></span>
+      </span>
+    </div>
+  {%- endif -%}
+{%- comment -%}Flash Sale END{%- endcomment -%}
 
+  <div class="indexContainer" id="container">
 
     {%- comment -%}
     --------------------------------------------------------------------------------------
@@ -295,11 +363,9 @@
               <button class="value-picker-button" aria-haspopup="true" aria-expanded="false"
                 aria-controls="sort-by-selector" data-action="open-value-picker">
                 <span class="hidden-tablet-and-up">{{ 'collection.sorting.title' | t }}</span>
-                <!--
-                          --><span class="hidden-phone">{{ 'collection.sorting.title' | t }}:
+                <span class="hidden-phone">{{ 'collection.sorting.title' | t }}:
                   {{ collection_sort_by_name }}</span>
-                <!--
-                          -->{%- render 'icon', icon: 'arrow-bottom' -%}
+                {%- render 'icon', icon: 'arrow-bottom' -%}
               </button>
 
               <div id="sort-by-selector" class="value-picker" aria-hidden="true">
@@ -608,6 +674,7 @@
           </div>
         </div>
         {%- else -%}
+
         {%- if view_mode == 'grid' -%}
         {%- assign show_as_list = false -%}
         {%- else -%}
@@ -616,11 +683,92 @@
 
         <div data-section-id="{% if section.id %}{{section.id}}{% endif %}" data-sectionId="{% if section.id %}{{section.id}}{% endif %}" {% if section.blocks %}data-blocks='{ {%- capture blocks_json -%}{% for block in section.blocks %}{%- capture block_json -%}"{{ block.type }}":{{ block.settings | json }}{%- endcapture -%}{{ block_json | prepend: ","  }}{% endfor %}{%- endcapture -%}{{ blocks_json | remove_first: "," }} }' {% endif %} data-settings='{% if section.settings %}{{section.settings | json}}{% endif %}' id="gf-products" class="product-list product-list--collection {% if has_filters %}product-list--with-sidebar{% endif %}">
           {%- for product in collection.products -%}
+          {%- assign render_item = true -%}
+
+         {%- for str_item in sort_by_list -%}
+         {%- assign product_handle = product.handle | downcase  -%}
+         {%- assign down_str_item = str_item | strip | downcase -%}
+         {%- if product_handle == down_str_item -%}
+         {%- assign render_item = false -%}
+         {% break %}
+         {%- endif -%}
+         {%- endfor -%}
+     
+          
+          {%- comment -%}------------------- 活动图片顶置 -----------------{%- endcomment -%}
+          {%- assign for_index = forloop.index -%}
+          {%- for block in section.blocks -%}
+            {%- assign activity_inser = block.settings.activity_inser -%}
+            {%- assign show_activity = false -%}
+            {%- assign collection_name_list = block.settings.activity_incolle | downcase | split:"," -%}
+            {%- if block.settings.activity_image ==blank -%} {%- assign show_activity = false -%}{%- endif -%}
+           
+            {%- if collection_name_list contains collection_name -%}
+              {%- assign show_activity = true -%}
+
+            {%- endif -%}
+
+              {%- if  show_activity and activity_inser == for_index and block.settings.show_activity-%}
+              <div class=" product-item product-item--vertical  1/3--tablet-and-up 1/4--desk product-item_activity" data-scenable="1"  style="justify-content:space-between ;">
+              {%- assign image_url = block.settings.activity_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+              {%- capture supported_sizes -%}{%- render 'image-size', sizes: '100,200,300,400,500,600,700', image: block.settings.activity_image -%}{%- endcapture -%}
+                <div class="aspect-ratio " >
+                  <img class="image--fade-in lazyload"
+                    data-sizes="auto" data-widths="[{{ supported_sizes }}]" 
+                    alt="{{block.settings.activity_image.alt}}"
+                    data-src="{{image_url}}"/>
+                    <noscript>
+                    <img src="{{block.settings.activity_image | img_url}}" alt="{{block.settings.activity_image.alt}}">
+                  </noscript>
+                </div>
+                <a href="{{block.settings.activity_link1}}" class="activity_banner activity-image1" {% if block.settings.show_line_border %}style=" border:1px solid red;"{%- endif -%}></a>
+              </div>
+            {%- break -%}
+            {%- endif -%}
+            {%- endfor -%}
+            {%- comment -%}------------------- 活动图片顶置 -----------------{%- endcomment -%}
+            {%- assign for_index = forloop.index -%}
+              {%- for block in section.blocks -%}
+                {%- assign activity_inser = block.settings.activity_inser -%}
+                {%- assign show_activity = false -%}
+                {%- assign collection_name_list = block.settings.activity_incolle | downcase | split:"," -%}
+                {%- if block.settings.activity_image ==blank -%} {%- assign show_activity = false -%}{%- endif -%}
+                {%- if collection_name_list contains collection_name -%}
+                  {%- assign show_activity = true -%}
+                {%- endif -%}
+                  {%- if  show_activity and activity_inser == for_index and block.settings.show_activity-%}
+                  <div class=" product-item product-item--vertical  1/3--tablet-and-up 1/4--desk product-item_activity" data-scenable="1"  style="justify-content:space-between ;">
+                  {%- assign image_url = block.settings.activity_image | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
+                  {%- capture supported_sizes -%}{%- render 'image-size', sizes: '100,200,300,400,500,600,700', image: block.settings.activity_image -%}{%- endcapture -%}
+                    <div class="aspect-ratio " >
+                      <img class="image--fade-in lazyload"
+                        data-sizes="auto" data-widths="[{{ supported_sizes }}]" 
+                        alt="{{block.settings.activity_image.alt}}"
+                        data-src="{{image_url}}"/>
+                        <noscript>
+                        <img src="{{block.settings.activity_image | img_url}}" alt="{{block.settings.activity_image.alt}}">
+                      </noscript>
+                    </div>
+                    <a href="{{block.settings.activity_link1}}" class="activity_banner activity-image1" {% if block.settings.show_line_border %}style=" border:1px solid red;"{%- endif -%}></a>
+                  </div>
+                {%- break -%}
+                {%- endif -%}
+              {%- endfor -%}
+           {%- comment -%}----------------------- 活动图片 END-----------------------{%- endcomment -%}
+
+          {% if render_item %}
           {%- render 'product-item', product: product, list: show_as_list, grid_classes: grid_classes,forloop:forloop -%}
+          {% endif %}
           {%- endfor -%}
         </div>
 
-        {%- render 'pagination', paginate: paginate -%}
+
+          {%- comment -%} ------------------------LOADING------------------ {%- endcomment -%}
+        <div class="pagination loading-more">
+          <div class="h4 loading-heading">loading more</div>
+          <span class="loading-dot active"> {%- render 'icon', icon: 'search-loader' -%}</span>
+        </div>
+        {%- render 'pagination', paginate: paginate ,class:"d-none"-%}
         {%- endif -%}
 
       </div>
@@ -891,64 +1039,71 @@
       <div class="modal__inner"></div>
     </div>
   </div>
+
 </section>
 
-{% if dm_paginate_by %}{% render 'spurit_dmr_collection_template_snippet', paginate_by: dm_paginate_by %}{% endif %}{% schema %}
+{% schema %}
 {
 "name": "Collection",
 "settings": [
-{
-"type": "checkbox",
-"id": "show_collection_image",
-"label": "Show collection image",
-"default": true
-},
-{
-"type": "checkbox",
-"id": "collapse_collection_description",
-"label": "Collapse long description",
-"default": false
-},
-{
-"type": "select",
-"id": "collection_image_size",
-"label": "Collection image size",
-"options": [
-{
-"value": "preserve_ratio",
-"label": "Original image ratio"
-},
-{
-"value": "small",
-"label": "Small"
-},
-{
-"value": "medium",
-"label": "Medium"
-},
-{
-"value": "large",
-"label": "Large"
-}
-],
-"default": "small"
-},
-{
-"type": "select",
-"id": "products_per_row",
-"label": "Products per row (desktop)",
-"options": [
-{
-"value": "3",
-"label": "3"
-},
-{
-"value": "4",
-"label": "4"
-}
-],
-"default": "4"
-},
+  {
+  "type": "checkbox",
+  "id": "show_collection_image",
+  "label": "Show collection image",
+  "default": true
+  },
+  {
+  "type": "checkbox",
+  "id": "collapse_collection_description",
+  "label": "Collapse long description",
+  "default": false
+  },
+  {
+  "type": "select",
+  "id": "collection_image_size",
+  "label": "Collection image size",
+  "options": [
+  {
+  "value": "preserve_ratio",
+  "label": "Original image ratio"
+  },
+  {
+  "value": "small",
+  "label": "Small"
+  },
+  {
+  "value": "medium",
+  "label": "Medium"
+  },
+  {
+  "value": "large",
+  "label": "Large"
+  }
+  ],
+  "default": "small"
+  },
+  {
+    "type":"image_picker",
+    "id":"collection_banner",
+    "label":"banner图",
+    "info":"优先使用集合图片，没有则使用当前选择"
+  },
+  {
+  "type": "select",
+  "id": "products_per_row",
+  "label": "Products per row (desktop)",
+  "options": [
+    {
+    "value": "3",
+    "label": "3"
+    },
+    {
+    "value": "4",
+    "label": "4"
+    }
+    ],
+  "default": "4"
+  },
 {
 "type": "range",
 "id": "default_products_per_page",
@@ -1059,7 +1214,47 @@
 ],
 "default": "all_closed"
 }
-]
+],
+"blocks":[{
+  "type":"activity",
+  "name":"活动图片",
+  "settings":[
+  {
+    "type":"checkbox",
+    "id":"show_activity",
+    "label":"是否显示",
+    "default":true
+  },
+  {
+    "type":"image_picker",
+    "id":"activity_image",
+    "label":"活动图"
+  },
+  {
+    "type":"url",
+    "id":"activity_link1",
+    "label":"活动链接"
+  },{
+    "type":"text",
+    "id":"activity_incolle",
+    "label":"需要展示的集合",
+    "info":"不区分大小写,集合名称用英文逗号隔开"
+  },{
+    "type": "range",
+    "id": "activity_inser",
+    "label": "活动插入位置",
+    "min": 1,
+    "max": 48,
+    "step": 1,
+    "default": 1
+  },
+  {
+    "type":"checkbox",
+    "id":"show_line_border",
+    "label":"辅助线",
+    "default":false
+  }]
+}]
 }
 {% endschema %}
 <style>
@@ -1067,19 +1262,13 @@
     display: none;
   }
 </style>
+
 <script>
   function closeFilter(e) {
     if(document.getElementById('filter_content') != null){
       if (e.target.closest('.filter_card_layout') == null) {
       document.getElementById('filter_content').className = 'filter_content hidden-pocket'
-    } else {  //点在过滤器区域内
-      // console.log("点击区域在范围内");
-      // if (event.target.id != "clean_all_button") {
-      //   e = e || window.event || arguments.callee.caller.arguments[0]
-      //   e.stopPropagation()
-      //   document.getElementById('filter_content').className = 'filter_content_show hidden-pocket'
-      // }
-    }
+    } else { }
     }
   
   }
@@ -1093,20 +1282,13 @@
   }
 
 
-
   ~ function () {
     // 处理布局
-    let productList = document.querySelector('.product-list')
+    let productList = document.querySelector('.product-list.product-list--collection')
+
     let clientWidth = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
     if (clientWidth <= 640) {
-      //  let productItem = document.querySelectorAll('.product-item')
-      //   for (let i = 0; i < productItem.length; i++) {
-      // 			if(i % 2 !== 0){
-      //           console.log(i);
-      //           productItem[i].style.paddingRight = '0'
-      // 			}
-      //   }
-      if(document.querySelector('.product-item').className.includes("product-item--vertical") == true){
+      if(document.querySelector('.product-list.product-list--collection').className.includes("product-item--vertical") == true){
         productList.style.width = '102%'
       }
     } else {
@@ -1212,16 +1394,11 @@
 			</button>
 		</form>
 	</div>
-	<span class="htusb-ui-boost htusb-ui-coll-boost htusb-data"
-				data-v1="#{id}"
-				data-v2="#{handle}"
-				data-v3="#{product_type}"
-				data-v4="#{tags}"></span>
 </div>
 `
       }
       color_temp() {
-        return `<div class="color-swatch color-swatch--#{value_l}">
+        return `<div class="color-swatch color-swatch--white ">
 		<input class="color-swatch__radio"
 					 type="radio"
 					 name="#{name}"
@@ -1233,7 +1410,7 @@
 					 data-image-widths="[200,300,400,500,600,700,800]"
 					 data-image-aspect-ratio="1.0"
 					 aria-label="#{value}">
-		<label class="color-swatch__item #{class}" for="#{id}" title="#{value}">
+		<label class="color-swatch__item #{class}" for="#{id}" title="#{value}" style="background-color:#{background};">
 			<span class="visually-hidden">#{value}</span>
 		</label>
 		<a href="#{url}" class="color-swatch__item-link">+#{num}</a>
@@ -1275,6 +1452,13 @@
         } else {
           data.tags = '';
         }
+        //----  动态插入标签  ---
+        data.tag_string=''
+        let tag_string=product.tags.find(i=>i.includes('CustomPromotion'))
+        tag_string &&(data.tag_string=tag_string.split('-')[1])
+        let colorTemplate={{settings.color_swatch_config | newline_to_br | split: '<br />' |json }}
+        // ----- END ----
+
         data.url = '/products/' + product.handle;
         data.title = product.title;
         data.primary_media_id = product.media[0].id;
@@ -1291,6 +1475,7 @@
           data.compare_at_price = ''
         }
         data.primary_media_src = product.media[0].src.replace(/.jpg/, '_{width}x.jpg');
+        
         if (product.media[1]) {
           data.second_media_id = product.media[1].id;
           data.second_media_src = product.media[1].preview_image.src.replace(/.jpg/, '_{width}x.jpg');
@@ -1301,8 +1486,7 @@
 
         data.first_variants_id = product.variants[0].id;
         data.ratingColor = this.ratingColor;
-        data.templateId = document.querySelector('.product-item .product-item__info form').getAttribute('id').split(
-          "--")[1];
+        data.templateId = document.querySelector('.product-list--collection .product-item .product-item__info form').getAttribute('id').split("--")[1];
         for (let i = 0, max = product.options[0].values.length; i < max; i++) {
           let color = {};
           let variants = product.options[0].values[i];
@@ -1323,6 +1507,15 @@
               break;
             }
           }
+          colorTemplate.find(item=>{
+            item=item.trim()
+            let background=item.split(':')
+            let colorName=background[0].toLocaleLowerCase()
+            if(color.value_l==colorName){
+              color.background=background[1]
+              return true
+            }
+          })
           colors.push(color)
         }
         this.data = data;
@@ -1362,7 +1555,7 @@
             let num = arr.length - i;
           }
         }
-        document.querySelector('.product-list').prepend(fragment);
+        document.querySelector('.product-list.product-list--collection').prepend(fragment);
       }).catch(e => {
         console.log(e)
       })

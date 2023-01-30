@@ -1,12 +1,19 @@
+
+
 {%- comment -%}Color labels used to detect what is a color swatch{%- endcomment -%}
+
 {%- assign color_label = 'color,colour,couleur,cor,colore,farbe,색,色,カラー,färg,farve,szín,barva' | split: ',' -%}
 
+{%- comment -%}
+{%- endcomment -%}
 <div
 	class="{% if show_mask %} ny-item-mask {% else %} product-item {% endif %}{% if horizontal %}product-item--horizontal{% elsif list %}product-item--list{% else %}product-item--vertical{% endif %} {% if section.id == 'blog-sidebar' %}product-item--compact{% endif %} {{ grid_classes }} {% if only_show_transparent %}product-item--transparent{% endif %}"
 	data-scenable="1"
 	data-sctype="SearchResultClick" 
 	data-scdata='{"commodity_name":"{{ product.title| handleize }}","commodity_skuid":"","commodity_spuid":"{{- product.handle| handleize -}}","commodity_image_url":"{{- product.featured_image|image_url -}}","original_price":"{{- product.compare_at_price -}}","current_price":"{{- product.price -}}","mkt_tag":[],"mkt_location":"{{ index }}"}'
->
+	data-procuct-id="{{- product.id -}}"
+	>
+<product-item>
 	{%- capture product_labels -%}
 		{%- unless hide_labels -%}
 			{%- for tag in product.tags -%}
@@ -23,6 +30,7 @@
 				{%- endif -%}
 			{%- endfor -%}
 
+			{%- comment -%}discount LABEL {%- endcomment -%}
 			{%- if settings.show_discount and product.price < product.compare_at_price -%}
 				{%- if settings.discount_mode == 'percentage' -%}
 					{%- assign savings = product.compare_at_price | minus: product.price | times: 100.0 | divided_by: product.compare_at_price | round | append: '%' -%}
@@ -30,10 +38,10 @@
 					{%- capture savings -%}
 						<span>{{ product.compare_at_price | minus: product.price | money }}</span>{%- endcapture -%}
 				{%- endif -%}
-
 				<span
 					class="product-label product-label--on-sale">{{ 'collection.product.discount_html' | t: savings: savings }}</span>
 			{%- endif -%}
+
 		{%- endunless -%}
 	{%- endcapture -%}
 
@@ -53,11 +61,14 @@
 
 	{%- if product.media.size > 0 -%}
 		{%- assign primary_media = product.featured_media -%}
-
-		<a
+      <div style="position:relative;">
+		  	<a
 			href="{{ product.url }}"
-			 class="product-item__image-wrapper product-item_mktClick shence_commodityView {% if show_secondary_media %}product-item__image-wrapper--with-secondary{% endif %}"
+			 class="product-item__image-wrapper product-item_mktClick shence_commodityView {% if show_secondary_media %}product-item__image-wrapper--with-secondary{% endif %} icon-relative"
 			 data-scenable="1" data-expenable="1" data-bindexp="1" data-sctype="mktClick"
+			 {% if collection.title =='HOT SALE HYFOL 3' %}
+			data-expscdata='{"commodity_spuid":"{{- product.handle| handleize -}}","commodity_name":"{{ product.title | handleize }}","first_commodity":"{{product.metafields.my_fields.category.first_commodity}}","second_commodity":"{{product.metafields.my_fields.category.second_commodity}}","third_commodity":"{{product.metafields.my_fields.category.third_commodity}}","original_price":"{{product.compare_at_price_min}}","current_price":"{{- product.price -}}","currency_unit":"USD"}'
+			{% endif %}
 			 data-scdata='{"mkt_type":"product","first_mkt_name":"{{ first_mkt_name }}","first_mkt_id":"{{ section.id }}","second_mkt_rank":"{{ forloop.index }}","third_mkt_rank":"","mkt_material_url":"","mkt_material_name":"{{ mkt_material_name }}","commodity_spuid":"{{ product.handle }}","commodity_skuid":"{{ product.selected_or_first_available_variant.sku }}","commodity_name":"{{ product.title| handleize }}","original_price":"{{ product.selected_or_first_available_variant.compare_at_price }}","current_price":"{{ product.selected_or_first_available_variant.price }}","currency_unit":"USD","mkt_tag":[]}'>
 			{% if only_show_transparent  and product.metafields.my_fields.transparentimg1  != blank or only_show_transparent and product.metafields.my_fields.transparencydrawing[0].path != blank %}
 				{%- comment -%}
@@ -78,11 +89,11 @@
 				{%- endcomment -%}
 
 
-				{% if product.metafields.my_fields.transparentimg1  != blank%}
+				{%- if product.metafields.my_fields.transparentimg1  != blank -%}
 					{%- assign image_url = product.metafields.my_fields.transparentimg1 | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
-				{% elsif product.metafields.my_fields.transparencydrawing[0].path != blank %}
+				{%- elsif product.metafields.my_fields.transparencydrawing[0].path != blank -%}
 					{%- assign image_url = product.metafields.my_fields.transparencydrawing[0].path | append: product.metafields.my_fields.transparencydrawing[0].imageMd5 -%}
-				{% endif %}
+				{%- endif -%}
 				{%- capture supported_sizes -%}{%- render 'image-size', sizes: '200,300,400,500,600,700,800', image: primary_media.preview_image -%}{%- endcapture -%}
 				<div
 					class="aspect-ratio {% if settings.product_image_size != 'natural' %}aspect-ratio--{{ settings.product_image_size }}{% endif %}"
@@ -103,7 +114,9 @@
 						<img src="{{ primary_media | img_url: '600x' }}" alt="{{ primary_media.alt | escape }}">
 					</noscript>
 				</div>
+
 			{%- else -%}
+
 				{%- capture supported_sizes -%}{%- render 'image-size', sizes: '200,300,400,500,600,700,800', image: primary_media.preview_image -%}{%- endcapture -%}
 				{%- assign image_url = primary_media | img_url: '1x1' | replace: '_1x1.', '_{width}x.' -%}
 				<div
@@ -127,11 +140,45 @@
 						<img src="{{ primary_media | img_url: '600x' }}" alt="{{ primary_media.alt | escape }}">
 					</noscript>
 				</div>
-			{% endif %}
+			{%- endif -%}
+
+			{%- comment -%}-------------活动TAG-------------{%- endcomment -%}
+
+			{%- if settings.show_activity_tag  -%}
+			
+			{%- render "activity-tag",product:product -%}
+			{%- endif -%}
+
 		</a>
+		<div class="ld-collect">
+			<div class="ld-collect-icon">
+				<svg t="1650437992383"  class="icon remove-collect collect_btn" data-id="{{ product.id}}" data-select="false"
+				data-spu="{{ product.handle}}" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
+				  p-id="1566" width="40" height="40">
+				  <path d="M512 512m-512 0a512 512 0 1 0 1024 0 512 512 0 1 0-1024 0Z" fill="#FFFFFFc8" p-id="1567"></path>
+				  <path
+					d="M595.158637 306.43705c-31.37053 0-62.741061 11.111901-87.840374 30.792538-25.099314-19.680637-56.484294-30.792538-87.869275-30.792538-75.615838 0-134.845596 59.706601-134.845596 135.929332 0 81.337962 62.278667 143.833376 150.27799 223.191714a1354.835549 1354.835549 0 0 1 52.886292 50.299777c5.187481 5.25973 12.137838 8.149691 19.536139 8.149691 7.369401 0 14.305309-2.875512 19.492789-8.135242a1387.558581 1387.558581 0 0 1 52.900742-50.314226c87.999323-79.401688 150.306889-141.882652 150.306889-223.206164 0.01445-76.193831-59.215308-135.914882-134.845596-135.914882z m-35.286427 335.669009a1380.395812 1380.395812 0 0 0-52.553947 49.967432 1369.058493 1369.058493 0 0 0-52.582847-49.981881c-80.774419-72.855925-137.952304-129.715915-137.952304-198.020151 0-59.258657 45.964835-105.685886 104.6166-105.685886 27.873677 0 55.776254 11.1986 76.612875 30.734739l9.305676 8.742133 9.305675-8.742133c20.807722-19.536139 48.724748-30.734739 76.583976-30.734739 58.695115 0 104.65995 46.427229 104.659949 105.685886-0.01445 68.304236-57.221234 125.164225-137.995653 198.0346z"
+					p-id="1568"></path>
+				</svg>
+				{%- comment -%}
+				<svg t="1650438004173" class="icon add-collect " data-id="{{ product.id}}"
+				  data-spu="{{ product.handle}}" viewBox="0 0 1024 1024" version="1.1"
+				  xmlns="http://www.w3.org/2000/svg" p-id="1717" width="40" height="40">
+				  <path d="M512 512m-512 0a512 512 0 1 0 1024 0 512 512 0 1 0-1024 0Z" fill="#FFFFFFc8" p-id="1718"></path>
+				  <path
+					d="M595.158637 306.43705c-31.37053 0-62.741061 11.111901-87.840374 30.792538-25.099314-19.680637-56.484294-30.792538-87.869275-30.792538-75.615838 0-134.845596 59.706601-134.845596 135.929332 0 81.337962 62.278667 143.833376 150.27799 223.191714a1354.835549 1354.835549 0 0 1 52.886292 50.299777c5.187481 5.25973 12.137838 8.149691 19.536139 8.149691 7.369401 0 14.305309-2.875512 19.492789-8.135242a1387.558581 1387.558581 0 0 1 52.900742-50.314226c87.999323-79.401688 150.306889-141.882652 150.306889-223.206164 0.01445-76.193831-59.215308-135.914882-134.845596-135.914882z"
+					fill="#E5404F" p-id="1719"></path>
+				</svg>
+				{%- endcomment -%}
+				<!-- <span style="display: none;">{{card_product.metafields.ld_site_system.collection_quantity}}</span> -->
+			</div>
+		</div>
+
+	  </div>
+	
 	{%- endif -%}
 
-	<div class="product-item__info" style="background-color: {% if only_show_transparent %} #000000 {% endif %}">
+	<div class="product-item__info" data-temp="{{request.page_type}}">
 		{%- if settings.show_color_swatch and template != 'blog' and only_show_transparent != true -%}
 			{%- capture color_swatch -%}
 				{%- capture color_name -%}{{ section.id }}-{{ product.id }}{%- endcapture -%}
@@ -182,7 +229,6 @@
 				{%- endfor -%}
 			{%- endcapture -%}
 
-
 				<div class="product-item__swatch-list">
 					{%- if color_swatch != blank -%}
 							<div class="color-swatch-list">
@@ -193,9 +239,7 @@
 
 		{%- endif -%}
 
-		<div class="product-item__info-inner" {% if show_mask %}
-			style="display:none"
-		{% endif %}>
+		<div class="product-item__info-inner {{request.page_type}}-product-item__info-inner" {% if show_mask %}style="display:none"{% endif %}>
 			<a href="{{ filtered_variant.url | default: product.url }}" style="position: absolute;top: 70px;right: 0;left: 0;bottom: 0;"></a>
 			{%- capture price_list -%}
 				<div class="product-item__price-list price-list">
@@ -469,9 +513,14 @@
 				{%- endform -%}
 			{%- endif -%}
 		{%- endif -%}
+	</product-item>
 	</div>
 
-	<!-- **BEGIN** Hextom USB Integration // Collection Include - DO NOT MODIFY -->
-    {% render 'hextom_usb_coll', product: product %}
-    <!-- **END** Hextom USB Integration // Collection Include - DO NOT MODIFY -->
+	{%- comment -%}-------------快速加购图标------------{%- endcomment -%}
+	{%- if show_quick_view_button -%}
+	<button class="mini-cart-quick_button" 
+	data-secondary-action="open-quick-view" aria-controls="modal-quick-view-{{ section.id }}"
+	data-product-url="{{ product.url }}">{%- render 'icon',icon:"cart" -%}</button>
+	{%- endif -%}
+
 </div>

@@ -32,7 +32,7 @@
 				<img data-src="{{ web_image_url }}" data-widths="[{{ web_sizes }}]" data-sizes="auto" alt="{{ section.settings.web_bg_image.alt | escape }}" class="lazyload hidden-tablet-and-up">
 			</a>
 		{%- else  -%}
-			<div class="cjj">
+			<div class="cjj" data-type="questionnaire">
 				<img data-src="{{ image_url }}" data-widths="[{{ supported_sizes }}]" data-sizes="auto" alt="{{ section.settings.bg_image.alt | escape }}" class=" lazyload  hidden-phone">
 				<img data-src="{{ web_image_url }}" data-widths="[{{ web_sizes }}]" data-sizes="auto" alt="{{ section.settings.web_bg_image.alt | escape }}" class="lazyload   hidden-tablet-and-up">
 			</div>

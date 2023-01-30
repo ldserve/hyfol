@@ -1,6 +1,7 @@
 {%- capture section_settings -%}
 {
-  "currentProductId": {{ product.id | json }}
+  "currentProductId": {{ product.id | json }},
+  "mobileStackable":{{section.settings.product_grid}}
 }
 {%- endcapture -%}
 
@@ -20,7 +21,9 @@
       {%- if request.page_type == 'search' -%}
         <div class="scroller">
           <div class="scroller__inner">
-            <div class="product-list product-list--vertical product-list--scrollable">
+            {%- assign layout_mode = section.settings.product_layout -%}
+            <div class="product-list  product-list--vertical product-list--scrollable {% if product_grid %}product-list--mobile{% endif %}">
+             
               {%- comment -%}
               NOTE: we are doing an inner for loop to preserve the order (from most recently seen to oldest one), as search.results, out of the box,
                     will order by title, which is not really desirable. As the number of recently viewed products is kept small, I think the inner loop
@@ -101,6 +104,11 @@
       "id": "show_quick_buy",
       "label": "Show quick buy",
       "default": false
+    },{
+      "type":"checkbox",
+      "id":"product_grid",
+      "label":"移动端启用网格布局",
+      "default":false
     }
     
   ],

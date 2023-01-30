@@ -65,6 +65,8 @@
          newData.second_commodity=category.second_commodity
          newData.third_commodity= category.third_commodity
          }
+         try {  newData.entry_source=document.referrer||''} catch (error) {newData.entry_source=''}
+       
          let data = el.getAttribute('data-scdata')
          data=JSON.parse(data)
          newData.commodity_tag=data.commodity_tag.split(',')
@@ -106,6 +108,7 @@
          newData.commodity_size=sizeChecked?sizeChecked.querySelector('.product-form__selected-value').innerText : ""
          newData.commodity_skuid=id
          newData.commodity_tag=data.commodity_tag.split(',')
+         try {  newData.entry_source=document.referrer||''} catch (error) {newData.entry_source=''}
          return newData  /*返回值必须为{}*/
       },
    })
@@ -142,12 +145,13 @@
             id =  valueSelected.getAttribute('data-sku') || ""
          }
          const formParent=el.closest('.product-form')
-         const colorChecked=formParent.querySelector('.product-form__option[data-selector-type="color"]')
+         const colorChecked=formParent.querySelector('.product-form__option[data-selector-type="color"]')||formParent.querySelector('.product-form__option[data-selector-type="variant"]')
          const sizeChecked= formParent.querySelector('.product-form__option[data-selector-type="block"]')
          newData.commodity_color=colorChecked?colorChecked.querySelector('.product-form__selected-value').innerText : ""
          newData.commodity_size=sizeChecked?sizeChecked.querySelector('.product-form__selected-value').innerText : ""
          newData.commodity_skuid=id
          newData.commodity_tag=data.commodity_tag.split(',')
+         try {  newData.entry_source=document.referrer||''} catch (error) {newData.entry_source=''}
          return newData  /*返回值必须为{}*/
       },
    })
@@ -183,6 +187,7 @@
          newData.commodity_color=colorChecked?colorChecked.value : ""
          newData.commodity_size=sizeChecked?sizeChecked.value : ""
          newData.site_category = getSiteCategory()
+         try {  newData.entry_source=document.referrer||''} catch (error) {newData.entry_source=''}
          return newData  /*返回值必须为{}*/
       }
    })
@@ -218,7 +223,7 @@
          }
          id= el.dataset.productid
          const formParent=el.closest('.product-form')
-         const colorChecked=formParent.querySelector('.product-form__option[data-selector-type="color"]')
+         const colorChecked=formParent.querySelector('.product-form__option[data-selector-type="color"]')||formParent.querySelector('.product-form__option[data-selector-type="variant"]')
          const sizeChecked= formParent.querySelector('.product-form__option[data-selector-type="block"]')
          newData.commodity_color=colorChecked?colorChecked.querySelector('.product-form__selected-value').innerText : ""
          newData.commodity_size=sizeChecked?sizeChecked.querySelector('.product-form__selected-value').innerText : ""
@@ -276,7 +281,7 @@
       type:"minusMinCart",
       event:'click',
       sendType:"RemoveFromCart",
-      customData: function(container){/*形参为当前容器dom */
+      customData: function(container,target){/*形参为当前容器dom */
         let newData={};
          if(!{{product.metafields.my_fields.category | json}} ){
          newData.first_commodity=""
@@ -284,12 +289,15 @@
          newData.third_commodity= ""
          } else{
          const category = {{product.metafields.my_fields.category |  json}}
-          newData.first_commodity=category.first_commodity
+         newData.first_commodity=category.first_commodity
          newData.second_commodity=category.second_commodity
          newData.third_commodity= category.third_commodity
          }
-         let data=  container.querySelector('.quantity-selector__button').getAttribute('data-scdata')
-         data=JSON.parse(data)
+         let data =target && target.getAttribute('data-scdata')
+         // let data=  container.querySelector('.quantity-selector__button').getAttribute('data-scdata')
+        try {data=JSON.parse(data)} catch (error) {
+         data={compliment_commodities:[],commodity_tag:[]}
+         } 
          newData.compliment_commodities=data.compliment_commodities.split(',')
          newData.commodity_tag=data.commodity_tag.split(',')
          newData.site_category = getSiteCategory()
@@ -303,7 +311,7 @@
       type:"removeMinCart",
       event:'click',
       sendType:"RemoveFromCart",
-      customData: function(container){/*形参为当前容器dom */
+      customData: function(container,target){/*形参为当前容器dom */
         let newData={};
          if(!{{product.metafields.my_fields.category | json}} ){
          newData.first_commodity=""
@@ -315,8 +323,12 @@
          newData.second_commodity=category.second_commodity
          newData.third_commodity= category.third_commodity
          }
-         let data = container.querySelector('.ld-link-item').getAttribute('data-scdata')
-         data=JSON.parse(data)
+         let data =target && target.getAttribute('data-scdata')
+         // let data=  container.querySelector('.quantity-selector__button').getAttribute('data-scdata')
+        try {data=JSON.parse(data)} catch (error) {
+         data={compliment_commodities:[],commodity_tag:[]}
+         } 
+         // let data = container.querySelector('.ld-link-item').getAttribute('data-scdata')
          newData.compliment_commodities=data.compliment_commodities.split(',')
          newData.commodity_tag=data.commodity_tag.split(',')
          newData.site_category = getSiteCategory()

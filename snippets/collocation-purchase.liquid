@@ -1,17 +1,48 @@
+{%- comment -%}
+collocationLocation:entrance css
+variable:product list string
+layout_:list,cart
+{%- endcomment -%}
+
 {%- assign collocationLocation = collocationLocation -%}
-{% if collocationLocation == "mini-cart-collcation" %}
+{%- comment -%}----小购物车搭配购----{%- endcomment -%}
+{%- if collocationLocation == "mini-cart-collcation" -%}
 {% assign variable = settings.collocation_spus%}
 {% assign time = time%}
 {% assign isAuto = isAuto%}
 
-{% else %}
+{%- else -%}
+{%- if product.metafields.my_fields.collocation==blank or true -%}
+{%- assign variable ='SP221122TMR1,SP2209158SG5,SP220816CE8Y' -%}
+{%- else -%}
 {%- assign variable = product.metafields.my_fields.collocation -%}
+{%- endif -%}
 {%- comment -%}
 {%- assign variable = 't11861820ns,sp211119ulk5,sp211204asg2,sp2204021n1n,t31410837an,sp21112660eq,sp211126koqi' -%}
 {%- endcomment -%}
 {% endif %}
+{%- comment -%}----详情页搭配购----{%- endcomment -%}
 {%- if variable !=blank -%}
 	{%- assign handles = variable | split:',' -%}
+	{%- if layout_ == "list"-%}
+	<div class="product-collocation" data-layout="list">
+		<h4 class="section__title heading h3 font_16 " >Editor's Picks</h4>
+		<div class="collocation">
+			<ul class="collocation-list" >
+				{% for handle in handles %}
+					{%- assign product = all_products[handle] -%}
+					{%- assign selected_variant = product.selected_or_first_available_variant -%}
+					{%- if product != blank -%}
+	
+					<li class="collocation-list-item exhibition d-flex {{collocationLocation}}" aria-controls="modal-quick-view-header" data-product-url="{{product.url}}" data-action="open-modal" data-secondary-action="open-quick-view">
+						{%- render 'collocation-purchase-list' collocationLocation:collocationLocation product:product , selected_variant:selected_variant,handle:handle index:forloop.index -%}
+					</li>
+					{%- endif -%}
+				{%- endfor -%}
+			</ul>
+		</div>
+	</div>
+	{%- else -%}
 	<div class="product-collocation">
 		<slide-show data-collocationNum="{{ handles.size }}" data-isAuto="{{isAuto}}" data-time="{{time}}">
 			<div class="collocation-container {{ collocationLocation }}">
@@ -43,6 +74,7 @@
 			</div>
 		</slide-show>
 	</div>
+{%- endif -%}
 	<style>
     .switch-product {
       display: flex;
@@ -52,11 +84,6 @@
       cursor: pointer;
       font-size: 20px;
     }
-	@media screen and (max-width:999px){
-		.card__section .product-collocation{
-			display:none;
-		}
-	}
 	
 	</style>
 {%- endif -%}

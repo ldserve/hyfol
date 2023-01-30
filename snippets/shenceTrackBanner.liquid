@@ -21,8 +21,9 @@ sensors.quick('isReady',function(){
 	   customData: function (container,el) {
 		   	var newData = {};
 		    newData.page_title = page_title;
-		    if (el.classList.contains('product-item_mktClick') && el.closest(".product-item").querySelector(".color-swatch__radio:checked")) {
-		    	newData.commodity_skuid = el.closest(".product-item").querySelector(".color-swatch__radio:checked").getAttribute("data-sku");
+			var productItem = el.closest(".product-item")
+		    if (el.classList.contains('product-item_mktClick') && productItem && productItem.querySelector(".color-swatch__radio:checked")) {
+		    	newData.commodity_skuid =productItem.querySelector(".color-swatch__radio:checked").getAttribute("data-sku");
 		    }
 		    return newData;
 		}

@@ -2,6 +2,17 @@
   "sections": {
     "main": {
       "type": "main-customers-account",
+      "blocks": { },
+      "block_order": [
+        "7d45e2c1-c489-43b6-a70c-d33d7bd68544",
+        "f262eb87-b40b-4a18-889b-b20800badb1c",
+        "3ac1233e-fe33-4707-90cd-13d53a9b902a",
+        "9585de15-07d9-4f1b-8169-f9306d195e67",
+        "cdee28e4-9682-4279-8c89-c421b1c9e3ef",
+        "665ebc62-1f8e-42fa-a18d-0c509b84e450",
+        "b3726238-309f-44ee-af96-10ee039817e5",
+        "5e2c3432-c4de-4aff-8f98-528c6a7afc15"
+      ],
       "settings": {
       }
     },
@@ -9,6 +20,7 @@
       "type": "recently-viewed-products",
       "settings": {
         "title": "Recently viewed",
+        "title_color": "#000000",
         "show_quick_buy": false
       }
     }

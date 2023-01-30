@@ -18,7 +18,8 @@
     y.parentNode.insertBefore(x, y);
   }
 })({
-  sdk_url: 'https://cdn.shopifycdn.net/s/files/1/0595/0691/7535/files/sensorsdata.min.js?v=1639989639',
+  // sdk_url: 'https://cdn.shopifycdn.net/s/files/1/0595/0691/7535/files/sensorsdata.min.js?v=1639989639',//v1.20.2
+  sdk_url: 'https://cdn.shopify.com/s/files/1/0595/0691/7535/files/sensorsdata.min_be8ac7a5-cc19-4af9-9310-5933d1f054b5.js?v=1660706678',//v1.23.3
   name: 'sensors',
   /* 正式环境地址 */
   server_url: 'https://data.ld-bdp.com/sa?project=production',
@@ -46,7 +47,7 @@ function getDevice_type() {
   }
 }
 getDevice_type();
-sensors.register({
+/* sensors.register({
   platform_type: "web",
    site_id:"000002",
   vip_level: "",
@@ -54,8 +55,10 @@ sensors.register({
   site_type: "shopify",
   device_type: device_type
 });
+sensors.use('PageLoad');//页面加载时长
 sensors.quick('autoTrack');
 sensors.use('PageLeave');
+ */
 function getSiteCategory(){
     try {
         let al = document.querySelectorAll('ol a')
@@ -103,6 +106,7 @@ window.getFormatDate = function getFormatDate() {
       } else {
         this.container = obj.container;
       }
+      if(!this.container) return;
       this.event = obj.event || 'click';
       this.addFn = obj.customData || function () { return {} };
       this.customSession = obj.customSession || function () { return {} };
@@ -123,7 +127,7 @@ window.getFormatDate = function getFormatDate() {
     }
     target(ev) {
       let targetEl = ev.target;
-      while (targetEl !== this.container && (targetEl.dataset[this.scTypeName] !== this.type || !targetEl.dataset[this.scEnableName])) {
+      while (targetEl!=''&&targetEl !== this.container && (targetEl.dataset[this.scTypeName] !== this.type || !targetEl.dataset[this.scEnableName])) {
         targetEl = targetEl.parentNode ? targetEl.parentNode : '';
       }
       this.debug && console.info("匹配节点", targetEl);
@@ -281,11 +285,11 @@ window.getFormatDate = function getFormatDate() {
           i = i.toLocaleUpperCase()
         })
       }
-      sensors.quick('isReady', function () {
+/*       sensors.quick('isReady', function () {
         debug && console.info("准备", sendType, data);
         sensors.track(sendType, data);
         debug && console.info('上报完毕');
-      })
+      }) */
     }
     setSession(el) {
       let customSessionData = this.customSession(this.container);

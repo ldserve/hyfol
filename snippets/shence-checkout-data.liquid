@@ -29,6 +29,7 @@
         cartType: {{ settings.cart_type | json }},
         customer_id: "{{ customer.id }}"
     };
+  window.pageType={{ request.page_type | json }}
 </script>
 <div class="sc-checkout-data"
      data-scenable="1"
@@ -449,7 +450,7 @@
         compliment_commodities.push('{{ line_item.sku }}')
 			{% endfor %}
 
-
+        let isSubmit = true
         function actionCheckout() {
             new sadhus_shence({
                 container: ".sc-checkout-data",
@@ -713,11 +714,12 @@
                     anonymousId: sensors.quick('getAnonymousID'),
                     registerId: "{{checkout.customer.id}}"
                 },'post')
-                ajax_method('api/sensorsAnalytics/reportPaySuccessOrder', sendData,'post')
+                ajax_method('api/sensorsAnalytics/reportPaySuccessOrder', sendData,'post',null,'sendJavaData')
+                isSubmit && customEvents('payment')
             },true)
         }
 
-        function ajax_method(url,data,method,onlyAjax) {
+        function ajax_method(url,data,method,onlyAjax,dataName='') {
             let baseUrl
 		        let siteValue
             if(location.host.indexOf('hyfol') > -1){
@@ -732,19 +734,22 @@
                 let ajax = new XMLHttpRequest() || new ActiveXObject("Microsoft.XMLHTTP");
                 ajax.open(method, baseUrl + url);
                 ajax.setRequestHeader("Content-type","text/plain;charset=UTF-8");
-		            ajax.send(JSON.stringify(data));
+		        ajax.send(JSON.stringify(data));
+                ajax.onload=(res)=>{ajax.status==200&&localStorage.removeItem(dataName)}
             } else {
                 if(onlyAjax){
                     let ajax = new XMLHttpRequest() || new ActiveXObject("Microsoft.XMLHTTP");
                     ajax.open(method, baseUrl + url);
                     ajax.setRequestHeader("Content-type","text/plain;charset=UTF-8");
-		                ajax.send(JSON.stringify(data));
+		            ajax.send(JSON.stringify(data));
+                    ajax.onload=(res)=>{ajax.status==200&&localStorage.removeItem(dataName)}
                 } else {
                     navigator.sendBeacon( baseUrl + url, JSON.stringify(data))
                     let ajax = new XMLHttpRequest() || new ActiveXObject("Microsoft.XMLHTTP");
                     ajax.open(method, baseUrl + url);
                     ajax.setRequestHeader("Content-type","text/plain;charset=UTF-8");
-		                ajax.send(JSON.stringify(data));
+		            ajax.send(JSON.stringify(data));
+                    ajax.onload=(res)=>{ajax.status==200&&localStorage.removeItem(dataName)}
                 }
             }
 
@@ -903,13 +908,25 @@
                 }
             }
         }
+
+        function customEvents(type){
+                type&&console.log(type);
+                isSubmit=false
+                sensors.track('complateOrderQuty',{
+                $option:{server_url:'https://data.ld-bdp.com/sa?project=default'},
+                cookie_id:sensors.quick('getAnonymousID'),
+                checkout_id:'{{checkout.id}}',
+                order_id:'{{checkout.order_id}}',
+                time:Date.now()
+            })
+        }
         Checkout.$(document).on("page:load", function () {
             removeHref()
             sendError()
             /* hideExpressCheckout() */
             sensors.quick('isReady', function () {
                 let properties = getProperties()
-                console.log(properties)
+                // console.log(properties)
                 let checkoutStep = sessionStorage.getItem('checkoutStep')
                 console.warn('checkoutStep', checkoutStep)
                 let activeText = document.querySelector('.breadcrumb__item--current') && document.querySelector('.breadcrumb__item--current').innerText
@@ -926,10 +943,7 @@
                         actionCheckout()
                         console.warn('上报checkout')
                     }
-                    setTimeout(() => {
-                        actionsInformationOrder()
-                        console.warn('上报InformationOrder')
-                    },400)
+                    setTimeout(() => {actionsInformationOrder();console.warn('上报InformationOrder')},400)
                     let bdoVal = document.querySelector('bdo') && document.querySelector('bdo').innerText
                     if (bdoVal && bdoVal.indexOf("@") !== -1) {
                         sensors.track('SubscribptionResult', {
@@ -943,11 +957,8 @@
                     let paymentBody = document.querySelector(".main");
                     function paymentBodyCb (mutationsList, observer) {
                         if(mutationsList && mutationsList.length > 0 ){
-														let target = document.querySelector('.actions_complete_order')
-														if(!target) {
-																actionsCompleteOrder()
-                                console.warn('按钮绑定CompleteOrder')
-														}
+                        let target = document.querySelector('.actions_complete_order')
+                        if(!target) { actionsCompleteOrder();console.warn('按钮绑定CompleteOrder')}
                         }
                     }
                     const observer = new MutationObserver(paymentBodyCb)
@@ -969,18 +980,22 @@
                     },800)
                     sessionStorage.setItem('checkoutStep', 'Payment');
                 }
-                if (window.pageType === 'completeOrder')  {
+                if (window.pageType === 'completeOrder'||document.querySelector('.os-order-number'))  {
+                    // isSubmit&&customEvents()
+                    const orderId={order_id:'{{checkout.order_id}}'}
                     let sendData = JSON.parse(localStorage.getItem('sendJavaData'))
+                    sendData&&sendData.paySuccessDetailDataList.forEach(i=>Object.assign(i,orderId))
 		                if(sendData) {
                         ajax_method('api/sensorsAnalytics/trackSignUp', {
                             anonymousId: sensors.quick('getAnonymousID'),
                             registerId: "{{checkout.customer.id}}"
                         },'post',true)
                         sendData.isSendCompleteOrder = false
-                        ajax_method('api/sensorsAnalytics/reportPaySuccessOrder', sendData,'post',true)
+                        ajax_method('api/sensorsAnalytics/reportPaySuccessOrder', sendData,'post',true,'sendJavaData')
+                        isSubmit && customEvents('complate')
                     }
                     sessionStorage.setItem('checkoutStep', 'Checkout');
-								}
+						}
                 /*注册成功代码*/
                 if (window.SensorsDataWebJSSDKPlugin.PageLeave.current_page_url === location.origin + '/account/register' || window.SensorsDataWebJSSDKPlugin.PageLeave.current_page_url ===  location.origin + '/challenge') {/*从注册页面跳转进来*/
                     if (Number({{ customer.id }})) {
@@ -1074,7 +1089,8 @@
                                 anonymousId: sensors.quick('getAnonymousID'),
                                 registerId: "{{ checkout.customer.id }}"
                             }, 'post')
-                            ajax_method('api/sensorsAnalytics/reportPaySuccessOrder', sendData, 'post')
+                            ajax_method('api/sensorsAnalytics/reportPaySuccessOrder', sendData, 'post',)
+                            isSubmit && customEvents('load')
                         }, 800)
                     })
                 });
