@@ -116,7 +116,7 @@
             {% comment %}--------------------未付款--------------------  {% endcomment %}
             <div class="card order-item__card"  aria-hidden="true" data-index="2">
                 {%- assign empty_state = true -%}
-                {%- if customer.orders_count == 0 -%}
+                {%- if customer.orders_count != 0 -%}
                     
                 {%- paginate customer.orders by 16 -%}
                 {%- for order in customer.orders -%}
@@ -203,7 +203,7 @@
                 {%- paginate customer.orders by 16 -%}
                
                     {%- for order in customer.orders -%}
-                {%- if order.financial_status=='paid' and order.fulfillment_status=="fulfilled" -%}
+                {%- if order.financial_status=='paid' and order.fulfillment_status=="partial" -%}
                 {%- assign empty_state = false -%}
     
 
