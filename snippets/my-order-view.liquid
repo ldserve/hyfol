@@ -54,7 +54,7 @@
                     </div>
                 {%- else -%}
                     
-                {%- paginate customer.orders by 8 -%}
+                {%- paginate customer.orders by 16 -%}
                 {%- for order in customer.orders -%}
                 <div class="order-box">
                     <div class="order-title">
@@ -118,7 +118,7 @@
                 {%- assign empty_state = true -%}
                 {%- if customer.orders_count == 0 -%}
                     
-                {%- paginate customer.orders by 8 -%}
+                {%- paginate customer.orders by 16 -%}
                 {%- for order in customer.orders -%}
                 {% if order.financial_status=='pending' or order.financial_status=="unpaid" %}
                 {%- assign empty_state = false -%}
@@ -200,7 +200,7 @@
             <div class="card order-item__card"  aria-hidden="true" data-index="3">
                 {%- assign empty_state = true -%}
                 {%- if customer.orders_count != 0 -%}
-                {%- paginate customer.orders by 8 -%}
+                {%- paginate customer.orders by 16 -%}
                
                     {%- for order in customer.orders -%}
                 {%- if order.financial_status=='paid' and order.fulfillment_status=="fulfilled" -%}
@@ -285,9 +285,9 @@
             <div class="card order-item__card"  aria-hidden="true" data-index="4">
                 {%- assign empty_state = true -%}
                 {%- if customer.orders_count != 0 -%}
-                {%- paginate customer.orders by 8 -%}
+                {%- paginate customer.orders by 16 -%}
                 {%- for order in customer.orders -%}
-                {% if order.financial_status=='paid' and order.fulfillment_status=='complete'%}
+                {% if order.financial_status=='paid' and order.fulfillment_status=='complete' or order.fulfillment_status=='fulfilled' %}
                 {%- assign empty_state = false -%}
                 <div class="order-box">
                     <div class="order-title">
@@ -366,7 +366,7 @@
             <div class="card order-item__card"  aria-hidden="true" data-index="5">
                 {%- assign empty_state = true -%}
                 {%- if customer.orders_count != 0 -%}
-                {%- paginate customer.orders by 8 -%}
+                {%- paginate customer.orders by 16 -%}
                 {%- for order in customer.orders -%}
                 {% if order.financial_status=='paid' and order.fulfillment_status=="unfulfilled"%}
                 {%- assign empty_state = false -%}
@@ -448,7 +448,7 @@
                 {%- assign empty_state = true -%}
 
                 {%- if customer.orders_count != 0 -%}
-                    {%- paginate customer.orders by 8 -%}
+                    {%- paginate customer.orders by 16 -%}
 
                     {%- for order in customer.orders -%}
                         {% if order.financial_status=='refunded' %}
