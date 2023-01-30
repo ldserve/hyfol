@@ -2117,14 +2117,6 @@
 				value: function () {
 					if(!location.hash)location.hash="Orders+All";
 					this.pageSwitch()
-					/*if (window.location.hash) {
-						this.pageSwitch()
-					} else {
-						this.element.querySelectorAll('[data-right="my_overview"]').forEach(i => {
-							i.className = "card__linklist-item link text--stronger "
-						})
-						document.querySelector(".my_overview").style.display = "block"
-					}*/
 					this.getToken()
 					this.renderMobOrder()
 					this.changeMobileOrderView()
