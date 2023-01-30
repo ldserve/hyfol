@@ -1,6 +1,7 @@
 <script>
 
    if ({{ request.page_type | json }} == 'collection') {/*集合页*/
+
    let addQuickView=new sadhus_shence({
       container:"body",
       type:"addCart",
@@ -40,6 +41,7 @@
          newData.commodity_skuid=sku
          gtag("event","conversion",{"send_to":"AW-319309832/2I9aCIf48eYCEIiQoZgB","transaction_id":""});
          pintrk("track","addtocart",{value:data.current_price,order_quantity:1,currency:"USD",line_items:[{product_id:id,product_category:data.commodity_type}]});
+         gtag('event', 'conversion', { 'send_to': 'AW-11080226206/5eNWCI2M4IkYEJ6ru6Mp','transaction_id': ''});
         return newData  /*返回值必须为{}*/
       },
       callback:function(){
@@ -231,6 +233,7 @@
          newData.site_category = getSiteCategory()
          gtag("event","conversion",{"send_to":"AW-319309832/2I9aCIf48eYCEIiQoZgB","transaction_id":""});
          pintrk("track","addtocart",{value:data.current_price,order_quantity:1,currency:"USD",line_items:[{product_id:id,product_category:data.commodity_type}]});
+          gtag('event', 'conversion', { 'send_to': 'AW-11080226206/5eNWCI2M4IkYEJ6ru6Mp', 'transaction_id': '' });
         return newData  /*返回值必须为{}*/
       },
       callback:function(){
@@ -268,6 +271,7 @@
          newData.site_category = getSiteCategory()
          gtag("event","conversion",{"send_to":"AW-319309832/2I9aCIf48eYCEIiQoZgB","transaction_id":""});
          pintrk("track","addtocart",{value:data.current_price,order_quantity:1,currency:"USD",line_items:[{product_id:id,product_category:data.commodity_type}]});
+          gtag('event', 'conversion', { 'send_to': 'AW-11080226206/5eNWCI2M4IkYEJ6ru6Mp', 'transaction_id': '' });
          return newData  /*返回值必须为{}*/
       },
       callback:function(){
@@ -364,6 +368,7 @@
          newData.site_category = getSiteCategory()
          gtag("event","conversion",{"send_to":"AW-319309832/2I9aCIf48eYCEIiQoZgB","transaction_id":""});
          pintrk("track","addtocart",{value:data.current_price,order_quantity:1,currency:"USD",line_items:[{product_id:id,product_category:data.commodity_type}]});
+          gtag('event', 'conversion', { 'send_to': 'AW-11080226206/5eNWCI2M4IkYEJ6ru6Mp', 'transaction_id': '' });
          return newData  /*返回值必须为{}*/
       },
       callback:function(){
@@ -579,6 +584,7 @@
                      newData.commodity_skuid = sku ? sku : "";
                      gtag("event", "conversion", { "send_to": "AW-319309832/2I9aCIf48eYCEIiQoZgB", "transaction_id": "" });
                      pintrk("track", "addtocart", { value: data.current_price, order_quantity: 1, currency: "USD", line_items: [{ product_id: id ,product_category:data.commodity_type}] });
+                      gtag('event', 'conversion', { 'send_to': 'AW-11080226206/5eNWCI2M4IkYEJ6ru6Mp', 'transaction_id': '' });
                      return newData
                   },
                   callback: function () {

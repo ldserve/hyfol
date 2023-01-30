@@ -2699,10 +2699,10 @@
                 /* Flash sale */
                 var productData=target.getAttribute('data-scdata')
                 try { var {commodity_tag} =JSON.parse(productData)
-                    if(target.getAttribute('data-action')=="increase-quantity" && commodity_tag.indexOf('flash-sale')!=-1){
+                    if(target.getAttribute('data-action')=="increase-quantity" && commodity_tag.indexOf('flash-deal-limited')!=-1){
                             Message.error("You already have this item's max quantity (1) in your cart.")
                             return false
-                        }else if(target.getAttribute('data-action')=="decrease-quantity" && commodity_tag.indexOf('flash-sale')!=-1)allProductTag='';} catch (error) {}
+                        }else if(target.getAttribute('data-action')=="decrease-quantity" && commodity_tag.indexOf('flash-deal-limited')!=-1)allProductTag='';} catch (error) {}
                 document.dispatchEvent(new CustomEvent('theme:loading:start'));
                 fetch("".concat(window.routes.cartChangeUrl, ".js"), {
                     body: JSON.stringify({
@@ -4363,10 +4363,10 @@
                 var productData=target.getAttribute('data-scdata')
                 try {
                     var {commodity_tag}=JSON.parse(productData)
-                    if(allProductTag && commodity_tag.indexOf('flash-sale')!=-1 && allProductTag.indexOf('flash-sale')!=-1){
+                    if(allProductTag && commodity_tag.indexOf('flash-deal-limited')!=-1 && allProductTag.indexOf('flash-deal-limited')!=-1){
                       Message.error("You already have this item's max quantity (1) in your cart.")
                         return false
-                    }else if(commodity_tag.indexOf("flash-sale")!=-1)allProductTag=commodity_tag;
+                    }else if(commodity_tag.indexOf("flash-deal-limited")!=-1)allProductTag=commodity_tag;
                 } catch (error) {}
                 target.setAttribute('disabled', 'disabled');// First, we switch the status of the button
                 document.dispatchEvent(new CustomEvent('theme:loading:start')); // Then we add the product in Ajax
