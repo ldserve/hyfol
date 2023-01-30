@@ -120,7 +120,7 @@
                     
                 {%- paginate customer.orders by 16 -%}
                 {%- for order in customer.orders -%}
-                {% if order.financial_status=='pending' or order.financial_status=="unpaid" %}
+                {% if  order.financial_status=='pending' or order.financial_status=="unpaid" %}
                 {%- assign empty_state = false -%}
                 <div class="order-box">
                     <div class="order-title">
