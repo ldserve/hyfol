@@ -24,7 +24,7 @@
                 {%- render 'icon', icon: 'cjj_completed' -%}
                 <span>Completed</span>
             </li>
-            <li class="order-payment orders-nav__item" data-action="false" data-index="5" data-change="Payment">
+            <li class="order-payment orders-nav__item" data-action="false" data-index="5" data-change="Confirmed">
                 {%- render 'icon', icon: 'cjj_payment' -%}
                 <span>Confirmed</span>
             </li>
@@ -120,7 +120,7 @@
                     
                 {%- paginate customer.orders by 16 -%}
                 {%- for order in customer.orders -%}
-                {% if  order.financial_status=='pending' or order.financial_status=="unpaid" %}
+                {% if order.financial_status == 'pending' or order.financial_status == "unpaid" %}
                 {%- assign empty_state = false -%}
                 <div class="order-box">
                     <div class="order-title">
