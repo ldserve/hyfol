@@ -2,6 +2,7 @@
 	{%- if customer.orders.size != 0 -%}
 		{%- paginate customer.orders by 16 -%}
 			{%- for order in customer.orders -%}
+				{% if order.financial_status=='refunded' %}
 				<div class="order-box">
 					<div class="order-title">
 						<div class="title-info">
@@ -44,6 +45,7 @@
 						</div>
 					</div>
 				</div>
+				{% endif %}
 			{%- endfor -%}
 		{%- render 'pagination', paginate: paginate -%}
 		{% assign dm_paginate_by = paginate.page_size %}
@@ -55,9 +57,10 @@
 
 </style>
 
+
 {% schema %}
 {
-	"name": "my-orders-all",
+	"name": "my-orders-unpaid",
 	"settings": [
 	]
 }

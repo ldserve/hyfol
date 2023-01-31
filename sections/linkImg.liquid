@@ -1,14 +1,3 @@
-<style>
-	#shopify-section-{{ section.id }},
-	#shopify-section-{{ section.id }} .heading {
-	}
-	#shopify-section-{{ section.id }} .image_link img{
-		width: 100%;
-	}
-
-
-</style>
-
 <section class="{% if section.settings.hidWeb%}hidden-pocket{% endif %}  {% if section.settings.hidDesk%}hidden-lap hidden-lap-and-up{% endif %}" {% if section.settings.hidDesk%}data-mobile{% endif%} {% if section.settings.hidWeb%}data-desktop{% endif %}>
 	{%- if section.settings.image != blank -%}
 		{%- capture supported_sizes -%}{%- render 'image-size', sizes: '300,400,500,600,700,800,900,1000,1100,1200,1300,1400,1500,1600,1700,1800,1900,2000', image: section.settings.image -%}{%- endcapture -%}
@@ -17,7 +6,8 @@
 		
       <div class="linkImg_text">
 		{% if section.settings.linkImg_title != blank %}
-		<div class="linkImg_title">{{section.settings.linkImg_title}}</div>
+		{%- comment -%} linkImg_title {%- endcomment -%}
+		<div class=" section__title heading h3 section--text-centered">{{section.settings.linkImg_title}}</div>
 		{% endif %}
 		{% if section.settings.linkImg_content !=blank %}
 		<div class="linkImg_content">{{section.settings.linkImg_content}}</div>
@@ -37,6 +27,8 @@
 	#shopify-section-{{ section.id }} {
 		width: 100%;
 		overflow: hidden;
+	}
+	#shopify-section-{{ section.id }}>section{
 		padding: {{ section.settings.tpadding }}px {{ section.settings.rpadding }}px {{ section.settings.bpadding }}px {{ section.settings.lpadding }}px;
 	}
 	#shopify-section-{{ section.id }} .image_link{
@@ -57,6 +49,11 @@
 		position: absolute;
 	}
 	{% endfor %}
+
+	#shopify-section-{{ section.id }} .image_link img{
+		width: 100%;
+	}
+
 </style>
 
 {% schema %}

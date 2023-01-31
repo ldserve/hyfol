@@ -22,11 +22,11 @@
                     this.container.getElementsByClassName("block-swatch")[i].style.left = this.sum + "px"
                     this.sum += offsetWidth + 2
                 }
-                // console.log(sum);
             }
         }
     }
     customElements.define("size-block", SizeBlock);
+
     class SliderShow extends HTMLElement {
         constructor() {
             super();
@@ -298,6 +298,7 @@
                     newData.commodity_color = colorChecked ? colorChecked.value : ""
                     newData.commodity_size = sizeChecked ? sizeChecked.value : ""
                     newData.site_category = getSiteCategory()
+                    try {  newData.entry_source=document.referrer||''} catch (error) {newData.entry_source=''}
                     return newData
                 }
             })
@@ -317,6 +318,7 @@
                     newData.commodity_color = colorChecked ? colorChecked.value : ""
                     newData.commodity_size = sizeChecked ? sizeChecked.value : ""
                     newData.site_category = getSiteCategory()
+                    try {  newData.entry_source=document.referrer||''} catch (error) {newData.entry_source=''}
                     return newData
                 }
             })
@@ -388,7 +390,6 @@
                         this._updataSku()
                         if (target.classList.contains('color-swatch__radio')) this._updateImg(target)
                         if (selectedValueElement != null) selectedValueElement.innerHTML = target.value
-
                     }
 
                 })
@@ -533,6 +534,7 @@
             }
 
         }
+
         bindShence() {
             // 点击加购&点击预览
             const miniCart = this.closest('.mini-cart')
@@ -583,6 +585,7 @@
                     newData.commodity_color = colorChecked ? colorChecked.value : ""
                     newData.commodity_size = sizeChecked ? sizeChecked.value : ""
                     newData.site_category = getSiteCategory()
+                    try {  newData.entry_source=document.referrer||''} catch (error) {newData.entry_source=''}
                     return newData
                 }
             })
@@ -2388,6 +2391,99 @@
      * This class handles both the mini cart and the dedicated cart page. It's not the cleanest code on earth but works well :)
      */
 
+     var Collect = /*#__PURE__*/function () {
+        function Collect(element) {
+            _classCallCheck(this, Collect);
+            this.element = element
+            this.children = Array.from(this.element.querySelectorAll('.product-item'))
+            this.delegateElement=new Delegate(this.element)
+            this._attachListeners();
+            this.load()
+        }
+        _createClass(Collect, [{
+            key: "destroy",
+            value: function () {
+                this.delegateElement.off()
+            }
+        }, {
+            key: "_attachListeners",
+            value: function () {
+                this.delegateElement.on('click','.collect_btn',this.selectItem.bind(this))
+            }
+        }, {
+            key: "load",
+            value: function () {
+                var _this=this
+                var childrens = this.children
+                var searchData = {
+                    customerId: customerId,
+                    productIds: []
+                }
+               childrens.forEach(i => {
+                    var id = i.getAttribute('data-procuct-id')
+                    id && searchData.productIds.push(id)
+                })
+
+                if (customerId) {
+                    fetch('https://api.leandow-technology.com/api/customerCollectionProduct/selectProductIsCollection', {
+                        method: "POST",
+                        headers: { 'Content-Type': 'application/json' ,"siteValue": "hyfol"},
+                        body: JSON.stringify(searchData)
+                    }).then(res => {
+                        res.json().then(({data,code,success}) => {
+                            console.log(data.find(item=>item.isCollection))
+                            success&&data.forEach(i=>{
+                                if(i.isCollection){
+                                  var btn= _this.element.querySelector('.collect_btn[data-id="'.concat(i.productId,'"]'))
+                                  btn && _this.createPath(btn,'add')
+                                }
+                            })
+                        })
+                    })
+                }
+            }
+        }, {
+            key: "selectItem",
+            value: function (ev, target) {
+                var _this=this
+                if(!customerId){window.location.href="https://www.hyfol.com/account/login"; return }
+                var sendData={
+                    "customerId":customerId,
+                    "productId": target.getAttribute("data-id"),
+                    "productSpu": target.getAttribute("data-spu")
+                }
+                fetch('https://api.leandow-technology.com/api/customerCollectionProduct/collectionProduct',{
+                    method:"POST",
+                    headers:{ 'Content-Type': 'application/json' ,"siteValue": "hyfol"},
+                    body:JSON.stringify(sendData)
+                }).then(res=>{res.json()
+                    .then(({data,code,success})=>{
+                        if(!success)return
+                        if(data=="收藏成功！"){
+                            _this.createPath(target,'add')
+                        }else{
+                            _this.createPath(target,'cancel')
+                        }
+                        console.log(data,target)
+                })})
+            }
+        },{
+            key:"createPath",
+            value:function(svg,type='add'){
+                if(type=='add'){
+                svg.children[1].setAttribute('d','M595.158637 306.43705c-31.37053 0-62.741061 11.111901-87.840374 30.792538-25.099314-19.680637-56.484294-30.792538-87.869275-30.792538-75.615838 0-134.845596 59.706601-134.845596 135.929332 0 81.337962 62.278667 143.833376 150.27799 223.191714a1354.835549 1354.835549 0 0 1 52.886292 50.299777c5.187481 5.25973 12.137838 8.149691 19.536139 8.149691 7.369401 0 14.305309-2.875512 19.492789-8.135242a1387.558581 1387.558581 0 0 1 52.900742-50.314226c87.999323-79.401688 150.306889-141.882652 150.306889-223.206164 0.01445-76.193831-59.215308-135.914882-134.845596-135.914882z')
+                svg.setAttribute('data-select',true)
+            }
+            else{//cancel
+                svg.children[1].setAttribute('d','M595.158637 306.43705c-31.37053 0-62.741061 11.111901-87.840374 30.792538-25.099314-19.680637-56.484294-30.792538-87.869275-30.792538-75.615838 0-134.845596 59.706601-134.845596 135.929332 0 81.337962 62.278667 143.833376 150.27799 223.191714a1354.835549 1354.835549 0 0 1 52.886292 50.299777c5.187481 5.25973 12.137838 8.149691 19.536139 8.149691 7.369401 0 14.305309-2.875512 19.492789-8.135242a1387.558581 1387.558581 0 0 1 52.900742-50.314226c87.999323-79.401688 150.306889-141.882652 150.306889-223.206164 0.01445-76.193831-59.215308-135.914882-134.845596-135.914882z m-35.286427 335.669009a1380.395812 1380.395812 0 0 0-52.553947 49.967432 1369.058493 1369.058493 0 0 0-52.582847-49.981881c-80.774419-72.855925-137.952304-129.715915-137.952304-198.020151 0-59.258657 45.964835-105.685886 104.6166-105.685886 27.873677 0 55.776254 11.1986 76.612875 30.734739l9.305676 8.742133 9.305675-8.742133c20.807722-19.536139 48.724748-30.734739 76.583976-30.734739 58.695115 0 104.65995 46.427229 104.659949 105.685886-0.01445 68.304236-57.221234 125.164225-137.995653 198.0346z')
+                svg.setAttribute('data-select',false)
+                }
+                return svg
+            }
+        }])
+        return Collect
+    }();
+
     var Cart = /*#__PURE__*/function () {
         function Cart(element, options) {
             _classCallCheck(this, Cart);
@@ -2436,9 +2532,8 @@
                     // window.addEventListener('resize', this._calculateMiniCartHeightListener);
                     this.delegateElement.on('touchstart', this._onTouch.bind(this));
                     this.delegateElement.on('touchend', this._onTouch.bind(this));
-         
+                    
                 }
-                
                 this.delegateRoot.on('click', '[data-action="decrease-quantity"]', this._updateQuantity.bind(this));
                 this.delegateRoot.on('click', '[data-action="increase-quantity"]', this._updateQuantity.bind(this));
                 this.delegateRoot.on('change', '.quantity-selector:not(.quantity-selector--product) .quantity-selector__value', this._updateQuantity.bind(this));
@@ -2483,7 +2578,7 @@
                 Accessibility.trapFocus(this.miniCartSection, 'mini-cart');     
                 document.documentElement.classList.add('is-locked');
             }
-        }, {
+        },{
             key:'_onTouch',
             value: function _onTouchMove(event) {
                 var type = event.type
@@ -2528,16 +2623,12 @@
 
                 if (Responsive.getCurrentBreakpoint() === 'phone') {
                     this.miniCartToggleElement.querySelector('.header__cart-icon').setAttribute('aria-expanded', 'false');
-                   
                 } // Finally also set aria-hidden to false on controlled element
 
                 this.miniCartSection.style.transform='translateX(100%)'
                 setTimeout(()=>{
-                    
                     this.miniCartSection.setAttribute('aria-hidden', 'true');
                     this.isMiniCartOpen = false;
-
-                  
                     document.documentElement.classList.remove('is-locked');
                     this.cartMask.classList.add('d-none')
                     Accessibility.removeTrapFocus(this.miniCartSection, 'mini-cart');
@@ -2605,7 +2696,13 @@
 
                     return;
                 }
-
+                /* Flash sale */
+                var productData=target.getAttribute('data-scdata')
+                try { var {commodity_tag} =JSON.parse(productData)
+                    if(target.getAttribute('data-action')=="increase-quantity" && commodity_tag.indexOf('flash-deal-limited')!=-1){
+                            Message.error("You already have this item's max quantity (1) in your cart.")
+                            return false
+                        }else if(target.getAttribute('data-action')=="decrease-quantity" && commodity_tag.indexOf('flash-deal-limited')!=-1)allProductTag='';} catch (error) {}
                 document.dispatchEvent(new CustomEvent('theme:loading:start'));
                 fetch("".concat(window.routes.cartChangeUrl, ".js"), {
                     body: JSON.stringify({
@@ -4252,6 +4349,7 @@
                     if (!isSelect && lengt == 1  && name === 'color' || name=="颜色"){//只有颜色
                         isSelect = true
                     }//默认变体
+                   if(_this4.currentVariant.option2=="ONE SIZE") isSelect = true;
                     isSelect = isSelect || ['one size', 'default title','title'].indexOf(name) !== -1
                 } catch (error) {  isSelect = true  }
 
@@ -4262,6 +4360,14 @@
                     event.stopPropagation()
                     return
                 }
+                var productData=target.getAttribute('data-scdata')
+                try {
+                    var {commodity_tag}=JSON.parse(productData)
+                    if(allProductTag && commodity_tag.indexOf('flash-deal-limited')!=-1 && allProductTag.indexOf('flash-deal-limited')!=-1){
+                      Message.error("You already have this item's max quantity (1) in your cart.")
+                        return false
+                    }else if(commodity_tag.indexOf("flash-deal-limited")!=-1)allProductTag=commodity_tag;
+                } catch (error) {}
                 target.setAttribute('disabled', 'disabled');// First, we switch the status of the button
                 document.dispatchEvent(new CustomEvent('theme:loading:start')); // Then we add the product in Ajax
 
@@ -13448,7 +13554,7 @@
                             if (this.flickityInstance) {
                                 //  console.log(target);
                                 this.flickityInstance.selectCell("[data-media-id=\"".concat(target.getAttribute('data-media-id'), "\"]"));
-                                console.log("[data-media-id=\"".concat(target.getAttribute('data-media-id'), "\"]"));
+                               // console.log("[data-media-id=\"".concat(target.getAttribute('data-media-id'), "\"]"));
                                 if (Responsive.matchesBreakpoint('lap-and-up')) {
                                     var slides = this.element.querySelectorAll('.product-gallery__carousel-item');
                                     slides.forEach(function (slide) {
@@ -13466,7 +13572,7 @@
         {
             key: "_onNextClicked",
             value: function _onNextClicked(event, target) {
-                var activeIndex
+                var activeIndex=0
                 this.flickityInstance.cells.forEach((item, index) => {
                     if (item.element.className.indexOf("is-selected") != -1) {
                         //真节点
@@ -13918,6 +14024,7 @@
             this.element.querySelectorAll('[action*="/account/addresses"]').forEach(function (addressForm) {
                 new CountrySelector(addressForm.querySelector('[name="address[country]"]'), addressForm.querySelector('[name="address[province]"]'));
             });
+            this.productColorSwatch=new ProductItemColorSwatch(this.element)
             this.pageSelector = new ValuePicker('account-selector');
         }
 
@@ -13925,6 +14032,7 @@
             key: "_onUnload",
             value: function _onUnload() {
                 this.pageSelector.destroy();
+                this.productColorSwatch.destroy()
             }
         }]);
 
@@ -14346,7 +14454,8 @@
                 });
                 event.preventDefault();
             }
-        }, {
+        }, 
+{
             key: "_openQuickView",
             value: function _openQuickView(event, target) {
                 var modal = document.getElementById(target.getAttribute('aria-controls'));
@@ -14564,6 +14673,7 @@
             this.displayByValuePicker = new ValuePicker('display-by-selector', {
                 onValueSelect: this._showingCountChanged.bind(this)
             });
+            this.collect=new Collect(this.element)
             this.sortByValuePicker = new ValuePicker('sort-by-selector', {
                 onValueSelect: this._sortByChanged.bind(this)
             });
@@ -14584,6 +14694,7 @@
                 this.displayByValuePicker.destroy();
                 this.sortByValuePicker.destroy();
                 this.productItemColorSwatch.destroy();
+                this.collect.destroy()
             }
         }, {
             key: "onSelect",
@@ -14655,7 +14766,10 @@
                 if (this.isFetch) return;
                 this.isFetch = true
                 var productContaine = this.element.querySelector('.product-list')
-                fetch(location.pathname + "?page=" + nextPage + "&section_id=" + sectionID).then(response => {
+                var url=location.pathname
+                location.search&&(url+=location.search+"&page=" + nextPage)||(url+="?page=" + nextPage)
+                url+="&section_id=" + sectionID
+                fetch(url).then(response => {
                     if (!response.ok) return;
                     response.text().then(content => {
                         var productList
@@ -19482,7 +19596,7 @@
                         // We may have an invalid selector, so if we catch it we just return
                         return;
                     }
-
+                    if(!element)return;
                     var offset = parseInt(target.getAttribute('data-offset') || 0),
                         toTop = 0;
 
@@ -19574,11 +19688,232 @@
    var saleContainers = document.querySelectorAll('[data-type="flash-sale"]')
     saleContainers.forEach(i=>{
         var count = i.querySelector('.sale_time_count')
+      if(!count)return;
         var mun = i.querySelector('.flash-sale_num')
         var countNum=(new Date().getMilliseconds()/100).toFixed(0)
+        if(!count)return;
         mun && setInterval(()=>{countNum--;countNum<0&&(countNum=9); mun.innerHTML="<em>"+countNum +"</em>"},100)
         setInterval(()=>count.innerHTML = getFormatDate(),1000)
     })
-   }();
+
    
+   }();
+    window.Message = function () {
+        const appendTo = document.body;
+        const messageTypes = ["success", "info", "warning", "error"];
+
+        const messageProps = {
+            customClass: "",
+            center: false,
+            dangerouslyUseHTMLString: false,
+            duration: 3000,
+            icon: "",
+            id: "",
+            message: "",
+            onClose: false,
+            showClose: false,
+            type: "info",
+            offset: 20,
+            zIndex: 0,
+            repeatNum: 1
+        };
+
+        const instances = []
+        let seed = 1;
+        let zIndex = 2001
+
+        function render(vm, container) {
+            const props = vm.props
+            const tag = vm.tag
+            const text = vm.text || vm
+            const children = vm.children
+            let el;
+            if (tag) {
+                if (tag == 'svg' || tag == 'path') {
+                    el = document.createElementNS(props.xmlns, tag);
+                    delete props.xmlns
+                }
+                else { el = document.createElement(tag); }
+                vm.el = el
+                for (const key in props) {
+                    switch (key) {
+                        case "style":
+                            const style = props[key]
+                            for (const styleKey in style) {
+                                el.style[styleKey] = style[styleKey]
+                            }
+                            break;
+                        default:
+                            el.setAttribute(key, props[key])
+                            break;
+                    }
+                }
+
+                if (Array.isArray(children)) children.forEach(child => child && render(child, vm.el));
+                else children && render(children, vm.el)
+            } else {
+                el = document.createElement('p')
+                el.className = "el-message__content"
+                el.innerText = text
+            }
+            container.appendChild(el)
+            return vm
+        }
+
+        function createVNode(tag, props, children) {
+            const vm = { tag: '', props: {}, children: [], text: null, el: null, key: null }
+            vm.tag = tag
+            vm.props = props
+            if (Array.isArray(children)) {
+                children = children.map(i => {
+                    if (typeof i == "string") return createVNode(null, null, i)
+                    return i
+                })
+            } else if (typeof children == "string") {
+                vm.text = children
+            }
+            vm.children = children
+            return vm
+        }
+
+        const message = function (options = {}) {
+            if (typeof options === "object" && instances.length) {
+                const tempVm = instances.find((item) => {
+                    var _a, _b, _c;
+                    return `${(_b = (_a = item.vm.props) == null ? 0 : _a.message) != null ? _b : ""}` === `${(_c = options.message) != null ? _c : ""}`;
+                });
+                if (tempVm) {
+                    tempVm.vm.props.repeatNum += 1;
+                    tempVm.vm.props.type = options == null ? 0 : options.type;
+                    return
+                }
+            }
+            if (typeof options === "string") options = { message: options };
+            Object.assign(messageProps, options)
+            let verticalOffset = 0;
+            instances.forEach(({ vm }) => {
+                var _a;
+                verticalOffset += (((_a = vm.el) == null ? 0 : _a.offsetHeight) || 0) + 16;
+            });
+
+            verticalOffset += 16;
+            const id = `message_${seed++}`;
+            const userOnClose = options.onClose;
+            const props = {
+                zIndex: zIndex++,
+                offset: verticalOffset,
+                ...options,
+                id,
+                onClose: () => { close(id, userOnClose); }
+            };
+            Object.assign(messageProps, props)
+            const container = document.createElement("div");
+            container.className = `container_${id}`;
+            const vm = createMessage(messageProps, container)
+            render(vm, container);
+            instances.push({ vm });
+            vm.onmounte()
+            appendTo.appendChild(container.firstElementChild);
+
+        };
+
+        messageTypes.forEach((type) => {
+            message[type] = (options = {}) => {
+                if (typeof options === "string") {
+                    options = { message: options };
+                }
+                return message({ ...options, type });
+            };
+        });
+
+        function close(id, userOnClose) {
+            const idx = instances.findIndex(({ vm }) => id === vm.props.id);
+            if (idx === -1) return;
+            const { vm } = instances[idx];
+            if (!vm) return;
+            userOnClose == null ? 0 : userOnClose(vm);
+            const removedHeight = vm.el.offsetHeight;
+            instances.splice(idx, 1);
+            const len = instances.length;
+            if (len < 1) return;
+            for (let i = idx; i < len; i++) {
+                const vm = instances[i].vm
+                const pos = parseInt(vm.el.style["top"], 10) - removedHeight - 16;
+                vm.el.style['top'] = pos + 'px'
+                vm.props.offset = pos;
+            }
+        }
+
+        function createMessage(props) {
+            let { icon, type, customClass, duration, id, message, offset, zIndex } = props
+            type = type ? type : "info"
+            let visible = false;
+            let stopTimer = 0;
+            const typeClass = `el-icon el-message__icon el-message-icon--${type}`;
+            icon = createIcon(type, { class: typeClass })
+            customClass = `el-message el-message--${type} fade-in-linear-enter-active`
+            const style = {
+                top: `${offset}px`,
+                zIndex: zIndex
+            };
+            const vNode = createVNode('i', { class: typeClass }, [icon])
+            const success = createVNode('div', { class: customClass, style, id }, [vNode, message])
+
+            function closeMessage(el, ev) {
+                ev.preventDefault()
+                ev.stopPropagation()
+                el.removeEventListener("transitionend", closeMessage)
+                el.remove()
+            }
+
+            function clearAnimation(el, ev) {
+                el.removeEventListener('webkitAnimationEnd', clearAnimation)
+                el.classList.remove('fade-in-linear-enter-active')
+            }
+
+            function startTimer() {
+                const el = success.el
+                el.addEventListener('webkitAnimationEnd', clearAnimation.bind(this, el))
+                if (props.duration > 0) {
+                    setTimeout(() => {
+                        close(id, (vm) => {
+                            el.classList.add('el-message-fade-leave-active', 'el-message-fade-leave-to')
+                            el.addEventListener("transitionend", closeMessage.bind(this, el))
+
+                        })
+                    }, props.duration);
+                }
+            }
+            success.onmounte = startTimer
+            return success
+        }
+
+        function createIcon(type, options) {
+            const _hoisted_1 = {
+                class: "icon",
+                width: "200",
+                height: "200",
+                viewBox: "0 0 1024 1024",
+                xmlns: "http://www.w3.org/2000/svg"
+            };
+
+            const iconType = {
+                success: "M512 64a448 448 0 110 896 448 448 0 010-896zm-55.808 536.384l-99.52-99.584a38.4 38.4 0 10-54.336 54.336l126.72 126.72a38.272 38.272 0 0054.336 0l262.4-262.464a38.4 38.4 0 10-54.272-54.336L456.192 600.384z",
+                warning: "M512 64a448 448 0 110 896 448 448 0 010-896zm0 192a58.432 58.432 0 00-58.24 63.744l23.36 256.384a35.072 35.072 0 0069.76 0l23.296-256.384A58.432 58.432 0 00512 256zm0 512a51.2 51.2 0 100-102.4 51.2 51.2 0 000 102.4z",
+                error: "M512 64a448 448 0 1 1 0 896 448 448 0 0 1 0-896zm0 393.664L407.936 353.6a38.4 38.4 0 1 0-54.336 54.336L457.664 512 353.6 616.064a38.4 38.4 0 1 0 54.336 54.336L512 566.336 616.064 670.4a38.4 38.4 0 1 0 54.336-54.336L566.336 512 670.4 407.936a38.4 38.4 0 1 0-54.336-54.336L512 457.664z",
+                info: "M512 64a448 448 0 110 896.064A448 448 0 01512 64zm67.2 275.072c33.28 0 60.288-23.104 60.288-57.344s-27.072-57.344-60.288-57.344c-33.28 0-60.16 23.104-60.16 57.344s26.88 57.344 60.16 57.344zM590.912 699.2c0-6.848 2.368-24.64 1.024-34.752l-52.608 60.544c-10.88 11.456-24.512 19.392-30.912 17.28a12.992 12.992 0 01-8.256-14.72l87.68-276.992c7.168-35.136-12.544-67.2-54.336-71.296-44.096 0-108.992 44.736-148.48 101.504 0 6.784-1.28 23.68.064 33.792l52.544-60.608c10.88-11.328 23.552-19.328 29.952-17.152a12.8 12.8 0 017.808 16.128L388.48 728.576c-10.048 32.256 8.96 63.872 55.04 71.04 67.84 0 107.904-43.648 147.456-100.416z"
+            }
+            const _hoisted_2 = createVNode("path", {
+                fill: "currentColor",
+                d: iconType[type],
+                xmlns: _hoisted_1.xmlns
+            });
+            const _hoisted_3 = [
+                _hoisted_2
+            ];
+            return createVNode("svg", _hoisted_1, _hoisted_3);
+        }
+        return message
+    }();
+
 })));

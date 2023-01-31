@@ -12,6 +12,10 @@
   #shopify-section-{{ section.id }} div::-webkit-scrollbar {
     width: 0 !important
   }
+  #shopify-section-{{ section.id }}  .section-layout{
+	padding-top: {{section.settings.padding_top}}px;
+	padding-bottom: {{section.settings.padding_bottom}}px;
+  }
   .section-layout{
 	background-color: {{section.settings.backgroun}};
   }
@@ -28,11 +32,11 @@
 	{%- comment -%}--------------Flash Sale-------------------------{%- endcomment -%}
 	<div class="indexContainer" style="position: relative;">
 
+		{%- capture heading_h -%}<h2 class="section__title heading h3 section--text-centered">{{ section.settings.title }}</h2>{%- endcapture -%}
 		{%- if class_name != blank -%}
 		<div class="flash_sale-info">
 			<img src="https://cdn.shopify.com/s/files/1/0595/0691/7535/files/sale.png?v=1666324321" alt="sale" class="flash_sale_img">
 		</div>
-		{%- capture heading_h -%}<h2 class="section__title heading h3 section--text-centered">{{ section.settings.title }}</h2>{%- endcapture -%}
 		<div class="d-flex feature-flash_sale">
 			{{heading_h}}
 			<div class="" data-type="flash-sale">
@@ -43,7 +47,7 @@
 			</div>
 		</div>
 		{%- else -%}
-		{{heading_h0}}
+		{{heading_h}}
 		{%- endif -%}
 	</div>
 
@@ -234,6 +238,24 @@
 	"type": "color",
 	"id": "backgroun",
 	"label": "背景颜色"
+	},
+	{
+	"type": "range",
+	"id": "padding_top",
+	"label": "顶部填充",
+	"min": 0,
+	"max": 100,
+	"step": 1,
+	"default": 20
+	},
+	{
+	"type": "range",
+	"id": "padding_bottom",
+	"label": "底部填充",
+	"min": 0,
+	"max": 100,
+	"step": 1,
+	"default": 20
 	}
 	],
 	"presets": [

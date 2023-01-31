@@ -1,8 +1,8 @@
 <div class="card">
 	{%- if customer.orders.size != 0 -%}
-		{%- paginate customer.orders by 8 -%}
+		{%- paginate customer.orders by 16 -%}
 			{%- for order in customer.orders -%}
-				{% if order.fulfillment_status=='fulfilled' %}
+				{% if order.financial_status contains 'paid' and order.fulfillment_status == 'fulfilled' %}
 					<div class="order-box">
 						<div class="order-title">
 							<div class="title-info">

@@ -1,5 +1,12 @@
 <script src="{{ 'request.js' | asset_url }}"></script>
 <script type="text/javascript">
+	function postData(url,body) {
+		fetch(url,{
+			method:"POST",
+			headers:{"Content-type":"application/json"},
+			body:JSON.stringify(body)
+		})
+	}
 sensors.quick('isReady',function(){
 	sensors.setProfile({ latest_visit_time: getFormatDate() });/* 更新用户表最近一次访问时间 */
 	/* 注册事件代码 */
@@ -31,7 +38,7 @@ sensors.quick('isReady',function(){
 		}
 	}
 		/* 注册成功代码 */
-		if ({{request.page_type | json}} == 'index') {/*首页*/
+		if ({{request.page_type | json}} == 'index' ||{{request.page_type | json}}=="customers/account") {/*首页*/
 			if (window.SensorsDataWebJSSDKPlugin.PageLeave.current_page_url == location.origin  + '/account/register') {/* 从注册页面跳转进来 */
 				if (Number({{customer.id}})) {
 					var isLogin = true;

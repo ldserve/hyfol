@@ -51,7 +51,13 @@
       {%- endif -%}
 
     </div>
-    
+
+    <div class="product-meta__share-buttons desktop-product-meta__share-buttons">
+      <a href="#product-reviews" class="product-meta__reviews-badge link" data-offset="30">
+        
+      </a>
+    </div>
+    {%- comment -%}
     {%- assign product_meta_block = section.blocks | where: 'type', 'product_meta' | first -%}
     {%- if product_meta_block != blank and product_meta_block.settings.show_share_buttons -%}
     <div class="product-meta__share-buttons desktop-product-meta__share-buttons">
@@ -118,6 +124,7 @@
       </ul>
     </div>
   {%- endif -%}
+    {%- endcomment -%}
   
     {%- comment -%}----------------活动标签---------------{%- endcomment -%}
 			{% render "activity-tag", class_name:"desktop-tag_img" , show_img_tag:true %}
@@ -367,7 +374,7 @@
                 {%- capture block_swatch_id -%}{{ option_name }}-{{ forloop.index }}{%- endcapture -%}
 
                 <div class="block-swatch">
-                  <input class="block-swatch__radio product-form__single-selector" type="radio" name="{{ option_name }}" id="{{ block_swatch_id }}" value="{{ value | escape }}"  data-option-position="{{ option.position }}">
+                   <input class="block-swatch__radio product-form__single-selector" type="radio" name="{{ option_name }}" id="{{ block_swatch_id }}" value="{{ value | escape }}"  data-option-position="{{ option.position }}" {% if value =="ONE SIZE" %}checked{% endif %}>
                   <label class="block-swatch__item" for="{{ block_swatch_id }}" title="{{ value | escape }}">
                     <span class="block-swatch__item-text">{{ value }}</span>
                   </label>
@@ -469,6 +476,103 @@
   {%- endif -%}
 </div>
 
+    {%- comment -%}model info{%- endcomment -%}
+    <div id="modal-conve"></div>
+    <style>
+      .model-information_img {
+        margin-right: 20px;
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        overflow: hidden;
+      }
+    
+      .model-information_wrap {
+        margin-right: 30px;
+        font-size: 14px;
+      }
+    
+      .model-info_value {
+        color: #9a9a9a;
+      }
+    
+      .model-information_info {
+        line-height: 1.5;
+      }
+    
+      .model-container {
+        margin-top: 14px;
+      }
+    .model-info_title{
+      font-weight: 600;
+    }
+      #modal-conve {
+        margin-bottom: 1rem;
+      }
+    
+      @media screen and (max-width: 640px) {
+        .model-information_wrap {
+          margin-right: 20px;
+        }
+      }
+      @media screen and (min-width: 641px){
+        .model-information_info{
+          font-size: 15px;
+        }
+      }
+    </style>
+    <script>
+      !function () {
+        const spu = '{{product.handle}}'//'SP220902NSUL'
+        fetch('http://api.leandow-technology.com/api/customerAccount/getModelInfoBySpu'.concat('?spu=', spu), {
+          method: "GET",
+          headers: { "siteValue": 'hyfol' }
+        }).then(response => response.json()).then(message => {
+          if (!message.success || !message.data.length) return;
+          let datas = message.data
+          let model = '<div class="model-heading section__title heading h3 font_16 ">Model Stats</div>'
+          // console.log(datas);
+          model += datas.map(data => `
+        			<div class="d-flex model-container">
+                <div class="model-information_img">
+                  <img src="${data.modelImage}">
+                </div>
+                <div class="model-information_wrap">
+                  <div class="model-information_info">
+                    <span class="model-info_title">Model Wear: </span>
+                    <span class="model-info_value">${data.modelWare}</span>
+                  </div>
+                  <div class="model-information_info">
+                    <span class="model-info_title">Height: </span>
+                    <span class="model-info_value">${data.height} ${data.heightUnit}</span>
+                  </div>
+                  <div class="model-information_info">
+                    <span class="model-info_title">Waist: </span>
+                    <span class="model-info_value">${data.waist} ${data.waistUnit}</span>
+                  </div>
+        			</div>
+        			<div class="model-information_wrap">
+        				<div class="model-information_info">
+        					<span class="model-info_title">Weight: </span>
+        					<span class="model-info_value">${data.weight} ${data.weightUnit}</span>
+        				</div>
+        				<div class="model-information_info">
+        					<span class="model-info_title">Bust: </span>
+        					<span class="model-info_value">${data.bust} ${data.bustUnit}</span>
+        				</div>
+        				<div class="model-information_info">
+        					<span class="model-info_title">Hips: </span>
+        					<span class="model-info_value">${data.hips} ${data.hipsUnit}</span>
+        				</div>
+        			</div>
+        			</div>`).join('')
+          const modelContaine = document.getElementById('modal-conve')
+          modelContaine && (modelContaine.innerHTML = model)
+
+        })
+      }();
+    </script>
+
 {%- comment -%}---------discount 图片-----------{%- endcomment -%}
 {% if block.settings.show_discount_image%}
 {% if block.settings.discount_image !=blank %}
@@ -477,5 +581,6 @@
     <div class="product-discount-img">
       <img data-src="{{ image_url }}" data-widths="[{{ supported_sizes }}]" data-sizes="auto" alt="" class="lazyload" style="width: 100%">
     </div>
+ 
 {% endif %}
 {% endif %}

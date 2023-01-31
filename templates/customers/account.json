@@ -9,6 +9,7 @@
       "type": "recently-viewed-products",
       "settings": {
         "title": "Recently viewed",
+        "title_color": "#000000",
         "show_quick_buy": false
       }
     }

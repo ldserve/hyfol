@@ -82,6 +82,21 @@ function reportExposure(data) {
 var options = {
   threshold: 0.5
 }
+var _Time = function(){
+  return parseInt((new Date()).getTime()/1000)
+}
+
+function appointScData(data) {
+  data = JSON.parse(data)
+  const id = data.commodity_spuid
+  let timeList = localStorage.getItem('scUpTime') || '[]'
+  timeList = JSON.parse(timeList)
+  const currentData=timeList.find(target=>target.spuid==id)
+  if(currentData && _Time() -currentData.upTime <= 180)return;
+  sensors.track('CommodityShow',data);
+ currentData&&(currentData.upTime=_Time())||timeList.push({spuid:id,upTime:_Time()})
+ localStorage.setItem('scUpTime',JSON.stringify(timeList))
+}
 /* 曝光监听 */
 var intersectionObserver = new IntersectionObserver(intersectionCallback, options);
 function intersectionCallback(entries) {
@@ -91,6 +106,8 @@ function intersectionCallback(entries) {
         window.setTimeout(function () {
           if (entry.intersectionRatio > 0.5 ) {
              reportExposure(JSON.parse(entry.target.getAttribute("data-scdata")));
+             const scDataStr=entry.target.getAttribute("data-expscdata")
+             scDataStr&&appointScData(scDataStr)
             intersectionObserver.unobserve(entry.target);
             entry.target.setAttribute("data-expenable","0");
           }
@@ -124,8 +141,20 @@ const MutationObservercallback = function(mutationsList, observer) {
 };
 
 // 创建一个观察器实例并传入回调函数
+if(location.pathname.split('/').reverse().shift()=='hot-sale-hyfol-3'){
+  setTimeout(()=>{
+    const targetEl=document.querySelector('.product-list.product-list--collection')
+    const obs= new MutationObserver((mutationsList,observer)=>{
+      mutationsList.forEach(mutation=>{
+        const node=mutation.addedNodes[0]
+        const chilren=node.querySelector('a')
+        chilren&&intersectionObserver.observe(chilren)
+      })
+    })
+    obs.observe(targetEl,{childList:true})
+  },1000)
+}
 const observer = new MutationObserver(MutationObservercallback);
-
 // 以上述配置开始观察目标节点
 setTimeout(function (argument) {
   const targetNodes = document.querySelectorAll('.nav-bar__inner .nav-dropdown');

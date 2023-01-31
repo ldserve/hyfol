@@ -47,7 +47,7 @@ function getDevice_type() {
   }
 }
 getDevice_type();
-sensors.register({
+/* sensors.register({
   platform_type: "web",
    site_id:"000002",
   vip_level: "",
@@ -58,7 +58,7 @@ sensors.register({
 sensors.use('PageLoad');//页面加载时长
 sensors.quick('autoTrack');
 sensors.use('PageLeave');
-
+ */
 function getSiteCategory(){
     try {
         let al = document.querySelectorAll('ol a')
@@ -285,11 +285,11 @@ window.getFormatDate = function getFormatDate() {
           i = i.toLocaleUpperCase()
         })
       }
-      sensors.quick('isReady', function () {
+/*       sensors.quick('isReady', function () {
         debug && console.info("准备", sendType, data);
         sensors.track(sendType, data);
         debug && console.info('上报完毕');
-      })
+      }) */
     }
     setSession(el) {
       let customSessionData = this.customSession(this.container);

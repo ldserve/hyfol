@@ -2,7 +2,7 @@
 	{%- if customer.orders.size != 0 -%}
 		{%- paginate customer.orders by 16 -%}
 			{%- for order in customer.orders -%}
-				{% if order.fulfillment_status=='on hold' %}
+				{%- if order.financial_status=='paid' and order.fulfillment_status=="unfulfilled" -%}
 					<div class="order-box">
 						<div class="order-title">
 							<div class="title-info">
@@ -45,14 +45,13 @@
 							</div>
 						</div>
 					</div>
-				{% endif %}
+				{%- endif -%}
 			{%- endfor -%}
 		{%- render 'pagination', paginate: paginate -%}
 		{% assign dm_paginate_by = paginate.page_size %}
 		{%- endpaginate -%}
 	{%- endif -%}
 </div>
-
 
 {% schema %}
 {

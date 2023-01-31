@@ -29,7 +29,7 @@
     {%- endif -%}
 
     {%- comment -%}Few prefech to increase performance on commonly used third-parties{%- endcomment -%}
-    <link rel="preload" as="style" href="{{ 'theme.css' | asset_url }}">
+    <link rel="preload" as="style" href="{{ 'theme.min.css' | asset_url }}">
     <link as="script" href="{{ 'theme.js' | asset_url }}">
     <link rel="preconnect" href="https://cdn.shopify.com">
     <link rel="preconnect" href="https://fonts.shopifycdn.com">
@@ -42,9 +42,31 @@
     {% render 'css-variables' %}
 
     {{ content_for_header }}
+    
+<!-- Global site tag (gtag.js) - Google Ads:11080226206 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=AW-11080226206"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
+  gtag('config', 'AW-11080226206');
+</script>
 
-<link rel="stylesheet" href="{{ 'theme.css' | asset_url }}">
+  {% if template contains 'product' or template contains 'collection' or template contains 'index' or template contains 'search' %}
+<script>
+  gtag('event', 'page_view', {
+    'send_to': 'AW-11080226206',
+    'ecomm_pagetype': '{% if template contains 'collection' %}category{% elsif template contains 'product' %}product{% elsif template contains 'search' %}searchresults{% elsif template contains 'index' %}home{% endif %}',
+    {% if template contains 'product' %}
+    'ecomm_prodid': 'shopify_US_{{ product.id }}_{{ product.variants.first.id }}',
+    'ecomm_totalvalue': '{{ product.price_min | money_without_currency | remove: ","}}',
+    {% endif %}
+  });
+</script>
+{% endif %}
+
+<link rel="stylesheet" href="{{ 'theme.min.css' | asset_url }}">
 
 {% render 'microdata-schema' %}
 
@@ -233,6 +255,22 @@ line_items: [
 {% endif %}
 
 <script>
+   const customerId= "{{ customer.id}}"   
+    async function post_data(url, data) {
+      const response = await fetch(`https://api.leandow-technology.com/api/${url}`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          "siteValue":"hyfol"
+        },
+        body: JSON.stringify(data)
+      });
+      return response.json();
+    }
+
+</script>
+
+<script>  
   gtag('event', '{{ fa_event }}', {
  'send_to': 'AW-{{ fa_google_ads_audience_tag_id }}',
  {% if template contains 'product' or template contains 'cart' %}'value': {{ fa_product_price }},{% endif %}
@@ -272,25 +310,24 @@ line_items: [
 <!-- Google Ads Remarketing Tag By Shopify_Fans END -->
  
 <script>var scaaffCheck = false;</script>
-{%- comment -%}
-{{ 'sca_affiliate.js' | asset_url | script_tag }}
-{%- endcomment -%}
-<script src="{{ 'sca_affiliate.js' | asset_url}}" type="text/javascript" async></script>
+
 {% include 'dexter' %}
 
 {%- include 'orichi_multi_pixel' -%}
 {%- include "omega_multi_pixel" -%}
 
-		<!-- Bind 营销代码 Start -->
+		{% comment %} <!-- Bind 营销代码 Start --> {% endcomment %}
 <script>(function(w,d,t,r,u){var f,n,i;w[u]=w[u]||[],f=function(){var o={ti:"136017208"};o.q=w[u],w[u]=new UET(o),w[u].push("pageLoad")},n=d.createElement(t),n.src=r,n.async=1,n.onload=n.onreadystatechange=function(){var s=this.readyState;s&&s!=="loaded"&&s!=="complete"||(f(),n.onload=n.onreadystatechange=null)},i=d.getElementsByTagName(t)[0],i.parentNode.insertBefore(n,i)})(window,document,"script","//bat.bing.com/bat.js","uetq");</script>
     <!-- Bind 营销代码 END -->
+   
     {%- comment -%}
     <!-- PLM -->
     <script src="https://www.paypal.com/sdk/js?client-id=AaoMEq4pF7_1JBTPdRANwtH_MdqLAgscO0ivoPn1JlNmpA3YdqEuxxUY2gUg9vszi8RWrvPHSoTV8tjQ&components=messages" data-namespace="paypal_sdk" async></script>
     <!-- PLM END -->
     {%- endcomment -%}
-<!-- Bind 营销代码 END -->
-		<!-- outbrain 营销代码 Start -->
+  {% comment %} <!-- Bind 营销代码 END --> {% endcomment %}
+    
+		{% comment %} <!-- outbrain 营销代码 Start --> {% endcomment %}
 		<script data-obct type = "text/javascript">
       /** DO NOT MODIFY THIS CODE**/
       !function(_window, _document) {
@@ -319,7 +356,17 @@ line_items: [
 
       obApi('track', 'PAGE_VIEW');
 		</script>
-		<!-- outbrain 营销代码 end -->
+		{% comment %} <!-- outbrain 营销代码 end --> {% endcomment %}
+
+    {%- comment -%}REVIES{%- endcomment -%}
+    {%- if request.page_type == 'product' -%}
+    <link rel="stylesheet" href="{{'review.css' | asset_url}}">
+    {%- endif -%}
+
+    {%- comment -%}----Customers-------{%- endcomment -%}
+    {%- if request.page_type contains 'customers' -%}
+    <link rel="stylesheet" href="{{'account.css' | asset_url}}">
+    {%- endif -%}
 	</head>
 
   <body class="warehouse--v1 {% if settings.animation_image_zoom %}features--animate-zoom{% endif%} template-{{ request.page_type | handle }} {% if request.page_type contains '/' %}template-{{ request.page_type | split: '/' | last | handle }}{% endif %}" data-instant-intensity="viewport">
@@ -359,52 +406,12 @@ line_items: [
       <li id="a11y-new-window-message">{{ 'general.accessibility.new_window' | t }}</li>
     </ul>
 
-<!-- **BEGIN** Hextom USB Integration // Main Include - DO NOT MODIFY -->
-    {% render 'hextom_usb_main', product: product, customer: customer %}
-    <!-- **END** Hextom USB Integration // Main Include - DO NOT MODIFY -->
 
-<!-- **BEGIN** Hextom CTB Integration // Main Include - DO NOT MODIFY -->
-    {% render 'hextom_ctb_main', product: product, customer: customer %}
-    <!-- **END** Hextom CTB Integration // Main Include - DO NOT MODIFY -->
-<!-- **BEGIN** Hextom FSB Integration // Main Include - DO NOT MODIFY -->
-    {% render 'hextom_fsb_main', product: product, customer: customer %}
-    <!-- **END** Hextom FSB Integration // Main Include - DO NOT MODIFY -->
-<!-- **BEGIN** Hextom TMS Integration // Main Include - DO NOT MODIFY -->
-    <script>
-      var hextom_tms = {
-        availableLocalesById: {'fr': {'name': 'Français', 'url': 'https://www.hyfol.com/fr'}, 'de': {'name': 'Deutsch', 'url': 'https://www.hyfol.com/de'}, 'it': {'name': 'Italiano', 'url': 'https://www.hyfol.com/it'}, 'ru': {'name': 'Русский Язык', 'url': 'https://www.hyfol.com/ru'}, 'es': {'name': 'Español', 'url': 'https://www.hyfol.com/es'}, 'en': {'name': 'English', 'url': 'https://www.hyfol.com'}},
-        availableLocales: ['fr', 'de', 'it', 'ru', 'es', 'en'],
-        primaryLocaleById: {'en': 'English'},
-        merchantSelectedLocale: "shop_base",
-        hasFlag: "yes",
-        selectorFlagMap: {'fr': 'fr', 'de': 'de', 'it': 'it', 'ru': 'ru', 'es': 'es', 'en': 'en'},
-        displayType: "language_name",
-        fontColor: "#000000",
-        backgroundColor: "#FFFFFF",
-        backgroundOpacity: "1.0",
-        buttonFontColor: "#FFFFFF",
-        buttonBackgroundColor: "#000000",
-        selectorType: "language",
-        selectorStyle: "dropdown",
-        hasFlagRegion: "",
-        defaultRegion: "",
-        primaryRegionById: {},
-        availableRegionsByCode: {},
-        availableRegions: [],
-        primaryDomain: "https://www.hyfol.com",
-        popupEnable: false,
-        popupTextColor: "#000000",
-        popupBgColor: "#FFFFFF",
-        popupBtnTextColor: "#FFFFFF",
-        popupBtnBgColor: "#000000",
-      };
-    </script>
     <script>
       /* 从checkout主题返回theme时候，初始化checkoutStep */
       sessionStorage.setItem('checkoutStep','Checkout');
     </script>
-    <script src="{{ 'tms.js' | asset_url }}" defer="defer"></script>
-    <!-- **END** Hextom TMS Integration // Main Include - DO NOT MODIFY -->
+ 
 
  {%- render 'shenceTrack' -%}
  {%- render 'shenceTrackBanner' -%}
@@ -412,6 +419,22 @@ line_items: [
 <!-- Back in Stock helper snippet -->
 {%- render 'back-in-stock-helper' -%}
 <!-- End Back in Stock helper snippet -->
+
+
+{%- comment -%}---------------- FSL ---------------{%- endcomment -%}
+{%- capture tag_string -%}{%- endcapture -%}
+{%- for line_item in cart.items -%}
+{%- if forloop.first -%}
+{%- capture tag_string -%}{{line_item.product.tags  | join: ',' | downcase}}{%- endcapture -%}
+{%- else -%}
+{%- capture tag_string -%}{{tag_string}},{{line_item.product.tags  | join: ',' | downcase}}{%- endcapture -%}
+{%- endif -%}
+{%- endfor -%}
+{%- assign all_tags = tag_string | split: ',' | uniq | join: ',' -%}
+<script type="text/javascript" defer="defer" id="linItemTags">
+  var allProductTag=`{{all_tags}}`
+</script>
+{%- comment -%}-------------- FSL END ---------------------{%- endcomment -%}
 
 </body>
 {%- comment -%}PartnerBoost 营销代码{%- endcomment -%}
