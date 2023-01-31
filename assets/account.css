@@ -426,8 +426,8 @@
 	.vip-icon__box {
 		display: inline-block;
 		background-color: #aaa;
-		border-radius: 1rem;
-		padding: 0 0.8rem;
+		border-radius: 0.8rem;
+		padding: 0 0.6rem;
 	}
 
 	.vip-icon__box .icon {

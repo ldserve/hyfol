@@ -35,11 +35,6 @@
 					<div class="card__section card__section--tight">
 						<div class="card__linklist table-left-nav">
 							<div class="render_nav_list ">
-								{% comment %} <div class="card__linklist-item link text--stronger" data-right="my_overview"
-									data-action="left-nav" data-change="My Account">
-									{%- render 'icon', icon: 'account-text' -%}
-									<span>My Account</span>
-								</div> {% endcomment %}
 								<div class="card__linklist-item link" data-right="my_profile" data-action="left-nav"
 									data-change="Profile">
 									{%- render 'icon', icon: 'account-my' -%}
@@ -576,7 +571,7 @@
 					{%- comment -%}-------------------------生日信息------------------{%- endcomment -%}
 					<div class="birthday backgrount_e" style="padding: 2rem;">
 						<h3 class="h3" style="text-align: center;">My Birthday</h3>
-						<p style="text-align: center;">Enter your birthday get 100 point</p>
+						<p style="text-align: center;">Enter your birthday get 100 points</p>
 						<div class="d-flex" style="max-width: 360px;margin: 0 auto;">
 							<input type="date" id="birthdayDate" class="form__field form__field--text input refer" name="date"
 								pattern="\d{4}-\d{2}-\d{2}" max="{{'now' |date: '%Y-%m-%d' }}" min="1970-01-01" style="line-height: 1;">
