@@ -655,9 +655,9 @@
         "6c94ee37-e01c-4716-bc7e-67cc0981d68a": {
           "type": "link",
           "settings": {
-            "heading": "for50",
-            "sensorsLinkName": "for50",
-            "link": "https:\/\/www.hyfol.com\/de\/collections\/2nd-50-off",
+            "heading": "basic",
+            "sensorsLinkName": "basic",
+            "link": "shopify:\/\/collections\/basic",
             "left": 27,
             "top": 0,
             "width": 22,
