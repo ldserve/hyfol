@@ -64,6 +64,7 @@
         },
         "db88bd3b-2663-480e-a113-30f5edd187d0": {
           "type": "image",
+          "disabled": true,
           "settings": {
             "sensorsName": "facebook",
             "image": "shopify:\/\/shop_images\/banner_4596ca7a-b93b-418b-b305-c0be966efe70.jpg",
