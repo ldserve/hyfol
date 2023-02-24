@@ -16,6 +16,7 @@
       "blocks": {
         "1664249260b7761d46-1": {
           "type": "image",
+          "disabled": true,
           "settings": {
             "sensorsName": "for75",
             "image": "shopify:\/\/shop_images\/hyfol_0a4c36b4-2417-4389-8f06-f960be78f026.jpg",
