@@ -41,6 +41,7 @@
         },
         "1664249260b7761d46-0": {
           "type": "image",
+          "disabled": true,
           "settings": {
             "sensorsName": "bestseller",
             "image": "shopify:\/\/shop_images\/bannner2.jpg",
