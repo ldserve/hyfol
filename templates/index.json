@@ -68,7 +68,7 @@
           "settings": {
             "sensorsName": "best",
             "image": "shopify:\/\/shop_images\/bannner1.jpg",
-            "mobile_image": "shopify:\/\/shop_images\/4b9fe6e86a77769c6b5af802a2b87853.jpg",
+            "mobile_image": "shopify:\/\/shop_images\/mobile-banner.jpg",
             "show_overlay": false,
             "overlay_opacity": 30,
             "text_color": "#ffffff",
