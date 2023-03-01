@@ -43,7 +43,7 @@
           "type": "image",
           "settings": {
             "sensorsName": "bestseller",
-            "image": "shopify:\/\/shop_images\/hyfol_banner_9eed8adc-46f0-45bb-b893-6c46a0803833.jpg",
+            "image": "shopify:\/\/shop_images\/bannner2.jpg",
             "mobile_image": "shopify:\/\/shop_images\/skamx.jpg",
             "show_overlay": false,
             "overlay_opacity": 30,
@@ -67,7 +67,7 @@
           "type": "image",
           "settings": {
             "sensorsName": "best",
-            "image": "shopify:\/\/shop_images\/banner_0a863e6a-69fe-4073-ae76-97dc39a732a2.jpg",
+            "image": "shopify:\/\/shop_images\/bannner1.jpg",
             "mobile_image": "shopify:\/\/shop_images\/4b9fe6e86a77769c6b5af802a2b87853.jpg",
             "show_overlay": false,
             "overlay_opacity": 30,
