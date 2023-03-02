@@ -523,15 +523,15 @@
             "height": 39
           }
         },
-        "1046df33-60a7-4272-944c-7aed30dd5ef0": {
+        "703cb61e-bb71-4d36-ae67-f8e45b7b1d0b": {
           "type": "link",
           "settings": {
-            "heading": "Tshirt",
-            "sensorsLinkName": "Tshirt",
-            "link": "shopify:\/\/collections\/short-sleeve-1",
+            "heading": "Cargoshorts",
+            "sensorsLinkName": "Cargoshorts",
+            "link": "shopify:\/\/collections\/cargo-shorts-1",
             "left": 0,
-            "top": 69,
-            "width": 30,
+            "top": 44,
+            "width": 32,
             "height": 25
           }
         },
@@ -545,6 +545,18 @@
             "top": 42,
             "width": 29,
             "height": 22
+          }
+        },
+        "1046df33-60a7-4272-944c-7aed30dd5ef0": {
+          "type": "link",
+          "settings": {
+            "heading": "Tshirt",
+            "sensorsLinkName": "Tshirt",
+            "link": "shopify:\/\/collections\/shirt",
+            "left": 0,
+            "top": 69,
+            "width": 30,
+            "height": 25
           }
         },
         "d3832b18-b464-4e71-a800-239d8c0bdf6e": {
@@ -582,30 +594,18 @@
             "width": 26,
             "height": 33
           }
-        },
-        "703cb61e-bb71-4d36-ae67-f8e45b7b1d0b": {
-          "type": "link",
-          "settings": {
-            "heading": "Cargoshorts",
-            "sensorsLinkName": "Cargoshorts",
-            "link": "shopify:\/\/collections\/cargo-shorts-1",
-            "left": 0,
-            "top": 44,
-            "width": 32,
-            "height": 25
-          }
         }
       },
       "block_order": [
         "a57fed2e-f643-449f-9676-b1e59bf7beab",
         "68d1d597-d68d-40b8-a69b-4650df6dd0e4",
         "eb0c793e-0e4f-4e5c-92bd-faf45cd233a6",
-        "1046df33-60a7-4272-944c-7aed30dd5ef0",
+        "703cb61e-bb71-4d36-ae67-f8e45b7b1d0b",
         "059a10b2-d700-4489-8071-0f91413acddb",
+        "1046df33-60a7-4272-944c-7aed30dd5ef0",
         "d3832b18-b464-4e71-a800-239d8c0bdf6e",
         "81098c5b-5074-43de-b712-fe69e9b9956b",
-        "109f4489-84a2-4283-ac28-ee83ad0d262c",
-        "703cb61e-bb71-4d36-ae67-f8e45b7b1d0b"
+        "109f4489-84a2-4283-ac28-ee83ad0d262c"
       ],
       "settings": {
         "linkImg_title": "SHOP BY CATEGORY",
