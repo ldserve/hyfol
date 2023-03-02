@@ -44,7 +44,7 @@
           "disabled": true,
           "settings": {
             "sensorsName": "bestseller",
-            "image": "shopify:\/\/shop_images\/bannner2.jpg",
+            "image": "shopify:\/\/shop_images\/banner1_ae4d8e4c-b176-430f-99eb-3795c2b57e2d.jpg",
             "mobile_image": "shopify:\/\/shop_images\/skamx.jpg",
             "show_overlay": false,
             "overlay_opacity": 30,
@@ -68,8 +68,8 @@
           "type": "image",
           "settings": {
             "sensorsName": "best",
-            "image": "shopify:\/\/shop_images\/bannner1.jpg",
-            "mobile_image": "shopify:\/\/shop_images\/mobile-banner.jpg",
+            "image": "shopify:\/\/shop_images\/banner2_025e2579-3921-4efb-9192-da54bbadd251.jpg",
+            "mobile_image": "shopify:\/\/shop_images\/mocile-banner.jpg",
             "show_overlay": false,
             "overlay_opacity": 30,
             "text_color": "#ffffff",
