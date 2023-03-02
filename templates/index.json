@@ -490,9 +490,9 @@
         "a57fed2e-f643-449f-9676-b1e59bf7beab": {
           "type": "link",
           "settings": {
-            "heading": "Hoodies",
-            "sensorsLinkName": "Hoodies",
-            "link": "https:\/\/www.hyfol.com\/collections\/hoodies-1",
+            "heading": "Poloshirts",
+            "sensorsLinkName": "Poloshirts",
+            "link": "shopify:\/\/collections\/polo-shirts",
             "left": 0,
             "top": 0,
             "width": 28,
@@ -514,57 +514,45 @@
         "eb0c793e-0e4f-4e5c-92bd-faf45cd233a6": {
           "type": "link",
           "settings": {
-            "heading": "Jackets",
-            "sensorsLinkName": "Jackets",
-            "link": "",
+            "heading": "Activewear",
+            "sensorsLinkName": "Activewear",
+            "link": "shopify:\/\/collections\/active-wear",
             "left": 70,
             "top": 0,
             "width": 31,
             "height": 39
           }
         },
-        "703cb61e-bb71-4d36-ae67-f8e45b7b1d0b": {
-          "type": "link",
-          "settings": {
-            "heading": "Accessories",
-            "sensorsLinkName": "Accessories",
-            "link": "https:\/\/www.hyfol.com\/collections\/accessories-12-13",
-            "left": 0,
-            "top": 44,
-            "width": 32,
-            "height": 25
-          }
-        },
-        "059a10b2-d700-4489-8071-0f91413acddb": {
-          "type": "link",
-          "settings": {
-            "heading": "Raglan",
-            "sensorsLinkName": "Raglan",
-            "link": "https:\/\/www.hyfol.com\/collections\/raglan-tees",
-            "left": 37,
-            "top": 42,
-            "width": 29,
-            "height": 22
-          }
-        },
         "d3832b18-b464-4e71-a800-239d8c0bdf6e": {
           "type": "link",
           "settings": {
-            "heading": "Cargopants",
-            "sensorsLinkName": "Cargopants",
-            "link": "https:\/\/www.hyfol.com\/collections\/cargo-pants",
+            "heading": "Cargoshorts",
+            "sensorsLinkName": "Cargoshorts",
+            "link": "shopify:\/\/collections\/cargo-shorts-1",
             "left": 72,
             "top": 45,
             "width": 57,
             "height": 21
           }
         },
+        "059a10b2-d700-4489-8071-0f91413acddb": {
+          "type": "link",
+          "settings": {
+            "heading": "Longsleeves",
+            "sensorsLinkName": "Longsleeves",
+            "link": "shopify:\/\/collections\/long-sleeve",
+            "left": 37,
+            "top": 42,
+            "width": 29,
+            "height": 22
+          }
+        },
         "1046df33-60a7-4272-944c-7aed30dd5ef0": {
           "type": "link",
           "settings": {
-            "heading": "Giftguide",
-            "sensorsLinkName": "Giftguide",
-            "link": "https:\/\/www.hyfol.com\/collections\/st-patricks-day",
+            "heading": "Tshirt",
+            "sensorsLinkName": "Tshirt",
+            "link": "shopify:\/\/collections\/short-sleeve-1",
             "left": 0,
             "top": 69,
             "width": 30,
@@ -586,13 +574,25 @@
         "109f4489-84a2-4283-ac28-ee83ad0d262c": {
           "type": "link",
           "settings": {
-            "heading": "Poloshirts",
-            "sensorsLinkName": "Poloshirts",
-            "link": "https:\/\/www.hyfol.com\/collections\/polo-shirts",
+            "heading": "Swimwear",
+            "sensorsLinkName": "Swimwear",
+            "link": "shopify:\/\/collections\/kids",
             "left": 71,
             "top": 67,
             "width": 26,
             "height": 33
+          }
+        },
+        "703cb61e-bb71-4d36-ae67-f8e45b7b1d0b": {
+          "type": "link",
+          "settings": {
+            "heading": "Accessories",
+            "sensorsLinkName": "Accessories",
+            "link": "https:\/\/www.hyfol.com\/collections\/accessories-12-13",
+            "left": 0,
+            "top": 44,
+            "width": 32,
+            "height": 25
           }
         }
       },
@@ -600,12 +600,12 @@
         "a57fed2e-f643-449f-9676-b1e59bf7beab",
         "68d1d597-d68d-40b8-a69b-4650df6dd0e4",
         "eb0c793e-0e4f-4e5c-92bd-faf45cd233a6",
-        "703cb61e-bb71-4d36-ae67-f8e45b7b1d0b",
-        "059a10b2-d700-4489-8071-0f91413acddb",
         "d3832b18-b464-4e71-a800-239d8c0bdf6e",
+        "059a10b2-d700-4489-8071-0f91413acddb",
         "1046df33-60a7-4272-944c-7aed30dd5ef0",
         "81098c5b-5074-43de-b712-fe69e9b9956b",
-        "109f4489-84a2-4283-ac28-ee83ad0d262c"
+        "109f4489-84a2-4283-ac28-ee83ad0d262c",
+        "703cb61e-bb71-4d36-ae67-f8e45b7b1d0b"
       ],
       "settings": {
         "linkImg_title": "SHOP BY CATEGORY",
@@ -614,7 +614,7 @@
         "sensorsName": "mobile分类导流区",
         "hidWeb": false,
         "line": false,
-        "image": "shopify:\/\/shop_images\/mobile2.jpg",
+        "image": "shopify:\/\/shop_images\/20230303-013937.jpg",
         "tpadding": 0,
         "rpadding": 0,
         "bpadding": 0,
