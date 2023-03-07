@@ -835,7 +835,7 @@
           "settings": {
             "heading": "WORKSHIRTS1",
             "sensorsLinkName": "WORKSHIRTS1",
-            "link": "https:\/\/www.hyfol.com\/collections\/shirt",
+            "link": "shopify:\/\/collections\/polo-shirts",
             "left": 0,
             "top": 0,
             "width": 24,
@@ -845,9 +845,9 @@
         "342f71ba-d412-42c7-a286-e1b97c3dc993": {
           "type": "link",
           "settings": {
-            "heading": "SWEATSHIRT1",
-            "sensorsLinkName": "SWEATSHIRT1",
-            "link": "https:\/\/www.hyfol.com\/collections\/sweatshirts-12-13",
+            "heading": "POLOSHIRTS",
+            "sensorsLinkName": "POLOSHIRTS",
+            "link": "shopify:\/\/collections\/polo-shirts",
             "left": 25,
             "top": 0,
             "width": 24,
