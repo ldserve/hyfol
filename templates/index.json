@@ -857,9 +857,9 @@
         "9ff77147-50cf-4ea6-a2e8-88372aa19d4a": {
           "type": "link",
           "settings": {
-            "heading": "OUTWEAR1",
-            "sensorsLinkName": "OUTWEAR1",
-            "link": "https:\/\/www.hyfol.com\/collections\/mens-outwear",
+            "heading": "PATRIOTS",
+            "sensorsLinkName": "PATRIOTS",
+            "link": "shopify:\/\/collections\/american-flag",
             "left": 50,
             "top": 0,
             "width": 25,
