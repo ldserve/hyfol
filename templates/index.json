@@ -39,30 +39,6 @@
             "link": "https:\/\/www.hyfol.com\/collections\/washings-birthday"
           }
         },
-        "046ee2d1-e8b7-41e0-a6c9-7cfc79e1429f": {
-          "type": "image",
-          "settings": {
-            "sensorsName": "best",
-            "image": "shopify:\/\/shop_images\/banner3-7pc.jpg",
-            "mobile_image": "shopify:\/\/shop_images\/banner3-7.jpg",
-            "show_overlay": false,
-            "overlay_opacity": 30,
-            "text_color": "#ffffff",
-            "title": "",
-            "heading_text_font": "helvetica_n4",
-            "heading_text_font_size": 20,
-            "heading_text_color": "#ffffff",
-            "content": "",
-            "content_text_font": "helvetica_n4",
-            "content_text_font_size": 12,
-            "content_text_color": "#ffffff",
-            "content_position": "middle_center",
-            "button_background": "#ffffff",
-            "button_text_color": "#000000",
-            "button_text": "",
-            "link": "https:\/\/www.hyfol.com\/collections\/polo-shirts"
-          }
-        },
         "1664249260b7761d46-0": {
           "type": "image",
           "settings": {
@@ -85,6 +61,30 @@
             "button_text_color": "#000000",
             "button_text": "",
             "link": "shopify:\/\/collections\/best-seller"
+          }
+        },
+        "046ee2d1-e8b7-41e0-a6c9-7cfc79e1429f": {
+          "type": "image",
+          "settings": {
+            "sensorsName": "best",
+            "image": "shopify:\/\/shop_images\/banner2_025e2579-3921-4efb-9192-da54bbadd251.jpg",
+            "mobile_image": "shopify:\/\/shop_images\/mocile-banner.jpg",
+            "show_overlay": false,
+            "overlay_opacity": 30,
+            "text_color": "#ffffff",
+            "title": "",
+            "heading_text_font": "helvetica_n4",
+            "heading_text_font_size": 20,
+            "heading_text_color": "#ffffff",
+            "content": "",
+            "content_text_font": "helvetica_n4",
+            "content_text_font_size": 12,
+            "content_text_color": "#ffffff",
+            "content_position": "middle_center",
+            "button_background": "#ffffff",
+            "button_text_color": "#000000",
+            "button_text": "",
+            "link": "https:\/\/www.hyfol.com\/collections\/st-patricks-day"
           }
         },
         "db88bd3b-2663-480e-a113-30f5edd187d0": {
@@ -115,8 +115,8 @@
       },
       "block_order": [
         "1664249260b7761d46-1",
-        "046ee2d1-e8b7-41e0-a6c9-7cfc79e1429f",
         "1664249260b7761d46-0",
+        "046ee2d1-e8b7-41e0-a6c9-7cfc79e1429f",
         "db88bd3b-2663-480e-a113-30f5edd187d0"
       ],
       "settings": {
@@ -857,9 +857,9 @@
         "9ff77147-50cf-4ea6-a2e8-88372aa19d4a": {
           "type": "link",
           "settings": {
-            "heading": "OUTWEAR1",
-            "sensorsLinkName": "OUTWEAR1",
-            "link": "https:\/\/www.hyfol.com\/collections\/mens-outwear",
+            "heading": "PATRIOTS",
+            "sensorsLinkName": "PATRIOTS",
+            "link": "shopify:\/\/collections\/american-flag",
             "left": 50,
             "top": 0,
             "width": 25,
@@ -869,9 +869,9 @@
         "6defe89d-34bf-47d9-a1f2-91004d693ed8": {
           "type": "link",
           "settings": {
-            "heading": "PLAID1",
-            "sensorsLinkName": "PLAID1",
-            "link": "https:\/\/www.hyfol.com\/collections\/plaid",
+            "heading": "BOTTOMS",
+            "sensorsLinkName": "BOTTOMS",
+            "link": "https:\/\/www.hyfol.com\/collections\/bottoms-12-13",
             "left": 76,
             "top": 0,
             "width": 40,
@@ -905,9 +905,9 @@
         "0736ae2f-d8f9-4699-9348-1065c0a82879": {
           "type": "link",
           "settings": {
-            "heading": "Workshirts1",
-            "sensorsLinkName": "Workshirts1",
-            "link": "https:\/\/www.hyfol.com\/collections\/shirt",
+            "heading": "HAWAIIAN",
+            "sensorsLinkName": "HAWAIIAN",
+            "link": "shopify:\/\/collections\/hawaiian-style",
             "left": 0,
             "top": 0,
             "width": 49,
