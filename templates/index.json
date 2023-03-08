@@ -833,9 +833,9 @@
         "ff6f97b8-1adb-4a65-93e8-533754b197fc": {
           "type": "link",
           "settings": {
-            "heading": "WORKSHIRTS1",
-            "sensorsLinkName": "WORKSHIRTS1",
-            "link": "https:\/\/www.hyfol.com\/collections\/shirt",
+            "heading": "HAWAIIAN",
+            "sensorsLinkName": "HAWAIIAN",
+            "link": "shopify:\/\/collections\/hawaiian-style",
             "left": 0,
             "top": 0,
             "width": 24,
@@ -845,9 +845,9 @@
         "342f71ba-d412-42c7-a286-e1b97c3dc993": {
           "type": "link",
           "settings": {
-            "heading": "SWEATSHIRT1",
-            "sensorsLinkName": "SWEATSHIRT1",
-            "link": "https:\/\/www.hyfol.com\/collections\/sweatshirts-12-13",
+            "heading": "POLOSHIRTS",
+            "sensorsLinkName": "POLOSHIRTS",
+            "link": "shopify:\/\/collections\/polo-shirts",
             "left": 25,
             "top": 0,
             "width": 24,
@@ -857,9 +857,9 @@
         "9ff77147-50cf-4ea6-a2e8-88372aa19d4a": {
           "type": "link",
           "settings": {
-            "heading": "OUTWEAR1",
-            "sensorsLinkName": "OUTWEAR1",
-            "link": "https:\/\/www.hyfol.com\/collections\/mens-outwear",
+            "heading": "PATRIOTS",
+            "sensorsLinkName": "PATRIOTS",
+            "link": "shopify:\/\/collections\/american-flag",
             "left": 50,
             "top": 0,
             "width": 25,
@@ -869,9 +869,9 @@
         "6defe89d-34bf-47d9-a1f2-91004d693ed8": {
           "type": "link",
           "settings": {
-            "heading": "PLAID1",
-            "sensorsLinkName": "PLAID1",
-            "link": "https:\/\/www.hyfol.com\/collections\/plaid",
+            "heading": "BOTTOMS",
+            "sensorsLinkName": "BOTTOMS",
+            "link": "https:\/\/www.hyfol.com\/collections\/bottoms-12-13",
             "left": 76,
             "top": 0,
             "width": 40,
@@ -905,9 +905,9 @@
         "0736ae2f-d8f9-4699-9348-1065c0a82879": {
           "type": "link",
           "settings": {
-            "heading": "Workshirts1",
-            "sensorsLinkName": "Workshirts1",
-            "link": "https:\/\/www.hyfol.com\/collections\/shirt",
+            "heading": "HAWAIIAN",
+            "sensorsLinkName": "HAWAIIAN",
+            "link": "shopify:\/\/collections\/hawaiian-style",
             "left": 0,
             "top": 0,
             "width": 49,
@@ -917,9 +917,9 @@
         "17a0b0e4-b0fd-421f-ae02-f40770d11416": {
           "type": "link",
           "settings": {
-            "heading": "Sweaters1",
-            "sensorsLinkName": "Sweaters1",
-            "link": "https:\/\/www.hyfol.com\/collections\/sweaters",
+            "heading": "POLOSHIRTS",
+            "sensorsLinkName": "POLOSHIRTS",
+            "link": "shopify:\/\/collections\/polo-shirts",
             "left": 51,
             "top": 0,
             "width": 53,
@@ -929,9 +929,9 @@
         "1a56e24f-fd33-4441-a6c2-3cf03868b44a": {
           "type": "link",
           "settings": {
-            "heading": "Outwear1",
-            "sensorsLinkName": "Outwear1",
-            "link": "https:\/\/www.hyfol.com\/collections\/mens-outwear",
+            "heading": "PATRIOTS",
+            "sensorsLinkName": "PATRIOTS",
+            "link": "shopify:\/\/collections\/american-flag",
             "left": 0,
             "top": 50,
             "width": 49,
@@ -941,8 +941,8 @@
         "dbe8a9a1-2bdd-4552-82ae-15b0ebb1e9cf": {
           "type": "link",
           "settings": {
-            "heading": "Plaid1",
-            "sensorsLinkName": "Plaid1",
+            "heading": "BOTTOMS",
+            "sensorsLinkName": "BOTTOMS",
             "link": "https:\/\/www.hyfol.com\/collections\/plaid",
             "left": 51,
             "top": 50,
