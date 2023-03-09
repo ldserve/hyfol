@@ -19669,35 +19669,6 @@
         }
     })();
 
-   var flash_sale = function(){
-       function getFormatDate() {
-           var date = new Date()
-           var hours = date.getHours() % 2
-           hours == 1 && (hours = 0) || hours == 0 && (hours = 1);
-           hours=hours.toString().padStart(2, '0')
-           var minutes = (59 - date.getMinutes()).toString().padStart(2, '0')
-           var seconds = (59 - date.getSeconds()).toString().padStart(2, '0')
-
-           if (theme.pageType == "collection" ||theme.pageType == "index") {
-               return "<em>".concat(hours, "</em>:<em>", minutes, "</em>:<em>", seconds, "</em>");
-           } else {
-               return "".concat(hours, "h:", minutes, "m:", seconds, "s");
-           }
-       }
-  
-   var saleContainers = document.querySelectorAll('[data-type="flash-sale"]')
-    saleContainers.forEach(i=>{
-        var count = i.querySelector('.sale_time_count')
-      if(!count)return;
-        var mun = i.querySelector('.flash-sale_num')
-        var countNum=(new Date().getMilliseconds()/100).toFixed(0)
-        if(!count)return;
-        mun && setInterval(()=>{countNum--;countNum<0&&(countNum=9); mun.innerHTML="<em>"+countNum +"</em>"},100)
-        setInterval(()=>count.innerHTML = getFormatDate(),1000)
-    })
-
-   
-   }();
     window.Message = function () {
         const appendTo = document.body;
         const messageTypes = ["success", "info", "warning", "error"];

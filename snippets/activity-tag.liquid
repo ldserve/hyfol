@@ -146,42 +146,34 @@
 
         {%- comment -%}--------------TAG 背景图-----------------{%- endcomment -%}
         <a class="custom-activity-tag {{class_name}}" style="position: relative;" href="{{CustomPromotionUrItemUrl}}">
-          {%- if inspect_arr contains custom_tag -%}
-            <img
-              class="activity-background-img"
-              src="https://cdn.shopifycdn.net/s/files/1/0595/0691/7535/files/4_25_55ecdfdb-0b0f-4868-b58b-613cc5dffdb4.jpg?v=1671268817"
-              alt="{{product.title}}"
-            >
-          {%- else -%}
-            {%- if custom_tag == 'Choose 3 for $59' -%}
-              <img
-                class="activity-background-img"
-                src="https://cdn.shopify.com/s/files/1/0595/0691/7535/files/3for55_a284832c-f963-4234-9d78-91d83e836558.jpg?v=1678154303"
-                alt="{{product.title}}"
-              >
-            {%- elsif custom_tag == 'Buy 1 get 2nd 50% OFF' -%}
-              <img
-                class="activity-background-img"
-                src="https://cdn.shopifycdn.net/s/files/1/0595/0691/7535/files/2nd50_d7b07d41-9074-4900-bcac-7adb22dabd62.jpg?v=1671270758"
-                alt="{{product.title}}"
-              >
-            {%- elsif custom_tag == 'Choose 4 for $49' -%}
-              <img
-                class="activity-background-img"
-                src="https://cdn.shopify.com/s/files/1/0595/0691/7535/files/4_for_49.jpg?v=1671259391"
-                alt="{{product.title}}"
-              >
-            {%- elsif custom_tag == 'Choose 3 for $75' -%}
-              <img
-                class="activity-background-img"
-                src="https://cdn.shopify.com/s/files/1/0595/0691/7535/files/3for75.jpg?v=1667801847"
-                alt="{{product.title}}"
-              >
+          {%- assign product_tags_item = settings.activity_product_tag | split: ',' -%}
+        {%- assign show_product_tag = false -%}
+          {%- assign current_product_turl = '' -%}
+          {%- assign default_url = '' -%}
+
+        {%- for tag_item in product_tags_item-%}
+          {%- assign current_items = tag_item | split: '=' -%}
+          {%- if current_items[0] =='default' -%}
+          {%- assign default_url = current_items[1] -%}
+        {%- endif -%}
+            {%- if custom_tag contains current_items -%}
+            {%- assign show_product_tag = true -%}
+            {%- assign current_product_turl = current_items[1]  -%}
+            {% break %}
+            {%- endif -%}
+          {%- endfor -%}
+        
+        {%- if show_product_tag -%}
+        <img
+        class="activity-background-img"
+        src="{{current_product_turl}}"
+        alt="{{custom_tag}}"
+      >
             {%- else -%}
               <img
                 class="activity-background-img"
-                src="https://cdn.shopify.com/s/files/1/0595/0691/7535/files/1_499b918d-2589-4803-bee0-6c020c20b326.jpg?v=1663814021"
-                alt="{{product.title}}"
+                src="{{default_url}}"
+                alt="{{custom_tag}}"
               >
               <div class="activity-text">{{ custom_tag }}</div>
             {%- endif -%}
