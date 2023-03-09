@@ -162,8 +162,17 @@
             "show_hot": true
           }
         },
+        "1cf9a1a7-92fe-4fdc-883f-b8e21579f244": {
+          "type": "link",
+          "settings": {
+            "title": "GOLF POLO",
+            "link": "https:\/\/www.hyfol.com\/collections\/polo-shirts",
+            "show_hot": true
+          }
+        },
         "template--15801670959319__4abbc570-59ea-407d-9bc8-8da13344d02f-1667555179fa2589e0-4": {
           "type": "link",
+          "disabled": true,
           "settings": {
             "title": "SHIRTS",
             "link": "shopify:\/\/collections\/shirt-1",
@@ -193,14 +202,6 @@
             "link": "https:\/\/www.hyfol.com\/collections\/cargo-pants",
             "show_hot": true
           }
-        },
-        "1cf9a1a7-92fe-4fdc-883f-b8e21579f244": {
-          "type": "link",
-          "settings": {
-            "title": "POLO SHIRTS",
-            "link": "https:\/\/www.hyfol.com\/collections\/polo-shirts",
-            "show_hot": true
-          }
         }
       },
       "block_order": [
@@ -208,11 +209,11 @@
         "template--15801670959319__4abbc570-59ea-407d-9bc8-8da13344d02f-1667555179fa2589e0-1",
         "template--15801670959319__4abbc570-59ea-407d-9bc8-8da13344d02f-1667555179fa2589e0-2",
         "template--15801670959319__4abbc570-59ea-407d-9bc8-8da13344d02f-1667555179fa2589e0-3",
+        "1cf9a1a7-92fe-4fdc-883f-b8e21579f244",
         "template--15801670959319__4abbc570-59ea-407d-9bc8-8da13344d02f-1667555179fa2589e0-4",
         "aff387be-367a-4214-bd63-f4f19057e000",
         "template--15801670959319__4abbc570-59ea-407d-9bc8-8da13344d02f-1667555179fa2589e0-5",
-        "bf394096-878f-4010-baea-681e6da7133b",
-        "1cf9a1a7-92fe-4fdc-883f-b8e21579f244"
+        "bf394096-878f-4010-baea-681e6da7133b"
       ],
       "settings": {
         "title": "",
