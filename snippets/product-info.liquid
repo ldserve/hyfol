@@ -135,22 +135,37 @@
 									<strong>FREE</strong>
 								</div>
 							</div>
-						{% comment %} 	<div class="slider-item customer-d-flex  ">
-								<div class="slider-item-top">
-									Purchase <strong>60.1-$68.9</strong>
-								</div>
-								<div class="slider-item-bottom">
-									Costs <strong>$7.9</strong>
-								</div>
-							</div> {% endcomment %}
+							{%- if block.settings.delivery_info1 != blank -%}
 							<div class="slider-item customer-d-flex ">
 								<div class="slider-item-top">
-									Purchase <strong>$0-$58.9</strong>
+									Purchase <strong>{{block.settings.delivery_info1}}</strong>
 								</div>
 								<div class="slider-item-bottom">
-									Costs <strong>$9.9</strong>
+									Costs <strong>{{block.settings.delivery_info_monery1}}</strong>
 								</div>
 							</div>
+						{%- endif -%}
+
+						{%- if block.settings.delivery_info2 != blank -%}
+						<div class="slider-item customer-d-flex ">
+							<div class="slider-item-top">
+								Purchase <strong>{{block.settings.delivery_info2}}</strong>
+							</div>
+							<div class="slider-item-bottom">
+								Costs <strong>{{block.settings.delivery_info_monery2}}</strong>
+							</div>
+						</div>
+					{%- endif -%}
+					{%- if block.settings.delivery_info3 != blank -%}
+					<div class="slider-item customer-d-flex ">
+						<div class="slider-item-top">
+							Purchase <strong>{{block.settings.delivery_info3}}</strong>
+						</div>
+						<div class="slider-item-bottom">
+							Costs <strong>{{block.settings.delivery_info_monery3}}</strong>
+						</div>
+					</div>
+				{%- endif -%}
 						</div>
 					</div>
 					<div class="slider-box">
@@ -186,9 +201,7 @@
 			<div id="block-{{ section.id }}-{{ block.id }}" class="card__collapsible">
 				<div class="card__collapsible-content">
 					<div class="rte text--pull">
-						<p>You have a max of 30 days to make returns. <br>
-							You must send back your items to an informed address by customer service.<br>
-							No returns made after 30 days from the purchase date will be accepted.</p>
+						{{block.settings.policy_info}}
 					</div>
 				</div>
 			</div>
