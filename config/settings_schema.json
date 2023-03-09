@@ -27,7 +27,8 @@
         "id": "product_autoplay",
         "label": "详情页是否启用自动轮播",
         "default": true
-      },{
+      },
+      {
         "type": "checkbox",
         "id": "collocation_show",
         "label": "是否启用搭配购",
@@ -38,10 +39,11 @@
         "id": "autoplay_time",
         "label": "请输入轮播间隔时间",
         "default": "5"
-      },{
-        "type":"collection",
-        "id":"minicart_also",
-        "label":"底部推荐产品集合"
+      },
+      {
+        "type": "collection",
+        "id": "minicart_also",
+        "label": "底部推荐产品集合"
       }
     ]
   },
@@ -59,23 +61,26 @@
         "id": "full_isOpenview",
         "label": "是否启用全场折扣活动",
         "default": true
-      },{
+      },
+      {
         "type": "richtext",
         "id": "full_minus",
         "label": "按金额阶梯满减",
         "info": "活动信息用逗号隔开 格式如：ORDER 59 minus 5,ORDER 79 minus 10 第二位是订单金额，第四位是折扣金额",
-        "default":"<p>ORDER 69 minus 5 CODE:HF5,ORDER 79 minus 10 CODE:HF10,ORDER 149 minus 20 CODE:HF20,ORDER 299 minus 50 CODE:HF50</p>"
-      },{
-          "type": "checkbox",
-          "id": "full_minusSwitch",
-          "label": "是否启用满减活动",
-          "default": true
-      },{
+        "default": "<p>ORDER 69 minus 5 CODE:HF5,ORDER 79 minus 10 CODE:HF10,ORDER 149 minus 20 CODE:HF20,ORDER 299 minus 50 CODE:HF50<\/p>"
+      },
+      {
+        "type": "checkbox",
+        "id": "full_minusSwitch",
+        "label": "是否启用满减活动",
+        "default": true
+      },
+      {
         "type": "richtext",
         "id": "CustomPromotionUrl",
         "label": "自定义活动跳转链接配置",
-        "info": "活动名称和链接用'='隔开，每条活动用','隔开 格式如：Choose 3 for $55=https://www.hyfol.com/collections/3-for-55",
-        "default":"<p>Choose 3 for $55=https://www.hyfol.com/collections/3-for-55,Choose 3 for $49.9=https://www.hyfol.com/collections/spring-sale</p>"
+        "info": "活动名称和链接用'='隔开，每条活动用','隔开 格式如：Choose 3 for $55=https:\/\/www.hyfol.com\/collections\/3-for-55",
+        "default": "<p>Choose 3 for $55=https:\/\/www.hyfol.com\/collections\/3-for-55,Choose 3 for $49.9=https:\/\/www.hyfol.com\/collections\/spring-sale<\/p>"
       }
     ]
   },
@@ -166,7 +171,8 @@
         "label": "阶梯信息"
       }
     ]
-  },{
+  },
+  {
     "name": "活动标签",
     "settings": [
       {
@@ -184,73 +190,78 @@
         "id": "gradient_color_start",
         "label": "开始颜色",
         "info": "渐变颜色",
-        "default":"#01cef0"
+        "default": "#01cef0"
       },
       {
         "type": "color",
         "id": "gradient_color_end",
         "label": "结束颜色",
         "info": "渐变颜色",
-        "default":"#cced8e"
+        "default": "#cced8e"
       },
       {
-        "type":"select",
-        "label":"标签形状",
-        "id":"tag_layout",
-        "options":[
+        "type": "select",
+        "label": "标签形状",
+        "id": "tag_layout",
+        "options": [
           {
-            "label":"标签",
-            "value":"TAG"
-          },{
-            "label":"书签",
-            "value":"bookmark"
-          },{
-            "label":"图片 TAG",
-            "value":"label"
+            "label": "标签",
+            "value": "TAG"
+          },
+          {
+            "label": "书签",
+            "value": "bookmark"
+          },
+          {
+            "label": "图片 TAG",
+            "value": "label"
           }
         ],
-        "default":"TAG"
+        "default": "TAG"
       },
       {
         "type": "header",
         "content": "指定标签"
-      },{
-        "type":"textarea",
-        "id":"custome_tag_ui",
-        "label":"指定标签颜色配置",
-        "default":"Choose 3 for $59:#ff0000&#559ffb,Buy 1 get 2nd 50% OFF:#ebc918&#ee362a",
-        "info":"颜色之间用&隔开，tag之间用英文','隔开，格式：Choose 3 for $59:#01cef0&#cced8e"
-      },{
-        "type":"textarea",
-        "id":"activity_img_tag",
-        "label":"活动 TAG 图片",
-        "default":"Buy 4 Get EXTRA 20% Off=https://cdn.shopify.com/s/files/1/0595/0691/7535/files/6.png?v=1663667594,Choose 3 for $59=https://cdn.shopify.com/s/files/1/0595/0691/7535/files/5.png?v=1663667594,Buy 1 get 2nd 50% OFF=https://cdn.shopify.com/s/files/1/0595/0691/7535/files/4.png?v=1663667594",
-        "info":"图片为透明背景图，第一个tag名称、区分大小写、注意空格,tag名称'='图片url，tag之间以','隔开"
-      },{
-        "type":"textarea",
-        "id":"activity_product_tag",
-        "label":"详情页活动标签",
-        "default":"default=https://cdn.shopify.com/s/files/1/0595/0691/7535/files/1_499b918d-2589-4803-bee0-6c020c20b326.jpg?v=1663814021,Buy 4 Get EXTRA 20% Off=https://cdn.shopifycdn.net/s/files/1/0595/0691/7535/files/4_25_55ecdfdb-0b0f-4868-b58b-613cc5dffdb4.jpg?v=1671268817,Choose 3 for $59=https://cdn.shopify.com/s/files/1/0595/0691/7535/files/3for55_a284832c-f963-4234-9d78-91d83e836558.jpg?v=1678154303,Buy 1 get 2nd 50% OFF=https://cdn.shopifycdn.net/s/files/1/0595/0691/7535/files/2nd50_d7b07d41-9074-4900-bcac-7adb22dabd62.jpg?v=1671270758,Choose 4 for $49=https://cdn.shopify.com/s/files/1/0595/0691/7535/files/4_for_49.jpg?v=1671259391,Choose 3 for $75=https://cdn.shopify.com/s/files/1/0595/0691/7535/files/3for75.jpg?v=1667801847",
-        "info":"规则同上，注意中英文符号，default为默认图片"
+      },
+      {
+        "type": "textarea",
+        "id": "custome_tag_ui",
+        "label": "指定标签颜色配置",
+        "default": "Choose 3 for $59:#ff0000&#559ffb,Buy 1 get 2nd 50% OFF:#ebc918&#ee362a",
+        "info": "颜色之间用&隔开，tag之间用英文','隔开，格式：Choose 3 for $59:#01cef0&#cced8e"
+      },
+      {
+        "type": "textarea",
+        "id": "activity_img_tag",
+        "label": "活动 TAG 图片",
+        "default": "Buy 4 Get EXTRA 20% Off=https:\/\/cdn.shopify.com\/s\/files\/1\/0595\/0691\/7535\/files\/6.png?v=1663667594,Choose 3 for $59=https:\/\/cdn.shopify.com\/s\/files\/1\/0595\/0691\/7535\/files\/5.png?v=1663667594,Buy 1 get 2nd 50% OFF=https:\/\/cdn.shopify.com\/s\/files\/1\/0595\/0691\/7535\/files\/4.png?v=1663667594",
+        "info": "图片为透明背景图，第一个tag名称、区分大小写、注意空格,tag名称'='图片url，tag之间以','隔开"
+      },
+      {
+        "type": "textarea",
+        "id": "activity_product_tag",
+        "label": "详情页活动标签",
+        "default": "default=https:\/\/cdn.shopify.com\/s\/files\/1\/0595\/0691\/7535\/files\/1_499b918d-2589-4803-bee0-6c020c20b326.jpg?v=1663814021,Buy 4 Get EXTRA 20% Off=https:\/\/cdn.shopifycdn.net\/s\/files\/1\/0595\/0691\/7535\/files\/4_25_55ecdfdb-0b0f-4868-b58b-613cc5dffdb4.jpg?v=1671268817,Choose 3 for $59=https:\/\/cdn.shopify.com\/s\/files\/1\/0595\/0691\/7535\/files\/3for55_a284832c-f963-4234-9d78-91d83e836558.jpg?v=1678154303,Buy 1 get 2nd 50% OFF=https:\/\/cdn.shopifycdn.net\/s\/files\/1\/0595\/0691\/7535\/files\/2nd50_d7b07d41-9074-4900-bcac-7adb22dabd62.jpg?v=1671270758,Choose 4 for $49=https:\/\/cdn.shopify.com\/s\/files\/1\/0595\/0691\/7535\/files\/4_for_49.jpg?v=1671259391,Choose 3 for $75=https:\/\/cdn.shopify.com\/s\/files\/1\/0595\/0691\/7535\/files\/3for75.jpg?v=1667801847",
+        "info": "规则同上，注意中英文符号，default为默认图片"
       }
     ]
   },
   {
-"name":"EDITOR'S PICKS",
-"settings":[
-  {
-    "type": "checkbox",
-    "id": "show_products_eid",
-    "label": "全部替换成当前SPU",
-    "default": true
-  },
-  {
-    "type": "textarea",
-    "id": "editor_items",
-    "label": "产品SPU",
-    "default": "SP2209158SG5,SP220816CE8Y,SP2207082ECH"
-}
-]
+    "name": "EDITOR'S PICKS",
+    "settings": [
+      {
+        "type": "checkbox",
+        "id": "show_products_eid",
+        "label": "全部替换成当前SPU",
+        "default": true
+      },
+      {
+        "type": "textarea",
+        "id": "editor_items",
+        "label": "产品SPU",
+        "default": "SP2209158SG5,SP220816CE8Y,SP2207082ECH"
+      }
+    ]
   },
   {
     "name": "巴西是否必填门牌号",
