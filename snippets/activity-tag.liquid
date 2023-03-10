@@ -63,8 +63,7 @@
 
     {%- comment -%}----详情页活动链接-------{%- endcomment -%}
     {%- if show_img_tag -%}
-      {%- assign inspect_tag = 'Buy 4 Get 20% Off,Buy 4 Get EXTRA 20% Off,Buy 4+ 20% Off' -%}
-      {%- assign inspect_arr = inspect_tag | split: ',' -%}
+     
 
       {%- assign CustomPromotionUrlList = settings.CustomPromotionUrl | strip_html | split: ',' -%}
       {%- for CustomPromotionUrItem in CustomPromotionUrlList -%}
@@ -154,7 +153,7 @@
           {%- assign current_items = tag_item | split: '=' -%}
           {%- if current_items[0] =='default' -%}
           {%- assign default_url = current_items[1] -%}
-        {%- endif -%}
+          {%- endif -%}
             {%- if custom_tag contains current_items -%}
             {%- assign show_product_tag = true -%}
             {%- assign current_product_turl = current_items[1]  -%}
@@ -175,7 +174,7 @@
                 alt="{{custom_tag}}"
               >
               <div class="activity-text">{{ custom_tag }}</div>
-            {%- endif -%}
+          
           {%- endif -%}
         </a>
       {%- endif -%}
