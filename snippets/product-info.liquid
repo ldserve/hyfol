@@ -213,9 +213,7 @@
 			<div class="card__section {% if block.settings.display_mode == 'view_more' %}expandable-content{% endif %}" {% if
 				block.settings.display_mode=='view_more' %}aria-expanded="false" {% endif %}>
 				<div class="rte text--pull">
-					<p>You have a max of 30 days to make returns. <br>
-						You must send back your items to an informed address by customer service.<br>
-						No returns made after 30 days from the purchase date will be accepted.</p>
+					{{block.settings.policy_info}}
 				</div>
 		
 				{%- if block.settings.display_mode == 'view_more' -%}

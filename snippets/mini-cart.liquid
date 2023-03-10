@@ -98,7 +98,7 @@
               {%- for str in arrstr -%}
                 {%- assign itemstr = str | split: ' ' -%}
                 {% assign order_price = itemstr[1] | times: 100 %}
-                {% assign minus_monry = itemstr[3] | times: 100 %}
+                {% assign minus_monry = itemstr[3]  %}
                 {% assign code_text = itemstr[4] | strip %}
                 {% if cart.total_price < order_price %}
                   {% break %}
@@ -114,9 +114,9 @@
                   <span class="wh-original-price  mini-car-font storn">
                     {{- cart.total_price | minus: order_price | abs | round | money_without_trailing_zeros -}}
                   </span>
-                  more &
+                  more 
                   <span class="text-prominent"
-                    >get {{ minus_monry | money_without_trailing_zeros }} off！ {{ code_text -}}
+                    >get {{ minus_monry  }} off！ {{ code_text -}}
                   </span></span
                 >
               {% endif %}

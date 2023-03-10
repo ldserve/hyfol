@@ -66,8 +66,8 @@
         "type": "richtext",
         "id": "full_minus",
         "label": "按金额阶梯满减",
-        "info": "活动信息用逗号隔开 格式如：ORDER 59 minus 5,ORDER 79 minus 10 第二位是订单金额，第四位是折扣金额",
-        "default": "<p>ORDER 69 minus 5 CODE:HF5,ORDER 79 minus 10 CODE:HF10,ORDER 149 minus 20 CODE:HF20,ORDER 299 minus 50 CODE:HF50<\/p>"
+        "info": "活动信息用逗号隔开 格式如：ORDER 59 minus $5,ORDER 79 minus $10 第二位是订单金额，第四位是折扣金额",
+        "default": "<p>ORDER 69 minus $5 CODE:HF5,ORDER 79 minus $10 CODE:HF10,ORDER 149 minus $20 CODE:HF20,ORDER 299 minus $50 CODE:HF50<\/p>"
       },
       {
         "type": "checkbox",
