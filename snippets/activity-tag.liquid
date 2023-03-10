@@ -154,7 +154,7 @@
           {%- if current_items[0] =='default' -%}
           {%- assign default_url = current_items[1] -%}
           {%- endif -%}
-            {%- if custom_tag contains current_items -%}
+            {%- if custom_tag contains current_items[0] -%}
             {%- assign show_product_tag = true -%}
             {%- assign current_product_turl = current_items[1]  -%}
             {% break %}
@@ -162,20 +162,17 @@
           {%- endfor -%}
         
         {%- if show_product_tag -%}
-        <img
-        class="activity-background-img"
-        src="{{current_product_turl}}"
-        alt="{{custom_tag}}"
-      >
-            {%- else -%}
-              <img
-                class="activity-background-img"
-                src="{{default_url}}"
-                alt="{{custom_tag}}"
-              >
-              <div class="activity-text">{{ custom_tag }}</div>
-          
-          {%- endif -%}
+          <img
+          class="activity-background-img"
+          src="{{current_product_turl}}"
+          alt="{{custom_tag}}" >
+        {%- else -%}
+          <img
+            class="activity-background-img"
+            src="{{default_url}}"
+            alt="{{custom_tag}}" >
+          <div class="activity-text">{{ custom_tag }}</div>
+        {%- endif -%}
         </a>
       {%- endif -%}
 
