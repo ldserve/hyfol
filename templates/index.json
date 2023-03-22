@@ -111,13 +111,38 @@
             "button_text": "",
             "link": "https:\/\/www.hyfol.com\/collections\/st-patricks-day"
           }
+        },
+        "d37df8b4-1383-4e82-8786-c91baa7c7039": {
+          "type": "image",
+          "settings": {
+            "sensorsName": "",
+            "image": "shopify:\/\/shop_images\/hyfol_fee58686-19f7-4a56-9130-cd68f48586e8.jpg",
+            "mobile_image": "shopify:\/\/shop_images\/hyfol_037d0430-e1df-4049-981a-eb3e75c50e66.jpg",
+            "show_overlay": false,
+            "overlay_opacity": 30,
+            "text_color": "#ffffff",
+            "title": "Slide title",
+            "heading_text_font": "helvetica_n4",
+            "heading_text_font_size": 20,
+            "heading_text_color": "#ffffff",
+            "content": "Tell your story",
+            "content_text_font": "helvetica_n4",
+            "content_text_font_size": 12,
+            "content_text_color": "#ffffff",
+            "content_position": "middle_center",
+            "button_background": "#ffffff",
+            "button_text_color": "#000000",
+            "button_text": "Button",
+            "link": ""
+          }
         }
       },
       "block_order": [
         "1664249260b7761d46-0",
         "1664249260b7761d46-1",
         "db88bd3b-2663-480e-a113-30f5edd187d0",
-        "046ee2d1-e8b7-41e0-a6c9-7cfc79e1429f"
+        "046ee2d1-e8b7-41e0-a6c9-7cfc79e1429f",
+        "d37df8b4-1383-4e82-8786-c91baa7c7039"
       ],
       "settings": {
         "edge_to_edge": true,
