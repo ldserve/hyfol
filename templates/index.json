@@ -222,30 +222,6 @@
     "1650101273f11a55ef": {
       "type": "slideshow",
       "blocks": {
-        "fb844d01-0475-4130-aeb7-a118c0a1b427": {
-          "type": "image",
-          "settings": {
-            "sensorsName": "hallwmas",
-            "image": "shopify:\/\/shop_images\/hyfol_fee58686-19f7-4a56-9130-cd68f48586e8.jpg",
-            "mobile_image": "shopify:\/\/shop_images\/hyfol_037d0430-e1df-4049-981a-eb3e75c50e66.jpg",
-            "show_overlay": false,
-            "overlay_opacity": 30,
-            "text_color": "#ffffff",
-            "title": "",
-            "heading_text_font": "helvetica_n4",
-            "heading_text_font_size": 20,
-            "heading_text_color": "#ffffff",
-            "content": "",
-            "content_text_font": "helvetica_n4",
-            "content_text_font_size": 12,
-            "content_text_color": "#ffffff",
-            "content_position": "middle_center",
-            "button_background": "#ffffff",
-            "button_text_color": "#000000",
-            "button_text": "",
-            "link": "https:\/\/www.hyfol.com\/collections\/active-wear"
-          }
-        },
         "79cd2bfc-0629-4c7d-b333-56a486e24cfb": {
           "type": "image",
           "settings": {
@@ -296,7 +272,6 @@
         }
       },
       "block_order": [
-        "fb844d01-0475-4130-aeb7-a118c0a1b427",
         "79cd2bfc-0629-4c7d-b333-56a486e24cfb",
         "1650101273ef0886ca-1"
       ],
