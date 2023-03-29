@@ -4338,7 +4338,7 @@
                 try {
                     _this4.productOptionsWithValues.forEach(i=>{
                         var optionName =i.name.toLowerCase()
-                        if(optionName=='size'||optionName=="尺码"){
+                        if(optionName=='size'||optionName=="尺码"||optionName=="us size"){
                            var sizeBlock = Array.from(formElement.querySelectorAll('.block-swatch__radio[data-option-position="'.concat(i['position'],'"][checked]')))
                             isSelect =  sizeBlock.some(item => item.checked && item.hasAttribute('checked'))
                         }
