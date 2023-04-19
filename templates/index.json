@@ -1106,7 +1106,7 @@
           "type": "text",
           "settings": {
             "title": "REFUND POLICY",
-            "content": "<p>You have a maximum of 30 days to return your items.<\/p><p>You must send back your items to<br\/>an informed address by the customer service.<\/p>"
+            "content": "<p><strong>You have a maximum of 30 days to return your items.<\/strong><\/p><p><strong>Your items should be sent back to<br\/>an informed address provided by HYFOL customer service.<\/strong><\/p>"
           }
         }
       },
@@ -1114,6 +1114,9 @@
         "a29054e9-b082-4803-9e46-a4cbeb6f0a6d",
         "2bf97e99-e7f6-4e26-a22d-d15500d0229b",
         "17a02184-4051-4cb1-bf90-2427b00b17b0"
+      ],
+      "custom_css": [
+
       ],
       "settings": {
       }
