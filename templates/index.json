@@ -61,11 +61,36 @@
             "button_text": "",
             "link": "https:\/\/www.hyfol.com\/collections\/19-99-hoodies-and-sweatshirts"
           }
+        },
+        "0680368d-e373-4656-bfd4-8a3cdc9ba5eb": {
+          "type": "image",
+          "settings": {
+            "sensorsName": "",
+            "image": "shopify:\/\/shop_images\/2_1.jpg",
+            "mobile_image": "shopify:\/\/shop_images\/hyfol__04_613b2c18-6ee0-471e-b01a-1b88cdf39eba.jpg",
+            "show_overlay": false,
+            "overlay_opacity": 30,
+            "text_color": "#ffffff",
+            "title": "",
+            "heading_text_font": "helvetica_n4",
+            "heading_text_font_size": 20,
+            "heading_text_color": "#ffffff",
+            "content": "",
+            "content_text_font": "helvetica_n4",
+            "content_text_font_size": 12,
+            "content_text_color": "#ffffff",
+            "content_position": "middle_center",
+            "button_background": "#ffffff",
+            "button_text_color": "#000000",
+            "button_text": "Button",
+            "link": "https:\/\/www.hyfol.com\/collections\/cargo-shorts-1"
+          }
         }
       },
       "block_order": [
         "d37df8b4-1383-4e82-8786-c91baa7c7039",
-        "db88bd3b-2663-480e-a113-30f5edd187d0"
+        "db88bd3b-2663-480e-a113-30f5edd187d0",
+        "0680368d-e373-4656-bfd4-8a3cdc9ba5eb"
       ],
       "settings": {
         "edge_to_edge": true,
