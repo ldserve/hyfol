@@ -571,7 +571,7 @@
         "hidDesk": true,
         "sensorsName": "mobile分类导流区",
         "hidWeb": false,
-        "line": true,
+        "line": false,
         "image": "shopify:\/\/shop_images\/20230303-013937.jpg",
         "tpadding": 0,
         "rpadding": 0,
