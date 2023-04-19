@@ -448,9 +448,9 @@
         "a57fed2e-f643-449f-9676-b1e59bf7beab": {
           "type": "link",
           "settings": {
-            "heading": "Poloshirts",
-            "sensorsLinkName": "Poloshirts",
-            "link": "shopify:\/\/collections\/polo-shirts",
+            "heading": "Polo shirts",
+            "sensorsLinkName": "Polo shirts",
+            "link": "https:\/\/www.hyfol.com\/collections\/polo-shirts",
             "left": 5,
             "top": 0,
             "width": 28,
