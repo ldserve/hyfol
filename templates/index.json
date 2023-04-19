@@ -853,7 +853,7 @@
         "linkImg_content": "",
         "hidDesk": false,
         "sensorsName": "pc分类导流区",
-        "hidWeb": false,
+        "hidWeb": true,
         "line": false,
         "image": "shopify:\/\/shop_images\/5_1.jpg",
         "tpadding": 0,
@@ -926,12 +926,12 @@
         "hidDesk": true,
         "sensorsName": "mobile分类导流区",
         "hidWeb": false,
-        "line": true,
+        "line": false,
         "image": "shopify:\/\/shop_images\/hyfol__10.jpg",
         "tpadding": 5,
-        "rpadding": 0,
-        "bpadding": 0,
-        "lpadding": 0
+        "rpadding": 3,
+        "bpadding": 2,
+        "lpadding": 3
       }
     },
     "1640334828c8a975c8": {
