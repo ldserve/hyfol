@@ -1092,7 +1092,7 @@
           "type": "text",
           "settings": {
             "title": "DELIVERY TIME",
-            "content": "<p>For most situations, it takes around<\/p><p>5 business days to process.<\/p>"
+            "content": "<p><strong>For most situations, it takes around<\/strong><\/p><p><strong>3 - 5 business days to process the order.<\/strong><\/p>"
           }
         },
         "2bf97e99-e7f6-4e26-a22d-d15500d0229b": {
