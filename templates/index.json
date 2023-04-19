@@ -18,7 +18,7 @@
           "type": "image",
           "settings": {
             "sensorsName": "",
-            "image": "shopify:\/\/shop_images\/hyfol_fee58686-19f7-4a56-9130-cd68f48586e8.jpg",
+            "image": "shopify:\/\/shop_images\/1_1.jpg",
             "mobile_image": "shopify:\/\/shop_images\/hyfol__02_d52495fb-619e-4a4c-bdea-c5326d76a27a.jpg",
             "show_overlay": false,
             "overlay_opacity": 30,
@@ -736,6 +736,19 @@
             "width": 60,
             "height": 61
           }
+        },
+        "d00af60a-e998-4857-80fd-6d5cc206987f": {
+          "type": "link",
+          "disabled": true,
+          "settings": {
+            "heading": "(´థ౪థ）σ",
+            "sensorsLinkName": "",
+            "link": "",
+            "left": 0,
+            "top": 0,
+            "width": 10,
+            "height": 10
+          }
         }
       },
       "block_order": [
@@ -743,7 +756,8 @@
         "dd9ea6ff-2fff-4072-8ce4-36c8d509a54c",
         "2af8f0c2-4de8-48e5-9005-8c9db641670b",
         "2ffd1cac-154d-4768-ad67-f1f577097552",
-        "596c0df9-c426-4eb0-b341-32e2a30109f3"
+        "596c0df9-c426-4eb0-b341-32e2a30109f3",
+        "d00af60a-e998-4857-80fd-6d5cc206987f"
       ],
       "settings": {
         "linkImg_title": "SHOP BY DEAL",
