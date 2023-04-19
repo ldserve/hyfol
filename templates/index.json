@@ -175,6 +175,14 @@
             "link": "https:\/\/www.hyfol.com\/collections\/cargo-pants",
             "show_hot": true
           }
+        },
+        "e9474469-b1a7-4bae-af6f-82bae3844d66": {
+          "type": "link",
+          "settings": {
+            "title": "Your link",
+            "link": "",
+            "show_hot": true
+          }
         }
       },
       "block_order": [
@@ -186,7 +194,8 @@
         "template--15801670959319__4abbc570-59ea-407d-9bc8-8da13344d02f-1667555179fa2589e0-4",
         "aff387be-367a-4214-bd63-f4f19057e000",
         "template--15801670959319__4abbc570-59ea-407d-9bc8-8da13344d02f-1667555179fa2589e0-5",
-        "bf394096-878f-4010-baea-681e6da7133b"
+        "bf394096-878f-4010-baea-681e6da7133b",
+        "e9474469-b1a7-4bae-af6f-82bae3844d66"
       ],
       "settings": {
         "title": "",
@@ -442,10 +451,10 @@
             "heading": "Poloshirts",
             "sensorsLinkName": "Poloshirts",
             "link": "shopify:\/\/collections\/polo-shirts",
-            "left": 0,
+            "left": 5,
             "top": 0,
             "width": 28,
-            "height": 40
+            "height": 32
           }
         },
         "68d1d597-d68d-40b8-a69b-4650df6dd0e4": {
@@ -562,7 +571,7 @@
         "hidDesk": true,
         "sensorsName": "mobile分类导流区",
         "hidWeb": false,
-        "line": false,
+        "line": true,
         "image": "shopify:\/\/shop_images\/20230303-013937.jpg",
         "tpadding": 0,
         "rpadding": 0,
