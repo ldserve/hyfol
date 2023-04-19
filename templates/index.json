@@ -774,7 +774,7 @@
         "hidDesk": true,
         "sensorsName": "mobile分类导流区",
         "hidWeb": false,
-        "line": false,
+        "line": true,
         "image": "shopify:\/\/shop_images\/hyfol__08.jpg",
         "tpadding": 7,
         "rpadding": 3,
