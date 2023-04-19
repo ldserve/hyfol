@@ -225,8 +225,8 @@
           "type": "image",
           "settings": {
             "sensorsName": "cargopants",
-            "image": "shopify:\/\/shop_images\/0f719d71e9a8a2dbb649b4f3475ebf96_b6b82f81-316c-415d-ac01-bb7be652511b.jpg",
-            "mobile_image": "shopify:\/\/shop_images\/2b2d82fd0d6a0f6a7e255749be197780_65229656-f644-4c7c-9c57-6981082667e4.jpg",
+            "image": "shopify:\/\/shop_images\/hyfol_fee58686-19f7-4a56-9130-cd68f48586e8.jpg",
+            "mobile_image": "shopify:\/\/shop_images\/hyfol_037d0430-e1df-4049-981a-eb3e75c50e66.jpg",
             "show_overlay": false,
             "overlay_opacity": 30,
             "text_color": "#ffffff",
@@ -242,7 +242,7 @@
             "button_background": "#ffffff",
             "button_text_color": "#000000",
             "button_text": "",
-            "link": "https:\/\/www.hyfol.com\/collections\/cargo-pants"
+            "link": "https:\/\/www.hyfol.com\/collections\/active-wear"
           }
         }
       },
