@@ -303,20 +303,20 @@
             "link": "shopify:\/\/collections\/polo-shirts",
             "left": 0,
             "top": 0,
-            "width": 18,
-            "height": 39
+            "width": 19,
+            "height": 50
           }
         },
         "c0e5d6ef-6e9d-4fe0-9a9c-6dbcef8c64bb": {
           "type": "link",
           "settings": {
-            "heading": "SWEATSHIRT",
-            "sensorsLinkName": "SWEATSHIRT",
-            "link": "https:\/\/www.hyfol.com\/collections\/sweatshirts-12-13",
-            "left": 21,
-            "top": 0,
+            "heading": "TACTICALWEAR",
+            "sensorsLinkName": "TACTICALWEAR",
+            "link": "shopify:\/\/collections\/tactical-wear",
+            "left": 20,
+            "top": 2,
             "width": 19,
-            "height": 42
+            "height": 48
           }
         },
         "c4e78d72-c3f2-4290-9081-e9575565a07d": {
@@ -325,10 +325,10 @@
             "heading": "ACTIVEWEAR",
             "sensorsLinkName": "ACTIVEWEAR",
             "link": "shopify:\/\/collections\/active-wear",
-            "left": 42,
+            "left": 40,
             "top": 0,
-            "width": 18,
-            "height": 45
+            "width": 19,
+            "height": 48
           }
         },
         "0cacda68-24cc-451e-8813-cb0fbaa4fabc": {
@@ -346,13 +346,13 @@
         "309514d7-2933-482e-8425-5c939e826025": {
           "type": "link",
           "settings": {
-            "heading": "LONGSLEEVES",
-            "sensorsLinkName": "LONGSLEEVES",
-            "link": "shopify:\/\/collections\/long-sleeve",
-            "left": 82,
+            "heading": "SHORTTEE",
+            "sensorsLinkName": "SHORT TEE",
+            "link": "https:\/\/www.hyfol.com\/collections\/short-sleeve-1",
+            "left": 81,
             "top": 0,
             "width": 38,
-            "height": 42
+            "height": 50
           }
         },
         "5b996521-5904-49ca-980f-13448cce9df9": {
@@ -362,9 +362,9 @@
             "sensorsLinkName": "TSHIRTS",
             "link": "shopify:\/\/collections\/short-sleeve-1",
             "left": 0,
-            "top": 47,
+            "top": 45,
             "width": 21,
-            "height": 47
+            "height": 77
           }
         },
         "db7b2835-ac62-4cfe-9dd8-e9a142400dbe": {
@@ -434,8 +434,8 @@
         "hidDesk": false,
         "sensorsName": "pc分类导流区",
         "hidWeb": true,
-        "line": false,
-        "image": "shopify:\/\/shop_images\/20230303-013934.jpg",
+        "line": true,
+        "image": "shopify:\/\/shop_images\/hyfol__09.jpg",
         "tpadding": 13,
         "rpadding": 0,
         "bpadding": 0,
