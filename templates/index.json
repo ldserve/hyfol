@@ -382,12 +382,12 @@
         "86db0e47-77e1-40ea-82b5-f61f2191cb43": {
           "type": "link",
           "settings": {
-            "heading": "PATRICK",
-            "sensorsLinkName": "GIFTGUIDE",
-            "link": "shopify:\/\/collections\/st-patricks-day",
-            "left": 41,
+            "heading": "SWEATSHIRT",
+            "sensorsLinkName": "SWEATSHIRT",
+            "link": "shopify:\/\/collections\/sweatshirts-12-13",
+            "left": 40,
             "top": 53,
-            "width": 21,
+            "width": 20,
             "height": 45
           }
         },
@@ -412,7 +412,7 @@
             "left": 80,
             "top": 52,
             "width": 43,
-            "height": 33
+            "height": 46
           }
         }
       },
