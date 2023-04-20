@@ -451,34 +451,34 @@
             "heading": "Poloshirts",
             "sensorsLinkName": "Poloshirts",
             "link": "https:\/\/www.hyfol.com\/collections\/polo-shirts",
-            "left": 5,
+            "left": 0,
             "top": 0,
-            "width": 28,
+            "width": 31,
             "height": 32
           }
         },
         "68d1d597-d68d-40b8-a69b-4650df6dd0e4": {
           "type": "link",
           "settings": {
-            "heading": "Sweatshirts",
-            "sensorsLinkName": "Sweatshirts",
-            "link": "https:\/\/www.hyfol.com\/collections\/sweatshirts-12-13",
+            "heading": "TACTICALWEAR",
+            "sensorsLinkName": "TACTICALWEAR",
+            "link": "shopify:\/\/collections\/tactical-wear",
             "left": 35,
             "top": 0,
             "width": 31,
-            "height": 39
+            "height": 34
           }
         },
         "eb0c793e-0e4f-4e5c-92bd-faf45cd233a6": {
           "type": "link",
           "settings": {
-            "heading": "Activewear",
-            "sensorsLinkName": "Activewear",
-            "link": "shopify:\/\/collections\/active-wear",
-            "left": 70,
+            "heading": "SHORTTEE",
+            "sensorsLinkName": "SHORTTEE",
+            "link": "https:\/\/www.hyfol.com\/collections\/short-sleeve-1",
+            "left": 68,
             "top": 0,
             "width": 31,
-            "height": 39
+            "height": 34
           }
         },
         "703cb61e-bb71-4d36-ae67-f8e45b7b1d0b": {
@@ -488,68 +488,68 @@
             "sensorsLinkName": "Cargoshorts",
             "link": "shopify:\/\/collections\/cargo-shorts-1",
             "left": 0,
-            "top": 44,
+            "top": 34,
             "width": 32,
-            "height": 25
+            "height": 30
           }
         },
         "059a10b2-d700-4489-8071-0f91413acddb": {
           "type": "link",
           "settings": {
-            "heading": "Longsleeves",
-            "sensorsLinkName": "Longsleeves",
-            "link": "shopify:\/\/collections\/long-sleeve",
-            "left": 37,
-            "top": 42,
-            "width": 29,
-            "height": 22
+            "heading": "SWEATSHIRT",
+            "sensorsLinkName": "SWEATSHIRT",
+            "link": "shopify:\/\/collections\/sweatshirts-12-13",
+            "left": 33,
+            "top": 33,
+            "width": 33,
+            "height": 32
           }
         },
         "d3832b18-b464-4e71-a800-239d8c0bdf6e": {
           "type": "link",
           "settings": {
-            "heading": "Tshirts",
-            "sensorsLinkName": "Tshirts",
-            "link": "shopify:\/\/collections\/short-sleeve-1",
-            "left": 72,
-            "top": 45,
-            "width": 57,
-            "height": 21
+            "heading": "LONGTEE",
+            "sensorsLinkName": "LONGTEE",
+            "link": "https:\/\/www.hyfol.com\/collections\/long-sleeve",
+            "left": 67,
+            "top": 34,
+            "width": 34,
+            "height": 33
           }
         },
         "1046df33-60a7-4272-944c-7aed30dd5ef0": {
           "type": "link",
           "settings": {
-            "heading": "Shirt",
-            "sensorsLinkName": "Shirt",
-            "link": "shopify:\/\/collections\/shirt",
+            "heading": "ACTIVEWEAR",
+            "sensorsLinkName": "ACTIVEWEAR",
+            "link": "shopify:\/\/collections\/active-wear",
             "left": 0,
-            "top": 69,
-            "width": 30,
-            "height": 25
+            "top": 66,
+            "width": 33,
+            "height": 33
           }
         },
         "81098c5b-5074-43de-b712-fe69e9b9956b": {
           "type": "link",
           "settings": {
-            "heading": "Swimwear",
-            "sensorsLinkName": "Swimwear",
+            "heading": "SWIMWEAR",
+            "sensorsLinkName": "SWIMWEAR",
             "link": "shopify:\/\/collections\/kids",
-            "left": 38,
-            "top": 69,
-            "width": 29,
-            "height": 43
+            "left": 34,
+            "top": 66,
+            "width": 33,
+            "height": 33
           }
         },
         "109f4489-84a2-4283-ac28-ee83ad0d262c": {
           "type": "link",
           "settings": {
-            "heading": "Accessories",
-            "sensorsLinkName": "Accessories",
-            "link": "shopify:\/\/collections\/accessories-12-13",
-            "left": 71,
-            "top": 67,
-            "width": 26,
+            "heading": "INDEPENDENCEDAY",
+            "sensorsLinkName": "INDEPENDENCEDAY",
+            "link": "shopify:\/\/collections\/patriotism-theme-sale",
+            "left": 66,
+            "top": 66,
+            "width": 33,
             "height": 33
           }
         }
@@ -571,8 +571,8 @@
         "hidDesk": true,
         "sensorsName": "mobile分类导流区",
         "hidWeb": false,
-        "line": false,
-        "image": "shopify:\/\/shop_images\/20230303-013937.jpg",
+        "line": true,
+        "image": "shopify:\/\/shop_images\/hyfol__06_1.jpg",
         "tpadding": 0,
         "rpadding": 0,
         "bpadding": 0,
