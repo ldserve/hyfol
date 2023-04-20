@@ -358,25 +358,25 @@
         "5b996521-5904-49ca-980f-13448cce9df9": {
           "type": "link",
           "settings": {
-            "heading": "TSHIRTS",
-            "sensorsLinkName": "TSHIRTS",
-            "link": "shopify:\/\/collections\/short-sleeve-1",
+            "heading": "LONGTEE",
+            "sensorsLinkName": "LONG TEE",
+            "link": "https:\/\/www.hyfol.com\/collections\/long-sleeve",
             "left": 0,
-            "top": 45,
-            "width": 21,
-            "height": 77
+            "top": 54,
+            "width": 19,
+            "height": 49
           }
         },
         "db7b2835-ac62-4cfe-9dd8-e9a142400dbe": {
           "type": "link",
           "settings": {
-            "heading": "SHIRTS",
-            "sensorsLinkName": "SHIRTS",
-            "link": "https:\/\/www.hyfol.com\/collections\/shirt",
-            "left": 22,
-            "top": 50,
-            "width": 17,
-            "height": 57
+            "heading": "SWIMWEAR",
+            "sensorsLinkName": "SWIMWEAR",
+            "link": "shopify:\/\/collections\/kids",
+            "left": 20,
+            "top": 53,
+            "width": 20,
+            "height": 50
           }
         },
         "86db0e47-77e1-40ea-82b5-f61f2191cb43": {
@@ -394,7 +394,7 @@
         "7641577d-595e-4498-97d0-ba73dd679842": {
           "type": "link",
           "settings": {
-            "heading": "SWIMWEAR",
+            "heading": "SWEATSHIRT",
             "sensorsLinkName": "SWIMWEAR",
             "link": "shopify:\/\/collections\/kids",
             "left": 63,
