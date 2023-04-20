@@ -434,7 +434,7 @@
         "hidDesk": false,
         "sensorsName": "pc分类导流区",
         "hidWeb": true,
-        "line": true,
+        "line": false,
         "image": "shopify:\/\/shop_images\/hyfol__09.jpg",
         "tpadding": 13,
         "rpadding": 0,
