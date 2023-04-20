@@ -11,7 +11,7 @@
     "name": "小购物车搭配购商品配置",
     "settings": [
       {
-        "type": "text",
+        "type": "textarea",
         "id": "collocation_spus",
         "label": "请输入搭配商品spu",
         "info": "spu用逗号隔开 格式如：sp220420c1yo,sp211119ulk5,sp211204asg2"
