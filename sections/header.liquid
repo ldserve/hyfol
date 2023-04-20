@@ -30,7 +30,7 @@
 						{%- comment -%}
 						{%- render 'mobile-menu', menu: navigation_mobile_menu -%}
 						{%- endcomment -%}
-						{%- render 'jjs-mobile-menu', menu: navigation_mobile_menu -%}
+						{%- render 'jjs-mobile-menu', menu: navigation_mobile_menu ,section:section-%}
 					</nav>
 				{%- endif -%}
 
@@ -134,7 +134,7 @@
 												{{- link.title -}}
 												{%- render 'icon', icon: 'arrow-bottom' -%}
 											</div>
-											{%- render 'jjs-desktop-menu', menu: link, index: index, menuindex: forloop.index -%}
+											{%- render 'jjs-desktop-menu', menu: link, index: index, menuindex: forloop.index,section:section -%}
 										{%- endif -%}
 									</li>
 								{% if forloop.last !=true %}
@@ -806,6 +806,12 @@
 	"id": "show_navigation_social_media",
 	"label": "显示社交媒体",
 	"default": true
+	},{
+	"type":"textarea",
+	"id": "nav_label_active",
+	"label": "导航高亮显示",
+	"default": "chritstmas,jackets&outerwear,special material,sweatshirts,long sleeve, patriot,polo shirt,Flash Sale Buy 3 For $55,Fishing Sale,polo shirts,cargo shorts,camouflage,hoodies,cargo  pants,halloween",
+	"info": "以英文逗号隔开，不区分大小写，注意空格"
 	},
 	{
 	"type": "text",
