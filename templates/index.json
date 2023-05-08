@@ -237,7 +237,7 @@
             "sensorsName": "plaid",
             "image": "shopify:\/\/shop_images\/hyfol_f965727c-763d-4cd0-a123-9012f835bc6a.jpg",
             "mobile_image": "shopify:\/\/shop_images\/hyfol_b5fdcd4b-f37e-4ce3-bac0-dd409fbd9c7b.jpg",
-            "show_overlay": false,
+            "show_overlay": true,
             "overlay_opacity": 30,
             "text_color": "#ffffff",
             "title": "",
@@ -314,7 +314,7 @@
             "sensorsLinkName": "TACTICALWEAR",
             "link": "shopify:\/\/collections\/tactical-wear",
             "left": 20,
-            "top": 2,
+            "top": 0,
             "width": 19,
             "height": 48
           }
@@ -410,9 +410,9 @@
             "sensorsLinkName": "ACCESSORIES",
             "link": "https:\/\/www.hyfol.com\/collections\/accessories-12-13",
             "left": 80,
-            "top": 52,
-            "width": 43,
-            "height": 46
+            "top": 50,
+            "width": 41,
+            "height": 50
           }
         }
       },
