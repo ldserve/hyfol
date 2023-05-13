@@ -14,6 +14,30 @@
     "166424926021cbf149": {
       "type": "slideshow",
       "blocks": {
+        "f980f9ac-da50-44ac-966a-6826da273dbc": {
+          "type": "image",
+          "settings": {
+            "sensorsName": "",
+            "image": "shopify:\/\/shop_images\/fe7107f4c8cc5bb0097ec5976077b6e3.jpg",
+            "mobile_image": "shopify:\/\/shop_images\/d489327f999e9077683ad78afd6de9ef.jpg",
+            "show_overlay": false,
+            "overlay_opacity": 30,
+            "text_color": "#ffffff",
+            "title": "",
+            "heading_text_font": "helvetica_n4",
+            "heading_text_font_size": 20,
+            "heading_text_color": "#ffffff",
+            "content": "",
+            "content_text_font": "helvetica_n4",
+            "content_text_font_size": 12,
+            "content_text_color": "#ffffff",
+            "content_position": "middle_center",
+            "button_background": "#ffffff",
+            "button_text_color": "#000000",
+            "button_text": "Button",
+            "link": "shopify:\/\/collections\/memorial-day"
+          }
+        },
         "d37df8b4-1383-4e82-8786-c91baa7c7039": {
           "type": "image",
           "settings": {
@@ -64,6 +88,7 @@
         },
         "db88bd3b-2663-480e-a113-30f5edd187d0": {
           "type": "image",
+          "disabled": true,
           "settings": {
             "sensorsName": "facebook",
             "image": "shopify:\/\/shop_images\/banner_4596ca7a-b93b-418b-b305-c0be966efe70.jpg",
@@ -85,37 +110,13 @@
             "button_text": "",
             "link": "https:\/\/www.hyfol.com\/collections\/19-99-hoodies-and-sweatshirts"
           }
-        },
-        "f980f9ac-da50-44ac-966a-6826da273dbc": {
-          "type": "image",
-          "settings": {
-            "sensorsName": "",
-            "image": "shopify:\/\/shop_images\/fe7107f4c8cc5bb0097ec5976077b6e3.jpg",
-            "mobile_image": "shopify:\/\/shop_images\/d489327f999e9077683ad78afd6de9ef.jpg",
-            "show_overlay": false,
-            "overlay_opacity": 30,
-            "text_color": "#ffffff",
-            "title": "",
-            "heading_text_font": "helvetica_n4",
-            "heading_text_font_size": 20,
-            "heading_text_color": "#ffffff",
-            "content": "",
-            "content_text_font": "helvetica_n4",
-            "content_text_font_size": 12,
-            "content_text_color": "#ffffff",
-            "content_position": "middle_center",
-            "button_background": "#ffffff",
-            "button_text_color": "#000000",
-            "button_text": "Button",
-            "link": "shopify:\/\/collections\/memorial-day"
-          }
         }
       },
       "block_order": [
+        "f980f9ac-da50-44ac-966a-6826da273dbc",
         "d37df8b4-1383-4e82-8786-c91baa7c7039",
         "0680368d-e373-4656-bfd4-8a3cdc9ba5eb",
-        "db88bd3b-2663-480e-a113-30f5edd187d0",
-        "f980f9ac-da50-44ac-966a-6826da273dbc"
+        "db88bd3b-2663-480e-a113-30f5edd187d0"
       ],
       "settings": {
         "edge_to_edge": true,
