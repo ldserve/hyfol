@@ -189,6 +189,7 @@
           "desktop_navigation_layout": "inline",
           "desktop_navigation_open_trigger": "hover",
           "show_navigation_social_media": false,
+          "nav_label_active": "chritstmas,jackets&outerwear,special material,sweatshirts,long sleeve, patriot,polo shirt,Flash Sale Buy 3 For $55,Fishing Sale,polo shirts,cargo shorts,camouflage,hoodies,cargo  pants,halloween",
           "navigation_phone_number": "",
           "navigation_email": "contactus@hyfol.com",
           "show_condensed_search": true,
@@ -264,8 +265,8 @@
           "f7871216-4fbb-4392-b4a5-25a3e8dbe911": {
             "type": "announcement",
             "settings": {
-              "text": "EXTRA $10 OFF on Order Over $79  🇺🇸Code: HY10",
-              "link": ""
+              "text": "EXTRA 30% OFF on Order Over $99  🇺🇸Code: HY30",
+              "link": "shopify:\/\/collections\/flash-sale-1"
             }
           },
           "933aa31d-00c1-44a5-8b00-66ceefe87acd": {
