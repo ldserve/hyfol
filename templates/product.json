@@ -44,13 +44,21 @@
         "40401d43-e40a-46bd-b84a-7563498f1427": {
           "type": "delivery",
           "settings": {
-            "display_mode": "view_more"
+            "display_mode": "view_more",
+            "delivery_info1": "$0-$58.9",
+            "delivery_info_monery1": "$9.9",
+            "delivery_info2": "",
+            "delivery_info_monery2": "",
+            "delivery_info3": "",
+            "delivery_info_monery3": "",
+            "delivery_shipping": "<p>Estimated delivery time to US\/EU is <strong>7-14<\/strong> business days<\/p>"
           }
         },
         "220a0d08-af6d-41fd-a53d-f77edb36997c": {
           "type": "policy",
           "settings": {
-            "display_mode": "collapse"
+            "display_mode": "collapse",
+            "policy_info": "<p>Customers have a max of 30 days to make returns. <br\/>Customers need to send back your items to an informed address by customer service.<\/p>"
           }
         },
         "description": {
