@@ -45,13 +45,13 @@
           "type": "delivery",
           "settings": {
             "display_mode": "view_more",
-            "delivery_info1": "$0-$58.9",
+            "delivery_info1": "0 - $58.9",
             "delivery_info_monery1": "$9.9",
             "delivery_info2": "",
             "delivery_info_monery2": "",
             "delivery_info3": "",
             "delivery_info_monery3": "",
-            "delivery_shipping": "<p>Estimated delivery time to US\/EU is <strong>7-14<\/strong> business days<\/p>"
+            "delivery_shipping": "<p>Estimated Delivery Time to US\/EU is <strong>7-14<\/strong> Business Days<\/p>"
           }
         },
         "220a0d08-af6d-41fd-a53d-f77edb36997c": {
