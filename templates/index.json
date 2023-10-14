@@ -16,6 +16,7 @@
       "blocks": {
         "d37df8b4-1383-4e82-8786-c91baa7c7039": {
           "type": "image",
+          "disabled": true,
           "settings": {
             "sensorsName": "",
             "image": "shopify:\/\/shop_images\/1_1.jpg",
@@ -40,6 +41,7 @@
         },
         "0680368d-e373-4656-bfd4-8a3cdc9ba5eb": {
           "type": "image",
+          "disabled": true,
           "settings": {
             "sensorsName": "",
             "image": "shopify:\/\/shop_images\/2_1.jpg",
@@ -111,13 +113,63 @@
             "button_text": "",
             "link": "shopify:\/\/collections\/memorial-day"
           }
+        },
+        "8b74f0a5-8e3b-4f81-b577-a01865c2271b": {
+          "type": "image",
+          "settings": {
+            "sensorsName": "2023 fall-new arrival",
+            "image": "shopify:\/\/shop_images\/1_a1c6a703-06c2-40cc-b2ad-d73848671f3b.png",
+            "mobile_image": "shopify:\/\/shop_images\/1_4d4ec363-7f55-4525-a95e-6e0863bcecd3.jpg",
+            "show_overlay": false,
+            "overlay_opacity": 30,
+            "text_color": "#ffffff",
+            "title": "",
+            "heading_text_font": "helvetica_n4",
+            "heading_text_font_size": 20,
+            "heading_text_color": "#ffffff",
+            "content": "",
+            "content_text_font": "helvetica_n4",
+            "content_text_font_size": 12,
+            "content_text_color": "#ffffff",
+            "content_position": "middle_center",
+            "button_background": "#ffffff",
+            "button_text_color": "#000000",
+            "button_text": "",
+            "link": "https:\/\/www.hyfol.com\/collections\/new-in-1"
+          }
+        },
+        "28cdd2c7-b581-4e2e-8245-402237369888": {
+          "type": "image",
+          "settings": {
+            "sensorsName": "2023 fall-promotion",
+            "image": "shopify:\/\/shop_images\/2_60b8f0d8-ad9e-4d43-8d62-0cd0b3c9f542.png",
+            "mobile_image": "shopify:\/\/shop_images\/2_4528539e-555c-4cc8-b2a4-f3ce15a35b32.jpg",
+            "show_overlay": false,
+            "overlay_opacity": 30,
+            "text_color": "#ffffff",
+            "title": "",
+            "heading_text_font": "helvetica_n4",
+            "heading_text_font_size": 20,
+            "heading_text_color": "#ffffff",
+            "content": "",
+            "content_text_font": "helvetica_n4",
+            "content_text_font_size": 12,
+            "content_text_color": "#ffffff",
+            "content_position": "middle_center",
+            "button_background": "#ffffff",
+            "button_text_color": "#000000",
+            "button_text": "",
+            "link": "https:\/\/www.hyfol.com\/collections\/hyfol-best-seller-1"
+          }
         }
       },
       "block_order": [
         "d37df8b4-1383-4e82-8786-c91baa7c7039",
         "0680368d-e373-4656-bfd4-8a3cdc9ba5eb",
         "db88bd3b-2663-480e-a113-30f5edd187d0",
-        "f980f9ac-da50-44ac-966a-6826da273dbc"
+        "f980f9ac-da50-44ac-966a-6826da273dbc",
+        "8b74f0a5-8e3b-4f81-b577-a01865c2271b",
+        "28cdd2c7-b581-4e2e-8245-402237369888"
       ],
       "settings": {
         "edge_to_edge": true,
