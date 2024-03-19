@@ -16,7 +16,6 @@
       "blocks": {
         "d37df8b4-1383-4e82-8786-c91baa7c7039": {
           "type": "image",
-          "disabled": true,
           "settings": {
             "sensorsName": "",
             "image": "shopify:\/\/shop_images\/1_1.jpg",
@@ -116,6 +115,7 @@
         },
         "8b74f0a5-8e3b-4f81-b577-a01865c2271b": {
           "type": "image",
+          "disabled": true,
           "settings": {
             "sensorsName": "2023 fall-new arrival",
             "image": "shopify:\/\/shop_images\/1_a1c6a703-06c2-40cc-b2ad-d73848671f3b.png",
