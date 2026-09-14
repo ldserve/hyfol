@@ -69,7 +69,7 @@
 			{%- if block.settings.display_mode == 'collapse' -%}
 			<div class="card__collapsible-button " data-action="toggle-collapsible" aria-expanded="false"
 				aria-controls="block-{{ section.id }}-{{ block.id }}">
-				<span class="card__title   heading"> {%- render:'icon',icon:'cjj_postage' -%} Delivery</span>
+				<span class="card__title   heading"> {%- render 'icon', icon: 'cjj_postage' -%} Delivery</span>
 				<span class="card-arrow">
 					{%- render 'icon', icon: 'arrow-bottom' -%}
 				</span>
@@ -118,7 +118,7 @@
 			</div>
 			{%- else -%}
 			<div class="card__header">
-				<h2 class="card__title  heading "><span class="icon-color"> {%- render:'icon',icon:'cjj_postage' -%} </span>
+				<h2 class="card__title  heading "><span class="icon-color"> {%- render 'icon', icon: 'cjj_postage' -%} </span>
 					Delivery</h2>
 			</div>
 		
@@ -177,7 +177,7 @@
 			{%- if block.settings.display_mode == 'collapse' -%}
 			<div class="card__collapsible-button" data-action="toggle-collapsible" aria-expanded="false"
 				aria-controls="block-{{ section.id }}-{{ block.id }}">
-				<span class="card__title  heading">{%- render:'icon',icon:'ny_finish' -%} Return Policy</span>
+				<span class="card__title  heading">{%- render 'icon', icon: 'ny_finish' -%} Return Policy</span>
 				<span class="card-arrow">
 					{%- render 'icon', icon: 'arrow-bottom' -%}
 				</span>
@@ -194,7 +194,7 @@
 			</div>
 			{%- else -%}
 			<div class="card__header">
-				<h2 class="card__title  heading">{%- render:'icon',icon:'ny_finish' -%}Return Policy</h2>
+				<h2 class="card__title  heading">{%- render 'icon', icon: 'ny_finish' -%}Return Policy</h2>
 			</div>
 		
 			<div class="card__section {% if block.settings.display_mode == 'view_more' %}expandable-content{% endif %}" {% if
@@ -224,7 +224,7 @@
 			{%- if block.settings.display_mode == 'collapse' -%}
 			<div class="card__collapsible-button" data-action="toggle-collapsible" aria-expanded="false"
 				aria-controls="block-{{ section.id }}-{{ block.id }}">
-				<span class="card__title  heading">{%- render:'icon',icon:'ny_list' -%}{{ 'product.general.description' | t
+				<span class="card__title  heading">{%- render 'icon', icon: 'ny_list' -%}{{ 'product.general.description' | t
 					}}</span>
 				<span class="card-arrow">
 					{%- render 'icon', icon: 'arrow-bottom' -%}
@@ -240,7 +240,7 @@
 			</div>
 			{%- else -%}
 			<div class="card__header">
-				<h2 class="card__title heading">{%- render:'icon',icon:'ny_list' -%}{{ 'product.general.description' | t }}</h2>
+				<h2 class="card__title heading">{%- render 'icon', icon: 'ny_list' -%}{{ 'product.general.description' | t }}</h2>
 			</div>
 		
 			<div class="card__section {% if block.settings.display_mode == 'view_more' %}expandable-content{% endif %}" {% if
@@ -317,3 +317,28 @@
 
 	</script>
 </div>
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{%- render:'icon',icon:'cjj_postage' -%}"
+  to: "{%- render 'icon', icon: 'cjj_postage' -%}"
+  position: 3141..3183
+- from: "{%- render:'icon',icon:'cjj_postage' -%}"
+  to: "{%- render 'icon', icon: 'cjj_postage' -%}"
+  position: 4767..4809
+- from: "{%- render:'icon',icon:'ny_finish' -%}"
+  to: "{%- render 'icon', icon: 'ny_finish' -%}"
+  position: 7014..7054
+- from: "{%- render:'icon',icon:'ny_finish' -%}"
+  to: "{%- render 'icon', icon: 'ny_finish' -%}"
+  position: 7676..7716
+- from: "{%- render:'icon',icon:'ny_list' -%}"
+  to: "{%- render 'icon', icon: 'ny_list' -%}"
+  position: 9113..9151
+- from: "{%- render:'icon',icon:'ny_list' -%}"
+  to: "{%- render 'icon', icon: 'ny_list' -%}"
+  position: 9650..9688
+{% endcomment %}

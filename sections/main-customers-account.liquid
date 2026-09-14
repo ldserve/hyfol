@@ -789,7 +789,7 @@
 					  {%- for block in section.blocks -%}
 					  {%- if block.settings.nav_show -%}
 					  <div class="card__linklist-item link" style="cursor:pointer ;" data-right="{{block.settings.nav_right}}" data-action="left-nav" aria-label="{{block.settings.nav_title}}"> 
-						  <span> {%- render 'icon', icon: {{block.settings.nav_icon}} -%}</span>
+						  <span> {%- render 'icon', icon: block.settings.nav_icon -%}</span>
 					  <span>{{block.settings.nav_title}}</span>
 					  </div>
 					  {%- endif -%}
@@ -844,7 +844,7 @@
 							{%- for block in section.blocks -%}
 							{%- if block.settings.nav_show -%}
 							<div class="card__linklist-item link" style="cursor:pointer ;" data-right="{{block.settings.nav_right}}" data-action="left-nav" aria-label="{{block.settings.nav_title}}"> 
-								<span> {%- render 'icon', icon: {{block.settings.nav_icon}} -%}</span>
+								<span> {%- render 'icon', icon: block.settings.nav_icon -%}</span>
 							<span>{{block.settings.nav_title}}</span>
 							</div>
 							{%- endif -%}
@@ -3167,4 +3167,16 @@
 		
 
 }
-{% endschema %}
+{% endschema %}{%- comment -%}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{%- render 'icon', icon: {{block.settings.nav_icon}} -%}"
+  to: "{%- render 'icon', icon: block.settings.nav_icon -%}"
+  position: 12443..12495
+- from: "{%- render 'icon', icon: {{block.settings.nav_icon}} -%}"
+  to: "{%- render 'icon', icon: block.settings.nav_icon -%}"
+  position: 14645..14697
+{%- endcomment -%}
