@@ -38,7 +38,7 @@
 		<p class="page__description d-inline-block not-conversion">Get free necklace with purchase of $79+</p>
 	</div>
 	<div class="car_postage">
-		{%- render:'icon',icon:'cjj_postage' -%}
+		{%- render 'icon', icon: 'cjj_postage' -%}
 		{%- if settings.cart_show_free_shipping_threshold -%}
 			{%- assign threshold_in_cents = settings.cart_free_shipping_threshold | times: 100 -%}
 			{%- if cart.total_price >= threshold_in_cents -%}
@@ -56,7 +56,7 @@
 	<div class="car_discount">
 		{% for item in cart.items limit:1 %}
 			{% if item.total_discount > 0 %}
-				{% render:'icon',icon:'cjj_discount' %}{{ item.message }}
+				{% render 'icon', icon: 'cjj_discount' %}{{ item.message }}
 			{% endif %}
 		{% endfor %}
 	</div>
@@ -151,4 +151,16 @@
 	.car-bar .bar-current {
 		width: {{- bar_current-}}%;
 	}
-</style>
+</style>{%- comment -%}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{%- render:'icon',icon:'cjj_postage' -%}"
+  to: "{%- render 'icon', icon: 'cjj_postage' -%}"
+  position: 1789..1831
+- from: "{% render:'icon',icon:'cjj_discount' %}"
+  to: "{% render 'icon', icon: 'cjj_discount' %}"
+  position: 2827..2868
+{%- endcomment -%}

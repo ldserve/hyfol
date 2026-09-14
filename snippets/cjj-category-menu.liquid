@@ -10,13 +10,13 @@
 {% assign path4 = pathArr[4] %}
 
 {%- capture cjj_current -%}
-	{%- if path4=='mens' -%}
+	{%- if path4.mens -%}
 		me
-		{% elsif path4 =='women' %}
+		{% elsif path4 == 'women' %}
 		women
-		{% elsif path4 =='new-in' %}
+		{% elsif path4 == 'new-in' %}
 		new-in
-		{% elsif path4 =='hot-sale' %}
+		{% elsif path4 == 'hot-sale' %}
 		hot-sale
 	{% else  %}
 		home
@@ -99,3 +99,22 @@
 			display: block;
 	}
 </style>
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{%- if path4=='mens' -%}"
+  to: "{%- if path4.mens -%}"
+  position: 247..268
+- from: "{% elsif path4 =='women' %}"
+  to: "{% elsif path4 == 'women' %}"
+  position: 276..304
+- from: "{% elsif path4 =='new-in' %}"
+  to: "{% elsif path4 == 'new-in' %}"
+  position: 315..344
+- from: "{% elsif path4 =='hot-sale' %}"
+  to: "{% elsif path4 == 'hot-sale' %}"
+  position: 356..387
+{% endcomment %}

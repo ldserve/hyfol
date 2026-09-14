@@ -10,11 +10,11 @@
 	<div class="card">
 		<div class="card__section card__section--tight">
 			<span class="product-gallery__carousel-prev-button hidden-phone">
-			    {%- render :'icon', icon:'arrow-left' -%}
+			    {%- render 'icon', icon: 'arrow-left' -%}
 			</span>
                
 			<span class="product-gallery__carousel-next-button hidden-phone">
-				{%- render :'icon', icon:'arrow-right' -%}
+				{%- render 'icon', icon: 'arrow-right' -%}
 			</span>
 			
 			<div class="product-gallery {% if show_thumbnails_if_one_media %}product-gallery--with-thumbnails{% endif %}">
@@ -305,3 +305,16 @@
 				{%- endif -%}
 	</div>
 {%- endif -%}
+{% comment %}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{%- render :'icon', icon:'arrow-left' -%}"
+  to: "{%- render 'icon', icon: 'arrow-left' -%}"
+  position: 518..559
+- from: "{%- render :'icon', icon:'arrow-right' -%}"
+  to: "{%- render 'icon', icon: 'arrow-right' -%}"
+  position: 660..702
+{% endcomment %}
