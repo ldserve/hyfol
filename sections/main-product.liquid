@@ -570,7 +570,7 @@
                       </div>
                       <div class="card__section customer-d-flex pt-none">
                         {%- render 'icon', icon: 'cjj_quality', class: 'font-60' -%}
-                        {%- render 'icon', icon: 'cjj_fast-shipping'.class: 'font-60' -%}
+                        {%- render 'icon', icon: 'cjj_fast-shipping', class: 'font-60' -%}
                         {%- render 'icon', icon: 'cjj_verified', class: 'font-60' -%}
                         {%- render 'icon', icon: 'cjj_best-seller', class: 'font-60' -%}
                       </div>
@@ -1517,4 +1517,13 @@
       }
     ]
   }
-{% endschema %}
+{% endschema %}{%- comment -%}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{%- render 'icon', icon: 'cjj_fast-shipping'.class: 'font-60' -%}"
+  to: "{%- render 'icon', icon: 'cjj_fast-shipping', class: 'font-60' -%}"
+  position: 23427..23493
+{%- endcomment -%}
