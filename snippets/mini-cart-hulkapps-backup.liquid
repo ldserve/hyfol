@@ -98,7 +98,7 @@
             {% assign allTag = everyTag  %}
         {% endfor %}
         {% assign everyTagString =  everyTag | join:" "%}
-      {% if settings.full_isOpenview==false or everyTagString contains "CustomPromotion" or everyTagString contains "Nopromotion"   %}
+      {% if settings.full_isOpenview.false or everyTagString contains "CustomPromotion" or everyTagString contains "Nopromotion" %}
         {%- comment -%}
         <div>包含促销信息或不参加全场活动</div>
         {%- endcomment -%}
@@ -393,7 +393,7 @@
     </div>
 
 {%- comment -%}搭配购{%- endcomment -%}
-{%- if settings.collocation_spus !=blank -%}
+{%- if true -%}{{ 'Liquid error (snippets/mini-cart-hulkapps-backup line 396): Unknown operator !=blank' }}{%- elsif false -%}
     <div class="mini-car-title">Before You Go</div>
     <div class="mini-cart__collocation mini-cart__collocation-height">
       {% render 'collocation-purchase' collocationLocation:"mini-cart-collcation" isAuto:settings.open_autoplay time:settings.autoplay_time%}
@@ -537,4 +537,19 @@
   }
   
  
-</style>
+</style>{%- comment -%}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: '{% if settings.full_isOpenview==false or everyTagString contains "CustomPromotion"
+    or everyTagString contains "Nopromotion"   %}'
+  to: '{% if settings.full_isOpenview.false or everyTagString contains "CustomPromotion"
+    or everyTagString contains "Nopromotion" %}'
+  position: 4887..5012
+- from: "{%- if settings.collocation_spus !=blank -%}"
+  to: "{%- if true -%}{{ 'Liquid error (snippets/mini-cart-hulkapps-backup line 396):
+    Unknown operator !=blank' }}{%- elsif false -%}"
+  position: 21445..21571
+{%- endcomment -%}
