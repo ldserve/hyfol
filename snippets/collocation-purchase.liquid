@@ -48,8 +48,8 @@ layout_:list,cart
 			<div class="collocation-container {{ collocationLocation }}">
 				{% if handles.size > 1 %}
 					<div class="switch-product">
-						<span class="prevButton">{%- render :'icon', icon:'arrow-left' -%}</span>
-						<span class="nextButton">{%- render :'icon', icon:'arrow-right' -%}</span>
+						<span class="prevButton">{%- render 'icon', icon: 'arrow-left' -%}</span>
+						<span class="nextButton">{%- render 'icon', icon: 'arrow-right' -%}</span>
 					</div>
 				{% endif %}
 				{%- comment -%}点{%- endcomment -%}
@@ -86,4 +86,16 @@ layout_:list,cart
     }
 	
 	</style>
-{%- endif -%}
+{%- endif -%}{%- comment -%}
+
+This file has been rewritten to preserve the original behavior.
+
+---
+Changes:
+- from: "{%- render :'icon', icon:'arrow-left' -%}"
+  to: "{%- render 'icon', icon: 'arrow-left' -%}"
+  position: 2107..2148
+- from: "{%- render :'icon', icon:'arrow-right' -%}"
+  to: "{%- render 'icon', icon: 'arrow-right' -%}"
+  position: 2187..2229
+{%- endcomment -%}
